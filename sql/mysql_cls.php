@@ -104,5 +104,14 @@ class mysql_cls
             return false;
         }
     }
+    function getDBnumber(){
+
+    }
+    function getNowDB(){
+        if($this->selectDBname==null)
+            return null;
+        else
+            return $this->selectDBname;
+    }
 }
 ?>

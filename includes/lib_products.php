@@ -22,3 +22,37 @@ function getProductsCat($id){
     $catname=$GLOBALS['db']->getOne($sql);
     return $catname;
 }
+
+/*get one product's all results by its id*/
+function getEvalutionsByOneID($product_id)
+{
+    $nowdb = $GLOBALS['db']->getNowDB();
+    if($nowdb==null){
+        return null;
+    }
+    $sql = "SELECT DISTINCT name,value FROM results join evaluations,products where results.id_product=" . $product_id;
+    $results = $GLOBALS['db']->excusql($sql);
+    while ($row = mysql_fetch_array($results)) {
+        $arry[] = $row;
+    }
+    return $arry;
+    /*arry include all the evaluations' names and their values*/
+}
+function getPropertysByOneID($product_id)
+{
+    $nowdb=$GLOBALS['db']->getNowDB();
+}
+
+function getIDsByKeywords($keywords)
+{
+    $nowdb = $GLOBALS['db']->getNowDB();
+    if($nowdb==null){
+        return null;
+    }
+    $sql="SELECT id_product FROM products where completename like '%s%'";
+    $results = $GLOBALS['db']->excusql($sql);
+    while ($row = mysql_fetch_array($results)) {
+        $arry[] = $row;
+    }
+    return $arry;
+}
