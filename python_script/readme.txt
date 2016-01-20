@@ -1,0 +1,3 @@
+用法举例：
+createDB.py microwave c:/microwa.xml 
+完成的工作：解析xml文件并创建名为microwave的数据库，并将microwave项目数据库名字添加到admin数据库的databases表中统一管理（如果数据库中没有admin则会新建）
