@@ -140,7 +140,7 @@ if __name__=="__main__":
 
     # #deal with productgroups-------------------------------------BEGIN
     #create table
-    sql_create_table="CREATE TABLE `productgruops` (" \
+    sql_create_table="CREATE TABLE `productgroups` (" \
                      "`id_productgroup` varchar(20) NOT NULL," \
                      "`comment` varchar(45) default NULL," \
                      "`name` varchar(45) default NULL," \
@@ -166,7 +166,7 @@ if __name__=="__main__":
         productgroup['id'] ,productgroup['name'] ,productgroup['comment'] , productgroup['timestamp_created'] , productgroup['timestamp_lastchange'] = (
              productgroup_id, productgroup_name , productgroup_comment , int(productgroup_timestamp_created) ,int(productgroup_timestamp_lastchange)
         )
-        sql_insert2="insert into productgruops (id_productgroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
+        sql_insert2="insert into productgroups (id_productgroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
         data=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
@@ -200,7 +200,7 @@ if __name__=="__main__":
                      "`completename` varchar(45) default NULL," \
                      "`modelname` varchar(45) default NULL," \
                      "PRIMARY KEY  (`id_product`)," \
-                     "KEY `fk_products_productgruops1_idx` (`id_productgroup`)," \
+                     "KEY `fk_products_productgroups1_idx` (`id_productgroup`)," \
                      "KEY `fk_products_manufacturers1_idx` (`id_manufacturer`)" \
                      ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
     try:
