@@ -30,8 +30,8 @@ function getEvalutionsByOneID($product_id)
     if($nowdb==null){
         return null;
     }
-    $sql = "SELECT DISTINCT name,value FROM results join evaluations,products where results.id_product=" . $product_id;
-    $results = $GLOBALS['db']->excusql($sql);
+    $sql = "SELECT DISTINCT name,value FROM results join evaluations on results.id_evaluation=evaluations.id_evaluation join products on results.id_product=products.id_product where products.id_product=" . $product_id;
+    $results = $GLOBALS['db']->query($sql);
     while ($row = mysql_fetch_array($results)) {
         $arry[] = $row;
     }

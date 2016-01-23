@@ -15,11 +15,17 @@ $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 $dbnumber=$db->getDBnumber();
 echo $dbnumber;
 $dbnames=$db->getAllDBnames();
-echo $dbnames[0];
-
+print_r($dbnames);
+$db->changeDB("microwave");
 $dbsename=$db->getNowDB();
 echo $dbsename;
+
 require('../includes/lib_common.php');
 /*载入Common语言文件*/
 $_CFG=load_config();
 require('../lang/'.$_CFG['lang'].'/common.php');
+
+/*test some lib_function by lsj*/
+require ('../includes/lib_products.php');
+$evaluations=getEvalutionsByOneID(1074);
+print_r($evaluations);
