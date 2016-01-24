@@ -23,7 +23,21 @@ function getProductsCat($id){
     return $catname;
 }
 
-/*get one product's all results by its id*/
+/*得到一个当前数据库的测试产品数目*/
+function getProductsCount(){
+    $nowdb = $GLOBALS['db']->getNowDB();
+    if($nowdb==null){
+        return null;
+    }
+    $sql="SELECT count(*) FROM products";
+    $results=$GLOBALS['db']->query($sql);
+    $countarray=mysql_fetch_array($results);
+    $count=$countarray[0];
+    return $count;
+}
+
+
+/*得到一个产品的所有评分，传入参数为id_product*/
 function getEvalutionsByOneID($product_id)
 {
     $nowdb = $GLOBALS['db']->getNowDB();
