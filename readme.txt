@@ -1,0 +1,6 @@
+文件夹结构：
+Smarty文件夹存放Smarty库，/Smarty/templates存放前端模板
+includes文件夹存放库函数
+lang文件夹存放语言相关函数
+sql存放mysql类
+首页存放的php和每个前端模板对应后端php
