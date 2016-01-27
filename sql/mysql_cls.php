@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Created by PhpStorm.
@@ -16,7 +16,7 @@ class mysql_cls
     var $connect;
     var $databases=array();
     var $databasecount=null;
-    function __construct($serveradd='localhost',$serveruser='root',$serverPass='123456',$namein='admin')
+    function __construct($serveradd='localhost',$serveruser='root',$serverPass='root',$namein='admin')
     {
         /*构造函数：数据库基本链接*/
         $this->serverAddress=$serveradd;
