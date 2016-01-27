@@ -9,6 +9,7 @@
 require( './sql/mysql_cls.php');
 $db=new mysql_cls();
 $db->connect();
+$db->changeDB("microwave");
 $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 
 require('./includes/lib_common.php');
