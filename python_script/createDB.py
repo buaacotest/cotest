@@ -76,14 +76,14 @@ if __name__=="__main__":
                            "`useremail` varchar(45) default NULL," \
                            "PRIMARY KEY  (`username`)" \
                            ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(createadminsql)
-        cursor.execute(useadminsql)
-        cursor.execute(createdbtablesql)
-        cursor.execute(createusertablesql)
-    except mysql.connector.Error as e:
-        print('create for admin database fails!{}'.format(e))
+        try:
+            cursor = cnn.cursor()
+            cursor.execute(createadminsql)
+            cursor.execute(useadminsql)
+            cursor.execute(createdbtablesql)
+            cursor.execute(createusertablesql)
+        except mysql.connector.Error as e:
+            print('create for admin database fails!{}'.format(e))
 
     #create this db
     createdbsql="create database "+dbname
