@@ -342,7 +342,7 @@ if __name__=="__main__":
                      "`id_propertygroup` varchar(20) NOT NULL," \
                      "`type` varchar(20) default NULL," \
                      "`comment` varchar(45) default NULL," \
-                     "`name` varchar(45) default NULL," \
+                     "`name` varchar(200) default NULL," \
                      "`timestamp_lastchange` int(12) default NULL," \
                      "`timestamp_created` int(12) default NULL," \
                      "`testprogram` varchar(20) default NULL," \
@@ -470,7 +470,7 @@ if __name__=="__main__":
                      "`id_evaluation` varchar(20) NOT NULL," \
                      "`id_parent` varchar(20) default NULL," \
                      "`id_calculationtype` varchar(20) NOT NULL," \
-                     "`name` varchar(100) default NULL," \
+                     "`name` varchar(200) default NULL," \
                      "`timestamp_lastchange` int(12) default NULL," \
                      "`timestamp_created` int(12) default NULL," \
                      "`precision` varchar(10) default NULL," \
