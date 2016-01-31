@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.19, created on 2016-01-31 03:48:24
+<?php /* Smarty version 2.6.19, created on 2016-01-31 06:50:59
          compiled from details.tpl */ ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -68,7 +68,7 @@
         </div>
         <div class="col-md-4">
             <div class="pro-img text-center">
-                <img src="http://i3.sinaimg.cn/gm/2014/0805/U1782P115DT20140805163226.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" id="midimg" style="max-height:200px;max-width:200px;">
+                <img src="pictures/example.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" id="midimg" style="max-height:200px;max-width:200px;">
             </div>
         </div>
         <div class="col-md-8">

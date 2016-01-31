@@ -126,7 +126,7 @@ function getTree($data, $pId)
 function getProperty(){
     $sql="select id_propertygroup,name from propertygroups";
     $groups=$GLOBALS['db']->getAll($sql);
-    $sql="select id_propertygroup,name,max,unit from propertys";
+    $sql="select id_propertygroup,name,max,unit from propertys where selected=1";
     $props=$GLOBALS['db']->getAll($sql);
     foreach($groups as $k=>$g){
         $temp='';
@@ -136,6 +136,9 @@ function getProperty(){
             }
         }
         $groups[$k]['id_propertygroup']=$temp;
+        if(!empty($temp)){
+            $results[]=$groups[$k];
+        }
     }
-    return $groups;
+    return $results;
 }
