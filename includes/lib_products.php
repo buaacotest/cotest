@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Created by PhpStorm.
  * User: master
@@ -8,7 +8,7 @@
 /*获取指定id组的产品表的内容*/
 function selectProducts($id){
     if($id==NULL){
-       echo "ERROR:ID不能为空";
+      return array();
     }
     else{
         $sql="select * from products where id_productgroup=".$id;
@@ -63,4 +63,79 @@ function getIDsByKeywords($keywords)
         $arry[] = $row;
     }
     return $arry;
+}
+/*根据project_name获取所有的product的相关属性*/
+function getAllProducts($pname){
+    $GLOBALS['db']->changeDB($pname);
+    $sql="select completename as product_name,`name`as product_manufacturer, FROM_UNIXTIME(timestamp_created,'%Y-%m-%d')as product_tested_date, id_product as product_id
+                from products as A,manufacturers as B
+                where A.id_manufacturer=B.id_manufacturer
+                order by A.timestamp_created desc";
+
+    $res=$GLOBALS['db']->getAll($sql);
+    foreach($res as $k=>$v){
+        $res[$k]['score']=getTotalScore($v['product_id']);
+    }
+    return $res;
+}
+
+/*获取某个product的总评分*/
+function getTotalScore($id){
+    $sql="select format(value,2) from results where id_product=$id and id_evaluation=
+          (select id_evaluation from evaluations where name='total test result')";
+    $score=$GLOBALS['db']->getOne($sql);
+    return $score;
+}
+
+/*根据product的id获取基本信息、测试得分以及属性*/
+function getDetails($id){
+    $sql="select completename as name,`name`as manufacturer, FROM_UNIXTIME(timestamp_created,'%Y-%m-%d')as tested_date
+                from products as A,manufacturers as B
+                where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
+    $res=$GLOBALS['db']->getOneRow($sql);
+    $res['evaluations']=getGradeTree($id);
+    $res['property']=getProperty();
+    return $res;
+}
+/*求某个产品的评分树*/
+function getGradeTree($id){
+    $sql="select A.id_evaluation,name,id_parent,format(value,2) as value
+       from evaluations as A,results as B
+      where A.id_evaluation=B.id_evaluation and B.value!='na'
+      and B.id_product=$id";
+    $data=$GLOBALS['db']->getAll($sql);
+    $gradeTree=getTree($data,0);
+    return $gradeTree;
+}
+/*构建评分的树结构*/
+function getTree($data, $pId)
+{
+    $tree = '';
+    foreach($data as $v)
+    {
+        if($v['id_parent'] == $pId)
+        {
+            $v['id_parent'] = getTree($data, $v['id_evaluation']);
+            $tree[] = $v;
+        }
+    }
+    return $tree;
+}
+
+/*获取指定id产品的属性以及分组(临时使用)*/
+function getProperty(){
+    $sql="select id_propertygroup,name from propertygroups";
+    $groups=$GLOBALS['db']->getAll($sql);
+    $sql="select id_propertygroup,name,max,unit from propertys";
+    $props=$GLOBALS['db']->getAll($sql);
+    foreach($groups as $k=>$g){
+        $temp='';
+        foreach($props as $p){
+            if($p['id_propertygroup']==$g['id_propertygroup']){
+                $temp[]=$p;
+            }
+        }
+        $groups[$k]['id_propertygroup']=$temp;
+    }
+    return $groups;
 }
