@@ -17,4 +17,7 @@ require('./includes/lib_common.php');
 $_CFG=load_config();
 require('./lang/'.$_CFG['lang'].'/common.php');
 
+/*屏蔽错误信息*/
+error_reporting(E_ALL^E_NOTICE^E_WARNING);
+
 
