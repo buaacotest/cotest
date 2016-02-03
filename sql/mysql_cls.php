@@ -17,7 +17,7 @@ class mysql_cls
     var $databases=array();
     var $databasecount=null;
     /**********************************数据库管理相关函数***************************************************/
-    function __construct($serveradd='localhost',$serveruser='root',$serverPass='root',$namein='admin')
+    function __construct($serveradd='localhost',$serveruser='root',$serverPass='buaascse',$namein='admin')
     {
         /*构造函数：数据库基本链接*/
         $this->serverAddress=$serveradd;
