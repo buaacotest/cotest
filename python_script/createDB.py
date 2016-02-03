@@ -17,12 +17,12 @@ if __name__=="__main__":
 
     dbname="null"
     xmlname="null"
-    config={'host':'127.0.0.1',#默认127.0.0.1
+    config={'host':'127.0.0.1',#default 127.0.0.1
         'user':'root',
         'password':'buaascse',
-        'port':3306 ,#默认即为3306
-        #'database':'mobilephone', 无默认数据库
-        'charset':'utf8'#默认即为utf8
+        'port':3306 ,#default port 3306
+        #'database':'mobilephone', no default database
+        'charset':'utf8'#default utf8
         }
     try:
         cnn = mysql.connector.connect(**config)
@@ -127,7 +127,7 @@ if __name__=="__main__":
         manufacture_comment=get_attrvalue(node,'comment')
         manufacturer_timestamp_created=get_attrvalue(node,'timestamp_created')
         manufacturer_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
-        manufacture={} #保存一条manufacture信息
+        manufacture={} #save  one manufacture information
         manufacture['id'] ,manufacture['name'] ,manufacture['comment'] , manufacture['timestamp_created'] , manufacture['timestamp_lastchange'] = (
              manufacture_id, manufacture_name , manufacture_comment , int(manufacturer_timestamp_created) ,int(manufacturer_timestamp_lastchange)
         )
@@ -135,7 +135,7 @@ if __name__=="__main__":
         data=(manufacture_id,manufacture_name,manufacture_comment,manufacturer_timestamp_lastchange,manufacturer_timestamp_created)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-    #     manufacture_list.append(manufacture)# 保存所有的manufacture信息
+    #     manufacture_list.append(manufacture)# save  all manufacture information
     print("deal with manufacturers over")
     #manufacturers---------------------------------------------END
 
@@ -163,7 +163,7 @@ if __name__=="__main__":
         productgroup_comment=get_attrvalue(node,'comment')
         productgroup_timestamp_created=get_attrvalue(node,'timestamp_created')
         productgroup_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
-        productgroup={} #保存一条productgroup信息
+        productgroup={} #save  one productgroup information
         productgroup['id'] ,productgroup['name'] ,productgroup['comment'] , productgroup['timestamp_created'] , productgroup['timestamp_lastchange'] = (
              productgroup_id, productgroup_name , productgroup_comment , int(productgroup_timestamp_created) ,int(productgroup_timestamp_lastchange)
         )
@@ -171,7 +171,7 @@ if __name__=="__main__":
         data=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-    #productgroup_list.append(productgroup)# 保存所有的producgroup信息
+    #productgroup_list.append(productgroup)# save  all producgroup information
     print("deal with productgroup over")
     #productgroups---------------------------------------------------END
 
@@ -214,7 +214,7 @@ if __name__=="__main__":
     product_list=[]
     product_nodes=get_xmlnode(products_node,'product')#product nodes
     for node in product_nodes:
-        product={} #保存一条manufacture信息
+        product={} #save  one manufacture information
         product_id = get_attrvalue(node,'id_product')
         product['id']=product_id
 
@@ -303,7 +303,7 @@ if __name__=="__main__":
               product_completename,product_modelname)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-    #     product_list.append(product)# 保存所有的product信息
+    #     product_list.append(product)# save  all product information
     print("deal with products over")
     #products-------------------------------------------------------------END
 
@@ -331,7 +331,7 @@ if __name__=="__main__":
         propertygroup_comment=get_attrvalue(node,'comment')
         propertygroup_timestamp_created=get_attrvalue(node,'timestamp_created')
         propertygroup_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
-        propertygroup={} #保存一条propertygroup信息
+        propertygroup={} #save  one propertygroup information
         propertygroup['id'] ,propertygroup['name'] ,propertygroup['comment'] , propertygroup['timestamp_created'] , propertygroup['timestamp_lastchange'] = (
              propertygroup_id, propertygroup_name , propertygroup_comment , int(propertygroup_timestamp_created) ,int(propertygroup_timestamp_lastchange)
         )
@@ -340,7 +340,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
 
-    #     propertygroup_list.append(propertygroup)# 保存所有的propertygroup信息
+    #     propertygroup_list.append(propertygroup)# save  all propertygroup information
     print("deal with propertygroup over\n")
     #propertygroups-------------------------------------------------END
 
@@ -374,7 +374,7 @@ if __name__=="__main__":
     property_list=[]
     property_nodes=get_xmlnode(propertys_node,'property')#property nodes
     for node in property_nodes:
-        property={} #保存一条property信息
+        property={} #save  one property information
         property_id = get_attrvalue(node,'id_property')
         property['id']=property_id
 
@@ -427,7 +427,7 @@ if __name__=="__main__":
                 property_timestamp_created,property_timestamp_lastchange)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-        # property_list.append(property)# 保存所有的propertygroup信息
+        # property_list.append(property)# save  all propertygroup information
     print("deal with propertys over\n")
     #propertys---------------------------------------------------END
 
@@ -449,7 +449,7 @@ if __name__=="__main__":
     for node in calculationtype_nodes:
         calculationtype_id = get_attrvalue(node,'id_calculationtype')
         calculationtype_name= get_attrvalue(node,'name')
-        calculationtype={} #保存一条calculationtype信息
+        calculationtype={} #save  one calculationtype information
         calculationtype['id'] ,calculationtype['name'] = (
              calculationtype_id, calculationtype_name
         )
@@ -458,7 +458,7 @@ if __name__=="__main__":
         data=(calculationtype_id,calculationtype_name)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-    #     calculationtype_list.append(calculationtype)# 保存所有的calculationtype信息
+    #     calculationtype_list.append(calculationtype)# save  all calculationtype information
     print("deal with calculationtypes over\n")
     #calculationtypes------------------------------------------------END
 
@@ -494,7 +494,7 @@ if __name__=="__main__":
     evaluation_list=[]
     evaluation_nodes=get_xmlnode(evaluations_node,'evaluation')#evaluation nodes
     for node in evaluation_nodes:
-        evaluation={} #保存一条evaluation信息
+        evaluation={} #save  one evaluation information
         evaluation_id = get_attrvalue(node,'id_evaluation')
         evaluation['id']=evaluation_id
 
@@ -556,7 +556,7 @@ if __name__=="__main__":
               evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-    #     evaluation_list.append(evaluation)# 保存所有的propertygroup信息
+    #     evaluation_list.append(evaluation)# savepropertygroup information
     print("deal with evaluations over\n")
     #evaluations-----------------------------------------------END
 
@@ -595,7 +595,7 @@ if __name__=="__main__":
                 print("result_id_product:"+result_id_product)
                 print("result_id_evaluation:"+result_id_evaluation)
                 result_value=""
-            # result={} #保存一条calculationtype信息
+            # result={} #save  one calculationtype information
             sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value) values (%s, %s,%s,%s,%s)"
             data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
             cursor=cnn.cursor()

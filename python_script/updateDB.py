@@ -19,7 +19,7 @@ if __name__=="__main__":
     xmlname="null"
     config={'host':'127.0.0.1',#默认127.0.0.1
         'user':'root',
-        'password':'123456',
+        'password':'buaascse',
         'port':3306 ,#默认即为3306
         #'database':'mobilephone', 无默认数据库
         'charset':'utf8'#默认即为utf8
@@ -64,27 +64,27 @@ if __name__=="__main__":
         print('select database fails!{}'.format(e))
 
     #deal with manufacturers-----------------------BEGIN
-    #drop table
-    sql_drop_table="DROP TABLE IF EXISTS `manufacturers`"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_drop_table)
-    except mysql.connector.Error as e:
-        print('drop table manufacturers fails!{}'.format(e))
-    #create table
-    sql_create_table="CREATE TABLE `manufacturers` (" \
-                     "`comment` varchar(45) default NULL," \
-                     "`name` varchar(45) default NULL," \
-                     "`timestamp_lastchange` int(11) default NULL," \
-                     "`timestamp_lastcreated` int(11) default NULL," \
-                     "`id_manufacturer` varchar(20) NOT NULL," \
-                     "PRIMARY KEY  (`id_manufacturer`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_create_table)
-    except mysql.connector.Error as e:
-        print('create table manufacturers fails!{}'.format(e))
+    # #drop table
+    # sql_drop_table="DROP TABLE IF EXISTS `manufacturers`"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_drop_table)
+    # except mysql.connector.Error as e:
+    #     print('drop table manufacturers fails!{}'.format(e))
+    # #create table
+    # sql_create_table="CREATE TABLE `manufacturers` (" \
+    #                  "`comment` varchar(45) default NULL," \
+    #                  "`name` varchar(45) default NULL," \
+    #                  "`timestamp_lastchange` int(11) default NULL," \
+    #                  "`timestamp_lastcreated` int(11) default NULL," \
+    #                  "`id_manufacturer` varchar(20) NOT NULL," \
+    #                  "PRIMARY KEY  (`id_manufacturer`)" \
+    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_create_table)
+    # except mysql.connector.Error as e:
+    #     print('create table manufacturers fails!{}'.format(e))
     manufactures_node=manufacturers[0]
     manufacture_list=[]
     manufacture_nodes=get_xmlnode(manufactures_node,'manufacturer')#manufacture nodes
@@ -98,35 +98,55 @@ if __name__=="__main__":
         manufacture['id'] ,manufacture['name'] ,manufacture['comment'] , manufacture['timestamp_created'] , manufacture['timestamp_lastchange'] = (
              manufacture_id, manufacture_name , manufacture_comment , int(manufacturer_timestamp_created) ,int(manufacturer_timestamp_lastchange)
         )
-        sql_insert2="insert into manufacturers (id_manufacturer,name,comment,timestamp_lastchange,timestamp_lastcreated) values (%s, %s,%s,%s,%s)"
-        data=(manufacture_id,manufacture_name,manufacture_comment,manufacturer_timestamp_lastchange,manufacturer_timestamp_created)
+        sql_query="SELECT * FROM manufacturers where id_manufacturer="+manufacture_id
         cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+        cursor.execute(sql_query)
+        result_set=cursor.fetchall()
+        if not result_set:#没有记录的话插入
+            sql_insert2="insert into manufacturers (id_manufacturer,name,comment,timestamp_lastchange,timestamp_lastcreated) values (%s, %s,%s,%s,%s)"
+            data=(manufacture_id,manufacture_name,manufacture_comment,manufacturer_timestamp_lastchange,manufacturer_timestamp_created)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+        else:
+            row=result_set[0] #取第一行
+            ori_timechanged=row['timestamp_lastchange']
+            if ori_timechanged<manufacturer_timestamp_lastchange:
+                #更新
+                update_sql="UPDATE `manufacturers`" \
+                           "SET" \
+                           "`comment` = "+manufacture_comment+"," \
+                           "`name` = "+manufacture_name+"," \
+                           "`timestamp_lastchange` = "+manufacturer_timestamp_lastchange+"," \
+                           "`timestamp_lastcreated` = "+manufacturer_timestamp_created+"," \
+                           "`id_manufacturer` = "+manufacture_id+ \
+                           "WHERE `id_manufacturer` = "+manufacture_id
+                cursor=cnn.cursor()
+                cursor.execute(update_sql)
     #     manufacture_list.append(manufacture)# 保存所有的manufacture信息
     #manufacturers---------------------------------------------END
 
     # #deal with productgroups-------------------------------------BEGIN
-    #drop table
-    sql_drop_table="DROP TABLE IF EXISTS `productgroups`"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_drop_table)
-    except mysql.connector.Error as e:
-        print('drop table productgroups fails!{}'.format(e))
-    #create table
-    sql_create_table="CREATE TABLE `productgroups` (" \
-                     "`id_productgroup` varchar(20) NOT NULL," \
-                     "`comment` varchar(45) default NULL," \
-                     "`name` varchar(45) default NULL," \
-                     "`timestamp_lastchange` int(12) default NULL," \
-                     "`timestamp_created` int(12) default NULL," \
-                     "PRIMARY KEY  (`id_productgroup`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_create_table)
-    except mysql.connector.Error as e:
-        print('create table productgroups fails!{}'.format(e))
+    # #drop table
+    # sql_drop_table="DROP TABLE IF EXISTS `productgroups`"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_drop_table)
+    # except mysql.connector.Error as e:
+    #     print('drop table productgroups fails!{}'.format(e))
+    # #create table
+    # sql_create_table="CREATE TABLE `productgroups` (" \
+    #                  "`id_productgroup` varchar(20) NOT NULL," \
+    #                  "`comment` varchar(45) default NULL," \
+    #                  "`name` varchar(45) default NULL," \
+    #                  "`timestamp_lastchange` int(12) default NULL," \
+    #                  "`timestamp_created` int(12) default NULL," \
+    #                  "PRIMARY KEY  (`id_productgroup`)" \
+    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_create_table)
+    # except mysql.connector.Error as e:
+    #     print('create table productgroups fails!{}'.format(e))
     productgroups_node=productgroups[0]
     productgroup_list=[]
     productgroup_nodes=get_xmlnode(productgroups_node,'productgroup')#productgroup nodes
@@ -140,55 +160,75 @@ if __name__=="__main__":
         productgroup['id'] ,productgroup['name'] ,productgroup['comment'] , productgroup['timestamp_created'] , productgroup['timestamp_lastchange'] = (
              productgroup_id, productgroup_name , productgroup_comment , int(productgroup_timestamp_created) ,int(productgroup_timestamp_lastchange)
         )
-        sql_insert2="insert into productgroups (id_productgroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
-        data=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created)
+        sql_query="SELECT * FROM productgroups where `id_productgroup` = "+productgroup_id
         cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+        cursor.execute(sql_query)
+        result_set=cursor.fetchall()
+        if not result_set:#没有记录的话插入
+            sql_insert2="insert into productgroups (id_productgroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
+            data=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+        else:
+            row=result_set[0] #取第一行
+            ori_timechanged=row['timestamp_lastchange']
+            if ori_timechanged<productgroup_timestamp_lastchange:
+                #更新
+                update_sql="UPDATE `productgroups`" \
+                           "SET" \
+                           "`id_productgroup` = "+productgroup_id+"," \
+                           "`comment` = "+productgroup_comment+"," \
+                           "`name` = "+productgroup_name+"," \
+                           "`timestamp_lastchange` = "+productgroup_timestamp_lastchange+"," \
+                           "`timestamp_created` = "+productgroup_timestamp_created+ \
+                           "WHERE `id_productgroup` = "+productgroup_id
+                cursor=cnn.cursor()
+                cursor.execute(update_sql)
     #productgroup_list.append(productgroup)# 保存所有的producgroup信息
     #productgroups---------------------------------------------------END
 
     #deal with products---------------------------------------------BEGIN
-    #drop table
-    sql_drop_table="DROP TABLE IF EXISTS `products`"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_drop_table)
-    except mysql.connector.Error as e:
-        print('drop table products fails!{}'.format(e))
-    #create table
-    sql_create_table="CREATE TABLE `products` (" \
-                     "`id_product` varchar(20) NOT NULL," \
-                     "`id_productgroup` varchar(20) NOT NULL," \
-                     "`id_manufacturer` varchar(20) NOT NULL," \
-                     "`icrt_code` varchar(45) default NULL," \
-                     "`timestamp_lastchange` int(12) default NULL," \
-                     "`timestamp_created` int(12) default NULL," \
-                     "`picture_hires` varchar(45) default NULL," \
-                     "`picture_lores` varchar(45) default NULL," \
-                     "`similarmodelscodes` varchar(45) default NULL," \
-                     "`parentmodelcode` varchar(45) default NULL," \
-                     "`labcode` varchar(20) default NULL," \
-                     "`batch` varchar(20) default NULL," \
-                     "`sortorder` varchar(20) default NULL," \
-                     "`articlenumber` varchar(30) default NULL," \
-                     "`serialnumber` varchar(30) default NULL," \
-                     "`boughtbyorganisation` varchar(20) default NULL," \
-                     "`labarrivaldate` varchar(45) default NULL," \
-                     "`labreportdate` varchar(45) default NULL," \
-                     "`releasedate` varchar(45) default NULL," \
-                     "`systemmodelid` varchar(45) default NULL," \
-                     "`shortname` varchar(45) default NULL," \
-                     "`completename` varchar(45) default NULL," \
-                     "`modelname` varchar(45) default NULL," \
-                     "PRIMARY KEY  (`id_product`)," \
-                     "KEY `fk_products_productgroups1_idx` (`id_productgroup`)," \
-                     "KEY `fk_products_manufacturers1_idx` (`id_manufacturer`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_create_table)
-    except mysql.connector.Error as e:
-        print('create table products fails!{}'.format(e))
+    # #drop table
+    # sql_drop_table="DROP TABLE IF EXISTS `products`"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_drop_table)
+    # except mysql.connector.Error as e:
+    #     print('drop table products fails!{}'.format(e))
+    # #create table
+    # sql_create_table="CREATE TABLE `products` (" \
+    #                  "`id_product` varchar(20) NOT NULL," \
+    #                  "`id_productgroup` varchar(20) NOT NULL," \
+    #                  "`id_manufacturer` varchar(20) NOT NULL," \
+    #                  "`icrt_code` varchar(45) default NULL," \
+    #                  "`timestamp_lastchange` int(12) default NULL," \
+    #                  "`timestamp_created` int(12) default NULL," \
+    #                  "`picture_hires` varchar(45) default NULL," \
+    #                  "`picture_lores` varchar(45) default NULL," \
+    #                  "`similarmodelscodes` varchar(45) default NULL," \
+    #                  "`parentmodelcode` varchar(45) default NULL," \
+    #                  "`labcode` varchar(20) default NULL," \
+    #                  "`batch` varchar(20) default NULL," \
+    #                  "`sortorder` varchar(20) default NULL," \
+    #                  "`articlenumber` varchar(30) default NULL," \
+    #                  "`serialnumber` varchar(30) default NULL," \
+    #                  "`boughtbyorganisation` varchar(20) default NULL," \
+    #                  "`labarrivaldate` varchar(45) default NULL," \
+    #                  "`labreportdate` varchar(45) default NULL," \
+    #                  "`releasedate` varchar(45) default NULL," \
+    #                  "`systemmodelid` varchar(45) default NULL," \
+    #                  "`shortname` varchar(45) default NULL," \
+    #                  "`completename` varchar(45) default NULL," \
+    #                  "`modelname` varchar(45) default NULL," \
+    #                  "PRIMARY KEY  (`id_product`)," \
+    #                  "KEY `fk_products_productgroups1_idx` (`id_productgroup`)," \
+    #                  "KEY `fk_products_manufacturers1_idx` (`id_manufacturer`)" \
+    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_create_table)
+    # except mysql.connector.Error as e:
+    #     print('create table products fails!{}'.format(e))
     products_node=products[0]
     product_list=[]
     product_nodes=get_xmlnode(products_node,'product')#product nodes
@@ -265,7 +305,13 @@ if __name__=="__main__":
 
         product_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
         product['TL']=int(product_timestamp_lastchange)
-        sql_insert2="insert into products" \
+
+        sql_query="SELECT * FROM products where `id_product` = "+product_id
+        cursor=cnn.cursor()
+        cursor.execute(sql_query)
+        result_set=cursor.fetchall()
+        if not result_set:#没有记录的话插入
+            sql_insert2="insert into products" \
                     " (id_product,id_productgroup,id_manufacturer,icrt_code," \
                     "timestamp_lastchange,timestamp_created," \
                     "picture_hires,picture_lores,similarmodelscodes,parentmodelcode," \
@@ -274,39 +320,73 @@ if __name__=="__main__":
                     "completename,modelname)" \
                     " values (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s," \
                     "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-        data=(product_id,product_id_productgroup,product_id_manufacturer,product_icrt,\
-              product_timestamp_lastchange,product_timestamp_created,\
-              product_picture_hires,product_picture_lores,product_similarmodelscodes,product_parentmodelcode,\
-              product_labcode,product_batch,product_sortorder,product_articlenumber,product_serialnumber,product_boughtbyorganisation,\
-              product_labarrivaldate,product_labreportdate,product_releasedate,product_systemmodelid,product_shortname,\
-              product_completename,product_modelname)
-        cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+            data=(product_id,product_id_productgroup,product_id_manufacturer,product_icrt,\
+                    product_timestamp_lastchange,product_timestamp_created,\
+                    product_picture_hires,product_picture_lores,product_similarmodelscodes,product_parentmodelcode,\
+                    product_labcode,product_batch,product_sortorder,product_articlenumber,product_serialnumber,product_boughtbyorganisation,\
+                    product_labarrivaldate,product_labreportdate,product_releasedate,product_systemmodelid,product_shortname,\
+                    product_completename,product_modelname)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+        else:
+            row=result_set[0] #取第一行
+            ori_timechanged=row['timestamp_lastchange']
+            if ori_timechanged<product_timestamp_lastchange:
+                #更新
+                update_sql="UPDATE `products`" \
+                           "SET" \
+                           "`id_product` = "+product_id+"," \
+                           "`id_productgroup` = "+product_id_productgroup+"," \
+                           "`id_manufacturer` = "+product_id_manufacturer+"," \
+                           "`icrt_code` = "+product_icrt+"," \
+                           "`timestamp_lastchange` = "+product_timestamp_lastchange+"," \
+                           "`timestamp_created` = "+product_timestamp_created+"," \
+                           "`picture_hires` = "+product_picture_hires+"," \
+                           "`picture_lores` = "+product_picture_lores+"," \
+                           "`similarmodelscodes` = "+product_similarmodelscodes+"," \
+                           "`parentmodelcode` = "+product_parentmodelcode+"," \
+                           "`labcode` = "+product_labcode+"," \
+                           "`batch` = "+product_batch+"," \
+                           "`sortorder` = "+product_sortorder+"," \
+                           "`articlenumber` = "+product_articlenumber+"," \
+                           "`serialnumber` = "+product_serialnumber+"," \
+                           "`boughtbyorganisation` = "+product_boughtbyorganisation+"," \
+                           "`labarrivaldate` = "+product_labarrivaldate+"," \
+                           "`labreportdate` = "+product_labreportdate+"," \
+                           "`releasedate` = "+product_releasedate+"," \
+                           "`systemmodelid` = "+product_systemmodelid+"," \
+                           "`shortname` = "+product_shortname+"," \
+                           "`completename` = "+product_completename+"," \
+                           "`modelname` = "+product_modelname+ \
+                           "WHERE `id_product` = "+product_id
+                cursor=cnn.cursor()
+                cursor.execute(update_sql)
+
     #     product_list.append(product)# 保存所有的product信息
     #products-------------------------------------------------------------END
 
     #deal with propertygroups------------------------------BEGIN
     #drop table
-    sql_drop_table="DROP TABLE IF EXISTS `propertygroups`"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_drop_table)
-    except mysql.connector.Error as e:
-        print('drop table propertygroups fails!{}'.format(e))
-    #create table
-    sql_create_table="CREATE TABLE `propertygroups` (" \
-                     "`id_propertygroup` varchar(20) NOT NULL," \
-                     "`comment` varchar(45) default NULL," \
-                     "`name` varchar(45) default NULL," \
-                     "`timestamp_lastchange` int(12) default NULL," \
-                     "`timestamp_created` int(12) default NULL," \
-                     "PRIMARY KEY  (`id_propertygroup`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_create_table)
-    except mysql.connector.Error as e:
-        print('create table propertygroups fails!{}'.format(e))
+    # sql_drop_table="DROP TABLE IF EXISTS `propertygroups`"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_drop_table)
+    # except mysql.connector.Error as e:
+    #     print('drop table propertygroups fails!{}'.format(e))
+    # #create table
+    # sql_create_table="CREATE TABLE `propertygroups` (" \
+    #                  "`id_propertygroup` varchar(20) NOT NULL," \
+    #                  "`comment` varchar(45) default NULL," \
+    #                  "`name` varchar(45) default NULL," \
+    #                  "`timestamp_lastchange` int(12) default NULL," \
+    #                  "`timestamp_created` int(12) default NULL," \
+    #                  "PRIMARY KEY  (`id_propertygroup`)" \
+    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_create_table)
+    # except mysql.connector.Error as e:
+    #     print('create table propertygroups fails!{}'.format(e))
     propertygroups_node=propertygroups[0]
     propertygroup_list=[]
     propertygroup_nodes=get_xmlnode(propertygroups_node,'propertygroup')#propertygroup nodes
@@ -320,47 +400,67 @@ if __name__=="__main__":
         propertygroup['id'] ,propertygroup['name'] ,propertygroup['comment'] , propertygroup['timestamp_created'] , propertygroup['timestamp_lastchange'] = (
              propertygroup_id, propertygroup_name , propertygroup_comment , int(propertygroup_timestamp_created) ,int(propertygroup_timestamp_lastchange)
         )
-        sql_insert2="insert into propertygroups (id_propertygroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
-        data=(propertygroup_id,propertygroup_comment,propertygroup_name,propertygroup_timestamp_lastchange,propertygroup_timestamp_created)
+        sql_query="SELECT * FROM propertygroups where `id_propertygroup` = "+propertygroup_id
         cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+        cursor.execute(sql_query)
+        result_set=cursor.fetchall()
+        if not result_set:#没有记录的话插入
+            sql_insert2="insert into propertygroups (id_propertygroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
+            data=(propertygroup_id,propertygroup_comment,propertygroup_name,propertygroup_timestamp_lastchange,propertygroup_timestamp_created)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+        else:
+            row=result_set[0] #取第一行
+            ori_timechanged = row['timestamp_lastchange']
+            if ori_timechanged<propertygroup_timestamp_lastchange:
+                #更新
+                update_sql="UPDATE `propertygroups`" \
+                           "SET" \
+                           "`id_propertygroup` = "+propertygroup_id+"," \
+                           "`comment` = "+propertygroup_name+"," \
+                           "`name` = "+propertygroup_name+"," \
+                           "`timestamp_lastchange` = "+propertygroup_timestamp_lastchange+"," \
+                           "`timestamp_created` = "+propertygroup_timestamp_created+ \
+                           "WHERE `id_propertygroup` = "+propertygroup_id
+                cursor=cnn.cursor()
+                cursor.execute(update_sql)
 
     #     propertygroup_list.append(propertygroup)# 保存所有的propertygroup信息
     #propertygroups-------------------------------------------------END
 
     #deal with propertys------------------------------------------BEGIN
-    #drop table
-    sql_drop_table="DROP TABLE IF EXISTS `propertys`"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_drop_table)
-    except mysql.connector.Error as e:
-        print('drop table propertys fails!{}'.format(e))
-    #create table
-    sql_create_table="CREATE TABLE `propertys` (" \
-                     "`id_property` varchar(20) NOT NULL default ''," \
-                     "`id_propertygroup` varchar(20) NOT NULL," \
-                     "`type` varchar(20) default NULL," \
-                     "`comment` varchar(45) default NULL," \
-                     "`name` varchar(200) default NULL," \
-                     "`timestamp_lastchange` int(12) default NULL," \
-                     "`timestamp_created` int(12) default NULL," \
-                     "`testprogram` varchar(20) default NULL," \
-                     "`use` varchar(10) default NULL," \
-                     "`precision` varchar(45) default NULL," \
-                     "`unit` varchar(45) default NULL," \
-                     "`min` varchar(45) default NULL," \
-                     "`max` varchar(45) default NULL," \
-                     "`binding` varchar(45) default NULL," \
-                     "`selected` int(11) default NULL," \
-                     "PRIMARY KEY  (`id_property`)," \
-                     "KEY `fk_propertys_propertygroups1_idx` (`id_propertygroup`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_create_table)
-    except mysql.connector.Error as e:
-        print('create table propertys fails!{}'.format(e))
+    # #drop table
+    # sql_drop_table="DROP TABLE IF EXISTS `propertys`"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_drop_table)
+    # except mysql.connector.Error as e:
+    #     print('drop table propertys fails!{}'.format(e))
+    # #create table
+    # sql_create_table="CREATE TABLE `propertys` (" \
+    #                  "`id_property` varchar(20) NOT NULL default ''," \
+    #                  "`id_propertygroup` varchar(20) NOT NULL," \
+    #                  "`type` varchar(20) default NULL," \
+    #                  "`comment` varchar(45) default NULL," \
+    #                  "`name` varchar(200) default NULL," \
+    #                  "`timestamp_lastchange` int(12) default NULL," \
+    #                  "`timestamp_created` int(12) default NULL," \
+    #                  "`testprogram` varchar(20) default NULL," \
+    #                  "`use` varchar(10) default NULL," \
+    #                  "`precision` varchar(45) default NULL," \
+    #                  "`unit` varchar(45) default NULL," \
+    #                  "`min` varchar(45) default NULL," \
+    #                  "`max` varchar(45) default NULL," \
+    #                  "`binding` varchar(45) default NULL," \
+    #                  "`selected` int(11) default NULL," \
+    #                  "PRIMARY KEY  (`id_property`)," \
+    #                  "KEY `fk_propertys_propertygroups1_idx` (`id_propertygroup`)" \
+    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_create_table)
+    # except mysql.connector.Error as e:
+    #     print('create table propertys fails!{}'.format(e))
     propertys_node=propertys[0]
     property_list=[]
     property_nodes=get_xmlnode(propertys_node,'property')#property nodes
@@ -407,17 +507,49 @@ if __name__=="__main__":
 
         property_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
         property['TL']=property_timestamp_lastchange
-        sql_insert2="insert into propertys(id_property,id_propertygroup,binding," \
+
+        sql_query="SELECT * FROM propertys where `id_property` = "+property_id
+        cursor=cnn.cursor()
+        cursor.execute(sql_query)
+        result_set=cursor.fetchall()
+        if not result_set:#没有记录的话插入
+            sql_insert2="insert into propertys(id_property,id_propertygroup,binding," \
                     "name,comment,max,min,unit,`precision`,type,`use`,testprogram," \
                     "timestamp_created,timestamp_lastchange)" \
                     " values (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s," \
                     "%s,%s)"
-        data=(property_id,property_id_propertygroup,property_binding,\
-              property_name,property_comment,property_max,property_min,property_unit,property_precision,\
-                property_type,property_use,property_testprogram,\
-                property_timestamp_created,property_timestamp_lastchange)
-        cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+            data=(property_id,property_id_propertygroup,property_binding,\
+                    property_name,property_comment,property_max,property_min,property_unit,property_precision,\
+                    property_type,property_use,property_testprogram,\
+                    property_timestamp_created,property_timestamp_lastchange)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+        else:
+            row=result_set[0] #取第一行
+            ori_timechanged = row['timestamp_lastchange']
+            if ori_timechanged<property_timestamp_lastchange:
+                #更新
+                update_sql="UPDATE `propertys`" \
+                           "SET" \
+                           "`id_property` = "+property_id+"," \
+                           "`id_propertygroup` = "+property_id_propertygroup+"," \
+                           "`type` = "+property_type+"," \
+                           "`comment` = "+property_comment+"," \
+                           "`name` = "+property_name+"," \
+                           "`timestamp_lastchange` = "+property_timestamp_lastchange+"," \
+                           "`timestamp_created` = "+property_timestamp_created+"," \
+                           "`testprogram` = "+property_testprogram+"," \
+                           "`use` = "+property_use+"," \
+                           "`precision` = "+property_precision+"," \
+                           "`unit` = "+property_unit+"," \
+                           "`min` = "+property_min+"," \
+                           "`max` = "+property_max+"," \
+                           "`binding` = "+property_binding+"," \
+                           "WHERE `id_property` = "+property_id
+                cursor=cnn.cursor()
+                cursor.execute(update_sql)
+
+
         # property_list.append(property)# 保存所有的propertygroup信息
     #propertys---------------------------------------------------END
 
@@ -459,40 +591,40 @@ if __name__=="__main__":
     #calculationtypes------------------------------------------------END
 
     # #deal with evaluations-------------------------------------------BEGIN
-    #drop table
-    sql_drop_table="DROP TABLE IF EXISTS `evaluations`"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_drop_table)
-    except mysql.connector.Error as e:
-        print('drop table evaluations fails!{}'.format(e))
-    #create table
-    sql_create_table="CREATE TABLE `evaluations` (" \
-                     "`id_evaluation` varchar(20) NOT NULL," \
-                     "`id_parent` varchar(20) default NULL," \
-                     "`id_calculationtype` varchar(20) NOT NULL," \
-                     "`name` varchar(200) default NULL," \
-                     "`timestamp_lastchange` int(12) default NULL," \
-                     "`timestamp_created` int(12) default NULL," \
-                     "`precision` varchar(10) default NULL," \
-                     "`unit` varchar(45) default NULL," \
-                     "`binding` varchar(45) default NULL," \
-                     "`lookupstable` varchar(45) default NULL," \
-                     "`weighting_given` varchar(45) default NULL," \
-                     "`weighting_normalized` varchar(45) default NULL," \
-                     "`use_limiting` varchar(45) default NULL," \
-                     "`use_lookupable` varchar(45) default NULL," \
-                     "`use_inheritna` varchar(45) default NULL," \
-                     "`evaluationchilds` varchar(45) default NULL," \
-                     "PRIMARY KEY  (`id_evaluation`)," \
-                     "KEY `fk_evaluations_calculationtypes1_idx` (`id_calculationtype`)," \
-                     "KEY `fk_evaluations_evaluations1_idx` (`id_parent`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    try:
-        cursor = cnn.cursor()
-        cursor.execute(sql_create_table)
-    except mysql.connector.Error as e:
-        print('create table evaluations fails!{}'.format(e))
+    # #drop table
+    # sql_drop_table="DROP TABLE IF EXISTS `evaluations`"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_drop_table)
+    # except mysql.connector.Error as e:
+    #     print('drop table evaluations fails!{}'.format(e))
+    # #create table
+    # sql_create_table="CREATE TABLE `evaluations` (" \
+    #                  "`id_evaluation` varchar(20) NOT NULL," \
+    #                  "`id_parent` varchar(20) default NULL," \
+    #                  "`id_calculationtype` varchar(20) NOT NULL," \
+    #                  "`name` varchar(200) default NULL," \
+    #                  "`timestamp_lastchange` int(12) default NULL," \
+    #                  "`timestamp_created` int(12) default NULL," \
+    #                  "`precision` varchar(10) default NULL," \
+    #                  "`unit` varchar(45) default NULL," \
+    #                  "`binding` varchar(45) default NULL," \
+    #                  "`lookupstable` varchar(45) default NULL," \
+    #                  "`weighting_given` varchar(45) default NULL," \
+    #                  "`weighting_normalized` varchar(45) default NULL," \
+    #                  "`use_limiting` varchar(45) default NULL," \
+    #                  "`use_lookupable` varchar(45) default NULL," \
+    #                  "`use_inheritna` varchar(45) default NULL," \
+    #                  "`evaluationchilds` varchar(45) default NULL," \
+    #                  "PRIMARY KEY  (`id_evaluation`)," \
+    #                  "KEY `fk_evaluations_calculationtypes1_idx` (`id_calculationtype`)," \
+    #                  "KEY `fk_evaluations_evaluations1_idx` (`id_parent`)" \
+    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    # try:
+    #     cursor = cnn.cursor()
+    #     cursor.execute(sql_create_table)
+    # except mysql.connector.Error as e:
+    #     print('create table evaluations fails!{}'.format(e))
     evaluations_node=evaluations[0]
     evaluation_list=[]
     evaluation_nodes=get_xmlnode(evaluations_node,'evaluation')#evaluation nodes
@@ -545,20 +677,52 @@ if __name__=="__main__":
 
         evaluation_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
         evaluation['TL']=evaluation_timestamp_lastchange
-        sql_insert2 = "insert into evaluations(id_evaluation,id_parent,id_calculationtype," \
+        sql_query="SELECT * FROM evaluations where `id_evaluation` = "+evaluation_id
+        cursor=cnn.cursor()
+        cursor.execute(sql_query)
+        result_set=cursor.fetchall()
+        if not result_set:#没有记录的话插入
+            sql_insert2 = "insert into evaluations(id_evaluation,id_parent,id_calculationtype," \
                       "name,timestamp_lastchange,timestamp_created," \
                       "`precision`,unit,binding,lookupstable,weighting_given," \
                       "weighting_normalized,use_limiting," \
                       "use_lookupable,use_inheritna,evaluationchilds)" \
                       " values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s," \
                       "%s,%s,%s,%s)"
-        data=(evaluation_id,evaluation_parent,evaluation_id_calculationtype,\
-              evaluation_name,evaluation_timestamp_lastchange,evaluation_timestamp_created,\
-              evaluation_precision,evaluation_unit,evaluation_binding,evaluation_lookuptable,evaluation_weighting_given,\
-              evaluation_weighting_normalized,evaluation_use_limiting,\
-              evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs)
-        cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+            data=(evaluation_id,evaluation_parent,evaluation_id_calculationtype,\
+                evaluation_name,evaluation_timestamp_lastchange,evaluation_timestamp_created,\
+                evaluation_precision,evaluation_unit,evaluation_binding,evaluation_lookuptable,evaluation_weighting_given,\
+                evaluation_weighting_normalized,evaluation_use_limiting,\
+                evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+        else:
+            row=result_set[0] #取第一行
+            ori_timechanged = row['timestamp_lastchange']
+            if ori_timechanged<propertygroup_timestamp_lastchange:
+                #更新
+                update_sql="UPDATE `evaluations`" \
+                           "SET" \
+                           "`id_evaluation` = "+evaluation_id+"," \
+                           "`id_parent` = "+evaluation_parent+"," \
+                           "`id_calculationtype` = "+evaluation_id_calculationtype+"," \
+                           "`name` = "+evaluation_name+"," \
+                           "`timestamp_lastchange` = "+evaluation_timestamp_lastchange+"," \
+                           "`timestamp_created` = "+evaluation_timestamp_created+"," \
+                           "`precision` = "+evaluation_precision+"," \
+                           "`unit` = "+evaluation_unit+"," \
+                           "`binding` = "+evaluation_binding+"," \
+                           "`lookupstable` = "+evaluation_lookuptable+"," \
+                           "`weighting_given` = "+evaluation_weighting_given+"," \
+                           "`weighting_normalized` = "+evaluation_weighting_normalized+"," \
+                           "`use_limiting` = "+evaluation_use_limiting+"," \
+                           "`use_lookupable` = "+evaluation_use_lookuptable+"," \
+                           "`use_inheritna` = "+evaluation_use_inheritna+"," \
+                           "`evaluationchilds` = "+evaluation_id_childs+ \
+                           "WHERE `id_evaluation` = "+evaluation_id
+                cursor=cnn.cursor()
+                cursor.execute(update_sql)
+
     #     evaluation_list.append(evaluation)# 保存所有的propertygroup信息
     #evaluations-----------------------------------------------END
 
@@ -595,8 +759,13 @@ if __name__=="__main__":
         result_id_evaluation= get_attrvalue(node,'id_evaluation')
         result_is_downgrading= int(get_attrvalue(node,'is_downgrading'))
         result_downgrading_value= get_attrvalue(node,'downgrading_value')
-        result_value=node.firstChild.data
-        result={} #保存一条calculationtype信息
+        try:
+                result_value=node.firstChild.data
+        except Exception as e:
+                print('result doesnt have value !set result_value=""')
+                print("result_id_product:"+result_id_product)
+                print("result_id_evaluation:"+result_id_evaluation)
+                result_value=""
         sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value) values (%s, %s,%s,%s,%s)"
         data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
         cursor=cnn.cursor()
