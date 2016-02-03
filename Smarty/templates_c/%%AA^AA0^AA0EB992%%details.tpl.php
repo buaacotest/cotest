@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-01-31 06:50:59
+<?php /* Smarty version 2.6.19, created on 2016-02-03 09:53:24
          compiled from details.tpl */ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
@@ -109,7 +109,7 @@
             </ul>
             <div class="pro-review-panel">
                 <div id="panel1" class="proper-panel">
-                <?php unset($this->_sections['n']);
+                    <?php unset($this->_sections['n']);
 $this->_sections['n']['name'] = 'n';
 $this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['props']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $this->_sections['n']['show'] = true;
@@ -185,7 +185,7 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
                         <div class="row">
                             <div class="proper-title" toggle="1">
                                 <div class="col-md-6">
-                                   <?php echo $this->_tpl_vars['evals']['name']; ?>
+                                    <?php echo $this->_tpl_vars['evals']['name']; ?>
 
                                 </div>
                                 <div class="col-md-6">
@@ -245,6 +245,5 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 <script src="../../dist/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
-<script type="text/javascript" src="js/review.js">
-</script>
+<script type="text/javascript" src="js/review.js"></script>
 </html>

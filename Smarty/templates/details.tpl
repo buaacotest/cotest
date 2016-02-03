@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{$title}</title>
+    <title><{$title}></title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,7 @@
 
         <div class="col-md-12">
             <div class="pro-title text-center">
-                <h2>{$product.name}</h2>
+                <h2><{$product.name}></h2>
             </div>
         </div>
         <div class="col-md-4">
@@ -74,7 +74,7 @@
                         <label>厂商</label>
                     </div>
                     <div class="col-md-10">
-                        {$product.manufacturer}
+                        <{$product.manufacturer}>
                     </div>
                 </div>
                 <div class="pro-info-item row">
@@ -90,7 +90,7 @@
                         <label>总分</label>
                     </div>
                     <div class="col-md-10">
-                        {$score}
+                        <{$score}>
                     </div>
                 </div>
             </div>
@@ -103,25 +103,25 @@
             </ul>
             <div class="pro-review-panel">
                 <div id="panel1" class="proper-panel">
-                {section name=n loop=$props}
+                    <{section name=n loop=$props}>
                     <div class="proper-block">
                         <div class="row">
                             <div class="proper-title " toggle="1">
                                 <div class="col-md-12">
-                                    {$props[n].name}
+                                    <{$props[n].name}>
                                 </div>
 
                             </div>
                         </div>
-                        {section name=m loop=$props[n].id_propertygroup}
+                        <{section name=m loop=$props[n].id_propertygroup}>
                         <div class="row proper-item">
-                            <div class="col-md-6"><label>{$props[n].id_propertygroup[m].name}</label></div>
-                            <div class="col-md-6">{$props[n].id_propertygroup[m].max} {$props[n].id_propertygroup[m].unit}</div>
+                            <div class="col-md-6"><label><{$props[n].id_propertygroup[m].name}></label></div>
+                            <div class="col-md-6"><{$props[n].id_propertygroup[m].max}> <{$props[n].id_propertygroup[m].unit}></div>
 
                         </div>
-                        {/section}
+                        <{/section}>
                     </div>
-                    {/section}
+                    <{/section}>
 
                 </div>
                 <div id="panel2" class="proper-panel">
@@ -129,20 +129,20 @@
                         <div class="row">
                             <div class="proper-title" toggle="1">
                                 <div class="col-md-6">
-                                   {$evals.name}
+                                    <{$evals.name}>
                                 </div>
                                 <div class="col-md-6">
-                                    {$evals.value}
+                                    <{$evals.value}>
                                 </div>
                             </div>
                         </div>
-                        {section name=n loop=$evals.id_parent}
+                        <{section name=n loop=$evals.id_parent}>
                         <div class="row proper-item">
-                            <div class="col-md-6"><label>{$evals.id_parent[n].name}</label></div>
-                            <div class="col-md-6">{$evals.id_parent[n].value}</div>
+                            <div class="col-md-6"><label><{$evals.id_parent[n].name}></label></div>
+                            <div class="col-md-6"><{$evals.id_parent[n].value}></div>
 
                         </div>
-                        {/section}
+                        <{/section}>
                     </div>
 
                 </div>
@@ -162,6 +162,5 @@
 <script src="../../dist/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
-<script type="text/javascript" src="js/review.js">
-</script>
+<script type="text/javascript" src="js/review.js"></script>
 </html>

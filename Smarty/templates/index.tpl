@@ -167,7 +167,7 @@
                         Mobile Phones(122)
                     </li>
                     <li>
-                        <a href="products.php?proj=smartphone">Smartphones</a>({$number})
+                        <a href="products.php?proj=smartphone">Smartphones</a>(<{$number}>Tested)
                     </li>
                     <li>
                         Mobile network and tariffs(834)

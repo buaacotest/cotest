@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-01-31 03:48:22
+<?php /* Smarty version 2.6.19, created on 2016-02-03 09:48:27
          compiled from products.tpl */ ?>
 
 <!DOCTYPE html>
@@ -216,21 +216,21 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 <li itemscope="" itemtype="http://schema.org/Product" itemprop="itemListElement">
                     <div itemscope="" itemtype="http://schema.org/Product" class="product-listing" data-product-id="7399">
                         <div class="product-listing__thumb">
-                            <a href="details.php?id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
-&proj=<?php echo $this->_tpl_vars['project']; ?>
+                            <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
+&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 ">
                                 <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
                             </a>
                         </div>
                         <div class="product-listing__name-and-key-fact">
-                            <a class="product-listing__name--narrow" href="details.php?id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
-&proj=<?php echo $this->_tpl_vars['project']; ?>
+                            <a class="product-listing__name--narrow" href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
+&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 ">
                                 <span class="product-listing__model"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
 </span>
                             </a>
                             <div class="product-listing__key-fact">
-                               Made by  <span class="product-listing__manufacturer"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_manufacturer']; ?>
+                                Made by  <span class="product-listing__manufacturer"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_manufacturer']; ?>
 </span>
                             </div>
                         </div>
@@ -265,9 +265,17 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 </li>
                 <?php endfor; endif; ?>
 
-
-
             </ul>
+            <div class="row">
+                <ul class="pagenator">
+                    <li class="pagebtn active" value="1">1</li>
+                    <li class="pagebtn" value="2">2</li>
+                    <li class="pagebtn" value="3">3</li>
+                    <li class="pagebtn" value="4">4</li>
+                    <li class="pagebtn" value="5">5</li>
+                </ul>
+
+            </div>
         </div>
     </div>
 </div>
@@ -284,6 +292,21 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 <script src="../../dist/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".pagebtn").on("click",function(){
+            var value=$(this).attr("value");
+            console.log(value)
+            $(".pagebtn").attr("class","pagebtn");
+            $(this).attr("class","pagebtn active");
+            $.get("products.php?page="+value+"&proj=<?php echo $this->_tpl_vars['project']; ?>
+",function(result){
+                $(".products").html(result);
+            })
+        })
+    })
+
+</script>
 
 
 </body>
