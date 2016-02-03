@@ -19,7 +19,7 @@ if __name__=="__main__":
     xmlname="null"
     config={'host':'127.0.0.1',#默认127.0.0.1
         'user':'root',
-        'password':'123456',
+        'password':'root',
         'port':3306 ,#默认即为3306
         #'database':'mobilephone', 无默认数据库
         'charset':'utf8'#默认即为utf8

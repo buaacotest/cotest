@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-01-31 03:48:20
+<?php /* Smarty version 2.6.19, created on 2016-02-03 09:52:42
          compiled from index.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -170,7 +170,7 @@
                     </li>
                     <li>
                         <a href="products.php?proj=smartphone">Smartphones</a>(<?php echo $this->_tpl_vars['number']; ?>
-)
+Tested)
                     </li>
                     <li>
                         Mobile network and tariffs(834)

@@ -14,4 +14,8 @@ $smarty->template_dir = BASE_PATH.SMARTY_PATH.'templates/';
 $smarty->compile_dir = BASE_PATH.SMARTY_PATH.'templates_c/';
 $smarty->config_dir = BASE_PATH.SMARTY_PATH.'configs/';
 $smarty->cache_dir = BASE_PATH.SMARTY_PATH.'cache/';
+
+/*  定义定界符  */
+$smarty->left_delimiter = '<{';
+$smarty->right_delimiter = '}>';
 ?>

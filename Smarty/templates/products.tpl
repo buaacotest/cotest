@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{$title}</title>
+    <title><{$title}></title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -186,28 +186,28 @@
         <div class="products-container">
             <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                 <meta itemprop="mainContentOfPage" content="true">
-                {section name=n loop=$products}
+                <{section name=n loop=$products}>
                 <li itemscope="" itemtype="http://schema.org/Product" itemprop="itemListElement">
                     <div itemscope="" itemtype="http://schema.org/Product" class="product-listing" data-product-id="7399">
                         <div class="product-listing__thumb">
-                            <a href="details.php?id={$products[n].product_id}&proj={$project}">
+                            <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
                                 <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
                             </a>
                         </div>
                         <div class="product-listing__name-and-key-fact">
-                            <a class="product-listing__name--narrow" href="details.php?id={$products[n].product_id}&proj={$project}">
-                                <span class="product-listing__model">{$products[n].product_name}</span>
+                            <a class="product-listing__name--narrow" href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                                <span class="product-listing__model"><{$products[n].product_name}></span>
                             </a>
                             <div class="product-listing__key-fact">
-                               Made by  <span class="product-listing__manufacturer">{$products[n].product_manufacturer}</span>
+                                Made by  <span class="product-listing__manufacturer"><{$products[n].product_manufacturer}></span>
                             </div>
                         </div>
                         <div class="product-listing__price-and-badges--with-bottom">
                             <div class="product-listing__price ">
                         <span class="price-value">
-                            <a href="details.php?id={$products[n].product_id}&proj={$project}">
+                            <a href="details.php?id=<{$products[n].product_id}>&proj=<{$project}>">
                                 <div data-test="price-label">Total Score:</div>
-                                <div data-test="price-amount">{$products[n].score}</div>
+                                <div data-test="price-amount"><{$products[n].score}></div>
                             </a>
                         </span>
                             </div>
@@ -216,7 +216,7 @@
                         </div>
 
                         <div class="product-listing__tested-date">
-                            Tested date:{$products[n].product_tested_date}
+                            Tested date:<{$products[n].product_tested_date}>
                         </div>
 
 
@@ -227,11 +227,19 @@
                     </div>
 
                 </li>
-                {/section}
-
-
+                <{/section}>
 
             </ul>
+            <div class="row">
+                <ul class="pagenator">
+                    <li class="pagebtn active" value="1">1</li>
+                    <li class="pagebtn" value="2">2</li>
+                    <li class="pagebtn" value="3">3</li>
+                    <li class="pagebtn" value="4">4</li>
+                    <li class="pagebtn" value="5">5</li>
+                </ul>
+
+            </div>
         </div>
     </div>
 </div>
@@ -248,6 +256,20 @@
 <script src="../../dist/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".pagebtn").on("click",function(){
+            var value=$(this).attr("value");
+            console.log(value)
+            $(".pagebtn").attr("class","pagebtn");
+            $(this).attr("class","pagebtn active");
+            $.get("products.php?page="+value+"&proj=<{$project}>",function(result){
+                $(".products").html(result);
+            })
+        })
+    })
+
+</script>
 
 
 </body>
