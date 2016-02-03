@@ -352,6 +352,7 @@ if __name__=="__main__":
                      "`min` varchar(45) default NULL," \
                      "`max` varchar(45) default NULL," \
                      "`binding` varchar(45) default NULL," \
+                     "`selected` int(11) default NULL," \
                      "PRIMARY KEY  (`id_property`)," \
                      "KEY `fk_propertys_propertygroups1_idx` (`id_propertygroup`)" \
                      ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
