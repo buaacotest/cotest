@@ -19,7 +19,7 @@ if __name__=="__main__":
     xmlname="null"
     config={'host':'127.0.0.1',#默认127.0.0.1
         'user':'root',
-        'password':'123456',
+        'password':'buaascse',
         'port':3306 ,#默认即为3306
         #'database':'mobilephone', 无默认数据库
         'charset':'utf8'#默认即为utf8
@@ -102,7 +102,7 @@ if __name__=="__main__":
     except mysql.connector.Error as e:
         print('select database fails!{}'.format(e))
     #-----------------------------------------create DB END
-
+    #
     #deal with manufacturers-----------------------BEGIN
     #create table
     sql_create_table="CREATE TABLE `manufacturers` (" \
@@ -136,6 +136,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     #     manufacture_list.append(manufacture)# 保存所有的manufacture信息
+    print("deal with manufacturers over")
     #manufacturers---------------------------------------------END
 
     # #deal with productgroups-------------------------------------BEGIN
@@ -171,6 +172,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     #productgroup_list.append(productgroup)# 保存所有的producgroup信息
+    print("deal with productgroup over")
     #productgroups---------------------------------------------------END
 
     #deal with products---------------------------------------------BEGIN
@@ -302,6 +304,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     #     product_list.append(product)# 保存所有的product信息
+    print("deal with products over")
     #products-------------------------------------------------------------END
 
     #deal with propertygroups------------------------------BEGIN
@@ -338,6 +341,7 @@ if __name__=="__main__":
         cursor.execute(sql_insert2,data)
 
     #     propertygroup_list.append(propertygroup)# 保存所有的propertygroup信息
+    print("deal with propertygroup over\n")
     #propertygroups-------------------------------------------------END
 
     #deal with propertys------------------------------------------BEGIN
@@ -424,6 +428,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
         # property_list.append(property)# 保存所有的propertygroup信息
+    print("deal with propertys over\n")
     #propertys---------------------------------------------------END
 
     #deal with calculationtypes--------------------------BEGIN
@@ -454,6 +459,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     #     calculationtype_list.append(calculationtype)# 保存所有的calculationtype信息
+    print("deal with calculationtypes over\n")
     #calculationtypes------------------------------------------------END
 
     # #deal with evaluations-------------------------------------------BEGIN
@@ -551,6 +557,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     #     evaluation_list.append(evaluation)# 保存所有的propertygroup信息
+    print("deal with evaluations over\n")
     #evaluations-----------------------------------------------END
 
     #deal with results-----------------------------------------BEGIN
@@ -573,18 +580,28 @@ if __name__=="__main__":
     result_list=[]
     result_nodes=get_xmlnode(results_node,'result')#result nodes
 
-
     for node in result_nodes:
-        result_id_product = get_attrvalue(node,'id_product')
-        result_id_evaluation= get_attrvalue(node,'id_evaluation')
-        result_is_downgrading= int(get_attrvalue(node,'is_downgrading'))
-        result_downgrading_value= get_attrvalue(node,'downgrading_value')
-        result_value=node.firstChild.data
-        result={} #保存一条calculationtype信息
-        sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value) values (%s, %s,%s,%s,%s)"
-        data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
-        cursor=cnn.cursor()
-        cursor.execute(sql_insert2,data)
+            try:
+                result_id_product = get_attrvalue(node,'id_product')
+                result_id_evaluation= get_attrvalue(node,'id_evaluation')
+                result_is_downgrading= int(get_attrvalue(node,'is_downgrading'))
+                result_downgrading_value= get_attrvalue(node,'downgrading_value')
+            except Exception as e:
+                print('import results error!{}'.format(e))
+            try:
+                result_value=node.firstChild.data
+            except Exception as e:
+                print('result doesnt have value !set result_value=""')
+                print("result_id_product:"+result_id_product)
+                print("result_id_evaluation:"+result_id_evaluation)
+                result_value=""
+            # result={} #保存一条calculationtype信息
+            sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value) values (%s, %s,%s,%s,%s)"
+            data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
+            cursor=cnn.cursor()
+            cursor.execute(sql_insert2,data)
+
+    print("deal with results over\n")
     #results------------------------------------------------END
 
     print("createDB over")
