@@ -229,9 +229,7 @@
                 <ul class="pagenator">
                     <li class="pagebtn active" value="1">1</li>
                     <li class="pagebtn" value="2">2</li>
-                    <li class="pagebtn" value="3">3</li>
-                    <li class="pagebtn" value="4">4</li>
-                    <li class="pagebtn" value="5">5</li>
+
                 </ul>
 
             </div>
