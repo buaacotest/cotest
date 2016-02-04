@@ -23,9 +23,9 @@ if(empty($_GET['page'])){
 }
 //echo $project_name;
 $products=getAllProducts($project_name);
-$page_num=count($products)/9;
+$page_num=ceil(count($products)/9);
 
-$products=array_slice($products,($page-1)*9,$page*9);
+$products=array_slice($products,($page-1)*9,9);
 //print_r($products);
 $smarty->assign('pageNum',$page_num);
 $smarty->assign('project',$project_name);
