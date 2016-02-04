@@ -105,25 +105,28 @@ if __name__=="__main__":
         if not result_set:#没有记录的话插入
             sql_insert2="insert into manufacturers (id_manufacturer,name,comment,timestamp_lastchange,timestamp_lastcreated) values (%s, %s,%s,%s,%s)"
             data=(manufacture_id,manufacture_name,manufacture_comment,manufacturer_timestamp_lastchange,manufacturer_timestamp_created)
-            cursor=cnn.cursor()
+            cursor=cnn.cursor(dictionary=True)
             cursor.execute(sql_insert2,data)
         else:
             row=result_set[0] #取第一行
-            ori_timechanged=row['timestamp_lastchange']
-            if ori_timechanged<manufacturer_timestamp_lastchange:
+            ori_timechanged=row[2]
+            if ori_timechanged<int(manufacturer_timestamp_lastchange):
                 #更新
                 update_sql="UPDATE `manufacturers`" \
                            "SET" \
-                           "`comment` = "+manufacture_comment+"," \
-                           "`name` = "+manufacture_name+"," \
-                           "`timestamp_lastchange` = "+manufacturer_timestamp_lastchange+"," \
-                           "`timestamp_lastcreated` = "+manufacturer_timestamp_created+"," \
-                           "`id_manufacturer` = "+manufacture_id+ \
-                           "WHERE `id_manufacturer` = "+manufacture_id
+                           "`comment` = %s," \
+                           "`name` = %s," \
+                           "`timestamp_lastchange` = %s," \
+                           "`timestamp_lastcreated` = %s," \
+                           "`id_manufacturer` = %s" \
+                           "WHERE `id_manufacturer` = %s;"
+                updatedata=(manufacture_comment,manufacture_name,manufacturer_timestamp_lastchange,manufacturer_timestamp_created,manufacture_id,manufacture_id)
                 cursor=cnn.cursor()
-                cursor.execute(update_sql)
+                cursor.execute(update_sql,updatedata)
     #     manufacture_list.append(manufacture)# 保存所有的manufacture信息
+    print("update manufacturers over")
     #manufacturers---------------------------------------------END
+
 
     # #deal with productgroups-------------------------------------BEGIN
     # #drop table
@@ -171,20 +174,22 @@ if __name__=="__main__":
             cursor.execute(sql_insert2,data)
         else:
             row=result_set[0] #取第一行
-            ori_timechanged=row['timestamp_lastchange']
-            if ori_timechanged<productgroup_timestamp_lastchange:
+            ori_timechanged=row[3]
+            if ori_timechanged<int(productgroup_timestamp_lastchange):
                 #更新
                 update_sql="UPDATE `productgroups`" \
                            "SET" \
-                           "`id_productgroup` = "+productgroup_id+"," \
-                           "`comment` = "+productgroup_comment+"," \
-                           "`name` = "+productgroup_name+"," \
-                           "`timestamp_lastchange` = "+productgroup_timestamp_lastchange+"," \
-                           "`timestamp_created` = "+productgroup_timestamp_created+ \
-                           "WHERE `id_productgroup` = "+productgroup_id
+                           "`id_productgroup` = %s," \
+                           "`comment` = %s," \
+                           "`name` = %s," \
+                           "`timestamp_lastchange` = %s," \
+                           "`timestamp_created` = %s" \
+                           "WHERE `id_productgroup` = %s"
+                updatedata=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created,productgroup_id)
                 cursor=cnn.cursor()
-                cursor.execute(update_sql)
+                cursor.execute(update_sql,updatedata)
     #productgroup_list.append(productgroup)# 保存所有的producgroup信息
+    print("update productgroups over")
     #productgroups---------------------------------------------------END
 
     #deal with products---------------------------------------------BEGIN
@@ -330,39 +335,46 @@ if __name__=="__main__":
             cursor.execute(sql_insert2,data)
         else:
             row=result_set[0] #取第一行
-            ori_timechanged=row['timestamp_lastchange']
-            if ori_timechanged<product_timestamp_lastchange:
+            ori_timechanged=row[4]
+            if ori_timechanged<int(product_timestamp_lastchange):
                 #更新
                 update_sql="UPDATE `products`" \
                            "SET" \
-                           "`id_product` = "+product_id+"," \
-                           "`id_productgroup` = "+product_id_productgroup+"," \
-                           "`id_manufacturer` = "+product_id_manufacturer+"," \
-                           "`icrt_code` = "+product_icrt+"," \
-                           "`timestamp_lastchange` = "+product_timestamp_lastchange+"," \
-                           "`timestamp_created` = "+product_timestamp_created+"," \
-                           "`picture_hires` = "+product_picture_hires+"," \
-                           "`picture_lores` = "+product_picture_lores+"," \
-                           "`similarmodelscodes` = "+product_similarmodelscodes+"," \
-                           "`parentmodelcode` = "+product_parentmodelcode+"," \
-                           "`labcode` = "+product_labcode+"," \
-                           "`batch` = "+product_batch+"," \
-                           "`sortorder` = "+product_sortorder+"," \
-                           "`articlenumber` = "+product_articlenumber+"," \
-                           "`serialnumber` = "+product_serialnumber+"," \
-                           "`boughtbyorganisation` = "+product_boughtbyorganisation+"," \
-                           "`labarrivaldate` = "+product_labarrivaldate+"," \
-                           "`labreportdate` = "+product_labreportdate+"," \
-                           "`releasedate` = "+product_releasedate+"," \
-                           "`systemmodelid` = "+product_systemmodelid+"," \
-                           "`shortname` = "+product_shortname+"," \
-                           "`completename` = "+product_completename+"," \
-                           "`modelname` = "+product_modelname+ \
-                           "WHERE `id_product` = "+product_id
+                           "`id_product` = %s," \
+                           "`id_productgroup` = %s," \
+                           "`id_manufacturer` = %s," \
+                           "`icrt_code` = %s," \
+                           "`timestamp_lastchange` = %s," \
+                           "`timestamp_created` = %s," \
+                           "`picture_hires` = %s," \
+                           "`picture_lores` = %s," \
+                           "`similarmodelscodes` = %s," \
+                           "`parentmodelcode` = %s," \
+                           "`labcode` = %s," \
+                           "`batch` = %s," \
+                           "`sortorder` = %s," \
+                           "`articlenumber` = %s," \
+                           "`serialnumber` = %s," \
+                           "`boughtbyorganisation` = %s," \
+                           "`labarrivaldate` = %s," \
+                           "`labreportdate` = %s," \
+                           "`releasedate` = %s," \
+                           "`systemmodelid` = %s," \
+                           "`shortname` = %s," \
+                           "`completename` = %s," \
+                           "`modelname` = %s"\
+                           "WHERE `id_product` = %s"
+                updatedata=(product_id,product_id_productgroup,product_id_manufacturer,product_icrt,\
+                    product_timestamp_lastchange,product_timestamp_created,\
+                    product_picture_hires,product_picture_lores,product_similarmodelscodes,product_parentmodelcode,\
+                    product_labcode,product_batch,product_sortorder,product_articlenumber,product_serialnumber,product_boughtbyorganisation,\
+                    product_labarrivaldate,product_labreportdate,product_releasedate,product_systemmodelid,product_shortname,\
+                    product_completename,product_modelname,product_id)
                 cursor=cnn.cursor()
-                cursor.execute(update_sql)
+                cursor.execute(update_sql,updatedata)
 
     #     product_list.append(product)# 保存所有的product信息
+    print("update products over")
     #products-------------------------------------------------------------END
 
     #deal with propertygroups------------------------------BEGIN
@@ -411,21 +423,23 @@ if __name__=="__main__":
             cursor.execute(sql_insert2,data)
         else:
             row=result_set[0] #取第一行
-            ori_timechanged = row['timestamp_lastchange']
-            if ori_timechanged<propertygroup_timestamp_lastchange:
+            ori_timechanged = row[3]
+            if ori_timechanged<int(propertygroup_timestamp_lastchange):
                 #更新
                 update_sql="UPDATE `propertygroups`" \
                            "SET" \
-                           "`id_propertygroup` = "+propertygroup_id+"," \
-                           "`comment` = "+propertygroup_name+"," \
-                           "`name` = "+propertygroup_name+"," \
-                           "`timestamp_lastchange` = "+propertygroup_timestamp_lastchange+"," \
-                           "`timestamp_created` = "+propertygroup_timestamp_created+ \
-                           "WHERE `id_propertygroup` = "+propertygroup_id
+                           "`id_propertygroup` = %s," \
+                           "`comment` = %s," \
+                           "`name` = %s," \
+                           "`timestamp_lastchange` = %s," \
+                           "`timestamp_created` = %s" \
+                           "WHERE `id_propertygroup` = %s"
+                updatedata=(propertygroup_id,propertygroup_comment,propertygroup_name,propertygroup_timestamp_lastchange,propertygroup_timestamp_created,propertygroup_id)
                 cursor=cnn.cursor()
-                cursor.execute(update_sql)
+                cursor.execute(update_sql,updatedata)
 
     #     propertygroup_list.append(propertygroup)# 保存所有的propertygroup信息
+    print("update propertygroups over")
     #propertygroups-------------------------------------------------END
 
     #deal with propertys------------------------------------------BEGIN
@@ -526,31 +540,34 @@ if __name__=="__main__":
             cursor.execute(sql_insert2,data)
         else:
             row=result_set[0] #取第一行
-            ori_timechanged = row['timestamp_lastchange']
-            if ori_timechanged<property_timestamp_lastchange:
+            ori_timechanged = row[5]
+            if ori_timechanged<int(property_timestamp_lastchange):
                 #更新
                 update_sql="UPDATE `propertys`" \
                            "SET" \
-                           "`id_property` = "+property_id+"," \
-                           "`id_propertygroup` = "+property_id_propertygroup+"," \
-                           "`type` = "+property_type+"," \
-                           "`comment` = "+property_comment+"," \
-                           "`name` = "+property_name+"," \
-                           "`timestamp_lastchange` = "+property_timestamp_lastchange+"," \
-                           "`timestamp_created` = "+property_timestamp_created+"," \
-                           "`testprogram` = "+property_testprogram+"," \
-                           "`use` = "+property_use+"," \
-                           "`precision` = "+property_precision+"," \
-                           "`unit` = "+property_unit+"," \
-                           "`min` = "+property_min+"," \
-                           "`max` = "+property_max+"," \
-                           "`binding` = "+property_binding+"," \
-                           "WHERE `id_property` = "+property_id
+                           "`id_property` = %s," \
+                           "`id_propertygroup` = %s," \
+                           "`type` = %s," \
+                           "`comment` = %s," \
+                           "`name` = %s," \
+                           "`timestamp_lastchange` = %s," \
+                           "`timestamp_created` = %s," \
+                           "`testprogram` = %s," \
+                           "`use` = %s," \
+                           "`precision` = %s," \
+                           "`unit` = %s," \
+                           "`min` = %s," \
+                           "`max` = %s," \
+                           "`binding` = %s" \
+                           "WHERE `id_property` = %s"
+                updatedata=(property_id,property_id_propertygroup,property_type,\
+                    property_comment,property_name,property_timestamp_lastchange,property_timestamp_created,property_testprogram,property_use,\
+                    property_precision,property_unit,property_min,\
+                    property_max,property_binding,property_id)
                 cursor=cnn.cursor()
-                cursor.execute(update_sql)
+                cursor.execute(update_sql,updatedata)
 
-
-        # property_list.append(property)# 保存所有的propertygroup信息
+    print("update propertys over")
     #propertys---------------------------------------------------END
 
     #deal with calculationtypes--------------------------BEGIN
@@ -588,6 +605,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     #     calculationtype_list.append(calculationtype)# 保存所有的calculationtype信息
+    print("update calculationtypes over")
     #calculationtypes------------------------------------------------END
 
     # #deal with evaluations-------------------------------------------BEGIN
@@ -698,32 +716,38 @@ if __name__=="__main__":
             cursor.execute(sql_insert2,data)
         else:
             row=result_set[0] #取第一行
-            ori_timechanged = row['timestamp_lastchange']
-            if ori_timechanged<propertygroup_timestamp_lastchange:
+            ori_timechanged = row[4]
+            if ori_timechanged<int(evaluation_timestamp_lastchange):
                 #更新
                 update_sql="UPDATE `evaluations`" \
                            "SET" \
-                           "`id_evaluation` = "+evaluation_id+"," \
-                           "`id_parent` = "+evaluation_parent+"," \
-                           "`id_calculationtype` = "+evaluation_id_calculationtype+"," \
-                           "`name` = "+evaluation_name+"," \
-                           "`timestamp_lastchange` = "+evaluation_timestamp_lastchange+"," \
-                           "`timestamp_created` = "+evaluation_timestamp_created+"," \
-                           "`precision` = "+evaluation_precision+"," \
-                           "`unit` = "+evaluation_unit+"," \
-                           "`binding` = "+evaluation_binding+"," \
-                           "`lookupstable` = "+evaluation_lookuptable+"," \
-                           "`weighting_given` = "+evaluation_weighting_given+"," \
-                           "`weighting_normalized` = "+evaluation_weighting_normalized+"," \
-                           "`use_limiting` = "+evaluation_use_limiting+"," \
-                           "`use_lookupable` = "+evaluation_use_lookuptable+"," \
-                           "`use_inheritna` = "+evaluation_use_inheritna+"," \
-                           "`evaluationchilds` = "+evaluation_id_childs+ \
-                           "WHERE `id_evaluation` = "+evaluation_id
+                           "`id_evaluation` = %s," \
+                           "`id_parent` = %s," \
+                           "`id_calculationtype` = %s," \
+                           "`name` = %s," \
+                           "`timestamp_lastchange` = %s," \
+                           "`timestamp_created` = %s," \
+                           "`precision` = %s," \
+                           "`unit` = %s," \
+                           "`binding` = %s," \
+                           "`lookupstable` = %s," \
+                           "`weighting_given` = %s," \
+                           "`weighting_normalized` = %s," \
+                           "`use_limiting` = %s," \
+                           "`use_lookupable` = %s," \
+                           "`use_inheritna` = %s," \
+                           "`evaluationchilds` = %s" \
+                           "WHERE `id_evaluation` = %s"
+                updatedata=(evaluation_id,evaluation_parent,evaluation_id_calculationtype,\
+                    evaluation_name,evaluation_timestamp_lastchange,evaluation_timestamp_created,\
+                    evaluation_precision,evaluation_unit,evaluation_binding,evaluation_lookuptable,evaluation_weighting_given,\
+                    evaluation_weighting_normalized,evaluation_use_limiting,\
+                    evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs,evaluation_id)
                 cursor=cnn.cursor()
-                cursor.execute(update_sql)
+                cursor.execute(update_sql,updatedata)
 
-    #     evaluation_list.append(evaluation)# 保存所有的propertygroup信息
+    #     evaluation_list.append(evaluation)
+    print("update evaluations over")
     #evaluations-----------------------------------------------END
 
     #deal with results-----------------------------------------BEGIN
@@ -770,6 +794,7 @@ if __name__=="__main__":
         data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
+    print("update results over")
     #results------------------------------------------------END
 
     print("updateDB over")
