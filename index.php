@@ -14,7 +14,7 @@ require('./includes/init.php');
 //$smarty->assign('lang',$_LANG);
 
 require('includes/lib_category.php');
-$num=getProductsCount('smartphone');
+$num=getProductsCount('Mobilephones');
 $smarty->assign('number',$num);
 /*  显示模板  */
 $smarty->display('index.tpl');

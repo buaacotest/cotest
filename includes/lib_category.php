@@ -14,11 +14,9 @@ function getProductsSum(){
     return $sum;
 }
 /*得到一个当前数据库的测试产品数目*/
-function getProductsCount(){
-    $nowdb = $GLOBALS['db']->getNowDB();
-    if($nowdb==null){
-        return null;
-    }
+/*得到一个当前数据库的测试产品数目*/
+function getProductsCount($pname){
+    $GLOBALS['db']->changeDB($pname);
     $sql="SELECT count(*) FROM products";
     $results=$GLOBALS['db']->query($sql);
     $countarray=mysql_fetch_array($results);

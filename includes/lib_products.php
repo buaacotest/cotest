@@ -94,7 +94,7 @@ function getDetails($id){
                 where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
     $res=$GLOBALS['db']->getOneRow($sql);
     $res['evaluations']=getGradeTree($id);
-    $res['property']=getProperty();
+    $res['property']=getProperty($id);
     return $res;
 }
 /*求某个产品的评分树*/
@@ -122,12 +122,38 @@ function getTree($data, $pId)
     return $tree;
 }
 
-/*获取指定id产品的属性以及分组(临时使用)*/
-function getProperty(){
+/*获取指定id产品的属性以及分组*/
+function getProperty($id){
     $sql="select id_propertygroup,name from propertygroups";
     $groups=$GLOBALS['db']->getAll($sql);
-    $sql="select id_propertygroup,name,max,unit from propertys where selected=1";
+    $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
     $props=$GLOBALS['db']->getAll($sql);
+    foreach($props as $k=>$v){
+        //echo $v['name'];
+        $sql="select value from results where id_product=$id and id_evaluation=
+        (select id_evaluation from evaluations where  binding=
+       (select binding from propertys where name='".$v['name']."')
+       order by id_evaluation asc limit 1)";
+
+        $value=$GLOBALS['db']->getOne($sql);
+        switch($v['type']){
+            case 'String':$v['value']=$value;break;
+            case 'Numeric':if(is_numeric($value))
+                $v['value']=round($value,2);
+            else
+                $v['value']=$value;
+                break;
+            case 'Boolean':if($value==0)
+                $v['value']='No';
+            elseif($value==1)
+                $v['value']='Yes';
+            else
+                $v['value']=$value;
+                break;
+            default:$v['value']=$value;break;
+        }
+        $props[$k]=$v;
+    }
     foreach($groups as $k=>$g){
         $temp='';
         foreach($props as $p){

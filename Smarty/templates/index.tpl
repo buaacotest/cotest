@@ -164,10 +164,10 @@
 
                 <ul>
                     <li>
-                        Mobile Phones(122)
+                        <a href="products.php?proj=Mobilephones">Mobile Phones</a>(<{$number}>Tested)
                     </li>
                     <li>
-                        <a href="products.php?proj=smartphone">Smartphones</a>(<{$number}>Tested)
+                        Smartphones
                     </li>
                     <li>
                         Mobile network and tariffs(834)

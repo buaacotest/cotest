@@ -116,7 +116,7 @@
                         <{section name=m loop=$props[n].id_propertygroup}>
                         <div class="row proper-item">
                             <div class="col-md-6"><label><{$props[n].id_propertygroup[m].name}></label></div>
-                            <div class="col-md-6"><{$props[n].id_propertygroup[m].max}> <{$props[n].id_propertygroup[m].unit}></div>
+                            <div class="col-md-6"><{$props[n].id_propertygroup[m].value}> <{$props[n].id_propertygroup[m].unit}></div>
 
                         </div>
                         <{/section}>
