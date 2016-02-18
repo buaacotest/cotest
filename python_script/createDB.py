@@ -76,6 +76,13 @@ if __name__=="__main__":
                            "`useremail` varchar(45) default NULL," \
                            "PRIMARY KEY  (`username`)" \
                            ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+        createdictionarysql="CREATE TABLE `dictionary` (" \
+                            "`wordid` int(11) NOT NULL," \
+                            "`originword` varchar(200) default NULL," \
+                            "`De` varchar(200) default NULL," \
+                            "`Eng` varchar(200) default NULL," \
+                            "`CHN` varchar(400) default NULL" \
+                            ") ENGINE=MyISAM DEFAULT CHARSET=utf8;"
         try:
             cursor = cnn.cursor()
             cursor.execute(createadminsql)
@@ -103,6 +110,20 @@ if __name__=="__main__":
         print('select database fails!{}'.format(e))
     #-----------------------------------------create DB END
     #
+    #create dictionary
+    sql_create_table="CREATE TABLE `sdictionary` (" \
+                     "`wordid` int(11) NOT NULL," \
+                     "`oriword` varchar(200) default NULL," \
+                     "`De` varchar(200) default NULL," \
+                     "`Eng` varchar(200) default NULL," \
+                     "`CHN` varchar(400) default NULL," \
+                     "PRIMARY KEY  (`wordid`)" \
+                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+    try:
+        cursor = cnn.cursor()
+        cursor.execute(sql_create_table)
+    except mysql.connector.Error as e:
+        print('create table manufacturers fails!{}'.format(e))
     #deal with manufacturers-----------------------BEGIN
     #create table
     sql_create_table="CREATE TABLE `manufacturers` (" \
