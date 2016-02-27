@@ -38,6 +38,14 @@ function GenSelfDicID(){
     $count=$countarray[0];
     return $count+1;
 }
+
+function GetEvaluationTree(){
+    $sql="select A.`id_evaluation`,`name`,id_parent from evaluations as A";
+    $data=$GLOBALS['db']->getAll($sql);
+    $gradeTree=GetEvalautionLayers($data,0);
+    return $gradeTree;
+}
+
 function GetEvalautionLayers($data, $pId,$dbname="smartphone"){
     $conn=mysql_connect("localhost","root","buaascse");
     mysql_selectdb($dbname);
@@ -52,9 +60,12 @@ function GetEvalautionLayers($data, $pId,$dbname="smartphone"){
         {
             if($v['id_parent'] == $pId)
             {
-                $v['id_parent'] = getGrade($data, $v['id_evaluation']);
+                $v['id_parent'] = GetEvalautionLayers($data, $v['id_evaluation']);
                 $tree[] = $v;
             }
         }
         return $tree;
+}
+function GetExistDBs(){
+    
 }
