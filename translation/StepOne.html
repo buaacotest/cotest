@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GBK">
+    <title>TranslationStepOne</title>
+    <script src="../js/jquery.min.js"></script>
+    <script >
+        $(document).ready(function(){
+                $.get("TranslationStepOne.php",function(data){
+                    var d1=eval('(' + data + ')') ;
+                    for (var one in d1){
+                            var databasename=d1[one].databasesname;
+                            var str="<a href='TranslationStepTwo?proj="+databasename+"'>"+databasename+"</a>";
+                            $(".db").append(str);
+                            $(".db").append("</br>");
+                    }
+                });
+
+        });
+    </script>
+</head>
+<body>
+<div>
+    <p>选择需要翻译的数据库</p>
+</div>
+<div class="db"></div>
+</body>
+</html>

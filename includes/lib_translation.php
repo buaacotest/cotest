@@ -67,5 +67,7 @@ function GetEvalautionLayers($data, $pId,$dbname="smartphone"){
         return $tree;
 }
 function GetExistDBs(){
-    
+    $sql="SELECT databasesname FROM admin.`databases`";
+    $data=$GLOBALS['db']->getAll($sql);
+    return $data;
 }
