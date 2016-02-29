@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    //hide evaluations at first
+    $("#panel2").css("display","none");
     $(".proper-tab").on("click",function(){
         var target_panel=$(this).attr("target");
         $(".proper-panel").css("display","none");
