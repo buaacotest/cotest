@@ -132,7 +132,7 @@ function getProperty($id){
         //echo $v['name'];
         $sql="select value from results where id_product=$id and id_evaluation=
         (select id_evaluation from evaluations where  binding=
-       (select binding from propertys where name='".$v['name']."')
+       (select binding from propertys where name='".$v['name']."' and selected=1)
        order by id_evaluation asc limit 1)";
 
         $value=$GLOBALS['db']->getOne($sql);
