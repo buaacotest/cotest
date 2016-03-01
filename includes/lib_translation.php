@@ -31,6 +31,66 @@ function GenAdminDicID(){
     $count=$countarray[0];
     return $count+1;
 }
+function QueryInSelfDic($oriword){
+    $count=getCountInSelfDic($oriword);
+    if($count==0)
+        return null;
+    else{
+        $sql="SELECT * FROM admin.dictionary where originword=".$oriword;
+        $results=$GLOBALS['db']->getAll($sql);
+        return $results;
+    }
+}
+function QueryInAdminDic($oriword){
+    $count=getCountInAdminDic($oriword);
+    if($count==0)
+        return null;
+    else{
+        $sql="SELECT * FROM sdictionary where oriword=".$oriword;
+        $results=$GLOBALS['db']->getAll($sql);
+        return $results;
+    }
+}
+function QueryOnline($oriword){
+    /*TODO:get online results*/
+    $results=null;
+    return $results;
+}
+function GetTransLation($oriword){
+    ///step1:query in the self dictionary
+    $Translation=QueryInSelfDic($oriword);
+    if($Translation==null){
+        $Translation=QueryInAdminDic($oriword);
+        //step2:query in the admin dictionary
+        if($Translation==null)
+            ///step 3:query online
+            $Translation=QueryOnline($oriword);
+    }
+    else
+        return $Translation;
+}
+
+/*TODO:realize save translation functions*/
+
+function SaveTranslationToAdminDic($oriword,$tranlationArray,$id=null){
+    if($id==null){
+        //id==null in save admin dic means insert a new translation,default null
+        //step1:generate one id
+
+        //step2:insert into admin.dictionary table
+    }
+    else{
+        //id!=null means change the meaning of one word
+    }
+}
+function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
+    //step1:query in selfdic to see if the id and the flag is conflict
+
+    //step2:insert
+}
+
+
+///**may be not right*//
 function GenSelfDicID(){
     $sql="SELECT count(*) FROM sdictionary";
     $results=$GLOBALS['db']->query($sql);
@@ -38,7 +98,7 @@ function GenSelfDicID(){
     $count=$countarray[0];
     return $count+1;
 }
-
+///**get evaluation trees*///
 function GetEvaluationTree(){
     $sql="select A.`id_evaluation`,`name`,id_parent from evaluations as A";
     $data=$GLOBALS['db']->getAll($sql);
