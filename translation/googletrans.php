@@ -40,7 +40,7 @@ function translate($strToTranslate){
 print_r(translate(""));
 */
 
-
+header('Content-Type:text/html;charset=utf-8');
  class Translate {
      /**
       * 支持的语种

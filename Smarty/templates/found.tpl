@@ -15,8 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/cotest.css">
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/cotest.js"></script>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -53,60 +52,29 @@
 </nav>
 
 <div class="container">
-
-
     <div class="form-wrapper">
-        <h1 class="text-center">Sign up</h1>
+        <h1 class="text-center">Forgot password</h1>
         <br>
-        <form accept-charset="UTF-8" action="regcheck.php" method="post"><div style="margin:0;padding:0;display:inline">
-
+        <form accept-charset="UTF-8" action="foundpwd.php" method="post"><div style="margin:0;padding:0;display:inline">
             <div class="row-fluid">
                 <div class="span12 icon-over-input">
-                    <input class="span12" id="username" name="username" placeholder="Username" type="text" value="" data-form-un="1456842528245.992">
+                    <input class="span12" id="email" name="email" placeholder="E-mail" type="text" value="">
                     <i class="icon-user muted"></i>
                 </div>
             </div>
             <div class="row-fluid">
-                <div class="span12 icon-over-input">
-                    <input class="span12" id="email" name="email" placeholder="E-mail" type="text" value="" data-form-un="1456842528245.992">
-                    <i class="icon-user muted"></i>
-                </div>
+                <button class="btn btn-block" name="button" type="submit">Send me instructions</button>
             </div>
-            <div class="row-fluid">
-                <div class="span12 icon-over-input">
-                    <input class="span12" id="password" name="password" placeholder="Password" type="password" value="" data-form-pw="1456842528245.7815">
-                    <i class="icon-lock muted"></i>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12 icon-over-input">
-                    <input class="span12" id="password_confirmation" name="password_confirmation" placeholder="Password confirmation" type="password" value="" data-form-pw="1456842528245.992">
-                    <i class="icon-lock muted"></i>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-
-                            I agree
-                              <a href="#" class="text-contrast">user agreements</a>
-
-                        </span>
-                </label>
-            </div>
-
-            <button class="btn btn-block" name="button" type="submit" data-form-sbm="1456842528245.992">Sign up</button>
         </form>
         <div class="text-center">
             <hr class="hr-normal">
             <a href="login.php"><i class="icon-chevron-left"></i>
-                Go back to sign in
+                I already know my password
             </a>
         </div>
     </div>
+
+
 </div>
 <div class="footer">
     <div class="triangle-bottomright"></div>
@@ -116,8 +84,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/cotest.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
