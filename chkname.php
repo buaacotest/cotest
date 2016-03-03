@@ -16,10 +16,10 @@ if(!empty($password)){
     $sql .= " and password = '".md5($password)."'";
 }else if(!empty($name)){               /*注册时查询用户名是否已被使用*/
     $user=$GLOBALS['db']->getOneRow($sql);
-    if(!empty($user)){
-        $reback='5';               /*该用户名已被使用*/
+    if(empty($user)){
+        $reback='5';               /*该用户名未被使用*/
     }else{
-        $reback='6';              /*未被使用*/
+        $reback='6';              /*已被使用*/
     }
     echo $reback;
     return;

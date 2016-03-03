@@ -25,10 +25,10 @@ if(mysql_insert_id()){
     如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。";
     $rs=sendEmail($email,"用户账号激活",$emailbody);
     if($rs){
-        $msg = '恭喜您，注册成功！<br/>请登录到您的邮箱及时激活您的帐号！';
+        $msg =1;
 
     }else{
-        $mag='发送失败';
+        $mag=2;
     }
 }
 echo $msg;
