@@ -12,8 +12,7 @@ $nowtime = time();
 //print_r($verify."shijian".$nowtime);
 $sql = "select id,token_exptime from admin.users where status='0' and `token`='$verify'";
 $row = $GLOBALS['db']->getOneRow($sql);
-//print_r($row);
-if(isset($row)){
+if(!empty($row)){
     if($nowtime>$row['token_exptime']){ //30min
         $msg = '您的激活有效期已过，请登录您的帐号重新发送激活邮件.';
     }else{

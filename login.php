@@ -7,10 +7,4 @@
  */
 session_start();
 include_once 'includes/config.php';
-//$_SESSION['member']=null;
-if(empty($_SESSION['member'])){
-    $smarty->display('login.tpl');
-}else{
-   $smarty->assign('member',$_SESSION['member']);
-    $smarty->display('info.tpl');
-}
+$smarty->display('login.tpl');
