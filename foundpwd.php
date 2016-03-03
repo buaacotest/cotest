@@ -9,11 +9,10 @@ require('includes/init.php');
 require('includes/lib_user.php');
 require('includes/smtp.php');
 $email=$_POST['email'];
-$token=getRandStr(6);
-$emailBody="您的验证码为：<br>".$token;
-$rs=sendEmail($email,"修改密码",$emailBody);
+$emailBody="您的密码已重置为：000000<br/>请及时修改密码！";
+$rs=sendEmail($email,"密码重置",$emailBody);
 if($rs){
-    echo $token;
+    echo 1;
 }else{
     echo -1;
 }
