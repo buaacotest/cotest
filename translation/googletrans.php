@@ -108,4 +108,4 @@ print_r(translate(""));
          return $result ['trans_result'] ['data'] ['0'] ['dst'];
      }
  }
-echo Translate::exec ( "Was kann ich für Sie tun","de" );
+echo "Was kann ich für Sie tun ".Translate::exec ( "Was kann ich für Sie tun","de" );

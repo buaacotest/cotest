@@ -51,20 +51,62 @@ function QueryInAdminDic($oriword){
         return $results;
     }
 }
-function QueryOnline($oriword){
-    /*TODO:get online results*/
-    $results=null;
-    return $results;
+/*调用翻译API*/
+/**
+ * 执行文本翻译
+ * @param string $text 要翻译的文本
+ * @param string $from 原语言语种 默认:英文
+ * @param string $to 目标语种 默认:中文
+ * @return boolean string 翻译失败:false 翻译成功:翻译结果
+ */
+function translateText($text, $from, $to) {
+
+    $url = "http://fanyi.baidu.com/v2transapi";
+    $data = array (
+        'from' => $from,
+        'to' => $to,
+        'query' => $text
+    );
+    $data = http_build_query ( $data );
+    $ch = curl_init ();
+    curl_setopt ( $ch, CURLOPT_URL, $url );
+    curl_setopt ( $ch, CURLOPT_REFERER, "http://fanyi.baidu.com" );
+    curl_setopt ( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; rv:37.0) Gecko/20100101 Firefox/37.0' );
+    curl_setopt ( $ch, CURLOPT_HEADER, 0 );
+    curl_setopt ( $ch, CURLOPT_POST, 1 );
+    curl_setopt ( $ch, CURLOPT_POSTFIELDS, $data );
+    curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt ( $ch, CURLOPT_TIMEOUT, 10 );
+    $result = curl_exec ( $ch );
+    curl_close ( $ch );
+
+    $result = json_decode ( $result, true );
+
+    if (!isset($result ['trans_result'] ['data'] ['0'] ['dst'])){
+        return false;
+    }
+    return $result ['trans_result'] ['data'] ['0'] ['dst'];
 }
+/*调用翻译函数exec，输出中英德文*/
+function getTranslateOnline($text){
+    $arr=array('zh'=>translateText($text,'auto','zh'),'en'=>translateText($text,'auto','en'),'de'=>translateText($text,'auto','de'));
+    return $arr;
+}
+
+
 function GetTransLation($oriword){
     ///step1:query in the self dictionary
     $Translation=QueryInSelfDic($oriword);
     if($Translation==null){
         $Translation=QueryInAdminDic($oriword);
         //step2:query in the admin dictionary
-        if($Translation==null)
+        if($Translation==null){
             ///step 3:query online
-            $Translation=QueryOnline($oriword);
+            $Translation=getTranslateOnline($oriword);
+            return $Translation;
+        }
+        else
+            return $Translation;
     }
     else
         return $Translation;
@@ -130,45 +172,4 @@ function GetExistDBs(){
     $sql="SELECT databasesname FROM admin.`databases`";
     $data=$GLOBALS['db']->getAll($sql);
     return $data;
-}
-/*调用翻译API*/
-/**
- * 执行文本翻译
- * @param string $text 要翻译的文本
- * @param string $from 原语言语种 默认:英文
- * @param string $to 目标语种 默认:中文
- * @return boolean string 翻译失败:false 翻译成功:翻译结果
- */
-function translateText($text, $from, $to) {
-
-    $url = "http://fanyi.baidu.com/v2transapi";
-    $data = array (
-        'from' => $from,
-        'to' => $to,
-        'query' => $text
-    );
-    $data = http_build_query ( $data );
-    $ch = curl_init ();
-    curl_setopt ( $ch, CURLOPT_URL, $url );
-    curl_setopt ( $ch, CURLOPT_REFERER, "http://fanyi.baidu.com" );
-    curl_setopt ( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; rv:37.0) Gecko/20100101 Firefox/37.0' );
-    curl_setopt ( $ch, CURLOPT_HEADER, 0 );
-    curl_setopt ( $ch, CURLOPT_POST, 1 );
-    curl_setopt ( $ch, CURLOPT_POSTFIELDS, $data );
-    curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
-    curl_setopt ( $ch, CURLOPT_TIMEOUT, 10 );
-    $result = curl_exec ( $ch );
-    curl_close ( $ch );
-
-    $result = json_decode ( $result, true );
-
-    if (!isset($result ['trans_result'] ['data'] ['0'] ['dst'])){
-        return false;
-    }
-    return $result ['trans_result'] ['data'] ['0'] ['dst'];
-}
-/*调用翻译函数exec，输出中英德文*/
-function getTranslate($text){
-    $arr=array('zh'=>translateText($text,'auto','zh'),'en'=>translateText($text,'auto','en'),'de'=>translateText($text,'auto','de'));
-    return $arr;
 }
