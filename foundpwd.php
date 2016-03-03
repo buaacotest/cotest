@@ -8,8 +8,12 @@
 require('includes/init.php');
 require('includes/lib_user.php');
 require('includes/smtp.php');
-$email=$_POST['email'];
-$emailBody="您的密码已重置为：000000<br/>请及时修改密码！";
+$email=trim($_POST['email']);
+$token=getRandStr(8);
+$password=md5($token);
+$sql="update admin.users set password='".$password."'where email='".$email."'";
+$GLOBALS['db']->query($sql);
+$emailBody="您的密码已重置为：$token<br/>请及时修改密码！";
 $rs=sendEmail($email,"密码重置",$emailBody);
 if($rs){
     echo 1;
