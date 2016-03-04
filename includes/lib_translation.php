@@ -114,21 +114,56 @@ function GetTransLation($oriword){
 
 /*TODO:realize save translation functions*/
 
-function SaveTranslationToAdminDic($oriword,$tranlationArray,$id=null){
+function SaveTranslationToAdminDic($oriword,$translationArray,$id=null){
     if($id==null){
         //id==null in save admin dic means insert a new translation,default null
         //step1:generate one id
-
+        $id=GenAdminDicID();
+        $deword=$translationArray["De"];
+        $chnword=$translationArray["CHN"];
+        $engword=$translationArray["Eng"];
+        $sql="INSERT INTO `admin`.`dictionary` (`wordid`,`originword`,`De`,`Eng`,`CHN`) VALUES (".$id.",'".$oriword."','".$deword."','".$engword."','".$chnword."')";
         //step2:insert into admin.dictionary table
+        $result=$GLOBALS['db']->query($sql);
+        return $result;
     }
     else{
         //id!=null means change the meaning of one word
+        $sql="SELECT count(*) FROM admin.dictionary where wordid=".$id;
+        $results=$GLOBALS['db']->query($sql);
+        $countarray=mysql_fetch_array($results);
+        $count=$countarray[0];
+        ///if count==0,means there is no such id
+        if($count==0)
+            return false;
+        else{
+            $deword=$translationArray["De"];
+            $chnword=$translationArray["CHN"];
+            $engword=$translationArray["Eng"];
+            $sql="UPDATE `admin`.`dictionary` SET `originword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."'where `wordid`=".$id;
+            $result=$GLOBALS['db']->query($sql);
+            return $result;
+        }
     }
 }
 function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     //step1:query in selfdic to see if the id and the flag is conflict
+    $sql="SELECT count(*) FROM sdictionary where wordid=".$id." and `flag`= ".$idflag;
+    $results=$GLOBALS['db']->query($sql);
+    $countarray=mysql_fetch_array($results);
+    $count=$countarray[0];
+    if($count!=0)
+        return false;///conflicted
+    else{
+        //step2:insert
+        $deword=$translationArray["De"];
+        $chnword=$translationArray["CHN"];
+        $engword=$translationArray["Eng"];
+        $sql="INSERT INTO `sdictionary`(`wordid`,`oriword`,`De`,`Eng`,`CHN`,`flag`)VALUES(".$id.",'".$oriword."','".$deword."','".$engword."','".$chnword."',".$idflag.")";
+        $result=$GLOBALS['db']->query($sql);
+        return $result;
+    }
 
-    //step2:insert
 }
 
 

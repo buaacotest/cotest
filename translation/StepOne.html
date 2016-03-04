@@ -10,7 +10,7 @@
                     var d1=eval('(' + data + ')') ;
                     for (var one in d1){
                             var databasename=d1[one].databasesname;
-                            var str="<a href='TranslationStepTwo?proj="+databasename+"'>"+databasename+"</a>";
+                            var str="<a href='TranslationStepTwo.php?proj="+databasename+"'>"+databasename+"</a>";
                             $(".db").append(str);
                             $(".db").append("</br>");
                     }

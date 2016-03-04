@@ -229,14 +229,17 @@
                 <ul class="pagenator">
                     <li class="pagebtn active" value="1">1</li>
                     <li class="pagebtn" value="2">2</li>
-
                 </ul>
 
             </div>
+            <!-- lishijie -->
+            <div id="setpage"></div>
         </div>
+
     </div>
 </div>
 </div>
+
 <div class="footer">
     <div class="triangle-bottomright"></div>
     <div class="footer-container"></div>
@@ -249,6 +252,110 @@
 <script src="js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+
+<!-- lishijie -->
+{*<script type="text/javascript">*}
+    {*$(document).ready(function(){*}
+        {*var pgn=<{$pageNum}>;*}
+            {*if(pgn>2){*}
+                {*if(pgn<=10){*}
+                    {*for(var i=3;i<=pgn;i++){*}
+                    {*//  alert(i);*}
+                    {*//str=<li class="pagebtn" value="2">2</li>*}
+                     {*var str="<li class=\"pagebtn\" value=\""+i+"\">"+i+"</li>";*}
+                    {*$("ul.pagenator").append(str);*}
+                 {*}*}
+                {*}*}
+                {*else{*}
+                    {*for(var i=3;i<=10;i++){*}
+                        {*var str="<li class=\"pagebtn\" value=\""+i+"\">"+i+"</li>";*}
+                         {*$("ul.pagenator").append(str);*}
+                        {*}*}
+                    {*}*}
+                {*}*}
+            {*});*}
+{*</script>*}
+
+<!-- lishijie -->
+<script type="text/javascript">
+    <!--
+    var totalpage,pagesize,cpage,count,curcount,outstr;
+    //初始化
+    cpage = 1;
+    totalpage =<{$pageNum}>;
+    pagesize = 10;
+    outstr = "";
+    function reloadpage(target){
+        $.get("products.php?page="+target+"&proj=<{$project}>",function(result){
+            $(".products").html(result);
+        })
+    }
+    function gotopage(target)
+    {
+        cpage = target;        //把页面计数定位到第几页
+        setpage();
+        reloadpage(target);    //调用显示页面函数显示第几页,这个功能是用在页面内容用ajax载入的情况
+    }
+    function setpage()
+    {
+        if(totalpage<=pagesize){        //总页数小于十页
+            for (count=1;count<=totalpage;count++)
+            {  if(count!=cpage)
+            {
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+            }
+            else{
+                outstr = outstr + "<span class='current' >"+count+"</span>";
+            }
+            }
+        }
+        if(totalpage>pagesize){        //总页数大于十页
+            if(parseInt((cpage-1)/pagesize) == 0)///前10页
+            {
+                for (count=1;count<=pagesize;count++)
+                {
+                    if(count!=cpage)
+                    {
+                        outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+                    }
+                    else{
+                        outstr = outstr + "<span class='current'>"+count+"</span>";
+                    }
+                }
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
+            }
+            else if(parseInt((cpage-1)/pagesize) == parseInt(totalpage/pagesize))///最后10页
+            {
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
+                for (count=parseInt(totalpage/pagesize)*pagesize+1;count<=totalpage;count++)
+                {    if(count!=cpage)
+                {
+                    outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+                }else{
+                    outstr = outstr + "<span class='current'>"+count+"</span>";
+                }
+                }
+            }
+            else///中间页数
+            {
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
+                for (count=parseInt((cpage-1)/pagesize)*pagesize+1;count<=parseInt((cpage-1)/pagesize)*pagesize+pagesize;count++)
+                {
+                    if(count!=cpage)
+                    {
+                        outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+                    }else{
+                        outstr = outstr + "<span class='current'>"+count+"</span>";
+                    }
+                }
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
+            }
+        }
+        document.getElementById("setpage").innerHTML = "<div id='setpage'><span id='info'>共"+totalpage+"页|第"+cpage+"页<\/span>" + outstr + "<\/div>";
+        outstr = "";
+    }
+    setpage();    //调用分页
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
         $(".pagebtn").on("click",function(){
@@ -261,7 +368,6 @@
             })
         })
     })
-
 </script>
 
 
