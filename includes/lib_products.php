@@ -130,12 +130,16 @@ function getProperty($id){
     $props=$GLOBALS['db']->getAll($sql);
     foreach($props as $k=>$v){
         //echo $v['name'];
-        $sql="select value from results where id_product=$id and id_evaluation=
-        (select id_evaluation from evaluations where  binding=
-       (select binding from propertys where name='".$v['name']."' and selected=1)
-       order by id_evaluation asc limit 1)";
+        $sql="select value from results,evaluations where id_product=$id
+              and evaluations.id_evaluation=results.id_evaluation
+              and results.id_evaluation>99999999
+              and evaluations.name='".$v['name']."' and selected=1";
 
         $value=$GLOBALS['db']->getOne($sql);
+        if($value==""){
+           unset($props[$k]);
+           continue;
+        }
         switch($v['type']){
             case 'String':$v['value']=$value;break;
             case 'Numeric':if(is_numeric($value))
