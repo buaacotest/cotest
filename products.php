@@ -22,7 +22,7 @@ if(empty($_GET['page'])){
     $flag=1;
 }
 //echo $project_name;
-$products=getAllProducts($project_name);
+$products=getAllProducts('Mobilephones');
 $page_num=ceil(count($products)/9);
 
 $products=array_slice($products,($page-1)*9,9);
@@ -34,5 +34,5 @@ $smarty->assign('products',$products);
 if($flag){
     $smarty->display("prolist.tpl");
 }
-else
+else{}
     $smarty->display('products.tpl');

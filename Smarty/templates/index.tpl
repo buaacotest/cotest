@@ -164,7 +164,7 @@
 
                 <ul>
                     <li>
-                        <a href="products.php?proj=mobilephones">Mobile Phones</a>(<{$number}>Tested)
+                        <a href="products?proj=mobilephones">Mobile Phones</a>(<{$number}>Tested)
                     </li>
                     <li>
                         Smartphones

@@ -172,3 +172,88 @@ function getProperty($id){
     }
     return $results;
 }
+/*根据标签筛选商品*/
+
+function filterProducts($labels){
+    $res=array();
+    $sql="select id_product as id,name,value from results ,evaluations
+          where results.id_evaluation>99999999 and results.id_evaluation=evaluations.id_evaluation";
+    $all=$GLOBALS['db']->getAll($sql);
+    $sql="select id_product from results where id_evaluation>99999999 group by id_product";
+    $ids=$GLOBALS['db']->getAll($sql);
+    foreach($ids as $id) {
+        if(filter($id[0],$labels,$all)){
+            $res[]=$id;
+        }
+    }
+    return $res;
+}
+/*判断某id的产品是否符合条件*/
+//labels:[{'type':string,'name':'Brand (from brandlist)',value:['xx','yy']},....]
+//labels:[{'type':'range','name':'A - Sample',value:[{'>=':3,'<=':5},{'<':3}]}]
+function filter($id,$lab,$all){
+    $tempValue="";
+        foreach($lab as $v){
+            foreach($all as $p){
+                if($p['id']==$id&&$p['name']==$v['name']){
+                    $tempValue=$p['value'];
+                    break;
+                }
+            }
+            if($v['type']=='range'){
+                $flag=0;
+                if(is_array($v['value'])){
+                    foreach($v['value'] as $key=>$value){
+                        $opts=array_keys($value);
+                        $len=count($opts);
+                        if($len==1){
+                            if(judge($opts[0],$tempValue,$value[$opts[0]])){
+                                $flag=1;
+                                break;
+                            }
+                        }else{
+                            if(judge($opts[0],$tempValue,$value[$opts[0]])&&judge($opts[1],$tempValue,$value[$opts[1]])){
+                                $flag=1;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if($flag)
+                    return true;
+                else
+                    return false;
+            }else{
+                $flag=0;
+                if(is_array($v['value'])){
+                    foreach($v['value'] as $key=>$value){
+                        if($tempValue==$value){
+                            $flag=1;
+                            break;
+                        }
+                    }
+                }
+                if($flag)
+                    return true;
+                else
+                    return false;
+            }
+        }
+    return false;
+}
+function judge($opt,$data,$value){
+    echo $data.$opt.$value;
+    $ret=0;
+    switch($opt){
+        case '>=':if($data>=$value) $ret=1;break;
+        case '>':if($data>$value)   $ret=1;break;
+        case '=':if($data==$value)  $ret=1;break;
+        case '<=':if($data<=$value) $ret=1;break;
+        case '<':if($data<$value)  $ret=1;break;
+        default:break;
+    }
+    echo " ".$ret."\n";
+    if($ret==1)
+        return true;
+    return false;
+}
