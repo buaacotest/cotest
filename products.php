@@ -14,6 +14,13 @@ $products=selectProducts($product_group);
 $smarty->assign('products',$products);
 $smarty->assign('page_title',$title);*/
 $project_name=trim($_GET['proj']);
+if($project_name=="")
+    $project_name='Mobilephones';
+$GLOBALS['db']->changeDB($project_name);
+$labels=trim($_GET['labels']);
+$sort=trim($_GET['sort']);
+
+/*分页相关*/
 $flag=0;
 if(empty($_GET['page'])){
     $page=1;
@@ -21,8 +28,18 @@ if(empty($_GET['page'])){
     $page=trim($_GET['page']);
     $flag=1;
 }
-//echo $project_name;
-$products=getAllProducts('Mobilephones');
+/*排序相关*/
+if(empty($sort)){
+   $sort='time';
+}
+/*筛选相关*/
+if(!empty($labels)){
+    $ids=filterProducts($labels);
+    $products=getProductByIds($ids,$sort);
+}else{
+    $products=getAllProducts($sort);
+}
+//print_r($products);
 $page_num=ceil(count($products)/9);
 
 $products=array_slice($products,($page-1)*9,9);
@@ -34,5 +51,5 @@ $smarty->assign('products',$products);
 if($flag){
     $smarty->display("prolist.tpl");
 }
-else{}
+else
     $smarty->display('products.tpl');
