@@ -1,0 +1,21 @@
+table{
+    /*table标签选择器*/
+    border:1px solid black;
+    /*修正单元格之间的边框不能合并*/
+    border-collapse:collapse;
+    /*表格宽度*/
+    width:400px;
+}
+table td{
+    border:1px solid black;
+    width:50%; /*使表格列宽度相等*/
+
+}
+table th{
+    border:1px solid black;
+    width:50px;
+}
+tbody th{
+    /*表格主体的头部颜色*/
+    background-color:#A3BAE9;
+}
