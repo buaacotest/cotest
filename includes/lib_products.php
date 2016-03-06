@@ -65,18 +65,55 @@ function getIDsByKeywords($keywords)
     return $arry;
 }
 /*根据project_name获取所有的product的相关属性*/
-function getAllProducts($pname){
-    $GLOBALS['db']->changeDB($pname);
-    $sql="select completename as product_name,`name`as product_manufacturer, FROM_UNIXTIME(timestamp_created,'%Y-%m-%d')as product_tested_date, id_product as product_id
+function getAllProducts($order='time'){
+    $sql="select completename as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
-                where A.id_manufacturer=B.id_manufacturer
-                order by A.timestamp_created desc";
-
+                where A.id_manufacturer=B.id_manufacturer";
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
+        $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
         $res[$k]['score']=getTotalScore($v['product_id']);
     }
+    $res=multiSort($res,$order);
     return $res;
+}
+/*挑选指定ID的产品*/
+function getProductByIds($ids,$order='time'){
+    $sql = "select completename as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
+                from products as A,manufacturers as B
+                where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
+   for($i=0;$i<count($ids)-1;$i++) {
+      $sql.=$ids[$i] . ",";
+   }
+    $sql.=$ids[$i].")";
+    $res=$GLOBALS['db']->getAll($sql);
+    foreach($res as $k=>$v){
+        $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
+        $res[$k]['score']=getTotalScore($v['product_id']);
+    }
+    $res=multiSort($res,$order);
+    return $res;
+}
+/*排序*/
+function multiSort($arr,$order){
+    foreach ($arr as $key=>$value){
+        $time[$key] = $value[2];
+        $score[$key] = $value['score'];
+    }
+    if($order=='score')
+        array_multisort($score,SORT_NUMERIC,SORT_DESC,$arr);
+    else
+        array_multisort($time,SORT_NUMERIC,SORT_DESC,$arr);
+    return $arr;
+}
+
+/*日期转换1512-->Dec 2015*/
+function convertTime($time){
+    $timeArray=array("01"=>"Jan","02"=>"Feb","03"=>"Mar","04"=>"Apr","05"=>"May","06"=>"Jun","07"=>"Jul","08"=>"Aug","09"=>"Sep",
+              "10"=>"Oct","11"=>"Nov","12"=>"Dec");
+    $year="20".substr($time,0,2);
+    $mon=$timeArray[substr($time,2,2)];
+    return $mon." ".$year;
 }
 
 /*获取某个product的总评分*/
@@ -89,7 +126,7 @@ function getTotalScore($id){
 
 /*根据product的id获取基本信息、测试得分以及属性*/
 function getDetails($id){
-    $sql="select completename as name,`name`as manufacturer, FROM_UNIXTIME(timestamp_created,'%Y-%m-%d')as tested_date
+    $sql="select completename as name,`name`as manufacturer
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
     $res=$GLOBALS['db']->getOneRow($sql);
@@ -182,9 +219,8 @@ function filterProducts($labels){
     $sql="select id_product from results where id_evaluation>99999999 group by id_product";
     $ids=$GLOBALS['db']->getAll($sql);
     foreach($ids as $id) {
-        if(filter($id[0],$labels,$all)){
-            $res[]=$id;
-        }
+            if (filter($id[0], $labels, $all))
+                $res[] = $id[0];
     }
     return $res;
 }
@@ -193,7 +229,9 @@ function filterProducts($labels){
 //labels:[{'type':'range','name':'A - Sample',value:[{'>=':3,'<=':5},{'<':3}]}]
 function filter($id,$lab,$all){
     $tempValue="";
+    $sign=$flag=1;
         foreach($lab as $v){
+            $sign&=$flag;
             foreach($all as $p){
                 if($p['id']==$id&&$p['name']==$v['name']){
                     $tempValue=$p['value'];
@@ -206,6 +244,7 @@ function filter($id,$lab,$all){
                     foreach($v['value'] as $key=>$value){
                         $opts=array_keys($value);
                         $len=count($opts);
+                        //echo $len;
                         if($len==1){
                             if(judge($opts[0],$tempValue,$value[$opts[0]])){
                                 $flag=1;
@@ -219,30 +258,26 @@ function filter($id,$lab,$all){
                         }
                     }
                 }
-                if($flag)
-                    return true;
-                else
-                    return false;
             }else{
                 $flag=0;
                 if(is_array($v['value'])){
                     foreach($v['value'] as $key=>$value){
+                       //echo $tempValue."==".$value."  ";
                         if($tempValue==$value){
                             $flag=1;
                             break;
                         }
                     }
                 }
-                if($flag)
-                    return true;
-                else
-                    return false;
+
             }
         }
+    if($sign)
+        return true;
     return false;
 }
 function judge($opt,$data,$value){
-    echo $data.$opt.$value;
+    //echo $data.$opt.$value;
     $ret=0;
     switch($opt){
         case '>=':if($data>=$value) $ret=1;break;
@@ -252,7 +287,7 @@ function judge($opt,$data,$value){
         case '<':if($data<$value)  $ret=1;break;
         default:break;
     }
-    echo " ".$ret."\n";
+    //echo " ".$ret."\n";
     if($ret==1)
         return true;
     return false;
