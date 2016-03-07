@@ -8,7 +8,7 @@
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
-require('data/Mobilephones/filterOptions.php');
+
 /*$product_group=$_GET['id'];
 $title=getProductsCat($product_group);
 $products=selectProducts($product_group);
@@ -18,6 +18,7 @@ $project_name=trim($_GET['proj']);
 if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
+require('data/'.$project_name.'/filterOptions.php');
 $labels=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
 /*$json="[
@@ -61,6 +62,7 @@ if(empty($sort)){
 }
 /*筛选相关*/
 $data=getLabels();
+echo $data;
 if(!empty($labels)){
     $ids=filterProducts($labels);
     $products=getProductByIds($ids,$sort);
