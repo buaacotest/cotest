@@ -62,7 +62,6 @@ if(empty($sort)){
 }
 /*筛选相关*/
 $data=getLabels();
-echo $data;
 if(!empty($labels)){
     $ids=filterProducts($labels);
     $products=getProductByIds($ids,$sort);
