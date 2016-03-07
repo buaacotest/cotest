@@ -8,7 +8,7 @@
 
 /*得到在Admin词典中某个单词的个数，用来判断是否是多义词以及是否已经存在于词典*/
 function getCountInAdminDic($oriWord){
-    $sql="SELECT count(*) FROM admin.dictionary where admin.dictionary.originword="+$oriWord;
+    $sql="SELECT count(*) FROM admin.dictionary where admin.dictionary.originword= '".$oriWord."'";
     $results=$GLOBALS['db']->query($sql);
     $countarray=mysql_fetch_array($results);
     $count=$countarray[0];
@@ -17,7 +17,7 @@ function getCountInAdminDic($oriWord){
 /*得到在自身数据库中的count*/
 function getCountInSelfDic($oriword){
     $nowdb=$GLOBALS['db']->getNowDB();
-    $sql="SELECT count(*) FROM sdictionary where oriword="+$oriword;
+    $sql="SELECT count(*) FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
     $results=$GLOBALS['db']->query($sql);
     $countarray=mysql_fetch_array($results);
     $count=$countarray[0];
@@ -89,7 +89,7 @@ function translateText($text, $from, $to) {
 }
 /*调用翻译函数exec，输出中英德文*/
 function getTranslateOnline($text){
-    $arr=array('zh'=>translateText($text,'auto','zh'),'en'=>translateText($text,'auto','en'),'de'=>translateText($text,'auto','de'));
+    $arr=array('CHN'=>translateText($text,'auto','zh'),'Eng'=>translateText($text,'auto','en'),'De'=>translateText($text,'auto','de'));
     return $arr;
 }
 
@@ -102,7 +102,7 @@ function GetTransLation($oriword){
         //step2:query in the admin dictionary
         if($Translation==null){
             ///step 3:query online
-            $Translation=getTranslateOnline($oriword);
+//            $Translation=getTranslateOnline($oriword); ////may be time_out
             return $Translation;
         }
         else
@@ -203,6 +203,9 @@ function GetEvalautionLayers($data, $pId,$dbname="smartphone"){
         }
         return $tree;
 }
+
+
+/*other functions*/
 function GetExistDBs(){
     $sql="SELECT databasesname FROM admin.`databases`";
     $data=$GLOBALS['db']->getAll($sql);
