@@ -8,6 +8,7 @@
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
+require('data/Mobilephones/filterOptions.php');
 /*$product_group=$_GET['id'];
 $title=getProductsCat($product_group);
 $products=selectProducts($product_group);
@@ -59,13 +60,14 @@ if(empty($sort)){
    $sort='time';
 }
 /*筛选相关*/
-$data=require('data/Mobilephones/filterOptions.php');
+$data=getLabels();
 if(!empty($labels)){
     $ids=filterProducts($labels);
     $products=getProductByIds($ids,$sort);
 }else{
     $products=getAllProducts($sort);
 }
+//print_r($products);
 $page_num=ceil(count($products)/9);
 
 $products=array_slice($products,($page-1)*9,9);
