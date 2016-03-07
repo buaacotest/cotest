@@ -19,6 +19,32 @@ if($project_name=="")
 $GLOBALS['db']->changeDB($project_name);
 $labels=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
+/*$json="[
+
+{
+  \"type\": \"string\",
+  \"name\": \"Brand (from brandlist)\",
+  \"value\": [
+    \"BQ\",
+    \"Apple\"
+  ]
+},
+  {
+    \"type\": \"range\",
+    \"name\": \"A - Sample\",
+    \"value\": [
+      {
+        \">=\": 3,
+        \"<=\": 5
+      },
+      {
+        \">\": 3
+      }
+    ]
+  }
+]";
+$labels=json_decode($json,true);
+*/
 
 /*分页相关*/
 $flag=0;
@@ -33,17 +59,18 @@ if(empty($sort)){
    $sort='time';
 }
 /*筛选相关*/
+$data=require('data/Mobilephones/filterOptions.php');
 if(!empty($labels)){
     $ids=filterProducts($labels);
     $products=getProductByIds($ids,$sort);
 }else{
     $products=getAllProducts($sort);
 }
-//print_r($products);
 $page_num=ceil(count($products)/9);
 
 $products=array_slice($products,($page-1)*9,9);
 //print_r($products);
+$smarty->assign('labels',$data);
 $smarty->assign('pageNum',$page_num);
 $smarty->assign('project',$project_name);
 $smarty->assign('title',$project_name);
