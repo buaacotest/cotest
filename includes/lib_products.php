@@ -83,9 +83,9 @@ function getProductByIds($ids,$order='time'){
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
    for($i=0;$i<count($ids)-1;$i++) {
-      $sql.=$ids[$i] . ",";
+      $sql.=$ids[$i][0] . ",";
    }
-    $sql.=$ids[$i].")";
+    $sql.=$ids[$i][0].")";
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
@@ -210,71 +210,66 @@ function getProperty($id){
     return $results;
 }
 /*根据标签筛选商品*/
-
-function filterProducts($labels){
-    $res=array();
-    $sql="select id_product as id,name,value from results ,evaluations
-          where results.id_evaluation>99999999 and results.id_evaluation=evaluations.id_evaluation";
-    $all=$GLOBALS['db']->getAll($sql);
-    $sql="select id_product from results where id_evaluation>99999999 group by id_product";
-    $ids=$GLOBALS['db']->getAll($sql);
-    foreach($ids as $id) {
-            if (filter($id[0], $labels, $all))
-                $res[] = $id[0];
-    }
-    return $res;
-}
-/*判断某id的产品是否符合条件*/
 //labels:[{'type':string,'name':'Brand (from brandlist)',value:['xx','yy']},....]
 //labels:[{'type':'range','name':'A - Sample',value:[{'>=':3,'<=':5},{'<':3}]}]
-function filter($id,$lab,$all){
-    $tempValue="";
-    $sign=$flag=1;
+function filterProducts($lab){
+    $results=$tempResult=array();
+    $index=0;
         foreach($lab as $v){
-            $sign&=$flag;
-            foreach($all as $p){
-                if($p['id']==$id&&$p['name']==$v['name']){
-                    $tempValue=$p['value'];
-                    break;
-                }
-            }
+            $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$v['name']."'";
+            //echo $sql;
+            $evalId=$GLOBALS['db']->getOne($sql);
+            //echo $evalId;
+
             if($v['type']=='range'){
-                $flag=0;
+                $tempIndexRange=0;
                 if(is_array($v['value'])){
+                    $sql="select id_product from results where id_evaluation=".$evalId." and(";
                     foreach($v['value'] as $key=>$value){
                         $opts=array_keys($value);
                         $len=count($opts);
-                        //echo $len;
-                        if($len==1){
-                            if(judge($opts[0],$tempValue,$value[$opts[0]])){
-                                $flag=1;
-                                break;
-                            }
-                        }else{
-                            if(judge($opts[0],$tempValue,$value[$opts[0]])&&judge($opts[1],$tempValue,$value[$opts[1]])){
-                                $flag=1;
-                                break;
-                            }
-                        }
+                       if($len==1){
+                           if($tempIndexRange==0)
+                              $sql.="(value".$opts[0].$value[$opts[0]].")";
+                           else
+                               $sql.="or(value".$opts[0].$value[$opts[0]].")";
+                       }else if($len==2){
+                           if($tempIndexRange==0)
+                               $sql.="(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                           else
+                               $sql.="or(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                       }
+                        $tempIndexRange++;
                     }
+                    $sql.=")";
+                    //echo $sql;
+                    $tempResult=$GLOBALS['db']->getAll($sql);
                 }
             }else{
-                $flag=0;
+                $tempStringIndex=0;
                 if(is_array($v['value'])){
+                    $sql="select id_product from results where id_evaluation=".$evalId." and(";
                     foreach($v['value'] as $key=>$value){
                        //echo $tempValue."==".$value."  ";
-                        if($tempValue==$value){
-                            $flag=1;
-                            break;
-                        }
+                       if($tempStringIndex==0)
+                           $sql.="value='".$value."' ";
+                        else
+                            $sql.="or value='".$value."' ";
+                        $tempStringIndex++;
                     }
+                    $sql.=")";
+                    //echo $sql;
+                    $tempResult=$GLOBALS['db']->getAll($sql);
                 }
 
             }
+            if($index==0)
+                $results=$tempResult;
+            else
+                $results=array_intersect($results,$tempResult);
+            $index++;
         }
-    if($sign)
-        return true;
-    return false;
+    return $results;
 }
 function judge($opt,$data,$value){
     //echo $data.$opt.$value;
