@@ -127,8 +127,9 @@ function SaveTranslationToAdminDic($oriword,$translationArray,$id=null){
         $result=$GLOBALS['db']->query($sql);
         return $result;
     }
-    else{
+    else{/////按初始设计来，大词典中的单词只允许添加单词，不允许修改。所以else应该永远不会调用
         //id!=null means change the meaning of one word
+        echo "change the admin dic oriword= ".$oriword."and id=".$id;
         $sql="SELECT count(*) FROM admin.dictionary where wordid=".$id;
         $results=$GLOBALS['db']->query($sql);
         $countarray=mysql_fetch_array($results);
@@ -152,20 +153,24 @@ function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     $results=$GLOBALS['db']->query($sql);
     $countarray=mysql_fetch_array($results);
     $count=$countarray[0];
-    if($count!=0)
-        return false;///conflicted
+    $deword=$translationArray["De"];
+    $chnword=$translationArray["CHN"];
+    $engword=$translationArray["Eng"];
+    if($count!=0){///如果已经有了 ，说明是修改。
+        $sql="UPDATE `sdictionary` SET `oriword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."',`flag`= '".$idflag."' where `wordid`=".$id;
+        $result=$GLOBALS['db']->query($sql);
+        return $result;
+    }
+
     else{
         //step2:insert
-        $deword=$translationArray["De"];
-        $chnword=$translationArray["CHN"];
-        $engword=$translationArray["Eng"];
+
         $sql="INSERT INTO `sdictionary`(`wordid`,`oriword`,`De`,`Eng`,`CHN`,`flag`)VALUES(".$id.",'".$oriword."','".$deword."','".$engword."','".$chnword."',".$idflag.")";
         $result=$GLOBALS['db']->query($sql);
         return $result;
     }
 
 }
-
 
 ///**may be not right*//
 function GenSelfDicID(){

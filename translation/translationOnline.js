@@ -2,7 +2,7 @@
  * Created by Arthur on 2016/3/6.
  */
     $(document).ready(function(){
-        $(".btnchange").on("click",function(){
+        $(".btntranslation").on("click",function(){
             var value=$(this).attr("name");
             var _this=$(this);
             console.log(value)
@@ -12,6 +12,7 @@
                 },
                 function(data){
                     _this.parent().html(data);
+                   // alert(data);
                 });
         })
     })
