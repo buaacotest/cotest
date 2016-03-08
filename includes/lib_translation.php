@@ -157,9 +157,10 @@ function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     $chnword=$translationArray["CHN"];
     $engword=$translationArray["Eng"];
     if($count!=0){///如果已经有了 ，说明是修改。
-        $sql="UPDATE `sdictionary` SET `oriword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."',`flag`= '".$idflag."' where `wordid`=".$id;
+        $sql="UPDATE `sdictionary` SET `oriword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."' where `wordid`= '".$id."' and `flag`= ".$idflag;
         $result=$GLOBALS['db']->query($sql);
         return $result;
+        //echo $sql;
     }
 
     else{

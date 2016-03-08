@@ -14,7 +14,7 @@ function printEvaluationItem($evaluationid,$evaluationname){
     $de=$translation['De'];
     $outstr="&nbsp;".$chn."&nbsp;".$de;
     echo $outstr;
-    $outstr="<input type=\"checkbox\" name=evaluations[] value=\"".$evaluationid."\"/>";
+    $outstr="<input type=\"checkbox\" name=\"evaluations[]\" value=\"".$evaluationid."\"/>";
     echo $outstr;
     echo "<nobr>\n";
     echo"<button type=\"button\" class=\"btntranslation\" name=\"".$evaluationname."\">在线翻译</button>\n";
@@ -74,6 +74,8 @@ echo "<script src=\"../js/jquery.min.js\"></script>";
 echo "<script type=\"text/javascript\" src=\"translationOnline.js\"></script>";
 echo "<script type=\"text/javascript\" src=\"saveEvaluationItem.js\"></script>";
 $outstr="<body>\n";
+echo $outstr;
+$outstr="<div hidden=\"hidden\" class=\"projname\">".$project_name."</div>";
 echo $outstr;
 $outstr="<form name=\"input\" action=\"TranslationStepThree.php\" method=\"post\">\n";
 echo $outstr;

@@ -29,7 +29,11 @@ class mysql_cls
         /*链接数据库*/
         $connect=mysql_connect($this->serverAddress,$this->serverUsername,$this->serverPassword);
         mysql_select_db($this->selectDBname,$connect);
+        $this->connect=$connect;
         mysql_query("set names 'utf8'");
+    }
+    function close(){
+        return mysql_close($this->connect);
     }
     function changeDB($namein){
         /*改变选择的数据库*/
