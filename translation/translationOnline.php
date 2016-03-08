@@ -8,5 +8,5 @@
 require('../includes/lib_translation.php');
 $word=$_GET['name'];
 $translation=getTranslateOnline($word);
-$CHN=$translation['CHN'];
-echo $CHN;
+$results=$translation['CHN']." ".$translation['De'];
+echo $results;

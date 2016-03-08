@@ -16,4 +16,4 @@ else {
         echo "\n";
     }
 }
-
+$temp=file_get_contents('editTable.html'); echo $temp;
