@@ -131,7 +131,7 @@ function getDetails($id){
                 where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
     $res=$GLOBALS['db']->getOneRow($sql);
     $res['evaluations']=getGradeTree($id);
-    $res['property']=getProperty($id);
+    $res['property']=getProperty($id,$res);
     return $res;
 }
 /*求某个产品的评分树*/
@@ -160,23 +160,25 @@ function getTree($data, $pId)
 }
 
 /*获取指定id产品的属性以及分组*/
-function getProperty($id){
+function getProperty($id,&$res){
     $sql="select id_propertygroup,name from propertygroups";
     $groups=$GLOBALS['db']->getAll($sql);
-    $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
+    $sql="select id_propertygroup,name,type,unit from propertys where name in
+         (select name from evaluations WHERE selected=1 and id_evaluation>99999999)";
     $props=$GLOBALS['db']->getAll($sql);
     foreach($props as $k=>$v){
         //echo $v['name'];
-        $sql="select value from results,evaluations where id_product=$id
-              and evaluations.id_evaluation=results.id_evaluation
-              and results.id_evaluation>99999999
-              and evaluations.name='".$v['name']."' and selected=1";
+        $sql="select value from results where id_product=$id  and id_evaluation>99999999
+              and id_evaluation=(
+              select id_evaluation FROM evaluations WHERE name='".$v['name']."'and selected=1 and id_evaluation>99999999)";
 
+
+       //echo $sql."\n";
         $value=$GLOBALS['db']->getOne($sql);
-        if($value==""){
+        /*if($value==""){
            unset($props[$k]);
            continue;
-        }
+        }*/
         switch($v['type']){
             case 'String':$v['value']=$value;break;
             case 'Numeric':if(is_numeric($value))
@@ -196,6 +198,34 @@ function getProperty($id){
         $props[$k]=$v;
     }
     foreach($groups as $k=>$g){
+        if($g['name']=="Pros"){
+            $string="";
+            foreach($props as $p){/*将优点连成字符串*/
+                if($p['id_propertygroup']==$g['id_propertygroup']){
+
+                    if($p['value']=="Yes"||$p['value']=="yes"){
+                        $string.=$p['name'].",";
+                    }
+                }
+
+                }
+                $string=substr($string, 0, -1);
+                $res['Pros']=$string;
+            continue;
+        } else if($g['name']=="Cons") {
+            $string="";
+            foreach($props as $p){/*将缺点连成字符串*/
+                if($p['id_propertygroup']==$g['id_propertygroup']){
+
+                    if($p['value']=="Yes"||$p['value']=="yes"){
+                        $string.=$p['name'].",";
+                    }
+                }
+            }
+            $string=substr($string, 0, -1);
+            $res['Cons']=$string;
+            continue;
+        }
         $temp='';
         foreach($props as $p){
             if($p['id_propertygroup']==$g['id_propertygroup']){
@@ -207,6 +237,7 @@ function getProperty($id){
             $results[]=$groups[$k];
         }
     }
+
     return $results;
 }
 /*根据标签筛选商品*/
