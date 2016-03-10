@@ -10,12 +10,21 @@ function printEvaluationItem($evaluationid,$evaluationname){
     $outstr = "<li>" .$evaluationid . "--" . $evaluationname ; //先打印自身
     echo $outstr;
     $translation=GetTransLation($evaluationname);
-    $chn=$translation['CHN'];
-    $de=$translation['De'];
-    $outstr="&nbsp;".$chn."&nbsp;".$de;
-    echo $outstr;
+//    $chn=$translation['CHN'];
+//    $de=$translation['De'];
+//    $outstr="&nbsp;".$chn."&nbsp;".$de;
+//    echo $outstr;
     $outstr="<input type=\"checkbox\" name=\"evaluations[]\" value=\"".$evaluationid."\"/>";
     echo $outstr;
+    $outstr="<select name= \"".$evaluationname."\">\n";
+    echo $outstr;
+    foreach($translation as $value){
+        $chn=$value['CHN'];
+        $de=$value['De'];
+        $outstr="\t <option value=\"".$chn."\">".$chn."</option>\n";
+        echo $outstr."\n";
+    }
+    echo "</select>\n";
     echo "<nobr>\n";
     echo"<button type=\"button\" class=\"btntranslation\" name=\"".$evaluationname."\">在线翻译</button>\n";
     echo "</nobr>\n";
@@ -77,7 +86,7 @@ $outstr="<body>\n";
 echo $outstr;
 $outstr="<div hidden=\"hidden\" class=\"projname\">".$project_name."</div>";
 echo $outstr;
-$outstr="<form name=\"input\" action=\"TranslationStepThree.php\" method=\"post\">\n";
+$outstr="<form name=\"input\" action=\"TranslationStepThree.php?proj=".$project_name."\" method=\"post\">\n";
 echo $outstr;
 echo "<ul>";
 printEvaluation($evaluationTree);
@@ -86,7 +95,7 @@ $outstr="<input type=\"submit\" value=\"Submit\" />\n";
 echo $outstr;
 $outstr="</form>\n";
 echo $outstr;
-$outstr="<p>选择需要翻译的项点击 \"Submit\" 按钮。</p>";
+$outstr="<p>确认选择点击 \"Submit\" 按钮。</p>";
 echo $outstr;
 $outstr="</body>\n";
 echo $outstr;

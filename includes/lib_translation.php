@@ -33,10 +33,13 @@ function GenAdminDicID(){
 }
 function QueryInSelfDic($oriword){
     $count=getCountInSelfDic($oriword);
+   //echo $oriword;
     if($count==0)
         return null;
     else{
-        $sql="SELECT * FROM admin.dictionary where originword=".$oriword;
+        $sql="SELECT * FROM sdictionary where oriword='".$oriword."'";
+        //echo $sql;
+        //echo "\n";
         $results=$GLOBALS['db']->getAll($sql);
         return $results;
     }
@@ -46,7 +49,9 @@ function QueryInAdminDic($oriword){
     if($count==0)
         return null;
     else{
-        $sql="SELECT * FROM sdictionary where oriword=".$oriword;
+        $sql="SELECT * FROM admin.dictionary where originword='".$oriword."'";
+       // echo $sql;
+        //echo "\n";
         $results=$GLOBALS['db']->getAll($sql);
         return $results;
     }
@@ -172,6 +177,19 @@ function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     }
 
 }
+
+function SetEvaluationSelected($evaluationid){
+    $sql="UPDATE `evaluations` SET selected=1 where id_evaluation=".$evaluationid;
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+function GetEvaluationName($evaluationid){
+    $sql="SELECT name FROM evaluations where id_evaluation=".$evaluationid;
+    //echo $sql;
+    $result=$GLOBALS['db']->getOne($sql);
+    return $result;
+}
+
 
 ///**may be not right*//
 function GenSelfDicID(){
