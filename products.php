@@ -19,34 +19,13 @@ if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
 require('data/'.$project_name.'/filterOptions.php');
-$labels=json_decode(trim($_GET['labels']));
+$json=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
-/*$json="[
-
-{
-  \"type\": \"string\",
-  \"name\": \"Brand (from brandlist)\",
-  \"value\": [
-    \"BQ\",
-    \"Apple\"
-  ]
-},
-  {
-    \"type\": \"range\",
-    \"name\": \"A - Sample\",
-    \"value\": [
-      {
-        \">=\": 3,
-        \"<=\": 5
-      },
-      {
-        \">\": 3
-      }
-    ]
-  }
-]";
+$json=str_replace("\\","",$json);
 $labels=json_decode($json,true);
-*/
+//$labels=json_decode($labels,true);
+
+
 
 /*分页相关*/
 $flag=0;
