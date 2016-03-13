@@ -8,9 +8,9 @@
 function sendEmail($addr,$title,$body){
     $smtpserver = "smtp.163.com"; //SMTP服务器
     $smtpserverport =25; //SMTP服务器端口，一般为25
-    $smtpusermail = "13141457347@163.com"; //SMTP服务器的用户邮箱
-    $smtpuser = "13141457347"; //SMTP服务器的用户帐号
-    $smtppass = "yzz4jc"; //SMTP服务器的用户密码
+    $smtpusermail = "cotestpublic@163.com"; //SMTP服务器的用户邮箱
+    $smtpuser = "cotestpublic"; //SMTP服务器的用户帐号
+    $smtppass = "cotest123"; //SMTP服务器的用户密码
     $smtp = new smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass); //实例化邮件类
     $emailtype = "HTML"; //信件类型
     $smtpemailto = $addr; //接收邮件方
