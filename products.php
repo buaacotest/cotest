@@ -19,7 +19,7 @@ if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
 require('data/'.$project_name.'/filterOptions.php');
-$labels=trim($_GET['labels']);
+$labels=json_decode(trim($_GET['labels']));
 $sort=trim($_GET['sort']);
 /*$json="[
 
