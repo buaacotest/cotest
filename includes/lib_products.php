@@ -136,7 +136,7 @@ function getDetails($id){
 }
 /*求某个产品的评分树*/
 function getGradeTree($id){
-    $sql="select A.id_evaluation,name,id_parent,format(value,2) as value
+    $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
        from evaluations as A,results as B
       where A.id_evaluation=B.id_evaluation and B.value!='na'
       and B.id_product=$id";
