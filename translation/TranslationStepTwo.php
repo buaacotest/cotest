@@ -14,13 +14,14 @@ function printEvaluationItem($evaluationid,$evaluationname){
 //    $de=$translation['De'];
 //    $outstr="&nbsp;".$chn."&nbsp;".$de;
 //    echo $outstr;
+    //print_r($translation);
     $outstr="<input type=\"checkbox\" name=\"evaluations[]\" value=\"".$evaluationid."\"/>";
     echo $outstr;
     $outstr="<select name= \"".$evaluationname."\">\n";
     echo $outstr;
     foreach($translation as $value){
         $chn=$value['CHN'];
-        $de=$value['De'];
+        //$de=$value['De'];
         $outstr="\t <option value=\"".$chn."\">".$chn."</option>\n";
         echo $outstr."\n";
     }
@@ -65,7 +66,7 @@ $db=new mysql_cls();
 $db->connect();
 $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 $db->changeDB($project_name);
-
+//echo $project_name;
 //SaveTranslationToAdminDic("manufacture",$tranlationArray,$id=1); tested
 //SaveTranslationToSelfDic("test",$tranlationArray,1030,1);   tested
 
