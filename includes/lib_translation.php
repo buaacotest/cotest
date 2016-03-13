@@ -17,6 +17,7 @@ function getCountInAdminDic($oriWord){
 /*得到在自身数据库中的count*/
 function getCountInSelfDic($oriword){
     $nowdb=$GLOBALS['db']->getNowDB();
+    //echo $nowdb;
     $sql="SELECT count(*) FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
     $results=$GLOBALS['db']->query($sql);
     $countarray=mysql_fetch_array($results);
@@ -37,10 +38,13 @@ function QueryInSelfDic($oriword){
     if($count==0)
         return null;
     else{
-        $sql="SELECT * FROM sdictionary where oriword='".$oriword."'";
+        $nowdb=$GLOBALS['db']->getNowDB();
+        //echo $nowdb;
+        $sql="SELECT * FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
         //echo $sql;
         //echo "\n";
         $results=$GLOBALS['db']->getAll($sql);
+        //print_r($results);
         return $results;
     }
 }
@@ -101,8 +105,11 @@ function getTranslateOnline($text){
 
 function GetTransLation($oriword){
     ///step1:query in the self dictionary
+    //echo $oriword;
     $Translation=QueryInSelfDic($oriword);
+    //print_r($Translation);
     if($Translation==null){
+        //echo "null";
         $Translation=QueryInAdminDic($oriword);
         //step2:query in the admin dictionary
         if($Translation==null){
