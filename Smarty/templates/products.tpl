@@ -17,16 +17,9 @@
     <link rel="stylesheet" type="text/css" href="css/cotest.css">
     <script src="js/bootstrap.min.js"></script>
 
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
-
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container main-container">
@@ -55,174 +48,93 @@
     <div class="flip-container">
 
     </div>
-    <div class="row">
+    <div class="
+    products-select-tab">
+     <div class="products-head">
+         <a href="">Electronics</a>
+         Smartphones
+     </div>
+        <ul class="nav nav-tabs pro-nav">
+                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>All smartphones</a></li>
+                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a>How we test</a></li>
+
+            </ul>
+
+    </div>
+    <div class="row" id="#product_panel">
         <div class="sidebar">
-            <div class="facet facet-checkbox">
-                <div class="heading-filter-options">
-                    <h3>
-                <span class="facet-category-heading icon icon-0394">
-                </span>
-                        屏幕尺寸
-                    </h3>
-                </div>
-                <div class="cont-filter-options toggle-panel">
-                    <div class="filter-options">
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="facet facet-checkbox">
-                <div class="heading-filter-options">
-                    <h3>
-                <span class="facet-category-heading icon icon-0394">
-                </span>
-                        屏幕尺寸
-                    </h3>
-                </div>
-                <div class="cont-filter-options toggle-panel">
-                    <div class="filter-options">
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="facet facet-checkbox">
-                <div class="heading-filter-options">
-                    <h3>
-                <span class="facet-category-heading icon icon-0394">
-                </span>
-                        屏幕尺寸
-                    </h3>
-                </div>
-                <div class="cont-filter-options toggle-panel">
-                    <div class="filter-options">
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                        <label class="inactive">
-                        <span class="checkbox">
-                        <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
-                        </span>
-                        <span class="inner-label">
-                          17-26"
-                          <span class="count">(31)</span>
-                        </span>
-                        </label>
-                    </div>
-                </div>
-            </div>
+          <button class="filter-btn">
+            Filter
+          </button>
+          <div id="filter-all-options">
+              
+          </div>
+
         </div>
         <div class="products-container">
+            <div class="products-sort">
+            
+              <div class="name">Sort by</div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Most recently tested <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Highest score</a></li>
+                    <li><a href="#">Price(low to high)</a></li>
+                    <li><a href="#">Price(high to low)</a></li>
+                    <li><a href="#">Most-recently launched</a></li>
+                  </ul>
+                </div>
+            </div>
             <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+                <p> &nbsp;<{$productsNum}> results</p>
+               
                 <meta itemprop="mainContentOfPage" content="true">
-                <{section name=n loop=$products}>
-                <li itemscope="" itemtype="http://schema.org/Product" itemprop="itemListElement">
-                    <div itemscope="" itemtype="http://schema.org/Product" class="product-listing" data-product-id="7399">
-                        <div class="product-listing__thumb">
-                            <a href="details?proj=<{$project}>&id=<{$products[n].product_id}>">
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
-                            </a>
-                        </div>
-                        <div class="product-listing__name-and-key-fact">
-                            <a class="product-listing__name--narrow" href="details?proj=<{$project}>&id=<{$products[n].product_id}>">
-                                <span class="product-listing__model"><{$products[n].product_name}></span>
-                            </a>
-                            <div class="product-listing__key-fact">
-                                Made by  <span class="product-listing__manufacturer"><{$products[n].product_manufacturer}></span>
-                            </div>
-                        </div>
-                        <div class="product-listing__price-and-badges--with-bottom">
-                            <div class="product-listing__price ">
-                        <span class="price-value">
-                            <a href="details?id=<{$products[n].product_id}>&proj=<{$project}>">
-                                <div data-test="price-label">Total Score:</div>
-                                <div data-test="price-amount"><{$products[n].score}></div>
-                            </a>
+                 <{section name=n loop=$products}>
+                <li >
+                    <div class="product-listing">
+                    <div class="product-thumb">
+                          <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                            <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
+                          </a>
+                      </div>
+                      <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                        
+                        <span class="product-name">
+                          <{$products[n].product_name}>
                         </span>
-                            </div>
-
-
-                        </div>
+                        
+                      </a>
+                      <div class="product-price">
+                        <div data-test="price-label">Today's best price:</div>
+                              <div data-test="price-amount">£499.00</div>
+                      </div>
+            
 
                         <div class="product-listing__tested-date">
-                            Tested date:<{$products[n].product_tested_date}>
+                          Tested date: <{$products[n].product_tested_date}>
                         </div>
+                        <div class="product-score">
+                          <div class="score-list">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star-b"></div>
 
-
-                        <div class="product-listing__compare-button">
-                            <form class="frm-comparison" data-product-id="7399" data-location="listing" data-action-add="/reviews/televisions/compare/add/hisense-ltdn50k321uwtseu" data-action-delete="/reviews/televisions/compare/delete/hisense-ltdn50k321uwtseu" action="/reviews/televisions/compare/add/hisense-ltdn50k321uwtseu" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="6WNzRTdafCES7pKllcZgMPPnB7HHxXYWyx+DHyLKI2/kdD50DshQ+57Jy2PhWEgmO1In8gXPoSSxui72YyU9pg=="><button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button></form>
+                          </div>
+                          <div class="score"><{$products[n].score}></div>
+                        </div>
+                        <div class="product-compare-button">
+                          <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                         </div>
 
                     </div>
 
-                </li>
+                  </li>
                 <{/section}>
+                
 
             </ul>
             <div class="row">
@@ -240,16 +152,14 @@
 </div>
 </div>
 
-<div class="footer">
-    <div class="triangle-bottomright"></div>
-    <div class="footer-container"></div>
-</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/cotest.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
@@ -274,6 +184,8 @@
                     {*}*}
                 {*}*}
             {*});*}
+    }
+    }
 {*</script>*}
 
 <!-- lishijie -->
@@ -281,12 +193,108 @@
     <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;
     //初始化
+    console.log(<{$labels}>)
+    console.log(<{$products}>)
     cpage = 1;
     totalpage =<{$pageNum}>;
+    console.log(totalpage);
     pagesize = 10;
     outstr = "";
+    var labels_str="";
+    loadoption(<{$labels}>)
+    function loadoption(labels){
+        var option_text="";
+        for(var i=0;i<labels.length;i++){
+            var option_info=labels[i];
+            var option_name=option_info.name;
+            var option_label=option_info.label;
+            var option_options=option_info.option;
+            var option_values=option_info.value;
+            var option_numbers=option_info.number;
+            var option_type=option_info.type;
+            option_text+=" <div class='facet facet-checkbox' name='"+option_name+"' type='"+option_type+"'>";
+            option_text+=
+                "<div class='heading-filter-options'>"+
+                  "<h3>"+
+                   "<span class='facet-category-heading icon icon-0394'></span>"+
+                    option_label+
+                  "</h3>"+
+                "</div>";
+            option_text+='<div class="cont-filter-options toggle-panel">';
+            console.log(option_values)
+            option_text+='<div class="filter-options">';
+            for(var j=0;j<option_options.length;j++){
+                if(option_options[j]!=''){
+                var value_text="";
+                if(option_type=="range"){
+                    value_text=" name='"+JSON.stringify(option_values[j])+"' ";
+                }
+                else{
+                    value_text=" name='"+option_values[j]+"'"
+                }
+                option_text+='<label >'+
+                        '<span class="checkbox" '+value_text+' >'+
+                        '<input class="filter-option" type="checkbox"/>'+
+                        '</span>'+
+                        '<span class="inner-label">'+
+                          option_options[j]+
+                          '<span class="count"> ('+option_numbers[j]+') </span>'+
+                        '</span>'+
+                      '</label>';
+                
+                }
+            }
+             option_text+="</div></div></div>"
+          
+
+        }
+        console.log(option_text)
+          $("#filter-all-options").html(option_text);
+    }
+    $(".filter-btn").on("click",function(){
+        filter();
+    })
+    function filter(){
+        var labels=[]
+        var all_options=$("#filter-all-options").find(".facet-checkbox");
+        for(var i=0;i<all_options.length;i++){
+            var name=$(all_options[i]).attr("name");
+            var type=$(all_options[i]).attr("type");
+            var active_options=$(all_options[i]).find(".active");
+            if(active_options.length==0) continue;
+            var values=[]
+            for(var j=0;j<active_options.length;j++){
+                if(type=="string")
+                    values.push($(active_options[j]).attr("name"));
+                else{
+                   
+                    values.push(eval("("+$(active_options[j]).attr("name")+")"))
+                }
+            }
+            labels.push({"name":name,"type":type,"value":values});
+
+        }
+        console.log(JSON.stringify(labels));
+        labels_str=JSON.stringify(labels);
+        console.log(labels_str);
+        $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str,function(result){
+            console.log(result)
+            $(".products").html(result);
+         
+        })
+       
+        
+    }
+
     function reloadpage(target){
-        $.get("products.php?page="+target+"&proj=<{$project}>",function(result){
+        var query_str="";
+        if(labels_str==""){
+            query_str="products.php?page="+target+"&proj=<{$project}>"
+        }else{
+            query_str="products.php?page="+target+"&proj=<{$project}>&labels="+labels_str;
+        }
+
+        $.get(query_str,function(result){
             $(".products").html(result);
         })
     }
@@ -298,6 +306,8 @@
     }
     function setpage()
     {
+        totalpage =<{$pageNum}>;
+        console.log("pageNum="+totalpage);
         if(totalpage<=pagesize){        //总页数小于十页
             for (count=1;count<=totalpage;count++)
             {  if(count!=cpage)

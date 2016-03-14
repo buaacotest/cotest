@@ -66,7 +66,7 @@ function getIDsByKeywords($keywords)
 }
 /*根据project_name获取所有的product的相关属性*/
 function getAllProducts($order='time'){
-    $sql="select completename as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
+    $sql="select modelname as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer";
     $res=$GLOBALS['db']->getAll($sql);
@@ -79,7 +79,7 @@ function getAllProducts($order='time'){
 }
 /*挑选指定ID的产品*/
 function getProductByIds($ids,$order='time'){
-    $sql = "select completename as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
+    $sql = "select modelname as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
    for($i=0;$i<count($ids)-1;$i++) {
@@ -136,7 +136,7 @@ function getDetails($id){
 }
 /*求某个产品的评分树*/
 function getGradeTree($id){
-    $sql="select A.id_evaluation,name,id_parent,format(value,2) as value
+    $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
        from evaluations as A,results as B
       where A.id_evaluation=B.id_evaluation and B.value!='na'
       and B.id_product=$id";
@@ -199,31 +199,32 @@ function getProperty($id,&$res){
     }
     foreach($groups as $k=>$g){
         if($g['name']=="Pros"){
-            $string="";
+            $pros=array();
             foreach($props as $p){/*将优点连成字符串*/
                 if($p['id_propertygroup']==$g['id_propertygroup']){
 
                     if($p['value']=="Yes"||$p['value']=="yes"){
-                        $string.=$p['name'].",";
+                        $pros[]=$p['name'];
                     }
                 }
 
                 }
-                $string=substr($string, 0, -1);
-                $res['Pros']=$string;
+               
+                $res['Pros']=$pros;
             continue;
         } else if($g['name']=="Cons") {
             $string="";
+            $cons=array();
             foreach($props as $p){/*将缺点连成字符串*/
                 if($p['id_propertygroup']==$g['id_propertygroup']){
 
                     if($p['value']=="Yes"||$p['value']=="yes"){
-                        $string.=$p['name'].",";
+                        $cons[]=$p['name'];
                     }
                 }
             }
-            $string=substr($string, 0, -1);
-            $res['Cons']=$string;
+           // $string=substr($string, 0, -1);
+            $res['Cons']=$cons;
             continue;
         }
         $temp='';
@@ -246,11 +247,15 @@ function getProperty($id,&$res){
 function filterProducts($lab){
     $results=$tempResult=array();
     $index=0;
+    //print_r($lab);
         foreach($lab as $v){
-            $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$v['name']."'";
+            if($v['name']=='total test result')
+                $sql="select id_evaluation from evaluations where name='".$v['name']."'";
+            else
+                 $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$v['name']."'";
             //echo $sql;
             $evalId=$GLOBALS['db']->getOne($sql);
-            //echo $evalId;
+           // echo $evalId;
 
             if($v['type']=='range'){
                 $tempIndexRange=0;

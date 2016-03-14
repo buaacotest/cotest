@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="row-fluid">
-                <button class="btn btn-block" name="button" type="submit">Send me instructions</button>
+                <button class="btn btn-block sign-btn" name="button" type="submit">Send me instructions</button>
             </div>
         </form>
         <div class="text-center">
@@ -76,10 +76,7 @@
 
 
 </div>
-<div class="footer">
-    <div class="triangle-bottomright"></div>
-    <div class="footer-container"></div>
-</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

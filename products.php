@@ -19,34 +19,15 @@ if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
 require('data/'.$project_name.'/filterOptions.php');
-$labels=trim($_GET['labels']);
+$json=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
-/*$json="[
-
-{
-  \"type\": \"string\",
-  \"name\": \"Brand (from brandlist)\",
-  \"value\": [
-    \"BQ\",
-    \"Apple\"
-  ]
-},
-  {
-    \"type\": \"range\",
-    \"name\": \"A - Sample\",
-    \"value\": [
-      {
-        \">=\": 3,
-        \"<=\": 5
-      },
-      {
-        \">\": 3
-      }
-    ]
-  }
-]";
+$json=str_replace("\\","",$json);
+//echo $json;
 $labels=json_decode($json,true);
-*/
+//print_r($labels);
+//$labels=json_decode($labels,true);
+
+
 
 /*分页相关*/
 $flag=0;
@@ -63,21 +44,26 @@ if(empty($sort)){
 /*筛选相关*/
 $data=getLabels();
 if(!empty($labels)){
+
     $ids=filterProducts($labels);
+  //  echo "id".$ids;
     $products=getProductByIds($ids,$sort);
 }else{
     $products=getAllProducts($sort);
 }
 //print_r($products);
-$page_num=ceil(count($products)/9);
-
-$products=array_slice($products,($page-1)*9,9);
+$page_num=ceil(count($products)/36);
+$productsNum=count($products);
+$products=array_slice($products,($page-1)*36,36);
 //print_r($products);
 $smarty->assign('labels',$data);
+if($labels)
+$smarty->assign('cur_labels',$labels);
 $smarty->assign('pageNum',$page_num);
 $smarty->assign('project',$project_name);
 $smarty->assign('title',$project_name);
 $smarty->assign('products',$products);
+$smarty->assign('productsNum',$productsNum);
 if($flag){
     $smarty->display("prolist.tpl");
 }
