@@ -42,7 +42,7 @@ function getLabels()
                 } else if ($len == 2 && $opts[0] != -1) {
                     $sql = "select count(*) from results where value" . $opts[0] . $value[$opts[0]] . " and value" . $opts[1] . $value[$opts[1]];
                 }
-                $sql .= "and id_evaluation=(select id_evaluation from evaluations where ";
+                $sql .= " and id_evaluation=(select id_evaluation from evaluations where ";
                 if ($item['name'] == 'total test result')
                     $sql .= "name='" . $item['name'] . "')";
                 else
