@@ -82,10 +82,12 @@ function getProductByIds($ids,$order='time'){
     $sql = "select modelname as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
-   for($i=0;$i<count($ids)-1;$i++) {
-      $sql.=$ids[$i][0] . ",";
-   }
-    $sql.=$ids[$i][0].")";
+  
+	foreach($ids as $id){
+		$sql.=$id. ",";
+	}
+	$sql=substr($sql,0,-1);
+	$sql.=$ids[$i].")";
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
@@ -279,7 +281,7 @@ function filterProducts($lab){
                     }
                     $sql.=")";
                     //echo $sql;
-                    $tempResult=$GLOBALS['db']->getAll($sql);
+                    $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
             }else{
                 $tempStringIndex=0;
@@ -295,14 +297,17 @@ function filterProducts($lab){
                     }
                     $sql.=")";
                     //echo $sql;
-                    $tempResult=$GLOBALS['db']->getAll($sql);
+                    $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
 
             }
+			//print_r($tempResult);
             if($index==0)
                 $results=$tempResult;
             else
                 $results=array_intersect($results,$tempResult);
+			//echo $index;
+			//print_r($results);
             $index++;
         }
     return $results;

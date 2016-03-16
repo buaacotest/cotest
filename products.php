@@ -46,14 +46,17 @@ $data=getLabels();
 if(!empty($labels)){
 
     $ids=filterProducts($labels);
-  //  echo "id".$ids;
+    //print_r($ids);
     $products=getProductByIds($ids,$sort);
 }else{
     $products=getAllProducts($sort);
 }
 //print_r($products);
-$page_num=ceil(count($products)/36);
-$productsNum=count($products);
+if(empty($products))
+	$productsNum=0;
+else
+    $productsNum=count($products);
+$page_num=ceil($productsNum/36);
 $products=array_slice($products,($page-1)*36,36);
 //print_r($products);
 $smarty->assign('labels',$data);
