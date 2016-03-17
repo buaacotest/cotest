@@ -87,7 +87,7 @@ function getProductByIds($ids,$order='time'){
 		$sql.=$id. ",";
 	}
 	$sql=substr($sql,0,-1);
-	$sql.=$ids[$i].")";
+	$sql.=")";
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
@@ -163,16 +163,16 @@ function getTree($data, $pId)
 
 /*获取指定id产品的属性以及分组*/
 function getProperty($id,&$res){
+
     $sql="select id_propertygroup,name from propertygroups";
     $groups=$GLOBALS['db']->getAll($sql);
-    $sql="select id_propertygroup,name,type,unit from propertys where name in
-         (select name from evaluations WHERE selected=1 and id_evaluation>99999999)";
+    $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
     $props=$GLOBALS['db']->getAll($sql);
     foreach($props as $k=>$v){
         //echo $v['name'];
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
               and id_evaluation=(
-              select id_evaluation FROM evaluations WHERE name='".$v['name']."'and selected=1 and id_evaluation>99999999)";
+              select id_evaluation FROM evaluations WHERE name='".$v['name']."' and id_evaluation>99999999)";
 
 
        //echo $sql."\n";
