@@ -251,15 +251,9 @@ function filterProducts($lab){
     $index=0;
     //print_r($lab);
         foreach($lab as $v){
-            if($v['name']=='total test result')
-                $sql="select id_evaluation from evaluations where name='".$v['name']."'";
-            else
-                 $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$v['name']."'";
-            //echo $sql;
-            $evalId=$GLOBALS['db']->getOne($sql);
-           // echo $evalId;
-
+            $tempResult=array();
             if($v['type']=='range'){
+                $evalId=getEvaluationId($v['name']);
                 $tempIndexRange=0;
                 if(is_array($v['value'])){
                     $sql="select id_product from results where id_evaluation=".$evalId." and(";
@@ -283,7 +277,8 @@ function filterProducts($lab){
                     //echo $sql;
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
-            }else{
+            }else if($v['type']=='string'){
+                $evalId=getEvaluationId($v['name']);
                 $tempStringIndex=0;
                 if(is_array($v['value'])){
                     $sql="select id_product from results where id_evaluation=".$evalId." and(";
@@ -300,6 +295,31 @@ function filterProducts($lab){
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
 
+            }else if($v['type']=='date'){
+                $tempStringIndex=0;
+                if(is_array($v['value'])){
+                    $sql="select id_product from products where ";
+                    foreach($v['value'] as $key=>$value){
+                        //echo $tempValue."==".$value."  ";
+                        if($tempStringIndex==0)
+                            $sql.="batch like'".$value."%' ";
+                        else
+                            $sql.="or batch like'".$value."%' ";
+                        $tempStringIndex++;
+                    }
+                    //echo $sql;
+                    $tempResult=$GLOBALS['db']->getAllValues($sql);
+                }
+            }else if($v['type']=='multi'){
+                foreach($v['value'] as $key=>$value){
+                    $evalId=getEvaluationId($value);
+                    if(is_array($v['value'])){
+                        $sql="select id_product from results where id_evaluation=".$evalId." and value=1";
+
+                        $res=$GLOBALS['db']->getAllValues($sql);
+                        $tempResult=array_merge($tempResult,$res);
+                    }
+                }
             }
 			//print_r($tempResult);
             if($index==0)
@@ -311,6 +331,15 @@ function filterProducts($lab){
             $index++;
         }
     return $results;
+}
+
+/*通过名字获取evaluation的id*/
+function getEvaluationId($name){
+    if($name=='total test result')
+        $sql="select id_evaluation from evaluations where name='".$name."'";
+    else
+        $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$name."'";
+   return $GLOBALS['db']->getOne($sql);
 }
 function judge($opt,$data,$value){
     //echo $data.$opt.$value;
