@@ -6,11 +6,11 @@
     <script src="../js/jquery.min.js"></script>
     <script >
         $(document).ready(function(){
-                $.get("TranslationStepOne.php",function(data){
+                $.get("translationstepone.php",function(data){
                     var d1=eval('(' + data + ')') ;
                     for (var one in d1){
                             var databasename=d1[one].databasesname;
-                            var str="<a href='TranslationStepTwo.php?proj="+databasename+"'>"+databasename+"</a>";
+                            var str="<a href='translationsteptwo.php?proj="+databasename+"'>"+databasename+"</a>";
                             $(".db").append(str);
                             $(".db").append("</br>");
                     }

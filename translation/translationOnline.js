@@ -6,7 +6,7 @@
             var value=$(this).attr("name");
             var _this=$(this);
             console.log(value)
-            $.get("translationOnline.php",
+            $.get("translationonline.php",
                 {
                     name:value
                 },
