@@ -21,6 +21,7 @@ $GLOBALS['db']->changeDB($project_name);
 require('data/'.$project_name.'/filterOptions.php');
 $json=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
+//echo $json;
 $json=str_replace("\\","",$json);
 //echo $json;
 $labels=json_decode($json,true);
