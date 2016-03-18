@@ -56,7 +56,7 @@ function printEvaluation($evaluationdata){
     echo "\n</li>";///封闭自身
 }
 
-
+ini_set("max_execution_time", "1800");
 $project_name=trim($_GET['proj']);
 //echo $project_name;
 require('../includes/lib_common.php');
