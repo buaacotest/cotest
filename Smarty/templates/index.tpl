@@ -97,7 +97,7 @@
       <div class="row pro-list">
         <div class="pro-list-l">
           <div class="pro-list-title">
-            Electronics(joint test)
+            Electronics (joint tests)
           </div>
           <div class="pro-list-content">
             <a href="products.php?proj=mobilephones">

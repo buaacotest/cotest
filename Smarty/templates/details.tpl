@@ -59,7 +59,7 @@
 
         <div class="col-md-12">
          <div class="pro-title text-center">
-            <h5><a href="#">Smartphones</a></h5>
+            <h5><a href="products.php?proj=mobilephones">Smartphones</a></h5>
            <h3><{$product.name}></h3>
          </div>
        </div>
@@ -75,7 +75,7 @@
                 <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a >Test results</a></li>
                 <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a >Features</a></li>
                 <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a >Review</a></li>
-                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a >Where to buy</a></li>
+                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a >How to buy</a></li>
               </ul>
             
             <div class="pro-review-panel">

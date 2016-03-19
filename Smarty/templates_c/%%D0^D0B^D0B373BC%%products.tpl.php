@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-14 12:39:53
+<?php /* Smarty version 2.6.19, created on 2016-03-16 13:04:43
          compiled from products.tpl */ ?>
 
 <!DOCTYPE html>
@@ -58,7 +58,7 @@
          Smartphones
      </div>
         <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>All smartphones</a></li>
+                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>Tested smartphones</a></li>
                 <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a>How we test</a></li>
 
             </ul>
@@ -79,23 +79,25 @@
             
               <div class="name">Sort by</div>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Most recently tested <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Highest score</a></li>
-                    <li><a href="#">Price(low to high)</a></li>
-                    <li><a href="#">Price(high to low)</a></li>
-                    <li><a href="#">Most-recently launched</a></li>
+                    <li ><a class="dropdown-menu-item" name="score"href="#">Highest score</a></li>
+                    <li ><a class="dropdown-menu-item" href="#">Price(low to high)</a></li>
+                    <li><a  class="dropdown-menu-item" href="#">Price(high to low)</a></li>
+                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently launched</a></li>
                   </ul>
                 </div>
             </div>
-            <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+            <div id="products-block">
                 <p> &nbsp;<?php echo $this->_tpl_vars['productsNum']; ?>
- results</p>
-               
-                <meta itemprop="mainContentOfPage" content="true">
-                 <?php unset($this->_sections['n']);
+ smartphones</p>
+                <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+                   
+                   
+                    <meta itemprop="mainContentOfPage" content="true">
+                     <?php unset($this->_sections['n']);
 $this->_sections['n']['name'] = 'n';
 $this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $this->_sections['n']['show'] = true;
@@ -119,65 +121,64 @@ $this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_s
 $this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
 $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
 ?>
-                <li >
-                    <div class="product-listing">
-                    <div class="product-thumb">
+                    <li >
+                        <div class="product-listing">
+                        <div class="product-thumb">
+                              <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
+&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+">
+                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
+                              </a>
+                          </div>
                           <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
 &id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 ">
-                            <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
+                            <span class="product-brand">
+                              <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_manufacturer']; ?>
+
+                            </span>
+                            <br>
+                            <div class="product-name">
+                              <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
+
+                            </div>
+                            
                           </a>
-                      </div>
-                      <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
-&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
-">
-                        
-                        <span class="product-name">
-                          <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
-
-                        </span>
-                        
-                      </a>
-                      <div class="product-price">
-                        <div data-test="price-label">Today's best price:</div>
-                              <div data-test="price-amount">£499.00</div>
-                      </div>
-            
-
-                        <div class="product-listing__tested-date">
-                          Tested date: <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_tested_date']; ?>
-
-                        </div>
-                        <div class="product-score">
-                          <div class="score-list">
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star-b"></div>
-
+                          <div class="product-price">
+                            <div data-test="price-label">Today's best price:</div>
+                                  <div data-test="price-amount">£499.00</div>
                           </div>
-                          <div class="score"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['score']; ?>
-</div>
-                        </div>
-                        <div class="product-compare-button">
-                          <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
-                        </div>
-
-                    </div>
-
-                  </li>
-                <?php endfor; endif; ?>
                 
 
-            </ul>
-            <div class="row">
-                <ul class="pagenator">
-                    <li class="pagebtn active" value="1">1</li>
-                    <li class="pagebtn" value="2">2</li>
-                </ul>
+                            <div class="product-listing__tested-date">
+                              Tested date: <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_tested_date']; ?>
 
+                            </div>
+                            <div class="product-score">
+                              <div class="score-list">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star-b"></div>
+
+                              </div>
+                              <div class="score"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['score']; ?>
+</div>
+                            </div>
+                            <div class="product-compare-button">
+                              <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
+                            </div>
+
+                        </div>
+
+                      </li>
+                    <?php endfor; endif; ?>
+                    
+
+                </ul>
             </div>
+       
             <!-- lishijie -->
             <div id="setpage"></div>
         </div>
@@ -293,6 +294,27 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     $(".filter-btn").on("click",function(){
         filter();
     })
+    $(".dropdown-menu-item").on("click",function(){
+        var sortname=$(this).attr("name");
+        if(sortname){
+            sort(sortname);
+            $("#cur-sort").html($(this).text()+'<span class="caret"></span>');
+        }
+    })
+    function sort(sortType){
+        $.get("products.php?page=1&proj=<?php echo $this->_tpl_vars['project']; ?>
+&sort="+sortType+"&labels="+labels_str,function(result){
+           // console.log(result)
+            $("#products-block").html(result);
+            totalpage=$(".products").attr("pagenum");
+            cpage=1;
+            setpage();
+            console.log($(".products").attr("pagenum"));
+            console.log("page="+totalpage);
+
+         
+        })
+    }
     function filter(){
         var labels=[]
         var all_options=$("#filter-all-options").find(".facet-checkbox");
@@ -318,8 +340,14 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         console.log(labels_str);
         $.get("products.php?page=1&proj=<?php echo $this->_tpl_vars['project']; ?>
 &labels="+labels_str,function(result){
-            console.log(result)
-            $(".products").html(result);
+           // console.log(result)
+            $("#products-block").html(result);
+            totalpage=$(".products").attr("pagenum");
+            cpage=1;
+            setpage();
+            console.log($(".products").attr("pagenum"));
+            console.log("page="+totalpage);
+
          
         })
        
@@ -337,7 +365,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         }
 
         $.get(query_str,function(result){
-            $(".products").html(result);
+            $("#products-block").html(result);
         })
     }
     function gotopage(target)
@@ -348,9 +376,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     }
     function setpage()
     {
-        totalpage =<?php echo $this->_tpl_vars['pageNum']; ?>
-;
-        console.log("pageNum="+totalpage);
+
+    
         if(totalpage<=pagesize){        //总页数小于十页
             for (count=1;count<=totalpage;count++)
             {  if(count!=cpage)
@@ -404,8 +431,9 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
             }
         }
-        document.getElementById("setpage").innerHTML = "<div id='setpage'><span id='info'>共"+totalpage+"页|第"+cpage+"页<\/span>" + outstr + "<\/div>";
+        document.getElementById("setpage").innerHTML = "<div id='setpage'>" + outstr + "<\/div>";
         outstr = "";
+        //$("html,body").animate({scrollTop:0,500});
     }
     setpage();    //调用分页
 </script>
@@ -418,7 +446,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             $(this).attr("class","pagebtn active");
             $.get("products.php?page="+value+"&proj=<?php echo $this->_tpl_vars['project']; ?>
 ",function(result){
-                $(".products").html(result);
+                $("#products-block").html(result);
             })
         })
     })

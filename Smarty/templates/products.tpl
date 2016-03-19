@@ -55,7 +55,7 @@
          Smartphones
      </div>
         <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>All smartphones</a></li>
+                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>Tested smartphones</a></li>
                 <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a>How we test</a></li>
 
             </ul>
@@ -76,74 +76,74 @@
             
               <div class="name">Sort by</div>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Most recently tested <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Highest score</a></li>
-                    <li><a href="#">Price(low to high)</a></li>
-                    <li><a href="#">Price(high to low)</a></li>
-                    <li><a href="#">Most-recently launched</a></li>
+                    <li ><a class="dropdown-menu-item" name="score"href="#">Highest score</a></li>
+                    <li ><a class="dropdown-menu-item" href="#">Price(low to high)</a></li>
+                    <li><a  class="dropdown-menu-item" href="#">Price(high to low)</a></li>
+                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently launched</a></li>
                   </ul>
                 </div>
             </div>
-            <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
-                <p> &nbsp;<{$productsNum}> results</p>
-               
-                <meta itemprop="mainContentOfPage" content="true">
-                 <{section name=n loop=$products}>
-                <li >
-                    <div class="product-listing">
-                    <div class="product-thumb">
-                          <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
-                            <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
-                          </a>
-                      </div>
-                      <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
-                        
-                        <span class="product-name">
-                          <{$products[n].product_name}>
-                        </span>
-                        
-                      </a>
-                      <div class="product-price">
-                        <div data-test="price-label">Today's best price:</div>
-                              <div data-test="price-amount">£499.00</div>
-                      </div>
-            
-
-                        <div class="product-listing__tested-date">
-                          Tested date: <{$products[n].product_tested_date}>
-                        </div>
-                        <div class="product-score">
-                          <div class="score-list">
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star-b"></div>
-
+            <div id="products-block">
+                <p> &nbsp;<{$productsNum}> smartphones</p>
+                <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+                   
+                   
+                    <meta itemprop="mainContentOfPage" content="true">
+                     <{section name=n loop=$products}>
+                    <li >
+                        <div class="product-listing">
+                        <div class="product-thumb">
+                              <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
+                              </a>
                           </div>
-                          <div class="score"><{$products[n].score}></div>
-                        </div>
-                        <div class="product-compare-button">
-                          <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
-                        </div>
-
-                    </div>
-
-                  </li>
-                <{/section}>
+                          <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                            <span class="product-brand">
+                              <{$products[n].product_manufacturer}>
+                            </span>
+                            <br>
+                            <div class="product-name">
+                              <{$products[n].product_name}>
+                            </div>
+                            
+                          </a>
+                          <div class="product-price">
+                            <div data-test="price-label">Today's best price:</div>
+                                  <div data-test="price-amount">£499.00</div>
+                          </div>
                 
 
-            </ul>
-            <div class="row">
-                <ul class="pagenator">
-                    <li class="pagebtn active" value="1">1</li>
-                    <li class="pagebtn" value="2">2</li>
-                </ul>
+                            <div class="product-listing__tested-date">
+                              Tested date: <{$products[n].product_tested_date}>
+                            </div>
+                            <div class="product-score">
+                              <div class="score-list">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star-b"></div>
 
+                              </div>
+                              <div class="score"><{$products[n].score}></div>
+                            </div>
+                            <div class="product-compare-button">
+                              <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
+                            </div>
+
+                        </div>
+
+                      </li>
+                    <{/section}>
+                    
+
+                </ul>
             </div>
+       
             <!-- lishijie -->
             <div id="setpage"></div>
         </div>
@@ -254,6 +254,26 @@
     $(".filter-btn").on("click",function(){
         filter();
     })
+    $(".dropdown-menu-item").on("click",function(){
+        var sortname=$(this).attr("name");
+        if(sortname){
+            sort(sortname);
+            $("#cur-sort").html($(this).text()+'<span class="caret"></span>');
+        }
+    })
+    function sort(sortType){
+        $.get("products.php?page=1&proj=<{$project}>&sort="+sortType+"&labels="+labels_str,function(result){
+           // console.log(result)
+            $("#products-block").html(result);
+            totalpage=$(".products").attr("pagenum");
+            cpage=1;
+            setpage();
+            console.log($(".products").attr("pagenum"));
+            console.log("page="+totalpage);
+
+         
+        })
+    }
     function filter(){
         var labels=[]
         var all_options=$("#filter-all-options").find(".facet-checkbox");
@@ -278,8 +298,14 @@
         labels_str=JSON.stringify(labels);
         console.log(labels_str);
         $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str,function(result){
-            console.log(result)
-            $(".products").html(result);
+           // console.log(result)
+            $("#products-block").html(result);
+            totalpage=$(".products").attr("pagenum");
+            cpage=1;
+            setpage();
+            console.log($(".products").attr("pagenum"));
+            console.log("page="+totalpage);
+
          
         })
        
@@ -295,7 +321,7 @@
         }
 
         $.get(query_str,function(result){
-            $(".products").html(result);
+            $("#products-block").html(result);
         })
     }
     function gotopage(target)
@@ -306,8 +332,8 @@
     }
     function setpage()
     {
-        totalpage =<{$pageNum}>;
-        console.log("pageNum="+totalpage);
+
+    
         if(totalpage<=pagesize){        //总页数小于十页
             for (count=1;count<=totalpage;count++)
             {  if(count!=cpage)
@@ -361,8 +387,9 @@
                 outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
             }
         }
-        document.getElementById("setpage").innerHTML = "<div id='setpage'><span id='info'>共"+totalpage+"页|第"+cpage+"页<\/span>" + outstr + "<\/div>";
+        document.getElementById("setpage").innerHTML = "<div id='setpage'>" + outstr + "<\/div>";
         outstr = "";
+        //$("html,body").animate({scrollTop:0,500});
     }
     setpage();    //调用分页
 </script>
@@ -374,7 +401,7 @@
             $(".pagebtn").attr("class","pagebtn");
             $(this).attr("class","pagebtn active");
             $.get("products.php?page="+value+"&proj=<{$project}>",function(result){
-                $(".products").html(result);
+                $("#products-block").html(result);
             })
         })
     })

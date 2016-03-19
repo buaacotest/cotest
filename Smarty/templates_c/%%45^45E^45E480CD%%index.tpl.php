@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-14 05:21:57
+<?php /* Smarty version 2.6.19, created on 2016-03-16 12:48:49
          compiled from index.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +99,7 @@
       <div class="row pro-list">
         <div class="pro-list-l">
           <div class="pro-list-title">
-            Electronics(joint test)
+            Electronics (joint tests)
           </div>
           <div class="pro-list-content">
             <a href="products.php?proj=mobilephones">
