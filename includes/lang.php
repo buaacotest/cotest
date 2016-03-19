@@ -9,3 +9,4 @@ if(isset($_POST['lang'])){
     //echo "语言".$_POST['lang'];
     $GLOBALS['_CFG']['lang']=$_POST['lang'];
 }
+?>

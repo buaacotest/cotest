@@ -56,7 +56,7 @@ function printEvaluation($evaluationdata){
     echo "\n</li>";///封闭自身
 }
 
-
+ini_set("max_execution_time", "1800");
 $project_name=trim($_GET['proj']);
 //echo $project_name;
 require('../includes/lib_common.php');
@@ -81,13 +81,13 @@ $evaluationTree=$evaluations[0];
 $outstr="<html>\n<head>\n";
 echo $outstr;
 echo "<script src=\"../js/jquery.min.js\"></script>";
-echo "<script type=\"text/javascript\" src=\"translationOnline.js\"></script>";
-echo "<script type=\"text/javascript\" src=\"saveEvaluationItem.js\"></script>";
+echo "<script type=\"text/javascript\" src=\"translationonline.js\"></script>";
+echo "<script type=\"text/javascript\" src=\"saveevaluationitem.js\"></script>";
 $outstr="<body>\n";
 echo $outstr;
 $outstr="<div hidden=\"hidden\" class=\"projname\">".$project_name."</div>";
 echo $outstr;
-$outstr="<form name=\"input\" action=\"TranslationStepThree.php?proj=".$project_name."\" method=\"post\">\n";
+$outstr="<form name=\"input\" action=\"translationstepthree.php?proj=".$project_name."\" method=\"post\">\n";
 echo $outstr;
 echo "<ul>";
 printEvaluation($evaluationTree);

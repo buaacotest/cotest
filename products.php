@@ -21,6 +21,7 @@ $GLOBALS['db']->changeDB($project_name);
 require('data/'.$project_name.'/filterOptions.php');
 $json=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
+<<<<<<< HEAD
 $json=str_replace("\\","",$json);
 
 //echo $json;
@@ -28,6 +29,13 @@ $labels=json_decode($json,true);
 //print_r($labels);
 
 $labels=json_decode($json,true);
+=======
+//echo $json;
+$json=str_replace("\\","",$json);
+//echo $json;
+$labels=json_decode($json,true);
+//print_r($labels);
+>>>>>>> 48528619f64528e59c0870ca6500588a1e94d842
 //$labels=json_decode($labels,true);
 
 
@@ -49,14 +57,26 @@ $data=getLabels();
 if(!empty($labels)){
 
     $ids=filterProducts($labels);
+<<<<<<< HEAD
   //  echo "id".$ids;
+=======
+    //print_r($ids);
+>>>>>>> 48528619f64528e59c0870ca6500588a1e94d842
     $products=getProductByIds($ids,$sort);
 }else{
     $products=getAllProducts($sort);
 }
 //print_r($products);
+<<<<<<< HEAD
 $page_num=ceil(count($products)/36);
 $productsNum=count($products);
+=======
+if(empty($products))
+	$productsNum=0;
+else
+    $productsNum=count($products);
+$page_num=ceil($productsNum/36);
+>>>>>>> 48528619f64528e59c0870ca6500588a1e94d842
 $products=array_slice($products,($page-1)*36,36);
 //print_r($products);
 $smarty->assign('labels',$data);

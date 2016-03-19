@@ -1,5 +1,4 @@
 ﻿<?php
-
 /**
  * Created by PhpStorm.
  * User: Arthur
@@ -141,7 +140,24 @@ class mysql_cls
             return false;
         }
     }
+	function getAllValues($sql)
+	{
+		$res = $this->query($sql);
+		if ($res !== false)
+        {
+            $arr = array();
+            while ($row = $this->fetch_array($res))
+            {
+                $arr[] = $row[0];
+            }
 
+            return $arr;
+        }
+        else
+        {
+            return false;
+        }
+	}
 
 }
 ?>

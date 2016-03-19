@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Created by PhpStorm.
  * User: master
@@ -82,10 +82,12 @@ function getProductByIds($ids,$order='time'){
     $sql = "select modelname as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
-   for($i=0;$i<count($ids)-1;$i++) {
-      $sql.=$ids[$i][0] . ",";
-   }
-    $sql.=$ids[$i][0].")";
+  
+	foreach($ids as $id){
+		$sql.=$id. ",";
+	}
+	$sql=substr($sql,0,-1);
+	$sql.=")";
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
@@ -161,16 +163,16 @@ function getTree($data, $pId)
 
 /*获取指定id产品的属性以及分组*/
 function getProperty($id,&$res){
+
     $sql="select id_propertygroup,name from propertygroups";
     $groups=$GLOBALS['db']->getAll($sql);
-    $sql="select id_propertygroup,name,type,unit from propertys where name in
-         (select name from evaluations WHERE selected=1 and id_evaluation>99999999)";
+    $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
     $props=$GLOBALS['db']->getAll($sql);
     foreach($props as $k=>$v){
         //echo $v['name'];
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
               and id_evaluation=(
-              select id_evaluation FROM evaluations WHERE name='".$v['name']."'and selected=1 and id_evaluation>99999999)";
+              select id_evaluation FROM evaluations WHERE name='".$v['name']."' and id_evaluation>99999999)";
 
 
        //echo $sql."\n";
@@ -249,15 +251,9 @@ function filterProducts($lab){
     $index=0;
     //print_r($lab);
         foreach($lab as $v){
-            if($v['name']=='total test result')
-                $sql="select id_evaluation from evaluations where name='".$v['name']."'";
-            else
-                 $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$v['name']."'";
-            //echo $sql;
-            $evalId=$GLOBALS['db']->getOne($sql);
-           // echo $evalId;
-
+            $tempResult=array();
             if($v['type']=='range'){
+                $evalId=getEvaluationId($v['name']);
                 $tempIndexRange=0;
                 if(is_array($v['value'])){
                     $sql="select id_product from results where id_evaluation=".$evalId." and(";
@@ -279,9 +275,10 @@ function filterProducts($lab){
                     }
                     $sql.=")";
                     //echo $sql;
-                    $tempResult=$GLOBALS['db']->getAll($sql);
+                    $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
-            }else{
+            }else if($v['type']=='string'){
+                $evalId=getEvaluationId($v['name']);
                 $tempStringIndex=0;
                 if(is_array($v['value'])){
                     $sql="select id_product from results where id_evaluation=".$evalId." and(";
@@ -295,17 +292,54 @@ function filterProducts($lab){
                     }
                     $sql.=")";
                     //echo $sql;
-                    $tempResult=$GLOBALS['db']->getAll($sql);
+                    $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
 
+            }else if($v['type']=='date'){
+                $tempStringIndex=0;
+                if(is_array($v['value'])){
+                    $sql="select id_product from products where ";
+                    foreach($v['value'] as $key=>$value){
+                        //echo $tempValue."==".$value."  ";
+                        if($tempStringIndex==0)
+                            $sql.="batch like'".$value."%' ";
+                        else
+                            $sql.="or batch like'".$value."%' ";
+                        $tempStringIndex++;
+                    }
+                    //echo $sql;
+                    $tempResult=$GLOBALS['db']->getAllValues($sql);
+                }
+            }else if($v['type']=='multi'){
+                foreach($v['value'] as $key=>$value){
+                    $evalId=getEvaluationId($value);
+                    if(is_array($v['value'])){
+                        $sql="select id_product from results where id_evaluation=".$evalId." and value=1";
+
+                        $res=$GLOBALS['db']->getAllValues($sql);
+                        $tempResult=array_merge($tempResult,$res);
+                    }
+                }
             }
+			//print_r($tempResult);
             if($index==0)
                 $results=$tempResult;
             else
                 $results=array_intersect($results,$tempResult);
+			//echo $index;
+			//print_r($results);
             $index++;
         }
     return $results;
+}
+
+/*通过名字获取evaluation的id*/
+function getEvaluationId($name){
+    if($name=='total test result')
+        $sql="select id_evaluation from evaluations where name='".$name."'";
+    else
+        $sql="select id_evaluation from evaluations where id_evaluation>99999999 and name='".$name."'";
+   return $GLOBALS['db']->getOne($sql);
 }
 function judge($opt,$data,$value){
     //echo $data.$opt.$value;
