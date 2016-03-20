@@ -284,7 +284,7 @@
             if(active_options.length==0) continue;
             var values=[]
             for(var j=0;j<active_options.length;j++){
-                if(type=="string")
+                if(type=="string"||type=="date"||type=="multi")
                     values.push($(active_options[j]).attr("name"));
                 else{
                    
