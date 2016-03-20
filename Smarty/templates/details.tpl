@@ -65,7 +65,42 @@
        </div>
        <div class="pro-score-banner">
            <div class="pro-score-banner-score"><{$score}></div>
-           <div class="pro-score-banner-star">CCCC</div>
+           <div class="product-score">
+                <div class="score-list">
+                <{if $score >=4.5}>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <{/if}>
+                <{if $score >=3.5 && $score < 4.5}>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <{/if}>
+                <{if $score >=2.5 && $score < 3.5}>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <{/if}>
+                <{if $score >=1.5 && $score < 2.5}>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <{/if}>
+                <{if $score >=0.5 && $score < 1.5}>
+                                <div class="star"></div>
+
+
+                <{/if}>
+                             
+               </div>
+            </div>
        </div>
         
 
@@ -193,7 +228,40 @@
                                     <{$evals.value}>
                                 </div>
                                 <div class="col-md-2">
-                                    CCCC
+                                       <div class="score-list">
+                                        <{if $evals.value >=4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.value >=3.5 && $evals.value < 4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.value >=2.5 && $evals.value < 3.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.value >=1.5 && $evals.value < 2.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.value >=0.5 && $evals.value < 1.5}>
+                                                        <div class="star"></div>
+
+
+                                        <{/if}>
+                                                     
+                                       </div>
                                 </div>
                             </div>
                         </div>
@@ -206,18 +274,86 @@
                                     <div class="col-md-2"><{$evals.id_parent[n].weight}> %</div>
                                     <div class="col-md-2"><{$evals.id_parent[n].value}></div>
                                     <div class="col-md-2">
-                                        CCCC
+                                     
+                                        <div class="score-list">
+                                        <{if $evals.id_parent[n].value >=4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >=3.5 && $evals.id_parent[n].value < 4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >=2.5 && $evals.id_parent[n].value < 3.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >=1.5 && $evals.id_parent[n].value < 2.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >=0.5 && $evals.id_parent[n].value < 1.5}>
+                                                        <div class="star"></div>
+
+
+                                        <{/if}>
+                                                     
+                                       </div>
+           
                                     </div>
                                 </div>
                             </div>
                             <{foreach from=$evals.id_parent[n].id_parent item=foo}>
                                  <{ if ($foo.name !='') }>
                                  <div class="row proper-item">
-                                     <div class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><{$foo.name}></label></div>
+                                     <div class="col-md-6"><label class="proper-item-name"><{$foo.name}></label></div>
                                     <div class="col-md-2"><{$foo.weight}> %</div>
                                     <div class="col-md-2"><{$foo.value}></div>
                                     <div class="col-md-2">
-                                        CCCC
+                                        <div class="score-list">
+                                        <{if $foo.value >=4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $foo.value >=3.5 && $foo.value < 4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $foo.value >=2.5 && $foo.value < 3.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $foo.value >=1.5 && $foo.value < 2.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $foo.value >=0.5 && $foo.value < 1.5}>
+                                                        <div class="star"></div>
+
+
+                                        <{/if}>
+                                                     
+                                       </div>
                                     </div>
                                 </div>
                                 <{/if}>
@@ -242,7 +378,7 @@
                         </div>
                         <{section name=m loop=$props[n].id_propertygroup}>
                         <div class="row proper-item">
-                            <div class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><{$props[n].id_propertygroup[m].name}></label></div>
+                            <div class="col-md-6"><label class="proper-item-name"><{$props[n].id_propertygroup[m].name}></label></div>
                             <div class="col-md-6"><{$props[n].id_propertygroup[m].value}> <{$props[n].id_propertygroup[m].unit}></div>
 
                         </div>

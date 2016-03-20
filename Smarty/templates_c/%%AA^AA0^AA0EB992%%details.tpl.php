@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-16 12:44:32
+<?php /* Smarty version 2.6.19, created on 2016-03-20 13:44:40
          compiled from details.tpl */ ?>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -70,7 +70,42 @@
        <div class="pro-score-banner">
            <div class="pro-score-banner-score"><?php echo $this->_tpl_vars['score']; ?>
 </div>
-           <div class="pro-score-banner-star">CCCC</div>
+           <div class="product-score">
+                <div class="score-list">
+                <?php if ($this->_tpl_vars['score'] >= 4.5): ?>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <?php endif; ?>
+                <?php if ($this->_tpl_vars['score'] >= 3.5 && $this->_tpl_vars['score'] < 4.5): ?>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <?php endif; ?>
+                <?php if ($this->_tpl_vars['score'] >= 2.5 && $this->_tpl_vars['score'] < 3.5): ?>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <?php endif; ?>
+                <?php if ($this->_tpl_vars['score'] >= 1.5 && $this->_tpl_vars['score'] < 2.5): ?>
+                                <div class="star"></div>
+                                <div class="star"></div>
+
+                <?php endif; ?>
+                <?php if ($this->_tpl_vars['score'] >= 0.5 && $this->_tpl_vars['score'] < 1.5): ?>
+                                <div class="star"></div>
+
+
+                <?php endif; ?>
+                             
+               </div>
+            </div>
        </div>
         
 
@@ -250,7 +285,40 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
                                 </div>
                                 <div class="col-md-2">
-                                    CCCC
+                                       <div class="score-list">
+                                        <?php if ($this->_tpl_vars['evals']['value'] >= 4.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] >= 3.5 && $this->_tpl_vars['evals']['value'] < 4.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] >= 2.5 && $this->_tpl_vars['evals']['value'] < 3.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] >= 1.5 && $this->_tpl_vars['evals']['value'] < 2.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] >= 0.5 && $this->_tpl_vars['evals']['value'] < 1.5): ?>
+                                                        <div class="star"></div>
+
+
+                                        <?php endif; ?>
+                                                     
+                                       </div>
                                 </div>
                             </div>
                         </div>
@@ -289,7 +357,42 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value']; ?>
 </div>
                                     <div class="col-md-2">
-                                        CCCC
+                                     
+                                        <div class="score-list">
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] >= 4.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] >= 3.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] < 4.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] >= 2.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] < 3.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] >= 1.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] < 2.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] >= 0.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] < 1.5): ?>
+                                                        <div class="star"></div>
+
+
+                                        <?php endif; ?>
+                                                     
+                                       </div>
+           
                                     </div>
                                 </div>
                             </div>
@@ -298,14 +401,47 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 ?>
                                  <?php if (( $this->_tpl_vars['foo']['name'] != '' )): ?>
                                  <div class="row proper-item">
-                                     <div class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><?php echo $this->_tpl_vars['foo']['name']; ?>
+                                     <div class="col-md-6"><label class="proper-item-name"><?php echo $this->_tpl_vars['foo']['name']; ?>
 </label></div>
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['foo']['weight']; ?>
  %</div>
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['foo']['value']; ?>
 </div>
                                     <div class="col-md-2">
-                                        CCCC
+                                        <div class="score-list">
+                                        <?php if ($this->_tpl_vars['foo']['value'] >= 4.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] >= 3.5 && $this->_tpl_vars['foo']['value'] < 4.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] >= 2.5 && $this->_tpl_vars['foo']['value'] < 3.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] >= 1.5 && $this->_tpl_vars['foo']['value'] < 2.5): ?>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] >= 0.5 && $this->_tpl_vars['foo']['value'] < 1.5): ?>
+                                                        <div class="star"></div>
+
+
+                                        <?php endif; ?>
+                                                     
+                                       </div>
                                     </div>
                                 </div>
                                 <?php endif; ?>
@@ -377,7 +513,7 @@ $this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
 $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
 ?>
                         <div class="row proper-item">
-                            <div class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['name']; ?>
+                            <div class="col-md-6"><label class="proper-item-name"><?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['name']; ?>
 </label></div>
                             <div class="col-md-6"><?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value']; ?>
  <?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['unit']; ?>

@@ -253,7 +253,7 @@ color: #f7b206;
 	color: #fab90c;
 	text-decoration: none;
 }
-.products .score-list{
+.score-list{
 	margin-top: 5px;
 	float: left;
 
@@ -262,7 +262,7 @@ color: #f7b206;
 	height: 130px;
 	overflow: hidden;
 }
-.products .star{
+.star{
 	list-style: none;
 	float: left;
 	width: 15px;
@@ -275,7 +275,7 @@ color: #f7b206;
     margin-top: 3px;
     float: left;
 }
-.products .star-b{
+.star-b{
 	list-style: none;
 	float: left;
 	width: 15px;
@@ -471,6 +471,9 @@ border-radius: 0px;
 }
 .proper-item{
 	padding: 10px 12px;
+}
+.proper-item-name{
+	margin-left: 15px;
 }
 .proper-title{
 	font-size: 14px;
@@ -713,7 +716,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	position: absolute;
 	top: 50px;
 	left: 0px;
-	width: 120px;
+	width: 200px;
 	border-left: 6px solid #f7b206;
 	background:#fff;
 	height: 80px;
@@ -789,18 +792,23 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 .products-select-tab .pro-nav{
 	position: absolute;
-	width:400px;
+	width:480px;
 	left: 50%;
 	top: -20px;
-	margin-left: -200px;
+	margin-left: -240px;
 	border: none;
 	height: 60px;
 
 
 
 }
+.products-select-tab .pro-nav>li{
+	width: 200px;
+
+
+}
 .products-select-tab  .pro-nav>li a{
-    width: 160px;
+    width: 200px;
     text-align: center;
     height: 60px;
     line-height: 60px;
