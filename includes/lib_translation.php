@@ -208,21 +208,14 @@ function GenSelfDicID(){
 }
 ///**get evaluation trees*///
 function GetEvaluationTree(){
-    $sql="select A.`id_evaluation`,`name`,id_parent from evaluations as A";
+    //$sql="select A.`id_evaluation`,`name`,id_parent from evaluations as A";
+    $sql="select A.`id_evaluation`,`name`,id_parent from evaluations as A,results as B where A.id_evaluation=B.id_evaluation group by name ";
     $data=$GLOBALS['db']->getAll($sql);
     $gradeTree=GetEvalautionLayers($data,0);
     return $gradeTree;
 }
 
-function GetEvalautionLayers($data, $pId,$dbname="smartphone"){
-    $conn=mysql_connect("localhost","root","buaascse");
-    mysql_selectdb($dbname);
-
-    $sql="select A.`id_evaluation`,`name`,id_parent from evaluations as A,results as B where A.id_evaluation=B.id_evaluation group by name ";
-    $rst=mysql_query($sql);
-    while($row=mysql_fetch_array($rst)){
-        $arr[]=$row;
-    }
+function GetEvalautionLayers($data, $pId){
         $tree = '';
         foreach($data as $v)
         {

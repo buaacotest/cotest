@@ -56,9 +56,10 @@ function printEvaluation($evaluationdata){
     echo "\n</li>";///封闭自身
 }
 
-ini_set("max_execution_time", "1800");
+ini_set("max_execution_time", "180");
 $project_name=trim($_GET['proj']);
 //echo $project_name;
+$project_name="mobilephones";
 require('../includes/lib_common.php');
 require('../sql/mysql_cls.php');
 require('../includes/lib_translation.php');
