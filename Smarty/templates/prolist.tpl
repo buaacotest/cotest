@@ -1,5 +1,7 @@
-        <p> &nbsp;<{$productsNum}> results</p>
-        <ul class="products" itemscope="" itemtype="http://schema.org/ItemList" pagenum=<{$pageNum}> >
+  <p> &nbsp;<{$productsNum}> smartphones</p>
+                <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+                   
+                   
                     <meta itemprop="mainContentOfPage" content="true">
                      <{section name=n loop=$products}>
                     <li >
@@ -10,10 +12,13 @@
                               </a>
                           </div>
                           <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
-                            
-                            <span class="product-name">
-                              <{$products[n].product_name}>
+                            <span class="product-brand">
+                              <{$products[n].product_manufacturer}>
                             </span>
+                            <br>
+                            <div class="product-name">
+                              <{$products[n].product_name}>
+                            </div>
                             
                           </a>
                           <div class="product-price">

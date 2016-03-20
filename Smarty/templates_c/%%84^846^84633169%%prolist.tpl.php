@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-15 08:23:04
+<?php /* Smarty version 2.6.19, created on 2016-03-20 13:23:54
          compiled from prolist.tpl */ ?>
-        <p> &nbsp;<?php echo $this->_tpl_vars['productsNum']; ?>
- results</p>
-        <ul class="products" itemscope="" itemtype="http://schema.org/ItemList" pagenum=<?php echo $this->_tpl_vars['pageNum']; ?>
- >
+  <p> &nbsp;<?php echo $this->_tpl_vars['productsNum']; ?>
+ smartphones</p>
+                <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+                   
+                   
                     <meta itemprop="mainContentOfPage" content="true">
                      <?php unset($this->_sections['n']);
 $this->_sections['n']['name'] = 'n';
@@ -41,11 +42,15 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                           <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
 &id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 ">
-                            
-                            <span class="product-name">
-                              <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
+                            <span class="product-brand">
+                              <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_manufacturer']; ?>
 
                             </span>
+                            <br>
+                            <div class="product-name">
+                              <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
+
+                            </div>
                             
                           </a>
                           <div class="product-price">
