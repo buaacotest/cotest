@@ -131,10 +131,11 @@
                               </div>
                               <div class="score"><{$products[n].score}></div>
                             </div>
+                            <!---
                             <div class="product-compare-button">
                               <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                             </div>
-
+                           -------->
                         </div>
 
                       </li>
