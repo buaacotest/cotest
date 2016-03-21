@@ -5,6 +5,7 @@
  * Date: 2016/1/19
  * Time: 14:32
  */
+session_start();
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
@@ -26,17 +27,6 @@ $json=str_replace("\\","",$json);
 
 //echo $json;
 $labels=json_decode($json,true);
-//print_r($labels);
-
-$labels=json_decode($json,true);
-
-//echo $json;
-$json=str_replace("\\","",$json);
-//echo $json;
-$labels=json_decode($json,true);
-//print_r($labels);
-
-//$labels=json_decode($labels,true);
 
 
 
@@ -87,6 +77,7 @@ $smarty->assign('project',$project_name);
 $smarty->assign('title',$project_name);
 $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
+$smarty->assign('user',$_SESSION['member']);
 if($flag){
     $smarty->display("prolist.tpl");
 }

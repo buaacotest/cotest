@@ -5,6 +5,7 @@
  * Date: 2016/1/28
  * Time: 21:40
  */
+session_start();
 require('includes/init.php');
 require('includes/config.php');
 require('includes/lib_products.php');
@@ -14,6 +15,7 @@ $id=trim($_GET['id']);
 $details=getDetails($id);
 //print_r($details['Pros']);
 //print_r($details['Cons']);
+$smarty->assign('user',$_SESSION['member']);
 $product=array('name'=>$details['name'],'manufacturer'=>$details['manufacturer']);
 $smarty->assign('title',$product['name']);
 $smarty->assign('product',$product);
