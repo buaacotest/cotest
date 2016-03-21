@@ -227,6 +227,7 @@ function getProperty($id,&$res){
             }
            // $string=substr($string, 0, -1);
             $res['Cons']=$cons;
+
             continue;
         }
         $temp='';
