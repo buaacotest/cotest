@@ -68,16 +68,16 @@ if(!empty($labels)){
 }
 //print_r($products);
 
-$page_num=ceil(count($products)/36);
+$page_num=ceil(count($products)/35);
 $productsNum=count($products);
 
 if(empty($products))
 	$productsNum=0;
 else
     $productsNum=count($products);
-$page_num=ceil($productsNum/36);
+$page_num=ceil($productsNum/35);
 
-$products=array_slice($products,($page-1)*36,36);
+$products=array_slice($products,($page-1)*35,35);
 //print_r($products);
 $smarty->assign('labels',$data);
 if($labels)
