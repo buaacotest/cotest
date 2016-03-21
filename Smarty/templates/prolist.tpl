@@ -32,19 +32,49 @@
                             </div>
                             <div class="product-score">
                               <div class="score-list">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star-b"></div>
+                                 <div class="score-list">
+                                        <{if $products[n].score >=4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $products[n].score >=3.5 && $products[n].score < 4.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $products[n].score >=2.5 && $products[n].score < 3.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $products[n].score >=1.5 && $products[n].score < 2.5}>
+                                                        <div class="star"></div>
+                                                        <div class="star"></div>
+
+                                        <{/if}>
+                                        <{if $products[n].score >=0.5 && $products[n].score < 1.5}>
+                                                        <div class="star"></div>
+
+
+                                        <{/if}>
+                                                     
+                                       </div>
 
                               </div>
                               <div class="score"><{$products[n].score}></div>
                             </div>
+                            <!---
                             <div class="product-compare-button">
                               <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                             </div>
-
+                           -------->
                         </div>
 
                       </li>
