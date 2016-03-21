@@ -240,7 +240,13 @@ function getProperty($id,&$res){
             $results[]=$groups[$k];
         }
     }
-
+    foreach($results[1]['id_propertygroup'] as $type){
+        $results[0]['id_propertygroup'][]=$type;
+    }
+    foreach($results[2]['id_propertygroup'] as $type){
+        $results[0]['id_propertygroup'][]=$type;
+    }
+    array_splice($results,1,2);
     return $results;
 }
 /*根据标签筛选商品*/
