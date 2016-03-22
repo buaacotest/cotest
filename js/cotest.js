@@ -11,6 +11,12 @@
           $(this).attr("checked","checked")
         }
       })
+      $(".logout-btn").on("click",function  () {
+        // body...
+        $.get("logout.php",function(){
+            location.reload();
+        });
+      })
      
     })
     
