@@ -122,7 +122,8 @@ function convertTime($time){
 function getTotalScore($id){
     $sql="select format(value,2) from results where id_product=$id and id_evaluation=
           (select id_evaluation from evaluations where name='total test result')";
-    $score=$GLOBALS['db']->getOne($sql);
+    $score=6-$GLOBALS['db']->getOne($sql);
+    $score=number_format($score, 2, '.', '');
     return $score;
 }
 
@@ -143,6 +144,9 @@ function getGradeTree($id){
       where A.id_evaluation=B.id_evaluation and B.value!='na'
       and B.id_product=$id";
     $data=$GLOBALS['db']->getAll($sql);
+    foreach($data as $k=>$v){
+        $data[$k]['value']=number_format(6-$v['value'],2, '.', '');
+    }
     $gradeTree=getTree($data,0);
     return $gradeTree;
 }
