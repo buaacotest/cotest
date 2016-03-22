@@ -15,11 +15,16 @@ $title=getProductsCat($product_group);
 $products=selectProducts($product_group);
 $smarty->assign('products',$products);
 $smarty->assign('page_title',$title);*/
-require('navigation.php');
+
+
 $project_name=trim($_GET['proj']);
 if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
+
+$smarty->assign('title',$project_name);
+$smarty->display('header.tpl');
+
 require('data/'.$project_name.'/filterOptions.php');
 $json=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
@@ -34,6 +39,7 @@ $labels=json_decode($json,true);
 /*分页相关*/
 $flag=0;
 if(empty($_GET['page'])){
+    require('navigation.php');
     $page=1;
 }else{
     $page=trim($_GET['page']);
@@ -59,6 +65,7 @@ if(!empty($labels)){
 }
 //print_r($products);
 
+
 $page_num=ceil(count($products)/35);
 $productsNum=count($products);
 
@@ -78,7 +85,7 @@ $smarty->assign('project',$project_name);
 $smarty->assign('title',$project_name);
 $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
-$smarty->assign('user',$_SESSION['member']);
+
 if($flag){
     $smarty->display("prolist.tpl");
 }

@@ -13,9 +13,11 @@ require('./includes/init.php');
 
 //$smarty->assign('lang',$_LANG);
 require('includes/lib_category.php');
+$smarty->assign('title','Cotest');
+$smarty->display('header.tpl');
+
 require('navigation.php');
 $num=getProductsCount('mobilephones');
-$smarty->assign('user',$_SESSION['member']);
 $smarty->assign('number',$num);
 /*  显示模板  */
 $smarty->display('index.tpl');
