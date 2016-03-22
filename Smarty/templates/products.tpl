@@ -34,12 +34,22 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           
-            <!--
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="../navbar/">Default</a></li>
-              <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-            </ul>-->
+           
+            <ul class="nav navbar-nav navbar-right" style="position:relative">
+             <{if $user}>
+              <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
+
+              </li>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="logout.php">logout</a></li>
+                    <li><a href="#">change password</a></li>
+                
+                </ul>
+              <{else}>
+              <li ><a href="login.php">Sign in</a></li>
+              <li ><a href="register.php">Sign up</a></li>
+              <{/if}>
+            </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
@@ -271,9 +281,12 @@
                           '<span class="count"> ('+option_numbers[j]+') </span>'+
                         '</span>'+
                       '</label>';
-                
                 }
+
             }
+            if(option_type=="range"){
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div>'
+                }
              option_text+="</div></div></div>"
           
 
@@ -311,7 +324,7 @@
             var name=$(all_options[i]).attr("name");
             var type=$(all_options[i]).attr("type");
             var active_options=$(all_options[i]).find(".active");
-            if(active_options.length==0) continue;
+            
             var values=[]
             for(var j=0;j<active_options.length;j++){
                 if(type=="string"||type=="date"||type=="multi")
@@ -321,6 +334,14 @@
                     values.push(eval("("+$(active_options[j]).attr("name")+")"))
                 }
             }
+            if(type=="range"){
+                var from_val=$(all_options[i]).find(".range-from").val();
+                var to_val=$(all_options[i]).find(".range-to").val();
+               // console.log("from_val"+from_val);
+                if(from_val && to_val)
+                    values.push({">=":from_val,"<":to_val});
+            }
+            if(values.length==0 ) continue;
             labels.push({"name":name,"type":type,"value":values});
 
         }
@@ -333,8 +354,8 @@
             totalpage=$(".products").attr("pagenum");
             cpage=1;
             setpage();
-            console.log($(".products").attr("pagenum"));
-            console.log("page="+totalpage);
+           // console.log($(".products").attr("pagenum"));
+            //console.log("page="+totalpage);
 
          
         })

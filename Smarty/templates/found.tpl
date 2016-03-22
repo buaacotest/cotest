@@ -36,16 +36,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">COTEST</a>
+            <a class="navbar-brand" href="index.php">COTEST</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          
+           
+            <ul class="nav navbar-nav navbar-right" style="position:relative">
+             <{if $user}>
+              <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
 
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Login</a></li>
-                <!--
-                <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-                <li><a href="../navbar-fixed-top/">Fixed top</a></li>-->
+              </li>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="logout.php">logout</a></li>
+                    <li><a href="#">change password</a></li>
+                
+                </ul>
+              <{else}>
+              <li ><a href="login.php">Sign in</a></li>
+              <li ><a href="register.php">Sign up</a></li>
+              <{/if}>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
