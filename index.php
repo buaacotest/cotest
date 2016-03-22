@@ -12,11 +12,11 @@ require('./includes/init.php');
 //require('./lang/'.$GLOBALS['_CFG']['lang'].'/common.php');
 
 //$smarty->assign('lang',$_LANG);
-require('includes/lib_category.php');
-$smarty->assign('title','Cotest');
-$smarty->display('header.tpl');
 
-require('navigation.php');
+$smarty->assign('title','Cotest');
+
+
+
 $num=getProductsCount('mobilephones');
 $smarty->assign('number',$num);
 /*  显示模板  */

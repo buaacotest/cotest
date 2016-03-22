@@ -22,8 +22,7 @@ if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
 
-$smarty->assign('title',$project_name);
-$smarty->display('header.tpl');
+
 
 require('data/'.$project_name.'/filterOptions.php');
 $json=trim($_GET['labels']);
@@ -39,7 +38,6 @@ $labels=json_decode($json,true);
 /*分页相关*/
 $flag=0;
 if(empty($_GET['page'])){
-    require('navigation.php');
     $page=1;
 }else{
     $page=trim($_GET['page']);
