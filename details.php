@@ -9,6 +9,7 @@ session_start();
 require('includes/init.php');
 require('includes/config.php');
 require('includes/lib_products.php');
+require('navigation.php');
 $proj=trim($_GET['proj']);
 $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);

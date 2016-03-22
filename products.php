@@ -15,6 +15,7 @@ $title=getProductsCat($product_group);
 $products=selectProducts($product_group);
 $smarty->assign('products',$products);
 $smarty->assign('page_title',$title);*/
+require('navigation.php');
 $project_name=trim($_GET['proj']);
 if($project_name=="")
     $project_name='Mobilephones';

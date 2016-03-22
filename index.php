@@ -13,6 +13,7 @@ require('./includes/init.php');
 
 //$smarty->assign('lang',$_LANG);
 require('includes/lib_category.php');
+require('navigation.php');
 $num=getProductsCount('mobilephones');
 $smarty->assign('user',$_SESSION['member']);
 $smarty->assign('number',$num);
