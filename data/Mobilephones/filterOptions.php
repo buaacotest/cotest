@@ -22,7 +22,7 @@ function getLabels()
            "option":["Android","iOS","BlackBerry","Windows"]},
           {"type":"range","name":"Display diagonal","label":"Display diagonal",
            "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51},{">=":-1,"<=":-1}],
-           "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm","from na to na mm"]},
+           "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm"]},
            {"type":"multi","name":"","label":"SIM card format",
            "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
            "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
