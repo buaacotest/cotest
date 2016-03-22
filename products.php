@@ -76,8 +76,7 @@ $page_num=ceil($productsNum/35);
 $products=array_slice($products,($page-1)*35,35);
 //print_r($products);
 $smarty->assign('labels',$data);
-if($labels)
-$smarty->assign('cur_labels',$labels);
+$smarty->assign('user',$_SESSION['member']);
 $smarty->assign('pageNum',$page_num);
 $smarty->assign('project',$project_name);
 $smarty->assign('title',$project_name);

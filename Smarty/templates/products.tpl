@@ -1,8 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><{$title}></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/cotest.css">
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container main-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php">COTEST</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
 
 
-<!-- Static navbar -->
+            <ul class="nav navbar-nav navbar-right" style="position:relative">
+                <{if $user}>
+                <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
 
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#" class="logout-btn">logout</a></li>
+                    <li><a href="#">change password</a></li>
 
+                </ul>
+                <{else}>
+                <li ><a href="login.php">Sign in</a></li>
+                <li ><a href="register.php">Sign up</a></li>
+                <{/if}>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 <div class="content-container">
     <div class="flip-container">
 
@@ -152,32 +199,6 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
-<!-- lishijie -->
-{*<script type="text/javascript">*}
-    {*$(document).ready(function(){*}
-        {*var pgn=<{$pageNum}>;*}
-            {*if(pgn>2){*}
-                {*if(pgn<=10){*}
-                    {*for(var i=3;i<=pgn;i++){*}
-                    {*//  alert(i);*}
-                    {*//str=<li class="pagebtn" value="2">2</li>*}
-                     {*var str="<li class=\"pagebtn\" value=\""+i+"\">"+i+"</li>";*}
-                    {*$("ul.pagenator").append(str);*}
-                 {*}*}
-                {*}*}
-                {*else{*}
-                    {*for(var i=3;i<=10;i++){*}
-                        {*var str="<li class=\"pagebtn\" value=\""+i+"\">"+i+"</li>";*}
-                         {*$("ul.pagenator").append(str);*}
-                        {*}*}
-                    {*}*}
-                {*}*}
-            {*});*}
-    }
-    }
-{*</script>*}
-
-<!-- lishijie -->
 <script type="text/javascript">
     <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;
@@ -324,74 +345,6 @@
             $("#products-block").html(result);
         })
     }
-    function gotopage(target)
-    {
-        cpage = target;        //把页面计数定位到第几页
-        setpage();
-        reloadpage(target);    //调用显示页面函数显示第几页,这个功能是用在页面内容用ajax载入的情况
-    }
-    function setpage()
-    {
-
-    
-        if(totalpage<=pagesize){        //总页数小于十页
-            for (count=1;count<=totalpage;count++)
-            {  if(count!=cpage)
-            {
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
-            }
-            else{
-                outstr = outstr + "<span class='current' >"+count+"</span>";
-            }
-            }
-        }
-        if(totalpage>pagesize){        //总页数大于十页
-            if(parseInt((cpage-1)/pagesize) == 0)///前10页
-            {
-                for (count=1;count<=pagesize;count++)
-                {
-                    if(count!=cpage)
-                    {
-                        outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
-                    }
-                    else{
-                        outstr = outstr + "<span class='current'>"+count+"</span>";
-                    }
-                }
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
-            }
-            else if(parseInt((cpage-1)/pagesize) == parseInt(totalpage/pagesize))///最后10页
-            {
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
-                for (count=parseInt(totalpage/pagesize)*pagesize+1;count<=totalpage;count++)
-                {    if(count!=cpage)
-                {
-                    outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
-                }else{
-                    outstr = outstr + "<span class='current'>"+count+"</span>";
-                }
-                }
-            }
-            else///中间页数
-            {
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
-                for (count=parseInt((cpage-1)/pagesize)*pagesize+1;count<=parseInt((cpage-1)/pagesize)*pagesize+pagesize;count++)
-                {
-                    if(count!=cpage)
-                    {
-                        outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
-                    }else{
-                        outstr = outstr + "<span class='current'>"+count+"</span>";
-                    }
-                }
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
-            }
-        }
-        document.getElementById("setpage").innerHTML = "<div id='setpage'>" + outstr + "<\/div>";
-        outstr = "";
-        //$("html,body").animate({scrollTop:0,500});
-    }
-    setpage();    //调用分页
 </script>
 <script type="text/javascript">
     $(document).ready(function(){

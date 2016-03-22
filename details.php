@@ -17,6 +17,7 @@ $details=getDetails($id);
 //print_r($details['Pros']);
 //print_r($details['Cons']);
 $product=array('name'=>$details['name'],'manufacturer'=>$details['manufacturer']);
+$smarty->assign('user',$_SESSION['member']);
 $smarty->assign('title',$product['name']);
 $smarty->assign('product',$product);
 $smarty->assign('score',$details['evaluations'][0]['value']);
