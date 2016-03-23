@@ -345,6 +345,74 @@
             $("#products-block").html(result);
         })
     }
+    function gotopage(target)
+    {
+        cpage = target;        //把页面计数定位到第几页
+        setpage();
+        reloadpage(target);    //调用显示页面函数显示第几页,这个功能是用在页面内容用ajax载入的情况
+    }
+    function setpage()
+    {
+
+
+        if(totalpage<=pagesize){        //总页数小于十页
+            for (count=1;count<=totalpage;count++)
+            {  if(count!=cpage)
+            {
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+            }
+            else{
+                outstr = outstr + "<span class='current' >"+count+"</span>";
+            }
+            }
+        }
+        if(totalpage>pagesize){        //总页数大于十页
+            if(parseInt((cpage-1)/pagesize) == 0)///前10页
+            {
+                for (count=1;count<=pagesize;count++)
+                {
+                    if(count!=cpage)
+                    {
+                        outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+                    }
+                    else{
+                        outstr = outstr + "<span class='current'>"+count+"</span>";
+                    }
+                }
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
+            }
+            else if(parseInt((cpage-1)/pagesize) == parseInt(totalpage/pagesize))///最后10页
+            {
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
+                for (count=parseInt(totalpage/pagesize)*pagesize+1;count<=totalpage;count++)
+                {    if(count!=cpage)
+                {
+                    outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+                }else{
+                    outstr = outstr + "<span class='current'>"+count+"</span>";
+                }
+                }
+            }
+            else///中间页数
+            {
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
+                for (count=parseInt((cpage-1)/pagesize)*pagesize+1;count<=parseInt((cpage-1)/pagesize)*pagesize+pagesize;count++)
+                {
+                    if(count!=cpage)
+                    {
+                        outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>";
+                    }else{
+                        outstr = outstr + "<span class='current'>"+count+"</span>";
+                    }
+                }
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
+            }
+        }
+        document.getElementById("setpage").innerHTML = "<div id='setpage'>" + outstr + "<\/div>";
+        outstr = "";
+        //$("html,body").animate({scrollTop:0,500});
+    }
+    setpage();    //调用分页
 </script>
 <script type="text/javascript">
     $(document).ready(function(){

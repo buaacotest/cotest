@@ -103,7 +103,7 @@ function multiSort($arr,$order){
         $score[$key] = $value['score'];
     }
     if($order=='score')
-        array_multisort($score,SORT_NUMERIC,SORT_DESC,$arr);
+        array_multisort($score,SORT_NUMERIC,SORT_ASC,$arr);
     else
         array_multisort($time,SORT_NUMERIC,SORT_DESC,$arr);
     return $arr;
@@ -141,14 +141,16 @@ function getDetails($id){
 function getGradeTree($id){
     $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
        from evaluations as A,results as B
-      where A.id_evaluation=B.id_evaluation and B.value!='na'
-      and B.id_product=$id";
+      where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0
+       and B.id_product=$id";
     $data=$GLOBALS['db']->getAll($sql);
+
     foreach($data as $k=>$v){
         $data[$k]['value']=number_format(6-$v['value'],2, '.', '');
     }
     $gradeTree=getTree($data,0);
     return $gradeTree;
+
 }
 /*构建评分的树结构*/
 function getTree($data, $pId)
@@ -181,10 +183,7 @@ function getProperty($id,&$res){
 
        //echo $sql."\n";
         $value=$GLOBALS['db']->getOne($sql);
-        /*if($value==""){
-           unset($props[$k]);
-           continue;
-        }*/
+
         switch($v['type']){
             case 'String':$v['value']=$value;break;
             case 'Numeric':if(is_numeric($value))
