@@ -134,6 +134,13 @@ function SaveTranslationToAdminDic($oriword,$translationArray,$id=null){
         $deword=$translationArray["De"];
         $chnword=$translationArray["CHN"];
         $engword=$translationArray["Eng"];
+        $sql="SELECT count(*) FROM admin.dictionary where originword='".$oriword."' and CHN = '".$chnword."'";
+        //echo $sql;
+        $results=$GLOBALS['db']->query($sql);
+        $countarray=mysql_fetch_array($results);
+        $count=$countarray[0];
+        if($count!=0)/////如果已经存在一模一样的词条，则直接返回不用插入
+            return true;
         $sql="INSERT INTO `admin`.`dictionary` (`wordid`,`originword`,`De`,`Eng`,`CHN`) VALUES (".$id.",'".$oriword."','".$deword."','".$engword."','".$chnword."')";
         //step2:insert into admin.dictionary table
         $result=$GLOBALS['db']->query($sql);
