@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cotest翻译</title>
+    <link href="trans.css" rel="stylesheet" type="text/css"/>
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            /* For zebra striping */
+            $("table tr:nth-child(odd)").addClass("odd-row");
+            /* For cell text alignment */
+            $("table td:first-child, table th:first-child").addClass("first");
+            /* For removing the last border */
+            $("table td:last-child, table th:last-child").addClass("last");
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $.get("sourcedata.php",function(data,status){
+               if(status=="success"){
+                   data=eval(data);
+                   var dbstr="";
+                  for(var i=0;i<data.length;i++){
+                      dbstr+="<option>"+data[i]+"</option>";
+                  }
+                   $("#database").html(dbstr);
+               }
+            });
+        $(".submit").click(function(){
+            var proj=$("#database  option:selected").text();
+            var opt=$("#project option:selected").text();
+            $.get("sourcedata.php?project="+proj+"&option="+opt,function(data,status){
+                if(status=="success"){
+                    var result = new Array();
+                    result=eval(data);
+                    if(opt=="property"){
+                        removeLines();
+                        for(var i in result){
+                            var str="<tr><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
+                            var idstr="zh"+result[i][0];
+                            var options=new Array();
+                            options= result[i].CHN;
+                            str+="<textarea id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+result[i]["CHN"][0]+"</textarea></td><td> "
+                            str+=result[i]["Eng"]+"</td><td>";
+                            str+=result[i]["De"]+"</td><td>";
+                            str+="<input type='checkbox'></td></tr>"
+                            $(".table").append(str);
+                            var charr=result[i]["id_propertygroup"];
+
+                            for(var j=0;j<charr.length;j++){
+                                var chstr="<tr><td>"+charr[j].id_property+"</td><td  id='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td>";
+                                var chidstr="zh"+charr[j].id_property;
+                                var chopt=charr[j].CHN;
+                                chstr+="<textarea id='"+chidstr+"' onfocus=\"showOption('"+chidstr+"','"+chopt+"');\""+" onblur=\"showAndHide('"+chidstr+"List'"+",'hide');\""+">"+chopt[0]+"</textarea></td><td> "
+                                chstr+=charr[j]["Eng"]+"</td><td>";
+                                chstr+=charr[j]["De"]+"</td><td>";
+                                chstr+="<input type='checkbox'></td></tr>"
+                                //alert(chstr)
+                                $(".table").append(chstr);
+                            }
+                        }
+                    }else if(opt=="evaluation"){
+                        removeLines();
+                        parseTree(result[0],0,0);
+                    }
+                }
+            })
+        })
+        });
+        var colors=["#CCCC33","#CC9933","#CC9966","#CCCC66","#669999","#FF9966"];
+        function parseTree(data,offset,index){
+            var idstr=data.id_evaluation;
+            //alert(idstr)
+            var opts=data.CHN;
+            var str="";
+            str+="<tr><td>"+idstr+"</td>";
+
+            str+="<td id='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+data.name+"</td><td>";
+            str+="<textarea id='"+idstr+"' onfocus=\"showOption('"+idstr+"','"+opts+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+opts[0]+"</textarea></td><td> "
+            str+=data["Eng"]+"</td><td>";
+            str+=data["De"]+"</td><td>";
+            str+="<input type='checkbox'></td></tr>"
+            alert(str)
+            $(".table").append(str);
+            if(!(data.id_parent instanceof Array)){
+                return;
+            }else{
+                index++;
+                offset+=30;
+                var arr=data.id_parent;
+                $(arr).each(function () {
+                    alert(this.name)
+                    parseTree(this,offset,index);
+                })
+
+            }
+        }
+        function removeLines() {
+            var table = $(".table");
+            $(table).html("<tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>");
+        }
+        function showAndHide(obj,types){
+            var Layer=$("#"+obj);
+            switch(types){
+                case "show":
+                    Layer.show();
+                    break;
+                case "hide":
+                    Layer.hide();
+                    break;
+            }
+        }
+        function getValue(obj,str){
+            var input=window.document.getElementById(obj);
+            input.value=str;
+        }
+        function showOption(obj,options){
+            var opt=options.split(",");
+            var divstr=" <div class='Menu' id='"+obj+"List'>";
+            divstr+="<div class='Menu2'>";
+            divstr+="<ul>";
+            //alert(divstr)
+            $(opt).each(function(index,item){
+                divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+item+"');showAndHide('"+obj+"List'"+",'hide');\">"+item+"</li>";
+            })
+           // alert(divstr)
+           divstr+="</ul></div></div>";
+            var element="#"+obj;
+            $(element).after(divstr);
+            var width=$(element).width();
+            $(element+"List").width(width);
+            var lis=$(element+"List").find("li");
+            var height=0;
+            $(lis).each(function () {
+                var h=$(this).height();
+                height+=h;
+            });
+            //alert(height)
+            $(element+"List").height(height);
+            showAndHide(obj+"List",'show');
+        }
+    </script>
+
+</head>
+<body>
+<div style="position: relative;left: 10px;top:10px;">
+    <b>选择需要翻译的数据库</b>
+    <select id="database">
+    </select>
+    &nbsp;&nbsp;&nbsp;
+    <b>选择需要翻译的内容</b>
+    <select id="project">
+        <option>property</option>
+        <option>evaluation</option>
+    </select>
+    &nbsp;
+    <button class="submit" >确认</button>
+</div>
+
+<div id="content">
+
+    <table cellspacing="0" class="table">
+        <tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>
+
+
+    </table>
+</div>
+</body>
+</html>
