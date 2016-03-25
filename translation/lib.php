@@ -76,8 +76,8 @@ function getProperty(){
                 //$de[]=$value['De'];
                 //$eng[]=$value['Eng'];
             }
-        if(empty($chn))
-            $chn[]="null";
+//        if(empty($chn))
+//            $chn[]="null";
         $groups[$k]['CHN']=$chn;
         $groups[$k]['Eng']="null";
         $groups[$k]['De']="null";
@@ -93,8 +93,8 @@ function getProperty(){
                     //$de[]=$value['De'];
                     //$eng[]=$value['Eng'];
                 }
-            if(empty($chn))
-                $chn[]="null";
+//            if(empty($chn))
+//                $chn[]="null";
             $p['CHN']=$chn;
             $p['Eng']="null";
             $p['De']="null";
@@ -134,8 +134,8 @@ function getTree($data, $pId)
                 //$de[]=$value['De'];
                 //$eng[]=$value['Eng'];
         }
-        if(empty($chn))
-            $chn[]="null";
+//        if(empty($chn))
+//            $chn[]="null";
         $v['CHN']=$chn;
         $v['Eng']="null";
         $v['De']="null";
