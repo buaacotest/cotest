@@ -1,32 +1,26 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-22 06:24:21
+<?php /* Smarty version 2.6.19, created on 2016-03-25 09:13:21
          compiled from index.tpl */ ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-   <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
 
-    <title>Static Top Navbar Example for Bootstrap</title>
+  <title><?php echo $this->_tpl_vars['title']; ?>
+</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/cotest.css">
-    <script src="js/bootstrap.min.js"></script>
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/cotest.css">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/cotest.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container main-container">
         <div class="navbar-header">
@@ -39,68 +33,44 @@
             <a class="navbar-brand" href="index.php">COTEST</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          
-           
+
+
             <ul class="nav navbar-nav navbar-right" style="position:relative">
-             <?php if ($this->_tpl_vars['user']): ?>
-              <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
+                <?php if ($this->_tpl_vars['user']): ?>
+                <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
 </a>
 
-              </li>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="logout.php">logout</a></li>
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#" class="logout-btn">logout</a></li>
                     <li><a href="#">change password</a></li>
-                
+
                 </ul>
-              <?php else: ?>
-              <li ><a href="login.php">Sign in</a></li>
-              <li ><a href="register.php">Sign up</a></li>
-              <?php endif; ?>
+                <?php else: ?>
+                <li ><a href="login.php">Sign in</a></li>
+                <li ><a href="register.php">Sign up</a></li>
+                <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-    <!-- Static navbar -->
-    <!--
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container main-container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">COTEST</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        
-          
-          <ul class="nav navbar-nav navbar-right">
-          <li><a href="../navbar/">About us</a></li>
-          <li><a href="../navbar/">English</a></li>
-          <li class="active"><a href="../navbar/">Chinese</a></li>
-            <li><a href="../navbar/">Login</a></li>
-           
-          </ul>
-        </div>
-      </div>
-    </nav>
-    -->
     <div class="index-header container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
-         Consumer testing community (COTEST) buys samples anonymously in China and tasks a member of International Consumer Research & Testing (ICRT), with Comparative & Objective Testing in Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
+         Our consumer testing community (COTEST) buys samples anonymously in China and tasks a member of
+International Consumer Research & Testing (ICRT), with Comparative & Objective Testing in
+
 
         </div>
+        <!--
         <div class="col-md-12  text-center">
             <a href="login.php" class="brand-sign-in-btn  brand-btn"><button>Sign in</button></a>
             <a href="register.php " class=" brand-sign-up-btn brand-btn"><button>Sign up</button></a>
         </div>
-
+        -->
         </div>
 
     </div>
