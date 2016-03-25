@@ -65,11 +65,11 @@ function getProperty(){
     $props=$GLOBALS['db']->getAll($sql);
     foreach($groups as $k=>$g){
         $temp='';
-        $groups[$k]['CHN']=array("测试1");
+        $groups[$k]['CHN']=array();
         $groups[$k]['Eng']='null';
         $groups[$k]['De']='null';
         foreach($props as $p){
-            $p['CHN']=array("字典结果1字典结果1字典结果1字典结果1字典结果1v字典结果1v字典结果1","字典结果2","在线翻译1");
+            $p['CHN']=array();
             $p['Eng']="null";
             $p['De']="null";
             if($p['id_propertygroup']==$g['id_propertygroup']){
@@ -97,7 +97,7 @@ function getTree($data, $pId)
     $tree = '';
     foreach($data as $v)
     {
-        $v['CHN']=array("字典结果1","字典结果2","在线翻译1");
+        $v['CHN']=array();
         $v['Eng']="null";
         $v['De']="null";
         if($v['id_parent'] == $pId)

@@ -17,6 +17,7 @@
     </script>
     <script>
         $(document).ready(function(){
+            $.ajaxSetup({async: false});
             $.get("sourcedata.php",function(data,status){
                if(status=="success"){
                    data=eval(data);
@@ -30,6 +31,7 @@
         $(".submit").click(function(){
             var proj=$("#database  option:selected").text();
             var opt=$("#project option:selected").text();
+
             $.get("sourcedata.php?project="+proj+"&option="+opt,function(data,status){
                 if(status=="success"){
                     var result = new Array();
@@ -39,20 +41,30 @@
                         for(var i in result){
                             var str="<tr><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
                             var idstr="zh"+result[i][0];
+                            var word=result[i][1];
                             var options=new Array();
                             options= result[i].CHN;
-                            str+="<textarea id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+result[i]["CHN"][0]+"</textarea></td><td> "
+                            if(options.length==0){
+                                str+="<textarea  id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+autoTrans(word)+"</textarea></td><td>";
+                            }else
+                                str+="<textarea  id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+result[i]["CHN"][0]+"</textarea></td><td> "
+
                             str+=result[i]["Eng"]+"</td><td>";
                             str+=result[i]["De"]+"</td><td>";
                             str+="<input type='checkbox'></td></tr>"
+                            //alert(str)
                             $(".table").append(str);
                             var charr=result[i]["id_propertygroup"];
 
                             for(var j=0;j<charr.length;j++){
-                                var chstr="<tr><td>"+charr[j].id_property+"</td><td  id='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td>";
+                                var chstr="<tr><td>"+charr[j].id_property+"</td><td  id='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td >";
                                 var chidstr="zh"+charr[j].id_property;
+                                var chword=charr[j].name;
                                 var chopt=charr[j].CHN;
-                                chstr+="<textarea id='"+chidstr+"' onfocus=\"showOption('"+chidstr+"','"+chopt+"');\""+" onblur=\"showAndHide('"+chidstr+"List'"+",'hide');\""+">"+chopt[0]+"</textarea></td><td> "
+                                if(chopt.length==0){
+                                    chstr+="<textarea id='"+chidstr+"' onfocus=\"showOption('"+chidstr+"','"+chopt+"','"+chword+"');\""+" onblur=\"showAndHide('"+chidstr+"List'"+",'hide');\""+">"+autoTrans(chword)+"</textarea></td><td>";
+                                }else
+                                     chstr+="<textarea id='"+chidstr+"' onfocus=\"showOption('"+chidstr+"','"+chopt+"','"+chword+"');\""+" onblur=\"showAndHide('"+chidstr+"List'"+",'hide');\""+">"+chopt[0]+"</textarea></td><td> "
                                 chstr+=charr[j]["Eng"]+"</td><td>";
                                 chstr+=charr[j]["De"]+"</td><td>";
                                 chstr+="<input type='checkbox'></td></tr>"
@@ -60,28 +72,33 @@
                                 $(".table").append(chstr);
                             }
                         }
+                        $("p").text("翻译完成！");
                     }else if(opt=="evaluation"){
                         removeLines();
                         parseTree(result[0],0,0);
+                        $("p").text("翻译完成！");
                     }
                 }
             })
         })
         });
-        var colors=["#CCCC33","#CC9933","#CC9966","#CCCC66","#669999","#FF9966"];
+        var colors=["#336666","#996633","#CCCC33","#990033","#333366","#66CC66","#FF9966"];
         function parseTree(data,offset,index){
             var idstr=data.id_evaluation;
             //alert(idstr)
             var opts=data.CHN;
             var str="";
+            var word=data.name;
             str+="<tr><td>"+idstr+"</td>";
 
-            str+="<td id='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+data.name+"</td><td>";
-            str+="<textarea id='"+idstr+"' onfocus=\"showOption('"+idstr+"','"+opts+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+opts[0]+"</textarea></td><td> "
+            str+="<td id='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+word+"</td><td>";
+            if(opts.length==0){
+                str+="<textarea  id='"+idstr+"' onfocus=\"showOption('"+idstr+"','"+opts+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+autoTrans(word)+"</textarea></td><td>";
+            }else
+                str+="<textarea id='"+idstr+"' onfocus=\"showOption('"+idstr+"','"+opts+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+opts[0]+"</textarea></td><td> "
             str+=data["Eng"]+"</td><td>";
             str+=data["De"]+"</td><td>";
             str+="<input type='checkbox'></td></tr>"
-            alert(str)
             $(".table").append(str);
             if(!(data.id_parent instanceof Array)){
                 return;
@@ -90,7 +107,6 @@
                 offset+=30;
                 var arr=data.id_parent;
                 $(arr).each(function () {
-                    alert(this.name)
                     parseTree(this,offset,index);
                 })
 
@@ -115,7 +131,7 @@
             var input=window.document.getElementById(obj);
             input.value=str;
         }
-        function showOption(obj,options){
+        function showOption(obj,options,word){
             var opt=options.split(",");
             var divstr=" <div class='Menu' id='"+obj+"List'>";
             divstr+="<div class='Menu2'>";
@@ -124,6 +140,8 @@
             $(opt).each(function(index,item){
                 divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+item+"');showAndHide('"+obj+"List'"+",'hide');\">"+item+"</li>";
             })
+            divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+autoTrans(word)+"');showAndHide('"+obj+"List'"+",'hide');\">"+autoTrans(word)+"</li>";
+
            // alert(divstr)
            divstr+="</ul></div></div>";
             var element="#"+obj;
@@ -131,20 +149,25 @@
             var width=$(element).width();
             $(element+"List").width(width);
             var lis=$(element+"List").find("li");
-            var height=0;
-            $(lis).each(function () {
-                var h=$(this).height();
-                height+=h;
-            });
-            //alert(height)
-            $(element+"List").height(height);
+          
             showAndHide(obj+"List",'show');
+        }
+        function autoTrans(word){
+            var temp="";
+            $.get("autoTrans.php?q="+word,function(ret,stat){
+                if(stat=="success")
+                    temp=ret;
+                else
+                    temp="翻译失败";
+            });
+            console.log(temp)
+            return temp;
         }
     </script>
 
 </head>
 <body>
-<div style="position: relative;left: 10px;top:10px;">
+<div style="position: relative;left: 10px;top:10px;width: 100%">
     <b>选择需要翻译的数据库</b>
     <select id="database">
     </select>
@@ -155,15 +178,13 @@
         <option>evaluation</option>
     </select>
     &nbsp;
-    <button class="submit" >确认</button>
+    <button class="submit" onfocus=" $('p').text('系统自动翻译中，请稍候...');">确认</button><p></p>
 </div>
 
 <div id="content">
 
     <table cellspacing="0" class="table">
         <tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>
-
-
     </table>
 </div>
 </body>
