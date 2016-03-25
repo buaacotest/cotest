@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-25 12:25:30
+<?php /* Smarty version 2.6.19, created on 2016-03-25 14:23:51
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -269,7 +269,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                           <?php echo $this->_tpl_vars['product']['name']; ?>
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 ">
                                        Weighting
                                     </div>
                                     <div class="col-md-2">
@@ -288,10 +288,14 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                       <?php echo $this->_tpl_vars['evals']['name']; ?>
 
                                 </div>
-                                <div class="col-md-2">
-                                   100 %
+                                <div class="col-md-2 ">
+                                    <div class="proper-weight">
+                                        100 %
+                                    </div>
+                                   
                                 </div>
                                 <div class="col-md-2">
+
                                     <?php echo $this->_tpl_vars['evals']['value']; ?>
 
                                 </div>
@@ -363,8 +367,12 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                 <div class="proper-title" toggle="1">
                                     <div class="col-md-6"><label><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['name']; ?>
 </label></div>
-                                    <div class="col-md-2"><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['weight']; ?>
- %</div>
+                                    <div class="col-md-2 proper-weight-panel">
+                                        <div class="proper-weight">
+                                        <?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['weight']; ?>
+ %
+                                        </div>
+                                    </div>
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value']; ?>
 </div>
                                     <div class="col-md-2">
@@ -414,8 +422,12 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                  <div class="row proper-item">
                                      <div class="col-md-6"><label class="proper-item-name"><?php echo $this->_tpl_vars['foo']['name']; ?>
 </label></div>
-                                    <div class="col-md-2"><?php echo $this->_tpl_vars['foo']['weight']; ?>
- %</div>
+                                    <div class="col-md-2 ">
+                                            <div class="proper-weight">
+                                            <?php echo $this->_tpl_vars['foo']['weight']; ?>
+ %
+                                            </div>
+                                    </div>
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['foo']['value']; ?>
 </div>
                                     <div class="col-md-2">
@@ -526,9 +538,17 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
                         <div class="row proper-item">
                             <div class="col-md-6"><label class="proper-item-name"><?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['name']; ?>
 </label></div>
-                            <div class="col-md-6"><?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value']; ?>
+                            <div class="col-md-6">
+                            <?php if ($this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value'] == 'Yes'): ?>
+                            <img class="proper-signal"src="img/circle.png">
+                            <?php elseif ($this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value'] == 'No'): ?>
+                            <img class="proper-signal"src="img/cross.png">
+                            <?php else: ?>
+                            <?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value']; ?>
  <?php echo $this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['unit']; ?>
-</div>
+
+                            <?php endif; ?>
+                            </div>
 
                         </div>
                         <?php endfor; endif; ?>

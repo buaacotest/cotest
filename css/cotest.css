@@ -763,6 +763,17 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	font-size: 14px;
 	color: #555;
 }
+.proper-signal{
+	width: 20px;
+}
+.proper-weight-panel{
+
+}
+.proper-weight{
+	width: 70px;
+	text-align: right;
+	display: block;
+}
 .pro-info-item{
 	margin: 10px 0px;
 }

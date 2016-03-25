@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-25 12:14:00
+<?php /* Smarty version 2.6.19, created on 2016-03-25 14:30:04
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,8 +105,9 @@
                 </div>
             </div>
             <div id="products-block">
-                <p> &nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
- </b>smartphones</p>
+                <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
+  </b>smartphones &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
+ pages</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    

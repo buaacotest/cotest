@@ -1,4 +1,4 @@
-  <p> &nbsp;<{$productsNum}> smartphones</p>
+<p>&nbsp;<b><{$productsNum}>  </b>smartphones &nbsp;&nbsp;1 / <{$pageNum}> pages</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
