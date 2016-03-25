@@ -1,7 +1,8 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-25 12:02:17
+<?php /* Smarty version 2.6.19, created on 2016-03-25 14:30:06
          compiled from prolist.tpl */ ?>
-  <p> &nbsp;<?php echo $this->_tpl_vars['productsNum']; ?>
- smartphones</p>
+<p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
+  </b>smartphones &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
+ pages</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
