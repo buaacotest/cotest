@@ -1,4 +1,4 @@
-  <p> &nbsp;<{$productsNum}> smartphones</p>
+<p>&nbsp;<b><{$productsNum}>  </b>smartphones &nbsp;&nbsp;1 / <{$pageNum}> pages</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -31,7 +31,7 @@
                               Tested date: <{$products[n].product_tested_date}>
                             </div>
                             <div class="product-score">
-                              <div class="score-list">
+                              
                                  <div class="score-list">
                                         <{if $products[n].score >=4.5}>
                                                         <div class="star"></div>
@@ -67,7 +67,6 @@
                                                      
                                        </div>
 
-                              </div>
                               <div class="score"><{$products[n].score}></div>
                             </div>
                             <!---

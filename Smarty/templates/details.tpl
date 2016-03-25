@@ -180,20 +180,24 @@
                                     <div class="pro-info-pros">PROS</div>
 
                                 </div>
-                                <div class="col-md-12">
+                                
                                 <{section name=n loop=$Pros}>
-                                    <div class="pro-info-pros-text"><{$Pros[n]}></div>
+                                    <div class="col-md-12">
+                                        <div class="pro-info-sign">+</div>
+                                        <div class="pro-info-pros-text"><{$Pros[n]}></div>
+                                    </div>
                                 <{/section}>
-                                </div>
+                                
                                 <div class="col-md-12">
                                     <div class="pro-info-cons">CONS</div>
 
                                 </div>
-                                <div class="col-md-12">
-                                 <{section name=n loop=$Cons}>
-                                    <div class="pro-info-cons-text"><{$Cons[n]}></div>
+                                <{section name=n loop=$Cons}>
+                                    <div class="col-md-12">
+                                        <div class="pro-info-sign">-</div>
+                                        <div class="pro-info-pros-text"><{$Cons[n]}></div>
+                                    </div>
                                 <{/section}>
-                                </div>
                             </div>
                           
                        
@@ -209,7 +213,7 @@
                                     <div class="col-md-6">
                                           <{$product.name}>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 ">
                                        Weighting
                                     </div>
                                     <div class="col-md-2">
@@ -227,10 +231,14 @@
                                 <div class="col-md-6">
                                       <{$evals.name}>
                                 </div>
-                                <div class="col-md-2">
-                                   100 %
+                                <div class="col-md-2 ">
+                                    <div class="proper-weight">
+                                        100 %
+                                    </div>
+                                   
                                 </div>
                                 <div class="col-md-2">
+
                                     <{$evals.value}>
                                 </div>
                                 <div class="col-md-2">
@@ -277,7 +285,11 @@
                             <div class="row">
                                 <div class="proper-title" toggle="1">
                                     <div class="col-md-6"><label><{$evals.id_parent[n].name}></label></div>
-                                    <div class="col-md-2"><{$evals.id_parent[n].weight}> %</div>
+                                    <div class="col-md-2 proper-weight-panel">
+                                        <div class="proper-weight">
+                                        <{$evals.id_parent[n].weight}> %
+                                        </div>
+                                    </div>
                                     <div class="col-md-2"><{$evals.id_parent[n].value}></div>
                                     <div class="col-md-2">
                                      
@@ -323,7 +335,11 @@
                                  <{ if ($foo.name !='') }>
                                  <div class="row proper-item">
                                      <div class="col-md-6"><label class="proper-item-name"><{$foo.name}></label></div>
-                                    <div class="col-md-2"><{$foo.weight}> %</div>
+                                    <div class="col-md-2 ">
+                                            <div class="proper-weight">
+                                            <{$foo.weight}> %
+                                            </div>
+                                    </div>
                                     <div class="col-md-2"><{$foo.value}></div>
                                     <div class="col-md-2">
                                         <div class="score-list">
@@ -385,7 +401,15 @@
                         <{section name=m loop=$props[n].id_propertygroup}>
                         <div class="row proper-item">
                             <div class="col-md-6"><label class="proper-item-name"><{$props[n].id_propertygroup[m].name}></label></div>
-                            <div class="col-md-6"><{$props[n].id_propertygroup[m].value}> <{$props[n].id_propertygroup[m].unit}></div>
+                            <div class="col-md-6">
+                            <{if $props[n].id_propertygroup[m].value eq 'Yes'}>
+                            <img class="proper-signal"src="img/circle.png">
+                            <{elseif $props[n].id_propertygroup[m].value eq 'No'}>
+                            <img class="proper-signal"src="img/cross.png">
+                            <{else}>
+                            <{$props[n].id_propertygroup[m].value}> <{$props[n].id_propertygroup[m].unit}>
+                            <{/if}>
+                            </div>
 
                         </div>
                         <{/section}>
