@@ -65,11 +65,37 @@ function getProperty(){
     $props=$GLOBALS['db']->getAll($sql);
     foreach($groups as $k=>$g){
         $temp='';
-        $groups[$k]['CHN']=array();
-        $groups[$k]['Eng']='null';
-        $groups[$k]['De']='null';
+        $groupname=$g['name'];
+        $gtranslation=GetTransLation($groupname);
+        $chn=array();
+        //$de=array();
+        //$eng=array();
+        if(!empty($gtranslation))
+            foreach($gtranslation as $value) {
+                $chn[] = $value['CHN'];
+                //$de[]=$value['De'];
+                //$eng[]=$value['Eng'];
+            }
+//        if(empty($chn))
+//            $chn[]="null";
+        $groups[$k]['CHN']=$chn;
+        $groups[$k]['Eng']="null";
+        $groups[$k]['De']="null";
         foreach($props as $p){
-            $p['CHN']=array();
+            $propname=$p['name'];
+            $ptranslation=GetTransLation($propname);
+            $chn=array();
+            //$de=array();
+            //$eng=array();
+            if(!empty($ptranslation))
+                foreach($ptranslation as $value) {
+                    $chn[] = $value['CHN'];
+                    //$de[]=$value['De'];
+                    //$eng[]=$value['Eng'];
+                }
+//            if(empty($chn))
+//                $chn[]="null";
+            $p['CHN']=$chn;
             $p['Eng']="null";
             $p['De']="null";
             if($p['id_propertygroup']==$g['id_propertygroup']){
@@ -97,7 +123,20 @@ function getTree($data, $pId)
     $tree = '';
     foreach($data as $v)
     {
-        $v['CHN']=array();
+        $name=$v['name'];
+        $evalTranslation=GetTransLation($name);
+        $chn=array();
+        //$de=array();
+        //$eng=array();
+        if(!empty($evalTranslation))
+            foreach($evalTranslation as $value) {
+                $chn[] = $value['CHN'];
+                //$de[]=$value['De'];
+                //$eng[]=$value['Eng'];
+            }
+//        if(empty($chn))
+//            $chn[]="null";
+        $v['CHN']=$chn;
         $v['Eng']="null";
         $v['De']="null";
         if($v['id_parent'] == $pId)
@@ -107,4 +146,196 @@ function getTree($data, $pId)
         }
     }
     return $tree;
+}
+
+
+/*调用翻译函数exec，输出中英德文*/
+function getTranslateOnline($text){
+    $arr=array('CHN'=>translateText($text,'auto','zh'),'Eng'=>translateText($text,'auto','en'),'De'=>translateText($text,'auto','de'));
+    return $arr;
+}
+
+
+
+/*得到在Admin词典中某个单词的个数，用来判断是否是多义词以及是否已经存在于词典*/
+function getCountInAdminDic($oriWord){
+    $sql="SELECT count(*) FROM admin.dictionary where admin.dictionary.originword= '".$oriWord."'";
+    $count=0;
+    $results=$GLOBALS['db']->query($sql);
+    if($results)
+    {
+        $countarray=mysql_fetch_array($results);
+        $count=$countarray[0];
+    }else
+    {
+        mysql_error();
+        $count=0;
+    }
+    return $count;
+}
+/*得到在自身数据库中的count*/
+function getCountInSelfDic($oriword){
+    $nowdb=$GLOBALS['db']->getNowDB();
+    //echo $nowdb;
+    $count=0;
+    $sql="SELECT count(*) FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
+    $results=$GLOBALS['db']->query($sql);
+    if($results)
+    {
+        $countarray=mysql_fetch_array($results);
+        $count=$countarray[0];
+    }else
+    {
+        mysql_error();
+        $count=0;
+    }
+    return $count;
+}
+/*产生一个用于存储在总词典中的ID*/
+function GenAdminDicID(){
+    $sql="SELECT count(*) FROM admin.dictionary";
+    $results=$GLOBALS['db']->query($sql);
+    $countarray=mysql_fetch_array($results);
+    $count=$countarray[0];
+    return $count+1;
+}
+function QueryInSelfDic($oriword){
+    $count=getCountInSelfDic($oriword);
+    //echo $oriword;
+    if($count==0)
+        return null;
+    else{
+        $nowdb=$GLOBALS['db']->getNowDB();
+        //echo $nowdb;
+        $sql="SELECT * FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
+        //echo $sql;
+        //echo "\n";
+        $results=$GLOBALS['db']->getAll($sql);
+        //print_r($results);
+        return $results;
+    }
+}
+function QueryInAdminDic($oriword){
+    $count=getCountInAdminDic($oriword);
+    if($count==0)
+        return null;
+    else{
+        $sql="SELECT * FROM admin.dictionary where originword='".$oriword."'";
+        // echo $sql;
+        //echo "\n";
+        $results=$GLOBALS['db']->getAll($sql);
+        return $results;
+    }
+}
+
+
+function GetTransLation($oriword){
+    ///step1:query in the self dictionary
+    //echo $oriword;
+    $Translation=QueryInSelfDic($oriword);
+    //print_r($Translation);
+    if($Translation==null){
+        //echo "null";
+        $Translation=QueryInAdminDic($oriword);
+        //step2:query in the admin dictionary
+        if($Translation==null){
+            ///step 3:query online
+//            $Translation=getTranslateOnline($oriword); ////may be time_out
+            return $Translation;
+        }
+        else
+            return $Translation;
+    }
+    else
+        return $Translation;
+}
+
+/*TODO:realize save translation functions*/
+
+function SaveTranslationToAdminDic($oriword,$translationArray,$id=null){
+    if($id==null){
+        //id==null in save admin dic means insert a new translation,default null
+        //step1:generate one id
+        $id=GenAdminDicID();
+        $deword=$translationArray["De"];
+        $chnword=$translationArray["CHN"];
+        $engword=$translationArray["Eng"];
+        $sql="SELECT count(*) FROM admin.dictionary where originword='".$oriword."' and CHN = '".$chnword."'";
+        //echo $sql;
+        $results=$GLOBALS['db']->query($sql);
+        $countarray=mysql_fetch_array($results);
+        $count=$countarray[0];
+        if($count!=0)/////如果已经存在一模一样的词条，则直接返回不用插入
+            return true;
+        $sql="INSERT INTO `admin`.`dictionary` (`wordid`,`originword`,`De`,`Eng`,`CHN`) VALUES (".$id.",'".$oriword."','".$deword."','".$engword."','".$chnword."')";
+        //step2:insert into admin.dictionary table
+        $result=$GLOBALS['db']->query($sql);
+        return $result;
+    }
+    else{/////按初始设计来，大词典中的单词只允许添加单词，不允许修改。所以else应该永远不会调用
+        //id!=null means change the meaning of one word
+        echo "change the admin dic oriword= ".$oriword."and id=".$id;
+        $sql="SELECT count(*) FROM admin.dictionary where wordid=".$id;
+        $results=$GLOBALS['db']->query($sql);
+        $countarray=mysql_fetch_array($results);
+        $count=$countarray[0];
+        ///if count==0,means there is no such id
+        if($count==0)
+            return false;
+        else{
+            $deword=$translationArray["De"];
+            $chnword=$translationArray["CHN"];
+            $engword=$translationArray["Eng"];
+            $sql="UPDATE `admin`.`dictionary` SET `originword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."'where `wordid`=".$id;
+            $result=$GLOBALS['db']->query($sql);
+            return $result;
+        }
+    }
+}
+function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
+    //step1:query in selfdic to see if the id and the flag is conflict
+    $sql="SELECT count(*) FROM sdictionary where wordid=".$id." and `flag`= ".$idflag;
+    $results=$GLOBALS['db']->query($sql);
+    $countarray=mysql_fetch_array($results);
+    $count=$countarray[0];
+    $deword=$translationArray["De"];
+    $chnword=$translationArray["CHN"];
+    $engword=$translationArray["Eng"];
+    if($count!=0){///如果已经有了 ，说明是修改。
+        $sql="UPDATE `sdictionary` SET `oriword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."' where `wordid`= '".$id."' and `flag`= ".$idflag;
+        $result=$GLOBALS['db']->query($sql);
+        return $result;
+        //echo $sql;
+    }
+
+    else{
+        //step2:insert
+
+        $sql="INSERT INTO `sdictionary`(`wordid`,`oriword`,`De`,`Eng`,`CHN`,`flag`)VALUES(".$id.",'".$oriword."','".$deword."','".$engword."','".$chnword."',".$idflag.")";
+        $result=$GLOBALS['db']->query($sql);
+        return $result;
+    }
+
+}
+
+function SetEvaluationSelected($evaluationid){
+    $sql="UPDATE `evaluations` SET selected=1 where id_evaluation=".$evaluationid;
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+function GetEvaluationName($evaluationid){
+    $sql="SELECT name FROM evaluations where id_evaluation=".$evaluationid;
+    //echo $sql;
+    $result=$GLOBALS['db']->getOne($sql);
+    return $result;
+}
+
+
+///**may be not right*//
+function GenSelfDicID(){
+    $sql="SELECT count(*) FROM sdictionary";
+    $results=$GLOBALS['db']->query($sql);
+    $countarray=mysql_fetch_array($results);
+    $count=$countarray[0];
+    return $count+1;
 }
