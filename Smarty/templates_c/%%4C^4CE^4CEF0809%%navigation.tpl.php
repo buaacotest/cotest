@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-22 08:31:54
+<?php /* Smarty version 2.6.19, created on 2016-03-22 08:44:21
          compiled from navigation.tpl */ ?>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container main-container">
@@ -21,7 +21,7 @@
 
               </li>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="logout.php" class="logout-btn">logout</a></li>
+                    <li><a href="#" class="logout-btn">logout</a></li>
                     <li><a href="#">change password</a></li>
                 
                 </ul>

@@ -1,6 +1,5 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-22 06:22:22
+<?php /* Smarty version 2.6.19, created on 2016-03-25 12:14:00
          compiled from products.tpl */ ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +20,7 @@
     <script src="js/bootstrap.min.js"></script>
 
 </head>
-
 <body>
-<!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container main-container">
         <div class="navbar-header">
@@ -36,28 +33,28 @@
             <a class="navbar-brand" href="index.php">COTEST</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          
-           
+
+
             <ul class="nav navbar-nav navbar-right" style="position:relative">
-             <?php if ($this->_tpl_vars['user']): ?>
-              <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
+                <?php if ($this->_tpl_vars['user']): ?>
+                <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
 </a>
 
-              </li>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="logout.php">logout</a></li>
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#" class="logout-btn">logout</a></li>
                     <li><a href="#">change password</a></li>
-                
+
                 </ul>
-              <?php else: ?>
-              <li ><a href="login.php">Sign in</a></li>
-              <li ><a href="register.php">Sign up</a></li>
-              <?php endif; ?>
+                <?php else: ?>
+                <li ><a href="login.php">Sign in</a></li>
+                <li ><a href="register.php">Sign up</a></li>
+                <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
+<div class="tool-tip"></div>
 <div class="content-container">
     <div class="flip-container">
 
@@ -77,8 +74,14 @@
     </div>
     <div class="row" id="#product_panel">
         <div class="sidebar">
+        <!--
           <button class="filter-btn">
             Filter
+          </button>-->
+          <h2 class="filter-title">Filters</h2>
+          
+          <button class="clear-btn">
+              clear all
           </button>
           <div id="filter-all-options">
               
@@ -97,13 +100,13 @@
                     <li ><a class="dropdown-menu-item" name="score"href="#">Highest score</a></li>
                     <li ><a class="dropdown-menu-item" href="#">Price(low to high)</a></li>
                     <li><a  class="dropdown-menu-item" href="#">Price(high to low)</a></li>
-                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently launched</a></li>
+                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently tested</a></li>
                   </ul>
                 </div>
             </div>
             <div id="products-block">
-                <p> &nbsp;<?php echo $this->_tpl_vars['productsNum']; ?>
- smartphones</p>
+                <p> &nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
+ </b>smartphones</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -156,7 +159,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Today's best price:</div>
+                            <div data-test="price-label">Ref.Price:</div>
                                   <div data-test="price-amount">£499.00</div>
                           </div>
                 
@@ -166,7 +169,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
                             </div>
                             <div class="product-score">
-                              <div class="score-list">
+                              
                                  <div class="score-list">
                                         <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] >= 4.5): ?>
                                                         <div class="star"></div>
@@ -202,7 +205,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                                      
                                        </div>
 
-                              </div>
+                              
                               <div class="score"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['score']; ?>
 </div>
                             </div>
@@ -235,37 +238,10 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/cotest.js"></script>
+
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
-<!-- lishijie -->
-{*<script type="text/javascript">*}
-    {*$(document).ready(function(){*}
-        {*var pgn=<?php echo $this->_tpl_vars['pageNum']; ?>
-;*}
-            {*if(pgn>2){*}
-                {*if(pgn<=10){*}
-                    {*for(var i=3;i<=pgn;i++){*}
-                    {*//  alert(i);*}
-                    {*//str=<li class="pagebtn" value="2">2</li>*}
-                     {*var str="<li class=\"pagebtn\" value=\""+i+"\">"+i+"</li>";*}
-                    {*$("ul.pagenator").append(str);*}
-                 {*}*}
-                {*}*}
-                {*else{*}
-                    {*for(var i=3;i<=10;i++){*}
-                        {*var str="<li class=\"pagebtn\" value=\""+i+"\">"+i+"</li>";*}
-                         {*$("ul.pagenator").append(str);*}
-                        {*}*}
-                    {*}*}
-                {*}*}
-            {*});*}
-    }
-    }
-{*</script>*}
-
-<!-- lishijie -->
 <script type="text/javascript">
     <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;
@@ -326,7 +302,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
             }
             if(option_type=="range"){
-                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div>'
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm">confirm</button>'
                 }
              option_text+="</div></div></div>"
           
@@ -334,10 +310,50 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         }
         console.log(option_text)
           $("#filter-all-options").html(option_text);
+              $(".checkbox").on("click",function(){
+                if($(this).hasClass("active")){
+              $(this).removeClass("active")
+              $(this).css("background","none")
+              $(this).attr("checked",null)
+            }else{
+              $(this).addClass("active")
+              $(this).css("background","url(img/check.png)")
+              $(this).attr("checked","checked")
+            }
+            filter();
+            })
+          $(".range-confirm").on("click",function(){
+          
+            filter();
+            })
     }
-    $(".filter-btn").on("click",function(){
+    $(".clear-btn").on("click",function(){
+       var checkboxs=$("#filter-all-options").find(".checkbox");
+       $(checkboxs).attr("class","checkbox");
+       $(checkboxs).attr("checked",null);
+         $(checkboxs).css("background","none");
+    })
+    function getScoreInfo(star){
+        if(star==1) return "Poor";
+        if(star==2) return "Sufficient";
+        if(star==3) return "Average";
+        if(star==4) return "Good";
+        if(star==5) return "Very good";
+    }
+    $(".score-list").on("mousemove",function(e){
+        $(".tool-tip").css("top",e.pageY);
+        $(".tool-tip").css("left",e.pageX);
+        var stars=$(this).find(".star");
+        $(".tool-tip").text(getScoreInfo(stars.length));
+        $(".tool-tip").css("display","block");
+    })
+    $(".score-list").on("mouseleave",function(e){
+        $(".tool-tip").css("display","none");
+    })
+    $(".filter-btn").on("click",function(e){
         filter();
     })
+
     $(".dropdown-menu-item").on("click",function(){
         var sortname=$(this).attr("name");
         if(sortname){
@@ -429,7 +445,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     function setpage()
     {
 
-    
+
         if(totalpage<=pagesize){        //总页数小于十页
             for (count=1;count<=totalpage;count++)
             {  if(count!=cpage)

@@ -180,20 +180,24 @@
                                     <div class="pro-info-pros">PROS</div>
 
                                 </div>
-                                <div class="col-md-12">
+                                
                                 <{section name=n loop=$Pros}>
-                                    <div class="pro-info-pros-text"><{$Pros[n]}></div>
+                                    <div class="col-md-12">
+                                        <div class="pro-info-sign">+</div>
+                                        <div class="pro-info-pros-text"><{$Pros[n]}></div>
+                                    </div>
                                 <{/section}>
-                                </div>
+                                
                                 <div class="col-md-12">
                                     <div class="pro-info-cons">CONS</div>
 
                                 </div>
-                                <div class="col-md-12">
-                                 <{section name=n loop=$Cons}>
-                                    <div class="pro-info-cons-text"><{$Cons[n]}></div>
+                                <{section name=n loop=$Cons}>
+                                    <div class="col-md-12">
+                                        <div class="pro-info-sign">-</div>
+                                        <div class="pro-info-pros-text"><{$Cons[n]}></div>
+                                    </div>
                                 <{/section}>
-                                </div>
                             </div>
                           
                        

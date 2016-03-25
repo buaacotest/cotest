@@ -50,6 +50,7 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+<div class="tool-tip"></div>
 <div class="content-container">
     <div class="flip-container">
 
@@ -69,8 +70,14 @@
     </div>
     <div class="row" id="#product_panel">
         <div class="sidebar">
+        <!--
           <button class="filter-btn">
             Filter
+          </button>-->
+          <h2 class="filter-title">Filters</h2>
+          
+          <button class="clear-btn">
+              clear all
           </button>
           <div id="filter-all-options">
               
@@ -89,12 +96,12 @@
                     <li ><a class="dropdown-menu-item" name="score"href="#">Highest score</a></li>
                     <li ><a class="dropdown-menu-item" href="#">Price(low to high)</a></li>
                     <li><a  class="dropdown-menu-item" href="#">Price(high to low)</a></li>
-                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently launched</a></li>
+                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently tested</a></li>
                   </ul>
                 </div>
             </div>
             <div id="products-block">
-                <p> &nbsp;<{$productsNum}> smartphones</p>
+                <p> &nbsp;<b><{$productsNum}> </b>smartphones</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -118,7 +125,7 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Today's best price:</div>
+                            <div data-test="price-label">Ref.Price:</div>
                                   <div data-test="price-amount">£499.00</div>
                           </div>
                 
@@ -127,7 +134,7 @@
                               Tested date: <{$products[n].product_tested_date}>
                             </div>
                             <div class="product-score">
-                              <div class="score-list">
+                              
                                  <div class="score-list">
                                         <{if $products[n].score >=4.5}>
                                                         <div class="star"></div>
@@ -163,7 +170,7 @@
                                                      
                                        </div>
 
-                              </div>
+                              
                               <div class="score"><{$products[n].score}></div>
                             </div>
                             
@@ -195,7 +202,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/cotest.js"></script>
+
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
@@ -255,7 +262,7 @@
 
             }
             if(option_type=="range"){
-                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div>'
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm">confirm</button>'
                 }
              option_text+="</div></div></div>"
           
@@ -263,10 +270,50 @@
         }
         console.log(option_text)
           $("#filter-all-options").html(option_text);
+              $(".checkbox").on("click",function(){
+                if($(this).hasClass("active")){
+              $(this).removeClass("active")
+              $(this).css("background","none")
+              $(this).attr("checked",null)
+            }else{
+              $(this).addClass("active")
+              $(this).css("background","url(img/check.png)")
+              $(this).attr("checked","checked")
+            }
+            filter();
+            })
+          $(".range-confirm").on("click",function(){
+          
+            filter();
+            })
     }
-    $(".filter-btn").on("click",function(){
+    $(".clear-btn").on("click",function(){
+       var checkboxs=$("#filter-all-options").find(".checkbox");
+       $(checkboxs).attr("class","checkbox");
+       $(checkboxs).attr("checked",null);
+         $(checkboxs).css("background","none");
+    })
+    function getScoreInfo(star){
+        if(star==1) return "Poor";
+        if(star==2) return "Sufficient";
+        if(star==3) return "Average";
+        if(star==4) return "Good";
+        if(star==5) return "Very good";
+    }
+    $(".score-list").on("mousemove",function(e){
+        $(".tool-tip").css("top",e.pageY);
+        $(".tool-tip").css("left",e.pageX);
+        var stars=$(this).find(".star");
+        $(".tool-tip").text(getScoreInfo(stars.length));
+        $(".tool-tip").css("display","block");
+    })
+    $(".score-list").on("mouseleave",function(e){
+        $(".tool-tip").css("display","none");
+    })
+    $(".filter-btn").on("click",function(e){
         filter();
     })
+
     $(".dropdown-menu-item").on("click",function(){
         var sortname=$(this).attr("name");
         if(sortname){

@@ -56,7 +56,7 @@ color: #f7b206;
 }
 .index-header{
 	width: 100%;
-	height: 450px;
+	height: 350px;
 	background: #eee;
 	margin-bottom: 20px;
 }
@@ -238,6 +238,25 @@ color: #f7b206;
 	margin: 8px;
 
 }
+.range-confirm{
+	width: 100%;
+	margin-top: 10px;
+	height: 40px;
+	background: #eee;
+	border: none;
+	color: #333;
+}
+.clear-btn{
+	width: 100%;
+	height: 40px;
+	margin: 10px 0px;
+	background: #eee;
+	color: #333;
+	border: none;
+}
+.filter-title{
+	font-size: 24px;
+}
 .products{
  	list-style: none;
  	float: left;
@@ -276,6 +295,21 @@ color: #f7b206;
 .products .product-thumb{
 	height: 130px;
 	overflow: hidden;
+}
+.tool-tip{
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	z-index: 1000;
+	opacity: 0.5;
+	border-radius: 4px;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
 }
 .star{
 	list-style: none;
@@ -720,12 +754,26 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	margin: 10px 0px;
 }
 .pro-info-cons-text,.pro-info-pros-text{
-	padding: 10px;
-	background: #eee;
+
+
 	float: left;
-	margin: 10px;
+	margin-left: 20px;
+	height: 40px;
+	line-height: 40px;
 	font-size: 14px;
 	color: #555;
+}
+.pro-info-item{
+	margin: 10px 0px;
+}
+.pro-info-sign{
+	float: left;
+	height: 40px;
+	text-align: center;
+	width: 40px;
+	line-height: 40px;
+	background: #eee;
+	font-size: 30px;
 }
 .pro-score-banner{
 	position: absolute;

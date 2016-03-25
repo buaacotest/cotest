@@ -18,20 +18,55 @@
   <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container main-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php">COTEST</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+
+            <ul class="nav navbar-nav navbar-right" style="position:relative">
+                <{if $user}>
+                <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
+
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#" class="logout-btn">logout</a></li>
+                    <li><a href="#">change password</a></li>
+
+                </ul>
+                <{else}>
+                <li ><a href="login.php">Sign in</a></li>
+                <li ><a href="register.php">Sign up</a></li>
+                <{/if}>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
     <div class="index-header container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
-         Consumer testing community (COTEST) buys samples anonymously in China and tasks a member of International Consumer Research & Testing (ICRT), with Comparative & Objective Testing in Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
+         Our consumer testing community (COTEST) buys samples anonymously in China and tasks a member of
+International Consumer Research & Testing (ICRT), with Comparative & Objective Testing in
+
 
         </div>
+        <!--
         <div class="col-md-12  text-center">
             <a href="login.php" class="brand-sign-in-btn  brand-btn"><button>Sign in</button></a>
             <a href="register.php " class=" brand-sign-up-btn brand-btn"><button>Sign up</button></a>
         </div>
-
+        -->
         </div>
 
     </div>
