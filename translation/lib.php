@@ -76,8 +76,8 @@ function getProperty(){
                 //$de[]=$value['De'];
                 //$eng[]=$value['Eng'];
             }
-//        if(empty($chn))
-//            $chn[]="null";
+        if(empty($chn))
+            $chn[]="null";
         $groups[$k]['CHN']=$chn;
         $groups[$k]['Eng']="null";
         $groups[$k]['De']="null";
@@ -93,8 +93,8 @@ function getProperty(){
                     //$de[]=$value['De'];
                     //$eng[]=$value['Eng'];
                 }
-//            if(empty($chn))
-//                $chn[]="null";
+            if(empty($chn))
+                $chn[]="null";
             $p['CHN']=$chn;
             $p['Eng']="null";
             $p['De']="null";
@@ -133,9 +133,9 @@ function getTree($data, $pId)
                 $chn[] = $value['CHN'];
                 //$de[]=$value['De'];
                 //$eng[]=$value['Eng'];
-            }
-//        if(empty($chn))
-//            $chn[]="null";
+        }
+        if(empty($chn))
+            $chn[]="null";
         $v['CHN']=$chn;
         $v['Eng']="null";
         $v['De']="null";
@@ -164,8 +164,8 @@ function getCountInAdminDic($oriWord){
     $results=$GLOBALS['db']->query($sql);
     if($results)
     {
-        $countarray=mysql_fetch_array($results);
-        $count=$countarray[0];
+      $countarray=mysql_fetch_array($results);
+      $count=$countarray[0];
     }else
     {
         mysql_error();
