@@ -170,7 +170,22 @@
             return temp;
         }
         function save(para){
+            if(para.checked){
+                //alert("checked")
+                var $td = $(para).parents('tr').children('td');
+                var id=$td.eq(0).text()
+                var idstr="zh"+id
+                var oriword=$td.eq(1).text()
+                var chn=$("#"+idstr).text()
 
+                //alert(id);
+                console.log(idstr)
+                console.log(oriword)
+                console.log(chn)
+            }
+            else if(!para.checked){
+                alert("not checked")
+            }
         }
     </script>
 
