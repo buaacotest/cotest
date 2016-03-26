@@ -143,10 +143,12 @@
             divstr+="<div class='Menu2'>";
             divstr+="<ul>";
             //alert(divstr)
-            $(opt).each(function(index,item){
-                divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+item+"');showAndHide('"+obj+"List'"+",'hide');\">"+item+"</li>";
+            $.each(opt, function (index, item) {
+                if(item!="")
+                 divstr += "<li onmousedown=\"" + "getValue('" + obj + "','" + item + "');showAndHide('" + obj + "List'" + ",'hide');\">" + item + "</li>";
             })
-            divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+autoTrans(word)+"');showAndHide('"+obj+"List'"+",'hide');\">"+autoTrans(word)+"</li>";
+            var autoword=autoTrans(word);
+            divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+autoword+"');showAndHide('"+obj+"List'"+",'hide');\">"+autoword+"</li>";
 
             // alert(divstr)
             divstr+="</ul></div></div>";
