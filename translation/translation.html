@@ -172,14 +172,13 @@
         function save(para){
             if(para.checked){
                 //alert("checked")
-                var $td = $(para).parents('tr').children('td');
-                var id=$td.eq(0).text()
-                var idstr="zh"+id
-                var oriword=$td.eq(1).text()
-                var chn=$("#"+idstr).text()
+                var tr=$(para).parents('tr')
+                var td = tr.children('td');
+                var id=td.eq(0).text()
+                var oriword=td.eq(1).text()
+                var chn=tr.find('textarea').val();
 
                 //alert(id);
-                console.log(idstr)
                 console.log(oriword)
                 console.log(chn)
             }
