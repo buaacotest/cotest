@@ -176,16 +176,48 @@
                 //alert("checked")
                 var tr=$(para).parents('tr')
                 var td = tr.children('td');
-                var id=td.eq(0).text()
-                var oriword=td.eq(1).text()
+                var _id=td.eq(0).text()
+                var _oriword=td.eq(1).text()
                 var chn=tr.find('textarea').val();
-
+                var _translation=new Array();
+                _translation['CHN']=chn;
+                //_translation['De']="null";暂时不需要
+               // _translation['Eng']="null";
+                var _projname=$("#database  option:selected").text();////所翻译的数据库
+                var _type=$("#project option:selected").text();/////翻译的是evaluation还是property
                 //alert(id);
-                console.log(oriword)
-                console.log(chn)
+                console.log(_oriword)
+                console.log(_translation)
+                $.get("saveitem.php",
+                        {
+                            oriword:_oriword,
+                            id:_id,
+                            projname:_projname,
+                            //translation:_translation,
+                            CHN:chn,
+                            flag:1,////标示是否选择
+                            type:_type
+                        },
+                        function(data){
+                            //_this.parent().html(data);
+                            alert(data);
+                        });
+
             }
             else if(!para.checked){
-                alert("not checked")
+                $.get("saveitem.php",
+                        {
+                            oriword:_oriword,
+                            id:_id,
+                            projname:_projname,
+                            translation:_translation,
+                            flag:0,
+                            type:_type
+                        },
+                        function(data){
+                            //_this.parent().html(data);
+                            alert(data);
+                        });
             }
         }
     </script>
