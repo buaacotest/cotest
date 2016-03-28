@@ -5,8 +5,7 @@
  * Date: 2016/1/22
  * Time: 16:10
  */
-session_start();
-require('./includes/init.php');
+require('includes/init.php');
 $reback = '0';
 $name=trim($_POST['username']);
 $sql = "select * from admin.users where name='".$name."'";
@@ -40,7 +39,6 @@ if(!empty($email)){
 $rst=$GLOBALS['db']->getOneRow($sql);
 if(!empty($rst)){                    /*登录所用,用户已注册且密码账号均正确*/
     $_SESSION['member'] = $rst['name'];
-    $_SESSION['id'] = $rst['id'];
     $reback = '1';
 }else{                              /*登录时用户名或者密码错误*/
     $reback = '2';

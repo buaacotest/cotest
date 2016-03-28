@@ -5,24 +5,27 @@
  * Date: 2016/1/25
  * Time: 15:14
  */
-include_once("includes/init.php");
-header('Content-Type:text/html;charset=utf-8');
-$verify = stripslashes(trim($_GET['verify']));
+require("includes/init.php");
 $nowtime = time();
-//print_r($verify."shijian".$nowtime);
-$sql = "select id,token_exptime from admin.users where status='0' and `token`='$verify'";
-$row = $GLOBALS['db']->getOneRow($sql);
-if(!empty($row)){
-    if($nowtime>$row['token_exptime']){ //30min
-        $msg = '您的激活有效期已过，请登录您的帐号重新发送激活邮件.';
+if(empty($_SESSION['exptime']))
+    die('该链接已失效');
+if($nowtime>$_SESSION['exptime']){
+    $msg = '您的激活有效期已过，请重新注册';
+}else{
+    $username=$_SESSION['user'];
+    $password= $_SESSION['pass'];
+    $email =$_SESSION['mail'];
+    $regtime= $_SESSION['regtime'];
+    $sql="select id from admin.users where name=".$username;
+    $rst = $GLOBALS['db']->getOne($sql);
+    if(!empty($rst)){
+        $msg='您已激活该账户，无需重复激活！';
     }else{
-        $db->query("update admin.users set status=1 where id=".$row['id']);
-       // echo $row['id'];
+        $sql = "insert into admin.users(`name`,`password`,`email`,`regtime`)" ;
+        $sql .= " values ('$username', '$password','$email','$regtime')";
+        $rst = $GLOBALS['db']->query($sql);
         if(mysql_affected_rows()!=1) die(0);
         $msg = '激活成功！';
     }
-}else{
-    $msg = '您已激活该账号';
 }
-
 echo $msg;

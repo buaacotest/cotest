@@ -5,12 +5,11 @@
  * Date: 2016/1/16
  * Time: 16:18
  */
-session_start();
 require('./includes/config.php');
 require('./includes/init.php');
 require('includes/lib_category.php');
 //require('includes/lang.php');
-//require('./lang/'.$GLOBALS['_CFG']['lang'].'/common.php');
+require('./lang/'.$_SESSION['lang'].'/common.php');
 
 //$smarty->assign('lang',$_LANG);
 

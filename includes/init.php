@@ -6,16 +6,13 @@
  * Time: 14:42
  */
 /*初始化数据库类*/
+session_start();
 require( './sql/mysql_cls.php');
 $db=new mysql_cls();
 $db->connect();
 $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 
-require('./includes/lib_common.php');
-/*载入Common语言文件*/
-$_CFG=load_config();
-require('./lang/'.$_CFG['lang'].'/common.php');
-
+$_SESSION['lang']='zh_cn';
 /*屏蔽错误信息*/
 error_reporting(0);
 ?>
