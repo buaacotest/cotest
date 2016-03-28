@@ -31,12 +31,22 @@ else{
       $dicflag=0;
     if($type=="evaluation")
       $dicflag=1;
-    $result1=SaveTranslationToAdminDic($oriword,$transarr);///一旦修改了input，说明是新增的意思
-    $result2=SaveTranslationToSelfDic($oriword,$transarr,$id,$dicflag);
+    if($flag==1){////选择的同时进行保存
+        $result1=SaveTranslationToAdminDic($oriword,$transarr);///一旦修改了input，说明是新增的意思
+        $result2=SaveTranslationToSelfDic($oriword,$transarr,$id,$dicflag);
+
+        if($result1)
+            $outstr1="saved in admindic!";
+        if($result2)
+            $outstr2="saved in selfdic!";
+        echo "success saved!".$outstr1.$outstr2;
+    }
+    if($dicflag==0)
+       $result3=SetPropertySelected($id,$flag);
+    else if($dicflag==1)
+        $result3=SetEvaluationSelected($id,$flag);
+    if($result3)
+        echo "set/cancel selected!";
+
     $db->close();
-    if($result1)
-        $outstr1="saved in admindic!";
-    if($result2)
-        $outstr2="saved in selfdic!";
-    echo "success saved!".$outstr1.$outstr2;
 }
