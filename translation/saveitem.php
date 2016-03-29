@@ -14,7 +14,7 @@ $chn=$_GET['CHN'];///翻译
 $flag=$_GET['flag'];////标示是否选择
 $type=$_GET['type'];/////翻译的是evaluation还是property
 if($chn=="")
-    echo "translation null";
+    echo "翻译内容为空!";
 else{
     //echo $type;
     $db=new mysql_cls();
@@ -39,14 +39,14 @@ else{
             $outstr1="saved in admindic!";
         if($result2)
             $outstr2="saved in selfdic!";
-        echo "success saved!".$outstr1.$outstr2;
+        echo "保存成功!";
     }
     if($dicflag==0)
        $result3=SetPropertySelected($id,$flag);
     else if($dicflag==1)
         $result3=SetEvaluationSelected($id,$flag);
     if($result3)
-        echo "set/cancel selected!";
+        echo "";
 
     $db->close();
 }

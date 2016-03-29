@@ -16,6 +16,7 @@
         });
     </script>
     <script>
+        var all;
         $(document).ready(function(){
             $.ajaxSetup({async: false});
             $.get("sourcedata.php",function(data,status){
@@ -36,6 +37,7 @@
                     if(status=="success"){
                         var result = new Array();
                         result=eval(data);
+                        var table=$(".table");
                         if(opt=="property"){
                             removeLines();
                             for(var i in result){
@@ -55,7 +57,7 @@
                                 //str+="<td><button type='button' class='btntranssave'>save</button></td>"
                                 str+="</tr>"
                                 //alert(str)
-                                $(".table").append(str);
+                                table.append(str);
                                 var charr=result[i]["id_propertygroup"];
 
                                 for(var j=0;j<charr.length;j++){
@@ -73,15 +75,16 @@
                                     //chstr+="<td><button type='button' class='btntranssave'>save</button></td>"
                                     chstr+="</tr>"
                                     //alert(chstr)
-                                    $(".table").append(chstr);
+                                    table.append(chstr);
                                 }
                             }
-                            $("p").text("翻译完成！");
+                            $("span").text("翻译完成！");
                         }else if(opt=="evaluation"){
                             removeLines();
                             parseTree(result[0],0,0);
-                            $("p").text("翻译完成！");
+                            $("span").text("翻译完成！");
                         }
+                        all=table.html();
                     }
                 })
             })
@@ -172,6 +175,7 @@
             return temp;
         }
         function save(para){
+
             if(para.checked){
                 //alert("checked")
                 var tr=$(para).parents('tr')
@@ -186,8 +190,6 @@
                 var _projname=$("#database  option:selected").text();////所翻译的数据库
                 var _type=$("#project option:selected").text();/////翻译的是evaluation还是property
                 //alert(id);
-                console.log(_oriword)
-                console.log(_translation)
                 $.get("saveitem.php",
                         {
                             oriword:_oriword,
@@ -198,13 +200,16 @@
                             flag:1,////标示是否选择
                             type:_type
                         },
-                        function(data){
+                        function(data,status){
                             //_this.parent().html(data);
-                            alert(data);
+                            if(status=="success")
+                                $(para).after("<p>"+data+"</p>");
+
                         });
 
+                $(para).next().fadeOut(2000);
             }
-            else if(!para.checked){
+            else{
                 $.get("saveitem.php",
                         {
                             oriword:_oriword,
@@ -215,11 +220,37 @@
                             flag:0,
                             type:_type
                         },
-                        function(data){
+                        function(data,status){
                             //_this.parent().html(data);
-                            alert(data);
+                            if(status=="success")
+                                $(para).after("<p>"+data+"</p>");
                         });
+                $(para).next().fadeOut(2000);
             }
+        }
+       function filterSelected(){
+           var proj=$("#database  option:selected").text();
+           var str="<tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>";
+           $.get("check.php?project="+proj,function(data,status){
+               if(status=="success"){
+                  var ids=eval(data);
+                   console.log(data)
+                   var tempTr=$(".table").find('tr');
+                   tempTr.each(function(){
+                       var id=$(this).children('td').eq(0).text();
+                       console.log(id)
+                       if($.inArray(id,ids)!=-1&&id){
+                           $(this).find('input').attr("checked",true);
+                           str+="<tr>"+$(this).html()+"</tr>";
+                       }
+                   })
+               }
+           });
+
+           $(".table").html(str);
+       }
+        function resume(){
+            $(".table").html(all);
         }
     </script>
 
@@ -236,7 +267,10 @@
         <option>evaluation</option>
     </select>
     &nbsp;
-    <button class="submit" onfocus=" $('p').text('系统自动翻译中，请稍候...');" onblur=" $('p').text('翻译完成！');">确认</button><p></p>
+    <button class="submit" onfocus=" $('span').text('系统自动翻译中，请稍候...');" onblur=" $('span').text('翻译完成！');">确认</button>&nbsp;<span></span>
+   <ul  style="position:absolute;right: 4%;top:0;list-style-type:none;"><li style="float: left"> <button class="check" onclick="filterSelected()">查看已保存翻译项</button></li>
+       <li style="float: left"><button class="resume" onclick="resume()">显示所有翻译项</button></li>
+       </ul>
 </div>
 
 <div id="content">
