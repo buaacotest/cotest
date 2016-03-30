@@ -227,7 +227,8 @@
                 $(para).next().fadeOut(2000);
             }
         }
-       function filterSelected(){
+        
+       function filterSelected(flag){
            var proj=$("#database  option:selected").text();
            var str="<tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>";
            $.get("check.php?project="+proj,function(data,status){
@@ -240,16 +241,18 @@
                        console.log(id)
                        if($.inArray(id,ids)!=-1&&id){
                            $(this).find('input').attr("checked",true);
+                           if(flag==1)
                            str+="<tr>"+$(this).html()+"</tr>";
                        }
                    })
                }
            });
-
+           if(flag==1)
            $(".table").html(str);
        }
         function resume(){
             $(".table").html(all);
+            filterSelected(0);
         }
     </script>
 
@@ -267,7 +270,7 @@
     </select>
     &nbsp;
     <button class="submit" onfocus=" $('span').text('系统自动翻译中，请稍候...');" onblur=" $('span').text('翻译完成！');">确认</button>&nbsp;<span></span>
-   <ul  style="position:absolute;right: 4%;top:0;list-style-type:none;"><li style="float: left"> <button class="check" onclick="filterSelected()">查看已保存翻译项</button></li>
+   <ul  style="position:absolute;right: 4%;top:0;list-style-type:none;"><li style="float: left"> <button class="check" onclick="filterSelected(1)">查看已保存翻译项</button></li>
        <li style="float: left"><button class="resume" onclick="resume()">显示所有翻译项</button></li>
        </ul>
 </div>
