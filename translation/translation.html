@@ -175,21 +175,20 @@
             return temp;
         }
         function save(para){
-
+            //alert("checked")
+            var tr=$(para).parents('tr')
+            var td = tr.children('td');
+            var _id=td.eq(0).text()
+            var _oriword=td.eq(1).text()
+            var chn=tr.find('textarea').val();
+            var _translation=new Array();
+            _translation['CHN']=chn;
+            //_translation['De']="null";暂时不需要
+            // _translation['Eng']="null";
+            var _projname=$("#database  option:selected").text();////所翻译的数据库
+            var _type=$("#project option:selected").text();/////翻译的是evaluation还是property
+            //alert(id);
             if(para.checked){
-                //alert("checked")
-                var tr=$(para).parents('tr')
-                var td = tr.children('td');
-                var _id=td.eq(0).text()
-                var _oriword=td.eq(1).text()
-                var chn=tr.find('textarea').val();
-                var _translation=new Array();
-                _translation['CHN']=chn;
-                //_translation['De']="null";暂时不需要
-               // _translation['Eng']="null";
-                var _projname=$("#database  option:selected").text();////所翻译的数据库
-                var _type=$("#project option:selected").text();/////翻译的是evaluation还是property
-                //alert(id);
                 $.get("saveitem.php",
                         {
                             oriword:_oriword,
