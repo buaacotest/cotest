@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-30 11:38:58
+<?php /* Smarty version 2.6.19, created on 2016-04-02 13:01:10
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -229,6 +229,16 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         </div>
 
     </div>
+    <div class="compare-panel">
+
+        <div class="compare-item">
+            <div class="compare-context">Huawei G8</div>
+            <div class="compare-close">
+                <img src="img/cross_w.png">
+            </div>
+        </div>
+        <div class="compare-btn">Compare</div>
+    </div>
 </div>
 </div>
 
@@ -330,6 +340,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     }
     $(".clear-btn").on("click",function(){
        var checkboxs=$("#filter-all-options").find(".checkbox");
+       $(".range-from").val("");
+       $(".range-to").val("");
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");

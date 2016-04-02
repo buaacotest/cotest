@@ -192,6 +192,16 @@
         </div>
 
     </div>
+    <div class="compare-panel">
+
+        <div class="compare-item">
+            <div class="compare-context">Huawei G8</div>
+            <div class="compare-close">
+                <img src="img/cross_w.png">
+            </div>
+        </div>
+        <div class="compare-btn">Compare</div>
+    </div>
 </div>
 </div>
 
@@ -289,6 +299,8 @@
     }
     $(".clear-btn").on("click",function(){
        var checkboxs=$("#filter-all-options").find(".checkbox");
+       $(".range-from").val("");
+       $(".range-to").val("");
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");

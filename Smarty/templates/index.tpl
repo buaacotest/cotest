@@ -41,7 +41,7 @@
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
                 <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
                     <li><a href="#">English</a></li>
                     <li><a href="#">Chinese</a></li>
 
@@ -69,8 +69,8 @@
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
-         Our consumer testing community (COTEST) buys samples anonymously in China and assigns the member of International Consumer Research & Testing (ICRT) to the Comparative & Objective Testing in
-Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
+         Our consumer testing community (COTEST) buys samples anonymously in China and assigns the member of<br> International Consumer Research & Testing (ICRT) to the Comparative & Objective Testing in
+<br>Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
 
 
 
@@ -438,5 +438,80 @@ Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint t
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <footer>
+   
+      <div class="row footer-container">
+        <div class="col-md-4 ">
+          <div class="footer-block">
+            <h4 ><b>Score-Rating</b></h4>
+            <ul class="rate-list">
+              <li>
+                <div class="score-list">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="score-text">0.5-1.5</div>
+              </li>
+             <li>
+                <div class="score-list">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="score-text">1.5-2.5</div>
+              </li>
+              <li>
+                <div class="score-list">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="score-text">2.5-3.5</div>
+              </li>
+              <li>
+                <div class="score-list">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="score-text">3.5-4.5</div>
+              </li>
+              <li>
+                <div class="score-list">
+                  <div class="star"></div>
+                </div>
+                <div class="score-text">4.5-5.5</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+        <div class="footer-block">
+          <h4><b>Follow Cotest</b></h4>
+          <div class="icons">
+            <img class="icon" src="img/weixin.png">
+            <img class="icon" src="img/weibo.png">
+          </div>
+          <ul class="join-list">
+            <li>加入我们</li>
+            <li>联系我们</li>
+            <li>服务条款</li>
+          </ul>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="footer-block">
+          <h4><b>Friends</b></h4>
+          </div>
+        </div>
+      </div>
+      <div class="icptext">
+        2016 © COTEST. All Rights Reserved
+      </div>
+    </footer>
    </body>
 </html>

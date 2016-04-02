@@ -73,7 +73,7 @@
            <div class="pro-score-banner-score"><{$score}></div>
            <div class="product-score">
                 <div class="score-list">
-                <{if $score >=4.5}>
+                <{if $score <= 1.5}>
                                 <div class="star"></div>
                                 <div class="star"></div>
                                 <div class="star"></div>
@@ -81,25 +81,25 @@
                                 <div class="star"></div>
 
                 <{/if}>
-                <{if $score >=3.5 && $score < 4.5}>
+                <{if $score > 1.5 && $score <= 2.5}>
                                 <div class="star"></div>
                                 <div class="star"></div>
                                 <div class="star"></div>
                                 <div class="star"></div>
 
                 <{/if}>
-                <{if $score >=2.5 && $score < 3.5}>
+                <{if $score > 2.5 && $score <= 3.5}>
                                 <div class="star"></div>
                                 <div class="star"></div>
                                 <div class="star"></div>
 
                 <{/if}>
-                <{if $score >=1.5 && $score < 2.5}>
+                <{if $score >3.5 && $score <= 4.5}>
                                 <div class="star"></div>
                                 <div class="star"></div>
 
                 <{/if}>
-                <{if $score >=0.5 && $score < 1.5}>
+                <{if $score >4.5 && $score <= 5.5}>
                                 <div class="star"></div>
 
 
@@ -113,7 +113,7 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a >Summary</a></li>
-                <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a >Test results</a></li>
+                <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a >Ratings</a></li>
                 <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a >Features</a></li>
                 <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a >Review</a></li>
                 <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a >How to buy</a></li>
@@ -158,20 +158,20 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="pro-info-score-text">
-                                    <{if $score>=4.5 && $score<=5.5 }>
-                                   Poor
+                                    <{if $score <=1.5 }>
+                                  Very good
                                     <{/if}>
-                                     <{if $score>=3.5 && $score < 4.5 }>
-                                   Sufficient
+                                     <{if $score >1.5 && $score <= 2.5 }>
+                                    Good
                                     <{/if}>
-                                     <{if $score>=2.5 && $score < 3.5 }>
+                                     <{if $score >2.5 && $score <= 3.5 }>
                                    Average
                                     <{/if}>
-                                     <{if $score>=1.5 && $score < 2.5 }>
-                                   Good
+                                     <{if $score >3.5 && $score <= 4.5 }>
+                                   Sufficient
                                     <{/if}>
-                                    <{if $score>=0.5 && $score < 1.5 }>
-                                   Very good
+                                    <{if $score >4.5 && $score <= 5.5 }>
+                                    Poor 
                                     <{/if}>
                                     </div>
                                     <div class="pro-info-score"><{$score}></div>
@@ -217,7 +217,7 @@
                                        Weighting
                                     </div>
                                     <div class="col-md-2">
-                                       Result
+                                       Score
                                     </div>
                                     <div class="col-md-2">
                                        Rating
@@ -243,7 +243,7 @@
                                 </div>
                                 <div class="col-md-2">
                                        <div class="score-list">
-                                        <{if $evals.value >=4.5}>
+                                        <{if $evals.value <= 1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -251,25 +251,25 @@
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.value >=3.5 && $evals.value < 4.5}>
+                                        <{if $evals.value > 1.5 && $evals.value <= 2.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.value >=2.5 && $evals.value < 3.5}>
+                                        <{if $evals.value > 2.5 && $evals.value <= 3.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.value >=1.5 && $evals.value < 2.5}>
+                                        <{if $evals.value > 3.5 && $evals.value <= 4.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.value >=0.5 && $evals.value < 1.5}>
+                                        <{if $evals.value > 4.5 && $evals.value <= 5.5}>
                                                         <div class="star"></div>
 
 
@@ -294,7 +294,7 @@
                                     <div class="col-md-2">
                                      
                                         <div class="score-list">
-                                        <{if $evals.id_parent[n].value >=4.5}>
+                                        <{if $evals.id_parent[n].value <= 1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -302,25 +302,25 @@
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.id_parent[n].value >=3.5 && $evals.id_parent[n].value < 4.5}>
+                                        <{if $evals.id_parent[n].value > 1.5 && $evals.id_parent[n].value <= 2.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.id_parent[n].value >=2.5 && $evals.id_parent[n].value < 3.5}>
+                                        <{if $evals.id_parent[n].value > 2.5 && $evals.id_parent[n].value <= 3.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.id_parent[n].value >=1.5 && $evals.id_parent[n].value < 2.5}>
+                                        <{if $evals.id_parent[n].value > 3.5 && $evals.id_parent[n].value <= 4.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $evals.id_parent[n].value >=0.5 && $evals.id_parent[n].value < 1.5}>
+                                        <{if $evals.id_parent[n].value > 4.5 && $evals.id_parent[n].value <= 5.5}>
                                                         <div class="star"></div>
 
 
@@ -343,7 +343,7 @@
                                     <div class="col-md-2"><{$foo.value}></div>
                                     <div class="col-md-2">
                                         <div class="score-list">
-                                        <{if $foo.value >=4.5}>
+                                        <{if $foo.value < 1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -351,25 +351,25 @@
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $foo.value >=3.5 && $foo.value < 4.5}>
+                                        <{if $foo.value > 1.5 && $foo.value <= 2.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $foo.value >=2.5 && $foo.value < 3.5}>
+                                        <{if $foo.value > 2.5 && $foo.value <=  3.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $foo.value >=1.5 && $foo.value < 2.5}>
+                                        <{if $foo.value > 3.5 && $foo.value <= 4.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $foo.value >=0.5 && $foo.value < 1.5}>
+                                        <{if $foo.value > 4.5 && $foo.value <= 5.5}>
                                                         <div class="star"></div>
 
 

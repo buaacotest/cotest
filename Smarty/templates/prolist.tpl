@@ -1,5 +1,6 @@
-<p>&nbsp;<b><{$productsNum}>  </b>smartphones &nbsp;&nbsp;1 / <{$pageNum}> pages</p>
-                <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
+
+                <p>&nbsp;<b><{$productsNum}>  </b>smartphones &nbsp;&nbsp;1 / <{$pageNum}> pages</p>
+                <ul class="products" pagenum= <{$pageNum}> itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
                     <meta itemprop="mainContentOfPage" content="true">
@@ -22,8 +23,8 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Today's best price:</div>
-                                  <div data-test="price-amount">£499.00</div>
+                            <div data-test="price-label">Ref. Price: £499.00</div>
+                                  
                           </div>
                 
 
@@ -33,7 +34,7 @@
                             <div class="product-score">
                               
                                  <div class="score-list">
-                                        <{if $products[n].score >=4.5}>
+                                        <{if $products[n].score <=1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -41,25 +42,25 @@
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=3.5 && $products[n].score < 4.5}>
+                                        <{if $products[n].score >1.5 && $products[n].score <= 2.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=2.5 && $products[n].score < 3.5}>
+                                        <{if $products[n].score >2.5 && $products[n].score <= 3.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=1.5 && $products[n].score < 2.5}>
+                                        <{if $products[n].score >3.5 && $products[n].score <= 4.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=0.5 && $products[n].score < 1.5}>
+                                        <{if $products[n].score >4.5 && $products[n].score <= 5.5}>
                                                         <div class="star"></div>
 
 
@@ -67,13 +68,14 @@
                                                      
                                        </div>
 
+                              
                               <div class="score"><{$products[n].score}></div>
                             </div>
-                            <!---
+                            
                             <div class="product-compare-button">
                               <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                             </div>
-                           -------->
+                           
                         </div>
 
                       </li>
@@ -81,3 +83,4 @@
                     
 
                 </ul>
+         

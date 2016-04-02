@@ -8,7 +8,7 @@
 function getLabels()
 {
     $labels = '[
-         {"type":"range","name":"total test result","label":"COTEST quality judgment",
+         {"type":"range","name":"total test result","label":"Total test result",
           "value":[{">":4.5,"<=":5.5},{">":3.5,"<=":4.5},{">":2.5,"<=":3.5},{">":1.5,"<=":2.5},{">":0.5,"<=":1.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
           {"type":"date","name":"Publication date","label":"Tested date",
