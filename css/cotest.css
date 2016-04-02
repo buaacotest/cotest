@@ -36,6 +36,9 @@ color: #fff;
 font-weight: bold;
 background: #f7b206;
 }
+.navbar-brand img{
+	width: 70px;
+}
 .navbar-default .navbar-brand:hover{
 	color: #fff;
 font-weight: bold;
@@ -255,7 +258,7 @@ color: #f7b206;
 	border: none;
 }
 .filter-title{
-	font-size: 24px;
+	font-size: 18px;
 }
 .products{
  	list-style: none;
@@ -267,7 +270,6 @@ color: #f7b206;
 	float: left;
 	padding: 15px;
 	background: #fff;
-	border: 1px solid #eee;
 	margin: 5px;
 	width: 200px;
 	height: 360px;
@@ -814,7 +816,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	float: left;
 	height: 240px;
 	background: #fff;
-	border:1px solid #ddd;
+	
 	float: left;
 	margin: 5px;
 }

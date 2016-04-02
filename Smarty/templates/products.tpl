@@ -125,8 +125,8 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Ref.Price:</div>
-                                  <div data-test="price-amount">£499.00</div>
+                            <div data-test="price-label">Ref. Price: £499.00</div>
+                                  
                           </div>
                 
 
@@ -136,7 +136,7 @@
                             <div class="product-score">
                               
                                  <div class="score-list">
-                                        <{if $products[n].score >=4.5}>
+                                        <{if $products[n].score <=1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -144,25 +144,25 @@
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=3.5 && $products[n].score < 4.5}>
+                                        <{if $products[n].score >1.5 && $products[n].score <= 2.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=2.5 && $products[n].score < 3.5}>
+                                        <{if $products[n].score >2.5 && $products[n].score <= 3.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=1.5 && $products[n].score < 2.5}>
+                                        <{if $products[n].score >3.5 && $products[n].score <= 4.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <{/if}>
-                                        <{if $products[n].score >=0.5 && $products[n].score < 1.5}>
+                                        <{if $products[n].score >4.5 && $products[n].score <= 5.5}>
                                                         <div class="star"></div>
 
 
@@ -292,6 +292,7 @@
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");
+          filter();
     })
     function getScoreInfo(star){
         if(star==1) return "Poor";

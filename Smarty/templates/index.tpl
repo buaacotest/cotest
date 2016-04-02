@@ -27,12 +27,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">COTEST</a>
+            <a class="navbar-brand" href="index.php">
+              <img  src="img/cotestw.png">
+            </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-
+            <ul class="nav navbar-nav">
+              <li><a href="#">Tests</a></li>
+               <li><a href="#">COTEST</a></li>
+                <li><a href="#">Press</a></li>
+                 
+            </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
+                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Chinese</a></li>
+
+                </ul>
                 <{if $user}>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
 
@@ -56,8 +69,9 @@
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
-         Our consumer testing community (COTEST) buys samples anonymously in China and tasks a member of
-International Consumer Research & Testing (ICRT), with Comparative & Objective Testing in
+         Our consumer testing community (COTEST) buys samples anonymously in China and assigns the member of International Consumer Research & Testing (ICRT) to the Comparative & Objective Testing in
+Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
+
 
 
         </div>

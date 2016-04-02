@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-25 14:30:04
+<?php /* Smarty version 2.6.19, created on 2016-03-30 11:38:58
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,8 +160,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Ref.Price:</div>
-                                  <div data-test="price-amount">£499.00</div>
+                            <div data-test="price-label">Ref. Price: £499.00</div>
+                                  
                           </div>
                 
 
@@ -172,7 +172,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                             <div class="product-score">
                               
                                  <div class="score-list">
-                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] >= 4.5): ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 1.5): ?>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -180,25 +180,25 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                                         <div class="star"></div>
 
                                         <?php endif; ?>
-                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] >= 3.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] < 4.5): ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 1.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 2.5): ?>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <?php endif; ?>
-                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] >= 2.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] < 3.5): ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 2.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 3.5): ?>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <?php endif; ?>
-                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] >= 1.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] < 2.5): ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 3.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 4.5): ?>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
 
                                         <?php endif; ?>
-                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] >= 0.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] < 1.5): ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 4.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 5.5): ?>
                                                         <div class="star"></div>
 
 
@@ -333,6 +333,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");
+          filter();
     })
     function getScoreInfo(star){
         if(star==1) return "Poor";
