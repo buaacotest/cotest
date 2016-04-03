@@ -320,7 +320,13 @@ function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     }
 
 }
-
+function DeleteTranslationInSelfDic($id,$idflag){
+    $nowdb=$GLOBALS['db']->getNowDB();
+    $sql="DELETE FROM ".$nowdb.".`sdictionary` WHERE wordid=".$id." and `flag` = ".$idflag;
+    //echo $sql;
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
 function GetEvaluationName($evaluationid){
     $sql="SELECT name FROM evaluations where id_evaluation=".$evaluationid;
     //echo $sql;
