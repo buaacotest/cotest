@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-25 09:14:04
+<?php /* Smarty version 2.6.19, created on 2016-04-05 08:06:40
          compiled from register.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Static Top Navbar Example for Bootstrap</title>
+    <title><?php echo $this->_tpl_vars['lang']['sign']; ?>
+</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,36 +37,42 @@
 
 
     <div class="form-wrapper">
-        <h1 class="text-center">Sign up</h1>
+        <h1 class="text-center"><?php echo $this->_tpl_vars['lang']['sign']; ?>
+</h1>
         <br>
         <div style="margin:0;padding:0;display:inline">
 
             <div class="row-fluid">
                 <div class="span12 icon-over-input">
-                    <input class="span12 log-input" id="username" name="username" placeholder="Username" type="text" value="" data-form-un="1456842528245.992">
+                    <input class="span12 log-input" id="username" name="username" placeholder="<?php echo $this->_tpl_vars['lang']['username']; ?>
+" type="text" value="" data-form-un="1456842528245.992">
                     <i class="icon-user muted"></i>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12 icon-over-input">
-                    <input class="span12 log-input" id="email" name="email" placeholder="E-mail" type="text" value="" data-form-un="1456842528245.992">
+                    <input class="span12 log-input" id="email" name="email" placeholder="<?php echo $this->_tpl_vars['lang']['email']; ?>
+" type="text" value="" data-form-un="1456842528245.992">
                     <i class="icon-user muted"></i>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12 icon-over-input">
-                    <input class="span12 log-input" id="password" name="password" placeholder="Password" type="password" value="" data-form-pw="1456842528245.7815">
+                    <input class="span12 log-input" id="password" name="password" placeholder="<?php echo $this->_tpl_vars['lang']['password']; ?>
+" type="password" value="" data-form-pw="1456842528245.7815">
                     <i class="icon-lock muted"></i>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12 icon-over-input">
-                    <input class="span12 log-input" id="password_confirmation" name="password_confirmation" placeholder="Password confirmation" type="password" value="" data-form-pw="1456842528245.992">
+                    <input class="span12 log-input" id="password_confirmation" name="password_confirmation" placeholder="<?php echo $this->_tpl_vars['lang']['confirm']; ?>
+" type="password" value="" data-form-pw="1456842528245.992">
                     <i class="icon-lock muted"></i>
                 </div>
             </div>
             <div class="row-fluid" >
-                <input  class="span12 log-input yzm-input " placeholder="Verification code"  id="yzm-input" type="text">
+                <input  class="span12 log-input yzm-input " placeholder="<?php echo $this->_tpl_vars['lang']['code']; ?>
+"  id="yzm-input" type="text">
                 <img id="yzm-img">
             </div>
         
@@ -97,14 +104,17 @@
                         </span>
                         <span class="inner-label">
 
-                            I agree
-                              <a href="#" class="text-contrast">user agreements</a>
+                           <?php echo $this->_tpl_vars['lang']['agree']; ?>
+
+                              <a href="#" class="text-contrast"><?php echo $this->_tpl_vars['lang']['agreements']; ?>
+</a>
 
                         </span>
                 </label>
             </div>
 
-            <button class="btn btn-block sign-btn" name="button" type="submit" data-form-sbm="1456842528245.992" id="sign-up-btn" >Sign up</button>
+            <button class="btn btn-block sign-btn" name="button" type="submit" data-form-sbm="1456842528245.992" id="sign-up-btn" ><?php echo $this->_tpl_vars['lang']['sign']; ?>
+</button>
             <br>
             <div class="alert alert-warning alert-dismissible" id="alert-panel" role="alert" style="display:none">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -114,7 +124,8 @@
         <div class="text-center">
             <hr class="hr-normal">
             <a href="login.php"><i class="icon-chevron-left"></i>
-                Go back to sign in
+                <?php echo $this->_tpl_vars['lang']['goback']; ?>
+
             </a>
         </div>
     </div>

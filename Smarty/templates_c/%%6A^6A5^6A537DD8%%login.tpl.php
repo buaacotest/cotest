@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-03-25 09:14:07
+<?php /* Smarty version 2.6.19, created on 2016-04-05 07:58:52
          compiled from login.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
 
-	<title>Static Top Navbar Example for Bootstrap</title>
+	<title><?php echo $this->_tpl_vars['lang']['login']; ?>
+</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,18 +36,21 @@
 
 
 	<div class="form-wrapper">
-		<h1 class="text-center">Sign in </h1>
+		<h1 class="text-center"><?php echo $this->_tpl_vars['lang']['login']; ?>
+</h1>
 		<br>
 		<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
 			<div class="row-fluid">
 				<div class="span12 icon-over-input">
-					<input class="span12 log-input" id="username" name="username" placeholder="UserName" type="text" value="" data-form-un="1456831308049.4834">
+					<input class="span12 log-input" id="username" name="username" placeholder="<?php echo $this->_tpl_vars['lang']['username']; ?>
+" type="text" value="" data-form-un="1456831308049.4834">
 					<i class="icon-user muted"></i>
 				</div>
 			</div>
 			<div class="row-fluid">
 				<div class="span12 icon-over-input">
-					<input class="span12  log-input" id="password" name="password" placeholder="Password" type="password" value="" data-form-pw="1456831308049.4834">
+					<input class="span12  log-input" id="password" name="password" placeholder="<?php echo $this->_tpl_vars['lang']['password']; ?>
+" type="password" value="" data-form-pw="1456831308049.4834">
 					<i class="icon-lock muted"></i>
 				</div>
 			</div>
@@ -58,12 +62,14 @@
                         <input type="checkbox" name="search[range][50][Screen_size][]" value="17-27">
                         </span>
                         <span class="inner-label">
-                          remember me
+                          <?php echo $this->_tpl_vars['lang']['remember']; ?>
+
                         </span>
 				</label>
 			</div>
 
-			<button id="sign-in-btn"class="btn btn-block sign-btn" name="button" data-form-sbm="1456831308049.4834">Sign in</button>
+			<button id="sign-in-btn"class="btn btn-block sign-btn" name="button" data-form-sbm="1456831308049.4834"><?php echo $this->_tpl_vars['lang']['login']; ?>
+</button>
 			<br>
 			<div class="alert alert-warning alert-dismissible" id="alert-panel" role="alert" style="display:none">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -72,10 +78,12 @@
 		
 		<div class="row">
 			<hr class="hr-normal">
-			<div class="col-md-6 text-center"><a href="forget.php">forgot password?</a></div>
+			<div class="col-md-6 text-center"><a href="forget.php"><?php echo $this->_tpl_vars['lang']['forget']; ?>
+?</a></div>
 			<div class="col-md-6 text-center
 
-              "><a href="register.php"><b>Sign up</b></a></div>
+              "><a href="register.php"><b><?php echo $this->_tpl_vars['lang']['sign']; ?>
+</b></a></div>
 		</div>
 
 		<div class="text-center">
