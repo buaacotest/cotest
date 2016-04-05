@@ -66,7 +66,8 @@ function getProperty(){
     foreach($groups as $k=>$g){
         $temp='';
         $groupname=$g['name'];
-        $gtranslation=GetTransLation($groupname);
+        $groupid=$g['id_propertygroup'];
+        $gtranslation=GetTransLation($groupname,$groupid);
         $chn=array();
         //$de=array();
         //$eng=array();
@@ -83,7 +84,8 @@ function getProperty(){
         $groups[$k]['De']="null";
         foreach($props as $p){
             $propname=$p['name'];
-            $ptranslation=GetTransLation($propname);
+            $proid=$p['id_property'];
+            $ptranslation=GetTransLation($propname,$proid);
             $chn=array();
             //$de=array();
             //$eng=array();
@@ -124,7 +126,8 @@ function getTree($data, $pId)
     foreach($data as $v)
     {
         $name=$v['name'];
-        $evalTranslation=GetTransLation($name);
+        $id=$v['id_evaluation'];
+        $evalTranslation=GetTransLation($name,$id,1);
         $chn=array();
         //$de=array();
         //$eng=array();
@@ -174,11 +177,11 @@ function getCountInAdminDic($oriWord){
     return $count;
 }
 /*得到在自身数据库中的count*/
-function getCountInSelfDic($oriword){
+function getCountInSelfDic($wordid){
     $nowdb=$GLOBALS['db']->getNowDB();
     //echo $nowdb;
     $count=0;
-    $sql="SELECT count(*) FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
+    $sql="SELECT count(*) FROM ".$nowdb.".sdictionary where wordid='".$wordid."'";
     $results=$GLOBALS['db']->query($sql);
     if($results)
     {
@@ -199,15 +202,15 @@ function GenAdminDicID(){
     $count=$countarray[0];
     return $count+1;
 }
-function QueryInSelfDic($oriword){
-    $count=getCountInSelfDic($oriword);
+function QueryInSelfDic($id,$flag){
+    $count=getCountInSelfDic($id);
     //echo $oriword;
     if($count==0)
         return null;
     else{
         $nowdb=$GLOBALS['db']->getNowDB();
         //echo $nowdb;
-        $sql="SELECT * FROM ".$nowdb.".sdictionary where oriword='".$oriword."'";
+        $sql="SELECT * FROM ".$nowdb.".sdictionary where wordid='".$id."'";
         //echo $sql;
         //echo "\n";
         $results=$GLOBALS['db']->getAll($sql);
@@ -229,10 +232,10 @@ function QueryInAdminDic($oriword){
 }
 
 
-function GetTransLation($oriword){
+function GetTransLation($oriword,$id,$flag=0){////默认取的是propertys的翻译
     ///step1:query in the self dictionary
     //echo $oriword;
-    $Translation=QueryInSelfDic($oriword);
+    $Translation=QueryInSelfDic($id,$flag);
     //print_r($Translation);
     if($Translation==null){
         //echo "null";
