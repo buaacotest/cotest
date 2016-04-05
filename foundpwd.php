@@ -8,13 +8,14 @@
 require('includes/init.php');
 require('includes/lib_user.php');
 require('includes/smtp.php');
+require('lang/'.$_SESSION['lang'].'/user.php');
 $email=trim($_POST['email']);
 $token=getRandStr(8);
 $password=md5($token);
 $sql="update admin.users set password='".$password."'where email='".$email."'";
 $GLOBALS['db']->query($sql);
-$emailBody="您的密码已重置为：$token<br/>请及时修改密码！";
-$rs=sendEmail($email,"密码重置",$emailBody);
+$emailBody=$_LANG['reset'].":$token<br/>".$_LANG['modify']."!";
+$rs=sendEmail($email,$_LANG['NewPass'],$emailBody);
 if($rs){
     echo 1;
 }else{

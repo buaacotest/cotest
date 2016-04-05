@@ -5,5 +5,8 @@
  * Date: 2016/3/2
  * Time: 19:59
  */
-include_once "includes/config.php";
+require('includes/init.php');
+include_once 'includes/config.php';
+require('lang/'.$_SESSION['lang'].'/user.php');
+$smarty->assign('lang',$_LANG);
 $smarty->display('found.tpl');

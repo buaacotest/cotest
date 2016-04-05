@@ -6,11 +6,12 @@
  * Time: 15:14
  */
 require("includes/init.php");
+require('lang/'.$_SESSION['lang'].'/user.php');
 $nowtime = time();
 if(empty($_SESSION['exptime']))
-    die('该链接已失效');
+    die($_LANG['invalid']);
 if($nowtime>$_SESSION['exptime']){
-    $msg = '您的激活有效期已过，请重新注册';
+    $msg = $_LANG['overTime'];
 }else{
     $username=$_SESSION['user'];
     $password= $_SESSION['pass'];
@@ -19,13 +20,13 @@ if($nowtime>$_SESSION['exptime']){
     $sql="select id from admin.users where name=".$username;
     $rst = $GLOBALS['db']->getOne($sql);
     if(!empty($rst)){
-        $msg='您已激活该账户，无需重复激活！';
+        $msg=$_LANG['alreadyActive'];
     }else{
         $sql = "insert into admin.users(`name`,`password`,`email`,`regtime`)" ;
         $sql .= " values ('$username', '$password','$email','$regtime')";
         $rst = $GLOBALS['db']->query($sql);
         if(mysql_affected_rows()!=1) die(0);
-        $msg = '激活成功！';
+        $msg = $_LANG['ActiveSuccess'];
     }
 }
 echo $msg;

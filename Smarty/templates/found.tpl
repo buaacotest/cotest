@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Static Top Navbar Example for Bootstrap</title>
+    <title><{$lang.forget}></title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,13 +47,13 @@
 
               </li>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="logout.php">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="logout.php"><{$lang.logout}></a></li>
+                    <li><a href="#"><{$lang.change}></a></li>
                 
                 </ul>
               <{else}>
-              <li ><a href="login.php">Sign in</a></li>
-              <li ><a href="register.php">Sign up</a></li>
+              <li ><a href="login.php"><{$lang.login}></a></li>
+              <li ><a href="register.php"><{$lang.sign}></a></li>
               <{/if}>
             </ul>
         </div><!--/.nav-collapse -->
@@ -62,23 +62,23 @@
 
 <div class="container">
     <div class="form-wrapper">
-        <h1 class="text-center">Forgot password</h1>
+        <h1 class="text-center"><{$lang.forget}></h1>
         <br>
         <form accept-charset="UTF-8" action="foundpwd.php" method="post"><div style="margin:0;padding:0;display:inline">
             <div class="row-fluid">
                 <div class="span12 icon-over-input">
-                    <input class="span12" id="email" name="email" placeholder="E-mail" type="text" value="">
+                    <input class="span12" id="email" name="email" placeholder="<{$lang.email}>" type="text" value="">
                     <i class="icon-user muted"></i>
                 </div>
             </div>
             <div class="row-fluid">
-                <button class="btn btn-block sign-btn" name="button" type="submit">Send me instructions</button>
+                <button class="btn btn-block sign-btn" name="button" type="submit"><{$lang.sendNewPass}></button>
             </div>
         </form>
         <div class="text-center">
             <hr class="hr-normal">
             <a href="login.php"><i class="icon-chevron-left"></i>
-                I already know my password
+                <{$lang.know}>
             </a>
         </div>
     </div>
