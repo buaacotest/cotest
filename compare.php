@@ -8,12 +8,16 @@
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
+$project=trim($_GET['proj']);
+$db->changeDB($project);
 $ids=trim($_GET['ids']);
 $comProducts=array();
 if(!empty($ids)){
     foreach($ids as $k=>$v){
-        $comProducts[]=getDetails($v);
+       // echo $v;
+        $comProducts[]=getDetails($v,2);
     }
 }
+//print_r($comProducts);
 $smarty->assign('products',$comProducts);
 $smarty->display('compare.tpl');

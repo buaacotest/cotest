@@ -128,17 +128,18 @@ function getTotalScore($id){
 }
 
 /*根据product的id获取基本信息、测试得分以及属性*/
-function getDetails($id){
+function getDetails($id,$level){
     $sql="select completename as name,`name`as manufacturer
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
     $res=$GLOBALS['db']->getOneRow($sql);
-    $res['evaluations']=getGradeTree($id);
+    $res['evaluations']=getGradeTree($id,$level);
     $res['property']=getProperty($id,$res);
+   // print_r($res);
     return $res;
 }
 /*求某个产品的评分树*/
-function getGradeTree($id){
+function getGradeTree($id,$tar){
     $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
        from evaluations as A,results as B
       where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0
@@ -148,20 +149,25 @@ function getGradeTree($id){
     foreach($data as $k=>$v){
         $data[$k]['value']=number_format(6-$v['value'],2, '.', '');
     }
-    $gradeTree=getTree($data,0);
+    $gradeTree=getTree($data,0,0,$tar);
     return $gradeTree;
 
 }
 /*构建评分的树结构*/
-function getTree($data, $pId)
+function getTree($data, $pId,$level,$end)
 {
+    //echo $level;
+    if($level==$end)
+        return null;
     $tree = '';
     foreach($data as $v)
     {
         if($v['id_parent'] == $pId)
         {
-            $v['id_parent'] = getTree($data, $v['id_evaluation']);
+            $level++;
+            $v['id_parent'] = getTree($data, $v['id_evaluation'],$level,$end);
             $tree[] = $v;
+            $level--;
         }
     }
     return $tree;
