@@ -23,6 +23,8 @@ if($option=="property"){
 }else if($option=="evaluation"){
     set_time_limit(1800);////临时设置超时
     $data=getEvaluations();
+}else if($option=="manufacturer"){
+    $data=getManufacturers();
 }
 $data=json_encode($data);
 echo $data;

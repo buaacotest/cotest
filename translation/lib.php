@@ -150,7 +150,11 @@ function getTree($data, $pId)
     }
     return $tree;
 }
-
+function getManufacturers(){
+    $sql="SELECT id_manufacturer,name FROM manufacturers";
+    $data=$GLOBALS['db']->getAll($sql);
+    return $data;
+}
 
 /*调用翻译函数exec，输出中英德文*/
 function getTranslateOnline($text){
@@ -210,7 +214,7 @@ function QueryInSelfDic($id,$flag){
     else{
         $nowdb=$GLOBALS['db']->getNowDB();
         //echo $nowdb;
-        $sql="SELECT * FROM ".$nowdb.".sdictionary where wordid='".$id."'";
+        $sql="SELECT * FROM ".$nowdb.".sdictionary where wordid='".$id."'"." and flag=".$flag;
         //echo $sql;
         //echo "\n";
         $results=$GLOBALS['db']->getAll($sql);

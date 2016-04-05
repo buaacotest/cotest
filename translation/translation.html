@@ -83,8 +83,16 @@
                             removeLines();
                             parseTree(result[0],0,0);
                             $("span").text("翻译完成！");
+                        }else if(opt=="manufacturer"){
+                            removeLines();
+                            showManufacturer(result);
+                            $("span").text("翻译完成！");
                         }
                         all=table.html();
+                    }
+                    else
+                    {
+                        alert("翻译失败！");
                     }
                 })
             })
@@ -119,6 +127,15 @@
                     parseTree(this,offset,index);
                 })
 
+            }
+        }
+        function showManufacturer(data){
+            alert("manufacturer");
+            for(var i in data) {
+                var name= data[i].name;
+                var id_manufacturer=data[i].id_manufacturer;
+                console.log(name);
+                console.log(id_manufacturer);
             }
         }
         function removeLines() {
@@ -267,6 +284,7 @@
     <select id="project">
         <option>property</option>
         <option>evaluation</option>
+        <option>manufacturer</option>
     </select>
     &nbsp;
     <button class="submit" onfocus=" $('span').text('系统自动翻译中，请稍候...');" onblur=" $('span').text('翻译完成！');">确认</button>&nbsp;<span></span>
