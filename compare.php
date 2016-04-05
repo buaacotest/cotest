@@ -11,6 +11,7 @@ require('./includes/init.php');
 $project=trim($_GET['proj']);
 $db->changeDB($project);
 $ids=trim($_GET['ids']);
+$ids=json_decode($ids,true);
 $comProducts=array();
 if(!empty($ids)){
     foreach($ids as $k=>$v){
