@@ -129,13 +129,30 @@
 
             }
         }
-        function showManufacturer(data){
+        function showManufacturer(result){
             alert("manufacturer");
-            for(var i in data) {
-                var name= data[i].name;
-                var id_manufacturer=data[i].id_manufacturer;
+            for(var i in result) {
+                var name= result[i].name;
+                var id_manufacturer=result[i].id_manufacturer;
                 console.log(name);
                 console.log(id_manufacturer);
+                var str="<tr><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
+                var idstr="manu"+id_manufacturer;
+                var word=result[i][1];
+                var options=new Array();
+                options= result[i].CHN;
+                if(options.length==0){
+                    str+="<textarea  id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+"</textarea></td><td>";
+                }else
+                    str+="<textarea  id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+result[i]["CHN"][0]+"</textarea></td><td> "
+
+                str+=result[i]["Eng"]+"</td><td>";
+                str+=result[i]["De"]+"</td><td>";
+                str+="<input type='checkbox' onclick='save(this)'></td>"
+                //str+="<td><button type='button' class='btntranssave'>save</button></td>"
+                str+="</tr>"
+                //alert(str)
+                $(".table").append(str);
             }
         }
         function removeLines() {
@@ -203,7 +220,7 @@
             //_translation['De']="null";暂时不需要
             // _translation['Eng']="null";
             var _projname=$("#database  option:selected").text();////所翻译的数据库
-            var _type=$("#project option:selected").text();/////翻译的是evaluation还是property
+            var _type=$("#project option:selected").text();/////翻译的是evaluation还是property还是manufacturer
             //alert(id);
             if(para.checked){
                 $.get("saveitem.php",
@@ -247,8 +264,9 @@
 
        function filterSelected(flag){
            var proj=$("#database  option:selected").text();
+           var opt=$("#project option:selected").text();
            var str="<tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>";
-           $.get("check.php?project="+proj,function(data,status){
+           $.get("check.php?project="+proj+"&option="+opt,function(data,status){
                if(status=="success"){
                   var ids=eval(data);
                    console.log(data)
