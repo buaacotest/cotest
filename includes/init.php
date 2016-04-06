@@ -14,5 +14,5 @@ $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 
 $_SESSION['lang']='zh_cn';
 /*屏蔽错误信息*/
-error_reporting(0);
+//error_reporting(0);
 ?>

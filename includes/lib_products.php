@@ -128,22 +128,30 @@ function getTotalScore($id){
 }
 
 /*根据product的id获取基本信息、测试得分以及属性*/
-function getDetails($id,$level){
+function getDetails($id,$level,$lang='zh_cn'){
     $sql="select completename as name,`name`as manufacturer
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
     $res=$GLOBALS['db']->getOneRow($sql);
-    $res['evaluations']=getGradeTree($id,$level);
-    $res['property']=getProperty($id,$res);
+    $res['evaluations']=getGradeTree($id,$level,$lang);
+    $res['property']=getProperty($id,$res,$lang);
    // print_r($res);
     return $res;
 }
 /*求某个产品的评分树*/
-function getGradeTree($id,$tar){
-    $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
+function getGradeTree($id,$tar,$lang){
+    if($lang=='en_us'){
+        $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
        from evaluations as A,results as B
       where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0
        and B.id_product=$id";
+    }
+    else{
+        $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,format(value,2) as value
+       from evaluations as A,results as B,sdictionary as C
+      where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0 and flag=1
+       and B.id_product=$id";
+    }
     $data=$GLOBALS['db']->getAll($sql);
 
     foreach($data as $k=>$v){
@@ -174,12 +182,18 @@ function getTree($data, $pId,$level,$end)
 }
 
 /*获取指定id产品的属性以及分组*/
-function getProperty($id,&$res){
-
-    $sql="select id_propertygroup,name from propertygroups";
-    $groups=$GLOBALS['db']->getAll($sql);
-    $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
-    $props=$GLOBALS['db']->getAll($sql);
+function getProperty($id,&$res,$lang){
+    if($lang='en_us'){
+        $sql="select id_propertygroup,name from propertygroups";
+        $groups=$GLOBALS['db']->getAll($sql);
+        $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
+        $props=$GLOBALS['db']->getAll($sql);
+    }else{
+        $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=0 and id_propertygroup=wordid";
+        $groups=$GLOBALS['db']->getAll($sql);
+        $sql="select id_propertygroup,sdictionary.CHN as name,type,unit from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
+        $props=$GLOBALS['db']->getAll($sql);
+    }
     foreach($props as $k=>$v){
         //echo $v['name'];
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
