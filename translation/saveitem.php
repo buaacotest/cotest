@@ -58,6 +58,8 @@ if($flag==1){/////选择保存
             $result3=SetPropertySelected($id,$flag);
         else if($dicflag==1)
             $result3=SetEvaluationSelected($id,$flag);
+        else if($dicflag==2)
+            $result3=false;
         if($result3)
             echo "标注selected成功!";
     }
@@ -71,6 +73,8 @@ else{
         $result3=SetPropertySelected($id,$flag);
     else if($dicflag==1)
         $result3=SetEvaluationSelected($id,$flag);
+    else if($dicflag==2)
+        $result3=false;
     if($result3)
         echo "取消 selected成功!";
 }
