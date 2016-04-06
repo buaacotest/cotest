@@ -13,7 +13,7 @@ $proj=trim($_GET['proj']);
 $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);
-
+//print_r($details);
 //print_r($details['Pros']);
 //print_r($details['Cons']);
 $product=array('name'=>$details['name'],'manufacturer'=>$details['manufacturer']);

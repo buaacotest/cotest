@@ -12,7 +12,7 @@ $db=new mysql_cls();
 $db->connect();
 $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 
-$_SESSION['lang']='zh_cn';
+$_SESSION['lang']='en_us';
 /*屏蔽错误信息*/
 //error_reporting(0);
 ?>

@@ -149,7 +149,7 @@ function getGradeTree($id,$tar,$lang){
     else{
         $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,format(value,2) as value
        from evaluations as A,results as B,sdictionary as C
-      where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0 and flag=1
+      where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0 and flag=1 and C.wordid=A.id_evaluation
        and B.id_product=$id";
     }
     $data=$GLOBALS['db']->getAll($sql);
@@ -183,22 +183,23 @@ function getTree($data, $pId,$level,$end)
 
 /*获取指定id产品的属性以及分组*/
 function getProperty($id,&$res,$lang){
-    if($lang='en_us'){
+  $results=array();
+    if($lang=='en_us'){
         $sql="select id_propertygroup,name from propertygroups";
         $groups=$GLOBALS['db']->getAll($sql);
-        $sql="select id_propertygroup,name,type,unit from propertys where selected=1";
+        $sql="select id_propertygroup,name,type,unit,binding from propertys where selected=1";
         $props=$GLOBALS['db']->getAll($sql);
     }else{
         $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=0 and id_propertygroup=wordid";
         $groups=$GLOBALS['db']->getAll($sql);
-        $sql="select id_propertygroup,sdictionary.CHN as name,type,unit from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
+        $sql="select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
         $props=$GLOBALS['db']->getAll($sql);
     }
     foreach($props as $k=>$v){
         //echo $v['name'];
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
               and id_evaluation=(
-              select id_evaluation FROM evaluations WHERE name='".$v['name']."' and id_evaluation>99999999)";
+              select id_evaluation FROM evaluations WHERE binding='".$v['binding']."' and id_evaluation>99999999)";
 
 
        //echo $sql."\n";
@@ -223,7 +224,7 @@ function getProperty($id,&$res,$lang){
         $props[$k]=$v;
     }
     foreach($groups as $k=>$g){
-        if($g['name']=="Pros"){
+        if($g['name']=="Pros"||$g['name']=="优点"){
             $pros=array();
             foreach($props as $p){/*将优点连成字符串*/
                 if($p['id_propertygroup']==$g['id_propertygroup']){
@@ -237,7 +238,7 @@ function getProperty($id,&$res,$lang){
                
                 $res['Pros']=$pros;
             continue;
-        } else if($g['name']=="Cons") {
+        } else if($g['name']=="Cons"||$g['name']=="缺点") {
             $string="";
             $cons=array();
             foreach($props as $p){/*将缺点连成字符串*/
@@ -264,7 +265,7 @@ function getProperty($id,&$res,$lang){
             $results[]=$groups[$k];
         }
     }
-    foreach($results[1]['id_propertygroup'] as $type){
+   foreach($results[1]['id_propertygroup'] as $type){
         $results[0]['id_propertygroup'][]=$type;
     }
     foreach($results[2]['id_propertygroup'] as $type){
