@@ -152,8 +152,30 @@ function getTree($data, $pId)
 }
 function getManufacturers(){
     $sql="SELECT id_manufacturer,name FROM manufacturers";
-    $data=$GLOBALS['db']->getAll($sql);
-    return $data;
+    $manufacturer=$GLOBALS['db']->getAll($sql);
+
+    foreach($manufacturer as $k=>$v){
+
+        $manufacturername=$v['name'];
+        $manufacturerid=$v['id_manufacturer'];
+        $mtranslation=GetTransLation($manufacturername,$manufacturerid,2);
+        $chn=array();
+        //$de=array();
+        //$eng=array();
+        if(!empty($mtranslation))
+            foreach($mtranslation as $value) {
+                $chn[] = $value['CHN'];
+                //$de[]=$value['De'];
+                //$eng[]=$value['Eng'];
+            }
+//        if(empty($chn))
+//            $chn[]="null";
+        $manufacturer[$k]['CHN']=$chn;
+        $manufacturer[$k]['Eng']="null";
+        $manufacturer[$k]['De']="null";
+        $results[]=$manufacturer[$k];
+    }
+    return $results;
 }
 
 /*调用翻译函数exec，输出中英德文*/
@@ -236,7 +258,7 @@ function QueryInAdminDic($oriword){
 }
 
 
-function GetTransLation($oriword,$id,$flag=0){////默认取的是propertys的翻译
+function GetTransLation($oriword,$id,$flag=0){////默认取的是propertys的翻译，1为evaluation，2为manufacturer
     ///step1:query in the self dictionary
     //echo $oriword;
     $Translation=QueryInSelfDic($id,$flag);
