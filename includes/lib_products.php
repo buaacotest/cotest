@@ -129,9 +129,17 @@ function getTotalScore($id){
 
 /*根据product的id获取基本信息、测试得分以及属性*/
 function getDetails($id,$level,$lang='zh_cn'){
-    $sql="select completename as name,`name`as manufacturer
+    if($lang=="en_us"){
+        $sql="select completename as name,`name`as manufacturer
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and A.id_product=$id";
+    }
+    else if($lang="zh_cn"){
+        $sql="select completename as name,`CHN`as manufacturer
+                from products as A,manufacturers as B,sdictionary as C
+                where A.id_manufacturer=B.id_manufacturer and C.wordid=B.id_manufacturer and C.flag=2 and A.id_product=$id";
+    }
+
     $res=$GLOBALS['db']->getOneRow($sql);
     $res['evaluations']=getGradeTree($id,$level,$lang);
     $res['property']=getProperty($id,$res,$lang);
