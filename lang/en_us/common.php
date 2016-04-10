@@ -6,3 +6,4 @@
  * Time: 17:03
  */
 $_LANG['msg']='message';
+
