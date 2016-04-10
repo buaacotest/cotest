@@ -141,6 +141,7 @@ function getDetails($id,$level,$lang){
     }
 
     $res=$GLOBALS['db']->getOneRow($sql);
+    $res['id']=$id;
     $res['evaluations']=getGradeTree($id,$level,$lang);
     $res['property']=getProperty($id,$res,$lang);
    // print_r($res);
