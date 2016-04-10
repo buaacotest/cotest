@@ -7,7 +7,9 @@
  */
 function getLabels()
 {
-    $labels = '[
+    $lang=$_SESSION['lang'];
+    if($lang=="en_us"){
+        $labels = '[
          {"type":"range","name":"total test result","label":"Total test result",
           "value":[{">":4.5,"<=":5.5},{">":3.5,"<=":4.5},{">":2.5,"<=":3.5},{">":1.5,"<=":2.5},{">":0.5,"<=":1.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
@@ -30,6 +32,32 @@ function getLabels()
            "value":[1,0],
            "option":["Yes","No"]}
        ]';
+    }else if($lang=="zh_cn"){
+        $labels = '[
+         {"type":"range","name":"total test result","label":"总评分",
+          "value":[{">":4.5,"<=":5.5},{">":3.5,"<=":4.5},{">":2.5,"<=":3.5},{">":1.5,"<=":2.5},{">":0.5,"<=":1.5}],
+          "option":["非常好 ","好 ","一般","较差","差"]},
+          {"type":"date","name":"Publication date","label":"测试时间",
+           "value":[16,15,14],
+           "option":[2016,2015,2014]},
+          {"type":"string","name":"Brand (from brandlist)","label":"品牌",
+          "value":["Acer","Alcatel","Apple","Asus","BlackBerry","BQ","Energy Sistem","HTC","Huawei","Kazam","LG","Medion","Meizu","Microsoft","Motorola","NOS","One Plus","ORANGE","Positivo","Quantum","Samsung","SGP Technologies","Sony","Stonex","Vodafone","Wiko","Wileyfox","Woxter","Xiaomi","Yota Devices","ZTE"],
+          "option":["Acer","Alcatel","Apple","Asus","BlackBerry","BQ","Energy Sistem","HTC","Huawei","Kazam","LG","Medion","Meizu","Microsoft","Motorola","NOS","One Plus","ORANGE","Positivo","Quantum","Samsung","SGP Technologies","Sony","Stonex","Vodafone","Wiko","Wileyfox","Woxter","Xiaomi","Yota Devices","ZTE"]},
+          {"type":"string","name":"Operating system name","label":"操作系统",
+           "value":["Android","iOS","BlackBerry OS","Windows Phone"],
+           "option":["Android","iOS","BlackBerry","Windows"]},
+          {"type":"range","name":"Display diagonal","label":"屏幕对角线长度","unit":"mm",
+           "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51},{">=":-1,"<=":-1}],
+           "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm"]},
+           {"type":"multi","name":"","label":"SIM卡格式",
+           "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
+           "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
+          {"type":"string","name":"Memory card slot","label":"Micro-SD卡槽",
+           "value":[1,0],
+           "option":["Yes","No"]}
+       ]';
+    }
+
     $arr = json_decode($labels, true);
     foreach ($arr as $key => $item) {
         if ($item['type'] == 'string') {

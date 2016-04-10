@@ -9,16 +9,17 @@ require('./includes/config.php');
 require('./includes/init.php');
 require('includes/lib_category.php');
 //require('includes/lang.php');
-require('./lang/'.$_SESSION['lang'].'/common.php');
+require('./lang/'.$_SESSION['lang'].'/index.php');
 
 //$smarty->assign('lang',$_LANG);
-
+//echo $_SESSION['lang'];
 $smarty->assign('title','Cotest');
 
 
 $smarty->assign('user',$_SESSION['member']);
 $num=getProductsCount('mobilephones');
 $smarty->assign('number',$num);
+$smarty->assign('lang',$_LANG);
 /*  显示模板  */
 $smarty->display('index.tpl');
 ?>

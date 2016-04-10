@@ -70,7 +70,7 @@ class smtp
 
         $mail_from = $this->get_address($this->strip_comment($from));
 
-        $body = ereg_replace("(^|(\r\n))(\.)", "\1.\3", $body);
+        $body = @ereg_replace("(^|(\r\n))(\.)", "\1.\3", $body);
 
         $header = "MIME-Version:1.0\r\n";
 
@@ -270,7 +270,7 @@ class smtp
 
     {
 
-        $domain = ereg_replace("^.+@([^@]+)$", "\1", $address);
+        $domain = @ereg_replace("^.+@([^@]+)$", "\1", $address);
 
         if (!@getmxrr($domain, $MXHOSTS)) {
 
@@ -341,7 +341,7 @@ class smtp
 
         $this->smtp_debug($response."\n");
 
-        if (!ereg("^[23]", $response)) {
+        if (!@ereg("^[23]", $response)) {
 
             fputs($this->sock, "QUIT\r\n");
 
@@ -427,9 +427,9 @@ class smtp
 
         $comment = "\([^()]*\)";
 
-        while (ereg($comment, $address)) {
+        while (@ereg($comment, $address)) {
 
-            $address = ereg_replace($comment, "", $address);
+            $address = @ereg_replace($comment, "", $address);
 
         }
 
@@ -443,9 +443,9 @@ class smtp
 
     {
 
-        $address = ereg_replace("([ \t\r\n])+", "", $address);
+        $address = @ereg_replace("([ \t\r\n])+", "", $address);
 
-        $address = ereg_replace("^.*<(.+)>.*$", "\1", $address);
+        $address = @ereg_replace("^.*<(.+)>.*$", "\1", $address);
 
         return $address;
 

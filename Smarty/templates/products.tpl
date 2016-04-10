@@ -27,7 +27,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">COTEST</a>
+            <a class="navbar-brand" href="index.php"><{$lang.COTEST}></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
@@ -38,13 +38,13 @@
 
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class="logout-btn">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="#" class="logout-btn"><{$lang.Logout}></a></li>
+                    <li><a href="#"><{$lang.ChangePwd}></a></li>
 
                 </ul>
                 <{else}>
-                <li ><a href="login.php">Sign in</a></li>
-                <li ><a href="register.php">Sign up</a></li>
+                <li ><a href="login.php"><{$lang.SignIn}></a></li>
+                <li ><a href="register.php"><{$lang.SignUp}></a></li>
                 <{/if}>
             </ul>
         </div><!--/.nav-collapse -->
@@ -58,12 +58,12 @@
     <div class="
     products-select-tab">
      <div class="products-head">
-         <a href="">Electronics</a>
-         Smartphones
+         <a href=""><{$lang.Electronics}></a>
+         <{$lang.Smartphones}>
      </div>
         <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>Tested smartphones</a></li>
-                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a>How we test</a></li>
+                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
+                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
 
             </ul>
 
@@ -74,10 +74,10 @@
           <button class="filter-btn">
             Filter
           </button>-->
-          <h2 class="filter-title">Filters</h2>
+          <h2 class="filter-title"><{$lang.Filters}></h2>
           
           <button class="clear-btn">
-              clear all
+              <{$lang.ClearAll}>
           </button>
           <div id="filter-all-options">
               
@@ -87,21 +87,21 @@
         <div class="products-container">
             <div class="products-sort">
             
-              <div class="name">Sort by</div>
+              <div class="name"><{$lang.SortBy}></div>
                 <div class="btn-group">
                   <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Most recently tested <span class="caret"></span>
+                      <{$lang.MostRecentlyTested}> <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li ><a class="dropdown-menu-item" name="score"href="#">Highest score</a></li>
-                    <li ><a class="dropdown-menu-item" href="#">Price(low to high)</a></li>
-                    <li><a  class="dropdown-menu-item" href="#">Price(high to low)</a></li>
-                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently tested</a></li>
+                    <li ><a class="dropdown-menu-item" name="score"href="#"><{$lang.HighestScore}></a></li>
+                    <li ><a class="dropdown-menu-item" href="#"><{$lang.PriceLowToHigh}></a></li>
+                    <li><a  class="dropdown-menu-item" href="#"><{$lang.PriceHighToLow}></a></li>
+                    <li><a href="#"  class="dropdown-menu-item" name="time"><{$lang.MostRecentlyTested}></a></li>
                   </ul>
                 </div>
             </div>
             <div id="products-block">
-                <p>&nbsp;<b><{$productsNum}>  </b>smartphones &nbsp;&nbsp;1 / <{$pageNum}> pages</p>
+                <p>&nbsp;<b><{$productsNum}>  </b><{$lang.Smartphones}> &nbsp;&nbsp;1 / <{$pageNum}> <{$lang.pages}></p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -125,13 +125,13 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Ref. Price: £499.00</div>
+                            <div data-test="price-label"><{$lang.RefPrice}></div>
                                   
                           </div>
                 
 
                             <div class="product-listing__tested-date">
-                              Tested date: <{$products[n].product_tested_date}>
+                                <{$lang.TestedDate}> <{$products[n].product_tested_date}>
                             </div>
                             <div class="product-score">
                               
@@ -175,7 +175,7 @@
                             </div>
                             
                             <div class="product-compare-button">
-                              <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
+                              <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
                            
                         </div>
@@ -200,7 +200,7 @@
                 <img src="img/cross_w.png">
             </div>
         </div>
-        <div class="compare-btn">Compare</div>
+        <div class="compare-btn"><{$lang.Compare}></div>
     </div>
 </div>
 </div>
@@ -272,7 +272,7 @@
 
             }
             if(option_type=="range"){
-                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm">confirm</button>'
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm"><{$lang.Confirm}></button>'
                 }
              option_text+="</div></div></div>"
           

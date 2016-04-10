@@ -7,6 +7,7 @@
  */
 session_start();
 $lang=trim($_GET['language']);
+echo $lang;
 if(!empty($lang)){
     //echo "语言".$_POST['lang'];
     $_SESSION['lang']=$lang;

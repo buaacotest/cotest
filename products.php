@@ -8,7 +8,7 @@
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
-
+require('./lang/'.$_SESSION['lang'].'/products.php');
 /*$product_group=$_GET['id'];
 $title=getProductsCat($product_group);
 $products=selectProducts($product_group);
@@ -81,7 +81,7 @@ $smarty->assign('project',$project_name);
 $smarty->assign('title',$project_name);
 $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
-
+$smarty->assign('lang',$_LANG);
 if($flag){
     $smarty->display("prolist.tpl");
 }

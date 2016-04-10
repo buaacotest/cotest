@@ -1,5 +1,5 @@
 
-                <p>&nbsp;<b><{$productsNum}>  </b>smartphones &nbsp;&nbsp;1 / <{$pageNum}> pages</p>
+                <p>&nbsp;<b><{$productsNum}>  </b><{$lang.Smartphones}> &nbsp;&nbsp;1 / <{$pageNum}> <{$lang.pages}></p>
                 <ul class="products" pagenum= <{$pageNum}> itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -23,13 +23,13 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Ref. Price: £499.00</div>
+                            <div data-test="price-label"><{$lang.RefPrice}> £499.00</div>
                                   
                           </div>
                 
 
                             <div class="product-listing__tested-date">
-                              Tested date: <{$products[n].product_tested_date}>
+                                <{$lang.TestedDate}> <{$products[n].product_tested_date}>
                             </div>
                             <div class="product-score">
                               

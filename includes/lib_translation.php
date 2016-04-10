@@ -168,7 +168,8 @@ function SaveTranslationToAdminDic($oriword,$translationArray,$id=null){
 }
 function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     //step1:query in selfdic to see if the id and the flag is conflict
-    $sql="SELECT count(*) FROM sdictionary where wordid=".$id." and `flag`= ".$idflag;
+    $nowdb=$GLOBALS['db']->getNowDB();
+    $sql="SELECT count(*) FROM ".$nowdb.".sdictionary where wordid=".$id." and `flag`= ".$idflag;
     $results=$GLOBALS['db']->query($sql);
     $countarray=mysql_fetch_array($results);
     $count=$countarray[0];
@@ -176,7 +177,7 @@ function SaveTranslationToSelfDic($oriword,$translationArray,$id,$idflag){
     $chnword=$translationArray["CHN"];
     $engword=$translationArray["Eng"];
     if($count!=0){///如果已经有了 ，说明是修改。
-        $sql="UPDATE `sdictionary` SET `oriword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."' where `wordid`= '".$id."' and `flag`= ".$idflag;
+        $sql="UPDATE ".$nowdb.".sdictionary SET `oriword`= '".$oriword."',`De`= '".$deword."',`Eng`= '".$engword."',`CHN`= '".$chnword."' where `wordid`= '".$id."' and `flag`= ".$idflag;
         $result=$GLOBALS['db']->query($sql);
         return $result;
         //echo $sql;

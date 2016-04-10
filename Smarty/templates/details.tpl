@@ -36,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">COTEST</a>
+            <a class="navbar-brand" href="index.php"><{$lang.COTEST}></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
@@ -47,13 +47,13 @@
 
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class="logout-btn">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="#" class="logout-btn"><{$lang.Logout}></a></li>
+                    <li><a href="#"><{$lang.ChangePwd}></a></li>
 
                 </ul>
                 <{else}>
-                <li ><a href="login.php">Sign in</a></li>
-                <li ><a href="register.php">Sign up</a></li>
+                <li ><a href="login.php"><{$lang.SignIn}></a></li>
+                <li ><a href="register.php"><{$lang.SignUp}></a></li>
                 <{/if}>
             </ul>
         </div><!--/.nav-collapse -->
@@ -65,7 +65,7 @@
 
         <div class="col-md-12">
          <div class="pro-title text-center">
-            <h5><a href="products.php?proj=mobilephones">Smartphones</a></h5>
+            <h5><a href="products.php?proj=mobilephones"><{$lang.Smartphones}></a></h5>
            <h3><{$product.name}></h3>
          </div>
        </div>
@@ -112,11 +112,11 @@
 
         <div class="col-md-12">
             <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a >Summary</a></li>
-                <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a >Ratings</a></li>
-                <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a >Features</a></li>
-                <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a >Review</a></li>
-                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a >How to buy</a></li>
+                <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a ><{$lang.Summary}></a></li>
+                <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a ><{$lang.Ratings}></a></li>
+                <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a ><{$lang.Features}></a></li>
+                <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><{$lang.Review}></a></li>
+                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a ><{$lang.HowToBuy}></a></li>
               </ul>
             
             <div class="pro-review-panel">
@@ -125,9 +125,9 @@
                     <div class="col-md-12">
                         <div class="img-tabs">
                             <ul class="nav nav-tabs pro-nav">
-                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a >Front</a></li>
-                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a >Side</a></li>
-                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a >Back</a>
+                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a ><{$lang.Front}></a></li>
+                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
+                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a ><{$lang.Back}></a>
                               </ul>
                         </div>
                         <div class="row">
@@ -153,31 +153,31 @@
                             
                             <div class="pro-info-item row">
                                 <div class="col-md-12">
-                                    <h4>COTEST Verdict</h4>
+                                    <h4><{$lang.CotestVerdict}></h4>
 
                                 </div>
                                 <div class="col-md-12">
                                     <div class="pro-info-score-text">
                                     <{if $score <=1.5 }>
-                                  Very good
+                                        <{$lang.Verygood}>
                                     <{/if}>
                                      <{if $score >1.5 && $score <= 2.5 }>
-                                    Good
+                                        <{$lang.Good}>
                                     <{/if}>
                                      <{if $score >2.5 && $score <= 3.5 }>
-                                   Average
+                                        <{$lang.Average}>
                                     <{/if}>
                                      <{if $score >3.5 && $score <= 4.5 }>
-                                   Sufficient
+                                        <{$lang.Sufficient}>
                                     <{/if}>
                                     <{if $score >4.5 && $score <= 5.5 }>
-                                    Poor 
+                                        <{$lang.Poor}>
                                     <{/if}>
                                     </div>
                                     <div class="pro-info-score"><{$score}></div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="pro-info-pros">PROS</div>
+                                    <div class="pro-info-pros"><{$lang.Pros}></div>
 
                                 </div>
                                 
@@ -189,7 +189,7 @@
                                 <{/section}>
                                 
                                 <div class="col-md-12">
-                                    <div class="pro-info-cons">CONS</div>
+                                    <div class="pro-info-cons"><{$lang.Cons}></div>
 
                                 </div>
                                 <{section name=n loop=$Cons}>
@@ -214,13 +214,13 @@
                                           <{$product.name}>
                                     </div>
                                     <div class="col-md-2 ">
-                                       Weighting
+                                        <{$lang.Weighting}>
                                     </div>
                                     <div class="col-md-2">
-                                       Score
+                                        <{$lang.Score}>
                                     </div>
                                     <div class="col-md-2">
-                                       Rating
+                                        <{$lang.Rating}>
                                     </div>
                                 </div>
                             </div>

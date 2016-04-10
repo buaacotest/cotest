@@ -16,6 +16,7 @@
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/cotest.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/changelanguage.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -33,17 +34,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#">Tests</a></li>
-               <li><a href="#">COTEST</a></li>
-                <li><a href="#">Press</a></li>
+              <li><a href="#"><{$lang.Tests}></a></li>
+               <li><a href="#"><{$lang.COTEST}></a></li>
+                <li><a href="#"><{$lang.Press}></a></li>
                  
             </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
                 <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
                 <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">Chinese</a></li>
+                    <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                    <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
 
                 </ul>
                 <{if $user}>
@@ -51,13 +52,13 @@
 
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class="logout-btn">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="#" class="logout-btn"><{$lang.Logout}></a></li>
+                    <li><a href="#"><{$lang.ChangePwd}></a></li>
 
                 </ul>
                 <{else}>
-                <li ><a href="login.php">Sign in</a></li>
-                <li ><a href="register.php">Sign up</a></li>
+                <li ><a href="login.php"><{$lang.SignIn}></a></li>
+                <li ><a href="register.php"><{$lang.SignUp}></a></li>
                 <{/if}>
             </ul>
         </div><!--/.nav-collapse -->
@@ -69,11 +70,7 @@
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
-         Our consumer testing community (COTEST) buys samples anonymously in China and assigns the member of<br> International Consumer Research & Testing (ICRT) to the Comparative & Objective Testing in
-<br>Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
-
-
-
+                <{$lang.Welcome}>
         </div>
         <!--
         <div class="col-md-12  text-center">
@@ -111,7 +108,7 @@
       <div class="row pro-list">
         <div class="pro-list-l">
           <div class="pro-list-title">
-            Electronics (joint tests)
+              <{$lang.Electronics}> (<{$lang.JointTests}>)
           </div>
           <div class="pro-list-content">
             <a href="products.php?proj=mobilephones">
@@ -123,7 +120,7 @@
                 <div class="num"><{$number}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Smartphones</div>
+                <div class="name"><{$lang.Smartphones}></div>
               </div>
             </div>
             </a>
@@ -135,7 +132,7 @@
                 <div class="num">234</div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Tablets</div>
+                <div class="name"><{$lang.Tablets}></div>
               </div>
             </div>
             <div class="pro-list-item">
@@ -210,7 +207,7 @@
         </div>
         <div class="pro-list-r">
           <div class="pro-list-title">
-            Food
+              <{$lang.Food}>
           </div>
           <div class="pro-list-content">
             <div class="pro-list-item">
@@ -443,7 +440,7 @@
       <div class="row footer-container">
         <div class="col-md-4 ">
           <div class="footer-block">
-            <h4 ><b>Score-Rating</b></h4>
+            <h4 ><b><{$lang.ScoreRating}></b></h4>
             <ul class="rate-list">
               <li>
                 <div class="score-list">
@@ -496,16 +493,16 @@
             <img class="icon" src="img/weibo.png">
           </div>
           <ul class="join-list">
-            <li>加入我们</li>
-            <li>联系我们</li>
-            <li>服务条款</li>
+            <li><{$lang.JoinUs}></li>
+            <li><{$lang.ContactUs}></li>
+            <li><{$lang.ServiceAgreement}></li>
           </ul>
           </div>
         </div>
         
         <div class="col-md-4">
           <div class="footer-block">
-          <h4><b>Friends</b></h4>
+          <h4><b><{$lang.Friends}></b></h4>
           </div>
         </div>
       </div>
