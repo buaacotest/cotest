@@ -3,6 +3,7 @@
                 <ul class="products" pagenum= <{$pageNum}> itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
+                 
                     <meta itemprop="mainContentOfPage" content="true">
                      <{section name=n loop=$products}>
                     <li >
@@ -72,7 +73,7 @@
                               <div class="score"><{$products[n].score}></div>
                             </div>
                             
-                            <div class="product-compare-button">
+                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                             </div>
                            

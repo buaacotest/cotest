@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-02 13:07:18
+<?php /* Smarty version 2.6.19, created on 2016-04-10 14:03:33
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +39,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">COTEST</a>
+            <a class="navbar-brand" href="index.php">
+              <img  src="img/logo2.png">
+            </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-
+            <ul class="nav navbar-nav">
+              <li><a href="#">Tests</a></li>
+               <li><a href="#"><img src="img/cotestb.png"></a></li>
+                <li><a href="#">Press</a></li>
+                 
+            </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
+                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Chinese</a></li>
+
+                </ul>
                 <?php if ($this->_tpl_vars['user']): ?>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
 </a>

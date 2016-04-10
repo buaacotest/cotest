@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-02 13:04:59
+<?php /* Smarty version 2.6.19, created on 2016-04-10 14:17:25
          compiled from prolist.tpl */ ?>
 
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
@@ -8,6 +8,7 @@
  itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
+                 
                     <meta itemprop="mainContentOfPage" content="true">
                      <?php unset($this->_sections['n']);
 $this->_sections['n']['name'] = 'n';
@@ -108,7 +109,10 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 </div>
                             </div>
                             
-                            <div class="product-compare-button">
+                            <div class="product-compare-button" id="cp<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+" proId="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+" proName="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
+" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                             </div>
                            

@@ -27,12 +27,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">COTEST</a>
+            <a class="navbar-brand" href="index.php">
+              <img  src="img/logo2.png">
+            </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-
+            <ul class="nav navbar-nav">
+              <li><a href="#">Tests</a></li>
+               <li><a href="#"><img src="img/cotestb.png"></a></li>
+                <li><a href="#">Press</a></li>
+                 
+            </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
+                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Chinese</a></li>
+
+                </ul>
                 <{if $user}>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
 
@@ -174,7 +187,7 @@
                               <div class="score"><{$products[n].score}></div>
                             </div>
                             
-                            <div class="product-compare-button">
+                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
                             </div>
                            
@@ -192,14 +205,8 @@
         </div>
 
     </div>
-    <div class="compare-panel">
+    <div class="compare-panel" >
 
-        <div class="compare-item">
-            <div class="compare-context">Huawei G8</div>
-            <div class="compare-close">
-                <img src="img/cross_w.png">
-            </div>
-        </div>
         <div class="compare-btn">Compare</div>
     </div>
 </div>
@@ -229,6 +236,7 @@
     outstr = "";
     var labels_str="";
     loadoption(<{$labels}>)
+    $(".compare-panel").hide();
     function loadoption(labels){
         var option_text="";
         for(var i=0;i<labels.length;i++){
@@ -392,7 +400,65 @@
        
         
     }
+    function addCompare(pro_id,pro_name){
+        var content='<div class="compare-item" proId="'+pro_id+'">'
+            +'<div class="compare-context">'+pro_name+'</div>'
+            +'<div class="compare-close">'
+             +'<img src="img/cross_w.png">'
+            +'</div>'
+        +'</div>';
+        
+        $(".compare-panel").append(content);
+        $(".compare-close").on("click",function(){
+            console.log(pro_name)
+            
+            $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+            $("#cp"+pro_id).attr('add',0);
+            removeCompare(pro_id);
+        })
+        
+    }
 
+    function removeCompare(pro_id){
+        var compareitems=$(".compare-panel").find('.compare-item');
+        console.log(pro_id);
+        for(var i=0;i<compareitems.length;i++){
+            if($(compareitems[i]).attr("proId")==pro_id){
+                $(compareitems[i]).remove();
+            }
+        }
+        var compareitems=$(".compare-panel").find('.compare-item');
+        if(compareitems.length==0){
+            $(".compare-panel").hide();
+        }
+
+    }
+    $(".product-compare-button").on("click",function(){
+
+        if($(this).attr("add")==0){
+            addCompare($(this).attr("proId"),$(this).attr("proName"));
+            $(this).find(".action-add").addClass("action-toggle");
+            $(this).find(".action-remove").removeClass("action-toggle");
+            $(this).attr('add',1);
+            $(".compare-panel").show();
+        }else{
+            removeCompare($(this).attr("proId"));
+            $(this).find(".action-remove").addClass("action-toggle");
+            $(this).find(".action-add").removeClass("action-toggle");
+            $(this).attr('add',0);
+        }
+    })
+    $(".compare-btn").on("click",function(){
+        var items=$(".compare-panel").find(".compare-item");
+        var ids=[];
+        for(var i=0;i<items.length;i++){
+            ids.push(parseInt($(items[i]).attr("proId")));
+        }
+       // $.get();
+            window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(ids)
+        
+    })
     function reloadpage(target){
         var query_str="";
         if(labels_str==""){
@@ -478,7 +544,7 @@
     $(document).ready(function(){
         $(".pagebtn").on("click",function(){
             var value=$(this).attr("value");
-            console.log(value)
+           // console.log(value)
             $(".pagebtn").attr("class","pagebtn");
             $(this).attr("class","pagebtn active");
             $.get("products.php?page="+value+"&proj=<{$project}>",function(result){
