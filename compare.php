@@ -11,12 +11,13 @@ require('./includes/init.php');
 $project=trim($_GET['proj']);
 $db->changeDB($project);
 $ids=trim($_GET['ids']);
+$lang=$_SESSION['lang'];
 $ids=json_decode($ids,true);
 $comProducts=array();
 if(!empty($ids)){
     foreach($ids as $k=>$v){
        // echo $v;
-        $comProducts[]=getDetails($v,2);
+        $comProducts[]=getDetails($v,2,$lang);
     }
 }
 //print_r($comProducts);

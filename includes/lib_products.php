@@ -128,7 +128,7 @@ function getTotalScore($id){
 }
 
 /*根据product的id获取基本信息、测试得分以及属性*/
-function getDetails($id,$level,$lang='zh_cn'){
+function getDetails($id,$level,$lang){
     if($lang=="en_us"){
         $sql="select completename as name,`name`as manufacturer
                 from products as A,manufacturers as B
