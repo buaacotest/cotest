@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-02 13:01:10
+<?php /* Smarty version 2.6.19, created on 2016-04-11 01:34:33
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,25 +30,44 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">COTEST</a>
+            <a class="navbar-brand" href="index.php"><?php echo $this->_tpl_vars['lang']['COTEST']; ?>
+</a>
+            <a class="navbar-brand" href="index.php">
+              <img  src="img/logo2.png">
+            </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-
+            <ul class="nav navbar-nav">
+              <li><a href="#">Tests</a></li>
+               <li><a href="#"><img src="img/cotestb.png"></a></li>
+                <li><a href="#">Press</a></li>
+                 
+            </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
+                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Chinese</a></li>
+
+                </ul>
                 <?php if ($this->_tpl_vars['user']): ?>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
 </a>
 
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class="logout-btn">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="#" class="logout-btn"><?php echo $this->_tpl_vars['lang']['Logout']; ?>
+</a></li>
+                    <li><a href="#"><?php echo $this->_tpl_vars['lang']['ChangePwd']; ?>
+</a></li>
 
                 </ul>
                 <?php else: ?>
-                <li ><a href="login.php">Sign in</a></li>
-                <li ><a href="register.php">Sign up</a></li>
+                <li ><a href="login.php"><?php echo $this->_tpl_vars['lang']['SignIn']; ?>
+</a></li>
+                <li ><a href="register.php"><?php echo $this->_tpl_vars['lang']['SignUp']; ?>
+</a></li>
                 <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
@@ -62,12 +81,16 @@
     <div class="
     products-select-tab">
      <div class="products-head">
-         <a href="">Electronics</a>
-         Smartphones
+         <a href=""><?php echo $this->_tpl_vars['lang']['Electronics']; ?>
+</a>
+         <?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+
      </div>
         <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a>Tested smartphones</a></li>
-                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a>How we test</a></li>
+                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><?php echo $this->_tpl_vars['lang']['TestedSmartphones']; ?>
+</a></li>
+                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><?php echo $this->_tpl_vars['lang']['HowWeTest']; ?>
+</a></li>
 
             </ul>
 
@@ -78,10 +101,12 @@
           <button class="filter-btn">
             Filter
           </button>-->
-          <h2 class="filter-title">Filters</h2>
+          <h2 class="filter-title"><?php echo $this->_tpl_vars['lang']['Filters']; ?>
+</h2>
           
           <button class="clear-btn">
-              clear all
+              <?php echo $this->_tpl_vars['lang']['ClearAll']; ?>
+
           </button>
           <div id="filter-all-options">
               
@@ -91,23 +116,31 @@
         <div class="products-container">
             <div class="products-sort">
             
-              <div class="name">Sort by</div>
+              <div class="name"><?php echo $this->_tpl_vars['lang']['SortBy']; ?>
+</div>
                 <div class="btn-group">
                   <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Most recently tested <span class="caret"></span>
+                      <?php echo $this->_tpl_vars['lang']['MostRecentlyTested']; ?>
+ <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li ><a class="dropdown-menu-item" name="score"href="#">Highest score</a></li>
-                    <li ><a class="dropdown-menu-item" href="#">Price(low to high)</a></li>
-                    <li><a  class="dropdown-menu-item" href="#">Price(high to low)</a></li>
-                    <li><a href="#"  class="dropdown-menu-item" name="time">Most-recently tested</a></li>
+                    <li ><a class="dropdown-menu-item" name="score"href="#"><?php echo $this->_tpl_vars['lang']['HighestScore']; ?>
+</a></li>
+                    <li ><a class="dropdown-menu-item" href="#"><?php echo $this->_tpl_vars['lang']['PriceLowToHigh']; ?>
+</a></li>
+                    <li><a  class="dropdown-menu-item" href="#"><?php echo $this->_tpl_vars['lang']['PriceHighToLow']; ?>
+</a></li>
+                    <li><a href="#"  class="dropdown-menu-item" name="time"><?php echo $this->_tpl_vars['lang']['MostRecentlyTested']; ?>
+</a></li>
                   </ul>
                 </div>
             </div>
             <div id="products-block">
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
-  </b>smartphones &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
- pages</p>
+  </b><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+ &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
+ <?php echo $this->_tpl_vars['lang']['pages']; ?>
+</p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -160,13 +193,15 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Ref. Price: £499.00</div>
+                            <div data-test="price-label"><?php echo $this->_tpl_vars['lang']['RefPrice']; ?>
+</div>
                                   
                           </div>
                 
 
                             <div class="product-listing__tested-date">
-                              Tested date: <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_tested_date']; ?>
+                                <?php echo $this->_tpl_vars['lang']['TestedDate']; ?>
+ <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_tested_date']; ?>
 
                             </div>
                             <div class="product-score">
@@ -211,8 +246,13 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 </div>
                             </div>
                             
-                            <div class="product-compare-button">
-                              <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
+                            <div class="product-compare-button" id="cp<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+" proId="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+" proName="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
+" add=0>
+                              <button name="button" type="submit" class="action-remove action-toggle"><?php echo $this->_tpl_vars['lang']['RemoveFromCompare']; ?>
+</button><button name="button" type="submit" class="action-add"><?php echo $this->_tpl_vars['lang']['AddToCompare']; ?>
+</button>
                             </div>
                            
                         </div>
@@ -229,15 +269,10 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         </div>
 
     </div>
-    <div class="compare-panel">
+    <div class="compare-panel" >
 
-        <div class="compare-item">
-            <div class="compare-context">Huawei G8</div>
-            <div class="compare-close">
-                <img src="img/cross_w.png">
-            </div>
-        </div>
-        <div class="compare-btn">Compare</div>
+        <div class="compare-btn"><?php echo $this->_tpl_vars['lang']['Compare']; ?>
+</div>
     </div>
 </div>
 </div>
@@ -270,6 +305,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     var labels_str="";
     loadoption(<?php echo $this->_tpl_vars['labels']; ?>
 )
+    $(".compare-panel").hide();
     function loadoption(labels){
         var option_text="";
         for(var i=0;i<labels.length;i++){
@@ -313,7 +349,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
             }
             if(option_type=="range"){
-                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm">confirm</button>'
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm"><?php echo $this->_tpl_vars['lang']['Confirm']; ?>
+</button>'
                 }
              option_text+="</div></div></div>"
           
@@ -435,7 +472,65 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
        
         
     }
+    function addCompare(pro_id,pro_name){
+        var content='<div class="compare-item" proId="'+pro_id+'">'
+            +'<div class="compare-context">'+pro_name+'</div>'
+            +'<div class="compare-close">'
+             +'<img src="img/cross_w.png">'
+            +'</div>'
+        +'</div>';
+        
+        $(".compare-panel").append(content);
+        $(".compare-close").on("click",function(){
+            console.log(pro_name)
+            
+            $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+            $("#cp"+pro_id).attr('add',0);
+            removeCompare(pro_id);
+        })
+        
+    }
 
+    function removeCompare(pro_id){
+        var compareitems=$(".compare-panel").find('.compare-item');
+        console.log(pro_id);
+        for(var i=0;i<compareitems.length;i++){
+            if($(compareitems[i]).attr("proId")==pro_id){
+                $(compareitems[i]).remove();
+            }
+        }
+        var compareitems=$(".compare-panel").find('.compare-item');
+        if(compareitems.length==0){
+            $(".compare-panel").hide();
+        }
+
+    }
+    $(".product-compare-button").on("click",function(){
+
+        if($(this).attr("add")==0){
+            addCompare($(this).attr("proId"),$(this).attr("proName"));
+            $(this).find(".action-add").addClass("action-toggle");
+            $(this).find(".action-remove").removeClass("action-toggle");
+            $(this).attr('add',1);
+            $(".compare-panel").show();
+        }else{
+            removeCompare($(this).attr("proId"));
+            $(this).find(".action-remove").addClass("action-toggle");
+            $(this).find(".action-add").removeClass("action-toggle");
+            $(this).attr('add',0);
+        }
+    })
+    $(".compare-btn").on("click",function(){
+        var items=$(".compare-panel").find(".compare-item");
+        var ids=[];
+        for(var i=0;i<items.length;i++){
+            ids.push(parseInt($(items[i]).attr("proId")));
+        }
+       // $.get();
+            window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(ids)
+        
+    })
     function reloadpage(target){
         var query_str="";
         if(labels_str==""){
@@ -523,7 +618,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     $(document).ready(function(){
         $(".pagebtn").on("click",function(){
             var value=$(this).attr("value");
-            console.log(value)
+           // console.log(value)
             $(".pagebtn").attr("class","pagebtn");
             $(this).attr("class","pagebtn active");
             $.get("products.php?page="+value+"&proj=<?php echo $this->_tpl_vars['project']; ?>

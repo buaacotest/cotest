@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-02 06:11:26
+<?php /* Smarty version 2.6.19, created on 2016-04-11 01:33:58
          compiled from index.tpl */ ?>
 <html>
 <head>
@@ -19,6 +19,7 @@
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/cotest.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/changelanguage.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -31,37 +32,45 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="index.php">
-              <img  src="img/cotestw.png">
+              <img  src="img/logo2.png">
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#">Tests</a></li>
-               <li><a href="#">COTEST</a></li>
-                <li><a href="#">Press</a></li>
+              <li><a href="#"><?php echo $this->_tpl_vars['lang']['Tests']; ?>
+</a></li>
+               <li><a href="#"><img src="img/cotestb.png"></a></li>
+                <li><a href="#"><?php echo $this->_tpl_vars['lang']['Press']; ?>
+</a></li>
                  
             </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
-                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <!--<li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
                 <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">Chinese</a></li>
+                    <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                    <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
 
-                </ul>
+                </ul>--->
+                <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
                 <?php if ($this->_tpl_vars['user']): ?>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
 </a>
 
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class="logout-btn">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="#" class="logout-btn"><?php echo $this->_tpl_vars['lang']['Logout']; ?>
+</a></li>
+                    <li><a href="#"><?php echo $this->_tpl_vars['lang']['ChangePwd']; ?>
+</a></li>
 
                 </ul>
                 <?php else: ?>
-                <li ><a href="login.php">Sign in</a></li>
-                <li ><a href="register.php">Sign up</a></li>
+                <li ><a href="login.php"><?php echo $this->_tpl_vars['lang']['SignIn']; ?>
+</a></li>
+                <li ><a href="register.php"><?php echo $this->_tpl_vars['lang']['SignUp']; ?>
+</a></li>
                 <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
@@ -73,10 +82,7 @@
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
-         Our consumer testing community (COTEST) buys samples anonymously in China and assigns the member of<br> International Consumer Research & Testing (ICRT) to the Comparative & Objective Testing in
-<br>Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
-
-
+                <?php echo $this->_tpl_vars['lang']['Welcome']; ?>
 
         </div>
         <!--
@@ -115,7 +121,9 @@
       <div class="row pro-list">
         <div class="pro-list-l">
           <div class="pro-list-title">
-            Electronics (joint tests)
+              <?php echo $this->_tpl_vars['lang']['Electronics']; ?>
+ (<?php echo $this->_tpl_vars['lang']['JointTests']; ?>
+)
           </div>
           <div class="pro-list-content">
             <a href="products.php?proj=mobilephones">
@@ -128,7 +136,8 @@
 </div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Smartphones</div>
+                <div class="name"><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+</div>
               </div>
             </div>
             </a>
@@ -140,7 +149,8 @@
                 <div class="num">234</div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Tablets</div>
+                <div class="name"><?php echo $this->_tpl_vars['lang']['Tablets']; ?>
+</div>
               </div>
             </div>
             <div class="pro-list-item">
@@ -215,7 +225,8 @@
         </div>
         <div class="pro-list-r">
           <div class="pro-list-title">
-            Food
+              <?php echo $this->_tpl_vars['lang']['Food']; ?>
+
           </div>
           <div class="pro-list-content">
             <div class="pro-list-item">
@@ -448,7 +459,8 @@
       <div class="row footer-container">
         <div class="col-md-4 ">
           <div class="footer-block">
-            <h4 ><b>Score-Rating</b></h4>
+            <h4 ><b><?php echo $this->_tpl_vars['lang']['ScoreRating']; ?>
+</b></h4>
             <ul class="rate-list">
               <li>
                 <div class="score-list">
@@ -501,16 +513,20 @@
             <img class="icon" src="img/weibo.png">
           </div>
           <ul class="join-list">
-            <li>加入我们</li>
-            <li>联系我们</li>
-            <li>服务条款</li>
+            <li><?php echo $this->_tpl_vars['lang']['JoinUs']; ?>
+</li>
+            <li><?php echo $this->_tpl_vars['lang']['ContactUs']; ?>
+</li>
+            <li><?php echo $this->_tpl_vars['lang']['ServiceAgreement']; ?>
+</li>
           </ul>
           </div>
         </div>
         
         <div class="col-md-4">
           <div class="footer-block">
-          <h4><b>Friends</b></h4>
+          <h4><b><?php echo $this->_tpl_vars['lang']['Friends']; ?>
+</b></h4>
           </div>
         </div>
       </div>

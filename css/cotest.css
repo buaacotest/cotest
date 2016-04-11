@@ -11,38 +11,56 @@ body{
 }
 .navbar{
 	margin-bottom: 0px;
+	-webkit-box-shadow: 0 0px 12px rgba(0,0,0,.05);
+	box-shadow: 0 0px 12px rgba(0,0,0,.05);
+	border-bottom: 1px solid #ddd;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #e7e7e7;
 
 }
 .navbar-default {
-    background-color: #333;
-    border-color: #e7e7e7;
+   background: #fff;
+   height: 70px;
 }
 .navbar-nav .active{
 	
 	background-color: none;;
+
+}
+
+.navbar-nav li a{
+	padding: 0px;
+	margin: 0px 30px;
+	line-height: 70px;
+	height: 70px;
 }
 .navbar-nav .active a{
-	background: #333;;
+
+	background: #c3a995;;
+}
+.navbar-nav a img{
+	width: 60px;
+	margin-top: -3px;
 }
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
-    color: #fff;
+    color: #555;
     background-color: transparent;
 }
 .navbar-default .navbar-brand {
-color: #fff;
+
 font-weight: bold;
-background: #f7b206;
+padding: 14px 20px;
+margin-right: 20px;
+height: 70px;
+
 }
 .navbar-brand img{
-	width: 70px;
+	width: 35px;
 }
 .navbar-default .navbar-brand:hover{
 	color: #fff;
 font-weight: bold;
-background: #f7b206;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
@@ -52,7 +70,7 @@ background: #f7b206;
 	height: 50px;
 }
 .navbar-default .navbar-nav>li>a {
-color: #fff;
+color: #555;
 }
 .navbar-default .navbar-nav>li>a:hover {
 color: #f7b206;
@@ -349,9 +367,10 @@ color: #f7b206;
 .products .product-compare-button button:hover{
 	background: #ddd;
 }
-.action-remove{
+.products .action-toggle{
 	display: none;
 }
+
 .action-remove,.action-add{
 	background-color: #eee;
 	border:  none;
@@ -1100,4 +1119,9 @@ footer .icptext{
 }
 .compare-btn:hover{
 	opacity: 1;
+}
+.compare-th{
+	padding: 5px;
+	padding-left: 25px;
+	min-width: 200px;
 }

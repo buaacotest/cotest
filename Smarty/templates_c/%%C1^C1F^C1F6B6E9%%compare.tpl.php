@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-02 08:17:09
+<?php /* Smarty version 2.6.19, created on 2016-04-10 08:51:48
          compiled from compare.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +30,7 @@
 <!-- Static navbar -->
 
 <body>
+
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container main-container">
         <div class="navbar-header">
@@ -66,12 +67,7 @@
 <div></div>
     <table class="compare-table">
         <thead>
-          <tr class="action-comparison">
-            <th></th>
-              <th data-product-id="10344" scope="col">
-                <form class="frm-comparison frm-remove-comparison" data-product-id="10344" data-location="comparison" data-action-add="/reviews/televisions/compare/add/lg-55ef950v" data-action-delete="/reviews/televisions/compare/delete/lg-55ef950v" action="/reviews/televisions/compare/delete/lg-55ef950v" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="MQgSmpNCOJuix/CRlWZAK/HPUdgKYaKZ1ny9+/9JTT0ISiFXf8s3VZek9nXX8kX35QH7E4xf9yzOvx6FKZEMhA=="><button name="button" type="submit" class="action-remove icon-close"></button><button name="button" type="submit" class="action-add">Add to compare</button></form>
-              </th>
-          </tr>
+          
 
           <tr class="product-images">
             <th class="cont-edit-comparison" scope="row" rowspan="2">
@@ -79,50 +75,158 @@
                 
               </div>
             </th>
+             <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
 
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
               <th data-product-id="10344" scope="col">
                 <div class="product-image">
-  <a href="/reviews/televisions/lg-55ef950v">
-    <img class="comparison-product-thumbnail" alt="LG 55EF950V" src="http://dam.which.co.uk.s3-website-eu-west-1.amazonaws.com/3f5e2ab1-974e-4f6b-8b32-3c3787245769.jpg">
-  </a>
-</div>
+                <a href="details.php?proj=mobilephones&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['id']; ?>
+">
+                  <img class="comparison-product-thumbnail" alt="LG 55EF950V" src="http://dam.which.co.uk.s3-website-eu-west-1.amazonaws.com/3f5e2ab1-974e-4f6b-8b32-3c3787245769.jpg">
+                </a>
+              </div>
 
               </th>
+              <?php endfor; endif; ?>
           </tr>
 
           <tr class="model">
+            <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
+
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
               <th data-product-id="10344" scope="col">
                 <div class="cell-inner-wrapper">
                   <div class="product-details-micro">
                     <div class="name">
-                      <span class="manufacturer">LG</span>
-                      <span class="model">55EF950V</span>
+                      <span class="manufacturer">  
+                      <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['name']; ?>
+
+                      </span>
+                      <span class="model"></span>
                     </div>
                   </div>
                 </div>
               </th>
+            <?php endfor; endif; ?>
+
           </tr>
         </thead>
 
         <tbody>
           <tr class="score">
             <th scope="row">
-              <label><input type="checkbox"><span class="inner-label">COTEST score
-</span></label>
+              <div class="compare-th">
+                COTEST score
+              </div>
             </th>
+             <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
+
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
 
               <td data-product-id="10344" class="behind-paywall">
-  
-                <div class="score-list">
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                </div>
-                <div class="score-text">1.5</div>
+                 <div class="score-list">
+                    <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] <= 1.5): ?>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+
+                    <?php endif; ?>
+                    <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] > 1.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] <= 2.5): ?>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+
+                    <?php endif; ?>
+                    <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] > 2.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] <= 3.5): ?>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+
+                    <?php endif; ?>
+                    <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] > 3.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] <= 4.5): ?>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+
+                    <?php endif; ?>
+                    <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] > 4.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value'] <= 5.5): ?>
+                                    <div class="star"></div>
+
+
+                    <?php endif; ?>
+                                 
+                   </div>
+                
+                <div class="score-text"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['evaluations'][0]['value']; ?>
+</div>
              
-  </td>
+              </td>
+              <?php endfor; endif; ?>
 
 
           </tr>
@@ -136,901 +240,335 @@
 
           </tr> -->
 
-            <tr class="price">
-              <th>
-                <label>
-                  <input type="checkbox">
-                  <span class="inner-label">Price</span>
-                </label>
-              </th>
-                  <td data-product-id="10344">
-                    <div class="product-offers">
-                      <span class="comparison-price">£2,499.00</span>
-                      <span class="comparison-smallprint">(Today's best price)</span>
-                        <a href="/reviews/televisions/lg-55ef950v/compare-prices"><span class="price-retailer-label">Compare <span>6 retailers</span></span></a>
-                    </div>
-                  </td>
-            </tr>
-
           <tr class="subheading" data-category="tests-heading">
             <th>
               <h2>Test results
-</h2>
+              </h2>
             </th>
+                <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
+
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
                 <td class="table-cell-wrapper" data-product-id="10344">
                   <div class="table-cell-wrapper-inner">
                     
                   </div>
                 </td>
+                <?php endfor; endif; ?>
           </tr>
+           <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products'][0]['evaluations'][0]['id_parent']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
 
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
             <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Picture quality</span>
-      </label>
-    </th>
+              <th class="behind-paywall">
+                <div class="compare-th">
+                <?php echo $this->_tpl_vars['products'][0]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['name']; ?>
 
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Freeview</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Freeview HD</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Satellite tuner picture</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Satellite HD tuner picture</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">HD TV</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">4K ultra HD</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">3D</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Viewing angle</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Sound quality</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Ease of use</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Installations and instructions</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Everyday use</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">EPG</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">PVR</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">PVR recording</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">PVR pausing</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Smart TV and multimedia</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Smart menu</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Smart apps</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Web browser</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Multimedia features</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Energy use</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-  <tr class="test-results" data-category="tests">
-    <th class="behind-paywall">
-      <label><input type="checkbox">
-        <span class="inner-label">Connections and tuners</span>
-      </label>
-    </th>
-
-      <td data-product-id="10344" class="behind-paywall">
-        Member exclusive
-      </td>
-  </tr>
-
-
-            <tr class="subheading" data-category="summary-heading">
-              <th>
-                <h2>Summary</h2>
+                </div>
+                
               </th>
+              <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
+
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                <td data-product-id="10344" class="behind-paywall">
+                  <?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['value']; ?>
+
+                </td>
+              <?php endfor; endif; ?>
             </tr>
+          <?php endfor; endif; ?>
+            
 
-                <tr class="technical-specifications" data-category="summary">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Screen resolution</span>
-                    </label>
-                  </th>
 
-                    <td data-product-id="10344">
-                      3840 x 2160
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="summary">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Screen size</span>
-                    </label>
-                  </th>
+          <tr class="subheading" data-category="tests-heading">
+            <th>
+              <h2>Features
+              </h2>
+            </th>
+                <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
 
-                    <td data-product-id="10344">
-                      55
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="summary">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Resolution type</span>
-                    </label>
-                  </th>
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                <td class="table-cell-wrapper" data-product-id="10344">
+                  <div class="table-cell-wrapper-inner">
+                    
+                  </div>
+                </td>
+                <?php endfor; endif; ?>
+          </tr>
+           <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products'][0]['property'][0]['id_propertygroup']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
 
-                    <td data-product-id="10344">
-                      Ultra-HD
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="summary">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Year released</span>
-                    </label>
-                  </th>
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
+            <tr class="test-results" data-category="tests">
+              <th class="behind-paywall">
+                <div class="compare-th">
+                <?php echo $this->_tpl_vars['products'][0]['property'][0]['id_propertygroup'][$this->_sections['n']['index']]['name']; ?>
 
-                    <td data-product-id="10344">
-                      2015
-                    </td>
-                </tr>
-            <tr class="subheading" data-category="key-specification-heading">
-              <th>
-                <h2>Key specification</h2>
+                </div>
+               
               </th>
+              <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
+
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                <td data-product-id="10344" class="behind-paywall">
+                  <?php echo $this->_tpl_vars['products'][0]['property'][$this->_sections['m']['index']]['id_propertygroup'][$this->_sections['n']['index']]['value']; ?>
+
+                </td>
+              <?php endfor; endif; ?>
             </tr>
+          <?php endfor; endif; ?>
 
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Freeview</span>
-                    </label>
-                  </th>
 
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Freeview HD</span>
-                    </label>
-                  </th>
+          <tr class="subheading" data-category="tests-heading">
+            <th>
+              <h2>Pros
+              </h2>
+            </th>
 
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">PVR</span>
-                    </label>
-                  </th>
+                <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
 
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">3D type</span>
-                    </label>
-                  </th>
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                <td class="table-cell-wrapper" data-product-id="10344">
+                 
+                    <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products'][$this->_sections['m']['index']]['Pros']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
 
-                    <td data-product-id="10344">
-                      passive
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Depth</span>
-                    </label>
-                  </th>
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
+                    <p><?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['Pros'][$this->_sections['n']['index']]; ?>
+</p>
+                    <?php endfor; endif; ?>
+                  
+                </td>
+                <?php endfor; endif; ?>
+          </tr>
+          <tr class="subheading" data-category="tests-heading">
+            <th>
+              <h2>Cons
+              </h2>
+            </th>
+                <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
 
-                    <td data-product-id="10344">
-                      21.5
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Height</span>
-                    </label>
-                  </th>
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                <td class="table-cell-wrapper" data-product-id="10344">
+                 
+                    <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products'][$this->_sections['m']['index']]['Cons']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
 
-                    <td data-product-id="10344">
-                      76.3
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">LED type</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      -
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Twin tuner PVR</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      No
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Weight</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      17.4
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">3D TV</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Backlight type</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      -
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Display type</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      OLED
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Width</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      122.5
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Curved</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      No
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Number of remote controls</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      1
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Satellite HD tuner</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Satellite tuner</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Turn on time</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      8.3
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="key-specification">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Freesat HD</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      -
-                    </td>
-                </tr>
-            <tr class="subheading" data-category="smart-tv-heading">
-              <th>
-                <h2>Smart TV</h2>
-              </th>
-            </tr>
-
-                <tr class="technical-specifications" data-category="smart-tv">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Smart TV</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="smart-tv">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Web browser</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="smart-tv">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">WiFi</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="smart-tv">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Netflix 4K</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="smart-tv">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Wi-fi built-in</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Built-in
-                    </td>
-                </tr>
-            <tr class="subheading" data-category="connectivity-heading">
-              <th>
-                <h2>Connectivity</h2>
-              </th>
-            </tr>
-
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Headphone output</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">USB ports</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      3
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">HDMI ARC</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Scart adapter</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Bluetooth</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      No
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Digital audio optical output</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Digital audio output</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">HDMI ports</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      3
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Scart socket</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="connectivity">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Independent Volume Control</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Yes
-                    </td>
-                </tr>
-            <tr class="subheading" data-category="power-use-heading">
-              <th>
-                <h2>Power use</h2>
-              </th>
-            </tr>
-
-                <tr class="technical-specifications" data-category="power-use">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Annual running costs (£)</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      28
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="power-use">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Standby (watts)</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      0.21
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="power-use">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Switched on (watts)</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      115
-                    </td>
-                </tr>
-            <tr class="subheading" data-category="ideal-picture-settings-heading">
-              <th>
-                <h2>Ideal picture settings</h2>
-              </th>
-            </tr>
-
-                <tr class="technical-specifications" data-category="ideal-picture-settings">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Backlight setting</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      44
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="ideal-picture-settings">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Contrast</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      95
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="ideal-picture-settings">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Profile</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      Standard
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="ideal-picture-settings">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Sharpness</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      25
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="ideal-picture-settings">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Brightness</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      54
-                    </td>
-                </tr>
-                <tr class="technical-specifications" data-category="ideal-picture-settings">
-                  <th>
-                    <label>
-                      <input type="checkbox">
-                      <span class="inner-label">Colour</span>
-                    </label>
-                  </th>
-
-                    <td data-product-id="10344">
-                      58
-                    </td>
-                </tr>
-
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
+                    <p><?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['Cons'][$this->_sections['n']['index']]; ?>
+</p>
+                    <?php endfor; endif; ?>
+                  
+                </td>
+                <?php endfor; endif; ?>
+          </tr>
+           
         </tbody>
       </table>
 
