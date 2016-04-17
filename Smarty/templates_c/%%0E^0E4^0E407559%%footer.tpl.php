@@ -1,9 +1,12 @@
+<?php /* Smarty version 2.6.19, created on 2016-04-17 08:08:38
+         compiled from footer.tpl */ ?>
 <footer>
    
       <div class="row footer-container">
         <div class="col-md-4 ">
           <div class="footer-block">
-            <h4 ><b><{$lang.ScoreRating}></b></h4>
+            <h4 ><b><?php echo $this->_tpl_vars['lang']['ScoreRating']; ?>
+</b></h4>
             <ul class="rate-list">
               <li>
                 <div class="score-list">
@@ -61,16 +64,20 @@
             <img class="icon" src="img/weibo.png">
           </div>
           <ul class="join-list">
-            <li><{$lang.JoinUs}></li>
-            <li><{$lang.ContactUs}></li>
-            <li><{$lang.ServiceAgreement}></li>
+            <li><?php echo $this->_tpl_vars['lang']['JoinUs']; ?>
+</li>
+            <li><?php echo $this->_tpl_vars['lang']['ContactUs']; ?>
+</li>
+            <li><?php echo $this->_tpl_vars['lang']['ServiceAgreement']; ?>
+</li>
           </ul>
           </div>
         </div>
         
         <div class="col-md-4">
           <div class="footer-block">
-          <h4><b><{$lang.Friends}></b></h4>
+          <h4><b><?php echo $this->_tpl_vars['lang']['Friends']; ?>
+</b></h4>
           </div>
         </div>
       </div>

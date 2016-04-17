@@ -75,7 +75,7 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-<div class="container main-container">
+<div class="content-container">
     <table class="compare-table">
         <thead>
           
@@ -276,6 +276,10 @@
       </table>
 </div>
 
+<{php}>
+  require("footer.php");
+  <{/php}>
+</body>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

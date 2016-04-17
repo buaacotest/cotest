@@ -527,6 +527,4 @@
     })
 </script>
 
-
-</body>
 </html>
