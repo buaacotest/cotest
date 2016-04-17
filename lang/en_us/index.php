@@ -5,11 +5,8 @@
  * Date: 2016/4/5
  * Time: 17:01
  */
-$_LANG['Welcome']='Chinese Consumers build up a testing community called COTEST Community.</br>
-It buys samples anonymously in China and assigns Association for Comparative & Objective Testing in Europe for Safety & Trust (COTEST) to testing these products in Europe.</br>
-As member of International Consumer Research & Testing (ICRT), Association COTEST applies scientific methods, which ICRT and its German member Stiftung Warentest have been developing and applying for over 50 years.</br>
-The results of such tests will empower the Chinese to consume safely and healthily!</br>
-Furthermor, Association COTEST provides the results of numerous ICRT joint tests to COTEST Community for sharing.';
+$_LANG['Welcome']='Products made outside Europe are tested in Europe according to European quality standards and test programmes and compared with European ones.
+The access to the test results is promoted in all countries, where these products are sold to consumers.';
 
 
 $_LANG['Tests']='Tests';

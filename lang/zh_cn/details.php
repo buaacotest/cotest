@@ -35,8 +35,8 @@ $_LANG['Cons']='缺点';
 $_LANG['VeryGood']='优秀';
 $_LANG['Good']='良好';
 $_LANG['Average']='中等';
-$_LANG['Sufficient']='差强人意';
-$_LANG['Poor']='表现不佳';
+$_LANG['Sufficient']='尚可';
+$_LANG['Poor']='差劣';
 
 $_LANG['Weighting']='评测比重';
 $_LANG['Score']='评测得分';

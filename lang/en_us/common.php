@@ -11,15 +11,15 @@ $_LANG['Press']='Press';
 $_LANG['Language']='Language';
 $_LANG['About']='About us';
 
-$_LANG['SignIn']='Login In';
-$_LANG['SignUp']='Sign Up';
+$_LANG['SignIn']='Login';
+$_LANG['SignUp']='Sign up';
 $_LANG['Logout']='Logout';
 $_LANG['ChangePwd']='Change Password';
 
 $_LANG['ScoreRating']='Score-Rating';
-$_LANG['JoinUs']='Join Us';
-$_LANG['ContactUs']='Contact With Us';
-$_LANG['ServiceAgreement']='Service Agreement';
+$_LANG['JoinUs']='Join us';
+$_LANG['ContactUs']='Contact us';
+$_LANG['ServiceAgreement']='Terms & conditions';
 $_LANG['Friends']='Friends';
 
 $_LANG['VeryGood']='Very Good';
@@ -28,4 +28,4 @@ $_LANG['Average']='Average';
 $_LANG['Sufficient']='Sufficient';
 $_LANG['Poor']='Poor';
 
-$_LANG['FollowCotest']='Follow Cotest';
+$_LANG['FollowCotest']='Follow COTEST';

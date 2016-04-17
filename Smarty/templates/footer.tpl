@@ -63,7 +63,7 @@
           <ul class="join-list">
             <li><{$lang.JoinUs}></li>
             <li><{$lang.ContactUs}></li>
-            <li><{$lang.ServiceAgreement}></li>
+            <li><a href="http://www.which.co.uk/terms-and-conditions/"/> <{$lang.ServiceAgreement}></li>
           </ul>
           </div>
         </div>
