@@ -995,10 +995,10 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 footer{
 	width: 100%;
 	margin-top: 100px;
-	background: #f2eee9;
-	color: #c3a995;
+	border-top: 1px solid #eee;
+	color: #bbb;
 	
-	font-size: 14px;
+	font-size: 12px;
 }
 .footer-container{
 	padding: 40px 80px;
@@ -1007,8 +1007,10 @@ footer{
 	padding: 0px;
 
 }
+
 footer h4{
-	margin-bottom: 40px;
+	font-size: 14px;
+	margin-bottom: 20px;
 
 }
 .rate-list .score-text{
@@ -1016,8 +1018,16 @@ footer h4{
 	float: left;
 	margin-top: 2px;
 }
+.rate-list .star_b{
+	list-style: none;
+	float: left;
+	width: 15px;
+	height: 15px;
+	background: url(../img/star-b.png)
+
+}
 .rate-list li{
-	margin: 15px 0px;
+	margin: 10px 0px;
 	list-style: none;
 	float: none;
 	width: 100%;
@@ -1038,8 +1048,10 @@ footer .join-list li{
 }
 footer .icons{
 	width: 100%;
+	margin: 20px 0px;
+	opacity: 0.8;
 	display: block;
-	height: 60px;
+	height: 40px;
 }
 footer .icon {
 	width: 50px;
@@ -1049,12 +1061,13 @@ footer .icon {
 }
 footer .icptext{
 	width: 100%;
-	height: 60px;
-	line-height: 60px;
+	height: 40px;
+	line-height: 40px;
 	text-align: center;
-	background: #c3a995;
 	font-size: 10px;
-	color: #f2eee9;
+	color: #aaa;
+	background: #fff;
+	border-top: 1px solid #eee;
 }
 .compare-table{
 	border: 1px solid #eee;

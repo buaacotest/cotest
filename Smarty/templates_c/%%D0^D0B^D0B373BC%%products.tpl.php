@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 07:26:16
+<?php /* Smarty version 2.6.19, created on 2016-04-17 08:15:50
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -595,6 +595,4 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     })
 </script>
 
-
-</body>
 </html>

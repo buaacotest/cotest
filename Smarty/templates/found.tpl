@@ -31,7 +31,7 @@
     require("navigation.php");
     <{/php}>
 
-<div class="container">
+<div class="container main-container">
     <div class="form-wrapper">
         <h1 class="text-center"><{$lang.forget}></h1>
         <br>

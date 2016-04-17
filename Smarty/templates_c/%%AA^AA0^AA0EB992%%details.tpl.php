@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 07:26:56
+<?php /* Smarty version 2.6.19, created on 2016-04-17 08:14:28
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -559,6 +559,9 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<?php 
+  require("footer.php");
+   ?>
 </body>
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/review.js"></script>

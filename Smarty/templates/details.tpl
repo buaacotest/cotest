@@ -401,6 +401,9 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<{php}>
+  require("footer.php");
+  <{/php}>
 </body>
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
