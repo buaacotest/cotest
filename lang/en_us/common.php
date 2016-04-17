@@ -22,3 +22,10 @@ $_LANG['ContactUs']='Contact With Us';
 $_LANG['ServiceAgreement']='Service Agreement';
 $_LANG['Friends']='Friends';
 
+$_LANG['VeryGood']='Very Good';
+$_LANG['Good']='Good';
+$_LANG['Average']='Average';
+$_LANG['Sufficient']='Sufficient';
+$_LANG['Poor']='Poor';
+
+$_LANG['FollowCotest']='Follow Cotest';

@@ -14,7 +14,7 @@
                   <div class="star_b"></div>
                 </div>
                 <div class="score-text">0.5-1.5</div>
-                <div class="score-text">Very good</div>
+                <div class="score-text"><{$lang.VeryGood}></div>
               </li>
              <li>
                 <div class="score-list">
@@ -24,7 +24,7 @@
                   <div class="star_b"></div>
                 </div>
                 <div class="score-text">1.5-2.5</div>
-                <div class="score-text">Good</div>
+                <div class="score-text"><{$lang.Good}></div>
               </li>
               <li>
                 <div class="score-list">
@@ -33,7 +33,7 @@
                   <div class="star_b"></div>
                 </div>
                 <div class="score-text">2.5-3.5</div>
-                <div class="score-text">Average</div>
+                <div class="score-text"><{$lang.Average}></div>
               </li>
               <li>
                 <div class="score-list">
@@ -41,21 +41,21 @@
                   <div class="star_b"></div>
                 </div>
                 <div class="score-text">3.5-4.5</div>
-                <div class="score-text">Sufficient</div>
+                <div class="score-text"><{$lang.Sufficient}></div>
               </li>
               <li>
                 <div class="score-list">
                   <div class="star_b"></div>
                 </div>
                 <div class="score-text">4.5-5.5</div>
-                <div class="score-text">Poor</div>
+                <div class="score-text"><{$lang.Poor}></div>
               </li>
             </ul>
           </div>
         </div>
         <div class="col-md-4">
         <div class="footer-block">
-          <h4><b>Follow Cotest</b></h4>
+          <h4><b><{$lang.FollowCotest}></b></h4>
           <div class="icons">
             <img class="icon" src="img/weixin.png">
             <img class="icon" src="img/weibo.png">

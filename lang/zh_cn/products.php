@@ -40,11 +40,11 @@ $_LANG['DisplayDiagonal']='显示屏对角线长度';
 $_LANG['SIMFormat']='SIM卡格式';
 $_LANG['MicroSD']='Micro-SD卡槽';
 
-$_LANG['Verygood']='非常好';
-$_LANG['Good']='好';
-$_LANG['Average']='一般';
-$_LANG['Sufficient']='较差';
-$_LANG['Poor']='差';
+$_LANG['VeryGood']='优秀';
+$_LANG['Good']='良好';
+$_LANG['Average']='中等';
+$_LANG['Sufficient']='差强人意';
+$_LANG['Poor']='表现不佳';
 
 $_LANG['Compare']='对比';
 $_LANG['AddToCompare']='添加对比';
