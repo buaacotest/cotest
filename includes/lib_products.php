@@ -111,11 +111,18 @@ function multiSort($arr,$order){
 
 /*日期转换1512-->Dec 2015*/
 function convertTime($time){
-    $timeArray=array("01"=>"Jan","02"=>"Feb","03"=>"Mar","04"=>"Apr","05"=>"May","06"=>"Jun","07"=>"Jul","08"=>"Aug","09"=>"Sep",
-              "10"=>"Oct","11"=>"Nov","12"=>"Dec");
-    $year="20".substr($time,0,2);
-    $mon=$timeArray[substr($time,2,2)];
-    return $mon." ".$year;
+    if($_SESSION['lang']=='en_us'){
+        $timeArray=array("01"=>"Jan","02"=>"Feb","03"=>"Mar","04"=>"Apr","05"=>"May","06"=>"Jun","07"=>"Jul","08"=>"Aug","09"=>"Sep",
+            "10"=>"Oct","11"=>"Nov","12"=>"Dec");
+        $year="20".substr($time,0,2);
+        $mon=$timeArray[substr($time,2,2)];
+        return $mon." ".$year;
+    }else{
+        $year="20".substr($time,0,2);
+        $mon=substr($time,2,2);
+        return $year."/".$mon;
+    }
+
 }
 
 /*获取某个product的总评分*/
