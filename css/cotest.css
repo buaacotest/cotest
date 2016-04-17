@@ -261,8 +261,8 @@ color: #f7b206;
 	background: #ddd;
 }
 .range-from,.range-to{
-	width: 55px;
-	height: 35px;
+	width: 40px;
+    height: 28px;
 	border: 1px solid #ddd;
 	margin: 8px;
 
@@ -1149,5 +1149,6 @@ footer .icptext{
 .compare-th{
 	padding: 5px;
 	padding-left: 25px;
+	font-weight: normal;
 	min-width: 200px;
 }
