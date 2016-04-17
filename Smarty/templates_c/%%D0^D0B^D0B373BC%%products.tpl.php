@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 08:15:50
+<?php /* Smarty version 2.6.19, created on 2016-04-17 08:37:39
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -267,6 +267,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             var option_values=option_info.value;
             var option_numbers=option_info.number;
             var option_type=option_info.type;
+            var option_unit=option_info.unit;
             option_text+=" <div class='facet facet-checkbox' name='"+option_name+"' type='"+option_type+"'>";
             option_text+=
                 "<div class='heading-filter-options'>"+
@@ -299,8 +300,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 }
 
             }
-            if(option_type=="range"){
-                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm"><?php echo $this->_tpl_vars['lang']['Confirm']; ?>
+            if(option_type=="range" && option_unit){
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/>'+option_unit+'</div><button class="range-confirm"><?php echo $this->_tpl_vars['lang']['Confirm']; ?>
 </button>'
                 }
              option_text+="</div></div></div>"

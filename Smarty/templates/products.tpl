@@ -205,6 +205,7 @@
             var option_values=option_info.value;
             var option_numbers=option_info.number;
             var option_type=option_info.type;
+            var option_unit=option_info.unit;
             option_text+=" <div class='facet facet-checkbox' name='"+option_name+"' type='"+option_type+"'>";
             option_text+=
                 "<div class='heading-filter-options'>"+
@@ -237,8 +238,8 @@
                 }
 
             }
-            if(option_type=="range"){
-                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/></div><button class="range-confirm"><{$lang.Confirm}></button>'
+            if(option_type=="range" && option_unit){
+                    option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/>'+option_unit+'</div><button class="range-confirm"><{$lang.Confirm}></button>'
                 }
              option_text+="</div></div></div>"
           
