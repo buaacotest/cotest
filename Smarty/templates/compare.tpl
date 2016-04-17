@@ -190,7 +190,7 @@
               </th>
               <{section name=m loop=$products}>
                 <td data-product-id="10344" class="behind-paywall">
-                  <{$products[0].property[m].id_propertygroup[n].value}>
+                  <{$products[m].property[0].id_propertygroup[n].value}>
                 </td>
               <{/section}>
             </tr>

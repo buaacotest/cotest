@@ -163,8 +163,11 @@
         </div>
 
     </div>
-    <div class="compare-panel" >
 
+    <div class="compare-panel" >
+        <div class="compare-toogle">
+            <img src="img/down.png" />
+        </div>
         <div class="compare-btn"><{$lang.Compare}></div>
     </div>
 </div>
@@ -184,6 +187,8 @@
 <script type="text/javascript">
     <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;
+    var compare_list=[];
+
     //初始化
     console.log(<{$labels}>)
     console.log(<{$products}>)
@@ -381,16 +386,20 @@
              +'<img src="img/cross_w.png">'
             +'</div>'
         +'</div>';
+        if(compare_list.indexOf(pro_id)==-1 ){
+            compare_list.push(pro_id);
+            console.log(pro_id);
+            $(".compare-panel").append(content);
+            $(".compare-close").on("click",function(){
+                console.log(pro_name)
+                
+                $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+                $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+                $("#cp"+pro_id).attr('add',0);
+                removeCompare(pro_id);
+            })
+        }
         
-        $(".compare-panel").append(content);
-        $(".compare-close").on("click",function(){
-            console.log(pro_name)
-            
-            $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
-            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
-            $("#cp"+pro_id).attr('add',0);
-            removeCompare(pro_id);
-        })
         
     }
 
@@ -406,22 +415,38 @@
         if(compareitems.length==0){
             $(".compare-panel").hide();
         }
-
+        var id=compare_list.indexOf(pro_id);
+        console.log(compare_list);
+       // compare_list.remove(id);
+        compare_list.splice(id,1) 
     }
-    $(".product-compare-button").on("click",function(){
-
-        if($(this).attr("add")==0){
-            addCompare($(this).attr("proId"),$(this).attr("proName"));
-            $(this).find(".action-add").addClass("action-toggle");
-            $(this).find(".action-remove").removeClass("action-toggle");
-            $(this).attr('add',1);
+    function updateCompareBtn(){
+        var btns=$(".product-compare-button");
+        for(var i=0;i<btns.length;i++){
+            if(compare_list.indexOf($(btns[i]).attr("proId"))!=-1){
+                $(btns[i]).find(".action-add").addClass("action-toggle");
+                $(btns[i]).find(".action-remove").removeClass("action-toggle");
+                $(btns[i]).attr('add',1);
+            }
+        }
+    }
+    function productCompareOnClick(compare_btn){
+         if(compare_btn.attr("add")==0){
+            addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
+            compare_btn.find(".action-add").addClass("action-toggle");
+            compare_btn.find(".action-remove").removeClass("action-toggle");
+            compare_btn.attr('add',1);
             $(".compare-panel").show();
         }else{
-            removeCompare($(this).attr("proId"));
-            $(this).find(".action-remove").addClass("action-toggle");
-            $(this).find(".action-add").removeClass("action-toggle");
-            $(this).attr('add',0);
+            removeCompare(compare_btn.attr("proId"));
+            compare_btn.find(".action-remove").addClass("action-toggle");
+            compare_btn.find(".action-add").removeClass("action-toggle");
+            compare_btn.attr('add',0);
         }
+    }
+    $(".product-compare-button").on("click",function(){
+            productCompareOnClick($(this));
+       
     })
     $(".compare-btn").on("click",function(){
         var items=$(".compare-panel").find(".compare-item");
@@ -430,9 +455,22 @@
             ids.push(parseInt($(items[i]).attr("proId")));
         }
        // $.get();
-            window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(ids)
+            window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(compare_list)
         
     })
+    $(".compare-toogle").on("click",function(){
+        if($(this).attr("toogle")==1){
+            $(".compare-panel").animate({bottom:"0px"});
+            $(this).attr("toogle",0);
+            $(this).find("img").attr("src","img/down.png");
+        }else{
+            $(".compare-panel").animate({bottom:"-200px"});
+            $(this).attr("toogle",1);
+            $(this).find("img").attr("src","img/up.png");
+        }
+
+    })
+   
     function reloadpage(target){
         var query_str="";
         if(labels_str==""){
@@ -443,7 +481,14 @@
 
         $.get(query_str,function(result){
             $("#products-block").html(result);
+            updateCompareBtn();
+            $(".product-compare-button").on("click",function(){
+                productCompareOnClick($(this));
+           
+            })
         })
+
+
     }
     function gotopage(target)
     {
@@ -512,6 +557,7 @@
         outstr = "";
         //$("html,body").animate({scrollTop:0,500});
     }
+
     setpage();    //调用分页
 </script>
 <script type="text/javascript">
