@@ -14,7 +14,7 @@ def get_xmlnode(node,name):
     return node.getElementsByTagName(name) if node else []
 
 if __name__=="__main__":
-
+    print("connect mysql begin")
     dbname="null"
     xmlname="null"
     config={'host':'127.0.0.1',#default 127.0.0.1
@@ -38,6 +38,8 @@ if __name__=="__main__":
     if(xmlname=="null"):
         exit(1)
     #get xml nodes
+    print("connect mysql over")
+    print("parse xml begin")
     doc = minidom.parse(xmlname)
     root = doc.documentElement #testresults
     project = get_xmlnode(root,'project')#project
@@ -54,7 +56,8 @@ if __name__=="__main__":
     calculationtypes=get_xmlnode(root,'calculationtypes')#calculationtypes node
     evaluations=get_xmlnode(root,'evaluations')#evaluations node
     results=get_xmlnode(root,'results')#results node
-
+    print("parse xml over")
+    print("begin create project")
     #check for the admin database
     checksql="select schema_name from INFORMATION_SCHEMA.schemata where schema_name='admin'"
     try:
@@ -102,6 +105,7 @@ if __name__=="__main__":
     except mysql.connector.Error as e:
         print('create database fails!{}'.format(e))
     #select the database
+    print("create database over")
     selectdbsql="use "+dbname
     try:
         cursor = cnn.cursor()
@@ -382,7 +386,7 @@ if __name__=="__main__":
                      "`min` varchar(45) default NULL," \
                      "`max` varchar(45) default NULL," \
                      "`binding` varchar(45) default NULL," \
-                     "`selected` int(11) default NULL," \
+                     "`selected` int(11) default '0'," \
                      "PRIMARY KEY  (`id_property`)," \
                      "KEY `fk_propertys_propertygroups1_idx` (`id_propertygroup`)" \
                      ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
@@ -502,6 +506,7 @@ if __name__=="__main__":
                      "`use_lookupable` varchar(45) default NULL," \
                      "`use_inheritna` varchar(45) default NULL," \
                      "`evaluationchilds` varchar(45) default NULL," \
+                     "`selected` int(11) DEFAULT '0'," \
                      "PRIMARY KEY  (`id_evaluation`)," \
                      "KEY `fk_evaluations_calculationtypes1_idx` (`id_calculationtype`)," \
                      "KEY `fk_evaluations_evaluations1_idx` (`id_parent`)" \
