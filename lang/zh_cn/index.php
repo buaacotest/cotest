@@ -20,7 +20,7 @@ $_LANG['JointTests']='联合测试';
 $_LANG['Electronics']='数码电子';
 $_LANG['Food']='食品';
 $_LANG['Smartphones']='智能手机';
-$_LANG['Tablets']='平板';
+$_LANG['Tablets']='平板电脑';
 
 
 $_LANG['SignIn']='登录';
