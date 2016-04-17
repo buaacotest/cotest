@@ -15,7 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/cotest.css">
     <script src="js/bootstrap.min.js"></script>
-
+    <script src="js/changelanguage.js"></script>
 </head>
 <body>
 <{php}>
@@ -102,7 +102,7 @@
                 
 
                             <div class="product-listing__tested-date">
-                                <{$lang.TestedDate}> <{$products[n].product_tested_date}>
+                                <{$lang.TestedDate}>: <{$products[n].product_tested_date}>
                             </div>
                             <div class="product-score">
                               
@@ -171,7 +171,7 @@
 </div>
 
 
-
+</body>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
