@@ -17,4 +17,5 @@ $s->cache_dir = BASE_PATH.SMARTY_PATH.'cache/';
 $s->left_delimiter = '<{';
 $s->right_delimiter = '}>';
 $s->assign('lang',$_LANG);
+$s->assign('user',$_SESSION['member']);
 $s->display('navigation.tpl');
