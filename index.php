@@ -16,7 +16,6 @@ require('./lang/'.$_SESSION['lang'].'/index.php');
 $smarty->assign('title','Cotest');
 
 
-$smarty->assign('user',$_SESSION['member']);
 $num=getProductsCount('mobilephones');
 $smarty->assign('number',$num);
 $smarty->assign('lang',$_LANG);

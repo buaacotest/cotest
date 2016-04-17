@@ -32,11 +32,11 @@ $_LANG['Back']='背面';
 $_LANG['Pros']='优点';
 $_LANG['Cons']='缺点';
 
-$_LANG['Verygood']='非常好';
-$_LANG['Good']='好';
-$_LANG['Average']='一般';
-$_LANG['Sufficient']='较差';
-$_LANG['Poor']='差';
+$_LANG['VeryGood']='优秀';
+$_LANG['Good']='良好';
+$_LANG['Average']='中等';
+$_LANG['Sufficient']='差强人意';
+$_LANG['Poor']='表现不佳';
 
 $_LANG['Weighting']='评测比重';
 $_LANG['Score']='评测得分';

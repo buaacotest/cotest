@@ -190,11 +190,11 @@
     var compare_list=[];
 
     //初始化
-    console.log(<{$labels}>)
-    console.log(<{$products}>)
+    //console.log(<{$labels}>)
+    //console.log(<{$products}>)
     cpage = 1;
     totalpage =<{$pageNum}>;
-    console.log(totalpage);
+    //console.log(totalpage);
     pagesize = 10;
     outstr = "";
     var labels_str="";
@@ -220,7 +220,7 @@
                   "</h3>"+
                 "</div>";
             option_text+='<div class="cont-filter-options toggle-panel">';
-            console.log(option_values)
+            //console.log(option_values)
             option_text+='<div class="filter-options">';
             for(var j=0;j<option_options.length;j++){
                 if(option_options[j]!=''){
@@ -250,7 +250,7 @@
           
 
         }
-        console.log(option_text)
+        //console.log(option_text)
           $("#filter-all-options").html(option_text);
               $(".checkbox").on("click",function(){
                 if($(this).hasClass("active")){
@@ -313,8 +313,8 @@
             totalpage=$(".products").attr("pagenum");
             cpage=1;
             setpage();
-            console.log($(".products").attr("pagenum"));
-            console.log("page="+totalpage);
+            //console.log($(".products").attr("pagenum"));
+            //console.log("page="+totalpage);
 
          
         })
@@ -347,9 +347,9 @@
             labels.push({"name":name,"type":type,"value":values});
 
         }
-        console.log(JSON.stringify(labels));
+        //console.log(JSON.stringify(labels));
         labels_str=JSON.stringify(labels);
-        console.log(labels_str);
+        //console.log(labels_str);
         $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str,function(result){
            // console.log(result)
             $("#products-block").html(result);
@@ -400,12 +400,21 @@
             })
         }
         
+        $(".compare-panel").append(content);
+        $(".compare-close").on("click",function(){
+            //console.log(pro_name)
+            
+            $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+            $("#cp"+pro_id).attr('add',0);
+            removeCompare(pro_id);
+        })
         
     }
 
     function removeCompare(pro_id){
         var compareitems=$(".compare-panel").find('.compare-item');
-        console.log(pro_id);
+        //console.log(pro_id);
         for(var i=0;i<compareitems.length;i++){
             if($(compareitems[i]).attr("proId")==pro_id){
                 $(compareitems[i]).remove();
