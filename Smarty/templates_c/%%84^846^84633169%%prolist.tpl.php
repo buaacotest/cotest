@@ -1,15 +1,17 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-10 14:17:25
+<?php /* Smarty version 2.6.19, created on 2016-04-17 03:58:02
          compiled from prolist.tpl */ ?>
 
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
-  </b>smartphones &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
- pages</p>
+  </b><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+ &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
+ <?php echo $this->_tpl_vars['lang']['pages']; ?>
+</p>
                 <ul class="products" pagenum= <?php echo $this->_tpl_vars['pageNum']; ?>
  itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
                  
-                    <meta itemprop="mainContentOfPage" content="true">
+            <meta itemprop="mainContentOfPage" content="true">
                      <?php unset($this->_sections['n']);
 $this->_sections['n']['name'] = 'n';
 $this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -58,13 +60,15 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label">Ref. Price: £499.00</div>
+                            <div data-test="price-label"><?php echo $this->_tpl_vars['lang']['RefPrice']; ?>
+</div>
                                   
                           </div>
                 
 
                             <div class="product-listing__tested-date">
-                              Tested date: <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_tested_date']; ?>
+                                <?php echo $this->_tpl_vars['lang']['TestedDate']; ?>
+ <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_tested_date']; ?>
 
                             </div>
                             <div class="product-score">
@@ -113,14 +117,15 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 " proId="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 " proName="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
 " add=0>
-                              <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
+                              <button name="button" type="submit" class="action-remove action-toggle"><?php echo $this->_tpl_vars['lang']['RemoveFromCompare']; ?>
+</button><button name="button" type="submit" class="action-add"><?php echo $this->_tpl_vars['lang']['AddToCompare']; ?>
+</button>
                             </div>
                            
                         </div>
 
                       </li>
                     <?php endfor; endif; ?>
-                    
 
                 </ul>
          

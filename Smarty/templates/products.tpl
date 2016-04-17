@@ -19,7 +19,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container main-container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -27,26 +27,27 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"><{$lang.COTEST}></a>
             <a class="navbar-brand" href="index.php">
               <img  src="img/logo2.png">
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#">Tests</a></li>
-               <li><a href="#"><img src="img/cotestb.png"></a></li>
-                <li><a href="#">Press</a></li>
+              <li><a href="#"><{$lang.Tests}></a></li>
+               <li><a href="#">{$lang.About}</a></li>
+                <li><a href="#"><{$lang.Press}></a></li>
                  
             </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
-                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <!--<li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
                 <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">Chinese</a></li>
+                    <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                    <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
 
-                </ul>
+                </ul>--->
+                <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
                 <{if $user}>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
 
@@ -393,6 +394,21 @@
             totalpage=$(".products").attr("pagenum");
             cpage=1;
             setpage();
+            $(".product-compare-button").on("click",function(){
+
+                if($(this).attr("add")==0){
+                    addCompare($(this).attr("proId"),$(this).attr("proName"));
+                    $(this).find(".action-add").addClass("action-toggle");
+                    $(this).find(".action-remove").removeClass("action-toggle");
+                    $(this).attr('add',1);
+                    $(".compare-panel").show();
+                }else{
+                    removeCompare($(this).attr("proId"));
+                    $(this).find(".action-remove").addClass("action-toggle");
+                    $(this).find(".action-add").removeClass("action-toggle");
+                    $(this).attr('add',0);
+                }
+            })
            // console.log($(".products").attr("pagenum"));
             //console.log("page="+totalpage);
 

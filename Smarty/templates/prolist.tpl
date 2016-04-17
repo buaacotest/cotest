@@ -4,7 +4,7 @@
                    
                    
                  
-                    <meta itemprop="mainContentOfPage" content="true">
+            <meta itemprop="mainContentOfPage" content="true">
                      <{section name=n loop=$products}>
                     <li >
                         <div class="product-listing">
@@ -24,7 +24,7 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label"><{$lang.RefPrice}> £499.00</div>
+                            <div data-test="price-label"><{$lang.RefPrice}></div>
                                   
                           </div>
                 
@@ -74,14 +74,13 @@
                             </div>
                             
                             <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_name}>" add=0>
-                              <button name="button" type="submit" class="action-remove action-toggle">Remove from compare</button><button name="button" type="submit" class="action-add">Add to compare</button>
+                              <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
                            
                         </div>
 
                       </li>
                     <{/section}>
-                    
 
                 </ul>
          

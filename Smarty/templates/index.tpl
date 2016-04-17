@@ -20,7 +20,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container main-container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -35,7 +35,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="#"><{$lang.Tests}></a></li>
-               <li><a href="#"><img src="img/cotestb.png"></a></li>
+               <li><a href="#">{$lang.About}</a></li>
                 <li><a href="#"><{$lang.Press}></a></li>
                  
             </ul>
@@ -83,7 +83,7 @@
         </div>
 
     </div>
-    <div class="container">
+    <div class="container main-container">
 <!--
       <div class="row brand-head">
         <div class="col-md-12 text-center brand-title ">

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-10 14:03:33
+<?php /* Smarty version 2.6.19, created on 2016-04-17 03:41:24
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@
 
 <body>
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container main-container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -45,44 +45,53 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#">Tests</a></li>
-               <li><a href="#"><img src="img/cotestb.png"></a></li>
-                <li><a href="#">Press</a></li>
+              <li><a href="#"><?php echo $this->_tpl_vars['lang']['Tests']; ?>
+</a></li>
+               <li><a href="#">{$lang.About}</a></li>
+                <li><a href="#"><?php echo $this->_tpl_vars['lang']['Press']; ?>
+</a></li>
                  
             </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">
-                <li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
+                <!--<li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
                 <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">Chinese</a></li>
+                    <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                    <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
 
-                </ul>
+                </ul>--->
+                <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
                 <?php if ($this->_tpl_vars['user']): ?>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><?php echo $this->_tpl_vars['user']; ?>
 </a>
 
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class="logout-btn">logout</a></li>
-                    <li><a href="#">change password</a></li>
+                    <li><a href="#" class="logout-btn"><?php echo $this->_tpl_vars['lang']['Logout']; ?>
+</a></li>
+                    <li><a href="#"><?php echo $this->_tpl_vars['lang']['ChangePwd']; ?>
+</a></li>
 
                 </ul>
                 <?php else: ?>
-                <li ><a href="login.php">Sign in</a></li>
-                <li ><a href="register.php">Sign up</a></li>
+                <li ><a href="login.php"><?php echo $this->_tpl_vars['lang']['SignIn']; ?>
+</a></li>
+                <li ><a href="register.php"><?php echo $this->_tpl_vars['lang']['SignUp']; ?>
+</a></li>
                 <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-<div class="container review-container">
+<div class="container  main-container review-container">
     <div class="row">
 
 
         <div class="col-md-12">
          <div class="pro-title text-center">
-            <h5><a href="products.php?proj=mobilephones">Smartphones</a></h5>
+            <h5><a href="products.php?proj=mobilephones"><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+</a></h5>
            <h3><?php echo $this->_tpl_vars['product']['name']; ?>
 </h3>
          </div>
@@ -131,11 +140,16 @@
 
         <div class="col-md-12">
             <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a >Summary</a></li>
-                <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a >Ratings</a></li>
-                <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a >Features</a></li>
-                <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a >Review</a></li>
-                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a >How to buy</a></li>
+                <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a ><?php echo $this->_tpl_vars['lang']['Summary']; ?>
+</a></li>
+                <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a ><?php echo $this->_tpl_vars['lang']['Ratings']; ?>
+</a></li>
+                <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a ><?php echo $this->_tpl_vars['lang']['Features']; ?>
+</a></li>
+                <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><?php echo $this->_tpl_vars['lang']['Review']; ?>
+</a></li>
+                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a ><?php echo $this->_tpl_vars['lang']['HowToBuy']; ?>
+</a></li>
               </ul>
             
             <div class="pro-review-panel">
@@ -144,9 +158,12 @@
                     <div class="col-md-12">
                         <div class="img-tabs">
                             <ul class="nav nav-tabs pro-nav">
-                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a >Front</a></li>
-                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a >Side</a></li>
-                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a >Back</a>
+                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a ><?php echo $this->_tpl_vars['lang']['Front']; ?>
+</a></li>
+                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><?php echo $this->_tpl_vars['lang']['Side']; ?>
+</a></li>
+                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a ><?php echo $this->_tpl_vars['lang']['Back']; ?>
+</a>
                               </ul>
                         </div>
                         <div class="row">
@@ -172,32 +189,39 @@
                             
                             <div class="pro-info-item row">
                                 <div class="col-md-12">
-                                    <h4>COTEST Verdict</h4>
+                                    <h4><?php echo $this->_tpl_vars['lang']['CotestVerdict']; ?>
+</h4>
 
                                 </div>
                                 <div class="col-md-12">
                                     <div class="pro-info-score-text">
                                     <?php if ($this->_tpl_vars['score'] <= 1.5): ?>
-                                  Very good
+                                        <?php echo $this->_tpl_vars['lang']['Verygood']; ?>
+
                                     <?php endif; ?>
                                      <?php if ($this->_tpl_vars['score'] > 1.5 && $this->_tpl_vars['score'] <= 2.5): ?>
-                                    Good
+                                        <?php echo $this->_tpl_vars['lang']['Good']; ?>
+
                                     <?php endif; ?>
                                      <?php if ($this->_tpl_vars['score'] > 2.5 && $this->_tpl_vars['score'] <= 3.5): ?>
-                                   Average
+                                        <?php echo $this->_tpl_vars['lang']['Average']; ?>
+
                                     <?php endif; ?>
                                      <?php if ($this->_tpl_vars['score'] > 3.5 && $this->_tpl_vars['score'] <= 4.5): ?>
-                                   Sufficient
+                                        <?php echo $this->_tpl_vars['lang']['Sufficient']; ?>
+
                                     <?php endif; ?>
                                     <?php if ($this->_tpl_vars['score'] > 4.5 && $this->_tpl_vars['score'] <= 5.5): ?>
-                                    Poor 
+                                        <?php echo $this->_tpl_vars['lang']['Poor']; ?>
+
                                     <?php endif; ?>
                                     </div>
                                     <div class="pro-info-score"><?php echo $this->_tpl_vars['score']; ?>
 </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="pro-info-pros">PROS</div>
+                                    <div class="pro-info-pros"><?php echo $this->_tpl_vars['lang']['Pros']; ?>
+</div>
 
                                 </div>
                                 
@@ -233,7 +257,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                 <?php endfor; endif; ?>
                                 
                                 <div class="col-md-12">
-                                    <div class="pro-info-cons">CONS</div>
+                                    <div class="pro-info-cons"><?php echo $this->_tpl_vars['lang']['Cons']; ?>
+</div>
 
                                 </div>
                                 <?php unset($this->_sections['n']);
@@ -283,13 +308,16 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
                                     </div>
                                     <div class="col-md-2 ">
-                                       Weighting
+                                        <?php echo $this->_tpl_vars['lang']['Weighting']; ?>
+
                                     </div>
                                     <div class="col-md-2">
-                                       Score
+                                        <?php echo $this->_tpl_vars['lang']['Score']; ?>
+
                                     </div>
                                     <div class="col-md-2">
-                                       Rating
+                                        <?php echo $this->_tpl_vars['lang']['Rating']; ?>
+
                                     </div>
                                 </div>
                             </div>
@@ -553,7 +581,7 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
 </label></div>
                             <div class="col-md-6">
                             <?php if ($this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value'] == 'Yes'): ?>
-                            <img class="proper-signal"src="img/circle.png">
+                            <img class="proper-signal"src="img/check2.png">
                             <?php elseif ($this->_tpl_vars['props'][$this->_sections['n']['index']]['id_propertygroup'][$this->_sections['m']['index']]['value'] == 'No'): ?>
                             <img class="proper-signal"src="img/cross.png">
                             <?php else: ?>

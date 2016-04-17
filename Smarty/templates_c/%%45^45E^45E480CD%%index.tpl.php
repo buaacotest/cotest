@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-11 01:33:58
+<?php /* Smarty version 2.6.19, created on 2016-04-17 03:03:26
          compiled from index.tpl */ ?>
 <html>
 <head>
@@ -23,7 +23,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container main-container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -39,7 +39,7 @@
             <ul class="nav navbar-nav">
               <li><a href="#"><?php echo $this->_tpl_vars['lang']['Tests']; ?>
 </a></li>
-               <li><a href="#"><img src="img/cotestb.png"></a></li>
+               <li><a href="#">{$lang.About}</a></li>
                 <li><a href="#"><?php echo $this->_tpl_vars['lang']['Press']; ?>
 </a></li>
                  
@@ -94,7 +94,7 @@
         </div>
 
     </div>
-    <div class="container">
+    <div class="container main-container">
 <!--
       <div class="row brand-head">
         <div class="col-md-12 text-center brand-title ">
