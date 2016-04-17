@@ -14,9 +14,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="#"><{$lang.Tests}></a></li>
-               <li><a href="#">{$lang.About}</a></li>
+               <li><a href="#"><{$lang.About}></a></li>
                 <li><a href="#"><{$lang.Press}></a></li>
-                 
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right" style="position:relative">

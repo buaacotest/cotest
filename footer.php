@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: master
- * Date: 2016/3/22
- * Time: 16:07
+ * Date: 2016/4/17
+ * Time: 15:22
  */
 require('./lang/'.$_SESSION['lang'].'/common.php');
 $s = new Smarty;
@@ -17,4 +17,4 @@ $s->cache_dir = BASE_PATH.SMARTY_PATH.'cache/';
 $s->left_delimiter = '<{';
 $s->right_delimiter = '}>';
 $s->assign('lang',$_LANG);
-$s->display('navigation.tpl');
+$s->display('footer.tpl');
