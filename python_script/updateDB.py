@@ -14,7 +14,7 @@ def get_xmlnode(node,name):
     return node.getElementsByTagName(name) if node else []
 
 if __name__=="__main__":
-
+    print("connect mysql begin")
     dbname="null"
     xmlname="null"
     config={'host':'127.0.0.1',#默认127.0.0.1
@@ -38,6 +38,8 @@ if __name__=="__main__":
     if(xmlname=="null"):
         exit(1)
     #get xml nodes
+    print("connect mysql over")
+    print("parse xml begin")
     doc = minidom.parse(xmlname)
     root = doc.documentElement #testresults
     project = get_xmlnode(root,'project')#project
@@ -54,7 +56,8 @@ if __name__=="__main__":
     calculationtypes=get_xmlnode(root,'calculationtypes')#calculationtypes node
     evaluations=get_xmlnode(root,'evaluations')#evaluations node
     results=get_xmlnode(root,'results')#results node
-
+    print("parse xml over")
+    print("begin update project")
     #select the database
     selectdbsql="use "+dbname
     try:
@@ -529,13 +532,13 @@ if __name__=="__main__":
         if not result_set:#没有记录的话插入
             sql_insert2="insert into propertys(id_property,id_propertygroup,binding," \
                     "name,comment,max,min,unit,`precision`,type,`use`,testprogram," \
-                    "timestamp_created,timestamp_lastchange)" \
+                    "timestamp_created,timestamp_lastchange,`selected`)" \
                     " values (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s," \
-                    "%s,%s)"
+                    "%s,%s,%s)"
             data=(property_id,property_id_propertygroup,property_binding,\
                     property_name,property_comment,property_max,property_min,property_unit,property_precision,\
                     property_type,property_use,property_testprogram,\
-                    property_timestamp_created,property_timestamp_lastchange)
+                    property_timestamp_created,property_timestamp_lastchange,0)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
         else:
@@ -704,14 +707,14 @@ if __name__=="__main__":
                       "name,timestamp_lastchange,timestamp_created," \
                       "`precision`,unit,binding,lookupstable,weighting_given," \
                       "weighting_normalized,use_limiting," \
-                      "use_lookupable,use_inheritna,evaluationchilds)" \
+                      "use_lookupable,use_inheritna,evaluationchilds,`selected`)" \
                       " values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s," \
-                      "%s,%s,%s,%s)"
+                      "%s,%s,%s,%s,%s)"
             data=(evaluation_id,evaluation_parent,evaluation_id_calculationtype,\
                 evaluation_name,evaluation_timestamp_lastchange,evaluation_timestamp_created,\
                 evaluation_precision,evaluation_unit,evaluation_binding,evaluation_lookuptable,evaluation_weighting_given,\
                 evaluation_weighting_normalized,evaluation_use_limiting,\
-                evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs)
+                evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs,0)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
         else:
