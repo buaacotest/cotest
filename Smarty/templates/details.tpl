@@ -37,7 +37,7 @@
         <div class="col-md-12">
          <div class="pro-title text-center">
             <h5><a href="products.php?proj=mobilephones"><{$lang.Smartphones}></a></h5>
-           <h3><{$product.name}></h3>
+           <h3><{$product.manufacturer}><{$product.name}></h3>
          </div>
        </div>
        <div class="pro-score-banner">
