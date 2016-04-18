@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 07:29:38
+<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:38
          compiled from login.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/cotest.css">
-
+	<script src="js/changelanguage.js"></script>
 
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

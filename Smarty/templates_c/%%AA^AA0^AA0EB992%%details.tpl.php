@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 09:12:10
+<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:35
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title><?php echo $this->_tpl_vars['title']; ?>
+    <title><?php echo $this->_tpl_vars['product']['name']; ?>
 </title>
 
     <!-- Bootstrap core CSS -->
@@ -42,7 +42,8 @@
          <div class="pro-title text-center">
             <h5><a href="products.php?proj=mobilephones"><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
 </a></h5>
-           <h3><?php echo $this->_tpl_vars['product']['name']; ?>
+           <h3><?php echo $this->_tpl_vars['product']['manufacturer']; ?>
+&nbsp<?php echo $this->_tpl_vars['product']['name']; ?>
 </h3>
          </div>
        </div>

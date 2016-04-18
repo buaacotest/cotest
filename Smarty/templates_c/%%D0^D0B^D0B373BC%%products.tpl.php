@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 12:29:03
+<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:33
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -248,14 +248,14 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     var compare_list=[];
 
     //初始化
-    console.log(<?php echo $this->_tpl_vars['labels']; ?>
+    //console.log(<?php echo $this->_tpl_vars['labels']; ?>
 )
-    console.log(<?php echo $this->_tpl_vars['products']; ?>
+    //console.log(<?php echo $this->_tpl_vars['products']; ?>
 )
     cpage = 1;
     totalpage =<?php echo $this->_tpl_vars['pageNum']; ?>
 ;
-    console.log(totalpage);
+    //console.log(totalpage);
     pagesize = 10;
     outstr = "";
     var labels_str="";
@@ -282,7 +282,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                   "</h3>"+
                 "</div>";
             option_text+='<div class="cont-filter-options toggle-panel">';
-            console.log(option_values)
+            //console.log(option_values)
             option_text+='<div class="filter-options">';
             for(var j=0;j<option_options.length;j++){
                 if(option_options[j]!=''){
@@ -313,7 +313,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
           
 
         }
-        console.log(option_text)
+        //console.log(option_text)
           $("#filter-all-options").html(option_text);
               $(".checkbox").on("click",function(){
                 if($(this).hasClass("active")){
@@ -377,8 +377,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             totalpage=$(".products").attr("pagenum");
             cpage=1;
             setpage();
-            console.log($(".products").attr("pagenum"));
-            console.log("page="+totalpage);
+            //console.log($(".products").attr("pagenum"));
+            //console.log("page="+totalpage);
 
          
         })
@@ -411,9 +411,9 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             labels.push({"name":name,"type":type,"value":values});
 
         }
-        console.log(JSON.stringify(labels));
+        //console.log(JSON.stringify(labels));
         labels_str=JSON.stringify(labels);
-        console.log(labels_str);
+        //console.log(labels_str);
         $.get("products.php?page=1&proj=<?php echo $this->_tpl_vars['project']; ?>
 &labels="+labels_str,function(result){
            // console.log(result)
@@ -422,13 +422,19 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             cpage=1;
             setpage();
             $(".product-compare-button").on("click",function(){
-
+                //alert("1")
                 if($(this).attr("add")==0){
-                    addCompare($(this).attr("proId"),$(this).attr("proName"));
-                    $(this).find(".action-add").addClass("action-toggle");
-                    $(this).find(".action-remove").removeClass("action-toggle");
-                    $(this).attr('add',1);
-                    $(".compare-panel").show();
+                    if(compare_list.length>=6){
+                        alert("too much compared items.");
+                    }
+                    else{
+                        addCompare($(this).attr("proId"),$(this).attr("proName"));
+                        $(this).find(".action-add").addClass("action-toggle");
+                        $(this).find(".action-remove").removeClass("action-toggle");
+                        $(this).attr('add',1);
+                        $(".compare-panel").show();
+                    }
+
                 }else{
                     removeCompare($(this).attr("proId"));
                     $(this).find(".action-remove").addClass("action-toggle");
@@ -445,6 +451,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         
     }
     function addCompare(pro_id,pro_name){
+       // alert("addcompare")
         var content='<div class="compare-item" proId="'+pro_id+'">'
             +'<div class="compare-context">'+pro_name+'</div>'
             +'<div class="compare-close">'
@@ -457,7 +464,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             $(".compare-panel").append(content);
             $(".compare-close").on("click",function(){
                 console.log(pro_name)
-                
+
                 $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
                 $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
                 $("#cp"+pro_id).attr('add',0);
@@ -465,12 +472,21 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             })
         }
         
+        //$(".compare-panel").append(content);
+        $(".compare-close").on("click",function(){
+            //console.log(pro_name)
+            
+            $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+            $("#cp"+pro_id).attr('add',0);
+            removeCompare(pro_id);
+        })
         
     }
 
     function removeCompare(pro_id){
         var compareitems=$(".compare-panel").find('.compare-item');
-        console.log(pro_id);
+        //console.log(pro_id);
         for(var i=0;i<compareitems.length;i++){
             if($(compareitems[i]).attr("proId")==pro_id){
                 $(compareitems[i]).remove();
@@ -496,12 +512,18 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         }
     }
     function productCompareOnClick(compare_btn){
+        //alert("xxxxxx");
          if(compare_btn.attr("add")==0){
-            addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
-            compare_btn.find(".action-add").addClass("action-toggle");
-            compare_btn.find(".action-remove").removeClass("action-toggle");
-            compare_btn.attr('add',1);
-            $(".compare-panel").show();
+             if(compare_list.length>=6){
+                 alert("too much compared items.");
+             }
+             else{
+                 addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
+                 compare_btn.find(".action-add").addClass("action-toggle");
+                 compare_btn.find(".action-remove").removeClass("action-toggle");
+                 compare_btn.attr('add',1);
+                 $(".compare-panel").show();
+             }
         }else{
             removeCompare(compare_btn.attr("proId"));
             compare_btn.find(".action-remove").addClass("action-toggle");
@@ -511,7 +533,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     }
     $(".product-compare-button").on("click",function(){
             productCompareOnClick($(this));
-       
+
     })
     $(".compare-btn").on("click",function(){
         var items=$(".compare-panel").find(".compare-item");

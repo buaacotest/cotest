@@ -357,13 +357,19 @@
             cpage=1;
             setpage();
             $(".product-compare-button").on("click",function(){
-
+                //alert("1")
                 if($(this).attr("add")==0){
-                    addCompare($(this).attr("proId"),$(this).attr("proName"));
-                    $(this).find(".action-add").addClass("action-toggle");
-                    $(this).find(".action-remove").removeClass("action-toggle");
-                    $(this).attr('add',1);
-                    $(".compare-panel").show();
+                    if(compare_list.length>=6){
+                        alert("too much compared items.");
+                    }
+                    else{
+                        addCompare($(this).attr("proId"),$(this).attr("proName"));
+                        $(this).find(".action-add").addClass("action-toggle");
+                        $(this).find(".action-remove").removeClass("action-toggle");
+                        $(this).attr('add',1);
+                        $(".compare-panel").show();
+                    }
+
                 }else{
                     removeCompare($(this).attr("proId"));
                     $(this).find(".action-remove").addClass("action-toggle");
@@ -380,6 +386,7 @@
         
     }
     function addCompare(pro_id,pro_name){
+       // alert("addcompare")
         var content='<div class="compare-item" proId="'+pro_id+'">'
             +'<div class="compare-context">'+pro_name+'</div>'
             +'<div class="compare-close">'
@@ -392,7 +399,7 @@
             $(".compare-panel").append(content);
             $(".compare-close").on("click",function(){
                 console.log(pro_name)
-                
+
                 $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
                 $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
                 $("#cp"+pro_id).attr('add',0);
@@ -400,7 +407,7 @@
             })
         }
         
-        $(".compare-panel").append(content);
+        //$(".compare-panel").append(content);
         $(".compare-close").on("click",function(){
             //console.log(pro_name)
             
@@ -440,12 +447,18 @@
         }
     }
     function productCompareOnClick(compare_btn){
+        //alert("xxxxxx");
          if(compare_btn.attr("add")==0){
-            addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
-            compare_btn.find(".action-add").addClass("action-toggle");
-            compare_btn.find(".action-remove").removeClass("action-toggle");
-            compare_btn.attr('add',1);
-            $(".compare-panel").show();
+             if(compare_list.length>=6){
+                 alert("too much compared items.");
+             }
+             else{
+                 addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
+                 compare_btn.find(".action-add").addClass("action-toggle");
+                 compare_btn.find(".action-remove").removeClass("action-toggle");
+                 compare_btn.attr('add',1);
+                 $(".compare-panel").show();
+             }
         }else{
             removeCompare(compare_btn.attr("proId"));
             compare_btn.find(".action-remove").addClass("action-toggle");
@@ -455,7 +468,7 @@
     }
     $(".product-compare-button").on("click",function(){
             productCompareOnClick($(this));
-       
+
     })
     $(".compare-btn").on("click",function(){
         var items=$(".compare-panel").find(".compare-item");

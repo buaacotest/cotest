@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-17 07:30:04
+<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:42
          compiled from register.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/cotest.js"></script>
+    <script src="js/changelanguage.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
