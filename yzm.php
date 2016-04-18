@@ -22,5 +22,8 @@ for($i=0;$i<200;$i++){
     $randcolor=imagecolorallocate($im,rand(0,255),rand(0,255),rand(0,255));
     imagesetpixel($im,rand()%70,rand()%30,$randcolor);
 }
+ob_clean();
+
+header("Content-type:image/jpeg");
 imagepng($im);
 imagedestroy($im);
