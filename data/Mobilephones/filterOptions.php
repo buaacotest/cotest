@@ -36,7 +36,7 @@ function getLabels()
         $labels = '[
          {"type":"range","name":"total test result","label":"总评分",
           "value":[{">":4.5,"<=":5.5},{">":3.5,"<=":4.5},{">":2.5,"<=":3.5},{">":1.5,"<=":2.5},{">":0.5,"<=":1.5}],
-          "option":["非常好 ","好 ","一般","较差","差"]},
+          "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
            "value":[16,15,14],
            "option":[2016,2015,2014]},
