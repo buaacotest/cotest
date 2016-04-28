@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `comments`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comments` (
   `id_comment` int(11) NOT NULL AUTO_INCREMENT,
-  `id_product` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
+  `id_product` int(11) NOT NULL,
+  `user` varchar(30) NOT NULL,
   `content` varchar(140) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_comment`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,1761,5,'very good','2016-04-28 12:15:33'),(2,1761,5,'very good','2016-04-28 12:17:22'),(3,1761,5,'great','2016-04-28 12:18:06'),(4,1761,5,'ok','2016-04-28 12:18:27');
+INSERT INTO `comments` VALUES (1,1761,'5','very good','2016-04-28 12:15:33'),(3,1761,'5','great','2016-04-28 12:18:06'),(4,1761,'5','ok','2016-04-28 12:18:27'),(5,1761,'hahaha','nice','2016-04-28 13:00:44'),(6,1761,'hahaha','nice','2016-04-28 13:01:37');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-28 20:35:13
+-- Dump completed on 2016-04-28 21:15:42
