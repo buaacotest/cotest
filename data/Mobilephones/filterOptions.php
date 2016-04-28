@@ -44,8 +44,8 @@ function getLabels()
           "value":["Acer","Alcatel","Apple","Asus","BlackBerry","BQ","Energy Sistem","HTC","Huawei","Kazam","LG","Medion","Meizu","Microsoft","Motorola","NOS","One Plus","ORANGE","Positivo","Quantum","Samsung","SGP Technologies","Sony","Stonex","Vodafone","Wiko","Wileyfox","Woxter","Xiaomi","Yota Devices","ZTE"],
           "option":["Acer","Alcatel","Apple","Asus","BlackBerry","BQ","Energy Sistem","HTC","Huawei","Kazam","LG","Medion","Meizu","Microsoft","Motorola","NOS","One Plus","ORANGE","Positivo","Quantum","Samsung","SGP Technologies","Sony","Stonex","Vodafone","Wiko","Wileyfox","Woxter","Xiaomi","Yota Devices","ZTE"]},
           {"type":"string","name":"Operating system name","label":"操作系统",
-           "value":["Android","iOS","BlackBerry OS","Windows Phone"],
-           "option":["Android","iOS","BlackBerry","Windows"]},
+           "value":["Android","iOS","Windows Phone"],
+           "option":["Android","iOS","Windows"]},
           {"type":"range","name":"Display diagonal","label":"屏幕对角线长度","unit":"mm",
            "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51},{">=":-1,"<=":-1}],
            "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm"]},
@@ -54,7 +54,7 @@ function getLabels()
            "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
           {"type":"string","name":"Memory card slot","label":"Micro-SD卡槽",
            "value":[1,0],
-           "option":["Yes","No"]}
+           "option":["有","无"]}
        ]';
     }
 
