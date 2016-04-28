@@ -1,7 +1,8 @@
-# coding=gbk
+# coding=utf-8
 __author__ = 'Arthur'
 import mysql.connector
 import sys
+import codecs
 from  xml.dom import  minidom
 
 def get_attrvalue(node, attrname):
@@ -13,16 +14,26 @@ def get_nodevalue(node, index = 0):
 def get_xmlnode(node,name):
     return node.getElementsByTagName(name) if node else []
 
+def writeline(string,file):
+    if(file):
+        if(string):
+            string+='\n'
+            file.write(string)
+
 if __name__=="__main__":
     print("connect mysql begin")
+
+    f=codecs.open(r'newdata.log','w','utf-8')#open log file
+    updatecount={}
+    newcount={}
     dbname="null"
     xmlname="null"
-    config={'host':'127.0.0.1',#Ä¬ÈÏ127.0.0.1
+    config={'host':'127.0.0.1',#default localhost
         'user':'root',
         'password':'buaascse',
-        'port':3306 ,#Ä¬ÈÏ¼´Îª3306
-        #'database':'mobilephone', ÎŞÄ¬ÈÏÊı¾İ¿â
-        'charset':'utf8'#Ä¬ÈÏ¼´Îªutf8
+        'port':3306 ,#é»˜è®¤å³ä¸º3306
+        #'database':'mobilephone', æ— é»˜è®¤æ•°æ®åº“
+        'charset':'utf8'#é»˜è®¤å³ä¸ºutf8
         }
     try:
         cnn = mysql.connector.connect(**config)
@@ -67,29 +78,12 @@ if __name__=="__main__":
         print('select database fails!{}'.format(e))
 
     #deal with manufacturers-----------------------BEGIN
-    # #drop table
-    # sql_drop_table="DROP TABLE IF EXISTS `manufacturers`"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_drop_table)
-    # except mysql.connector.Error as e:
-    #     print('drop table manufacturers fails!{}'.format(e))
-    # #create table
-    # sql_create_table="CREATE TABLE `manufacturers` (" \
-    #                  "`comment` varchar(45) default NULL," \
-    #                  "`name` varchar(45) default NULL," \
-    #                  "`timestamp_lastchange` int(11) default NULL," \
-    #                  "`timestamp_lastcreated` int(11) default NULL," \
-    #                  "`id_manufacturer` varchar(20) NOT NULL," \
-    #                  "PRIMARY KEY  (`id_manufacturer`)" \
-    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_create_table)
-    # except mysql.connector.Error as e:
-    #     print('create table manufacturers fails!{}'.format(e))
+    print("update manufacturers begin")
+    writeline("===================================updated manufacturers============================:",f)
     manufactures_node=manufacturers[0]
     manufacture_list=[]
+    updatecount['manufacturer']=0
+    newcount['manufacturer']=0
     manufacture_nodes=get_xmlnode(manufactures_node,'manufacturer')#manufacture nodes
     for node in manufacture_nodes:
         manufacture_id = get_attrvalue(node,'id_manufacturer')
@@ -97,7 +91,7 @@ if __name__=="__main__":
         manufacture_comment=get_attrvalue(node,'comment')
         manufacturer_timestamp_created=get_attrvalue(node,'timestamp_created')
         manufacturer_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
-        manufacture={} #±£´æÒ»ÌõmanufactureĞÅÏ¢
+        manufacture={} #ä¿å­˜ä¸€æ¡manufactureä¿¡æ¯
         manufacture['id'] ,manufacture['name'] ,manufacture['comment'] , manufacture['timestamp_created'] , manufacture['timestamp_lastchange'] = (
              manufacture_id, manufacture_name , manufacture_comment , int(manufacturer_timestamp_created) ,int(manufacturer_timestamp_lastchange)
         )
@@ -105,16 +99,19 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_query)
         result_set=cursor.fetchall()
-        if not result_set:#Ã»ÓĞ¼ÇÂ¼µÄ»°²åÈë
+        if not result_set:#æ²¡æœ‰è®°å½•çš„è¯æ’å…¥
             sql_insert2="insert into manufacturers (id_manufacturer,name,comment,timestamp_lastchange,timestamp_lastcreated) values (%s, %s,%s,%s,%s)"
             data=(manufacture_id,manufacture_name,manufacture_comment,manufacturer_timestamp_lastchange,manufacturer_timestamp_created)
             cursor=cnn.cursor(dictionary=True)
             cursor.execute(sql_insert2,data)
+            strs="new manufacturer_id:"+str(manufacture_id)+" name:"+manufacture_name
+            writeline(strs,f)
+            newcount['manufacturer']+=1
         else:
-            row=result_set[0] #È¡µÚÒ»ĞĞ
+            row=result_set[0] #å–ç¬¬ä¸€è¡Œ
             ori_timechanged=row[2]
             if ori_timechanged<int(manufacturer_timestamp_lastchange):
-                #¸üĞÂ
+                #æ›´æ–°
                 update_sql="UPDATE `manufacturers`" \
                            "SET" \
                            "`comment` = %s," \
@@ -126,35 +123,23 @@ if __name__=="__main__":
                 updatedata=(manufacture_comment,manufacture_name,manufacturer_timestamp_lastchange,manufacturer_timestamp_created,manufacture_id,manufacture_id)
                 cursor=cnn.cursor()
                 cursor.execute(update_sql,updatedata)
-    #     manufacture_list.append(manufacture)# ±£´æËùÓĞµÄmanufactureĞÅÏ¢
+                strs="update manufacturer_id:"+str(manufacture_id)+" name:"+manufacture_name
+                writeline(strs,f)
+                updatecount['manufacturer']+=1
+    #     manufacture_list.append(manufacture)# ä¿å­˜æ‰€æœ‰çš„manufactureä¿¡æ¯
+    strs="new manufacturers:"+str(newcount['manufacturer'])+" updated manufacturers:"+str(updatecount['manufacturer'])
+    writeline(strs,f)
     print("update manufacturers over")
     #manufacturers---------------------------------------------END
 
 
     # #deal with productgroups-------------------------------------BEGIN
-    # #drop table
-    # sql_drop_table="DROP TABLE IF EXISTS `productgroups`"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_drop_table)
-    # except mysql.connector.Error as e:
-    #     print('drop table productgroups fails!{}'.format(e))
-    # #create table
-    # sql_create_table="CREATE TABLE `productgroups` (" \
-    #                  "`id_productgroup` varchar(20) NOT NULL," \
-    #                  "`comment` varchar(45) default NULL," \
-    #                  "`name` varchar(45) default NULL," \
-    #                  "`timestamp_lastchange` int(12) default NULL," \
-    #                  "`timestamp_created` int(12) default NULL," \
-    #                  "PRIMARY KEY  (`id_productgroup`)" \
-    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_create_table)
-    # except mysql.connector.Error as e:
-    #     print('create table productgroups fails!{}'.format(e))
+    print("update productgroups begin")
+    writeline("===================================updated productgroups============================:", f)
     productgroups_node=productgroups[0]
     productgroup_list=[]
+    newcount['productgroup']=0
+    updatecount['productgroup']=0
     productgroup_nodes=get_xmlnode(productgroups_node,'productgroup')#productgroup nodes
     for node in productgroup_nodes:
         productgroup_id = get_attrvalue(node,'id_productgroup')
@@ -162,7 +147,7 @@ if __name__=="__main__":
         productgroup_comment=get_attrvalue(node,'comment')
         productgroup_timestamp_created=get_attrvalue(node,'timestamp_created')
         productgroup_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
-        productgroup={} #±£´æÒ»ÌõproductgroupĞÅÏ¢
+        productgroup={} #ä¿å­˜ä¸€æ¡productgroupä¿¡æ¯
         productgroup['id'] ,productgroup['name'] ,productgroup['comment'] , productgroup['timestamp_created'] , productgroup['timestamp_lastchange'] = (
              productgroup_id, productgroup_name , productgroup_comment , int(productgroup_timestamp_created) ,int(productgroup_timestamp_lastchange)
         )
@@ -170,16 +155,19 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_query)
         result_set=cursor.fetchall()
-        if not result_set:#Ã»ÓĞ¼ÇÂ¼µÄ»°²åÈë
+        if not result_set:#æ²¡æœ‰è®°å½•çš„è¯æ’å…¥
             sql_insert2="insert into productgroups (id_productgroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
             data=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
+            strs="new productgroup_id:"+str(productgroup_id)+" name:"+productgroup_name
+            writeline(strs,f)
+            newcount['productgroup']+=1
         else:
-            row=result_set[0] #È¡µÚÒ»ĞĞ
+            row=result_set[0] #å–ç¬¬ä¸€è¡Œ
             ori_timechanged=row[3]
             if ori_timechanged<int(productgroup_timestamp_lastchange):
-                #¸üĞÂ
+                #æ›´æ–°
                 update_sql="UPDATE `productgroups`" \
                            "SET" \
                            "`id_productgroup` = %s," \
@@ -191,57 +179,25 @@ if __name__=="__main__":
                 updatedata=(productgroup_id,productgroup_comment,productgroup_name,productgroup_timestamp_lastchange,productgroup_timestamp_created,productgroup_id)
                 cursor=cnn.cursor()
                 cursor.execute(update_sql,updatedata)
-    #productgroup_list.append(productgroup)# ±£´æËùÓĞµÄproducgroupĞÅÏ¢
+                strs="update productgroup_id:"+str(productgroup_id)+" name:"+productgroup_name
+                writeline(strs,f)
+                updatecount['productgroup']+=1
+    #productgroup_list.append(productgroup)# ä¿å­˜æ‰€æœ‰çš„producgroupä¿¡æ¯
+    strs="new productgroups:"+str(newcount['productgroup'])+" updated productgroups:"+str(updatecount['productgroup'])
+    writeline(strs,f)
     print("update productgroups over")
     #productgroups---------------------------------------------------END
 
     #deal with products---------------------------------------------BEGIN
-    # #drop table
-    # sql_drop_table="DROP TABLE IF EXISTS `products`"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_drop_table)
-    # except mysql.connector.Error as e:
-    #     print('drop table products fails!{}'.format(e))
-    # #create table
-    # sql_create_table="CREATE TABLE `products` (" \
-    #                  "`id_product` varchar(20) NOT NULL," \
-    #                  "`id_productgroup` varchar(20) NOT NULL," \
-    #                  "`id_manufacturer` varchar(20) NOT NULL," \
-    #                  "`icrt_code` varchar(45) default NULL," \
-    #                  "`timestamp_lastchange` int(12) default NULL," \
-    #                  "`timestamp_created` int(12) default NULL," \
-    #                  "`picture_hires` varchar(45) default NULL," \
-    #                  "`picture_lores` varchar(45) default NULL," \
-    #                  "`similarmodelscodes` varchar(45) default NULL," \
-    #                  "`parentmodelcode` varchar(45) default NULL," \
-    #                  "`labcode` varchar(20) default NULL," \
-    #                  "`batch` varchar(20) default NULL," \
-    #                  "`sortorder` varchar(20) default NULL," \
-    #                  "`articlenumber` varchar(30) default NULL," \
-    #                  "`serialnumber` varchar(30) default NULL," \
-    #                  "`boughtbyorganisation` varchar(20) default NULL," \
-    #                  "`labarrivaldate` varchar(45) default NULL," \
-    #                  "`labreportdate` varchar(45) default NULL," \
-    #                  "`releasedate` varchar(45) default NULL," \
-    #                  "`systemmodelid` varchar(45) default NULL," \
-    #                  "`shortname` varchar(45) default NULL," \
-    #                  "`completename` varchar(45) default NULL," \
-    #                  "`modelname` varchar(45) default NULL," \
-    #                  "PRIMARY KEY  (`id_product`)," \
-    #                  "KEY `fk_products_productgroups1_idx` (`id_productgroup`)," \
-    #                  "KEY `fk_products_manufacturers1_idx` (`id_manufacturer`)" \
-    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_create_table)
-    # except mysql.connector.Error as e:
-    #     print('create table products fails!{}'.format(e))
+    print("update products begin")
+    writeline("===================================updated products=================================:", f)
     products_node=products[0]
     product_list=[]
+    newcount['product']=0
+    updatecount['product']=0
     product_nodes=get_xmlnode(products_node,'product')#product nodes
     for node in product_nodes:
-        product={} #±£´æÒ»ÌõmanufactureĞÅÏ¢
+        product={} #ä¿å­˜ä¸€æ¡manufactureä¿¡æ¯
         product_id = get_attrvalue(node,'id_product')
         product['id']=product_id
 
@@ -318,7 +274,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_query)
         result_set=cursor.fetchall()
-        if not result_set:#Ã»ÓĞ¼ÇÂ¼µÄ»°²åÈë
+        if not result_set:#æ²¡æœ‰è®°å½•çš„è¯æ’å…¥
             sql_insert2="insert into products" \
                     " (id_product,id_productgroup,id_manufacturer,icrt_code," \
                     "timestamp_lastchange,timestamp_created," \
@@ -336,11 +292,14 @@ if __name__=="__main__":
                     product_completename,product_modelname)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
+            strs="new product_id:"+str(product_id)+" name:"+product_modelname
+            writeline(strs,f)
+            newcount['product']+=1
         else:
-            row=result_set[0] #È¡µÚÒ»ĞĞ
+            row=result_set[0] #å–ç¬¬ä¸€è¡Œ
             ori_timechanged=row[4]
             if ori_timechanged<int(product_timestamp_lastchange):
-                #¸üĞÂ
+                #æ›´æ–°
                 update_sql="UPDATE `products`" \
                            "SET" \
                            "`id_product` = %s," \
@@ -375,35 +334,22 @@ if __name__=="__main__":
                     product_completename,product_modelname,product_id)
                 cursor=cnn.cursor()
                 cursor.execute(update_sql,updatedata)
-
-    #     product_list.append(product)# ±£´æËùÓĞµÄproductĞÅÏ¢
+                strs="updated product_id:"+str(product_id)+" name:"+product_modelname
+                writeline(strs,f)
+                updatecount['product']+=1
+    #     product_list.append(product)# ä¿å­˜æ‰€æœ‰çš„productä¿¡æ¯
+    strs="new products:"+str(newcount['product'])+" updated products:"+str(updatecount['product'])
+    writeline(strs,f)
     print("update products over")
     #products-------------------------------------------------------------END
 
     #deal with propertygroups------------------------------BEGIN
-    #drop table
-    # sql_drop_table="DROP TABLE IF EXISTS `propertygroups`"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_drop_table)
-    # except mysql.connector.Error as e:
-    #     print('drop table propertygroups fails!{}'.format(e))
-    # #create table
-    # sql_create_table="CREATE TABLE `propertygroups` (" \
-    #                  "`id_propertygroup` varchar(20) NOT NULL," \
-    #                  "`comment` varchar(45) default NULL," \
-    #                  "`name` varchar(45) default NULL," \
-    #                  "`timestamp_lastchange` int(12) default NULL," \
-    #                  "`timestamp_created` int(12) default NULL," \
-    #                  "PRIMARY KEY  (`id_propertygroup`)" \
-    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_create_table)
-    # except mysql.connector.Error as e:
-    #     print('create table propertygroups fails!{}'.format(e))
+    print("update propertygroups begin")
+    writeline("==============================updated propertygroups=============================:", f)
     propertygroups_node=propertygroups[0]
     propertygroup_list=[]
+    newcount['propertygroup']=0
+    updatecount['propertygroup']=0
     propertygroup_nodes=get_xmlnode(propertygroups_node,'propertygroup')#propertygroup nodes
     for node in propertygroup_nodes:
         propertygroup_id = get_attrvalue(node,'id_propertygroup')
@@ -411,7 +357,7 @@ if __name__=="__main__":
         propertygroup_comment=get_attrvalue(node,'comment')
         propertygroup_timestamp_created=get_attrvalue(node,'timestamp_created')
         propertygroup_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
-        propertygroup={} #±£´æÒ»ÌõpropertygroupĞÅÏ¢
+        propertygroup={} #ä¿å­˜ä¸€æ¡propertygroupä¿¡æ¯
         propertygroup['id'] ,propertygroup['name'] ,propertygroup['comment'] , propertygroup['timestamp_created'] , propertygroup['timestamp_lastchange'] = (
              propertygroup_id, propertygroup_name , propertygroup_comment , int(propertygroup_timestamp_created) ,int(propertygroup_timestamp_lastchange)
         )
@@ -419,16 +365,19 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_query)
         result_set=cursor.fetchall()
-        if not result_set:#Ã»ÓĞ¼ÇÂ¼µÄ»°²åÈë
+        if not result_set:#æ²¡æœ‰è®°å½•çš„è¯æ’å…¥
             sql_insert2="insert into propertygroups (id_propertygroup,comment,name,timestamp_lastchange,timestamp_created) values (%s, %s,%s,%s,%s)"
             data=(propertygroup_id,propertygroup_comment,propertygroup_name,propertygroup_timestamp_lastchange,propertygroup_timestamp_created)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
+            strs="new propertygroup_id:"+str(propertygroup_id)+" name:"+propertygroup_name
+            writeline(strs,f)
+            newcount['propertygroup']+=1
         else:
-            row=result_set[0] #È¡µÚÒ»ĞĞ
+            row=result_set[0] #å–ç¬¬ä¸€è¡Œ
             ori_timechanged = row[3]
             if ori_timechanged<int(propertygroup_timestamp_lastchange):
-                #¸üĞÂ
+                #æ›´æ–°
                 update_sql="UPDATE `propertygroups`" \
                            "SET" \
                            "`id_propertygroup` = %s," \
@@ -440,49 +389,25 @@ if __name__=="__main__":
                 updatedata=(propertygroup_id,propertygroup_comment,propertygroup_name,propertygroup_timestamp_lastchange,propertygroup_timestamp_created,propertygroup_id)
                 cursor=cnn.cursor()
                 cursor.execute(update_sql,updatedata)
-
-    #     propertygroup_list.append(propertygroup)# ±£´æËùÓĞµÄpropertygroupĞÅÏ¢
+                strs="updated propertygroup_id:"+str(propertygroup_id)+" name:"+propertygroup_name
+                writeline(strs,f)
+                updatecount['propertygroup']+=1
+    #     propertygroup_list.append(propertygroup)# ä¿å­˜æ‰€æœ‰çš„propertygroupä¿¡æ¯
+    strs="new propertygroups:"+str(newcount['propertygroup'])+" updated propertygroups:"+str(updatecount['propertygroup'])
+    writeline(strs,f)
     print("update propertygroups over")
     #propertygroups-------------------------------------------------END
 
     #deal with propertys------------------------------------------BEGIN
-    # #drop table
-    # sql_drop_table="DROP TABLE IF EXISTS `propertys`"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_drop_table)
-    # except mysql.connector.Error as e:
-    #     print('drop table propertys fails!{}'.format(e))
-    # #create table
-    # sql_create_table="CREATE TABLE `propertys` (" \
-    #                  "`id_property` varchar(20) NOT NULL default ''," \
-    #                  "`id_propertygroup` varchar(20) NOT NULL," \
-    #                  "`type` varchar(20) default NULL," \
-    #                  "`comment` varchar(45) default NULL," \
-    #                  "`name` varchar(200) default NULL," \
-    #                  "`timestamp_lastchange` int(12) default NULL," \
-    #                  "`timestamp_created` int(12) default NULL," \
-    #                  "`testprogram` varchar(20) default NULL," \
-    #                  "`use` varchar(10) default NULL," \
-    #                  "`precision` varchar(45) default NULL," \
-    #                  "`unit` varchar(45) default NULL," \
-    #                  "`min` varchar(45) default NULL," \
-    #                  "`max` varchar(45) default NULL," \
-    #                  "`binding` varchar(45) default NULL," \
-    #                  "`selected` int(11) default NULL," \
-    #                  "PRIMARY KEY  (`id_property`)," \
-    #                  "KEY `fk_propertys_propertygroups1_idx` (`id_propertygroup`)" \
-    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_create_table)
-    # except mysql.connector.Error as e:
-    #     print('create table propertys fails!{}'.format(e))
+    print("update propertys begin")
+    writeline("===================================updated propertys============================:", f)
     propertys_node=propertys[0]
     property_list=[]
+    newcount['property']=0
+    updatecount['property']=0
     property_nodes=get_xmlnode(propertys_node,'property')#property nodes
     for node in property_nodes:
-        property={} #±£´æÒ»ÌõpropertyĞÅÏ¢
+        property={} #ä¿å­˜ä¸€æ¡propertyä¿¡æ¯
         property_id = get_attrvalue(node,'id_property')
         property['id']=property_id
 
@@ -529,7 +454,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_query)
         result_set=cursor.fetchall()
-        if not result_set:#Ã»ÓĞ¼ÇÂ¼µÄ»°²åÈë
+        if not result_set:#æ²¡æœ‰è®°å½•çš„è¯æ’å…¥
             sql_insert2="insert into propertys(id_property,id_propertygroup,binding," \
                     "name,comment,max,min,unit,`precision`,type,`use`,testprogram," \
                     "timestamp_created,timestamp_lastchange,`selected`)" \
@@ -541,11 +466,14 @@ if __name__=="__main__":
                     property_timestamp_created,property_timestamp_lastchange,0)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
+            strs="new property_id:"+str(property_id)+" name:"+property_name
+            writeline(strs,f)
+            newcount['property']+=1
         else:
-            row=result_set[0] #È¡µÚÒ»ĞĞ
+            row=result_set[0] #å–ç¬¬ä¸€è¡Œ
             ori_timechanged = row[5]
             if ori_timechanged<int(property_timestamp_lastchange):
-                #¸üĞÂ
+                #æ›´æ–°
                 update_sql="UPDATE `propertys`" \
                            "SET" \
                            "`id_property` = %s," \
@@ -569,7 +497,12 @@ if __name__=="__main__":
                     property_max,property_binding,property_id)
                 cursor=cnn.cursor()
                 cursor.execute(update_sql,updatedata)
+                strs="updated property_id:"+str(property_id)+" name:"+property_name
+                writeline(strs,f)
+                updatecount['property']+=1
 
+    strs="new propertys:"+str(newcount['property'])+" updated propertys:"+str(updatecount['property'])
+    writeline(strs,f)
     print("update propertys over")
     #propertys---------------------------------------------------END
 
@@ -598,7 +531,7 @@ if __name__=="__main__":
     for node in calculationtype_nodes:
         calculationtype_id = get_attrvalue(node,'id_calculationtype')
         calculationtype_name= get_attrvalue(node,'name')
-        calculationtype={} #±£´æÒ»ÌõcalculationtypeĞÅÏ¢
+        calculationtype={} #ä¿å­˜ä¸€æ¡calculationtypeä¿¡æ¯
         calculationtype['id'] ,calculationtype['name'] = (
              calculationtype_id, calculationtype_name
         )
@@ -607,50 +540,20 @@ if __name__=="__main__":
         data=(calculationtype_id,calculationtype_name)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
-    #     calculationtype_list.append(calculationtype)# ±£´æËùÓĞµÄcalculationtypeĞÅÏ¢
+    #     calculationtype_list.append(calculationtype)# ä¿å­˜æ‰€æœ‰çš„calculationtypeä¿¡æ¯
     print("update calculationtypes over")
     #calculationtypes------------------------------------------------END
 
     # #deal with evaluations-------------------------------------------BEGIN
-    # #drop table
-    # sql_drop_table="DROP TABLE IF EXISTS `evaluations`"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_drop_table)
-    # except mysql.connector.Error as e:
-    #     print('drop table evaluations fails!{}'.format(e))
-    # #create table
-    # sql_create_table="CREATE TABLE `evaluations` (" \
-    #                  "`id_evaluation` varchar(20) NOT NULL," \
-    #                  "`id_parent` varchar(20) default NULL," \
-    #                  "`id_calculationtype` varchar(20) NOT NULL," \
-    #                  "`name` varchar(200) default NULL," \
-    #                  "`timestamp_lastchange` int(12) default NULL," \
-    #                  "`timestamp_created` int(12) default NULL," \
-    #                  "`precision` varchar(10) default NULL," \
-    #                  "`unit` varchar(45) default NULL," \
-    #                  "`binding` varchar(45) default NULL," \
-    #                  "`lookupstable` varchar(45) default NULL," \
-    #                  "`weighting_given` varchar(45) default NULL," \
-    #                  "`weighting_normalized` varchar(45) default NULL," \
-    #                  "`use_limiting` varchar(45) default NULL," \
-    #                  "`use_lookupable` varchar(45) default NULL," \
-    #                  "`use_inheritna` varchar(45) default NULL," \
-    #                  "`evaluationchilds` varchar(45) default NULL," \
-    #                  "PRIMARY KEY  (`id_evaluation`)," \
-    #                  "KEY `fk_evaluations_calculationtypes1_idx` (`id_calculationtype`)," \
-    #                  "KEY `fk_evaluations_evaluations1_idx` (`id_parent`)" \
-    #                  ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
-    # try:
-    #     cursor = cnn.cursor()
-    #     cursor.execute(sql_create_table)
-    # except mysql.connector.Error as e:
-    #     print('create table evaluations fails!{}'.format(e))
+    print("update evaluations begin")
+    writeline("===================================updated evluations============================:", f)
     evaluations_node=evaluations[0]
     evaluation_list=[]
+    newcount['evaluation']=0
+    updatecount['evaluation']=0
     evaluation_nodes=get_xmlnode(evaluations_node,'evaluation')#evaluation nodes
     for node in evaluation_nodes:
-        evaluation={} #±£´æÒ»ÌõevaluationĞÅÏ¢
+        evaluation={} #ä¿å­˜ä¸€æ¡evaluationä¿¡æ¯
         evaluation_id = get_attrvalue(node,'id_evaluation')
         evaluation['id']=evaluation_id
 
@@ -702,7 +605,7 @@ if __name__=="__main__":
         cursor=cnn.cursor()
         cursor.execute(sql_query)
         result_set=cursor.fetchall()
-        if not result_set:#Ã»ÓĞ¼ÇÂ¼µÄ»°²åÈë
+        if not result_set:#æ²¡æœ‰è®°å½•çš„è¯æ’å…¥
             sql_insert2 = "insert into evaluations(id_evaluation,id_parent,id_calculationtype," \
                       "name,timestamp_lastchange,timestamp_created," \
                       "`precision`,unit,binding,lookupstable,weighting_given," \
@@ -717,11 +620,14 @@ if __name__=="__main__":
                 evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs,0)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
+            strs="new evaluation_id:"+str(evaluation_id)+" name:"+evaluation_name
+            writeline(strs,f)
+            newcount['evaluation']+=1
         else:
-            row=result_set[0] #È¡µÚÒ»ĞĞ
+            row=result_set[0] #å–ç¬¬ä¸€è¡Œ
             ori_timechanged = row[4]
             if ori_timechanged<int(evaluation_timestamp_lastchange):
-                #¸üĞÂ
+                #æ›´æ–°
                 update_sql="UPDATE `evaluations`" \
                            "SET" \
                            "`id_evaluation` = %s," \
@@ -748,13 +654,19 @@ if __name__=="__main__":
                     evaluation_use_lookuptable,evaluation_use_inheritna,evaluation_id_childs,evaluation_id)
                 cursor=cnn.cursor()
                 cursor.execute(update_sql,updatedata)
+                strs="updated evaluation_id:"+str(evaluation_id)+" name:"+evaluation_name
+                writeline(strs,f)
+                updatecount['evaluation']+=1
 
     #     evaluation_list.append(evaluation)
+    strs="new evaluations:"+str(newcount['evaluation'])+" updated evaluations:"+str(updatecount['evaluation'])
+    writeline(strs,f)
     print("update evaluations over")
     #evaluations-----------------------------------------------END
 
     #deal with results-----------------------------------------BEGIN
     #drop table
+    print("update results begin")
     sql_drop_table="DROP TABLE IF EXISTS `results`"
     try:
         cursor = cnn.cursor()
@@ -801,4 +713,15 @@ if __name__=="__main__":
     #results------------------------------------------------END
 
     print("updateDB over")
+
+    writeline("===============================total results==============================:",f)
+    writeline("insert data:", f)
+    newdatastr="manufacturers:"+str(newcount['manufacturer'])+" productgroups:"+str(newcount['productgroup'])+" products:"+str(newcount['product'])+" propertygroups:"+ \
+               str(newcount['propertygroup'])+" propertys:"+str(newcount['property'])+" evaluations:"+str(newcount['evaluation'])
+    writeline(newdatastr,f)
+    updateddatastr="manufacturers:"+str(updatecount['manufacturer'])+" productgroups:"+str(updatecount['productgroup'])+" products:"+str(updatecount['product'])+" propertygroups:"+ \
+               str(updatecount['propertygroup'])+" propertys:"+str(updatecount['property'])+" evaluations:"+str(updatecount['evaluation'])
+    writeline("update data:", f)
+    writeline(updateddatastr,f)
+    f.close()
     #ALL END

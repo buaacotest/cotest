@@ -1,4 +1,4 @@
-# coding=gbk
+# coding=utf-8
 __author__ = 'Arthur'
 import mysql.connector
 import sys
