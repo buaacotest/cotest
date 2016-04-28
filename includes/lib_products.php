@@ -127,10 +127,10 @@ function convertTime($time){
 
 /*获取某个product的总评分*/
 function getTotalScore($id){
-    $sql="select format(value,2) from results where id_product=$id and id_evaluation=
+    $sql="select format(value,1) from results where id_product=$id and id_evaluation=
           (select id_evaluation from evaluations where name='total test result')";
-    $score=6-$GLOBALS['db']->getOne($sql);
-    $score=number_format($score, 2, '.', '');
+    $score=$GLOBALS['db']->getOne($sql);
+    $score=number_format($score, 1, '.', '');
     return $score;
 }
 
@@ -157,13 +157,13 @@ function getDetails($id,$level,$lang){
 /*求某个产品的评分树*/
 function getGradeTree($id,$tar,$lang){
     if($lang=='en_us'){
-        $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,2) as value
+        $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight,format(value,1) as value
        from evaluations as A,results as B
       where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0
        and B.id_product=$id";
     }
     else{
-        $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,format(value,2) as value
+        $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,format(value,1) as value
        from evaluations as A,results as B,sdictionary as C
       where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0 and flag=1 and C.wordid=A.id_evaluation
        and B.id_product=$id";
@@ -171,7 +171,7 @@ function getGradeTree($id,$tar,$lang){
     $data=$GLOBALS['db']->getAll($sql);
 
     foreach($data as $k=>$v){
-        $data[$k]['value']=number_format(6-$v['value'],2, '.', '');
+        $data[$k]['value']=number_format($v['value'],1, '.', '');
     }
     $gradeTree=getTree($data,0,0,$tar);
     return $gradeTree;
@@ -309,14 +309,14 @@ function filterProducts($lab){
                         $len=count($opts);
                        if($len==1){
                            if($tempIndexRange==0)
-                              $sql.="(value".$opts[0].$value[$opts[0]].")";
+                              $sql.="(format(value,1)".$opts[0].$value[$opts[0]].")";
                            else
-                               $sql.="or(value".$opts[0].$value[$opts[0]].")";
+                               $sql.="or(format(value,1)".$opts[0].$value[$opts[0]].")";
                        }else if($len==2){
                            if($tempIndexRange==0)
-                               $sql.="(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                               $sql.="(format(value,1)".$opts[0].$value[$opts[0]]." and format(value,1)".$opts[1].$value[$opts[1]].")";
                            else
-                               $sql.="or(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                               $sql.="or(format(value,1)".$opts[0].$value[$opts[0]]." and format(value,1)".$opts[1].$value[$opts[1]].")";
                        }
                         $tempIndexRange++;
                     }

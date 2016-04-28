@@ -10,7 +10,7 @@
                         <div class="product-listing">
                         <div class="product-thumb">
                               <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
+                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" >
                               </a>
                           </div>
                           <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">

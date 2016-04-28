@@ -11,7 +11,7 @@ function getLabels()
     if($lang=="en_us"){
         $labels = '[
          {"type":"range","name":"total test result","label":"Total test result",
-          "value":[{">":4.5,"<=":5.5},{">":3.5,"<=":4.5},{">":2.5,"<=":3.5},{">":1.5,"<=":2.5},{">":0.5,"<=":1.5}],
+          "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
           {"type":"date","name":"Publication date","label":"Tested date",
            "value":[16,15,14],
@@ -20,8 +20,8 @@ function getLabels()
           "value":["Acer","Alcatel","Apple","Asus","BlackBerry","BQ","Energy Sistem","HTC","Huawei","Kazam","LG","Medion","Meizu","Microsoft","Motorola","NOS","One Plus","ORANGE","Positivo","Quantum","Samsung","SGP Technologies","Sony","Stonex","Vodafone","Wiko","Wileyfox","Woxter","Xiaomi","Yota Devices","ZTE"],
           "option":["Acer","Alcatel","Apple","Asus","BlackBerry","BQ","Energy Sistem","HTC","Huawei","Kazam","LG","Medion","Meizu","Microsoft","Motorola","NOS","One Plus","ORANGE","Positivo","Quantum","Samsung","SGP Technologies","Sony","Stonex","Vodafone","Wiko","Wileyfox","Woxter","Xiaomi","Yota Devices","ZTE"]},
           {"type":"string","name":"Operating system name","label":"Operating system",
-           "value":["Android","iOS","BlackBerry OS","Windows Phone"],
-           "option":["Android","iOS","BlackBerry","Windows"]},
+           "value":["Android","iOS","Windows Phone"],
+           "option":["Android","iOS","Windows"]},
           {"type":"range","name":"Display diagonal","label":"Display diagonal","unit":"mm",
            "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51},{">=":-1,"<=":-1}],
            "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm"]},
@@ -35,7 +35,7 @@ function getLabels()
     }else if($lang=="zh_cn"){
         $labels = '[
          {"type":"range","name":"total test result","label":"总评分",
-          "value":[{">":4.5,"<=":5.5},{">":3.5,"<=":4.5},{">":2.5,"<=":3.5},{">":1.5,"<=":2.5},{">":0.5,"<=":1.5}],
+          "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
            "value":[16,15,14],
@@ -72,15 +72,16 @@ function getLabels()
                 $opts = array_keys($value);
                 $len = count($opts);
                 if ($len == 1 && $opts[0] != -1) {
-                    $sql = "select count(*) from results where value" . $opts[0] . $value[$opts[0]];
+                    $sql = "select count(*) from results where format(value,1)" . $opts[0] . $value[$opts[0]];
                 } else if ($len == 2 && $opts[0] != -1) {
-                    $sql = "select count(*) from results where value" . $opts[0] . $value[$opts[0]] . " and value" . $opts[1] . $value[$opts[1]];
+                    $sql = "select count(*) from results where format(value,1)" . $opts[0] . $value[$opts[0]] . " and format(value,1)" . $opts[1] . $value[$opts[1]];
                 }
                 $sql .= " and id_evaluation=(select id_evaluation from evaluations where ";
                 if ($item['name'] == 'total test result')
                     $sql .= "name='" . $item['name'] . "')";
                 else
                     $sql .= "id_evaluation>99999999 and name='" . $item['name'] . "')";
+               // echo $sql."\n";
                 $v = $GLOBALS['db']->getOne($sql);
                 $arr[$key]['number'][] = $v;
             }
