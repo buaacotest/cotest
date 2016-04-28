@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:35
+<?php /* Smarty version 2.6.19, created on 2016-04-28 13:05:59
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,9 +120,11 @@
                         <div class="row">
                             
                             <div class="col-md-12 pro-img text-center"id="pro_img1">
-                                  
-                                     <img src="img/ipad1.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
-                                  
+
+                                <img src="data/<?php echo $this->_tpl_vars['project']; ?>
+/pictures/<?php echo $this->_tpl_vars['product']['id']; ?>
+_01.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
+
                             </div>
                             <div class="col-md-12 pro-img text-center"id="pro_img2">
                                   
@@ -130,8 +132,10 @@
                                   
                             </div>
                             <div class="col-md-12 pro-img text-center"id="pro_img3">
-                                  
-                                     <img src="img/ipad3.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
+
+                                <img src="data/<?php echo $this->_tpl_vars['project']; ?>
+/pictures/<?php echo $this->_tpl_vars['product']['id']; ?>
+_02.jpg" >
                                   
                             </div>
                         </div>

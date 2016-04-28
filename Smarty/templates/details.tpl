@@ -105,9 +105,9 @@
                         <div class="row">
                             
                             <div class="col-md-12 pro-img text-center"id="pro_img1">
-                                  
-                                     <img src="img/ipad1.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
-                                  
+
+                                <img src="data/<{$project}>/pictures/<{$product.id}>_01.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
+
                             </div>
                             <div class="col-md-12 pro-img text-center"id="pro_img2">
                                   
@@ -115,8 +115,8 @@
                                   
                             </div>
                             <div class="col-md-12 pro-img text-center"id="pro_img3">
-                                  
-                                     <img src="img/ipad3.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
+
+                                <img src="data/<{$project}>/pictures/<{$product.id}>_02.jpg" >
                                   
                             </div>
                         </div>
