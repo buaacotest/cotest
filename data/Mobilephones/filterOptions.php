@@ -72,16 +72,16 @@ function getLabels()
                 $opts = array_keys($value);
                 $len = count($opts);
                 if ($len == 1 && $opts[0] != -1) {
-                    $sql = "select count(*) from results where format(value,1)" . $opts[0] . $value[$opts[0]];
+                    $sql = "select count(*) from results where format(6-value,1)" . $opts[0] . $value[$opts[0]];
                 } else if ($len == 2 && $opts[0] != -1) {
-                    $sql = "select count(*) from results where format(value,1)" . $opts[0] . $value[$opts[0]] . " and format(value,1)" . $opts[1] . $value[$opts[1]];
+                    $sql = "select count(*) from results where format(6-value,1)" . $opts[0] . $value[$opts[0]] . " and format(6-value,1)" . $opts[1] . $value[$opts[1]];
                 }
                 $sql .= " and id_evaluation=(select id_evaluation from evaluations where ";
                 if ($item['name'] == 'total test result')
                     $sql .= "name='" . $item['name'] . "')";
                 else
                     $sql .= "id_evaluation>99999999 and name='" . $item['name'] . "')";
-               // echo $sql."\n";
+               //echo $sql."\n";
                 $v = $GLOBALS['db']->getOne($sql);
                 $arr[$key]['number'][] = $v;
             }
