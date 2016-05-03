@@ -424,32 +424,10 @@
                               <{$comments[n].time}>
                           </div>
                           <div class="comment-cotent">
-                              <{$comments[n].cotent}>
+                              <{$comments[n].content}>
                           </div>
                       </div>
                       <{/section}>
-                      <div class="comment-item">
-                          <div class="comment-user">
-                              haha
-                          </div>
-                          <div class="comment-time">
-                              2016/04/25
-                          </div>
-                          <div class="comment-cotent">
-                              This is a very good product!
-                          </div>
-                      </div>
-                      <div class="comment-item">
-                          <div class="comment-user">
-                              haha
-                          </div>
-                          <div class="comment-time">
-                              2016/04/25
-                          </div>
-                          <div class="comment-cotent">
-                              This is a very good product!
-                          </div>
-                      </div>
                     </div>
                     <h4>Write your review</h4>
                     <div class="comment-submit">
@@ -506,6 +484,26 @@
     })
     $(".back-to-list").on("click",function(){
         window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+    })
+    $(".comment-btn").on("click",function() {
+        var content=$(".comment-area").val();
+        //console.log(content)
+        var arg={ };
+        arg["project"]="<{$project}>";
+        arg["product"]="<{$id}>";
+        arg["content"]=content;
+       // console.log(arg)
+        $.post("comment.php",arg,function(result){
+            if(result=="success"){
+                var date = new Date().Format("yyyy-MM-dd hh:mm:ss");
+                var newComment="<div class='comment-item'> <div class='comment-user'>"+"<{$user}>"+"</div><div class='comment-time'>"
+                        +date+"</div><div class='comment-cotent'>"+content+" </div> </div>"
+                var html= $(".comments").html();
+                html=newComment+html;
+                $(".comments").html(html)
+                $(".comment-area").val("")
+            }
+        })
     })
 </script>
 </html>

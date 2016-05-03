@@ -17,7 +17,7 @@ $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);
 $comments=getComments($id);
-print_r($comments);
+//print_r($comments);
 //print_r($details['Pros']);
 //print_r($details['Cons']);
 $product=array('name'=>$details['name'],'manufacturer'=>$details['manufacturer'],'id'=>$id);

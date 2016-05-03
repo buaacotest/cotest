@@ -5,15 +5,16 @@
  * Date: 2016/4/28
  * Time: 20:00
  */
+session_start();
 require('./includes/init.php');
 require('includes/lib_comment.php');
 $project=$_POST['project'];
 $product=$_POST['product'];
-$user=$_POST['user'];
+$user=$_SESSION['member'];
 $content=$_POST['content'];
 $db->changeDB($project);
 if(addComment($product,$user,$content)){
     echo "success";
 }else
-    echo "fail";
+    echo $project.$product.$user.$content."fail";
 
