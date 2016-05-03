@@ -13,9 +13,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#"><{$lang.Tests}></a></li>
+              <li><a href="index.php"><{$lang.Tests}></a></li>
                <li><a href="about.php"><{$lang.About}></a></li>
-                <li><a href="#"><{$lang.Press}></a></li>
+                <li><a href="press.php"><{$lang.Press}></a></li>
 
             </ul>
 

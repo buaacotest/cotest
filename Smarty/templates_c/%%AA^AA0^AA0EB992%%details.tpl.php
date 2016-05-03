@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-28 13:05:59
+<?php /* Smarty version 2.6.19, created on 2016-04-30 13:00:15
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,30 @@
          </div>
        </div>
        <div class="pro-score-banner">
-           <div class="pro-score-banner-score"><?php echo $this->_tpl_vars['score']; ?>
+           <div class="pro-score-banner-score"> <?php if ($this->_tpl_vars['score'] <= 1.5): ?>
+                                              <?php echo $this->_tpl_vars['lang']['Verygood']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['score'] > 1.5 && $this->_tpl_vars['score'] <= 2.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Good']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['score'] > 2.5 && $this->_tpl_vars['score'] <= 3.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Average']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['score'] > 3.5 && $this->_tpl_vars['score'] <= 4.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Sufficient']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['score'] > 4.5 && $this->_tpl_vars['score'] <= 5.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Poor']; ?>
+
+                                        <?php endif; ?><?php echo $this->_tpl_vars['score']; ?>
 </div>
            <div class="product-score">
                 <div class="score-list">
@@ -86,6 +109,12 @@
                              
                </div>
             </div>
+            
+       </div>
+       <div class="pro-option-banner">
+           <button class="add-to-compare">Add to compare</button>
+           <button class="go-to-compariosn">Go to comparison</button>
+           <button class="back-to-list">Back to the list</button>
        </div>
         
 
@@ -98,8 +127,6 @@
                 <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a ><?php echo $this->_tpl_vars['lang']['Features']; ?>
 </a></li>
                 <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><?php echo $this->_tpl_vars['lang']['Review']; ?>
-</a></li>
-                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a ><?php echo $this->_tpl_vars['lang']['HowToBuy']; ?>
 </a></li>
               </ul>
             
@@ -552,6 +579,80 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
                     <?php endfor; endif; ?>
 
                 </div>
+                <div id="panel4" class="proper-panel">
+                    <h4>User review</h4>
+                    <div class="comments">
+                      <?php unset($this->_sections['n']);
+$this->_sections['n']['name'] = 'n';
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['comments']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['show'] = true;
+$this->_sections['n']['max'] = $this->_sections['n']['loop'];
+$this->_sections['n']['step'] = 1;
+$this->_sections['n']['start'] = $this->_sections['n']['step'] > 0 ? 0 : $this->_sections['n']['loop']-1;
+if ($this->_sections['n']['show']) {
+    $this->_sections['n']['total'] = $this->_sections['n']['loop'];
+    if ($this->_sections['n']['total'] == 0)
+        $this->_sections['n']['show'] = false;
+} else
+    $this->_sections['n']['total'] = 0;
+if ($this->_sections['n']['show']):
+
+            for ($this->_sections['n']['index'] = $this->_sections['n']['start'], $this->_sections['n']['iteration'] = 1;
+                 $this->_sections['n']['iteration'] <= $this->_sections['n']['total'];
+                 $this->_sections['n']['index'] += $this->_sections['n']['step'], $this->_sections['n']['iteration']++):
+$this->_sections['n']['rownum'] = $this->_sections['n']['iteration'];
+$this->_sections['n']['index_prev'] = $this->_sections['n']['index'] - $this->_sections['n']['step'];
+$this->_sections['n']['index_next'] = $this->_sections['n']['index'] + $this->_sections['n']['step'];
+$this->_sections['n']['first']      = ($this->_sections['n']['iteration'] == 1);
+$this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $this->_sections['n']['total']);
+?>
+                      <div class="comment-item">
+                          <div class="comment-user">
+                              <?php echo $this->_tpl_vars['comments'][$this->_sections['n']['index']]['user']; ?>
+
+                          </div>
+                          <div class="comment-time">
+                              <?php echo $this->_tpl_vars['comments'][$this->_sections['n']['index']]['time']; ?>
+
+                          </div>
+                          <div class="comment-cotent">
+                              <?php echo $this->_tpl_vars['comments'][$this->_sections['n']['index']]['cotent']; ?>
+
+                          </div>
+                      </div>
+                      <?php endfor; endif; ?>
+                      <div class="comment-item">
+                          <div class="comment-user">
+                              haha
+                          </div>
+                          <div class="comment-time">
+                              2016/04/25
+                          </div>
+                          <div class="comment-cotent">
+                              This is a very good product!
+                          </div>
+                      </div>
+                      <div class="comment-item">
+                          <div class="comment-user">
+                              haha
+                          </div>
+                          <div class="comment-time">
+                              2016/04/25
+                          </div>
+                          <div class="comment-cotent">
+                              This is a very good product!
+                          </div>
+                      </div>
+                    </div>
+                    <h4>Write your review</h4>
+                    <div class="comment-submit">
+                        <textarea class="comment-area">
+                            
+                        </textarea>
+                        <button class="comment-btn"> Submit</button>
+                    </div>
+
+                </div>
                 
             </div>
         </div>
@@ -571,4 +672,35 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
 </body>
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
+<script>
+    var compare_ids=getPar("ids");
+    var id=getPar("id")+"";
+    var compare_names=getPar("names");
+    if(!compare_ids){
+        compare_ids=[]
+    }
+    if(!compare_names){
+        compare_names=[]
+    }
+    $(".add-to-compare").on("click",function(){
+        if(compare_ids.indexOf(id)==-1){
+            compare_ids.push(id)
+            compare_names.push('<?php echo $this->_tpl_vars['product']['name']; ?>
+');
+        } 
+        
+        window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+    })
+    $(".go-to-compariosn").on("click",function(){
+        if(compare_ids.indexOf(id)==-1){
+            compare_ids.push(id)
+            compare_names.push('<?php echo $this->_tpl_vars['product']['name']; ?>
+');
+        } 
+        window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(compare_ids);
+    })
+    $(".back-to-list").on("click",function(){
+        window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+    })
+</script>
 </html>

@@ -23,7 +23,7 @@ $_LANG['ChangePwd']='Change Password';
 $_LANG['Summary']='Summary';
 $_LANG['Ratings']='Ratings';
 $_LANG['Features']='Features';
-$_LANG['Review']='Review';
+$_LANG['Review']='User Review';
 $_LANG['HowToBuy']='How To Buy';
 
 $_LANG['Front']='Front';

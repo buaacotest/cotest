@@ -1,19 +1,18 @@
 
                 <p>&nbsp;<b><{$productsNum}>  </b><{$lang.Smartphones}> &nbsp;&nbsp;1 / <{$pageNum}> <{$lang.pages}></p>
-                <ul class="products" pagenum= <{$pageNum}> itemscope="" itemtype="http://schema.org/ItemList">
+             <ul class="products" pagenum="<{$pageNum}>" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
-                 
-            <meta itemprop="mainContentOfPage" content="true">
+                    <meta itemprop="mainContentOfPage" content="true">
                      <{section name=n loop=$products}>
                     <li >
                         <div class="product-listing">
                         <div class="product-thumb">
-                              <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                              <a class="product-link" target="<{$products[n].product_id}>" >
                                 <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" >
                               </a>
                           </div>
-                          <a href="details.php?proj=<{$project}>&id=<{$products[n].product_id}>">
+                          <a class="product-link"  target="<{$products[n].product_id}>" >
                             <span class="product-brand">
                               <{$products[n].product_manufacturer}>
                             </span>
@@ -30,7 +29,7 @@
                 
 
                             <div class="product-listing__tested-date">
-                                <{$lang.TestedDate}> <{$products[n].product_tested_date}>
+                                <{$lang.TestedDate}>: <{$products[n].product_tested_date}>
                             </div>
                             <div class="product-score">
                               
@@ -70,7 +69,29 @@
                                        </div>
 
                               
-                              <div class="score"><{$products[n].score}></div>
+                              <div class="score">
+                                        <{if $products[n].score <=1.5}>
+                                              <{ $lang.Verygood}>
+
+                                        <{/if}>
+                                        <{if $products[n].score >1.5 && $products[n].score <= 2.5}>
+                                             <{ $lang.Good}>
+
+                                        <{/if}>
+                                        <{if $products[n].score >2.5 && $products[n].score <= 3.5}>
+                                             <{ $lang.Average}>
+
+                                        <{/if}>
+                                        <{if $products[n].score >3.5 && $products[n].score <= 4.5}>
+                                             <{ $lang.Sufficient}>
+
+                                        <{/if}>
+                                        <{if $products[n].score >4.5 && $products[n].score <= 5.5}>
+                                             <{ $lang.Poor}>
+                                        <{/if}>
+
+
+                              / <{$products[n].score}></div>
                             </div>
                             
                             <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_name}>" add=0>
@@ -81,6 +102,6 @@
 
                       </li>
                     <{/section}>
+                    
 
                 </ul>
-         

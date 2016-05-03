@@ -46,8 +46,7 @@ require("navigation.php");
           COTEST
         </div>
         <div class=" brand-info ">
-         Consumer testing community (COTEST) buys samples anonymously in China and tasks a member of International Consumer Research & Testing (ICRT), with Comparative & Objective Testing in Europe for Safety & Trust (COTEST) as well as shares the results of ICRT joint tests!
-
+        Products sold outside Europe are tested in Europe according to European quality and testing standards.
         </div>
       </div>
       -->

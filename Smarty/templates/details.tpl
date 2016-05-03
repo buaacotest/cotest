@@ -42,7 +42,25 @@
          </div>
        </div>
        <div class="pro-score-banner">
-           <div class="pro-score-banner-score"><{$score}></div>
+           <div class="pro-score-banner-score"> <{if $score <=1.5}>
+                                              <{ $lang.Verygood}>
+
+                                        <{/if}>
+                                        <{if $score>1.5 && $score<= 2.5}>
+                                             <{ $lang.Good}>
+
+                                        <{/if}>
+                                        <{if $score >2.5 && $score <= 3.5}>
+                                             <{ $lang.Average}>
+
+                                        <{/if}>
+                                        <{if $score >3.5 && $score <= 4.5}>
+                                             <{ $lang.Sufficient}>
+
+                                        <{/if}>
+                                        <{if $score >4.5 && $score <= 5.5}>
+                                             <{ $lang.Poor}>
+                                        <{/if}><{$score}></div>
            <div class="product-score">
                 <div class="score-list">
                 <{if $score <= 1.5}>
@@ -79,6 +97,12 @@
                              
                </div>
             </div>
+            
+       </div>
+       <div class="pro-option-banner">
+           <button class="add-to-compare">Add to compare</button>
+           <button class="go-to-compariosn">Go to comparison</button>
+           <button class="back-to-list">Back to the list</button>
        </div>
         
 
@@ -88,7 +112,6 @@
                 <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a ><{$lang.Ratings}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a ><{$lang.Features}></a></li>
                 <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><{$lang.Review}></a></li>
-                <li role="presentation" class="proper-tab " target="#panel5"id="tab5"><a ><{$lang.HowToBuy}></a></li>
               </ul>
             
             <div class="pro-review-panel">
@@ -389,6 +412,54 @@
                     <{/section}>
 
                 </div>
+                <div id="panel4" class="proper-panel">
+                    <h4>User review</h4>
+                    <div class="comments">
+                      <{section name=n loop=$comments}>
+                      <div class="comment-item">
+                          <div class="comment-user">
+                              <{$comments[n].user}>
+                          </div>
+                          <div class="comment-time">
+                              <{$comments[n].time}>
+                          </div>
+                          <div class="comment-cotent">
+                              <{$comments[n].cotent}>
+                          </div>
+                      </div>
+                      <{/section}>
+                      <div class="comment-item">
+                          <div class="comment-user">
+                              haha
+                          </div>
+                          <div class="comment-time">
+                              2016/04/25
+                          </div>
+                          <div class="comment-cotent">
+                              This is a very good product!
+                          </div>
+                      </div>
+                      <div class="comment-item">
+                          <div class="comment-user">
+                              haha
+                          </div>
+                          <div class="comment-time">
+                              2016/04/25
+                          </div>
+                          <div class="comment-cotent">
+                              This is a very good product!
+                          </div>
+                      </div>
+                    </div>
+                    <h4>Write your review</h4>
+                    <div class="comment-submit">
+                        <textarea class="comment-area">
+                            
+                        </textarea>
+                        <button class="comment-btn"> Submit</button>
+                    </div>
+
+                </div>
                 
             </div>
         </div>
@@ -408,4 +479,33 @@
 </body>
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
+<script>
+    var compare_ids=getPar("ids");
+    var id=getPar("id")+"";
+    var compare_names=getPar("names");
+    if(!compare_ids){
+        compare_ids=[]
+    }
+    if(!compare_names){
+        compare_names=[]
+    }
+    $(".add-to-compare").on("click",function(){
+        if(compare_ids.indexOf(id)==-1){
+            compare_ids.push(id)
+            compare_names.push('<{$product.name}>');
+        } 
+        
+        window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+    })
+    $(".go-to-compariosn").on("click",function(){
+        if(compare_ids.indexOf(id)==-1){
+            compare_ids.push(id)
+            compare_names.push('<{$product.name}>');
+        } 
+        window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(compare_ids);
+    })
+    $(".back-to-list").on("click",function(){
+        window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+    })
+</script>
 </html>

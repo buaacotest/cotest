@@ -8,12 +8,14 @@
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
+require('./lang/'.$_SESSION['lang'].'/compare.php');
 $project=trim($_GET['proj']);
 $db->changeDB($project);
 $ids=trim($_GET['ids']);
 $lang=$_SESSION['lang'];
 $ids=json_decode($ids,true);
 $comProducts=array();
+
 if(!empty($ids)){
     foreach($ids as $k=>$v){
        // echo $v;

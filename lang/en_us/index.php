@@ -5,8 +5,7 @@
  * Date: 2016/4/5
  * Time: 17:01
  */
-$_LANG['Welcome']='Products made outside Europe are tested in Europe according to European quality standards and test programmes and compared with European ones.
-The access to the test results is promoted in all countries, where these products are sold to consumers.';
+$_LANG['Welcome']='Products sold outside Europe are tested in Europe according to European quality and testing standards.';
 
 
 $_LANG['Tests']='Tests';

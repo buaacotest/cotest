@@ -50,6 +50,6 @@ $_LANG['Sufficient']='Sufficient';
 $_LANG['Poor']='Poor';
 
 $_LANG['Compare']='Compare';
-$_LANG['AddToCompare']='Add To Compare';
-$_LANG['RemoveFromCompare']='Remove From Compare';
+$_LANG['AddToCompare']='Add to compare';
+$_LANG['RemoveFromCompare']='Remove from compare';
 $_LANG['Confirm']='Confirm';

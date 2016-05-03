@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:26
+<?php /* Smarty version 2.6.19, created on 2016-04-29 11:12:47
          compiled from navigation.tpl */ ?>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -15,11 +15,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#"><?php echo $this->_tpl_vars['lang']['Tests']; ?>
+              <li><a href="index.php"><?php echo $this->_tpl_vars['lang']['Tests']; ?>
 </a></li>
                <li><a href="about.php"><?php echo $this->_tpl_vars['lang']['About']; ?>
 </a></li>
-                <li><a href="#"><?php echo $this->_tpl_vars['lang']['Press']; ?>
+                <li><a href="press.php"><?php echo $this->_tpl_vars['lang']['Press']; ?>
 </a></li>
 
             </ul>

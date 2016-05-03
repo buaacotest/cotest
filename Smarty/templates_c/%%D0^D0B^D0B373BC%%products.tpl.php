@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:33
+<?php /* Smarty version 2.6.19, created on 2016-04-30 13:50:05
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,15 +123,13 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                     <li >
                         <div class="product-listing">
                         <div class="product-thumb">
-                              <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
-&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
-">
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="http://images.pricerunner.com/product/225x169/1484843660/Hisense-LTDN50K321UWTSEU.jpg">
+                              <a class="product-link" target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+" >
+                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" >
                               </a>
                           </div>
-                          <a href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
-&id=<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
-">
+                          <a class="product-link"  target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+" >
                             <span class="product-brand">
                               <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_manufacturer']; ?>
 
@@ -193,7 +191,34 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                        </div>
 
                               
-                              <div class="score"><?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['score']; ?>
+                              <div class="score">
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 1.5): ?>
+                                              <?php echo $this->_tpl_vars['lang']['Verygood']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 1.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 2.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Good']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 2.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 3.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Average']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 3.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 4.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Sufficient']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] > 4.5 && $this->_tpl_vars['products'][$this->_sections['n']['index']]['score'] <= 5.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Poor']; ?>
+
+                                        <?php endif; ?>
+
+
+                              / <?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['score']; ?>
 </div>
                             </div>
                             
@@ -246,7 +271,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;
     var compare_list=[];
-
+    var compare_name_list=[];
     //初始化
     //console.log(<?php echo $this->_tpl_vars['labels']; ?>
 )
@@ -262,6 +287,27 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     loadoption(<?php echo $this->_tpl_vars['labels']; ?>
 )
     $(".compare-panel").hide();
+    function getPar(par){
+        //获取当前URL
+        var local_url = document.location.href; 
+        console.log(local_url)
+        //获取要取得的get参数位置
+        var get = local_url.indexOf(par +"=");
+        if(get == -1){
+            return false;   
+        }   
+        //截取字符串
+        var get_par = local_url.slice(par.length + get + 1);    
+        //判断截取后的字符串是否还有其他get参数
+        var nextPar = get_par.indexOf("&");
+        if(nextPar != -1){
+            get_par = get_par.slice(0, nextPar);
+        }
+       
+        get_par=get_par.replace(/%22/g,"'");
+        get_par=get_par.replace(/%20/g," ");
+        return eval("("+get_par+")");
+    }
     function loadoption(labels){
         var option_text="";
         for(var i=0;i<labels.length;i++){
@@ -421,27 +467,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             totalpage=$(".products").attr("pagenum");
             cpage=1;
             setpage();
-            $(".product-compare-button").on("click",function(){
-                //alert("1")
-                if($(this).attr("add")==0){
-                    if(compare_list.length>=6){
-                        alert("too much compared items.");
-                    }
-                    else{
-                        addCompare($(this).attr("proId"),$(this).attr("proName"));
-                        $(this).find(".action-add").addClass("action-toggle");
-                        $(this).find(".action-remove").removeClass("action-toggle");
-                        $(this).attr('add',1);
-                        $(".compare-panel").show();
-                    }
-
-                }else{
-                    removeCompare($(this).attr("proId"));
-                    $(this).find(".action-remove").addClass("action-toggle");
-                    $(this).find(".action-add").removeClass("action-toggle");
-                    $(this).attr('add',0);
-                }
-            })
+           
            // console.log($(".products").attr("pagenum"));
             //console.log("page="+totalpage);
 
@@ -460,6 +486,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         +'</div>';
         if(compare_list.indexOf(pro_id)==-1 ){
             compare_list.push(pro_id);
+            compare_name_list.push(pro_name);
             console.log(pro_id);
             $(".compare-panel").append(content);
             $(".compare-close").on("click",function(){
@@ -485,6 +512,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     }
 
     function removeCompare(pro_id){
+
         var compareitems=$(".compare-panel").find('.compare-item');
         //console.log(pro_id);
         for(var i=0;i<compareitems.length;i++){
@@ -500,6 +528,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         console.log(compare_list);
        // compare_list.remove(id);
         compare_list.splice(id,1) 
+        compare_name_list.splice(id,1)
     }
     function updateCompareBtn(){
         var btns=$(".product-compare-button");
@@ -523,18 +552,17 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                  compare_btn.find(".action-remove").removeClass("action-toggle");
                  compare_btn.attr('add',1);
                  $(".compare-panel").show();
+               //  console.log($(".compare-panel").css("display"))
              }
         }else{
             removeCompare(compare_btn.attr("proId"));
             compare_btn.find(".action-remove").addClass("action-toggle");
             compare_btn.find(".action-add").removeClass("action-toggle");
             compare_btn.attr('add',0);
+          //  console.log($(".compare-panel").css("display"))
         }
     }
-    $(".product-compare-button").on("click",function(){
-            productCompareOnClick($(this));
-
-    })
+   
     $(".compare-btn").on("click",function(){
         var items=$(".compare-panel").find(".compare-item");
         var ids=[];
@@ -642,11 +670,37 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
             }
         }
+        console.log(outstr)
         document.getElementById("setpage").innerHTML = "<div id='setpage'>" + outstr + "<\/div>";
         outstr = "";
-        //$("html,body").animate({scrollTop:0,500});
-    }
 
+         updateCompareBtn();
+            $(".product-compare-button").on("click",function(){
+                productCompareOnClick($(this));
+           
+            })
+        //$("html,body").animate({scrollTop:0,500});
+        $(".product-link").on("click",function(){
+            var id=$(this).attr("target");
+            window.location.href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
+&id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
+        })
+    }
+    
+
+
+ 
+  //  var local_url = document.location.href; 
+    var compare_ids=getPar("ids");
+    var compare_names=getPar("names");
+
+    if(compare_ids&&compare_names){
+      for(var i=0;i<compare_ids.length;i++){
+        addCompare(compare_ids[i],compare_names[i])
+        
+      }
+      $(".compare-panel").show();
+    }
     setpage();    //调用分页
 </script>
 <script type="text/javascript">
