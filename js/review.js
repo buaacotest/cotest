@@ -1,7 +1,6 @@
 $(document).ready(function(){
     //hide evaluations at first
     var tab_panels=$(".pro-nav");
-    console.log(tab_panels);
     for(var i=0;i<tab_panels.length;i++){
         var tabs=$(tab_panels[i]).find(".proper-tab");
         for(var j=0;j<tabs.length;j++){

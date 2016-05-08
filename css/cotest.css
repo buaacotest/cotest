@@ -315,7 +315,7 @@ color: #f7b206;
 }
 .score-list{
 	margin-top: 5px;
-	float: left;
+	height: 20px;
 
 }
 .products .product-thumb{
@@ -323,8 +323,9 @@ color: #f7b206;
 	overflow: hidden;
 }
 .products .product-thumb img{
-	max-width: 170px;
-	max-height: 130px;
+
+	height: 130px;
+
 }
 .tool-tip{
 	background: rgba(0,0,0,0.5);
@@ -350,9 +351,9 @@ color: #f7b206;
 }
 .products .score{
     color: #f4b501;
-    margin-left: 8px;
     margin-top: 3px;
-    float: left;
+    float:none;
+
 }
 .star-b{
 	list-style: none;
@@ -387,28 +388,37 @@ color: #f7b206;
 	background: none;
 	font-size: 10px;
 	padding: 10px 0px;
-	margin-top: 25px;
+	margin-top: 15px;
 
 
 }
+
 .sidebar{
-	position: absolute;
-	left: 0px;
-	top: 50px;
+	float: left;
+
 	border-right: 1px solid #eee;
 	width: 230px;
 	background: #fff;
 	color: #888;
 	padding: 30px 20px;
 	min-height: 1000px;
+	margin-top: 60px;
 
 }
 .products-container{
-	position: absolute;
-	top: 50px;
-	left: 230px;
+	float: right;
+	margin-top: 60px;
+	margin-left: 250px;
 	padding: 40px 20px;
 
+}
+.product-container-panel{
+	float: right;
+	margin-left: -500px;
+	width: 100%;
+}
+.products .product-link{
+	cursor: pointer;
 }
 .products-sort{
 	margin-bottom: 20px;
@@ -1075,17 +1085,49 @@ footer .score-head{
 }
 footer .friends-list .icrt{
 	width: 160px;
-	float: none;
+	float: left;
 	margin-bottom: 10px;
 }
+footer .friends-list .icrt img{
+	width: 162px;
+}
+footer .friends-list .icrt .text{
+	width: 160px;
+	text-align: center;
+}
 footer .friends-list .test{
-	height: 60px;
-	margin: 10px;
-	margin-left: 0px;
+	float: left;
+	margin-left: 40px;
+}
+footer .friends-list .test img{
+	height: 48px;
 }
 footer .friends-list .eu{
-	height: 60px;
+	
 	margin: 10px;
+}
+footer a{
+	color: #666;
+}
+footer .top{
+	width: 240px;
+	height: 70px;
+}
+footer .friends-list .eu{
+	width: 240px;
+	height: 70px;
+}
+footer .friends-list .eu img{
+	width: 100px;
+	float: left;
+}
+footer .friends-list .eu .text{
+	width: 120px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+footer .friends-list .eu .text a{
 }
 .footer-container{
 	padding: 40px 80px;
@@ -1121,8 +1163,8 @@ footer h4{
 	height: 20px;
 }
 .footer-block{
-	width: 60%;
-	margin-left: 20%;
+	margin: 0 auto;
+	width: 270px;
 	display: block;
 }
 footer .join-list{
@@ -1234,6 +1276,11 @@ footer .icptext{
 .compare-table h2{
 	font-size: 16px;
 	color: #f7b206;
+	font-weight: bold;
+	margin-left: 14px;
+}
+.compare-table h3{
+	font-size: 14px;
 	font-weight: bold;
 	margin-left: 14px;
 }

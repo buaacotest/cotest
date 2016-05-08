@@ -22,6 +22,7 @@ $_LANG['ChangePwd']='Change Password';
 
 $_LANG['Summary']='Summary';
 $_LANG['Ratings']='Ratings';
+
 $_LANG['Features']='Features';
 $_LANG['Review']='User Review';
 $_LANG['HowToBuy']='How To Buy';
@@ -42,7 +43,7 @@ $_LANG['Poor']='Poor';
 $_LANG['Weighting']='Weighting';
 $_LANG['Score']='Score';
 $_LANG['Rating']='Rating';
-
+$_LANG['Symbol']='Symbol';
 
 
 $_LANG['CotestVerdict']='COTEST Verdict';

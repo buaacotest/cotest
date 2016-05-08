@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-30 10:20:27
+<?php /* Smarty version 2.6.19, created on 2016-05-08 13:51:59
          compiled from compare.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +63,7 @@
           <tr class="product-images">
             <th class="edit-comparison" scope="row" rowspan="2">
        
-                <button class="add-compare-btn">+ add more to compare</button>
+                <button class="add-compare-btn" title="return to smartphones">+ add more to compare</button>
          
             </th>
              <?php unset($this->_sections['n']);
@@ -355,6 +355,104 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
                 </td>
               <?php endfor; endif; ?>
             </tr>
+             <?php unset($this->_sections['p']);
+$this->_sections['p']['name'] = 'p';
+$this->_sections['p']['loop'] = is_array($_loop=$this->_tpl_vars['products'][0]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['p']['show'] = true;
+$this->_sections['p']['max'] = $this->_sections['p']['loop'];
+$this->_sections['p']['step'] = 1;
+$this->_sections['p']['start'] = $this->_sections['p']['step'] > 0 ? 0 : $this->_sections['p']['loop']-1;
+if ($this->_sections['p']['show']) {
+    $this->_sections['p']['total'] = $this->_sections['p']['loop'];
+    if ($this->_sections['p']['total'] == 0)
+        $this->_sections['p']['show'] = false;
+} else
+    $this->_sections['p']['total'] = 0;
+if ($this->_sections['p']['show']):
+
+            for ($this->_sections['p']['index'] = $this->_sections['p']['start'], $this->_sections['p']['iteration'] = 1;
+                 $this->_sections['p']['iteration'] <= $this->_sections['p']['total'];
+                 $this->_sections['p']['index'] += $this->_sections['p']['step'], $this->_sections['p']['iteration']++):
+$this->_sections['p']['rownum'] = $this->_sections['p']['iteration'];
+$this->_sections['p']['index_prev'] = $this->_sections['p']['index'] - $this->_sections['p']['step'];
+$this->_sections['p']['index_next'] = $this->_sections['p']['index'] + $this->_sections['p']['step'];
+$this->_sections['p']['first']      = ($this->_sections['p']['iteration'] == 1);
+$this->_sections['p']['last']       = ($this->_sections['p']['iteration'] == $this->_sections['p']['total']);
+?>
+                <tr class="test-results" data-category="tests">
+                  <th class="behind-paywall">
+                    <div class="compare-th">
+                    <?php echo $this->_tpl_vars['products'][0]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['name']; ?>
+
+                    </div>
+                    
+                  </th>
+                  <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
+
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                    <td data-product-id="10344" class="behind-paywall">
+
+                            <div class="score-list">
+                                            <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] <= 1.5): ?>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <?php endif; ?>
+                                            <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] > 1.5 && $this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] <= 2.5): ?>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <?php endif; ?>
+                                            <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] > 2.5 && $this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] <= 3.5): ?>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <?php endif; ?>
+                                            <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] > 3.5 && $this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] <= 4.5): ?>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <?php endif; ?>
+                                            <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] > 4.5 && $this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value'] <= 5.5): ?>
+                                                            <div class="star"></div>
+
+
+                                            <?php endif; ?>
+                                                         
+                       </div>
+                      <?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['evaluations'][0]['id_parent'][$this->_sections['n']['index']]['id_parent'][$this->_sections['p']['index']]['value']; ?>
+
+                    </td>
+                  <?php endfor; endif; ?>
+                </tr>
+             <?php endfor; endif; ?>
           <?php endfor; endif; ?>
             
 
@@ -395,9 +493,70 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
                 </td>
                 <?php endfor; endif; ?>
           </tr>
+          <?php unset($this->_sections['k']);
+$this->_sections['k']['name'] = 'k';
+$this->_sections['k']['loop'] = is_array($_loop=$this->_tpl_vars['products'][0]['property']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['k']['show'] = true;
+$this->_sections['k']['max'] = $this->_sections['k']['loop'];
+$this->_sections['k']['step'] = 1;
+$this->_sections['k']['start'] = $this->_sections['k']['step'] > 0 ? 0 : $this->_sections['k']['loop']-1;
+if ($this->_sections['k']['show']) {
+    $this->_sections['k']['total'] = $this->_sections['k']['loop'];
+    if ($this->_sections['k']['total'] == 0)
+        $this->_sections['k']['show'] = false;
+} else
+    $this->_sections['k']['total'] = 0;
+if ($this->_sections['k']['show']):
+
+            for ($this->_sections['k']['index'] = $this->_sections['k']['start'], $this->_sections['k']['iteration'] = 1;
+                 $this->_sections['k']['iteration'] <= $this->_sections['k']['total'];
+                 $this->_sections['k']['index'] += $this->_sections['k']['step'], $this->_sections['k']['iteration']++):
+$this->_sections['k']['rownum'] = $this->_sections['k']['iteration'];
+$this->_sections['k']['index_prev'] = $this->_sections['k']['index'] - $this->_sections['k']['step'];
+$this->_sections['k']['index_next'] = $this->_sections['k']['index'] + $this->_sections['k']['step'];
+$this->_sections['k']['first']      = ($this->_sections['k']['iteration'] == 1);
+$this->_sections['k']['last']       = ($this->_sections['k']['iteration'] == $this->_sections['k']['total']);
+?>
+            <tr class="subheading" data-category="tests-heading">
+            <th>
+              <h3><?php echo $this->_tpl_vars['products'][0]['property'][$this->_sections['k']['index']]['name']; ?>
+
+              </h3>
+            </th>
+                <?php unset($this->_sections['m']);
+$this->_sections['m']['name'] = 'm';
+$this->_sections['m']['loop'] = is_array($_loop=$this->_tpl_vars['products']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['m']['show'] = true;
+$this->_sections['m']['max'] = $this->_sections['m']['loop'];
+$this->_sections['m']['step'] = 1;
+$this->_sections['m']['start'] = $this->_sections['m']['step'] > 0 ? 0 : $this->_sections['m']['loop']-1;
+if ($this->_sections['m']['show']) {
+    $this->_sections['m']['total'] = $this->_sections['m']['loop'];
+    if ($this->_sections['m']['total'] == 0)
+        $this->_sections['m']['show'] = false;
+} else
+    $this->_sections['m']['total'] = 0;
+if ($this->_sections['m']['show']):
+
+            for ($this->_sections['m']['index'] = $this->_sections['m']['start'], $this->_sections['m']['iteration'] = 1;
+                 $this->_sections['m']['iteration'] <= $this->_sections['m']['total'];
+                 $this->_sections['m']['index'] += $this->_sections['m']['step'], $this->_sections['m']['iteration']++):
+$this->_sections['m']['rownum'] = $this->_sections['m']['iteration'];
+$this->_sections['m']['index_prev'] = $this->_sections['m']['index'] - $this->_sections['m']['step'];
+$this->_sections['m']['index_next'] = $this->_sections['m']['index'] + $this->_sections['m']['step'];
+$this->_sections['m']['first']      = ($this->_sections['m']['iteration'] == 1);
+$this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $this->_sections['m']['total']);
+?>
+                <td class="table-cell-wrapper" data-product-id="10344">
+                  <div class="table-cell-wrapper-inner">
+                    
+                  </div>
+                </td>
+                <?php endfor; endif; ?>
+            </tr>
            <?php unset($this->_sections['n']);
 $this->_sections['n']['name'] = 'n';
-$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products'][0]['property'][0]['id_propertygroup']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['n']['loop'] = is_array($_loop=$this->_tpl_vars['products'][0]['property'][$this->_sections['k']['index']]['id_propertygroup']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $this->_sections['n']['show'] = true;
 $this->_sections['n']['max'] = $this->_sections['n']['loop'];
 $this->_sections['n']['step'] = 1;
@@ -422,7 +581,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             <tr class="test-results" data-category="tests">
               <th class="behind-paywall">
                 <div class="compare-th">
-                <?php echo $this->_tpl_vars['products'][0]['property'][0]['id_propertygroup'][$this->_sections['n']['index']]['name']; ?>
+                <?php echo $this->_tpl_vars['products'][0]['property'][$this->_sections['k']['index']]['id_propertygroup'][$this->_sections['n']['index']]['name']; ?>
 
                 </div>
                
@@ -453,20 +612,21 @@ $this->_sections['m']['last']       = ($this->_sections['m']['iteration'] == $th
 ?>
                 <td data-product-id="10344" class="behind-paywall">
               
-                          <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][0]['id_propertygroup'][$this->_sections['n']['index']]['value'] == 'Yes'): ?>
+                          <?php if ($this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][$this->_sections['k']['index']]['id_propertygroup'][$this->_sections['n']['index']]['value'] == 'Yes'): ?>
                             <img class="proper-signal"src="img/check2.png">
                             <?php elseif ($this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][0]['id_propertygroup'][$this->_sections['n']['index']]['value'] == 'No'): ?>
                             <img class="proper-signal"src="img/cross.png">
                             <?php else: ?>
-                            <?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][0]['id_propertygroup'][$this->_sections['n']['index']]['value']; ?>
+                            <?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][$this->_sections['k']['index']]['id_propertygroup'][$this->_sections['n']['index']]['value']; ?>
  
-                            <?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][0]['id_propertygroup'][$this->_sections['n']['index']]['unit']; ?>
+                            <?php echo $this->_tpl_vars['products'][$this->_sections['m']['index']]['property'][$this->_sections['k']['index']]['id_propertygroup'][$this->_sections['n']['index']]['unit']; ?>
 
                           <?php endif; ?>
                 </td>
 
               <?php endfor; endif; ?>
             </tr>
+          <?php endfor; endif; ?>
           <?php endfor; endif; ?>
 
 

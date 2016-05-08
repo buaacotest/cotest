@@ -205,7 +205,7 @@
                     <div class="proper-block">
                             <div class="row">
                                 <div class="proper-head">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                           <{$product.name}>
                                     </div>
                                     <div class="col-md-2 ">
@@ -217,13 +217,16 @@
                                     <div class="col-md-2">
                                         <{$lang.Rating}>
                                     </div>
+                                    <div class="col-md-2">
+                                        <{$lang.Symbol}>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     <div class="proper-block">
                         <div class="row">
                             <div class="proper-class">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                       <{$evals.name}>
                                 </div>
                                 <div class="col-md-2 ">
@@ -235,6 +238,27 @@
                                 <div class="col-md-2">
 
                                     <{$evals.value}>
+                                </div>
+                                <div class="col-md-2">
+                                         <{if $evals.value <=1.5}>
+                                              <{ $lang.Verygood}>
+
+                                        <{/if}>
+                                        <{if $evals.value >1.5 && $evals.value <= 2.5}>
+                                             <{ $lang.Good}>
+
+                                        <{/if}>
+                                        <{if $evals.value >2.5 && $evals.value <= 3.5}>
+                                             <{ $lang.Average}>
+
+                                        <{/if}>
+                                        <{if $evals.value >3.5 && $evals.value <= 4.5}>
+                                             <{ $lang.Sufficient}>
+
+                                        <{/if}>
+                                        <{if $evals.value >4.5 && $evals.value <= 5.5}>
+                                             <{ $lang.Poor}>
+                                        <{/if}>
                                 </div>
                                 <div class="col-md-2">
                                        <div class="score-list">
@@ -279,13 +303,34 @@
                         <div class="proper-block">
                             <div class="row">
                                 <div class="proper-title" toggle="1">
-                                    <div class="col-md-6"><label><{$evals.id_parent[n].name}></label></div>
+                                    <div class="col-md-4"><label><{$evals.id_parent[n].name}></label></div>
                                     <div class="col-md-2 proper-weight-panel">
                                         <div class="proper-weight">
                                         <{$evals.id_parent[n].weight}> %
                                         </div>
                                     </div>
                                     <div class="col-md-2"><{$evals.id_parent[n].value}></div>
+                                    <div class="col-md-2">
+                                         <{if $evals.id_parent[n].value <=1.5}>
+                                              <{ $lang.Verygood}>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >1.5 && $evals.id_parent[n].value <= 2.5}>
+                                             <{ $lang.Good}>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >2.5 && $evals.id_parent[n].value <= 3.5}>
+                                             <{ $lang.Average}>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >3.5 && $evals.id_parent[n].value <= 4.5}>
+                                             <{ $lang.Sufficient}>
+
+                                        <{/if}>
+                                        <{if $evals.id_parent[n].value >4.5 && $evals.id_parent[n].value <= 5.5}>
+                                             <{ $lang.Poor}>
+                                        <{/if}>
+                                    </div>
                                     <div class="col-md-2">
                                      
                                         <div class="score-list">
@@ -329,13 +374,34 @@
                             <{foreach from=$evals.id_parent[n].id_parent item=foo}>
                                  <{ if ($foo.name !='') }>
                                  <div class="row proper-item">
-                                     <div class="col-md-6"><label class="proper-item-name"><{$foo.name}></label></div>
+                                     <div class="col-md-4"><label class="proper-item-name"><{$foo.name}></label></div>
                                     <div class="col-md-2 ">
                                             <div class="proper-weight">
                                             <{$foo.weight}> %
                                             </div>
                                     </div>
                                     <div class="col-md-2"><{$foo.value}></div>
+                                    <div class="col-md-2">
+                                            <{if $foo.value <=1.5}>
+                                              <{ $lang.Verygood}>
+
+                                        <{/if}>
+                                        <{if $foo.value >1.5 && $foo.value <= 2.5}>
+                                             <{ $lang.Good}>
+
+                                        <{/if}>
+                                        <{if $foo.value>2.5 && $foo.value <= 3.5}>
+                                             <{ $lang.Average}>
+
+                                        <{/if}>
+                                        <{if $foo.value >3.5 && $foo.value <= 4.5}>
+                                             <{ $lang.Sufficient}>
+
+                                        <{/if}>
+                                        <{if $foo.value >4.5 && $foo.value <= 5.5}>
+                                             <{ $lang.Poor}>
+                                        <{/if}>
+                                    </div>
                                     <div class="col-md-2">
                                         <div class="score-list">
                                         <{if $foo.value < 1.5}>
@@ -431,9 +497,7 @@
                     </div>
                     <h4>Write your review</h4>
                     <div class="comment-submit">
-                        <textarea class="comment-area">
-                            
-                        </textarea>
+                        <textarea class="comment-area" rows="3" cols="20"></textarea>
                         <button class="comment-btn"> Submit</button>
                     </div>
 
@@ -486,6 +550,10 @@
         window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
     $(".comment-btn").on("click",function() {
+        var user='<{$user}>'
+        if(!user){
+            alert("Please sign in first!")
+        }else{
         var content=$(".comment-area").val();
         //console.log(content)
         var arg={ };
@@ -504,6 +572,7 @@
                 $(".comment-area").val("")
             }
         })
+    }
     })
 </script>
 </html>

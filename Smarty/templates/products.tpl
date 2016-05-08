@@ -40,21 +40,7 @@
 
     </div>
     <div class="row" id="#product_panel">
-        <div class="sidebar">
-        <!--
-          <button class="filter-btn">
-            Filter
-          </button>-->
-          <h2 class="filter-title"><{$lang.Filters}></h2>
-          
-          <button class="clear-btn">
-              <{$lang.ClearAll}>
-          </button>
-          <div id="filter-all-options">
-              
-          </div>
-
-        </div>
+        <div class="product-container-panel">
         <div class="products-container">
             <div class="products-sort">
             
@@ -72,7 +58,7 @@
                 </div>
             </div>
             <div id="products-block">
-                <p>&nbsp;<b><{$productsNum}>  </b><{$lang.Smartphones}> &nbsp;&nbsp;1 / <{$pageNum}> <{$lang.pages}></p>
+                <p>&nbsp;<b><{$productsNum}>  </b><{$lang.Smartphones}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -183,6 +169,22 @@
             <!-- lishijie -->
             <div id="setpage"></div>
         </div>
+        </div>
+        <div class="sidebar">
+        <!--
+          <button class="filter-btn">
+            Filter
+          </button>-->
+          <h2 class="filter-title"><{$lang.Filters}></h2>
+          
+          <button class="clear-btn">
+              <{$lang.ClearAll}>
+          </button>
+          <div id="filter-all-options">
+              
+          </div>
+
+        </div>
 
     </div>
 
@@ -193,6 +195,9 @@
         <div class="compare-btn"><{$lang.Compare}></div>
     </div>
 </div>
+<{php}>
+  require("footer.php");
+  <{/php}>
 </div>
 
 
@@ -533,6 +538,11 @@
                 productCompareOnClick($(this));
            
             })
+            $(".product-link").on("click",function(){
+              var id=$(this).attr("target");
+            window.location.href="details.php?proj=<{$project}>&id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
+            })
+             $(".cur-page").text(cpage)
         })
 
 
@@ -571,11 +581,11 @@
                         outstr = outstr + "<span class='current'>"+count+"</span>";
                     }
                 }
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> >> </a>";
             }
             else if(parseInt((cpage-1)/pagesize) == parseInt(totalpage/pagesize))///最后10页
             {
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'><<</a>";
                 for (count=parseInt(totalpage/pagesize)*pagesize+1;count<=totalpage;count++)
                 {    if(count!=cpage)
                 {
@@ -614,6 +624,7 @@
             var id=$(this).attr("target");
             window.location.href="details.php?proj=<{$project}>&id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
         })
+
     }
     
 

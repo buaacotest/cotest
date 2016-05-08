@@ -57,7 +57,7 @@
           <tr class="product-images">
             <th class="edit-comparison" scope="row" rowspan="2">
        
-                <button class="add-compare-btn">+ add more to compare</button>
+                <button class="add-compare-btn" title="return to smartphones">+ add more to compare</button>
          
             </th>
              <{section name=n loop=$products}>
@@ -205,6 +205,56 @@
                 </td>
               <{/section}>
             </tr>
+             <{section name=p loop=$products[0].evaluations[0].id_parent[n].id_parent}>
+                <tr class="test-results" data-category="tests">
+                  <th class="behind-paywall">
+                    <div class="compare-th">
+                    <{$products[0].evaluations[0].id_parent[n].id_parent[p].name}>
+                    </div>
+                    
+                  </th>
+                  <{section name=m loop=$products}>
+                    <td data-product-id="10344" class="behind-paywall">
+
+                            <div class="score-list">
+                                            <{if $products[m].evaluations[0].id_parent[n].id_parent[p].value <=1.5}>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <{/if}>
+                                            <{if $products[m].evaluations[0].id_parent[n].id_parent[p].value >1.5 && $products[m].evaluations[0].id_parent[n].id_parent[p].value <= 2.5}>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <{/if}>
+                                            <{if $products[m].evaluations[0].id_parent[n].id_parent[p].value >2.5 && $products[m].evaluations[0].id_parent[n].id_parent[p].value <= 3.5}>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <{/if}>
+                                            <{if $products[m].evaluations[0].id_parent[n].id_parent[p].value>3.5 && $products[m].evaluations[0].id_parent[n].id_parent[p].value <= 4.5}>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+
+                                            <{/if}>
+                                            <{if $products[m].evaluations[0].id_parent[n].id_parent[p].value >4.5 && $products[m].evaluations[0].id_parent[n].id_parent[p].value <= 5.5}>
+                                                            <div class="star"></div>
+
+
+                                            <{/if}>
+                                                         
+                       </div>
+                      <{$products[m].evaluations[0].id_parent[n].id_parent[p].value}>
+                    </td>
+                  <{/section}>
+                </tr>
+             <{/section}>
           <{/section}>
             
 
@@ -222,29 +272,44 @@
                 </td>
                 <{/section}>
           </tr>
-           <{section name=n loop=$products[0].property[0].id_propertygroup}>
+          <{section name=k loop=$products[0].property}>
+            <tr class="subheading" data-category="tests-heading">
+            <th>
+              <h3><{$products[0].property[k].name}>
+              </h3>
+            </th>
+                <{section name=m loop=$products}>
+                <td class="table-cell-wrapper" data-product-id="10344">
+                  <div class="table-cell-wrapper-inner">
+                    
+                  </div>
+                </td>
+                <{/section}>
+            </tr>
+           <{section name=n loop=$products[0].property[k].id_propertygroup}>
             <tr class="test-results" data-category="tests">
               <th class="behind-paywall">
                 <div class="compare-th">
-                <{$products[0].property[0].id_propertygroup[n].name}>
+                <{$products[0].property[k].id_propertygroup[n].name}>
                 </div>
                
               </th>
               <{section name=m loop=$products}>
                 <td data-product-id="10344" class="behind-paywall">
               
-                          <{if $products[m].property[0].id_propertygroup[n].value eq 'Yes'}>
+                          <{if $products[m].property[k].id_propertygroup[n].value eq 'Yes'}>
                             <img class="proper-signal"src="img/check2.png">
                             <{elseif $products[m].property[0].id_propertygroup[n].value eq 'No'}>
                             <img class="proper-signal"src="img/cross.png">
                             <{else}>
-                            <{$products[m].property[0].id_propertygroup[n].value}> 
-                            <{$products[m].property[0].id_propertygroup[n].unit}>
+                            <{$products[m].property[k].id_propertygroup[n].value}> 
+                            <{$products[m].property[k].id_propertygroup[n].unit}>
                           <{/if}>
                 </td>
 
               <{/section}>
             </tr>
+          <{/section}>
           <{/section}>
 
 

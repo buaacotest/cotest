@@ -127,7 +127,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         function CheckMail(mail) {

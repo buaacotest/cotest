@@ -6,7 +6,7 @@
  * Time: 15:46
  */
 $_LANG['login']="Log in";
-$_LANG['username']="UserName";
+$_LANG['username']="Username";
 $_LANG['password']="Password";
 $_LANG['remember']="remember me";
 $_LANG['forget']="forgot password";

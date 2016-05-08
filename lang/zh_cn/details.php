@@ -22,6 +22,7 @@ $_LANG['ChangePwd']='修改密码';
 $_LANG['Summary']='评测意见';
 $_LANG['Ratings']='评测得分';
 $_LANG['Features']='功能规格';
+
 $_LANG['Review']='总结';
 $_LANG['HowToBuy']='如何购买';
 
@@ -41,5 +42,5 @@ $_LANG['Poor']='差劣';
 $_LANG['Weighting']='评测比重';
 $_LANG['Score']='评测得分';
 $_LANG['Rating']='优良等级';
-
+$_LANG['Symbol']='评测标志';
 $_LANG['CotestVerdict']='众测意见';

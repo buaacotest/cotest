@@ -88,9 +88,25 @@
           <div class="footer-block">
           <h4><b><{$lang.Friends}></b></h4>
           <div class="friends-list">
-            <div><a href="http://www.international-testing.org"><img class="icrt" src="img/icrt.png"></a></div>
-            <a href="http://www.test.de"><img class="test" src="img/test.png"></a>
-            <a href="http://ec.europa.eu/food/safety/rasff/index_en.htm"><img class="eu"src="img/eu.gif"></a>
+            <div class="top">
+            <div><a class="icrt" href="http://www.international-testing.org"><img src="img/icrt.png">
+              <div class="text">icrt</div>
+            </a></div>
+            <a  class="test" href="http://www.test.de"><img src="img/test.png">
+            <div class="text">test.de</div>
+            </a>
+            </div>
+            <div>
+            <div class="eu" ><img src="img/eu.gif">
+              <div class="text">
+                <a href="http://ec.europa.eu/food/safety/rasff/index_en.htm">The EU Rapid Alert System for Food and Feed</a>
+               
+              </div>
+            </div>
+            <div class="eu2">
+              <a href="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex">The EU Rapid Alert System for Food and Feed</a>
+            </div>
+            </div>
           </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-30 13:00:15
+<?php /* Smarty version 2.6.19, created on 2016-05-08 13:21:43
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -285,7 +285,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                     <div class="proper-block">
                             <div class="row">
                                 <div class="proper-head">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                           <?php echo $this->_tpl_vars['product']['name']; ?>
 
                                     </div>
@@ -301,13 +301,17 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                         <?php echo $this->_tpl_vars['lang']['Rating']; ?>
 
                                     </div>
+                                    <div class="col-md-2">
+                                        <?php echo $this->_tpl_vars['lang']['Symbol']; ?>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     <div class="proper-block">
                         <div class="row">
                             <div class="proper-class">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                       <?php echo $this->_tpl_vars['evals']['name']; ?>
 
                                 </div>
@@ -321,6 +325,32 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
                                     <?php echo $this->_tpl_vars['evals']['value']; ?>
 
+                                </div>
+                                <div class="col-md-2">
+                                         <?php if ($this->_tpl_vars['evals']['value'] <= 1.5): ?>
+                                              <?php echo $this->_tpl_vars['lang']['Verygood']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] > 1.5 && $this->_tpl_vars['evals']['value'] <= 2.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Good']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] > 2.5 && $this->_tpl_vars['evals']['value'] <= 3.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Average']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] > 3.5 && $this->_tpl_vars['evals']['value'] <= 4.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Sufficient']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['value'] > 4.5 && $this->_tpl_vars['evals']['value'] <= 5.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Poor']; ?>
+
+                                        <?php endif; ?>
                                 </div>
                                 <div class="col-md-2">
                                        <div class="score-list">
@@ -388,7 +418,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                         <div class="proper-block">
                             <div class="row">
                                 <div class="proper-title" toggle="1">
-                                    <div class="col-md-6"><label><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['name']; ?>
+                                    <div class="col-md-4"><label><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['name']; ?>
 </label></div>
                                     <div class="col-md-2 proper-weight-panel">
                                         <div class="proper-weight">
@@ -398,6 +428,32 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                     </div>
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value']; ?>
 </div>
+                                    <div class="col-md-2">
+                                         <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] <= 1.5): ?>
+                                              <?php echo $this->_tpl_vars['lang']['Verygood']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] > 1.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] <= 2.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Good']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] > 2.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] <= 3.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Average']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] > 3.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] <= 4.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Sufficient']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] > 4.5 && $this->_tpl_vars['evals']['id_parent'][$this->_sections['n']['index']]['value'] <= 5.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Poor']; ?>
+
+                                        <?php endif; ?>
+                                    </div>
                                     <div class="col-md-2">
                                      
                                         <div class="score-list">
@@ -443,7 +499,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 ?>
                                  <?php if (( $this->_tpl_vars['foo']['name'] != '' )): ?>
                                  <div class="row proper-item">
-                                     <div class="col-md-6"><label class="proper-item-name"><?php echo $this->_tpl_vars['foo']['name']; ?>
+                                     <div class="col-md-4"><label class="proper-item-name"><?php echo $this->_tpl_vars['foo']['name']; ?>
 </label></div>
                                     <div class="col-md-2 ">
                                             <div class="proper-weight">
@@ -453,6 +509,32 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                                     </div>
                                     <div class="col-md-2"><?php echo $this->_tpl_vars['foo']['value']; ?>
 </div>
+                                    <div class="col-md-2">
+                                            <?php if ($this->_tpl_vars['foo']['value'] <= 1.5): ?>
+                                              <?php echo $this->_tpl_vars['lang']['Verygood']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] > 1.5 && $this->_tpl_vars['foo']['value'] <= 2.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Good']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] > 2.5 && $this->_tpl_vars['foo']['value'] <= 3.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Average']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] > 3.5 && $this->_tpl_vars['foo']['value'] <= 4.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Sufficient']; ?>
+
+
+                                        <?php endif; ?>
+                                        <?php if ($this->_tpl_vars['foo']['value'] > 4.5 && $this->_tpl_vars['foo']['value'] <= 5.5): ?>
+                                             <?php echo $this->_tpl_vars['lang']['Poor']; ?>
+
+                                        <?php endif; ?>
+                                    </div>
                                     <div class="col-md-2">
                                         <div class="score-list">
                                         <?php if ($this->_tpl_vars['foo']['value'] < 1.5): ?>
@@ -616,39 +698,15 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
                           </div>
                           <div class="comment-cotent">
-                              <?php echo $this->_tpl_vars['comments'][$this->_sections['n']['index']]['cotent']; ?>
+                              <?php echo $this->_tpl_vars['comments'][$this->_sections['n']['index']]['content']; ?>
 
                           </div>
                       </div>
                       <?php endfor; endif; ?>
-                      <div class="comment-item">
-                          <div class="comment-user">
-                              haha
-                          </div>
-                          <div class="comment-time">
-                              2016/04/25
-                          </div>
-                          <div class="comment-cotent">
-                              This is a very good product!
-                          </div>
-                      </div>
-                      <div class="comment-item">
-                          <div class="comment-user">
-                              haha
-                          </div>
-                          <div class="comment-time">
-                              2016/04/25
-                          </div>
-                          <div class="comment-cotent">
-                              This is a very good product!
-                          </div>
-                      </div>
                     </div>
                     <h4>Write your review</h4>
                     <div class="comment-submit">
-                        <textarea class="comment-area">
-                            
-                        </textarea>
+                        <textarea class="comment-area" rows="3" cols="20"></textarea>
                         <button class="comment-btn"> Submit</button>
                     </div>
 
@@ -701,6 +759,35 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
     })
     $(".back-to-list").on("click",function(){
         window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+    })
+    $(".comment-btn").on("click",function() {
+        var user='<?php echo $this->_tpl_vars['user']; ?>
+'
+        if(!user){
+            alert("Please sign in first!")
+        }else{
+        var content=$(".comment-area").val();
+        //console.log(content)
+        var arg={ };
+        arg["project"]="<?php echo $this->_tpl_vars['project']; ?>
+";
+        arg["product"]="<?php echo $this->_tpl_vars['id']; ?>
+";
+        arg["content"]=content;
+       // console.log(arg)
+        $.post("comment.php",arg,function(result){
+            if(result=="success"){
+                var date = new Date().Format("yyyy-MM-dd hh:mm:ss");
+                var newComment="<div class='comment-item'> <div class='comment-user'>"+"<?php echo $this->_tpl_vars['user']; ?>
+"+"</div><div class='comment-time'>"
+                        +date+"</div><div class='comment-cotent'>"+content+" </div> </div>"
+                var html= $(".comments").html();
+                html=newComment+html;
+                $(".comments").html(html)
+                $(".comment-area").val("")
+            }
+        })
+    }
     })
 </script>
 </html>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-18 01:58:42
+<?php /* Smarty version 2.6.19, created on 2016-05-08 07:14:24
          compiled from register.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +140,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         function CheckMail(mail) {

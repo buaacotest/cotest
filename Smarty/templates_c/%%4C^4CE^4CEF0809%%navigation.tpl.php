@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-29 11:12:47
+<?php /* Smarty version 2.6.19, created on 2016-05-08 13:06:05
          compiled from navigation.tpl */ ?>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">

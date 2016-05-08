@@ -14,7 +14,7 @@ $_LANG['About']='About us';
 $_LANG['SignIn']='Login';
 $_LANG['SignUp']='Sign up';
 $_LANG['Logout']='Logout';
-$_LANG['ChangePwd']='Change Password';
+$_LANG['ChangePwd']='Change password';
 
 $_LANG['ScoreRating']='Score-Rating';
 $_LANG['JoinUs']='Join us';
@@ -22,7 +22,7 @@ $_LANG['ContactUs']='Contact us';
 $_LANG['ServiceAgreement']='Terms & conditions';
 $_LANG['Friends']='Friends';
 
-$_LANG['VeryGood']='Very Good';
+$_LANG['VeryGood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
 $_LANG['Sufficient']='Sufficient';

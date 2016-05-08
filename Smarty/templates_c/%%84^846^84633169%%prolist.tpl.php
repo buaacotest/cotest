@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-30 13:51:31
+<?php /* Smarty version 2.6.19, created on 2016-05-08 09:35:32
          compiled from prolist.tpl */ ?>
 
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
   </b><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
- &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
+ &nbsp;&nbsp;<span class="cur-page">1</span> / <?php echo $this->_tpl_vars['pageNum']; ?>
  <?php echo $this->_tpl_vars['lang']['pages']; ?>
 </p>
              <ul class="products" pagenum="<?php echo $this->_tpl_vars['pageNum']; ?>

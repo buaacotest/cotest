@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-04-30 13:50:05
+<?php /* Smarty version 2.6.19, created on 2016-05-08 09:36:44
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,23 +47,7 @@
 
     </div>
     <div class="row" id="#product_panel">
-        <div class="sidebar">
-        <!--
-          <button class="filter-btn">
-            Filter
-          </button>-->
-          <h2 class="filter-title"><?php echo $this->_tpl_vars['lang']['Filters']; ?>
-</h2>
-          
-          <button class="clear-btn">
-              <?php echo $this->_tpl_vars['lang']['ClearAll']; ?>
-
-          </button>
-          <div id="filter-all-options">
-              
-          </div>
-
-        </div>
+        <div class="product-container-panel">
         <div class="products-container">
             <div class="products-sort">
             
@@ -89,8 +73,8 @@
             <div id="products-block">
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
   </b><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
- &nbsp;&nbsp;1 / <?php echo $this->_tpl_vars['pageNum']; ?>
- <?php echo $this->_tpl_vars['lang']['pages']; ?>
+ &nbsp;&nbsp;<span class="cur-page">1</span> / <?php echo $this->_tpl_vars['pageNum']; ?>
+  <?php echo $this->_tpl_vars['lang']['pages']; ?>
 </p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
@@ -243,6 +227,24 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             <!-- lishijie -->
             <div id="setpage"></div>
         </div>
+        </div>
+        <div class="sidebar">
+        <!--
+          <button class="filter-btn">
+            Filter
+          </button>-->
+          <h2 class="filter-title"><?php echo $this->_tpl_vars['lang']['Filters']; ?>
+</h2>
+          
+          <button class="clear-btn">
+              <?php echo $this->_tpl_vars['lang']['ClearAll']; ?>
+
+          </button>
+          <div id="filter-all-options">
+              
+          </div>
+
+        </div>
 
     </div>
 
@@ -254,6 +256,9 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 </div>
     </div>
 </div>
+<?php 
+  require("footer.php");
+   ?>
 </div>
 
 
@@ -603,6 +608,12 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 productCompareOnClick($(this));
            
             })
+            $(".product-link").on("click",function(){
+              var id=$(this).attr("target");
+            window.location.href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
+&id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
+            })
+             $(".cur-page").text(cpage)
         })
 
 
@@ -685,6 +696,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
             window.location.href="details.php?proj=<?php echo $this->_tpl_vars['project']; ?>
 &id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
         })
+
     }
     
 
