@@ -9,7 +9,7 @@
                         <div class="product-listing">
                         <div class="product-thumb">
                               <a class="product-link" target="<{$products[n].product_id}>" >
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" >
+                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="data/<{$project}>/pictures/<{$products[n].product_id}>_01.jpg">
                               </a>
                           </div>
                           <a class="product-link"  target="<{$products[n].product_id}>" >
