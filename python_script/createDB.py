@@ -594,6 +594,7 @@ if __name__=="__main__":
                      "`downgrading_value` varchar(45) default NULL," \
                      "`is_downgrading` tinyint(1) default NULL," \
                      "`value` varchar(150) default NULL," \
+                     "PRIMARY KEY (`id_evaluation`,`id_product`),"\
                      "KEY `fk_results_evaluations1_idx` (`id_evaluation`)," \
                      "KEY `fk_results_products1_idx` (`id_product`)" \
                      ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
