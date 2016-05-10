@@ -22,6 +22,11 @@ if(!empty($ids)){
         $comProducts[]=getDetails($v,2,$lang);
     }
 }
+$project_name=trim($_GET['proj']);
+if($project_name=="")
+    $project_name='Mobilephones';
+$GLOBALS['db']->changeDB($project_name);
 //print_r($comProducts);
 $smarty->assign('products',$comProducts);
+$smarty->assign('project',$project_name);
 $smarty->display('compare.tpl');

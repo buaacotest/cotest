@@ -63,8 +63,8 @@
              <{section name=n loop=$products}>
               <th data-product-id="10344" scope="col">
                 <div class="product-image">
-                <a class="product-link" target="<{$products[n].id}>">
-                  <img class="comparison-product-thumbnail" alt="LG 55EF950V" src="http://dam.which.co.uk.s3-website-eu-west-1.amazonaws.com/3f5e2ab1-974e-4f6b-8b32-3c3787245769.jpg">
+                <a class="product-link product-thumb" target="<{$products[n].id}>">
+                  <img class="comparison-product-thumbnail" alt="<{$products[n].name}>" src="data/<{$project}>/pictures/<{$products[n].id}>_01.jpg">
                 </a>
                 <div class="close" target="<{$products[n].id}>"></div>
               </div>
@@ -419,10 +419,11 @@ $(".product-link").on("click",function(){
       //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
       if(scroH>=topH-nav_height){
         $(".product-head").css({"position":"fixed","top":nav_height});
-   
+        $(".product-thumb").hide();
        // $(".product-head").css({"width":top_width});
       }else if(scroH<topH-nav_height){
         $(".product-head").css({"position":"static"});
+        $(".product-thumb").show();
 
       }
     })

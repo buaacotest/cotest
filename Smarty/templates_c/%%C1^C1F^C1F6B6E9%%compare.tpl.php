@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-08 13:51:59
+<?php /* Smarty version 2.6.19, created on 2016-05-10 11:59:35
          compiled from compare.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,9 +92,12 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 ?>
               <th data-product-id="10344" scope="col">
                 <div class="product-image">
-                <a class="product-link" target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['id']; ?>
+                <a class="product-link product-thumb" target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['id']; ?>
 ">
-                  <img class="comparison-product-thumbnail" alt="LG 55EF950V" src="http://dam.which.co.uk.s3-website-eu-west-1.amazonaws.com/3f5e2ab1-974e-4f6b-8b32-3c3787245769.jpg">
+                  <img class="comparison-product-thumbnail" alt="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['name']; ?>
+" src="data/<?php echo $this->_tpl_vars['project']; ?>
+/pictures/<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['id']; ?>
+_01.jpg">
                 </a>
                 <div class="close" target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['id']; ?>
 "></div>
@@ -830,10 +833,11 @@ $(".product-link").on("click",function(){
       //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
       if(scroH>=topH-nav_height){
         $(".product-head").css({"position":"fixed","top":nav_height});
-   
+        $(".product-thumb").hide();
        // $(".product-head").css({"width":top_width});
       }else if(scroH<topH-nav_height){
         $(".product-head").css({"position":"static"});
+        $(".product-thumb").show();
 
       }
     })

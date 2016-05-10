@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-08 09:35:32
+<?php /* Smarty version 2.6.19, created on 2016-05-10 11:42:31
          compiled from prolist.tpl */ ?>
 
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
@@ -40,7 +40,9 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                         <div class="product-thumb">
                               <a class="product-link" target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 " >
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" >
+                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="data/<?php echo $this->_tpl_vars['project']; ?>
+/pictures/<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+_01.jpg">
                               </a>
                           </div>
                           <a class="product-link"  target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>

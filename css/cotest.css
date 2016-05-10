@@ -303,9 +303,7 @@ color: #f7b206;
 	-webkit-box-shadow: 0 0px 8px rgba(0,0,0,.1);
 	box-shadow: 0 0px 8px rgba(0,0,0,.1);
 }
-.products li img{
-	width: 170px;
-}
+
 .products li a{
 	color: #000;
 }
@@ -321,6 +319,8 @@ color: #f7b206;
 .products .product-thumb{
 	height: 130px;
 	overflow: hidden;
+	text-align: center;
+	width: 170px;
 }
 .products .product-thumb img{
 
@@ -875,7 +875,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	left: 0px;
 	width: 300px;
 	border-left: 6px solid #f7b206;
-	background:#fff;
 	height: 80px;
 	padding: 10px 30px;
 	color: #555;

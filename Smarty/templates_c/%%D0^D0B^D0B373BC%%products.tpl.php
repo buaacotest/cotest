@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-08 09:36:44
+<?php /* Smarty version 2.6.19, created on 2016-05-10 11:43:04
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,8 +109,10 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                         <div class="product-thumb">
                               <a class="product-link" target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 " >
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" >
-                              </a>
+ 								<img class="product-listing__thumb-image" alt="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
+" src="data/<?php echo $this->_tpl_vars['project']; ?>
+/pictures/<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+_01.jpg">                              </a>
                           </div>
                           <a class="product-link"  target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 " >
@@ -652,11 +654,11 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                         outstr = outstr + "<span class='current'>"+count+"</span>";
                     }
                 }
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> next </a>";
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'> >> </a>";
             }
             else if(parseInt((cpage-1)/pagesize) == parseInt(totalpage/pagesize))///最后10页
             {
-                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'>previous</a>";
+                outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(parseInt((cpage-1)/pagesize)*pagesize)+")'><<</a>";
                 for (count=parseInt(totalpage/pagesize)*pagesize+1;count<=totalpage;count++)
                 {    if(count!=cpage)
                 {
