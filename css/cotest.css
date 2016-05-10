@@ -782,6 +782,10 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	width: 80px;
 	margin: 10px;
 }
+#success-modal{
+	width: 300px;
+	height: 200px;
+}
 .checkbox input{
 	left: 20px;
 	top: -5px;

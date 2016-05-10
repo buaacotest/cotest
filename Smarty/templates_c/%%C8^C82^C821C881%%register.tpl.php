@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-08 07:14:24
+<?php /* Smarty version 2.6.19, created on 2016-05-10 11:28:22
          compiled from register.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,18 +83,17 @@
 <div id="success-modal"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
+   
       <div class="modal-body">
-        ...
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     
+       <h4 class="modal-title" id="myModalLabel">注册成功，请到邮箱激活验证</h4>
       </div>
       <div class="modal-footer">
-      <a href="login.php">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-        </a>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      
+        <button type="button" class="btn btn-default" id="regconfirm"data-dismiss="modal">
+        <a href="login.php">确定  </a></button>
+      
       </div>
     </div>
   </div>
@@ -166,6 +165,9 @@
         $("#password").on("click",function(){
             $("#alert-panel").css("display","none");
         })
+        $("#regconfirm").on("click",function(){
+            window.location.href="index.php"
+        })
         $("#sign-up-btn").on("click",function(){
             var username=$("#username").val()
             var password=$("#password").val();
@@ -215,7 +217,7 @@
                                     console.log(result3);
                                     if(result3==1){
                                         $("#success-modal").modal();
-                                        alert("success!")
+                                      //  alert("success!")
                                     }
                                   })
                             }
