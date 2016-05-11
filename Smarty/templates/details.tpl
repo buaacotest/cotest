@@ -571,6 +571,7 @@
                 $(".comments").html(html)
                 $(".comment-area").val("")
             }
+            console.log(result);
         })
     }
     })

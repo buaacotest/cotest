@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-10 11:43:04
+<?php /* Smarty version 2.6.19, created on 2016-05-11 05:13:44
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -550,7 +550,7 @@ _01.jpg">                              </a>
     function productCompareOnClick(compare_btn){
         //alert("xxxxxx");
          if(compare_btn.attr("add")==0){
-             if(compare_list.length>=6){
+             if(compare_list.length>=5){
                  alert("too much compared items.");
              }
              else{
@@ -729,6 +729,12 @@ _01.jpg">                              </a>
                 $("#products-block").html(result);
             })
         })
+        $(".logout-btn").on("click",function  () {
+        // body...
+        $.get("logout.php",function(){
+            location.reload();
+        });
+      })
     })
 </script>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-08 13:21:43
+<?php /* Smarty version 2.6.19, created on 2016-05-11 05:14:08
          compiled from details.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -786,6 +786,7 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
                 $(".comments").html(html)
                 $(".comment-area").val("")
             }
+            console.log(result);
         })
     }
     })

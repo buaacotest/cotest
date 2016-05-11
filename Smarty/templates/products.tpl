@@ -479,7 +479,7 @@
     function productCompareOnClick(compare_btn){
         //alert("xxxxxx");
          if(compare_btn.attr("add")==0){
-             if(compare_list.length>=6){
+             if(compare_list.length>=5){
                  alert("too much compared items.");
              }
              else{
@@ -653,6 +653,12 @@
                 $("#products-block").html(result);
             })
         })
+        $(".logout-btn").on("click",function  () {
+        // body...
+        $.get("logout.php",function(){
+            location.reload();
+        });
+      })
     })
 </script>
 

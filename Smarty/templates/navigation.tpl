@@ -34,7 +34,7 @@
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="#" class="logout-btn"><{$lang.Logout}></a></li>
-                    <li><a href="#"><{$lang.ChangePwd}></a></li>
+                    <li><a href="alterpwd.php"><{$lang.ChangePwd}></a></li>
 
                 </ul>
                 <{else}>

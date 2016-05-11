@@ -81,6 +81,7 @@ $smarty->assign('title',$project_name);
 $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
 $smarty->assign('lang',$_LANG);
+$smarty->assign('user',$_SESSION['member']);
 if($flag){
     $smarty->display("prolist.tpl");
 }
