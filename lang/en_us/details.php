@@ -15,16 +15,16 @@ $_LANG['Language']='Language';
 $_LANG['Smartphones']='Smartphones';
 
 
-$_LANG['SignIn']='Login In';
-$_LANG['SignUp']='Sign Up';
+$_LANG['SignIn']='Loginin';
+$_LANG['SignUp']='Sign up';
 $_LANG['Logout']='Logout';
-$_LANG['ChangePwd']='Change Password';
+$_LANG['ChangePwd']='Change password';
 
 $_LANG['Summary']='Summary';
 $_LANG['Ratings']='Ratings';
 
 $_LANG['Features']='Features';
-$_LANG['Review']='User Review';
+$_LANG['Review']='User review';
 $_LANG['HowToBuy']='How To Buy';
 
 $_LANG['Front']='Front';
@@ -34,7 +34,7 @@ $_LANG['Back']='Back';
 $_LANG['Pros']='PROS';
 $_LANG['Cons']='CONS';
 
-$_LANG['Verygood']='Very Good';
+$_LANG['Verygood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
 $_LANG['Sufficient']='Sufficient';
@@ -46,4 +46,4 @@ $_LANG['Rating']='Rating';
 $_LANG['Symbol']='Symbol';
 
 
-$_LANG['CotestVerdict']='COTEST Verdict';
+$_LANG['CotestVerdict']='COTEST verdict';

@@ -12,38 +12,38 @@ $_LANG['HowWeTest']='How we test';
 
 $_LANG['Electronics']='Electronics';
 $_LANG['Smartphones']='Smartphones';
-$_LANG['TestedSmartphones']='Tested Smartphones';
+$_LANG['TestedSmartphones']='Tested smartphones';
 
-$_LANG['SignIn']='Login In';
-$_LANG['SignUp']='Sign Up';
+$_LANG['SignIn']='Login';
+$_LANG['SignUp']='Signup';
 $_LANG['Logout']='Logout';
-$_LANG['ChangePwd']='Change Password';
+$_LANG['ChangePwd']='Change password';
 
 $_LANG['pages']='pages';
 
 $_LANG['MostRecentlyTested']='Most recently tested';
 $_LANG['PriceLowToHigh']='Price(low to high)';
 $_LANG['PriceHighToLow']='Price(high to low)';
-$_LANG['HighestScore']='Highest Score';
+$_LANG['HighestScore']='Highest score';
 
 $_LANG['Filters']='Filters';
-$_LANG['ClearAll']='clear all';
+$_LANG['ClearAll']='Clear all';
 $_LANG['SortBy']='Sort by';
 
 
-$_LANG['RefPrice']='Ref. Price:';
-$_LANG['TestedDate']='Tested Date:';
+$_LANG['RefPrice']='Ref. price:';
+$_LANG['TestedDate']='Tested date:';
 
 
-$_LANG['TotalTestResult']='Total Test Result';
-$_LANG['TestedDate']='Tested Date';
+$_LANG['TotalTestResult']='Total test result';
+$_LANG['TestedDate']='Tested date';
 $_LANG['Brands']='Brands';
-$_LANG['OS']='Operating System';
-$_LANG['DisplayDiagonal']='Display Diagonal';
-$_LANG['SIMFormat']='SIM Card Format';
-$_LANG['MicroSD']='Micro-SD Card Slot';
+$_LANG['OS']='Operating system';
+$_LANG['DisplayDiagonal']='Display diagonal';
+$_LANG['SIMFormat']='SIM card format';
+$_LANG['MicroSD']='Micro-SD card slot';
 
-$_LANG['Verygood']='Very Good';
+$_LANG['Verygood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
 $_LANG['Sufficient']='Sufficient';

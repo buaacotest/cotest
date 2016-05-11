@@ -13,5 +13,5 @@ $_LANG['About']='About us';
 
 $_LANG['Smartphones']='Smartphones';
 $_LANG['Electronics']='Electronics';
-$_LANG['InComparison']='phones in comparison';
+$_LANG['InComparison']='Phones in comparison';
 $_LANG['BackToTest']='Back to the test';

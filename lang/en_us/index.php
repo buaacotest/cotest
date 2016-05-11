@@ -19,14 +19,14 @@ $_LANG['Food']='Food';
 $_LANG['Smartphones']='Smartphones';
 $_LANG['Tablets']='Tablets';
 
-$_LANG['SignIn']='Login In';
-$_LANG['SignUp']='Sign Up';
+$_LANG['SignIn']='Loginin';
+$_LANG['SignUp']='Sign up';
 $_LANG['Logout']='Logout';
-$_LANG['ChangePwd']='Change Password';
+$_LANG['ChangePwd']='Change password';
 
 $_LANG['ScoreRating']='Score-Rating';
 
-$_LANG['JoinUs']='Join Us';
-$_LANG['ContactUs']='Contact With Us';
-$_LANG['ServiceAgreement']='Service Agreement';
+$_LANG['JoinUs']='Join us';
+$_LANG['ContactUs']='Contact with us';
+$_LANG['ServiceAgreement']='Service agreement';
 $_LANG['Friends']='Friends';

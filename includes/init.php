@@ -14,7 +14,7 @@ $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 if(empty($_SESSION['lang']))
 $_SESSION['lang']='en_us';
 
-define(KEY,'i03jxhuu9.*#@');
+define('KEY','i03jxhuu9.*#@');
 /*屏蔽错误信息*/
 error_reporting(0);
 ?>
