@@ -5,10 +5,11 @@
  * Date: 2016/4/17
  * Time: 20:17
  */
+session_start();
 require('includes/init.php');
 require('includes/smtp.php');
 require('includes/lib_user.php');
-$username=trim($_POST['username']);
+$username=$_SESSION['member'];
 $pass=trim($_POST['oldpassword']);
 $newPass=trim($_POST['newpassword']);
 $pass=md5($pass);
