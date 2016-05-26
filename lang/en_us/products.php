@@ -22,8 +22,8 @@ $_LANG['ChangePwd']='Change password';
 $_LANG['pages']='pages';
 
 $_LANG['MostRecentlyTested']='Most recently tested';
-$_LANG['PriceLowToHigh']='Price(low to high)';
-$_LANG['PriceHighToLow']='Price(high to low)';
+$_LANG['PriceLowToHigh']='Price (low to high)';
+$_LANG['PriceHighToLow']='Price (high to low)';
 $_LANG['HighestScore']='Highest score';
 
 $_LANG['Filters']='Filters';
