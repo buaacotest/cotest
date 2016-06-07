@@ -96,7 +96,9 @@ if __name__=="__main__":
             print('create for admin database fails!{}'.format(e))
 
     #create this db
-    createdbsql="create database "+dbname
+    print("dbname:"+dbname)
+    createdbsql="create database `"+dbname+"`"
+    #print("createsql:"+createdbsql)
     adddbintoadminsql="INSERT INTO `admin`.`databases` (`databasesname`) VALUES ('"+dbname+"')"
     try:
         cursor = cnn.cursor()
@@ -106,7 +108,7 @@ if __name__=="__main__":
         print('create database fails!{}'.format(e))
     #select the database
     print("create database over")
-    selectdbsql="use "+dbname
+    selectdbsql="use `"+dbname+"`"
     try:
         cursor = cnn.cursor()
         cursor.execute(selectdbsql)

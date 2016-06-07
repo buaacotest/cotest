@@ -70,7 +70,7 @@ if __name__=="__main__":
     print("parse xml over")
     print("begin update project")
     #select the database
-    selectdbsql="use "+dbname
+    selectdbsql="use `"+dbname+"`"
     try:
         cursor = cnn.cursor()
         cursor.execute(selectdbsql)
