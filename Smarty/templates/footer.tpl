@@ -23,8 +23,7 @@
                 </div>
               </li>
              <li>
-                
-                <div class="score-point">1.5-2.5</div>
+                <div class="score-point">1.6-2.5</div>
                 <div class="score-info"><{$lang.Good}>  </div>
                 <div class="score-list">
                   <div class="star_b"></div>
@@ -34,8 +33,7 @@
                 </div>
               </li>
               <li>
-                
-                <div class="score-point">2.5-3.5</div>
+                <div class="score-point">2.6-3.5</div>
                 <div class="score-info"><{$lang.Average}>  </div>
                 <div class="score-list">
                   <div class="star_b"></div>
@@ -44,8 +42,7 @@
                 </div>
               </li>
               <li>
-                
-                <div class="score-point">3.5-4.5</div>
+                <div class="score-point">3.6-4.5</div>
                 <div class="score-info"><{$lang.Sufficient}>  </div>
                 <div class="score-list">
                   <div class="star_b"></div>
@@ -53,8 +50,7 @@
                 </div>
               </li>
               <li>
-                
-                <div class="score-point">4.5-5.5</div>
+                <div class="score-point">4.6-5.5</div>
                 <div class="score-info"><{$lang.Poor}>  </div>
                 <div class="score-list">
                   <div class="star_b"></div>
@@ -85,9 +81,36 @@
         </div>
         
         <div class="col-md-4">
-          <div class="footer-block">
+          <div class="footer-block friends-block">
           <h4><b><{$lang.Friends}></b></h4>
+          <div class="col-md-12 eu">
+            <div class="col-md-9 ">
+              <img src="img/eu.gif" >
+            </div>
+            <div class="col-md-3 eu-text">
+                <div class=""><a target="_blank" href="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex">RAPEX</a></div>
+              <div><a target="_blank" href="http://ec.europa.eu/food/safety/rasff/index_en.htm">RASFF</a></div>
+            </div>
+            </div>
+         <div class="col-md-12 icrt">
+            <div class="col-md-9 text-center">
+              <img src="img/icrt.png">
+              <div><a target="_blank" href="http://www.international-testing.org">ICRT</a></div>
+            </div>
+            <div class="col-md-3 text-center">
+              <img src="img/test.png">
+              <div><a target="_blank" href="http://www.test.de">TEST</a></div>
+            </div>
+          </div>
+          </div>
+          <!--
           <div class="friends-list">
+          <div class="eu" ><img src="img/eu.gif">
+              <div class="text">
+                <a href="http://ec.europa.eu/food/safety/rasff/index_en.htm">rasff</a>
+                  <a href="http://ec.europa.eu/food/safety/rasff/index_en.htm">rapex</a>
+              </div>
+            </div>
             <div class="top">
             <div><a class="icrt" href="http://www.international-testing.org"><img src="img/icrt.png">
               <div class="text">icrt</div>
@@ -97,17 +120,11 @@
             </a>
             </div>
             <div>
-            <div class="eu" ><img src="img/eu.gif">
-              <div class="text">
-                <a href="http://ec.europa.eu/food/safety/rasff/index_en.htm">The EU Rapid Alert System for Food and Feed</a>
-               
-              </div>
-            </div>
-            <div class="eu2">
-              <a href="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex">The EU Rapid Alert System for Food and Feed</a>
-            </div>
+            
+            
             </div>
           </div>
+          -->
           </div>
         </div>
       </div>

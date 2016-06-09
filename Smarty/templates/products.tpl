@@ -249,7 +249,8 @@
     }
     function loadoption(labels){
         var option_text="";
-        for(var i=0;i<labels.length;i++){
+        if(labels){
+           for(var i=0;i<labels.length;i++){
             var option_info=labels[i];
             var option_name=option_info.name;
             var option_label=option_info.label;
@@ -297,6 +298,8 @@
           
 
         }
+        }
+       
         //console.log(option_text)
           $("#filter-all-options").html(option_text);
               $(".checkbox").on("click",function(){

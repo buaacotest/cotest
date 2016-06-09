@@ -287,6 +287,7 @@ color: #f7b206;
 .products{
  	list-style: none;
  	float: left;
+ 	width: 100%;
  	padding: 0px;
 }
 .products li{
@@ -406,7 +407,7 @@ color: #f7b206;
 
 }
 .products-container{
-	float: right;
+	float: left;
 	margin-top: 60px;
 	margin-left: 250px;
 	padding: 40px 20px;
@@ -1067,8 +1068,8 @@ footer{
 	margin-top: 100px;
 	border-top: 1px solid #eee;
 	color: #bbb;
-	
-	font-size: 12px;
+	background: #fff;
+	font-size: 14px;
 }
 footer .score-point{
 	float: left;
@@ -1086,29 +1087,7 @@ footer .score-head{
 	font-weight: bold;
 	width: 80px;
 }
-footer .friends-list .icrt{
-	width: 160px;
-	float: left;
-	margin-bottom: 10px;
-}
-footer .friends-list .icrt img{
-	width: 162px;
-}
-footer .friends-list .icrt .text{
-	width: 160px;
-	text-align: center;
-}
-footer .friends-list .test{
-	float: left;
-	margin-left: 40px;
-}
-footer .friends-list .test img{
-	height: 48px;
-}
-footer .friends-list .eu{
-	
-	margin: 10px;
-}
+
 footer a{
 	color: #666;
 }
@@ -1116,21 +1095,24 @@ footer .top{
 	width: 240px;
 	height: 70px;
 }
-footer .friends-list .eu{
+footer .friends-block{
 	width: 240px;
-	height: 70px;
 }
-footer .friends-list .eu img{
-	width: 100px;
-	float: left;
+footer .friends-block img{
+		width: 100%;
 }
-footer .friends-list .eu .text{
-	width: 120px;
-	float: left;
-	margin-left: 20px;
-	margin-top: 10px;
+footer .friends-block .eu-text{
+		margin-top: 20px;
 }
-footer .friends-list .eu .text a{
+footer .friends-block .eu-text a{
+	line-height: 30px;
+}
+footer .friends-block .eu,.icrt{
+	padding: 0px;
+
+}
+footer .friends-block .icrt{
+	margin-top: 20px;
 }
 .footer-container{
 	padding: 40px 80px;
@@ -1183,10 +1165,10 @@ footer .icons{
 	margin: 20px 0px;
 	opacity: 0.8;
 	display: block;
-	height: 40px;
+	height: 70px;
 }
 footer .icon {
-	width: 50px;
+	width: 70px;
 	float: left;
 	margin:0px  10px;
 

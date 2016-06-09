@@ -20,7 +20,7 @@ $_LANG['ScoreRating']='Score-Rating';
 $_LANG['JoinUs']='Join us';
 $_LANG['ContactUs']='Contact us';
 $_LANG['ServiceAgreement']='Terms & conditions';
-$_LANG['Friends']='Friends';
+$_LANG['Friends']='Links';
 
 $_LANG['VeryGood']='Very good';
 $_LANG['Good']='Good';
