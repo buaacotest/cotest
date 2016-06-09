@@ -9,7 +9,7 @@ $_LANG['COTEST']='群测社区';
 
 $_LANG['Electronics']='数码电子';
 $_LANG['Smartphones']='智能手机';
-$_LANG['TestedSmartphones']='测试手机';
+$_LANG['TestedSmartphones']='测试产品';
 $_LANG['HowWeTest']='如何测试';
 
 

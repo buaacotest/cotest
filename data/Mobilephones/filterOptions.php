@@ -126,5 +126,23 @@ EOF;
             }
         }
     }
+    sortByNumber($arr[2]);
+    sortByNumber($arr[3]);
     return json_encode($arr);
+}
+//根据数量多少排序
+function sortByNumber(&$src)
+{
+    foreach($src['value'] as $k=>$v){
+        $tmp[$v]=$src['number'][$k];
+    }
+    arsort($tmp);
+    $index=0;
+    $keys=array_keys($tmp);
+    foreach($src['value'] as $k=>$v){
+        $src['value'][$k]=$keys[$index];
+        $src['number'][$k]=$tmp[$keys[$index]];
+        $index++;
+    }
+    $src['option']=$src['value'];
 }

@@ -21,8 +21,6 @@ if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
 
-
-
 require('data/'.$project_name.'/filterOptions.php');
 $json=trim($_GET['labels']);
 $sort=trim($_GET['sort']);
@@ -32,7 +30,9 @@ $json=str_replace("\\","",$json);
 //echo $json;
 $labels=json_decode($json,true);
 
-
+/*生成目录结构*/
+$up=$upper=null;
+getParentDirectory($project_name,$up,$upper);
 
 /*分页相关*/
 $flag=0;
@@ -74,6 +74,8 @@ $page_num=ceil($productsNum/35);
 
 $products=array_slice($products,($page-1)*35,35);
 //print_r($products);
+$smarty->assign('up',$up);
+$smarty->assign('upper',$upper);
 $smarty->assign('labels',$data);
 $smarty->assign('pageNum',$page_num);
 $smarty->assign('project',$project_name);
@@ -87,3 +89,12 @@ if($flag){
 }
 else
     $smarty->display('products.tpl');
+
+/*根据项目名显示不同的引导*/
+function getParentDirectory($projectName,&$up,&$upper)
+{
+    $guideLabels=array('mobilephones'=>array('up'=>'Smartphones','upper'=>'Electronics'),
+                        'milk'=>array('up'=>'Milk','upper'=>'Food'));
+    $up=$guideLabels[$projectName]['up'];
+    $upper=$guideLabels[$projectName]['upper'];
+}
