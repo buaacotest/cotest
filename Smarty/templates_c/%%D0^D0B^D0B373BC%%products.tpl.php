@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-11 05:13:44
+<?php /* Smarty version 2.6.19, created on 2016-06-09 04:54:24
          compiled from products.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +32,9 @@
     <div class="
     products-select-tab">
      <div class="products-head">
-         <a href=""><?php echo $this->_tpl_vars['lang']['Electronics']; ?>
+         <a href=""><?php echo $this->_tpl_vars['lang'][$this->_tpl_vars['upper']]; ?>
 </a>
-         <?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+         <?php echo $this->_tpl_vars['lang'][$this->_tpl_vars['up']]; ?>
 
      </div>
         <ul class="nav nav-tabs pro-nav">
@@ -72,7 +72,7 @@
             </div>
             <div id="products-block">
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
-  </b><?php echo $this->_tpl_vars['lang']['Smartphones']; ?>
+  </b><?php echo $this->_tpl_vars['lang'][$this->_tpl_vars['up']]; ?>
  &nbsp;&nbsp;<span class="cur-page">1</span> / <?php echo $this->_tpl_vars['pageNum']; ?>
   <?php echo $this->_tpl_vars['lang']['pages']; ?>
 </p>
@@ -111,8 +111,8 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 " >
  								<img class="product-listing__thumb-image" alt="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_name']; ?>
 " src="data/<?php echo $this->_tpl_vars['project']; ?>
-/pictures/<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
-_01.jpg">                              </a>
+/picturesx/<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
+_01x.jpg">                              </a>
                           </div>
                           <a class="product-link"  target="<?php echo $this->_tpl_vars['products'][$this->_sections['n']['index']]['product_id']; ?>
 " >
@@ -317,7 +317,8 @@ _01.jpg">                              </a>
     }
     function loadoption(labels){
         var option_text="";
-        for(var i=0;i<labels.length;i++){
+        if(labels){
+           for(var i=0;i<labels.length;i++){
             var option_info=labels[i];
             var option_name=option_info.name;
             var option_label=option_info.label;
@@ -366,6 +367,8 @@ _01.jpg">                              </a>
           
 
         }
+        }
+       
         //console.log(option_text)
           $("#filter-all-options").html(option_text);
               $(".checkbox").on("click",function(){

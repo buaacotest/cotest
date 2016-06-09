@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2016-05-10 12:35:22
+<?php /* Smarty version 2.6.19, created on 2016-06-09 04:59:48
          compiled from prolist.tpl */ ?>
 
                 <p>&nbsp;<b><?php echo $this->_tpl_vars['productsNum']; ?>
