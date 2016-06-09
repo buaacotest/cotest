@@ -143,10 +143,12 @@
 
           </tr> -->
 
-          <tr class="subheading" data-category="tests-heading">
+          <tr class="heading" data-category="tests-heading">
             <th>
               <h2>Test results
+              <img src="img/down_b.png">
               </h2>
+
             </th>
                 <{section name=m loop=$products}>
                 <td class="table-cell-wrapper" data-product-id="10344">
@@ -259,9 +261,10 @@
             
 
 
-          <tr class="subheading" data-category="tests-heading">
+          <tr class="heading" data-category="tests-heading">
             <th>
               <h2>Features
+              <img src="img/down_b.png">
               </h2>
             </th>
                 <{section name=m loop=$products}>
@@ -276,6 +279,7 @@
             <tr class="subheading" data-category="tests-heading">
             <th>
               <h3><{$products[0].property[k].name}>
+              <img src="img/down_b.png">
               </h3>
             </th>
                 <{section name=m loop=$products}>
@@ -313,7 +317,7 @@
           <{/section}>
 
 
-          <tr class="subheading" data-category="tests-heading">
+          <tr class="heading" data-category="tests-heading">
             <th>
               <h2>Pros
               </h2>
@@ -329,7 +333,7 @@
                 </td>
                 <{/section}>
           </tr>
-          <tr class="subheading" data-category="tests-heading">
+          <tr class="heading" data-category="tests-heading">
             <th>
               <h2>Cons
               </h2>
@@ -370,6 +374,51 @@ var local_url = document.location.href;
 var compare_list=getPar("ids");
 //关闭响应事件
 $(".compare-title").text(compare_list.length+" smartphones in comparison")
+//toggle
+$(".subheading").on("click",function(){
+     if($(this).attr('toggle')=='1'){
+         for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
+          if($(this).parent().find("tr").eq(i).hasClass('heading') || $(this).parent().find("tr").eq(i).hasClass('subheading')) 
+              break;
+          $(this).parent().find("tr").eq(i).show();
+        }
+          $(this).attr("toggle","0");
+          $(this).find("img").removeClass("heading-toggle");
+      }
+      else{
+        for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
+          if($(this).parent().find("tr").eq(i).hasClass('heading') || $(this).parent().find("tr").eq(i).hasClass('subheading'))
+              break;
+          $(this).parent().find("tr").eq(i).hide();
+        }
+          $(this).attr("toggle","1");
+          $(this).find("img").addClass("heading-toggle");
+
+      }
+})
+$(".heading").on("click",function(){
+
+      if($(this).attr('toggle')=='1'){
+         for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
+          if($(this).parent().find("tr").eq(i).hasClass('heading'))
+              break;
+          $(this).parent().find("tr").eq(i).show();
+        }
+          $(this).attr("toggle","0")
+          $(this).find("img").removeClass("heading-toggle");
+      }
+      else{
+        for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
+          if($(this).parent().find("tr").eq(i).hasClass('heading'))
+              break;
+          $(this).parent().find("tr").eq(i).hide();
+        }
+          $(this).attr("toggle","1");
+          $(this).find("img").addClass("heading-toggle");
+
+      }
+
+})
 $(".product-image").find(".close").on("click",function(){
 
     var index=$(this).parent().parent().index();

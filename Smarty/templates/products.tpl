@@ -35,6 +35,7 @@
         <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
+                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.UserReview}></a></li>
 
             </ul>
 
@@ -302,6 +303,7 @@
        
         //console.log(option_text)
           $("#filter-all-options").html(option_text);
+          filterToggle();
               $(".checkbox").on("click",function(){
                 if($(this).hasClass("active")){
               $(this).removeClass("active")
@@ -328,6 +330,34 @@
          $(checkboxs).css("background","none");
           filter();
     })
+    //filter toggle
+    function filterToggle(){
+        var filteroptions=$(".filter-options");
+        for(var i=0;i<filteroptions.length;i++){
+          var filteroption=$(filteroptions[i])
+          if($(filteroption).find("label").length>5){
+              for(var j=5;j<$(filteroption).find("label").length;j++){
+                $(filteroption).find('label').eq(j).hide();
+
+              }
+              $(filteroption).append("<div class='more-option-btn' toggle='1'><img src='img/down_b.png'></div>");
+          }
+        }
+        $('.more-option-btn').on("click",function(){
+            if($(this).attr('toggle')=='1'){
+              $(this).attr('toggle','0');
+              $(this).parent().find('label').show();
+              $(this).attr('class',"more-option-btn more-option-btn-active")
+            }else{
+                for(var i=5;i<$(this).parent().find("label").length;i++){
+                  $(this).parent().find("label").eq(i).hide();
+                }
+                 $(this).attr('toggle','1');
+                 $(this).attr('class',"more-option-btn")
+            }
+        }) 
+    }
+
     function getScoreInfo(star){
         if(star==1) return "Poor";
         if(star==2) return "Sufficient";
