@@ -129,7 +129,23 @@ if __name__=="__main__":
         cursor = cnn.cursor()
         cursor.execute(sql_create_table)
     except mysql.connector.Error as e:
-        print('create table manufacturers fails!{}'.format(e))
+        print('create table sdictionary fails!{}'.format(e))
+    #create comments
+    sql_create_table="CREATE TABLE `comments` (" \
+                     "`id_comment` int(11) NOT NULL AUTO_INCREMENT," \
+                     "`id_product` int(11) DEFAULT NULL," \
+                     "`user` varchar(20) NOT NULL," \
+                     "`content` varchar(140) NOT NULL," \
+                     "`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP," \
+                     "PRIMARY KEY (`id_comment`)" \
+                     ") ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8"
+    try:
+        cursor = cnn.cursor()
+        cursor.execute(sql_create_table)
+    except mysql.connector.Error as e:
+        print('create table comments fails!{}'.format(e))
+
+
     #deal with manufacturers-----------------------BEGIN
     #create table
     sql_create_table="CREATE TABLE `manufacturers` (" \

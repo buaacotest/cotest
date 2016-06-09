@@ -1,3 +1,20 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Arthur
+ * Date: 2016/6/9
+ * Time: 10:24
+ *
+ */
+session_start();
+
+//检测是否登录，若没登录则转向登录界面
+if(!isset($_SESSION['usertype'])){
+    header("Location:translation.html");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +23,14 @@
     <link href="trans.css" rel="stylesheet" type="text/css"/>
     <script src="jquery.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            /* For zebra striping */
-            $("table tr:nth-child(odd)").addClass("odd-row");
-            /* For cell text alignment */
-            $("table td:first-child, table th:first-child").addClass("first");
-            /* For removing the last border */
-            $("table td:last-child, table th:last-child").addClass("last");
-        });
+    $(function() {
+        /* For zebra striping */
+        $("table tr:nth-child(odd)").addClass("odd-row");
+        /* For cell text alignment */
+        $("table td:first-child, table th:first-child").addClass("first");
+        /* For removing the last border */
+        $("table td:last-child, table th:last-child").addClass("last");
+    });
     </script>
     <script>
         var all;
@@ -182,7 +199,7 @@
             //alert(divstr)
             $.each(opt, function (index, item) {
                 if(item!="")
-                 divstr += "<li onmousedown=\"" + "getValue('" + obj + "','" + item + "');showAndHide('" + obj + "List'" + ",'hide');\">" + item + "</li>";
+                    divstr += "<li onmousedown=\"" + "getValue('" + obj + "','" + item + "');showAndHide('" + obj + "List'" + ",'hide');\">" + item + "</li>";
             })
             var autoword=autoTrans(word);
             divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+autoword+"');showAndHide('"+obj+"List'"+",'hide');\">"+autoword+"</li>";
@@ -268,7 +285,7 @@
            var str="<tr><th>ID</th><th>源数据</th><th>中文</th><th>英文</th><th>德文</th><th>选择</th></tr>";
            $.get("check.php?project="+proj+"&option="+opt,function(data,status){
                if(status=="success"){
-                  var ids=eval(data);
+                   var ids=eval(data);
                    console.log(data)
                    var tempTr=$(".table").find('tr');
                    tempTr.each(function(){
@@ -277,13 +294,13 @@
                        if($.inArray(id,ids)!=-1&&id){
                            $(this).find('input').attr("checked",true);
                            if(flag==1)
-                           str+="<tr>"+$(this).html()+"</tr>";
+                               str+="<tr>"+$(this).html()+"</tr>";
                        }
                    })
                }
            });
            if(flag==1)
-           $(".table").html(str);
+               $(".table").html(str);
        }
         function resume(){
             $(".table").html(all);

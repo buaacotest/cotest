@@ -102,7 +102,7 @@ function getProperty()
 function getEvaluations()
 {
     $sql = "select id_evaluation,name,id_parent from evaluations
-      where id_evaluation<10000";
+      where id_evaluation<100000000";
     $data = $GLOBALS['db']->getAll($sql);
     $gradeTree = getTree($data, 0);
     return $gradeTree;
