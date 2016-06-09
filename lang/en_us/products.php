@@ -6,13 +6,11 @@
  * Time: 17:02
  */
 $_LANG['COTEST']='COTEST';
-
-$_LANG['Testedsmartphones']='Tested smartphones';
 $_LANG['HowWeTest']='How we test';
 
 $_LANG['Electronics']='Electronics';
 $_LANG['Smartphones']='Smartphones';
-$_LANG['TestedSmartphones']='Tested smartphones';
+$_LANG['TestedSmartphones']='Tested products';
 
 $_LANG['SignIn']='Login';
 $_LANG['SignUp']='Signup';
