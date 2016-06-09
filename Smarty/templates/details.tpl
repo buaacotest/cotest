@@ -129,7 +129,7 @@
                             
                             <div class="col-md-12 pro-img text-center"id="pro_img1">
 
-                                <img src="data/<{$project}>/pictures/<{$product.id}>_01.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
+                                <img src="data/<{$project}>/picturesx/<{$product.id}>_01x.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
 
                             </div>
                             <div class="col-md-12 pro-img text-center"id="pro_img2">
@@ -139,7 +139,7 @@
                             </div>
                             <div class="col-md-12 pro-img text-center"id="pro_img3">
 
-                                <img src="data/<{$project}>/pictures/<{$product.id}>_02.jpg" >
+                                <img src="data/<{$project}>/picturesx/<{$product.id}>_02x.jpg" >
                                   
                             </div>
                         </div>
