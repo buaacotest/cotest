@@ -7,12 +7,15 @@
  */
 //echo ($_POST['name']);
 //注销登录
-if($_GET['action'] == "logout"){
-    unset($_SESSION['userid']);
-    unset($_SESSION['username']);
-    echo '注销登录成功！点击此处 <a href="translation.html">登录</a>';
-    exit;
+if(isset($_GET['action'])){
+    if($_GET['action'] == "logout"){
+        unset($_SESSION['userid']);
+        unset($_SESSION['username']);
+        echo '注销登录成功！点击此处 <a href="translation.html">登录</a>';
+        exit;
+    }
 }
+
 if(empty($_POST['name'])){
     exit('非法访问!');
 }
