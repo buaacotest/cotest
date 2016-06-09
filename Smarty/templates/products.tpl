@@ -35,12 +35,12 @@
         <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
-                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.UserReview}></a></li>
+                <li role="presentation" class="proper-tab" target="#panel3" id="tab3"><a><{$lang.UserReview}></a></li>
 
             </ul>
 
     </div>
-    <div class="row" id="#product_panel">
+    <div class="row" id="product_panel">
         <div class="product-container-panel">
         <div class="products-container">
             <div class="products-sort">
@@ -187,7 +187,31 @@
         </div>
 
     </div>
+    <div id="panel3">
+    <div id="panel4" class="proper-panel" style="display: block;">
+                    <h4>User review</h4>
+                    <div class="comments">
+                                            <div class="comment-item">
+                          <div class="comment-user">
+                              uuu
+                          </div>
+                          <div class="comment-time">
+                              2016-05-11 15:29:11
+                          </div>
+                          <div class="comment-cotent">
+                              ok
+                          </div>
+                      </div>
+                                          </div>
+                    <h4>Write your review</h4>
+                    <div class="comment-submit">
+                        <textarea class="comment-area" rows="3" cols="20"></textarea>
+                        <button class="comment-btn"> Submit</button>
+                    </div>
 
+                </div>
+      
+    </div>
     <div class="compare-panel" >
         <div class="compare-toogle">
             <img src="img/down.png" />
@@ -248,6 +272,7 @@
         get_par=get_par.replace(/%20/g," ");
         return eval("("+get_par+")");
     }
+
     function loadoption(labels){
         var option_text="";
         if(labels){
@@ -385,6 +410,17 @@
             sort(sortname);
             $("#cur-sort").html($(this).text()+'<span class="caret"></span>');
         }
+    })
+      $(".proper-tab").on("click",function(){
+        var target_panel=$(this).attr("target");
+        var tabs=$(this).parent().find(".proper-tab");
+        for(var i=0;i<tabs.length;i++){
+            var panel= $(tabs[i]).attr("target");
+            $(panel).css("display","none");
+            $(tabs[i]).attr("class","proper-tab");
+        }
+        $(target_panel).css("display","block");
+        $(this).attr("class","proper-tab active");
     })
     function sort(sortType){
         $.get("products.php?page=1&proj=<{$project}>&sort="+sortType+"&labels="+labels_str,function(result){
@@ -579,6 +615,7 @@
 
 
     }
+
     function gotopage(target)
     {
         cpage = target;        //把页面计数定位到第几页

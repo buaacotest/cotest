@@ -17,6 +17,17 @@
             location.reload();
         });
       })
+          $(".proper-tab").on("click",function(){
+        var target_panel=$(this).attr("target");
+        var tabs=$(this).parents(".pro-nav").find(".proper-tab");
+        for(var i=0;i<tabs.length;i++){
+            var panel= $(tabs[i]).attr("target");
+            $(panel).css("display","none");
+            $(tabs[i]).attr("class","proper-tab");
+        }
+        $(target_panel).css("display","block");
+        $(this).attr("class","proper-tab active");
+    })
    })
 
    function getPar(par){

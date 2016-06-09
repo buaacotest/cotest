@@ -920,15 +920,18 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	width: 150px;
 
 }
+.pro-option-banner button:hover{
+	color: #555;
+}
 .pro-option-banner button{
-	border:1px solid #555;
+	border:none;
 	background: #fff;
 	padding: 5px;
-	margin: 5px;
-	font-size: 10px;
+	margin: 0px;
+	font-size: 14px;
 	width: 100%;
-	text-align: center;
-	font-weight: bold;
+	text-align: left;
+	color: #f7b206;
 }
 
 .pro-list-item{
@@ -988,10 +991,10 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 .products-select-tab .pro-nav{
 	position: absolute;
-	width:480px;
+	width:680px;
 	left: 50%;
 	top: -20px;
-	margin-left: -240px;
+	margin-left: -300px;
 	border: none;
 	height: 60px;
 
