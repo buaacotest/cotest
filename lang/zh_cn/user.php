@@ -35,3 +35,4 @@ $_LANG['invalid']="该链接已失效";
 $_LANG['overTime']="您的激活有效期已过，请重新注册!";
 $_LANG['alreadyActive']="您已激活该账户，无需重复激活!";
 $_LANG['ActiveSuccess']="激活成功!";
+$_LANG['wait']="3秒后跳转到登录页，请稍候...";
