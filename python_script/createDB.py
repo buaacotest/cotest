@@ -86,12 +86,19 @@ if __name__=="__main__":
                             "`Eng` varchar(200) default NULL," \
                             "`CHN` varchar(400) default NULL" \
                             ") ENGINE=MyISAM DEFAULT CHARSET=utf8;"
+        createTransusersql="CREATE TABLE `translationuser` (" \
+                           "`username` varchar(45) NOT NULL," \
+                           "`userpwd` varchar(45) NOT NULL," \
+                           "`usertype` int(11) NOT NULL," \
+                           "PRIMARY KEY (`username`,`usertype`,`userpwd`)" \
+                           ") ENGINE=InnoDB DEFAULT CHARSET=utf8;"
         try:
             cursor = cnn.cursor()
             cursor.execute(createadminsql)
             cursor.execute(useadminsql)
             cursor.execute(createdbtablesql)
             cursor.execute(createusertablesql)
+            cursor.execute(createTransusersql)
         except mysql.connector.Error as e:
             print('create for admin database fails!{}'.format(e))
 
@@ -129,7 +136,23 @@ if __name__=="__main__":
         cursor = cnn.cursor()
         cursor.execute(sql_create_table)
     except mysql.connector.Error as e:
-        print('create table manufacturers fails!{}'.format(e))
+        print('create table sdictionary fails!{}'.format(e))
+    #create comments
+    sql_create_table="CREATE TABLE `comments` (" \
+                     "`id_comment` int(11) NOT NULL AUTO_INCREMENT," \
+                     "`id_product` int(11) DEFAULT NULL," \
+                     "`user` varchar(20) NOT NULL," \
+                     "`content` varchar(140) NOT NULL," \
+                     "`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP," \
+                     "PRIMARY KEY (`id_comment`)" \
+                     ") ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8"
+    try:
+        cursor = cnn.cursor()
+        cursor.execute(sql_create_table)
+    except mysql.connector.Error as e:
+        print('create table comments fails!{}'.format(e))
+
+
     #deal with manufacturers-----------------------BEGIN
     #create table
     sql_create_table="CREATE TABLE `manufacturers` (" \
@@ -241,7 +264,7 @@ if __name__=="__main__":
     product_list=[]
     product_nodes=get_xmlnode(products_node,'product')#product nodes
     for node in product_nodes:
-        product={} #save  one manufacture information
+        product={} #save  one product information
         product_id = get_attrvalue(node,'id_product')
         product['id']=product_id
 

@@ -34,4 +34,6 @@ if($nowtime>$token_exptime){
 
     }
 }
-echo $msg;
+echo $msg."\n";
+echo $_LANG['wait'];
+header("refresh:3;url=login.php");

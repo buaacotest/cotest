@@ -35,3 +35,4 @@ $_LANG['invalid']="The link is invalid";
 $_LANG['overTime']="Your activation is expired,please re-register!";
 $_LANG['alreadyActive']="You have already activated the account,please don't repeat it!";
 $_LANG['ActiveSuccess']="Activation success!";
+$_LANG['wait']="Jump to login page after 3 seconds, please wait...";
