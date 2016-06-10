@@ -21,7 +21,7 @@ function getComments($id_product=''){
         return $results;
     }
     else{
-        $sql="select id_comment,user,create_time  as time,content from comments where id_product='' order by time desc ";
+        $sql="select id_comment,user,create_time  as time,content from comments where id_product is null order by time desc ";
         $comments=$GLOBALS['db']->getAll($sql);
         return $comments;
     }

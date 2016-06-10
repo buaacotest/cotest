@@ -8,6 +8,7 @@
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
+require('./includes/lib_comment.php');
 require('./lang/'.$_SESSION['lang'].'/products.php');
 /*$product_group=$_GET['id'];
 $title=getProductsCat($product_group);
@@ -63,6 +64,10 @@ if(!empty($labels)){
 //print_r($products);
 
 
+/*加载针对此项目的评论*/
+$comments=getComments();
+
+
 $page_num=ceil(count($products)/35);
 $productsNum=count($products);
 
@@ -84,6 +89,7 @@ $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('user',$_SESSION['member']);
+$smarty->assign('comments',$comments);
 if($flag){
     $smarty->display("prolist.tpl");
 }
