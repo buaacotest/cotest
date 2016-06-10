@@ -33,7 +33,7 @@ $_LANG['Back']='背面';
 $_LANG['Pros']='优点';
 $_LANG['Cons']='缺点';
 
-$_LANG['VeryGood']='优秀';
+$_LANG['Verygood']='优秀';
 $_LANG['Good']='良好';
 $_LANG['Average']='中等';
 $_LANG['Sufficient']='尚可';

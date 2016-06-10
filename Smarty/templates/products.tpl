@@ -187,11 +187,12 @@
         </div>
 
     </div>
-    <div id="panel3">
+    <div id="panel3" style="display:none">
     <div id="panel4" class="proper-panel" style="display: block;">
                     <h4>User review</h4>
                     <div class="comments">
-                                            <div class="comment-item">
+                      <div class="comment">
+                      <div class="comment-item">
                           <div class="comment-user">
                               uuu
                           </div>
@@ -201,8 +202,40 @@
                           <div class="comment-cotent">
                               ok
                           </div>
+                          <div class="comment-tool">
+                            <div class="reply">
+                              <div class="reply-icon"></div>
+                              reply(200)
+                            </div>
+
+                            <div class="like">
+                              <div class="like-icon"></div>
+                              like(200)
+                            </div>
+                            <div class="dislike">
+                              <div class="dislike-icon"></div>
+                              dislike(200)
+                            </div>
+                            
+                        </div>
+                        <div class="reply-panel">
+                                <div class="comment-placeholder" style="display: block;">
+            <span>亲！回复凑个热闹吧</span>
+            <button class="btn-comment">回复</button>
+                              </div>
+                                <div class="reply-item">
+                                    <div class="reply-user">uuu
+                                      <em>2016-05-11 15:29:11</em>
+                                    </div>
+                                    <div class="reply-content">
+                                      jajaaf
+                                    </div>
+                                    <div class="reply-tool"></div>
+                                </div>
+                            </div>
+                          </div>
                       </div>
-                                          </div>
+                    </div>
                     <h4>Write your review</h4>
                     <div class="comment-submit">
                         <textarea class="comment-area" rows="3" cols="20"></textarea>

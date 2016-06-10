@@ -643,7 +643,7 @@ border-radius: 0px;
 .comment-user{
 	font-size: 14px;
 	margin: 8px 0;
-
+	font-weight: bold;
 }
 .comment-time{
 	color: #888;
@@ -651,11 +651,50 @@ border-radius: 0px;
 .comment-cotent{
 	margin: 8px 0;
 }
+.comment-tool{
+	width: 100%;
+	height: 20px;
+	margin: 10px 0;	
+}
+.comment-tool .like,.dislike,.reply{
+	float: left;
+	opacity: 0.7;
+	margin-right:18px;
+}
+.comment-tool .like-icon,.dislike-icon,.reply-icon{
+	float: left;
+	width: 15px;
+	height: 15px;
+	margin-top: 4px;
+	margin-right:5px;
+}
+.comment-tool .reply-icon{
+	background: url("../img/comment.png") no-repeat;
+	background-size: contain;
+}
+.comment-tool .like-icon{
+	background: url("../img/like.png") no-repeat;
+	background-size: contain;
+}
+.comment-tool .dislike-icon{
+	background: url("../img/dislike.png") no-repeat;
+	background-size: contain;
+}
+.reply-panel{
+	padding: 20px;
+	background: #eee;
+}
+.reply-item{
+	padding: 20px 0;
+	border-bottom: 1px solid #ddd;
+}
 .comment-area{
 	width: 100%;
 	margin-top: 10px;
 	height: 150px;
+	resize: none;
 }
+
 .comment-btn{
 	margin-top: 15px;
 	background: #fff;
@@ -1265,6 +1304,9 @@ footer .icptext{
 .compare-table tr{
 	border-bottom: 1px solid #eee;
 }
+.compare-table .heading-hide,.compare-table .subheading-hide{
+	display: none;
+}
 .compare-table th{
 	padding: 12px;
 	max-width: 250px;
@@ -1301,9 +1343,9 @@ footer .icptext{
 	margin-left: 10px;
 }
 .compare-table .heading-toggle{
-		-webkit-transform:rotate(180deg);
-		-moz-transform:rotate(180deg);
-		transform:rotate(180deg);
+		-webkit-transform:rotate(270deg);
+		-moz-transform:rotate(270deg);
+		transform:rotate(270deg);
 }
 .compare-table h3{
 	font-size: 14px;

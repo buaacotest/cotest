@@ -380,7 +380,7 @@ $(".subheading").on("click",function(){
          for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
           if($(this).parent().find("tr").eq(i).hasClass('heading') || $(this).parent().find("tr").eq(i).hasClass('subheading')) 
               break;
-          $(this).parent().find("tr").eq(i).show();
+          $(this).parent().find("tr").eq(i).removeClass("subheading-hide");
         }
           $(this).attr("toggle","0");
           $(this).find("img").removeClass("heading-toggle");
@@ -389,7 +389,7 @@ $(".subheading").on("click",function(){
         for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
           if($(this).parent().find("tr").eq(i).hasClass('heading') || $(this).parent().find("tr").eq(i).hasClass('subheading'))
               break;
-          $(this).parent().find("tr").eq(i).hide();
+          $(this).parent().find("tr").eq(i).addClass("subheading-hide");
         }
           $(this).attr("toggle","1");
           $(this).find("img").addClass("heading-toggle");
@@ -402,7 +402,7 @@ $(".heading").on("click",function(){
          for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
           if($(this).parent().find("tr").eq(i).hasClass('heading'))
               break;
-          $(this).parent().find("tr").eq(i).show();
+          $(this).parent().find("tr").eq(i).removeClass("heading-hide");
         }
           $(this).attr("toggle","0")
           $(this).find("img").removeClass("heading-toggle");
@@ -411,7 +411,7 @@ $(".heading").on("click",function(){
         for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
           if($(this).parent().find("tr").eq(i).hasClass('heading'))
               break;
-          $(this).parent().find("tr").eq(i).hide();
+          $(this).parent().find("tr").eq(i).addClass("heading-hide");
         }
           $(this).attr("toggle","1");
           $(this).find("img").addClass("heading-toggle");
@@ -433,6 +433,7 @@ $(".product-image").find(".close").on("click",function(){
     $(".compare-title").text(compare_list.length+"  smartphones in comparison")
 
 })
+
 $(".add-compare-btn").on("click",function(){
   var name_list=[];
   var names=$(".product-name");

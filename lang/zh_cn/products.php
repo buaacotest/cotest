@@ -40,7 +40,7 @@ $_LANG['DisplayDiagonal']='显示屏对角线长度';
 $_LANG['SIMFormat']='SIM卡格式';
 $_LANG['MicroSD']='Micro-SD卡槽';
 
-$_LANG['VeryGood']='优秀';
+$_LANG['Verygood']='优秀';
 $_LANG['Good']='良好';
 $_LANG['Average']='中等';
 $_LANG['Sufficient']='尚可';
