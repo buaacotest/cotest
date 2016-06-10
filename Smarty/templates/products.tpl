@@ -251,6 +251,10 @@
                                         回复
                                       </div>
                                     </div>
+                                    <div class="reply-reply-placeholder">
+                                        <textarea></textarea>
+                                        <button class="btn-comment">回复</button>
+                                    </div>
                                 </div>
                                 <div class="reply-item">
                                     <div class="reply-user">uuu
