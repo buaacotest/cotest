@@ -16,16 +16,14 @@ function addComment($id_product,$user,$replyer='',$content,$parent='0'){
 function getComments($id_product=''){
     if($id_product!=''){
         $sql="select id_comment,user,replyer,create_time  as time,content,id_parent from comments WHERE id_product=$id_product order by time desc ";
-        $comments=$GLOBALS['db']->getAll($sql);
-        $results=sortComments($comments);
-        return $results;
+
     }
     else{
-        $sql="select id_comment,user,create_time  as time,content from comments where id_product is null order by time desc ";
-        $comments=$GLOBALS['db']->getAll($sql);
-        return $comments;
+        $sql="select id_comment,user,replyer,create_time  as time,content,id_parent from comments where id_product is null order by time desc ";
     }
-
+    $comments=$GLOBALS['db']->getAll($sql);
+    $results=sortComments($comments);
+    return $results;
 
 }
 /*对评论以及回复排序处理*/
