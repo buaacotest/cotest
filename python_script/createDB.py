@@ -142,7 +142,7 @@ if __name__=="__main__":
                      "`id_comment` int(11) NOT NULL AUTO_INCREMENT," \
                      "`id_product` int(11) DEFAULT NULL," \
                      "`user` varchar(20) NOT NULL," \
-                     "`content` varchar(140) NOT NULL," \
+                     "`content` varchar(400) NOT NULL," \
                      "`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP," \
                      "PRIMARY KEY (`id_comment`)" \
                      ") ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8"
