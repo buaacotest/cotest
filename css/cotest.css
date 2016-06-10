@@ -406,6 +406,13 @@ color: #f7b206;
 	margin-top: 60px;
 
 }
+.review-panel{
+	width: 1000px;
+	background: #fff;
+	margin: 0 auto;
+	padding: 30px;
+
+}
 .products-container{
 	float: left;
 	margin-top: 60px;
@@ -682,11 +689,52 @@ border-radius: 0px;
 }
 .reply-panel{
 	padding: 20px;
-	background: #eee;
+	background: #f8f8f8;
+}
+.reply-placeholder textarea{
+	width: 100%;
+	background: #fff;
+	border: 1px solid #ddd;
+	height: 80px;
+	resize:none;
+
+}
+.reply-placeholder textarea:focus{
+	border: 1px solid #888;
+	outline: none;
+}
+.reply-placeholder button{
+	background: none;
+	color: #555;
+	margin-top: 10px;
+	border: 2px solid #555;
+	padding: 5px 20px;
+}
+.reply-placeholder button:hover{
+	background: #555;
+	color: #fff;
+}
+.reply-reply {
+	cursor: pointer;
+	opacity: 0.5;
+}
+.reply-reply:hover{
+	opacity: 1;
+}
+.reply-reply .reply-icon{
+	background: url("../img/comment.png") no-repeat;
+	background-size: contain;
 }
 .reply-item{
-	padding: 20px 0;
+	padding: 15px 0;
 	border-bottom: 1px solid #ddd;
+}
+.reply-user{
+	font-weight: bold;
+}
+.reply-user em{
+	font-weight: normal;
+	color: #999;
 }
 .comment-area{
 	width: 100%;
@@ -700,6 +748,7 @@ border-radius: 0px;
 	background: #fff;
 	border:2px solid #555;
 	padding: 15px;
+
 
 }
 .pro-info{

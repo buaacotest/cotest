@@ -188,7 +188,7 @@
 
     </div>
     <div id="panel3" style="display:none">
-    <div id="panel4" class="proper-panel" style="display: block;">
+    <div class="review-panel" style="display: block;">
                     <h4>User review</h4>
                     <div class="comments">
                       <div class="comment">
@@ -218,9 +218,10 @@
                             </div>
                             
                         </div>
+
                         <div class="reply-panel">
-                                <div class="comment-placeholder" style="display: block;">
-            <span>亲！回复凑个热闹吧</span>
+                                <div class="reply-placeholder" style="display: block;">
+            <textarea></textarea>
             <button class="btn-comment">回复</button>
                               </div>
                                 <div class="reply-item">
@@ -230,7 +231,40 @@
                                     <div class="reply-content">
                                       jajaaf
                                     </div>
-                                    <div class="reply-tool"></div>
+                                    <div class="reply-tool">
+                                      <div class="reply-reply">
+                                        <div class="reply-icon"></div>
+                                        回复
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="reply-item">
+                                    <div class="reply-user">uuu
+                                      <em>2016-05-11 15:29:11</em>
+                                    </div>
+                                    <div class="reply-content">
+                                      jajaaf
+                                    </div>
+                                    <div class="reply-tool">
+                                      <div class="reply-reply">
+                                        <div class="reply-icon"></div>
+                                        回复
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="reply-item">
+                                    <div class="reply-user">uuu
+                                      <em>2016-05-11 15:29:11</em>
+                                    </div>
+                                    <div class="reply-content">
+                                      jajaaf
+                                    </div>
+                                    <div class="reply-tool">
+                                      <div class="reply-reply">
+                                        <div class="reply-icon"></div>
+                                        回复
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                           </div>
