@@ -12,8 +12,9 @@ $project=$_POST['project'];
 $product=$_POST['product'];
 $user=$_SESSION['member'];
 $content=$_POST['content'];
+$id_parent=$_POST['id_parent'];
 $db->changeDB($project);
-if(addComment($product,$user,$content)){
+if(addComment($product,$user,$content,$id_parent)){
     echo "success";
 }else
     echo $project.$product.$user.$content."fail";
