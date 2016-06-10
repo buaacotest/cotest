@@ -144,8 +144,10 @@ if __name__=="__main__":
                      "`user` varchar(20) NOT NULL," \
                      "`content` varchar(400) NOT NULL," \
                      "`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP," \
+                     "`id_parent` int(11) NOT NULL DEFAULT '0'," \
+                     "`replyer` varchar(20) DEFAULT NULL," \
                      "PRIMARY KEY (`id_comment`)" \
-                     ") ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8"
+                     ") ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;"
     try:
         cursor = cnn.cursor()
         cursor.execute(sql_create_table)
