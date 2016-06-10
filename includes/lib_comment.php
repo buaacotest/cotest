@@ -9,7 +9,7 @@ define('LINE',40);
 $pageNumber=0;
 function addComment($id_product,$user,$replyer='',$content,$parent='0'){
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
-    echo $sql;
+    //echo $sql;
     $GLOBALS['db']->query($sql);
     if(mysql_affected_rows()!=1)
         return false;
@@ -58,3 +58,14 @@ function getPageNumber(){
     return $GLOBALS['pageNumber'];
 }
 
+/*点赞或取消赞*/
+function supportOrUnsupport($id,$option){
+    if($option=='yes')
+        $sql="update comments set support=support+1 where id_comment=".$id;
+    else if($option=='no')
+        $sql="update comments set support=support-1 where id_comment=".$id;
+    $GLOBALS['db']->query($sql);
+    if(mysql_affected_rows()==1)
+        return "success";
+    return "fail";
+}
