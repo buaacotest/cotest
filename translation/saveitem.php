@@ -32,7 +32,7 @@ if($type=="evaluation")
 if($type=="manufacturer")
     $dicflag=2;
 if($type=="propertygroup")
-    $dicflag=4;
+    $dicflag=3;
 if($flag==1){/////选择保存
     if($chn=="")//////TODO：取消选择的时候是否需要判断翻译为空不为空？
     {

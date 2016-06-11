@@ -54,7 +54,7 @@ function getProperty()
         $temp = '';
         $groupname = $g['name'];
         $groupid = $g['id_propertygroup'];
-        $gtranslation = GetTransLation($groupname, $groupid,4);
+        $gtranslation = GetTransLation($groupname, $groupid,3);
         $chn = array();
         //$de=array();
         //$eng=array();
@@ -292,7 +292,7 @@ function SaveTranslationToAdminDic($oriword, $translationArray, $id = null)
             return true;
         $sql = "INSERT INTO `admin`.`dictionary` (`wordid`,`originword`,`De`,`Eng`,`CHN`) VALUES (" . $id . ",'" . $oriword . "','" . $deword . "','" . $engword . "','" . $chnword . "')";
         //step2:insert into admin.dictionary table
-        echo $sql;
+        //echo $sql;
         $result = $GLOBALS['db']->query($sql);
         return $result;
     } else {/////按初始设计来，大词典中的单词只允许添加单词，不允许修改。所以else应该永远不会调用

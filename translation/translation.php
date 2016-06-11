@@ -58,7 +58,7 @@ if(!isset($_SESSION['usertype'])){
                         if(opt=="property"){
                             removeLines();
                             for(var i in result){
-                                var str="<tr typeAttr='propertygroup'><td>"+result[i][0]+"</td><td class='source'>"+result[i][1]+"</td><td>";
+                                var str="<tr typeAttr='3'><td>"+result[i][0]+"</td><td class='source'>"+result[i][1]+"</td><td>";
                                 var idstr="zh"+result[i][0];
                                 var word=result[i][1];
                                 var options=new Array();
@@ -78,7 +78,7 @@ if(!isset($_SESSION['usertype'])){
                                 var charr=result[i]["id_propertygroup"];
 
                                 for(var j=0;j<charr.length;j++){
-                                    var chstr="<tr typeAttr='property'><td>"+charr[j].id_property+"</td><td  class='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td >";
+                                    var chstr="<tr typeAttr='0'><td>"+charr[j].id_property+"</td><td  class='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td >";
                                     var chidstr="zh"+charr[j].id_property;
                                     var chword=charr[j].name;
                                     var chopt=charr[j].CHN;
@@ -121,7 +121,7 @@ if(!isset($_SESSION['usertype'])){
             var opts=data.CHN;
             var str="";
             var word=data.name;
-            str+="<tr typeAttr='evaluation'><td>"+idstr+"</td>";
+            str+="<tr typeAttr='1'><td>"+idstr+"</td>";
 
             str+="<td class='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+word+"</td><td>";
             if(opts.length==0){
@@ -153,7 +153,7 @@ if(!isset($_SESSION['usertype'])){
                 var id_manufacturer=result[i].id_manufacturer;
                 console.log(name);
                 console.log(id_manufacturer);
-                var str="<tr typeAttr='manufacturer'><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
+                var str="<tr typeAttr='2'><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
                 var idstr="manu"+id_manufacturer;
                 var word=result[i][1];
                 var options=new Array();
@@ -240,7 +240,8 @@ if(!isset($_SESSION['usertype'])){
             // _translation['Eng']="null";
             var _projname=$("#database  option:selected").text();////所翻译的数据库
             //var _type=$("#project option:selected").text();/////翻译的是evaluation还是property还是manufacturer
-            var _type=_typeAttr;
+            var typeArray=['property','evaluation','manufacturer','propertygroup']
+            var _type=typeArray[_typeAttr];
 
             //alert(chn)
 
@@ -284,7 +285,19 @@ if(!isset($_SESSION['usertype'])){
                 $(para).next().fadeOut(2000);
             }
         }
+        function inArraySearch(para,ids){
+            var flagself=para.attr("typeAttr");
+          // console.log(flagself);
+            var ret=-1;
+            var id=para.children('td').eq(0).text();
+            for(var i=0;i<ids.length;i++){
+                if(ids[i].wordid==id&&flagself==ids[i].flag)
+                    return 1;
+            }
 
+            //alert("not found")
+            return -1;
+        }
        function filterSelected(flag){
            var proj=$("#database  option:selected").text();
            var opt=$("#project option:selected").text();
@@ -292,21 +305,29 @@ if(!isset($_SESSION['usertype'])){
            $.get("check.php?project="+proj+"&option="+opt,function(data,status){
                if(status=="success"){
                    var ids=eval(data);
-                   console.log(data)
+                   //console.log(ids)
                    var tempTr=$(".table").find('tr');
                    tempTr.each(function(){
-                       var id=$(this).children('td').eq(0).text();
-                       console.log(id)
-                       if($.inArray(id,ids)!=-1&&id){
-                           $(this).find('input').attr("checked",true);
-                           if(flag==1)
-                               str+="<tr>"+$(this).html()+"</tr>";
+                       if(!$(this).attr("typeAttr")){
+                           console.log("no attr")
+                       }
+                       else{
+                           var id=$(this).children('td').eq(0).text();
+                           //console.log($(this).attr("typeAttr"))
+                           if(inArraySearch($(this),ids)==1){
+                               $(this).find('input').attr("checked",true);
+                               if(flag==1)
+                                   str+="<tr>"+$(this).html()+"</tr>";
+                           }
                        }
                    })
                }
            });
-           if(flag==1)
+           if(flag==1){
+              // console.log(str);
                $(".table").html(str);
+           }
+
        }
         function resume(){
             $(".table").html(all);
