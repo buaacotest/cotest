@@ -17,7 +17,13 @@ if($opt=="evaluation")
 if($opt=="manufacturer")
     $dicflag=2;
 $db->changeDB($database);
-$sql="select wordid from sdictionary where flag=".$dicflag;
+if($dicflag==0){
+    $sql="select wordid from sdictionary where flag=0 or flag=4";
+}
+else {
+   $sql="select wordid from sdictionary where flag=".$dicflag;
+}
+
 $res=$db->getAllValues($sql);
 $data=json_encode($res);
 echo $data;

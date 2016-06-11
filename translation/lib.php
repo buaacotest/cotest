@@ -54,7 +54,7 @@ function getProperty()
         $temp = '';
         $groupname = $g['name'];
         $groupid = $g['id_propertygroup'];
-        $gtranslation = GetTransLation($groupname, $groupid);
+        $gtranslation = GetTransLation($groupname, $groupid,4);
         $chn = array();
         //$de=array();
         //$eng=array();
@@ -212,7 +212,7 @@ function getCountInSelfDic($wordid)
 /*产生一个用于存储在总词典中的ID*/
 function GenAdminDicID()
 {
-    $sql = "SELECT count(*) FROM admin.dictionary";
+    $sql = "SELECT max(`wordid`) FROM admin.dictionary";
     $results = $GLOBALS['db']->query($sql);
     $countarray = mysql_fetch_array($results);
     $count = $countarray[0];
@@ -292,6 +292,7 @@ function SaveTranslationToAdminDic($oriword, $translationArray, $id = null)
             return true;
         $sql = "INSERT INTO `admin`.`dictionary` (`wordid`,`originword`,`De`,`Eng`,`CHN`) VALUES (" . $id . ",'" . $oriword . "','" . $deword . "','" . $engword . "','" . $chnword . "')";
         //step2:insert into admin.dictionary table
+        echo $sql;
         $result = $GLOBALS['db']->query($sql);
         return $result;
     } else {/////按初始设计来，大词典中的单词只允许添加单词，不允许修改。所以else应该永远不会调用
@@ -322,8 +323,12 @@ function SaveTranslationToSelfDic($oriword, $translationArray, $id, $idflag)
     $sql = "SELECT count(*) FROM " . $nowdb . ".sdictionary where wordid=" . $id . " and `flag`= " . $idflag;
     //echo  $sql;
     $results = $GLOBALS['db']->query($sql);
-    $countarray = mysql_fetch_array($results);
-    $count = $countarray[0];
+    $count=0;
+    if($results){
+        $countarray = mysql_fetch_array($results);
+        $count = $countarray[0];
+    }
+
     $deword = $translationArray["De"];
     $chnword = $translationArray["CHN"];
     $engword = $translationArray["Eng"];

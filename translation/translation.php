@@ -58,7 +58,7 @@ if(!isset($_SESSION['usertype'])){
                         if(opt=="property"){
                             removeLines();
                             for(var i in result){
-                                var str="<tr><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
+                                var str="<tr typeAttr='propertygroup'><td>"+result[i][0]+"</td><td class='source'>"+result[i][1]+"</td><td>";
                                 var idstr="zh"+result[i][0];
                                 var word=result[i][1];
                                 var options=new Array();
@@ -78,7 +78,7 @@ if(!isset($_SESSION['usertype'])){
                                 var charr=result[i]["id_propertygroup"];
 
                                 for(var j=0;j<charr.length;j++){
-                                    var chstr="<tr><td>"+charr[j].id_property+"</td><td  id='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td >";
+                                    var chstr="<tr typeAttr='property'><td>"+charr[j].id_property+"</td><td  class='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td >";
                                     var chidstr="zh"+charr[j].id_property;
                                     var chword=charr[j].name;
                                     var chopt=charr[j].CHN;
@@ -121,9 +121,9 @@ if(!isset($_SESSION['usertype'])){
             var opts=data.CHN;
             var str="";
             var word=data.name;
-            str+="<tr><td>"+idstr+"</td>";
+            str+="<tr typeAttr='evaluation'><td>"+idstr+"</td>";
 
-            str+="<td id='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+word+"</td><td>";
+            str+="<td class='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+word+"</td><td>";
             if(opts.length==0){
                 str+="<textarea  id='"+idstr+"' onfocus=\"showOption('"+idstr+"','"+opts+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+"</textarea></td><td>";
             }else
@@ -153,7 +153,7 @@ if(!isset($_SESSION['usertype'])){
                 var id_manufacturer=result[i].id_manufacturer;
                 console.log(name);
                 console.log(id_manufacturer);
-                var str="<tr><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
+                var str="<tr typeAttr='manufacturer'><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
                 var idstr="manu"+id_manufacturer;
                 var word=result[i][1];
                 var options=new Array();
@@ -229,6 +229,8 @@ if(!isset($_SESSION['usertype'])){
             //alert("checked")
             var tr=$(para).parents('tr')
             var td = tr.children('td');
+            var _typeAttr=tr.attr("typeAttr");
+            //alert(_typeAttr);
             var _id=td.eq(0).text()
             var _oriword=td.eq(1).text()
             var chn=tr.find('textarea').val();
@@ -237,7 +239,11 @@ if(!isset($_SESSION['usertype'])){
             //_translation['De']="null";暂时不需要
             // _translation['Eng']="null";
             var _projname=$("#database  option:selected").text();////所翻译的数据库
-            var _type=$("#project option:selected").text();/////翻译的是evaluation还是property还是manufacturer
+            //var _type=$("#project option:selected").text();/////翻译的是evaluation还是property还是manufacturer
+            var _type=_typeAttr;
+
+            //alert(chn)
+
             //alert(id);
             if(para.checked){
                 $.get("saveitem.php",

@@ -31,6 +31,8 @@ if($type=="evaluation")
     $dicflag=1;
 if($type=="manufacturer")
     $dicflag=2;
+if($type=="propertygroup")
+    $dicflag=4;
 if($flag==1){/////选择保存
     if($chn=="")//////TODO：取消选择的时候是否需要判断翻译为空不为空？
     {
@@ -52,7 +54,7 @@ if($flag==1){/////选择保存
             $outstr1="存入了总词典!";
         if($result2)
             $outstr2="存入了项目词典!";
-        echo "成功保存!".$outstr1.$outstr2;
+        echo $outstr1.$outstr2;
         //////无论是选择保存还是取消都要对selected进行操作
         if($dicflag==0)
             $result3=SetPropertySelected($id,$flag);
