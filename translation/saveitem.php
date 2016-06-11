@@ -69,8 +69,12 @@ if($flag==1){/////选择保存
 else{
     //////无论是选择保存还是取消都要对selected进行操作
     $result4=DeleteTranslationInSelfDic($id,$dicflag);
+    //echo $result4;
     if($result4)
         echo "删除词条!";
+
+    //else echo "false";
+
     if($dicflag==0)
         $result3=SetPropertySelected($id,$flag);
     else if($dicflag==1)
