@@ -10,7 +10,6 @@ $db=new mysql_cls();
 $db->connect();
 $serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
 require('includes/config.php');
-//require('includes/lib_translation.php');
 require ('translation/lib.php');
 $db->changeDB("mobilephones");
 
