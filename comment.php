@@ -14,7 +14,15 @@ $user=$_SESSION['member'];
 $replyer=$_POST['replyer'];
 $content=$_POST['content'];
 $id_parent=$_POST['id_parent'];
+$commentId=$_POST['id_comment'];
+$support=$_POST['support'];
 $db->changeDB($project);
+
+if(!empty($commentId)&&!empty($support)){
+    echo supportOrUnsupport($commentId,$support);
+    return;
+
+}
 if(addComment($product,$user,$replyer,$content,$id_parent)){
     echo "success";
 }else
