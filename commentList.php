@@ -13,6 +13,7 @@ $option=$_POST['id_product'];
 $db->changeDB($project);
 $comments=showComments($option);
 $commentsPageNumber=getPageNumber();
+$smarty->assign('id_product',$option);
 $smarty->assign('comments',$comments);
 $smarty->assign('commentsNumber',$commentsPageNumber);
 $smarty->display("commentList.tpl");
