@@ -5,10 +5,11 @@
  * Date: 2016/4/28
  * Time: 19:09
  */
-define('LINE',40);
+define('LINE',2);
 $pageNumber=0;
 function addComment($id_product,$user,$replyer='',$content,$parent='0'){
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
+
     //echo $sql;
     $GLOBALS['db']->query($sql);
     if(mysql_affected_rows()!=1)
@@ -29,9 +30,17 @@ function getComments($id_product='',$page){
 }
 /*对评论以及回复排序处理*/
 function sortComments($data,$page){
+    $user=$_SESSION['member'];
     $parents=array();
     foreach($data as $k=>$v){
+        $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+        $data[$k]['likeStatus']=$GLOBALS['db']->getOne($sql);
+        $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+        $data[$k]['dislikeStatus']=$GLOBALS['db']->getOne($sql);
         if($v['id_parent']==0){
+            $id=$v['id_product'];
+            $sql="select completename from products where id_product=".$id;
+            $v['product']=$GLOBALS['db']->getOne($sql);
             $parents[]=$v;
         }
     }
@@ -60,14 +69,24 @@ function getPageNumber(){
 
 /*点赞或取消赞*/
 function supportOrUnsupport($id,$option){
+    $status=getSupportStatus('support',$id);
     if($option=='yes'){
         $sql="update comments set support=support+1 where id_comment=".$id;
+
+        if($status=='')
+            setSupportStatus('support',$id);
+        else if($status==0)
+            updateSupportStatus('support',$id,$option);
     }
-    else if($option=='no')
+    else if($option=='no'){
         $sql="update comments set support=support-1 where id_comment=".$id;
+        if($status==0)
+            updateSupportStatus('support',$id,$option);
+
+    }
+
     $GLOBALS['db']->query($sql);
     if(mysql_affected_rows()==1){
-        setSupportStatus('support',$id);
         return "success";
     }
     return "fail";
@@ -75,14 +94,22 @@ function supportOrUnsupport($id,$option){
 
 /*不喜欢或者喜欢*/
 function setUnsupport($id,$option){
+    $status=getSupportStatus('unsupport',$id);
     if($option=='yes'){
         $sql="update comments set unsupport=unsupport+1 where id_comment=".$id;
+        if($status=='')
+            setSupportStatus('unsupport',$id);
+        else if($status==0)
+            updateSupportStatus('unsupport',$id,$option);
     }
-    else if($option=='no')
+    else if($option=='no'){
         $sql="update comments set unsupport=unsupport-1 where id_comment=".$id;
+        if($status==0)
+            updateSupportStatus('unsupport',$id,$option);
+    }
+
     $GLOBALS['db']->query($sql);
     if(mysql_affected_rows()==1){
-        setSupportStatus('unsupport',$id);
         return "success";
     }
     return "fail";
@@ -97,8 +124,6 @@ function getSupportStatus($option,$id){
         $sql="select `dislike` from commentusers where user='".$user."' and id_comment=$id";
     }
     $status=$GLOBALS['db']->getOne($sql);
-    if($status=='')
-        $status=0;
     return $status;
 }
 
@@ -112,3 +137,21 @@ function setSupportStatus($option,$id){
     }
     $GLOBALS['db']->query($sql);
 }
+
+function updateSupportStatus($option,$id,$addition){
+    $user=$_SESSION['member'];
+    if($option=='support'){
+        if($addition=='yes')
+            $sql="update commentusers set `like`=1 where id_comment=$id and user='".$user."'";
+        else
+            $sql="update commentusers set `like`=0 where id_comment=$id and user='".$user."'";
+    }
+    else{
+        if($addition=='yes')
+            $sql="update commentusers set `dislike`=1 where id_comment=$id and user='".$user."'";
+        else
+            $sql="update commentusers set `dislike`=0 where id_comment=$id and user='".$user."'";
+    }
+    $GLOBALS['db']->query($sql);
+}
+
