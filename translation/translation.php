@@ -316,8 +316,11 @@ if(!isset($_SESSION['usertype'])){
                            //console.log($(this).attr("typeAttr"))
                            if(inArraySearch($(this),ids)==1){
                                $(this).find('input').attr("checked",true);
-                               if(flag==1)
-                                   str+="<tr>"+$(this).html()+"</tr>";
+                               if(flag==1){
+                                   //alert($(this).html());
+                                   str+="<tr typeAttr='"+$(this).attr("typeAttr")+"'>"+$(this).html()+"</tr>";
+                               }
+
                            }
                        }
                    })
@@ -325,6 +328,7 @@ if(!isset($_SESSION['usertype'])){
            });
            if(flag==1){
               // console.log(str);
+               //alert(str);
                $(".table").html(str);
            }
 

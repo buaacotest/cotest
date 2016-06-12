@@ -22,6 +22,7 @@ $transarr=array('CHN'=>$chn,'Eng'=>"null",'De'=>"null");///暂时De都为空
 require('lib.php');
 $result1=0;
 $result2=0;
+$result3=0;
 $outstr1="";
 $outstr2="";
 
@@ -60,7 +61,7 @@ if($flag==1){/////选择保存
             $result3=SetPropertySelected($id,$flag);
         else if($dicflag==1)
             $result3=SetEvaluationSelected($id,$flag);
-        else if($dicflag==2)
+        else if($dicflag==2||$dicflag==3)
             $result3=false;
         if($result3)
             echo "标注selected成功!";
@@ -69,8 +70,12 @@ if($flag==1){/////选择保存
 else{
     //////无论是选择保存还是取消都要对selected进行操作
     $result4=DeleteTranslationInSelfDic($id,$dicflag);
+    //echo $result4;
     if($result4)
         echo "删除词条!";
+
+    //else echo "false";
+
     if($dicflag==0)
         $result3=SetPropertySelected($id,$flag);
     else if($dicflag==1)
