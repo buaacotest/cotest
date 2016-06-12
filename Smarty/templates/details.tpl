@@ -513,7 +513,7 @@
                           <div class="reply-panel">
                                 <div class="reply-placeholder">
                                 <textarea></textarea>
-                                <button class="reply-btn">回复</button>
+                                <button class="reply-btn" onlick="javascript:">回复</button>
                               </div>
                                 <{section name=m loop=$comments[n].childs}>
                                 <div class="reply-item">
@@ -534,7 +534,7 @@
                                     </div>
                                     <div class="reply-reply-placeholder">
                                         <textarea></textarea>
-                                        <button class="btn-comment">回复</button>
+                                        <button class="reply-reply-btn">回复</button>
                                     </div>
                                 </div>
                                 <{/section}>
@@ -546,11 +546,7 @@
                     <{/section}>
                     </div>
                     
-                    <h4>Write your review</h4>
-                    <div class="comment-submit">
-                        <textarea class="comment-area" rows="3" cols="20"></textarea>
-                        <button class="comment-btn"> Submit</button>
-                    </div>
+                   
 
              
 
@@ -605,33 +601,8 @@
     $(".back-to-list").on("click",function(){
         window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
+    fetchComments(product_id,$(".comments"),1);
 
-    $(".comment-btn").on("click",function() {
-        addComment(project,product_id,null,$(".comment-area").val(),0,$(".comment-area"),comments)
-        var user='<{$user}>'
-        if(!user){
-            alert("Please sign in first!")
-        }else{
-        var content=$(".comment-area").val();
-        //console.log(content)
-        var arg={ };
-        arg["project"]="<{$project}>";
-        arg["product"]="<{$id}>";
-        arg["content"]=content;
-       // console.log(arg)
-        $.post("comment.php",arg,function(result){
-            if(result=="success"){
-                var date = new Date().Format("yyyy-MM-dd hh:mm:ss");
-                var newComment="<div class='comment-item'> <div class='comment-user'>"+"<{$user}>"+"</div><div class='comment-time'>"
-                        +date+"</div><div class='comment-cotent'>"+content+" </div> </div>"
-                var html= $(".comments").html();
-                html=newComment+html;
-                $(".comments").html(html)
-                $(".comment-area").val("")
-            }
-            console.log(result);
-        })
-    }
-    })
+
 </script>
 </html>
