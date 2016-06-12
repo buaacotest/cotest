@@ -32,8 +32,12 @@ function sortComments($data,$page){
     $parents=array();
     foreach($data as $k=>$v){
         if($v['id_parent']==0){
+            $id=$v['id_product'];
+            $sql="select completename from products where id_product=$id";
+            $v['product']=$GLOBALS['db']->getOne($sql);
             $parents[]=$v;
         }
+
     }
     foreach($parents as $k=>$v){
         foreach($data as $key=>$value){
