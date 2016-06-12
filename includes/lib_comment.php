@@ -69,3 +69,15 @@ function supportOrUnsupport($id,$option){
         return "success";
     return "fail";
 }
+
+/*不喜欢或者喜欢*/
+function setUnsupport($id,$option){
+    if($option=='yes')
+        $sql="update comments set unsupport=unsupport+1 where id_comment=".$id;
+    else if($option=='no')
+        $sql="update comments set unsupport=unsupport-1 where id_comment=".$id;
+    $GLOBALS['db']->query($sql);
+    if(mysql_affected_rows()==1)
+        return "success";
+    return "fail";
+}
