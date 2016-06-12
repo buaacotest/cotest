@@ -64,24 +64,55 @@ function getPageNumber(){
 
 /*点赞或取消赞*/
 function supportOrUnsupport($id,$option){
-    if($option=='yes')
+    if($option=='yes'){
         $sql="update comments set support=support+1 where id_comment=".$id;
+    }
     else if($option=='no')
         $sql="update comments set support=support-1 where id_comment=".$id;
     $GLOBALS['db']->query($sql);
-    if(mysql_affected_rows()==1)
+    if(mysql_affected_rows()==1){
+        setSupportStatus('support',$id);
         return "success";
+    }
     return "fail";
 }
 
 /*不喜欢或者喜欢*/
 function setUnsupport($id,$option){
-    if($option=='yes')
+    if($option=='yes'){
         $sql="update comments set unsupport=unsupport+1 where id_comment=".$id;
+    }
     else if($option=='no')
         $sql="update comments set unsupport=unsupport-1 where id_comment=".$id;
     $GLOBALS['db']->query($sql);
-    if(mysql_affected_rows()==1)
+    if(mysql_affected_rows()==1){
+        setSupportStatus('unsupport',$id);
         return "success";
+    }
     return "fail";
+}
+/*获取是否已点赞*/
+function getSupportStatus($option,$id){
+    $user=$_SESSION['member'];
+    if($option=='support'){
+        $sql="select `like` from commentusers where user='".$user."' and id_comment=$id";
+    }
+    else{
+        $sql="select `dislike` from commentusers where user='".$user."' and id_comment=$id";
+    }
+    $status=$GLOBALS['db']->getOne($sql);
+    if($status=='')
+        $status=0;
+    return $status;
+}
+
+function setSupportStatus($option,$id){
+    $user=$_SESSION['member'];
+    if($option=='support'){
+        $sql="insert into commentusers(id_comment,user,`like`) values(".$id.",'".$user."',1)";
+    }
+    else{
+        $sql="insert into commentusers(id_comment,user,`dislike`) values(".$id.",'".$user."',1)";
+    }
+    $GLOBALS['db']->query($sql);
 }

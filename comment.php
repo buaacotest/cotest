@@ -19,6 +19,17 @@ $support=$_POST['like'];
 $unsupport=$_POST['dislike'];
 $db->changeDB($project);
 
+/*查询点赞状态*/
+$likeStatus=$_POST['getLike'];
+if(!empty($likeStatus)){
+    if($likeStatus=='like'){
+        return getSupportStatus('support',$commentId);
+    }
+    else{
+        return getSupportStatus('unsupport',$commentId);
+    }
+
+}
 if(!empty($commentId)&&!empty($support)){
     echo supportOrUnsupport($commentId,$support);
     return;
