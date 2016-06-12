@@ -33,5 +33,5 @@ if(!empty($commentId)&&!empty($unsupport)){
 if(addComment($product,$user,$replyer,$content,$id_parent)){
     echo "success";
 }else
-    echo $project.$product.$user.$content."fail";
+    echo "fail";
 
