@@ -60,6 +60,8 @@
                           
                       </div>
                     <{/section}>
+                    <p>
+<div class="pagination"><span class="disabled"> <  Prev</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a href="#?page=7">7</a>...<a href="#?page=199">199</a><a href="#?page=200">200</a><a href="#?page=2">Next  > </a></div></p>
                   <h4>Write your review</h4>
                     <div class="comment-submit">
                         <textarea class="comment-area" rows="3" cols="20"></textarea>
