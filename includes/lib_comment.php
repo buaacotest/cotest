@@ -5,7 +5,7 @@
  * Date: 2016/4/28
  * Time: 19:09
  */
-define('LINE',40);
+define('LINE',2);
 $pageNumber=0;
 function addComment($id_product,$user,$replyer='',$content,$parent='0'){
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
