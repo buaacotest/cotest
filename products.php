@@ -67,7 +67,6 @@ if(!empty($labels)){
 /*加载针对此项目的评论*/
 $comments=getComments();
 
-
 $page_num=ceil(count($products)/35);
 $productsNum=count($products);
 

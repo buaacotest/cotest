@@ -191,16 +191,17 @@
     <div class="review-panel" style="display: block;">
                     <h4>User review</h4>
                     <div class="comments">
+                    <{section name=n loop=$comments}>
                       <div class="comment">
                       <div class="comment-item">
                           <div class="comment-user">
-                              uuu
+                             <{$comments[n].user}>
                           </div>
                           <div class="comment-time">
-                              2016-05-11 15:29:11
+                              <{$comments[n].time}>
                           </div>
                           <div class="comment-cotent">
-                              ok
+                              <{$comments[n].content}>
                           </div>
                           <div class="comment-tool">
                             <div class="reply">
@@ -218,32 +219,22 @@
                             </div>
                             
                         </div>
-
-                        <div class="reply-panel">
+                        
+                          <div class="reply-panel">
                                 <div class="reply-placeholder" style="display: block;">
-            <textarea></textarea>
-            <button class="btn-comment">回复</button>
+                                <textarea></textarea>
+                                <button class="btn-comment">回复</button>
                               </div>
+                                <{section name=m loop=$comments[n].childs}>
                                 <div class="reply-item">
-                                    <div class="reply-user">uuu
-                                      <em>2016-05-11 15:29:11</em>
+                                    <div class="reply-user"><{$comments[n].childs[m].user}>
+                                    <{if $comments[n].childs[m].replyer}>
+                                      回复了 <{$comments[n].childs[m].replyer}>
+                                    <{/if}>
+                                      <em><{$comments[n].childs[m].time}></em>
                                     </div>
                                     <div class="reply-content">
-                                      jajaaf
-                                    </div>
-                                    <div class="reply-tool">
-                                      <div class="reply-reply">
-                                        <div class="reply-icon"></div>
-                                        回复
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="reply-item">
-                                    <div class="reply-user">uuu
-                                      <em>2016-05-11 15:29:11</em>
-                                    </div>
-                                    <div class="reply-content">
-                                      jajaaf
+                                      <{$comments[n].childs[m].content}>
                                     </div>
                                     <div class="reply-tool">
                                       <div class="reply-reply">
@@ -256,24 +247,15 @@
                                         <button class="btn-comment">回复</button>
                                     </div>
                                 </div>
-                                <div class="reply-item">
-                                    <div class="reply-user">uuu
-                                      <em>2016-05-11 15:29:11</em>
-                                    </div>
-                                    <div class="reply-content">
-                                      jajaaf
-                                    </div>
-                                    <div class="reply-tool">
-                                      <div class="reply-reply">
-                                        <div class="reply-icon"></div>
-                                        回复
-                                      </div>
-                                    </div>
-                                </div>
+                                <{/section}>
+                                
                             </div>
+                            
                           </div>
                       </div>
+                    <{/section}>
                     </div>
+                    
                     <h4>Write your review</h4>
                     <div class="comment-submit">
                         <textarea class="comment-area" rows="3" cols="20"></textarea>
@@ -305,7 +287,7 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-
+<script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript">
     <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;

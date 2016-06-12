@@ -411,6 +411,7 @@ color: #f7b206;
 	background: #fff;
 	margin: 0 auto;
 	padding: 30px;
+	padding-top: 100px;
 
 }
 .products-container{
@@ -643,9 +644,12 @@ border-radius: 0px;
 	margin-bottom: 30px;
 
 }
+.comment{
+	border-bottom: 1px solid #ddd;
+}
 .comment-item{
 	padding: 10px 0;
-	border-bottom: 1px solid #ddd;
+	
 }
 .comment-user{
 	font-size: 14px;
@@ -665,8 +669,9 @@ border-radius: 0px;
 }
 .comment-tool .like,.dislike,.reply{
 	float: left;
-	opacity: 0.7;
+	opacity: 0.6;
 	margin-right:18px;
+	cursor: pointer;
 }
 .comment-tool .like-icon,.dislike-icon,.reply-icon{
 	float: left;
@@ -674,6 +679,10 @@ border-radius: 0px;
 	height: 15px;
 	margin-top: 4px;
 	margin-right:5px;
+}
+.comment-tool .reply:hover{
+	opacity: 1;
+
 }
 .comment-tool .reply-icon{
 	background: url("../img/comment.png") no-repeat;
@@ -690,8 +699,40 @@ border-radius: 0px;
 .reply-panel{
 	padding: 20px;
 	background: #f8f8f8;
+	display: none;
 }
-.reply-placeholder textarea,.reply-reply-placeholder textarea{
+.reply-placeholder {
+	position: relative;
+}
+.reply-placeholder textarea{
+	width: 100%;
+	background: #fff;
+	border: 1px solid #ccc;
+	height: 35px;
+	padding: 5px;
+	resize:none;
+}
+.reply-placeholder button{
+	background: #555;
+	color: #fff;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	border: 2px solid #555;
+	padding: 0px 30px;
+	line-height: 30px;
+}
+.reply-placeholder  textarea:focus{
+	height: 80px;
+}
+.reply-placeholder .reply-btn-active{
+	
+	line-height: 75px;
+}
+.reply-placeholder button:hover{
+	background: #333;
+}
+.reply-reply-placeholder textarea{
 	width: 100%;
 	background: #fff;
 	border: 1px solid #ccc;
@@ -703,14 +744,15 @@ border-radius: 0px;
 	border: 1px solid #888;
 	outline: none;
 }
-.reply-placeholder button,.reply-reply-placeholder button{
+.reply-reply-placeholder button{
 	background: none;
 	color: #555;
 	margin-top: 10px;
 	border: 2px solid #555;
-	padding: 5px 20px;
+	padding: 0 20px;
+	line-height: 30px;
 }
-.reply-placeholder button:hover,.reply-reply-placeholder button:hover{
+.reply-reply-placeholder button:hover{
 	background: #555;
 	color: #fff;
 }
@@ -725,8 +767,9 @@ border-radius: 0px;
 	background: url("../img/comment.png") no-repeat;
 	background-size: contain;
 }
-.reply-reply-placeholder {
+.reply-reply-placeholder{
 	margin-top: 10px;
+	display: none;
 
 }
 .reply-item{
