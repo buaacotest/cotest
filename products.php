@@ -63,13 +63,6 @@ if(!empty($labels)){
 }
 //print_r($products);
 
-
-/*加载针对此项目的评论*/
-$comments=showComments();
-$commentsPageNumber=getPageNumber();
-
-
-
 $page_num=ceil(count($products)/35);
 $productsNum=count($products);
 
@@ -91,8 +84,7 @@ $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('user',$_SESSION['member']);
-$smarty->assign('comments',$comments);
-$smarty->assign('commentsNumber',$commentsPageNumber);
+
 if($flag){
     $smarty->display("prolist.tpl");
 }
@@ -107,12 +99,3 @@ function getParentDirectory($projectName,&$up,&$upper)
     $up=$guideLabels[$projectName]['up'];
     $upper=$guideLabels[$projectName]['upper'];
 }
-
-function showComments(){
-    $pageComments=$_POST['commentPage'];
-    if(empty($pageComments))
-        $pageComments=1;
-    $comments=getComments('',$pageComments);
-    return $comments;
-}
-

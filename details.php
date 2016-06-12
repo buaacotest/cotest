@@ -17,9 +17,6 @@ $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);
 
-/*评论相关*/
-$comments=showComments($id);
-$commentsPageNumber=getPageNumber();
 
 //print_r($comments);
 //print_r($details['Pros']);
@@ -35,15 +32,7 @@ $smarty->assign("Pros",$details['Pros']);
 $smarty->assign("Cons",$details['Cons']);
 $smarty->assign("id",$id);
 $smarty->assign("user",$user);
-$smarty->assign("comments",$comments);
-$smarty->assign('commentsNumber',$commentsPageNumber);
 $smarty->assign('lang',$_LANG);
 $smarty->display('details.tpl');
 
-function showComments($id){
-    $pageComments=$_POST['commentPage'];
-    if(empty($pageComments))
-        $pageComments=1;
-    $comments=getComments($id,$pageComments);
-    return $comments;
-}
+
