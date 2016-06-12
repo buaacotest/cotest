@@ -807,6 +807,41 @@ border-radius: 0px;
 
 
 }
+.pagination span,.pagination a{
+
+	background: #f8f8f8;
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	line-height: 35px;
+	color: #999;
+	display:inline-block; 
+}
+.pagination a:hover{
+	color:  #fab90c;
+}
+.pagination .tool{
+	width: 60px;
+	background: #e8e8e8;
+}
+.pagination .tool-disable{
+	color: #ccc;
+	width: 60px;
+	background: #eee;
+}
+.pagination .current{
+	background: #fab90c;
+	color: #fff;
+}
+.pagination .current:hover{
+	color: #fff;
+}
+.pagination .tool:hover{
+	background: #ddd;
+	color: #555;
+}
+.pagination a{
+}
 .pro-info{
 	width: 100%;
 	padding: 10px;

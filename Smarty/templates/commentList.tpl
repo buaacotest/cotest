@@ -15,21 +15,47 @@
                               <div class="reply-icon"></div>
                               reply(<{$comments[n].childs|@count}>)
                             </div>
+                            <{if $comments[n].likeStatus == 1}>
+                            <div class="like" onclick="javascript:like(this,'<{$comments[n].id_comment}>')" like="yes">
+                              
+                                <div class="like-icon like-icon-active"></div>
+                    
+                    
+                              <span>like(<{$comments[n].support}>)</span>
+                              
+                            </div>
+                            <{else}>
                             <div class="like" onclick="javascript:like(this,'<{$comments[n].id_comment}>')" like="no">
-                              <div class="like-icon"></div>
-                              like(<{$comments[n].support}>)
+                              
+                                <div class="like-icon like-icon"></div>
+                              <span>like(<{$comments[n].support}>)</span>
+                              
                             </div>
+                            <{/if}>
+                            <{if $comments[n].dislikeStatus == 1}>
+                            <div class="dislike" onclick="javascript:dislike(this,'<{$comments[n].id_comment}>')" dislike="yes">
+                              
+                                <div class="dislike-icon dislike-icon-active"></div>
+                    
+                    
+                              <span>dislike(<{$comments[n].unsupport}>)</span>
+                              
+                            </div>
+                            <{else}>
                             <div class="dislike" onclick="javascript:dislike(this,'<{$comments[n].id_comment}>')" dislike="no">
-                              <div class="dislike-icon"></div>
-                              dislike(<{$comments[n].unsupport}>)
+                              
+                                <div class="dislike-icon"></div>
+                              <span>dislike(<{$comments[n].unsupport}>)</span>
+                              
                             </div>
+                            <{/if}>
                             
                         </div>
                         </div>
                           <div class="reply-panel">
                                 <div class="reply-placeholder">
                                 <textarea onfocus="javascript:replyPlaceholderFocus(this)" onblur="javascript:replyPlaceholderBlur(this)"></textarea>
-                                <button class="reply-btn" onclick="javacript:addComment('<{$id_product}>','0','<{$comments[n].id_comment}>',this,'<{$commentsNumber}>')">回复</button>
+                                <button class="reply-btn" onclick="javacript:addComment('<{$id_product}>','0','<{$comments[n].id_comment}>',this)">回复</button>
                               </div>
                                 <{section name=m loop=$comments[n].childs}>
                                 <div class="reply-item">
@@ -50,7 +76,7 @@
                                     </div>
                                     <div class="reply-reply-placeholder">
                                         <textarea></textarea>
-                                        <button class="btn-comment" onclick="javacript:addComment('<{$id_product}>','<{$comments[n].childs[m].user}>','<{$comments[n].childs[m].id_comment}>',this,'<{$commentsNumber}>')">回复</button>
+                                        <button class="btn-comment" onclick="javacript:addComment('<{$id_product}>','<{$comments[n].childs[m].user}>','<{$comments[n].id_comment}>',this)" >回复</button>
                                     </div>
                                 </div>
                                 <{/section}>
@@ -61,9 +87,13 @@
                       </div>
                     <{/section}>
                     <p>
-<div class="pagination"><span class="disabled"> <  Prev</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a href="#?page=7">7</a>...<a href="#?page=199">199</a><a href="#?page=200">200</a><a href="#?page=2">Next  > </a></div></p>
+                    <{if $commentsNumber >1}>
+                      <div class="pagination" total="<{$commentsNumber}>">
+                    
+                      </div>
+                  <{/if}>
                   <h4>Write your review</h4>
                     <div class="comment-submit">
                         <textarea class="comment-area" rows="3" cols="20"></textarea>
-                        <button class="comment-btn" onclick="javacript:addComment('<{$id_product}>','0','',this,'<{$commentsNumber}>')" > Submit</button>
+                        <button class="comment-btn" onclick="javacript:addComment('<{$id_product}>','0','0',this)" href="#?page=1"> Submit</button>
                     </div>
