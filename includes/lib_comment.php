@@ -17,11 +17,11 @@ function addComment($id_product,$user,$replyer='',$content,$parent='0'){
 }
 function getComments($id_product='',$page){
     if($id_product!=''){
-        $sql="select id_comment,user,replyer,create_time  as time,content,id_parent from comments WHERE id_product=$id_product order by time desc ";
+        $sql="select * from comments WHERE id_product=$id_product order by create_time desc ";
 
     }
     else{
-        $sql="select id_comment,user,replyer,create_time  as time,content,id_parent from comments order by time desc ";
+        $sql="select * from comments order by  create_time desc ";
     }
     $comments=$GLOBALS['db']->getAll($sql);
     $results=sortComments($comments,$page);
