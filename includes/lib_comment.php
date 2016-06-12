@@ -30,7 +30,7 @@ function getComments($id_product='',$page){
 }
 /*对评论以及回复排序处理*/
 function sortComments($data,$page){
-    $user='uuu';//$_SESSION['member'];
+    $user=$_SESSION['member'];
     $parents=array();
     foreach($data as $k=>$v){
         $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
