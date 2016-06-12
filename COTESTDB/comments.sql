@@ -30,6 +30,8 @@ CREATE TABLE `comments` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_parent` int(11) NOT NULL DEFAULT '0',
   `replyer` varchar(20) DEFAULT NULL,
+  `support` int(11) NOT NULL DEFAULT '0',
+  `unsupport` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_comment`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +42,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,1761,'uuu','very good','2016-04-28 12:15:33',0,''),(2,1788,'uuu','ok','2016-05-11 07:29:11',0,''),(3,1788,'uuu','okok','2016-06-09 08:31:44',0,''),(4,1761,'lishijie','not ok','2016-06-10 07:18:45',1,'uuu'),(5,1761,'uuu','???','2016-06-10 07:21:44',1,'lishijie'),(6,1761,'lishijie','!!!','2016-06-10 07:27:19',1,'uuu'),(7,NULL,'uuu','???','2016-06-10 08:12:05',0,NULL),(8,NULL,'uuu','hahaha','2016-06-10 08:12:13',0,NULL);
+INSERT INTO `comments` VALUES (1,1761,'uuu','very good','2016-04-28 12:15:33',0,'',0,0),(2,1788,'uuu','ok','2016-05-11 07:29:11',0,'',0,0),(3,1788,'uuu','okok','2016-06-09 08:31:44',0,'',0,0),(4,1761,'lishijie','not ok','2016-06-10 07:18:45',1,'uuu',0,0),(5,1761,'uuu','???','2016-06-10 07:21:44',1,'lishijie',0,0),(6,1761,'lishijie','!!!','2016-06-10 07:27:19',1,'uuu',0,0),(7,NULL,'uuu','???','2016-06-10 08:12:05',0,NULL,0,0),(8,NULL,'uuu','hahaha','2016-06-10 08:12:13',0,NULL,0,0);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-10 16:35:15
+-- Dump completed on 2016-06-12 10:18:17
