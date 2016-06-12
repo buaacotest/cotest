@@ -37,32 +37,69 @@ function replyReplyClick(replyReplyBtn){
 	
 }
 function fetchComments(product,comments,page){
+
 	$.post("commentList.php",{id_product:product,commentPage:page},function(data){
 					$(comments).html(data);
 					if($(".pagination")){
 						
 						var totalpage=$(".pagination").attr("total");
-						$(".pagination").append('<a href="#?page=2 tool">Prev></a>');
-						var fromPage=(totalpage>10)?(page>totalpage-5)?(totalpage-10):(page<5)?1:(page-5):1;
-						var toPage=(totalpage>10)?(page>totalpage-5)?(totalpage):(page<5)?10:(page-5):totalpage;
+						if(page>1){
+							$(".pagination").append('<a href="#?page='+(page-1)+' "  class="tool" onclick="javascript:fetchComments(\''+product+'\',$(\'.comments\'),'+(page-1)+')"> Prev </a>');
+						}else{
+							$(".pagination").append('<span class="tool-disable"> Prev </span>');
+						}
+						
+						var fromPage=(totalpage>10)?(page>totalpage-8?totalpage-10:(page<=5?1:page-3)):1;
+						var toPage=(totalpage>10)?(page>totalpage-5?totalpage:(page<=8?10:page+3)):totalpage;
+					
+						if(fromPage>1){
+							for(i=1;i<fromPage;i++){
+								$(".pagination").append('<a href="#?page='+i+'" onclick="javascript:fetchComments(\''+product+'\',$(\'.comments\'),'+i+')">'+i+'</a>');
+								
+								if(i==2) break;
+							}	
+						}
+						if(fromPage>3){
+							$(".pagination").append('<span>...</span>');
+						}
+
 						for(var i=fromPage;i<=toPage;i++){
-							if(i==page)
-								totalpage.append('<a href="#?page='+i+'" class="page-active">'+i+'</a>');
+							if(i==page){
+								$(".pagination").append('<a href="#?page='+i+'" class="current" onclick="javascript:fetchComments(\''+product+'\',$(\'.comments\'),'+i+')">'+i+'</a>');
+							}
+
 							else
-								totalpage.append('<a href="#?page='+i+'">'+i+'</a>');
+								$(".pagination").append('<a href="#?page='+i+'" onclick="javascript:fetchComments(\''+product+'\',$(\'.comments\'),'+i+')">'+i+'</a>');
 
 						}
-						$(".pagination").append('<a href="#?page=2 tool">Next></a>')
+						if(toPage<totalpage-2){
+							$(".pagination").append('<span>...</span>');
+						}
+						if(toPage<totalpage){
+							for(i=totalpage-1;i<=totalpage;i++){
+								if(i>toPage)
+									$(".pagination").append('<a href="#?page='+i+'" onclick="javascript:fetchComments(\''+product+'\',$(\'.comments\'),'+i+')">'+i+'</a>');
+							}	
+						}
+						if(page<totalpage){
+							$(".pagination").append('<a href="#?page='+(page+1)+' "   class="tool" onclick="javascript:fetchComments(\''+product+'\',$(\'.comments\'),'+(page+1)+')">Next</a>');
+						}else{
+							$(".pagination").append('<span class="tool-disable">Next</span>');
+						}
+						
 					}
 					
 
 	})
 }
-function addComment(pro,replyer,id_parent,comment_btn,page){
+function addComment(pro,replyer,id_parent,comment_btn){
+	var page=getPar("page");
+	page=page?page:1;
 	var commentArea=$(comment_btn).parent().find("textarea");
 	var content=$(commentArea).val();
 	
 	var comments=$(".comments");
+
 	$.post("comment.php",{product:pro,replyer:replyer,content:content,id_parent:id_parent},function(result){
 			console.log(result)
 			if(result=="success"){
@@ -94,7 +131,7 @@ function dislike(dislikeTag,id_comment){
 			}
 			else{
 				$(dislike_icon).removeClass("dislike-icon-active");
-				$(dislikeTag).attr("dislike","yes")
+				$(dislikeTag).attr("dislike","no")
 			}
 		}
 	});
@@ -106,11 +143,11 @@ function like(likeTag,id_comment){
 		if(result=="success"){
 			if(like_flag=='yes'){
 				$(like_icon).addClass("like-icon-active");
-				$(likeTag).attr("like","no")
+				$(likeTag).attr("like","yes")
 			}
 			else{
 				$(like_icon).removeClass("like-icon-active");
-				$(likeTag).attr("like","yes")
+				$(likeTag).attr("like","no")
 			}
 		}
 	});

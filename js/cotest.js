@@ -29,7 +29,9 @@
         $(this).attr("class","proper-tab active");
     })
    })
+   function getPage(par){
 
+   }
    function getPar(par){
         //获取当前URL
         var local_url = document.location.href; 
@@ -43,6 +45,12 @@
         var get_par = local_url.slice(par.length + get + 1);    
         //判断截取后的字符串是否还有其他get参数
         var nextPar = get_par.indexOf("&");
+
+        var nextSharp =get_par.indexOf("#");
+        console.log(nextSharp)
+        console.log(nextPar)
+        nextPar=nextPar>nextSharp?nextSharp:(nextPar==-1)?nextSharp:nextPar;
+        console.log(nextPar)
         if(nextPar != -1){
             get_par = get_par.slice(0, nextPar);
         }

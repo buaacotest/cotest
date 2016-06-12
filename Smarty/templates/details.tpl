@@ -601,7 +601,12 @@
     $(".back-to-list").on("click",function(){
         window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
-    fetchComments(product_id,$(".comments"),1);
+    var page=getPar("page");
+    if(page)
+        fetchComments(product_id,$(".comments"),page);
+    else{
+        fetchComments(product_id,$(".comments"),1);
+    }
 
 
 </script>
