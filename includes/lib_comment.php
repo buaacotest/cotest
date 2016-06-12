@@ -30,13 +30,13 @@ function getComments($id_product='',$page){
 }
 /*对评论以及回复排序处理*/
 function sortComments($data,$page){
-    $user=$_SESSION['member'];
+    $user='uuu';//$_SESSION['member'];
     $parents=array();
     foreach($data as $k=>$v){
         $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $data[$k]['likeStatus']=$GLOBALS['db']->getOne($sql);
+        $data[$k]['likeStatus']= $v['likeStatus']=$GLOBALS['db']->getOne($sql);
         $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $data[$k]['dislikeStatus']=$GLOBALS['db']->getOne($sql);
+        $data[$k]['dislikeStatus']=  $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
         if($v['id_parent']==0){
             $id=$v['id_product'];
             $sql="select completename from products where id_product=".$id;
@@ -56,10 +56,12 @@ function sortComments($data,$page){
             $parents[$k]['childs']=$tmp;
         }
     }
+
     $productsNum=count($parents);
     $GLOBALS['pageNumber']=ceil($productsNum/LINE);
 
     $results=array_splice($parents,($page-1)*LINE,LINE);
+
     return $results;
 }
 
