@@ -43,7 +43,7 @@
                                       <{$comments[n].childs[m].content}>
                                     </div>
                                     <div class="reply-tool">
-                                      <div class="reply-reply" replyReplyClick(this) toggle='1'>
+                                      <div class="reply-reply" onclick="javascript:replyReplyClick(this)" toggle='1'>
                                         <div class="reply-icon"></div>
                                         回复
                                       </div>

@@ -59,6 +59,7 @@ function addComment(pro,replyer,id_parent,comment_btn,page){
 	})
 }
 function reply(reply_btn,product,comment_id,replyer){
+	console.log(replyer);
     	addComment(product,comment_id,replyer,$(reply_btn).parent().find("textarea"),$(".comments"));
 	}
 	function comment(comment_btn,product){
