@@ -16,8 +16,8 @@ function replyClick(replyBtn){
 
 	}else{
 		
-		$(".reply-panel").hide();
-		$(".reply").attr("toggle","1");
+		//$(".reply-panel").hide();
+		//$(".reply").attr("toggle","1");
 		$($(replyBtn).parents(".comment")[0]).find(".reply-panel").show();
 		$(replyBtn).attr("toggle","0");
 	}
@@ -37,17 +37,34 @@ function replyReplyClick(replyReplyBtn){
 	
 }
 function fetchComments(product,comments,page){
-	console.log(product);
 	$.post("commentList.php",{id_product:product,commentPage:page},function(data){
-					console.log(data)
 					$(comments).html(data);
+					if($(".pagination")){
+						
+						var totalpage=$(".pagination").attr("total");
+						$(".pagination").append('<a href="#?page=2 tool">Prev></a>');
+						var fromPage=(totalpage>10)?(page>totalpage-5)?(totalpage-10):(page<5)?1:(page-5):1;
+						var toPage=(totalpage>10)?(page>totalpage-5)?(totalpage):(page<5)?10:(page-5):totalpage;
+						for(var i=fromPage;i<=toPage;i++){
+							if(i==page)
+								totalpage.append('<a href="#?page='+i+'" class="page-active">'+i+'</a>');
+							else
+								totalpage.append('<a href="#?page='+i+'">'+i+'</a>');
+
+						}
+						$(".pagination").append('<a href="#?page=2 tool">Next></a>')
+					}
+					
+
 	})
 }
 function addComment(pro,replyer,id_parent,comment_btn,page){
 	var commentArea=$(comment_btn).parent().find("textarea");
 	var content=$(commentArea).val();
-	var comments=$(".comments")
-	$.post("comment.php",{product:pro,replyer:replyer,cotent:content,id_parent:id_parent},function(result){
+	
+	var comments=$(".comments");
+	$.post("comment.php",{product:pro,replyer:replyer,content:content,id_parent:id_parent},function(result){
+			console.log(result)
 			if(result=="success"){
 				fetchComments(pro,comments,page);
 				$(commentArea).val("");
@@ -59,7 +76,7 @@ function addComment(pro,replyer,id_parent,comment_btn,page){
 	})
 }
 function reply(reply_btn,product,comment_id,replyer){
-	console.log(replyer);
+
     	addComment(product,comment_id,replyer,$(reply_btn).parent().find("textarea"),$(".comments"));
 	}
 	function comment(comment_btn,product){
@@ -68,12 +85,12 @@ function reply(reply_btn,product,comment_id,replyer){
 
 function dislike(dislikeTag,id_comment){
 	var dislike_icon=$(dislikeTag).find(".dislike-icon")
-	var dislike_flag=$(dislikeTag).attr("dislike");
+	var dislike_flag=($(dislikeTag).attr("dislike")=="yes")?"no":"yes";
 	$.post("comment.php",{id_comment:id_comment,dislike:dislike_flag},function(result){
 		if(result=="success"){
 			if(dislike_flag=='yes'){
 				$(dislike_icon).addClass("dislike-icon-active");
-				$(dislikeTag).attr("dislike","no")
+				$(dislikeTag).attr("dislike","yes")
 			}
 			else{
 				$(dislike_icon).removeClass("dislike-icon-active");
@@ -84,7 +101,7 @@ function dislike(dislikeTag,id_comment){
 }
 function like(likeTag,id_comment){
 	var like_icon=$(likeTag).find(".like-icon")
-	var like_flag=$(likeTag).attr("like");
+	var like_flag=($(likeTag).attr("like")=="yes")?"no":"yes";
 	$.post("comment.php",{id_comment:id_comment,like:like_flag},function(result){
 		if(result=="success"){
 			if(like_flag=='yes'){

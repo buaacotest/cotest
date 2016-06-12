@@ -807,6 +807,12 @@ border-radius: 0px;
 
 
 }
+.pagination .tool{
+	margin: 5px;
+}
+.pagination a{
+	margin: 5px;
+}
 .pro-info{
 	width: 100%;
 	padding: 10px;

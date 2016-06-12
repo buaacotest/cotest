@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="reply-reply-placeholder">
                                         <textarea></textarea>
-                                        <button class="btn-comment" onclick="javacript:addComment('<{$id_product}>','<{$comments[n].childs[m].user}>','<{$comments[n].childs[m].id_comment}>',this,'<{$commentsNumber}>')">回复</button>
+                                        <button class="btn-comment" onclick="javacript:addComment('<{$id_product}>','<{$comments[n].childs[m].user}>','<{$comments[n].id_comment}>',this,'<{$commentsNumber}>')">回复</button>
                                     </div>
                                 </div>
                                 <{/section}>
@@ -61,9 +61,13 @@
                       </div>
                     <{/section}>
                     <p>
-<div class="pagination"><span class="disabled"> <  Prev</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a href="#?page=7">7</a>...<a href="#?page=199">199</a><a href="#?page=200">200</a><a href="#?page=2">Next  > </a></div></p>
+                    <{if $commentsNumber >1}>
+                      <div class="pagination" total="<{$commentsNumber}>">
+                    
+                      </div>
+                  <{/if}>
                   <h4>Write your review</h4>
                     <div class="comment-submit">
                         <textarea class="comment-area" rows="3" cols="20"></textarea>
-                        <button class="comment-btn" onclick="javacript:addComment('<{$id_product}>','0','',this,'<{$commentsNumber}>')" > Submit</button>
+                        <button class="comment-btn" onclick="javacript:addComment('<{$id_product}>','0','0',this,'<{$commentsNumber}>')" > Submit</button>
                     </div>
