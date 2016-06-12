@@ -206,7 +206,7 @@ function getProperty($id,&$res,$lang){
         $sql="select id_propertygroup,name,type,unit,binding from propertys where selected=1";
         $props=$GLOBALS['db']->getAll($sql);
     }else{
-        $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=0 and id_propertygroup=wordid";
+        $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=3 and id_propertygroup=wordid";
         $groups=$GLOBALS['db']->getAll($sql);
         $sql="select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
         $props=$GLOBALS['db']->getAll($sql);
