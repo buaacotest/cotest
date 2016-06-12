@@ -126,12 +126,13 @@ if __name__=="__main__":
     #create dictionary
     sql_create_table="CREATE TABLE `sdictionary` (" \
                      "`wordid` int(11) NOT NULL," \
-                     "`oriword` varchar(200) default NULL," \
-                     "`De` varchar(200) default NULL," \
-                     "`Eng` varchar(200) default NULL," \
-                     "`CHN` varchar(400) default NULL," \
-                     "PRIMARY KEY  (`wordid`)" \
-                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8"
+                     "`oriword` varchar(200) DEFAULT NULL," \
+                     "`De` varchar(200) DEFAULT NULL," \
+                     "`Eng` varchar(200) DEFAULT NULL," \
+                     "`CHN` varchar(400) DEFAULT NULL," \
+                     "`flag` int(11) NOT NULL," \
+                     "PRIMARY KEY (`wordid`,`flag`)" \
+                     ") ENGINE=MyISAM DEFAULT CHARSET=utf8";
     try:
         cursor = cnn.cursor()
         cursor.execute(sql_create_table)
