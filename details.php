@@ -5,6 +5,7 @@
  * Date: 2016/1/28
  * Time: 21:40
  */
+session_start();
 require('includes/init.php');
 require('includes/config.php');
 require('includes/lib_products.php');
@@ -13,6 +14,7 @@ $lang=$_SESSION['lang'];
 $user=$_SESSION['member'];
 require('./lang/'.$_SESSION['lang'].'/details.php');
 $proj=trim($_GET['proj']);
+$_SESSION['project']=$proj;
 $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);

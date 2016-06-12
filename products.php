@@ -5,6 +5,7 @@
  * Date: 2016/1/19
  * Time: 14:32
  */
+session_start();
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
@@ -20,6 +21,7 @@ $smarty->assign('page_title',$title);*/
 $project_name=trim($_GET['proj']);
 if($project_name=="")
     $project_name='Mobilephones';
+$_SESSION['project']=$project_name;
 $GLOBALS['db']->changeDB($project_name);
 
 require('data/'.$project_name.'/filterOptions.php');
