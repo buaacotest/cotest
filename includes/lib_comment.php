@@ -8,6 +8,7 @@
 define('LINE',2);
 $pageNumber=0;
 function addComment($id_product,$user,$replyer='',$content,$parent='0'){
+    $content= htmlspecialchars($content,ENT_QUOTES);
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
 
     //echo $sql;
@@ -34,9 +35,9 @@ function sortComments($data,$page){
     $parents=array();
     foreach($data as $k=>$v){
         $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $data[$k]['likeStatus']= $v['likeStatus']=$GLOBALS['db']->getOne($sql);
+        $v['likeStatus']=$GLOBALS['db']->getOne($sql);
         $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $data[$k]['dislikeStatus']=  $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
+        $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
         if($v['id_parent']==0){
             $id=$v['id_product'];
             $sql="select completename from products where id_product=".$id;
@@ -45,12 +46,13 @@ function sortComments($data,$page){
         }
     }
     foreach($parents as $k=>$v){
+        $tmp=array();
         foreach($data as $key=>$value){
             if($value['id_parent']==$v['id_comment']){
                 $tmp[]=$value;
             }
             foreach($tmp as $k1=>$v1){
-                $time[$k1]=$v1['time'];
+                $time[$k1]=$v1['create_time'];
             }
             array_multisort($time,SORT_NUMERIC,SORT_ASC,$tmp);
             $parents[$k]['childs']=$tmp;
@@ -82,7 +84,7 @@ function supportOrUnsupport($id,$option){
     }
     else if($option=='no'){
         $sql="update comments set support=support-1 where id_comment=".$id;
-        if($status==0)
+        if($status==1)
             updateSupportStatus('support',$id,$option);
 
     }
@@ -106,7 +108,7 @@ function setUnsupport($id,$option){
     }
     else if($option=='no'){
         $sql="update comments set unsupport=unsupport-1 where id_comment=".$id;
-        if($status==0)
+        if($status==1)
             updateSupportStatus('unsupport',$id,$option);
     }
 
@@ -141,7 +143,7 @@ function setSupportStatus($option,$id){
 }
 
 function updateSupportStatus($option,$id,$addition){
-    $user=$_SESSION['member'];
+    $user='uuu';//$_SESSION['member'];
     if($option=='support'){
         if($addition=='yes')
             $sql="update commentusers set `like`=1 where id_comment=$id and user='".$user."'";
@@ -154,6 +156,7 @@ function updateSupportStatus($option,$id,$addition){
         else
             $sql="update commentusers set `dislike`=0 where id_comment=$id and user='".$user."'";
     }
+    echo $sql;
     $GLOBALS['db']->query($sql);
 }
 
