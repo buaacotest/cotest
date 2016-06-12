@@ -539,7 +539,7 @@
                                 </div>
                                 <{/section}>
                                 
-                            </div>
+                          </div>
                             
                           
                       </div>
@@ -579,6 +579,8 @@
     var compare_ids=getPar("ids");
     var id=getPar("id")+"";
     var compare_names=getPar("names");
+    var project="<{$project}>";
+    var product_id ="<{$id}>";
     if(!compare_ids){
         compare_ids=[]
     }
@@ -603,7 +605,9 @@
     $(".back-to-list").on("click",function(){
         window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
+
     $(".comment-btn").on("click",function() {
+        addComment(project,product_id,null,$(".comment-area").val(),0,$(".comment-area"),comments)
         var user='<{$user}>'
         if(!user){
             alert("Please sign in first!")

@@ -701,6 +701,10 @@ border-radius: 0px;
 	background: url("../img/dislike.png") no-repeat;
 	background-size: contain;
 }
+.comment-tool .dislike-icon-active{
+	background: url("../img/like-active.png") no-repeat;
+	background-size: contain;
+}
 .reply-panel{
 	padding: 20px;
 	background: #f8f8f8;
