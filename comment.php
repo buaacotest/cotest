@@ -8,7 +8,7 @@
 session_start();
 require('./includes/init.php');
 require('includes/lib_comment.php');
-$project=$_POST['project'];
+$project=$db->getNowDB();
 $product=$_POST['product'];
 $user=$_SESSION['member'];
 $replyer=$_POST['replyer'];
