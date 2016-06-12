@@ -8,7 +8,7 @@
 session_start();
 require('./includes/init.php');
 require('includes/lib_comment.php');
-$project=$_POST['project'];
+$project=$db->getNowDB();
 $product=$_POST['product'];
 $user=$_SESSION['member'];
 $replyer=$_POST['replyer'];
@@ -18,6 +18,13 @@ $commentId=$_POST['id_comment'];
 $support=$_POST['like'];
 $unsupport=$_POST['dislike'];
 $db->changeDB($project);
+
+/*查询点赞状态*/
+$likeStatus=$_POST['getLike'];
+if(!empty($likeStatus)){
+        return getSupportStatus($likeStatus,$commentId);
+}
+
 
 if(!empty($commentId)&&!empty($support)){
     echo supportOrUnsupport($commentId,$support);

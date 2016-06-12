@@ -8,7 +8,7 @@
 require('./includes/config.php');
 require('./includes/init.php');
 require('includes/lib_comment.php');
-$project=$_POST['project'];
+$project=$db->getNowDB();
 $option=$_POST['id_product'];
 $db->changeDB($project);
 $comments=showComments($option);
