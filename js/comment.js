@@ -123,15 +123,18 @@ function reply(reply_btn,product,comment_id,replyer){
 function dislike(dislikeTag,id_comment){
 	var dislike_icon=$(dislikeTag).find(".dislike-icon")
 	var dislike_flag=($(dislikeTag).attr("dislike")=="yes")?"no":"yes";
+	var dislike_cnt=parseInt($(dislikeTag).find("em").text());
 	$.post("comment.php",{id_comment:id_comment,dislike:dislike_flag},function(result){
 		if(result=="success"){
 			if(dislike_flag=='yes'){
 				$(dislike_icon).addClass("dislike-icon-active");
-				$(dislikeTag).attr("dislike","yes")
+				$(dislikeTag).attr("dislike","yes");
+				$(dislikeTag).find("em").text(dislike_cnt+1)
 			}
 			else{
 				$(dislike_icon).removeClass("dislike-icon-active");
 				$(dislikeTag).attr("dislike","no")
+				$(dislikeTag).find("em").text(dislike_cnt-1)
 			}
 		}
 	});
@@ -139,16 +142,18 @@ function dislike(dislikeTag,id_comment){
 function like(likeTag,id_comment){
 	var like_icon=$(likeTag).find(".like-icon")
 	var like_flag=($(likeTag).attr("like")=="yes")?"no":"yes";
+	var like_cnt=parseInt($(likeTag).find("em").text());
 	$.post("comment.php",{id_comment:id_comment,like:like_flag},function(result){
 		console.log(result)
 		if(result=="success"){
 			if(like_flag=='yes'){
 				$(like_icon).addClass("like-icon-active");
 				$(likeTag).attr("like","yes");
-				$(likeTag).find("span").text('like');
+				$(likeTag).find("em").text(like_cnt+1)
 			}
 			else{
 				$(like_icon).removeClass("like-icon-active");
+				$(likeTag).find("em").text(like_cnt-1)
 				$(likeTag).attr("like","no")
 			}
 		}

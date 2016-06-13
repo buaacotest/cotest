@@ -21,14 +21,14 @@
                                 <div class="like-icon like-icon-active"></div>
                     
                     
-                              <span>like(<{$comments[n].support}>)</span>
+                              <span>like(<em><{$comments[n].support}></em>)</span>
                               
                             </div>
                             <{else}>
                             <div class="like" onclick="javascript:like(this,'<{$comments[n].id_comment}>')" like="no">
                               
                                 <div class="like-icon like-icon"></div>
-                              <span>like(<{$comments[n].support}>)</span>
+                              <span>like(<em><{$comments[n].support}></em>)</span>
                               
                             </div>
                             <{/if}>
@@ -38,14 +38,14 @@
                                 <div class="dislike-icon dislike-icon-active"></div>
                     
                     
-                              <span>dislike(<{$comments[n].unsupport}>)</span>
+                              <span>dislike(<em><{$comments[n].unsupport}></em>)</span>
                               
                             </div>
                             <{else}>
                             <div class="dislike" onclick="javascript:dislike(this,'<{$comments[n].id_comment}>')" dislike="no">
                               
                                 <div class="dislike-icon"></div>
-                              <span>dislike(<{$comments[n].unsupport}>)</span>
+                              <span>dislike(<em><{$comments[n].unsupport}></em>)</span>
                               
                             </div>
                             <{/if}>
