@@ -8,10 +8,12 @@
 define('LINE',2);
 $pageNumber=0;
 function addComment($id_product,$user,$content,$replyer='',$parent='0'){
+    if($id_product=='')
+        $id_product=0;
     $content= htmlspecialchars($content,ENT_QUOTES);
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
 
-    //echo $sql;
+    echo $sql;
     $GLOBALS['db']->query($sql);
     if(mysql_affected_rows()!=1)
         return false;
