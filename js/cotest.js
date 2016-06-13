@@ -49,7 +49,7 @@
         var nextSharp =get_par.indexOf("#");
         console.log(nextSharp)
         console.log(nextPar)
-        nextPar=nextPar>nextSharp?nextSharp:(nextPar==-1)?nextSharp:nextPar;
+        nextPar=nextPar>nextSharp?((nextSharp==-1)?nextPar:nextSharp):((nextPar==-1)?nextSharp:nextPar);
         console.log(nextPar)
         if(nextPar != -1){
             get_par = get_par.slice(0, nextPar);

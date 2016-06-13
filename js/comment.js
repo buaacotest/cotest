@@ -140,10 +140,12 @@ function like(likeTag,id_comment){
 	var like_icon=$(likeTag).find(".like-icon")
 	var like_flag=($(likeTag).attr("like")=="yes")?"no":"yes";
 	$.post("comment.php",{id_comment:id_comment,like:like_flag},function(result){
+		console.log(result)
 		if(result=="success"){
 			if(like_flag=='yes'){
 				$(like_icon).addClass("like-icon-active");
-				$(likeTag).attr("like","yes")
+				$(likeTag).attr("like","yes");
+				$(likeTag).find("span").text('like');
 			}
 			else{
 				$(like_icon).removeClass("like-icon-active");
