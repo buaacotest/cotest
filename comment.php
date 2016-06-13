@@ -37,7 +37,7 @@ if(!empty($commentId)&&!empty($unsupport)){
     return;
 
 }
-if(addComment($product,$user,$replyer,$content,$id_parent)){
+if(addComment($product,$user,$content,$replyer,$id_parent)){
     echo "success";
 }else
     echo "fail";
