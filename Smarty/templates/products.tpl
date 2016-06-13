@@ -35,7 +35,7 @@
         <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
-                <li role="presentation" class="proper-tab" target="#panel3" id="tab3"><a><{$lang.UserReview}></a></li>
+                <li role="presentation" class="proper-tab" target="#review_panel" id="tab3"><a><{$lang.UserReview}></a></li>
 
             </ul>
 
@@ -187,7 +187,7 @@
         </div>
 
     </div>
-    <div id="panel3" style="display:none">
+    <div id="review_panel" style="display:none">
       <div class="comments "></div>
       
     </div>
