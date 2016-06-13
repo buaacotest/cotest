@@ -23,3 +23,5 @@ function getProductsCount($pname){
     $count=$countarray[0];
     return $count;
 }
+
+/**/

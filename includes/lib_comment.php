@@ -20,30 +20,34 @@ function addComment($id_product,$user,$content,$replyer='',$parent='0'){
     return true;
 }
 function getComments($id_product='',$page){
+    $showNameOption=0;
     if($id_product!=''){
         $sql="select * from comments WHERE id_product=$id_product order by create_time desc ";
 
     }
     else{
         $sql="select * from comments order by  create_time desc ";
+        $showNameOption=1;
     }
     $comments=$GLOBALS['db']->getAll($sql);
-    $results=sortComments($comments,$page);
+    $results=sortComments($comments,$page,$showNameOption);
     return $results;
 }
 /*对评论以及回复排序处理*/
-function sortComments($data,$page){
+function sortComments($data,$page,$nameOption){
     $user=$_SESSION['member'];
     $parents=array();
     foreach($data as $k=>$v){
         if($v['id_parent']==0){
-            $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-            $v['likeStatus']=$GLOBALS['db']->getOne($sql);
-            $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-            $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
-            $id=$v['id_product'];
-            $sql="select completename from products where id_product=".$id;
-            $v['product']=$GLOBALS['db']->getOne($sql);
+            if($nameOption==1){
+                $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+                $v['likeStatus']=$GLOBALS['db']->getOne($sql);
+                $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+                $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
+                $id=$v['id_product'];
+                $sql="select completename from products where id_product=".$id;
+                $v['product']=$GLOBALS['db']->getOne($sql);
+            }
             $parents[]=$v;
         }
     }
