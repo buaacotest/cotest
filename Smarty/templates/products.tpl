@@ -375,16 +375,7 @@
         if(star==4) return "Good";
         if(star==5) return "Very good";
     }
-    $(".score-list").on("mousemove",function(e){
-        $(".tool-tip").css("top",e.pageY);
-        $(".tool-tip").css("left",e.pageX);
-        var stars=$(this).find(".star");
-        $(".tool-tip").text(getScoreInfo(stars.length));
-        $(".tool-tip").css("display","block");
-    })
-    $(".score-list").on("mouseleave",function(e){
-        $(".tool-tip").css("display","none");
-    })
+  
     $(".filter-btn").on("click",function(e){
         filter();
     })
