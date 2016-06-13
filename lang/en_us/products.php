@@ -11,6 +11,8 @@ $_LANG['UserReview']='User review';
 
 $_LANG['Electronics']='Electronics';
 $_LANG['Smartphones']='Smartphones';
+$_LANG['Food']='Food';
+$_LANG['Milk']='Milk';
 $_LANG['TestedSmartphones']='Tested products';
 
 $_LANG['SignIn']='Login';

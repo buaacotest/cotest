@@ -35,7 +35,7 @@
         <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
-                <li role="presentation" class="proper-tab" target="#panel3" id="tab3"><a><{$lang.UserReview}></a></li>
+                <li role="presentation" class="proper-tab" target="#review_panel" id="tab3"><a><{$lang.UserReview}></a></li>
 
             </ul>
 
@@ -187,82 +187,8 @@
         </div>
 
     </div>
-    <div id="panel3" style="display:none">
-    <div class="review-panel" style="display: block;">
-                    <h4>User review</h4>
-                    <div class="comments">
-                    <{section name=n loop=$comments}>
-                      <div class="comment">
-                      <div class="comment-item">
-                          <div class="comment-user">
-                             <{$comments[n].user}>
-                          </div>
-                          <div class="comment-time">
-                              <{$comments[n].time}>
-                          </div>
-                          <div class="comment-cotent">
-                              <{$comments[n].content}>
-                          </div>
-                          <div class="comment-tool">
-                            <div class="reply">
-                              <div class="reply-icon"></div>
-                              reply(200)
-                            </div>
-
-                            <div class="like">
-                              <div class="like-icon"></div>
-                              like(200)
-                            </div>
-                            <div class="dislike">
-                              <div class="dislike-icon"></div>
-                              dislike(200)
-                            </div>
-                            
-                        </div>
-                        
-                          <div class="reply-panel">
-                                <div class="reply-placeholder" style="display: block;">
-                                <textarea></textarea>
-                                <button class="btn-comment">回复</button>
-                              </div>
-                                <{section name=m loop=$comments[n].childs}>
-                                <div class="reply-item">
-                                    <div class="reply-user"><{$comments[n].childs[m].user}>
-                                    <{if $comments[n].childs[m].replyer}>
-                                      回复了 <{$comments[n].childs[m].replyer}>
-                                    <{/if}>
-                                      <em><{$comments[n].childs[m].time}></em>
-                                    </div>
-                                    <div class="reply-content">
-                                      <{$comments[n].childs[m].content}>
-                                    </div>
-                                    <div class="reply-tool">
-                                      <div class="reply-reply">
-                                        <div class="reply-icon"></div>
-                                        回复
-                                      </div>
-                                    </div>
-                                    <div class="reply-reply-placeholder">
-                                        <textarea></textarea>
-                                        <button class="btn-comment">回复</button>
-                                    </div>
-                                </div>
-                                <{/section}>
-                                
-                            </div>
-                            
-                          </div>
-                      </div>
-                    <{/section}>
-                    </div>
-                    
-                    <h4>Write your review</h4>
-                    <div class="comment-submit">
-                        <textarea class="comment-area" rows="3" cols="20"></textarea>
-                        <button class="comment-btn"> Submit</button>
-                    </div>
-
-                </div>
+    <div id="review_panel" style="display:none">
+      <div class="comments "></div>
       
     </div>
     <div class="compare-panel" >
@@ -296,6 +222,12 @@
     //初始化
     //console.log(<{$labels}>)
     //console.log(<{$products}>)
+     var page=getPar("page");
+    if(page)
+        fetchComments('',$(".comments"),page);
+    else{
+        fetchComments('',$(".comments"),1);
+    }
     cpage = 1;
     totalpage =<{$pageNum}>;
     //console.log(totalpage);
@@ -443,16 +375,7 @@
         if(star==4) return "Good";
         if(star==5) return "Very good";
     }
-    $(".score-list").on("mousemove",function(e){
-        $(".tool-tip").css("top",e.pageY);
-        $(".tool-tip").css("left",e.pageX);
-        var stars=$(this).find(".star");
-        $(".tool-tip").text(getScoreInfo(stars.length));
-        $(".tool-tip").css("display","block");
-    })
-    $(".score-list").on("mouseleave",function(e){
-        $(".tool-tip").css("display","none");
-    })
+  
     $(".filter-btn").on("click",function(e){
         filter();
     })

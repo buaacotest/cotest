@@ -15,10 +15,9 @@ require('./lang/'.$_SESSION['lang'].'/index.php');
 //echo $_SESSION['lang'];
 $smarty->assign('title','Cotest');
 
-
-$num=getProductsCount('mobilephones');
-$smarty->assign('number',$num);
+$allNumber=getAllNumber();
+$smarty->assign('number',$allNumber);
 $smarty->assign('lang',$_LANG);
 /*  显示模板  */
 $smarty->display('index.tpl');
-?>
+

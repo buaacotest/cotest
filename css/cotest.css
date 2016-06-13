@@ -535,6 +535,16 @@ filter: alpha(opacity=0);
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 10px;
 }
+#review_panel{
+	width: 1000px;
+	position: relative;
+	margin: 0 auto;
+	background: #fff;
+	border: 1px solid #e9e9e9;
+	border-top: none;
+	padding: 40px;
+	padding-top: 100px;
+}
 .review-container{
 	width: 1000px;
 	position: relative;
@@ -656,6 +666,11 @@ border-radius: 0px;
 	margin: 8px 0;
 	font-weight: bold;
 }
+.comment-user em{
+	font-weight: normal;
+	font-style: normal;
+	margin-left: 5px;
+}
 .comment-time{
 	color: #888;
 }
@@ -701,8 +716,11 @@ border-radius: 0px;
 	background: url("../img/dislike.png") no-repeat;
 	background-size: contain;
 }
+.comment-tool em{
+	font-style: normal;
+}
 .comment-tool .dislike-icon-active{
-	background: url("../img/like-active.png") no-repeat;
+	background: url("../img/dislike-active.png") no-repeat;
 	background-size: contain;
 }
 .reply-panel{
@@ -852,9 +870,11 @@ border-radius: 0px;
 	margin: 5px 0px;
 	font-size: 16px;
 }
+
 #products-block{
 	width: 100%;
 }
+
 #setpage {
 	margin: 20px 5px;
 	display: block;

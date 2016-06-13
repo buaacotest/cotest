@@ -169,7 +169,6 @@ function getGradeTree($id,$tar,$lang){
        and B.id_product=$id";
     }
     $data=$GLOBALS['db']->getAll($sql);
-
     foreach($data as $k=>$v){
         $data[$k]['value']=number_format(6-$v['value'],1, '.', '');
     }
@@ -206,7 +205,7 @@ function getProperty($id,&$res,$lang){
         $sql="select id_propertygroup,name,type,unit,binding from propertys where selected=1";
         $props=$GLOBALS['db']->getAll($sql);
     }else{
-        $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=0 and id_propertygroup=wordid";
+        $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=3 and id_propertygroup=wordid";
         $groups=$GLOBALS['db']->getAll($sql);
         $sql="select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
         $props=$GLOBALS['db']->getAll($sql);
@@ -281,13 +280,15 @@ function getProperty($id,&$res,$lang){
             $results[]=$groups[$k];
         }
     }
-   foreach($results[1]['id_propertygroup'] as $type){
-        $results[0]['id_propertygroup'][]=$type;
+    if($_SESSION['project']=='mobilephones'){
+        foreach($results[1]['id_propertygroup'] as $type){
+            $results[0]['id_propertygroup'][]=$type;
+        }
+        foreach($results[2]['id_propertygroup'] as $type){
+            $results[0]['id_propertygroup'][]=$type;
+        }
+        array_splice($results,1,2);
     }
-    foreach($results[2]['id_propertygroup'] as $type){
-        $results[0]['id_propertygroup'][]=$type;
-    }
-    array_splice($results,1,2);
     return $results;
 }
 /*根据标签筛选商品*/

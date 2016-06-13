@@ -14,7 +14,6 @@ function getProductsSum(){
     return $sum;
 }
 /*得到一个当前数据库的测试产品数目*/
-/*得到一个当前数据库的测试产品数目*/
 function getProductsCount($pname){
     $GLOBALS['db']->changeDB($pname);
     $sql="SELECT count(*) FROM products";
@@ -22,4 +21,15 @@ function getProductsCount($pname){
     $countarray=mysql_fetch_array($results);
     $count=$countarray[0];
     return $count;
+}
+
+/*得到所有的数据库对应的产品数量*/
+function getAllNumber(){
+    $numbers=array();
+    $sql="select *from admin.databases";
+    $dbs=$GLOBALS['db']->getAllValues($sql);
+    foreach($dbs as $v){
+        $numbers[$v]=getProductsCount($v);
+    }
+    return $numbers;
 }

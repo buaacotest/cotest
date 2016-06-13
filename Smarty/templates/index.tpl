@@ -74,7 +74,7 @@ require("navigation.php");
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num"><{$number}></div>
+                <div class="num"><{$number.mobilephones}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Smartphones}></div>
@@ -167,17 +167,19 @@ require("navigation.php");
               <{$lang.Food}>
           </div>
           <div class="pro-list-content">
+            <a href="products.php?proj=milk">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/milk.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.milk}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name">UHT Milk</div>
               </div>
             </div>
+              </a>
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/milkpowder.jpg">

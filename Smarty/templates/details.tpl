@@ -121,7 +121,9 @@
                         <div class="img-tabs">
                             <ul class="nav nav-tabs pro-nav">
                                 <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a ><{$lang.Front}></a></li>
+                                <!--
                                 <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
+                                -->
                                 <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a ><{$lang.Back}></a>
                               </ul>
                         </div>
@@ -132,11 +134,13 @@
                                 <img src="data/<{$project}>/picturesx/<{$product.id}>_01x.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
 
                             </div>
+                            <!--
                             <div class="col-md-12 pro-img text-center"id="pro_img2">
                                   
                                      <img src="img/ipad2.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
                                   
                             </div>
+                            -->
                             <div class="col-md-12 pro-img text-center"id="pro_img3">
 
                                 <img src="data/<{$project}>/picturesx/<{$product.id}>_02x.jpg" >

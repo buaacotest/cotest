@@ -7,7 +7,10 @@
  */
 define('LINE',2);
 $pageNumber=0;
-function addComment($id_product,$user,$replyer='',$content,$parent='0'){
+function addComment($id_product,$user,$content,$replyer='',$parent='0'){
+    if($id_product=='')
+        $id_product=0;
+    $content= htmlspecialchars($content,ENT_QUOTES);
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
 
     //echo $sql;
@@ -17,49 +20,56 @@ function addComment($id_product,$user,$replyer='',$content,$parent='0'){
     return true;
 }
 function getComments($id_product='',$page){
+    $showNameOption=0;
     if($id_product!=''){
         $sql="select * from comments WHERE id_product=$id_product order by create_time desc ";
 
     }
     else{
         $sql="select * from comments order by  create_time desc ";
+        $showNameOption=1;
     }
     $comments=$GLOBALS['db']->getAll($sql);
-    $results=sortComments($comments,$page);
+    $results=sortComments($comments,$page,$showNameOption);
     return $results;
 }
 /*对评论以及回复排序处理*/
-function sortComments($data,$page){
+function sortComments($data,$page,$nameOption){
     $user=$_SESSION['member'];
     $parents=array();
     foreach($data as $k=>$v){
-        $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $data[$k]['likeStatus']=$GLOBALS['db']->getOne($sql);
-        $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $data[$k]['dislikeStatus']=$GLOBALS['db']->getOne($sql);
         if($v['id_parent']==0){
-            $id=$v['id_product'];
-            $sql="select completename from products where id_product=".$id;
-            $v['product']=$GLOBALS['db']->getOne($sql);
+            if($nameOption==1){
+                $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+                $v['likeStatus']=$GLOBALS['db']->getOne($sql);
+                $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+                $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
+                $id=$v['id_product'];
+                $sql="select completename from products where id_product=".$id;
+                $v['product']=$GLOBALS['db']->getOne($sql);
+            }
             $parents[]=$v;
         }
     }
     foreach($parents as $k=>$v){
+        $tmp=array();
         foreach($data as $key=>$value){
             if($value['id_parent']==$v['id_comment']){
                 $tmp[]=$value;
             }
             foreach($tmp as $k1=>$v1){
-                $time[$k1]=$v1['time'];
+                $time[$k1]=$v1['create_time'];
             }
             array_multisort($time,SORT_NUMERIC,SORT_ASC,$tmp);
             $parents[$k]['childs']=$tmp;
         }
     }
+
     $productsNum=count($parents);
     $GLOBALS['pageNumber']=ceil($productsNum/LINE);
 
     $results=array_splice($parents,($page-1)*LINE,LINE);
+
     return $results;
 }
 
@@ -80,7 +90,7 @@ function supportOrUnsupport($id,$option){
     }
     else if($option=='no'){
         $sql="update comments set support=support-1 where id_comment=".$id;
-        if($status==0)
+        if($status==1)
             updateSupportStatus('support',$id,$option);
 
     }
@@ -104,7 +114,7 @@ function setUnsupport($id,$option){
     }
     else if($option=='no'){
         $sql="update comments set unsupport=unsupport-1 where id_comment=".$id;
-        if($status==0)
+        if($status==1)
             updateSupportStatus('unsupport',$id,$option);
     }
 
@@ -152,6 +162,7 @@ function updateSupportStatus($option,$id,$addition){
         else
             $sql="update commentusers set `dislike`=0 where id_comment=$id and user='".$user."'";
     }
+    //echo $sql;
     $GLOBALS['db']->query($sql);
 }
 

@@ -3,6 +3,9 @@
                       <div class="comment-item">
                           <div class="comment-user">
                              <{$comments[n].user}>
+                             <{if $comments[n].product}>
+                             <em>评论了 <a href="details.php?proj=<{$project}>&id=<{$comments[n].id_product}>"><{$comments[n].product}></a></em>
+                             <{/if}>
                           </div>
                           <div class="comment-time">
                               <{$comments[n].create_time}>
@@ -21,14 +24,14 @@
                                 <div class="like-icon like-icon-active"></div>
                     
                     
-                              <span>like(<{$comments[n].support}>)</span>
+                              <span>like(<em><{$comments[n].support}></em>)</span>
                               
                             </div>
                             <{else}>
                             <div class="like" onclick="javascript:like(this,'<{$comments[n].id_comment}>')" like="no">
                               
                                 <div class="like-icon like-icon"></div>
-                              <span>like(<{$comments[n].support}>)</span>
+                              <span>like(<em><{$comments[n].support}></em>)</span>
                               
                             </div>
                             <{/if}>
@@ -38,14 +41,14 @@
                                 <div class="dislike-icon dislike-icon-active"></div>
                     
                     
-                              <span>dislike(<{$comments[n].unsupport}>)</span>
+                              <span>dislike(<em><{$comments[n].unsupport}></em>)</span>
                               
                             </div>
                             <{else}>
                             <div class="dislike" onclick="javascript:dislike(this,'<{$comments[n].id_comment}>')" dislike="no">
                               
                                 <div class="dislike-icon"></div>
-                              <span>dislike(<{$comments[n].unsupport}>)</span>
+                              <span>dislike(<em><{$comments[n].unsupport}></em>)</span>
                               
                             </div>
                             <{/if}>
