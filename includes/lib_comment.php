@@ -143,7 +143,7 @@ function setSupportStatus($option,$id){
 }
 
 function updateSupportStatus($option,$id,$addition){
-    $user='uuu';//$_SESSION['member'];
+    $user=$_SESSION['member'];
     if($option=='support'){
         if($addition=='yes')
             $sql="update commentusers set `like`=1 where id_comment=$id and user='".$user."'";
