@@ -13,7 +13,7 @@ function addComment($id_product,$user,$content,$replyer='',$parent='0'){
     $content= htmlspecialchars($content,ENT_QUOTES);
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
 
-    echo $sql;
+    //echo $sql;
     $GLOBALS['db']->query($sql);
     if(mysql_affected_rows()!=1)
         return false;
