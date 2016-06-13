@@ -5,7 +5,6 @@
  * Date: 2016/1/19
  * Time: 14:32
  */
-session_start();
 require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
