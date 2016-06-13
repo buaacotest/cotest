@@ -7,7 +7,7 @@
  */
 define('LINE',2);
 $pageNumber=0;
-function addComment($id_product,$user,$replyer='',$content,$parent='0'){
+function addComment($id_product,$user,$content,$replyer='',$parent='0'){
     $content= htmlspecialchars($content,ENT_QUOTES);
     $sql="insert into comments(id_product,user,content, id_parent,replyer) VALUES ($id_product,'$user','$content',$parent,'$replyer')";
 
@@ -34,11 +34,11 @@ function sortComments($data,$page){
     $user=$_SESSION['member'];
     $parents=array();
     foreach($data as $k=>$v){
-        $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $v['likeStatus']=$GLOBALS['db']->getOne($sql);
-        $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
-        $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
         if($v['id_parent']==0){
+            $sql="select `like` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+            $v['likeStatus']=$GLOBALS['db']->getOne($sql);
+            $sql="select `dislike` from commentusers where user='".$user."'and id_comment=".$v['id_comment'];
+            $v['dislikeStatus']=$GLOBALS['db']->getOne($sql);
             $id=$v['id_product'];
             $sql="select completename from products where id_product=".$id;
             $v['product']=$GLOBALS['db']->getOne($sql);
@@ -156,7 +156,7 @@ function updateSupportStatus($option,$id,$addition){
         else
             $sql="update commentusers set `dislike`=0 where id_comment=$id and user='".$user."'";
     }
-    echo $sql;
+    //echo $sql;
     $GLOBALS['db']->query($sql);
 }
 
