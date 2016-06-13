@@ -3,6 +3,9 @@
                       <div class="comment-item">
                           <div class="comment-user">
                              <{$comments[n].user}>
+                             <{if $comments[n].product}>
+                             <em>评论了 <a href="details.php?proj=<{$project}>&id=<{$comments[n].id_product}>"><{$comments[n].product}></a></em>
+                             <{/if}>
                           </div>
                           <div class="comment-time">
                               <{$comments[n].create_time}>
