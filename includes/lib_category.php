@@ -25,9 +25,11 @@ function getProductsCount($pname){
 
 /*得到所有的数据库对应的产品数量*/
 function getAllNumber(){
+    $numbers=array();
     $sql="select *from admin.databases";
     $dbs=$GLOBALS['db']->getAllValues($sql);
     foreach($dbs as $v){
-        getProductsCount($v);
+        $numbers[$v]=getProductsCount($v);
     }
+    return $numbers;
 }
