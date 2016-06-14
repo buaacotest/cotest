@@ -39,7 +39,10 @@ function getLabels()
            "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
           {"type":"string","name":"Memory card slot","label":"Micro-SD card slot",
            "value":[1,0],
-           "option":["Yes","No"]}
+           "option":["Yes","No"]},
+          {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"Water resistance",
+           "value":[{">=":0.5,"<=":5.5}],
+           "option":["Yes"]}
        ]
 EOF;
 
@@ -67,9 +70,9 @@ EOF;
            {"type":"multi","name":"","label":"SIM卡格式",
            "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
            "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
-          {"type":"string","name":"Memory card slot","label":"Micro-SD卡槽",
-           "value":[1,0],
-           "option":["有","无"]}
+          {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"防1米深水性能",
+           "value":[{">=":0.5,"<=":5.5}],
+           "option":["有"]}
        ]
 EOF;
     }
@@ -106,7 +109,6 @@ EOF;
                     $sql .= "name='" . $item['name'] . "')";
                 else
                     $sql .= "id_evaluation>99999999 and name='" . $item['name'] . "')";
-               //echo $sql."\n";
                 $v = $GLOBALS['db']->getOne($sql);
                 $arr[$key]['number'][] = $v;
             }

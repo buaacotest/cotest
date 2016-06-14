@@ -159,13 +159,13 @@ function getGradeTree($id,$tar,$lang){
     if($lang=='en_us'){
         $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight, value
        from evaluations as A,results as B
-      where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0
+      where A.id_evaluation=B.id_evaluation and selected=1
        and B.id_product=$id";
     }
     else{
         $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,value
        from evaluations as A,results as B,sdictionary as C
-      where A.id_evaluation=B.id_evaluation and B.value!='na'and weighting_normalized!=0 and flag=1 and C.wordid=A.id_evaluation
+      where A.id_evaluation=B.id_evaluation and selected=1 and flag=1 and C.wordid=A.id_evaluation
        and B.id_product=$id";
     }
     $data=$GLOBALS['db']->getAll($sql);
