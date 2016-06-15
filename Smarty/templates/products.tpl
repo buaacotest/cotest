@@ -558,7 +558,7 @@
             ids.push(parseInt($(items[i]).attr("proId")));
         }
        // $.get();
-            window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(compare_list)
+            window.location.href="compare.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_list)
         
     })
     $(".compare-toogle").on("click",function(){

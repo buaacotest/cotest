@@ -593,17 +593,17 @@
             compare_names.push('<{$product.name}>');
         } 
         
-        window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+        window.location.href="products.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
     $(".go-to-compariosn").on("click",function(){
         if(compare_ids.indexOf(id)==-1){
             compare_ids.push(id)
             compare_names.push('<{$product.name}>');
         } 
-        window.location.href="compare.php?proj=mobilephones&ids="+JSON.stringify(compare_ids);
+        window.location.href="compare.php?proj="+'<{$project}>'+JSON.stringify(compare_ids);
     })
     $(".back-to-list").on("click",function(){
-        window.location.href="products.php?proj=mobilephones&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+        window.location.href="products.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
     var page=getPar("page");
     if(page)

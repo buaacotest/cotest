@@ -5,7 +5,7 @@
  * Date: 2016/4/5
  * Time: 17:01
  */
-$_LANG['Welcome']='Products sold outside Europe are tested in Europe according to European quality and testing standards.';
+$_LANG['Welcome']='All named products are tested in Europe according to European quality and testing standards.';
 
 
 $_LANG['Tests']='Tests';
@@ -13,7 +13,8 @@ $_LANG['COTEST']='COTEST';
 $_LANG['Press']='Press';
 $_LANG['Language']='Language';
 
-$_LANG['JointTests']='joint tests';
+$_LANG['JointTests']='Samples bought globally';
+$_LANG['JointTests_C']='Samples bought in China';
 $_LANG['Electronics']='Electronics';
 $_LANG['Food']='Food';
 $_LANG['Smartphones']='Smartphones';

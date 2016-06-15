@@ -65,7 +65,8 @@ require("navigation.php");
       <div class="row pro-list">
         <div class="pro-list-l">
           <div class="pro-list-title">
-              <{$lang.Electronics}> (<{$lang.JointTests}>)
+              <{$lang.Electronics}> 
+              <p><{$lang.JointTests}></p>
           </div>
           <div class="pro-list-content">
             <a href="products.php?proj=mobilephones">
@@ -164,8 +165,10 @@ require("navigation.php");
         </div>
         <div class="pro-list-r">
           <div class="pro-list-title">
-              <{$lang.Food}>
+              <{$lang.Food}> 
+                <p><{$lang.JointTests_C}></p>
           </div>
+
           <div class="pro-list-content">
             <a href="products.php?proj=milk">
             <div class="pro-list-item">
