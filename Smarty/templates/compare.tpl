@@ -447,8 +447,7 @@ $(".add-compare-btn").on("click",function(){
 })
 $(".product-link").on("click",function(){
   var id=$(this).attr("target")
-   var name_list=[];
-  var names=$(".product-name");
+51  var names=$(".product-name");
   for (var i=0;i<names.length;i++){
     name_list.push($(names[i]).text());
     console.log($(names[i]).text())
