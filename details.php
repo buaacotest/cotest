@@ -17,6 +17,9 @@ $_SESSION['project']=$proj;
 $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);
+/*获取目录*/
+$directory=getDirectoryWithLink($proj);
+print_r($directory);
 
 
 //print_r($comments);
@@ -34,6 +37,7 @@ $smarty->assign("Cons",$details['Cons']);
 $smarty->assign("id",$id);
 $smarty->assign("user",$user);
 $smarty->assign('lang',$_LANG);
+$smarty->assign('directory',$directory);
 $smarty->display('details.tpl');
 
 

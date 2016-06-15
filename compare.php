@@ -15,6 +15,7 @@ $ids=trim($_GET['ids']);
 $lang=$_SESSION['lang'];
 $ids=json_decode($ids,true);
 $comProducts=array();
+$directory=getDirectoryWithLink($project);
 
 if(!empty($ids)){
     foreach($ids as $k=>$v){
@@ -27,6 +28,8 @@ if($project_name=="")
     $project_name='Mobilephones';
 $GLOBALS['db']->changeDB($project_name);
 //print_r($comProducts);
+$smarty->assign('lang',$_LANG);
+$smarty->assign('directory',$directory);
 $smarty->assign('products',$comProducts);
 $smarty->assign('project',$project_name);
 $smarty->display('compare.tpl');

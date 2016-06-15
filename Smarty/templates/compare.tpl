@@ -43,13 +43,13 @@
     </div>
     -->
     <div class="crumbs">
-      <a href="index.php"><div class="crumbs-item">Tests</a> <sapn>></sapn></div>
-      <a href=""><div class="crumbs-item">Electronics</a> <sapn>></sapn></div>
-      <a href="products.php?proj=mobilephones"><div class="crumbs-item">Smartphones</a> <sapn>></sapn></div>
+      <a href="index.php"><div class="crumbs-item"><{$lang.Tests}></a> <sapn>></sapn></div>
+      <a href="<{$directory.upper.link}>"><div class="crumbs-item"><{$directory.upper.name}></a> <sapn>></sapn></div>
+      <a href="<{$directory.up.link}>"><div class="crumbs-item"><{$directory.up.name}></a> <sapn>></sapn></div>
       <div class="crumbs-item">Comparison</div>
 
     </div>
-    <div class="compare-title">3 smartphones in comparison</div>
+    <div class="compare-title">3 <{$directory.upper.name}> in comparison</div>
     <table class="compare-table">
         <thead class="product-head">
           
@@ -373,7 +373,7 @@
 var local_url = document.location.href; 
 var compare_list=getPar("ids");
 //关闭响应事件
-$(".compare-title").text(compare_list.length+" smartphones in comparison")
+$(".compare-title").text(compare_list.length+" <{$directory.up.name}> in comparison".toLowerCase())
 //toggle
 $(".subheading").on("click",function(){
      if($(this).attr('toggle')=='1'){
@@ -430,7 +430,7 @@ $(".product-image").find(".close").on("click",function(){
       $(trs[i]).children().eq(index).remove();
     }
     compare_list.splice(index-1,1);
-    $(".compare-title").text(compare_list.length+"  smartphones in comparison")
+    $(".compare-title").text(compare_list.length+"  <{$directory.up.name}> in comparison".toLowerCase())
 
 })
 
