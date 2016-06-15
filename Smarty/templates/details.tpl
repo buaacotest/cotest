@@ -467,9 +467,9 @@
                         <div class="row proper-item">
                             <div class="col-md-6"><label class="proper-item-name"><{$props[n].id_propertygroup[m].name}></label></div>
                             <div class="col-md-6">
-                            <{if $props[n].id_propertygroup[m].value eq 'Yes'}>
+                            <{if $props[n].id_propertygroup[m].value eq 'Yes' and $props[n].id_propertygroup[m].type=='Boolean'}>
                             <img class="proper-signal"src="img/check2.png">
-                            <{elseif $props[n].id_propertygroup[m].value eq 'No'}>
+                            <{elseif $props[n].id_propertygroup[m].value eq 'No' and $props[n].id_propertygroup[m].type=='Boolean'}>
                             <img class="proper-signal"src="img/cross.png">
                             <{else}>
                             <{$props[n].id_propertygroup[m].value}> <{$props[n].id_propertygroup[m].unit}>

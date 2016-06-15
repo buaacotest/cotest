@@ -301,9 +301,9 @@
               <{section name=m loop=$products}>
                 <td data-product-id="10344" class="behind-paywall">
               
-                          <{if $products[m].property[k].id_propertygroup[n].value eq 'Yes'}>
+                          <{if $products[m].property[k].id_propertygroup[n].value == "Yes"}>
                             <img class="proper-signal"src="img/check2.png">
-                            <{elseif $products[m].property[0].id_propertygroup[n].value eq 'No'}>
+                            <{elseif $products[m].property[k].id_propertygroup[n].value == "No"}>
                             <img class="proper-signal"src="img/cross.png">
                             <{else}>
                             <{$products[m].property[k].id_propertygroup[n].value}> 
