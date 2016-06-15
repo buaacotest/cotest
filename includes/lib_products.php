@@ -219,7 +219,7 @@ function getProperty($id,&$res,$lang){
 
        //echo $sql."\n";
         $value=$GLOBALS['db']->getOne($sql);
-
+        $value= htmlspecialchars($value,ENT_QUOTES);
         switch($v['type']){
             case 'String':$v['value']=$value;break;
             case 'Numeric':if(is_numeric($value))
