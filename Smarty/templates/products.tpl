@@ -236,7 +236,7 @@
     var labels_str="";
     loadoption(<{$labels}>)
     $(".compare-panel").hide();
-    function getPar(par){
+     function getPar(par){
         //获取当前URL
         var local_url = document.location.href; 
         console.log(local_url)
@@ -249,6 +249,12 @@
         var get_par = local_url.slice(par.length + get + 1);    
         //判断截取后的字符串是否还有其他get参数
         var nextPar = get_par.indexOf("&");
+
+        var nextSharp =get_par.indexOf("#");
+        console.log(nextSharp)
+        console.log(nextPar)
+        nextPar=nextPar>nextSharp?((nextSharp==-1)?nextPar:nextSharp):((nextPar==-1)?nextSharp:nextPar);
+        console.log(nextPar)
         if(nextPar != -1){
             get_par = get_par.slice(0, nextPar);
         }
@@ -257,6 +263,7 @@
         get_par=get_par.replace(/%20/g," ");
         return eval("("+get_par+")");
     }
+
 
     function loadoption(labels){
         var option_text="";
@@ -678,13 +685,17 @@
   //  var local_url = document.location.href; 
     var compare_ids=getPar("ids");
     var compare_names=getPar("names");
-
+    console.log(compare_ids);
+    console.log(compare_names);
     if(compare_ids&&compare_names){
-      for(var i=0;i<compare_ids.length;i++){
-        addCompare(compare_ids[i],compare_names[i])
+      if(compare_ids.length>0 && compare_names.length>0){
+         for(var i=0;i<compare_ids.length;i++){
+            addCompare(compare_ids[i],compare_names[i])
         
+         }
+          $(".compare-panel").show();
       }
-      $(".compare-panel").show();
+     
     }
     setpage();    //调用分页
 </script>
