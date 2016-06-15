@@ -19,8 +19,6 @@ $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);
 /*获取目录*/
 $directory=getDirectoryWithLink($proj);
-print_r($directory);
-
 
 //print_r($comments);
 //print_r($details['Pros']);
