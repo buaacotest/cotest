@@ -390,13 +390,10 @@ function SetPropertySelected($id, $flag)
             $result = $GLOBALS['db']->query($sql);
             return $result;
     } else {////flag==0
-        if ($id < 1000) { ///propertygroup
-            return true;
-        } else {
             $sql = "UPDATE `propertys` SET selected=0 where id_property=" . $id;
+            //echo $sql;
             $result = $GLOBALS['db']->query($sql);
             return $result;
-        }
     }
 }
 
