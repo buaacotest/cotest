@@ -159,7 +159,7 @@ if __name__=="__main__":
     #deal with manufacturers-----------------------BEGIN
     #create table
     sql_create_table="CREATE TABLE `manufacturers` (" \
-                     "`comment` varchar(45) default NULL," \
+                     "`comment` varchar(200) default NULL," \
                      "`name` varchar(45) default NULL," \
                      "`timestamp_lastchange` int(11) default NULL," \
                      "`timestamp_lastcreated` int(11) default NULL," \
@@ -196,7 +196,7 @@ if __name__=="__main__":
     #create table
     sql_create_table="CREATE TABLE `productgroups` (" \
                      "`id_productgroup` varchar(20) NOT NULL," \
-                     "`comment` varchar(45) default NULL," \
+                     "`comment` varchar(200) default NULL," \
                      "`name` varchar(45) default NULL," \
                      "`timestamp_lastchange` int(12) default NULL," \
                      "`timestamp_created` int(12) default NULL," \
@@ -237,8 +237,8 @@ if __name__=="__main__":
                      "`icrt_code` varchar(45) default NULL," \
                      "`timestamp_lastchange` int(12) default NULL," \
                      "`timestamp_created` int(12) default NULL," \
-                     "`picture_hires` varchar(45) default NULL," \
-                     "`picture_lores` varchar(45) default NULL," \
+                     "`picture_hires` varchar(450) default NULL," \
+                     "`picture_lores` varchar(450) default NULL," \
                      "`similarmodelscodes` varchar(45) default NULL," \
                      "`parentmodelcode` varchar(45) default NULL," \
                      "`labcode` varchar(20) default NULL," \
@@ -364,7 +364,7 @@ if __name__=="__main__":
     #create table
     sql_create_table="CREATE TABLE `propertygroups` (" \
                      "`id_propertygroup` varchar(20) NOT NULL," \
-                     "`comment` varchar(45) default NULL," \
+                     "`comment` varchar(200) default NULL," \
                      "`name` varchar(45) default NULL," \
                      "`timestamp_lastchange` int(12) default NULL," \
                      "`timestamp_created` int(12) default NULL," \
@@ -403,7 +403,7 @@ if __name__=="__main__":
                      "`id_property` varchar(20) NOT NULL default ''," \
                      "`id_propertygroup` varchar(20) NOT NULL," \
                      "`type` varchar(20) default NULL," \
-                     "`comment` varchar(45) default NULL," \
+                     "`comment` varchar(200) default NULL," \
                      "`name` varchar(200) default NULL," \
                      "`timestamp_lastchange` int(12) default NULL," \
                      "`timestamp_created` int(12) default NULL," \
@@ -413,7 +413,7 @@ if __name__=="__main__":
                      "`unit` varchar(45) default NULL," \
                      "`min` varchar(45) default NULL," \
                      "`max` varchar(45) default NULL," \
-                     "`binding` varchar(45) default NULL," \
+                     "`binding` varchar(200) default NULL," \
                      "`selected` int(11) default '0'," \
                      "PRIMARY KEY  (`id_property`)," \
                      "KEY `fk_propertys_propertygroups1_idx` (`id_propertygroup`)" \
@@ -621,7 +621,7 @@ if __name__=="__main__":
                      "`id_product` varchar(20) NOT NULL," \
                      "`downgrading_value` varchar(45) default NULL," \
                      "`is_downgrading` tinyint(1) default NULL," \
-                     "`value` varchar(150) default NULL," \
+                     "`value` varchar(200) default NULL," \
                      "PRIMARY KEY (`id_evaluation`,`id_product`),"\
                      "KEY `fk_results_evaluations1_idx` (`id_evaluation`)," \
                      "KEY `fk_results_products1_idx` (`id_product`)" \

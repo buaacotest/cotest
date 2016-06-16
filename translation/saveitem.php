@@ -37,16 +37,16 @@ if($type=="propertygroup")
 if($flag==1){/////选择保存
     if($chn=="")//////TODO：取消选择的时候是否需要判断翻译为空不为空？
     {
-        echo "翻译为空!";
+        //echo "翻译为空!";
         $result2=SaveTranslationToSelfDic($oriword,$transarr,$id,$dicflag);
-        if($result2)
-            echo "存入了项目词典但翻译为空!!";
+//        if($result2)
+//            echo "存入了项目词典但翻译为空!!";
         if($dicflag==0)
             $result3=SetPropertySelected($id,$flag);
         else if($dicflag==1)
             $result3=SetEvaluationSelected($id,$flag);
         if($result3)
-            echo "标注selected成功!";
+            echo "标注成功!";
     }
     else{
         $result1=SaveTranslationToAdminDic($oriword,$transarr);///一旦修改了input，说明是新增的意思
@@ -55,7 +55,7 @@ if($flag==1){/////选择保存
             $outstr1="存入了总词典!";
         if($result2)
             $outstr2="存入了项目词典!";
-        echo $outstr1.$outstr2;
+        //echo $outstr1.$outstr2;
         //////无论是选择保存还是取消都要对selected进行操作
         if($dicflag==0)
             $result3=SetPropertySelected($id,$flag);
@@ -64,15 +64,15 @@ if($flag==1){/////选择保存
         else if($dicflag==2||$dicflag==3)
             $result3=false;
         if($result3)
-            echo "标注selected成功!";
+            echo "标注成功!";
     }
 }
 else{
     //////无论是选择保存还是取消都要对selected进行操作
     $result4=DeleteTranslationInSelfDic($id,$dicflag);
     //echo $result4;
-    if($result4)
-        echo "删除词条!";
+//    if($result4)
+//        echo "删除词条!";
 
     //else echo "false";
 
@@ -83,7 +83,7 @@ else{
     else if($dicflag==2)
         $result3=false;
     if($result3)
-        echo "取消 selected成功!";
+        echo "取消成功!";
 }
 
 

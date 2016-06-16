@@ -679,7 +679,7 @@ if __name__=="__main__":
                      "`id_product` varchar(20) NOT NULL," \
                      "`downgrading_value` varchar(45) default NULL," \
                      "`is_downgrading` tinyint(1) default NULL," \
-                     "`value` varchar(150) default NULL," \
+                     "`value` varchar(400) default NULL," \
                      "PRIMARY KEY (`id_evaluation`,`id_product`)," \
                      "KEY `fk_results_evaluations1_idx` (`id_evaluation`)," \
                      "KEY `fk_results_products1_idx` (`id_product`)" \
