@@ -405,3 +405,17 @@ function judge($opt,$data,$value){
         return true;
     return false;
 }
+
+/*生成项目名目录与链接的映射*/
+function getDirectoryWithLink($project){
+    $lang=$_SESSION['lang'];
+    $directoryArray=array();
+    if($lang=='en_us'){//up表示上一级目录，upper表示上上级目录
+        $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'Smartphones','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'Electronics','link'=>'')),
+                                        'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food'),'link'=>''));
+    }else{
+        $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'')),
+                                        'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品'),'link'=>''));
+    }
+    return $directoryArray[$project];
+}
