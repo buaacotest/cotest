@@ -61,6 +61,8 @@ if(!isset($_SESSION['usertype'])){
                                 var str="<tr typeAttr='3'><td>"+result[i][0]+"</td><td class='source'>"+result[i][1]+"</td><td>";
                                 var idstr="zh"+result[i][0];
                                 var word=result[i][1];
+                                word=word.replace(/\'/g,"&apos;");////替换单词中的单引号
+                                word=word.replace(/\"/g,"&quot;");////替换单词中的双引号
                                 var options=new Array();
                                 options= result[i].CHN;
                                 if(options.length==0){
@@ -81,6 +83,8 @@ if(!isset($_SESSION['usertype'])){
                                     var chstr="<tr typeAttr='0'><td>"+charr[j].id_property+"</td><td  class='source' style='color:#009999;padding-left:30px'>"+charr[j].name+"</td><td >";
                                     var chidstr="zh"+charr[j].id_property;
                                     var chword=charr[j].name;
+                                    chword=chword.replace(/\'/g,"&apos;");////替换单词中的单引号
+                                    chword=chword.replace(/\"/g,"&quot;");////替换单词中的双引号
                                     var chopt=charr[j].CHN;
                                     if(chopt.length==0){
                                         chstr+="<textarea id='"+chidstr+"' onfocus=\"showOption('"+chidstr+"','"+chopt+"','"+chword+"');\""+" onblur=\"showAndHide('"+chidstr+"List'"+",'hide');\""+">"+"</textarea></td><td>";
@@ -121,6 +125,8 @@ if(!isset($_SESSION['usertype'])){
             var opts=data.CHN;
             var str="";
             var word=data.name;
+            word=word.replace(/\'/g,"&apos;");////替换单词中的单引号
+            word=word.replace(/\"/g,"&quot;");////替换单词中的双引号
             str+="<tr typeAttr='1'><td>"+idstr+"</td>";
 
             str+="<td class='source' style=\"color:"+colors[index]+";padding-left:"+offset+"px \">"+word+"</td><td>";
@@ -156,6 +162,8 @@ if(!isset($_SESSION['usertype'])){
                 var str="<tr typeAttr='2'><td>"+result[i][0]+"</td><td id='source'>"+result[i][1]+"</td><td>";
                 var idstr="manu"+id_manufacturer;
                 var word=result[i][1];
+                word=word.replace(/\'/g,"&apos;");////替换单词中的单引号
+                word=word.replace(/\"/g,"&quot;");////替换单词中的双引号
                 var options=new Array();
                 options= result[i].CHN;
                 if(options.length==0){
@@ -233,6 +241,8 @@ if(!isset($_SESSION['usertype'])){
             //alert(_typeAttr);
             var _id=td.eq(0).text()
             var _oriword=td.eq(1).text()
+            _oriword=_oriword.replace(/\'/g,"&apos;");////替换单词中的单引号
+            _oriword=_oriword.replace(/\"/g,"&quot;");////替换单词中的双引号
             var chn=tr.find('textarea').val();
             var _translation=new Array();
             _translation['CHN']=chn;

@@ -53,6 +53,7 @@ function getProperty()
     foreach ($groups as $k => $g) {
         $temp = '';
         $groupname = $g['name'];
+        $groupname=$groupname.htmlspecialchars();
         $groupid = $g['id_propertygroup'];
         $gtranslation = GetTransLation($groupname, $groupid,3);
         $chn = array();
@@ -71,6 +72,7 @@ function getProperty()
         $groups[$k]['De'] = "null";
         foreach ($props as $p) {
             $propname = $p['name'];
+            $propname=$propname.htmlspecialchars();
             $proid = $p['id_property'];
             $ptranslation = GetTransLation($propname, $proid);
             $chn = array();
@@ -114,6 +116,7 @@ function getTree($data, $pId)
     $tree = '';
     foreach ($data as $v) {
         $name = $v['name'];
+        $name=$name.htmlspecialchars();
         $id = $v['id_evaluation'];
         $evalTranslation = GetTransLation($name, $id, 1);
         $chn = array();
@@ -146,6 +149,7 @@ function getManufacturers()
     foreach ($manufacturer as $k => $v) {
 
         $manufacturername = $v['name'];
+        $manufacturername=$manufacturername.htmlspecialchars();
         $manufacturerid = $v['id_manufacturer'];
         $mtranslation = GetTransLation($manufacturername, $manufacturerid, 2);
         $chn = array();
