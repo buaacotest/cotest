@@ -82,17 +82,19 @@ require("navigation.php");
               </div>
             </div>
             </a>
+            <a href="products.php?proj=tablets">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/tablet.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.tablets}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Tablets}></div>
               </div>
             </div>
+              </a>
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/tv.jpg">

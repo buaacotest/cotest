@@ -49,7 +49,7 @@
       <div class="crumbs-item">Comparison</div>
 
     </div>
-    <div class="compare-title">3 <{$directory.upper.name}> in comparison</div>
+    <div class="compare-title"><{$count}> <{$directory.up.name}> in comparison</div>
     <table class="compare-table">
         <thead class="product-head">
           
@@ -441,7 +441,7 @@ $(".add-compare-btn").on("click",function(){
     name_list.push($(names[i]).text());
     console.log($(names[i]).text())
   }
-  var url="products.php?proj=mobilephones&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(name_list);
+  var url="products.php?proj=<{$project}>&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(name_list);
 
   window.location.href=url;  
 })
@@ -452,7 +452,7 @@ $(".product-link").on("click",function(){
     name_list.push($(names[i]).text());
     console.log($(names[i]).text())
   }
-  var url="details.php?proj=mobilephones&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(name_list)+"&id="+id; 
+  var url="details.php?proj=<{$project}>&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(name_list)+"&id="+id;
  window.location.href=url; 
 })
   $(function(){

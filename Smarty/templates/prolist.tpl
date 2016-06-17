@@ -1,7 +1,7 @@
 <{if $pageNum ==0}>
-     <p>&nbsp;<b>0 </b><{$lang.Smartphones}>
+     <p>&nbsp;<b>0 </b><{$up.name}>
 <{else}>
-                <p>&nbsp;<b><{$productsNum}>  </b><{$lang.Smartphones}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}> <{$lang.pages}></p>
+                <p>&nbsp;<b><{$productsNum}>  </b><{$up.name}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}> <{$lang.pages}></p>
              <ul class="products" pagenum="<{$pageNum}>" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    

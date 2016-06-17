@@ -306,7 +306,7 @@ function getProperty($id,&$res,$lang){
 function filterProducts($lab){
     $results=$tempResult=array();
     $index=0;
-    print_r($lab);
+   // print_r($lab);
         foreach($lab as $v){
             $tempResult=array();
             if($v['type']=='range'){
@@ -440,10 +440,12 @@ function getDirectoryWithLink($project){
     $directoryArray=array();
     if($lang=='en_us'){//up表示上一级目录，upper表示上上级目录
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'Smartphones','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'Electronics','link'=>'')),
-                                        'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food'),'link'=>''));
+                                        'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food','link'=>'')),
+                                        'tablets'=>array('up'=>array('name'=>'Tablets','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'Electronics','link'=>'')));
     }else{
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'')),
-                                        'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品'),'link'=>''));
+                                        'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品','link'=>'')),
+                                    'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'')));
     }
     return $directoryArray[$project];
 }

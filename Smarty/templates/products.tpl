@@ -29,8 +29,8 @@
     <div class="
     products-select-tab">
      <div class="products-head">
-         <a href=""><{$lang.$upper}></a>
-         <{$lang.$up}>
+         <a href="<{$upper.link}>"><{$upper.name}></a>>
+         <{$up.name}>
      </div>
         <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div id="products-block">
-                <p>&nbsp;<b><{$productsNum}>  </b><{$lang.$up}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
+                <p>&nbsp;<b><{$productsNum}>  </b><{$up.name}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    

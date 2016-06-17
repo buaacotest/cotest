@@ -34,7 +34,9 @@ $labels=json_decode($json,true);
 
 /*生成目录结构*/
 $up=$upper=null;
-getParentDirectory($project_name,$up,$upper);
+$directory=getDirectoryWithLink($project_name);
+$up=$directory['up'];
+$upper=$directory['upper'];
 
 /*分页相关*/
 $flag=0;
@@ -92,11 +94,3 @@ if($flag){
 else
     $smarty->display('products.tpl');
 
-/*根据项目名显示不同的引导*/
-function getParentDirectory($projectName,&$up,&$upper)
-{
-    $guideLabels=array('mobilephones'=>array('up'=>'Smartphones','upper'=>'Electronics'),
-                        'milk'=>array('up'=>'Milk','upper'=>'Food'));
-    $up=$guideLabels[$projectName]['up'];
-    $upper=$guideLabels[$projectName]['upper'];
-}
