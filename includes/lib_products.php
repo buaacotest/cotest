@@ -66,7 +66,7 @@ function getIDsByKeywords($keywords)
 }
 /*根据project_name获取所有的product的相关属性*/
 function getAllProducts($order='time'){
-    $sql="select modelname as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
+    $sql="select modelname as product_name,`name`as product_manufacturer, timestamp_created as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer";
     $res=$GLOBALS['db']->getAll($sql);
@@ -79,7 +79,7 @@ function getAllProducts($order='time'){
 }
 /*挑选指定ID的产品*/
 function getProductByIds($ids,$order='time'){
-    $sql = "select modelname as product_name,`name`as product_manufacturer, batch as product_tested_date, id_product as product_id
+    $sql = "select modelname as product_name,`name`as product_manufacturer, timestamp_created as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
   
@@ -109,18 +109,27 @@ function multiSort($arr,$order){
     return $arr;
 }
 
-/*日期转换1512-->Dec 2015*/
+/*日期转换TIMESTAMP-->Dec 2015*/
 function convertTime($time){
     if($_SESSION['lang']=='en_us'){
+       $newTime=gmdate('M Y',$time);
+        return $newTime;
+        /*
         $timeArray=array("01"=>"Jan","02"=>"Feb","03"=>"Mar","04"=>"Apr","05"=>"May","06"=>"Jun","07"=>"Jul","08"=>"Aug","09"=>"Sep",
             "10"=>"Oct","11"=>"Nov","12"=>"Dec");
         $year="20".substr($time,0,2);
         $mon=$timeArray[substr($time,2,2)];
         return $mon." ".$year;
+        */
+
     }else{
+        $newTime=date('Y/m', $time);
+        return $newTime;
+        /*
         $year="20".substr($time,0,2);
         $mon=substr($time,2,2);
         return $year."/".$mon;
+        */
     }
 
 }
@@ -297,7 +306,7 @@ function getProperty($id,&$res,$lang){
 function filterProducts($lab){
     $results=$tempResult=array();
     $index=0;
-    //print_r($lab);
+    print_r($lab);
         foreach($lab as $v){
             $tempResult=array();
             if($v['type']=='range'){
@@ -309,20 +318,39 @@ function filterProducts($lab){
                         $opts=array_keys($value);
                         $len=count($opts);
                        if($len==1){
-                           if($tempIndexRange==0)
-                              $sql.="(format(6-value,1)".$opts[0].$value[$opts[0]].")";
-                           else
-                               $sql.="or(format(6-value,1)".$opts[0].$value[$opts[0]].")";
+                           if($tempIndexRange==0){
+                               if($v['name']=='total test result')
+                                   $sql.="(format(6-value,1)".$opts[0].$value[$opts[0]].")";
+                               else
+                                   $sql.="value".$opts[0].$value[$opts[0]].")";
+                           }
+
+                           else{
+                               if($v['name']=='total test result')
+                                   $sql.="or(format(6-value,1)".$opts[0].$value[$opts[0]].")";
+                               else
+                                   $sql.="or value".$opts[0].$value[$opts[0]].")";
+                           }
                        }else if($len==2){
-                           if($tempIndexRange==0)
-                               $sql.="(format(6-value,1)".$opts[0].$value[$opts[0]]." and format(6-value,1)".$opts[1].$value[$opts[1]].")";
-                           else
-                               $sql.="or(format(6-value,1)".$opts[0].$value[$opts[0]]." and format(6-value,1)".$opts[1].$value[$opts[1]].")";
+                           if($tempIndexRange==0){
+                               if($v['name']=='total test result')
+                                   $sql.="(format(6-value,1)".$opts[0].$value[$opts[0]]." and format(6-value,1)".$opts[1].$value[$opts[1]].")";
+                               else
+                                   $sql.="(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                           }
+
+                           else{
+                               if($v['name']=='total test result')
+                                   $sql.="or(format(6-value,1)".$opts[0].$value[$opts[0]]." and format(6-value,1)".$opts[1].$value[$opts[1]].")";
+                               else
+                                   $sql.="or(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                           }
+
                        }
                         $tempIndexRange++;
                     }
                     $sql.=")";
-                    //echo $sql;
+                   // echo $sql;
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
             }else if($v['type']=='string'){
@@ -350,9 +378,9 @@ function filterProducts($lab){
                     foreach($v['value'] as $key=>$value){
                         //echo $tempValue."==".$value."  ";
                         if($tempStringIndex==0)
-                            $sql.="batch like'".$value."%' ";
+                            $sql.="FROM_UNIXTIME(timestamp_created, '%Y' )='".$value."' ";
                         else
-                            $sql.="or batch like'".$value."%' ";
+                            $sql.="or FROM_UNIXTIME(timestamp_created, '%Y' )='".$value."' ";
                         $tempStringIndex++;
                     }
                     //echo $sql;

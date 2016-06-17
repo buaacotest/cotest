@@ -7,13 +7,9 @@
  */
 function getLabels()
 {
-    $sql="SELECT distinct value FROM mobilephones.results where id_evaluation=100001759";
+    $sql="SELECT name FROM milk.manufacturers";
     $brands=$GLOBALS['db']->getAllValues($sql);
     $brands=json_encode($brands);
-    $sql="select distinct value from results where id_evaluation=100001770";
-    $OSs=$GLOBALS['db']->getAllValues($sql);
-    $OSs=json_encode($OSs);
-    //print_r($brands);
     $lang=$_SESSION['lang'];
     if($lang=="en_us"){
 
@@ -22,27 +18,13 @@ function getLabels()
          {"type":"range","name":"total test result","label":"Total test result",
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
-          {"type":"date","name":"Publication date","label":"Tested date",
-           "value":[2016,2015,2014],
+         {"type":"date","name":"Publication date","label":"Tested date",
+           "value":[16,15,14],
            "option":[2016,2015,2014]},
-          {"type":"string","name":"Brand (from brandlist)","label":"Brands",
+          {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands},
-          {"type":"string","name":"Operating system name","label":"Operating system",
-           "value":$OSs,
-           "option":$OSs},
-          {"type":"range","name":"Display diagonal","label":"Display diagonal","unit":"mm",
-           "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51}],
-           "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm"]},
-           {"type":"multi","name":"","label":"SIM card format",
-           "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
-           "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
-          {"type":"string","name":"Memory card slot","label":"Micro-SD card slot",
-           "value":[1,0],
-           "option":["Yes","No"]},
-          {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"Water resistance",
-           "value":[{">=":0.5,"<=":5.5}],
-           "option":["Yes"]}
+          "option":$brands}
+
        ]
 EOF;
 
@@ -56,23 +38,11 @@ EOF;
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
-           "value":[2016,2015,2014],
+           "value":[16,15,14],
            "option":[2016,2015,2014]},
-          {"type":"string","name":"Brand (from brandlist)","label":"品牌",
+          {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
-          "option":$brandLabels},
-          {"type":"string","name":"Operating system name","label":"操作系统",
-           "value":$OSs,
-           "option":$OSs},
-          {"type":"range","name":"Display diagonal","label":"屏幕对角线长度","unit":"mm",
-           "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51}],
-           "option":["130 mm以上","110 mm以上","100 mm以上","84 mm以上","51 mm以上"]},
-           {"type":"multi","name":"","label":"SIM卡格式",
-           "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
-           "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
-          {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"防1米深水性能",
-           "value":[{">=":0.5,"<=":5.5}],
-           "option":["有"]}
+          "option":$brandLabels}
        ]
 EOF;
     }
@@ -109,12 +79,13 @@ EOF;
                     $sql .= "name='" . $item['name'] . "')";
                 else
                     $sql .= "id_evaluation>99999999 and name='" . $item['name'] . "')";
+                //echo $sql."\n";
                 $v = $GLOBALS['db']->getOne($sql);
                 $arr[$key]['number'][] = $v;
             }
         }else if($item['type'] == 'date'){
             foreach ($item['value'] as $value) {
-                $sql = "select count(*) from products where  FROM_UNIXTIME(timestamp_created, '%Y' )='" . $value . "'" ;
+                $sql = "select count(*) from products where batch like '" . $value . "%'" ;
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
                 $arr[$key]['number'][] = $v;
@@ -129,10 +100,8 @@ EOF;
         }
     }
     sortByNumber($arr[2]);
-    sortByNumber($arr[3]);
     return json_encode($arr);
 }
-//根据数量多少排序
 function sortByNumber(&$src)
 {
     foreach($src['value'] as $k=>$v){
@@ -148,3 +117,4 @@ function sortByNumber(&$src)
     }
     $src['option']=$src['value'];
 }
+
