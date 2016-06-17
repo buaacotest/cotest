@@ -140,20 +140,37 @@ if __name__=="__main__":
         print('create table sdictionary fails!{}'.format(e))
     #create comments
     sql_create_table="CREATE TABLE `comments` (" \
-                     "`id_comment` int(11) NOT NULL AUTO_INCREMENT," \
+                     " `id_comment` int(11) NOT NULL AUTO_INCREMENT," \
                      "`id_product` int(11) DEFAULT NULL," \
                      "`user` varchar(20) NOT NULL," \
-                     "`content` varchar(400) NOT NULL," \
+                     "`content` varchar(140) NOT NULL," \
                      "`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP," \
                      "`id_parent` int(11) NOT NULL DEFAULT '0'," \
                      "`replyer` varchar(20) DEFAULT NULL," \
+                     "`support` int(11) NOT NULL DEFAULT '0'," \
+                     "`unsupport` int(11) NOT NULL DEFAULT '0'," \
                      "PRIMARY KEY (`id_comment`)" \
-                     ") ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;"
+                     ") ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;"
     try:
         cursor = cnn.cursor()
         cursor.execute(sql_create_table)
     except mysql.connector.Error as e:
         print('create table comments fails!{}'.format(e))
+
+    #create commentusers
+    sql_create_table="CREATE TABLE `commentusers` (" \
+                     "`id` int(11) NOT NULL AUTO_INCREMENT," \
+                     "`id_comment` int(11) NOT NULL," \
+                     "`user` varchar(20) NOT NULL," \
+                     "`like` int(11) NOT NULL DEFAULT '0'," \
+                     "`dislike` int(11) DEFAULT '0'," \
+                     "PRIMARY KEY (`id`)" \
+                     ") ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;"
+    try:
+        cursor = cnn.cursor()
+        cursor.execute(sql_create_table)
+    except mysql.connector.Error as e:
+        print('create table commentusers fails!{}'.format(e))
 
 
     #deal with manufacturers-----------------------BEGIN
