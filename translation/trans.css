@@ -47,8 +47,10 @@ table {
 }
 
 th{padding:18px 28px 18px; text-align:center; }
-.source{/*padding-bottom:20px*/;font-weight:bolder;width:30%}
-
+.source{padding-bottom:20px;font-weight:bolder;width:30%}
+input{
+    padding-bottom: 10px;
+}
 
 th {padding-top:22px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb;}
 
