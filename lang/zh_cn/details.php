@@ -19,11 +19,11 @@ $_LANG['SignUp']='注册';
 $_LANG['Logout']='登出';
 $_LANG['ChangePwd']='修改密码';
 
-$_LANG['Summary']='评测意见';
-$_LANG['Ratings']='评测得分';
-$_LANG['Features']='功能规格';
+$_LANG['Summary']='测评总结';
+$_LANG['Ratings']='测评得分';
+$_LANG['Features']='规格参数';
 
-$_LANG['Review']='总结';
+$_LANG['Review']='消费者说';
 $_LANG['HowToBuy']='如何购买';
 
 $_LANG['Front']='正面';

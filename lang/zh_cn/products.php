@@ -6,13 +6,14 @@
  * Time: 17:02
  */
 $_LANG['COTEST']='群测社区';
+$_LANG['HowWeTest']='如何测试';
+$_LANG['UserReview']='消费者说';
 
 $_LANG['Electronics']='数码电子';
 $_LANG['Smartphones']='智能手机';
 $_LANG['Food']='食品';
 $_LANG['Milk']='牛奶';
 $_LANG['TestedSmartphones']='测试产品';
-$_LANG['HowWeTest']='如何测试';
 
 
 $_LANG['SignIn']='登录';
