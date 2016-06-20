@@ -7,7 +7,7 @@
  */
 require('./includes/init.php');
 $dbName=$_SESSION['project'];
-$keyWords=trim($_GET["keyword"]);
+$keyWords=trim($_POST["keyword"]);
 $sql="select completename from $dbName.products where completename like '$keyWords%'";
 $relativeNames=$db->getAllValues($sql);
 sort($relativeNames);
