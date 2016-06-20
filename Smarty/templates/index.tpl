@@ -95,17 +95,19 @@ require("navigation.php");
               </div>
             </div>
               </a>
+            <a href="products.php?proj=tvs">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/tv.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.tvs}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Televisions</div>
+                <div class="name"><{$lang.Televisions}></div>
               </div>
             </div>
+              </a>
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/camera.jpg">

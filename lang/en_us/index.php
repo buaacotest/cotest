@@ -19,6 +19,7 @@ $_LANG['Electronics']='Electronics';
 $_LANG['Food']='Food';
 $_LANG['Smartphones']='Smartphones';
 $_LANG['Tablets']='Tablets';
+$_LANG['Televisions']='Televisions';
 
 $_LANG['SignIn']='Loginin';
 $_LANG['SignUp']='Sign up';

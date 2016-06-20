@@ -10,9 +10,6 @@ function getLabels()
     $sql="SELECT name FROM manufacturers";
     $brands=$GLOBALS['db']->getAllValues($sql);
     $brands=json_encode($brands);
-    $sql="select distinct value from results where id_evaluation=100001770";
-    $OSs=$GLOBALS['db']->getAllValues($sql);
-    $OSs=json_encode($OSs);
     //print_r($brands);
     $lang=$_SESSION['lang'];
     if($lang=="en_us"){
@@ -23,56 +20,29 @@ function getLabels()
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
           {"type":"date","name":"Publication date","label":"Tested date",
-           "value":[2016,2015,2014],
-           "option":[2016,2015,2014]},
+           "value":[2016,2015],
+           "option":[2016,2015]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands},
-          {"type":"string","name":"Operating system name","label":"Operating system",
-           "value":$OSs,
-           "option":$OSs},
-          {"type":"range","name":"Display diagonal","label":"Display diagonal","unit":"mm",
-           "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51}],
-           "option":["from 130 mm","from 110 mm","from 100 mm","from 84 mm","from 51 mm"]},
-           {"type":"multi","name":"","label":"SIM card format",
-           "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
-           "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
-          {"type":"string","name":"Memory card slot","label":"Micro-SD card slot",
-           "value":[1,0],
-           "option":["Yes","No"]},
-          {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"Water resistance",
-           "value":[{">=":0.5,"<=":5.5}],
-           "option":["Yes"]}
+          "option":$brands}
        ]
 EOF;
 
     }else if($lang=="zh_cn"){
-        $sql="select CHN from sdictionary where oriword in( SELECT distinct value FROM mobilephones.results where id_evaluation=100001759)";
+       /* $sql="select CHN from sdictionary where oriword in( SELECT distinct value FROM results where id_evaluation=100001759)";
         $brandLabels=$GLOBALS['db']->getAllValues($sql);
-        $brandLabels=json_encode($brandLabels);
+        $brandLabels=json_encode($brandLabels);*/
         $labels = <<<EOF
             [
          {"type":"range","name":"total test result","label":"总评分",
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
-           "value":[2016,2015,2014],
-           "option":[2016,2015,2014]},
+           "value":[2016,2015],
+           "option":[2016,2015]},
           {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
-          "option":$brandLabels},
-          {"type":"string","name":"Operating system name","label":"操作系统",
-           "value":$OSs,
-           "option":$OSs},
-          {"type":"range","name":"Display diagonal","label":"屏幕对角线长度","unit":"mm",
-           "value":[{">=":130},{">=":110},{">=":100},{">=":84},{">=":51}],
-           "option":["130 mm以上","110 mm以上","100 mm以上","84 mm以上","51 mm以上"]},
-           {"type":"multi","name":"","label":"SIM卡格式",
-           "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
-           "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
-          {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"防1米深水性能",
-           "value":[{">=":0.5,"<=":5.5}],
-           "option":["有"]}
+          "option":$brands}
        ]
 EOF;
     }
@@ -80,28 +50,28 @@ EOF;
     $arr = json_decode($labels, true);
     foreach ($arr as $key => $item) {
         if ($item['type'] == 'string') {
-            $index = 0;
+            $index=0;
             foreach ($item['value'] as $value) {
-                if ($item['name'] == 'Brand') {
-                    $sql = "select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='" . $value . "')";
+                if($item['name']=='Brand'){
+                    $sql="select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='".$value."')";
                 }
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
-                if ($v == 0) {
-                    array_splice($arr[$key]['option'], $index, 1);
-                    array_splice($arr[$key]['value'], $index, 1);
+                if($v==0){
+                    array_splice($arr[$key]['option'],$index,1);
+                    array_splice($arr[$key]['value'],$index,1);
                     $index--;
-                    // print_r($arr[$key]['option']);
+                   // print_r($arr[$key]['option']);
 
-                } else {
+                }else{
                     $arr[$key]['number'][] = $v;
                 }
 
 
                 $index++;
             }
-        }else if($item['type'] == 'range') {
+        } else if($item['type'] == 'range') {
             foreach ($item['value'] as $value) {
                 $opts = array_keys($value);
                 $len = count($opts);
@@ -144,7 +114,7 @@ EOF;
         }
     }
     sortByNumber($arr[2]);
-    sortByNumber($arr[3]);
+    //print_r($arr);
     return json_encode($arr);
 }
 //根据数量多少排序

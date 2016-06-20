@@ -69,6 +69,7 @@ function getAllProducts($order='time'){
     $sql="select modelname as product_name,`name`as product_manufacturer, timestamp_created as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer";
+    //echo $sql;
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
@@ -79,7 +80,7 @@ function getAllProducts($order='time'){
 }
 /*挑选指定ID的产品*/
 function getProductByIds($ids,$order='time'){
-    $sql = "select modelname as product_name,`name`as product_manufacturer, timestamp_created as product_tested_date, id_product as product_id
+    $sql = "select modelname as product_name,`name`as product_manufacturer,timestamp_created as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
   
@@ -214,11 +215,13 @@ function getProperty($id,&$res,$lang){
         $sql="select id_propertygroup,name,type,unit,binding from propertys where selected=1";
         $props=$GLOBALS['db']->getAll($sql);
     }else{
-        $sql="select id_propertygroup,sdictionary.CHN as name from propertygroups,sdictionary where flag=3 and id_propertygroup=wordid";
+         $sql="select id_propertygroup,CHN as name from (select * from propertygroups p) p left join sdictionary t on p.id_propertygroup=t.wordid and flag=3 ;";
+
         $groups=$GLOBALS['db']->getAll($sql);
         $sql="select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
         $props=$GLOBALS['db']->getAll($sql);
     }
+
     foreach($props as $k=>$v){
         //echo $v['name'];
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
@@ -300,6 +303,20 @@ function getProperty($id,&$res,$lang){
     }
     return $results;
 }
+
+/*搜索商品*/
+function searchProducts($str){
+    echo $str;
+    $sql="select id_product from products where completename like '%$str%'";
+    echo $sql;
+    $results=$GLOBALS['db']->getAllValues($sql);
+    return $results;
+}
+
+
+
+
+
 /*根据标签筛选商品*/
 //labels:[{'type':string,'name':'Brand (from brandlist)',value:['xx','yy']},....]
 //labels:[{'type':'range','name':'A - Sample',value:[{'>=':3,'<=':5},{'<':3}]}]
@@ -354,20 +371,36 @@ function filterProducts($lab){
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
             }else if($v['type']=='string'){
-                $evalId=getEvaluationId($v['name']);
+
+               if($v['name']!='Brand')
+                     $evalId=getEvaluationId($v['name']);
                 $tempStringIndex=0;
                 if(is_array($v['value'])){
-                    $sql="select id_product from results where id_evaluation=".$evalId." and(";
+                    if($v['name']=='Brand'){
+                        $sql="select id_product from products where id_manufacturer in(select id_manufacturer from manufacturers where ";
+                    }
+                   else
+                       $sql="select id_product from results where id_evaluation=".$evalId." and(";
                     foreach($v['value'] as $key=>$value){
                        //echo $tempValue."==".$value."  ";
-                       if($tempStringIndex==0)
-                           $sql.="value='".$value."' ";
-                        else
-                            $sql.="or value='".$value."' ";
+                       if($tempStringIndex==0){
+                           if($v['name']=='Brand')
+                               $sql.="`name`='".$value."' ";
+                           else
+                               $sql.="value='".$value."' ";
+                       }
+
+                        else{
+                            if($v['name']=='Brand')
+                                $sql.="or `name`='".$value."' ";
+                            else
+                                $sql.="or value='".$value."' ";
+                        }
+
                         $tempStringIndex++;
                     }
                     $sql.=")";
-                    //echo $sql;
+                   // echo $sql;
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
 
@@ -439,13 +472,16 @@ function getDirectoryWithLink($project){
     $lang=$_SESSION['lang'];
     $directoryArray=array();
     if($lang=='en_us'){//up表示上一级目录，upper表示上上级目录
-        $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'Smartphones','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'Electronics','link'=>'')),
-                                        'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food','link'=>'')),
-                                        'tablets'=>array('up'=>array('name'=>'Tablets','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'Electronics','link'=>'')));
+        $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'Smartphones','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
+                                        'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food','link'=>'index.php')),
+                                        'tablets'=>array('up'=>array('name'=>'Tablets','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
+                                         'tvs'=>array('up'=>array('name'=>'Televisions','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }else{
-        $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'')),
-                                        'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品','link'=>'')),
-                                    'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'')));
+        $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                                        'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品','link'=>'index.php')),
+                                    'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                                         'tvs'=>array('up'=>array('name'=>'电视','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'电子产品','link'=>'index.php')));
     }
     return $directoryArray[$project];
 }
+

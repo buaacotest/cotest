@@ -64,6 +64,13 @@ if(!empty($labels)){
 }else{
     $products=getAllProducts($sort);
 }
+
+/*搜索相关*/
+$keyWords=trim($_GET["keyword"]);
+if(!empty($keyWords)){
+    $keyIds=searchProducts($keyWords);
+    $products=getProductByIds($ids,$sort);
+}
 //print_r($products);
 
 $page_num=ceil(count($products)/35);
