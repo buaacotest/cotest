@@ -141,29 +141,32 @@ require("navigation.php");
                 <div class="name">Laptops and Ultrabooks</div>
               </div>
             </div>
+            <a href="products.php?proj=whheadphones">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.whheadphones}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Head Phones</div>
+                <div class="name"><{$lang.Headphones}></div>
               </div>
             </div>
+            </a>
+            <a href="products.php?proj=fitnessbands">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.fitnessbands}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Fitness Trackers</div>
+                <div class="name"><{$lang.Fitness}></div>
               </div>
             </div>
-          
+          </a>
           </div>
           
         </div>

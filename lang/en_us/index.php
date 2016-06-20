@@ -20,6 +20,8 @@ $_LANG['Food']='Food';
 $_LANG['Smartphones']='Smartphones';
 $_LANG['Tablets']='Tablets';
 $_LANG['Televisions']='Televisions';
+$_LANG['Headphones']='Headphones';
+$_LANG['Fitness']='Fitness Trackers';
 
 $_LANG['SignIn']='Loginin';
 $_LANG['SignUp']='Sign up';

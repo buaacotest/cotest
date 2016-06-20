@@ -93,7 +93,7 @@ $smarty->assign('upper',$upper);
 $smarty->assign('labels',$data);
 $smarty->assign('pageNum',$page_num);
 $smarty->assign('project',$project_name);
-$smarty->assign('title',$project_name);
+$smarty->assign('title',$up['name']);
 $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
 $smarty->assign('lang',$_LANG);

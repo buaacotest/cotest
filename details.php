@@ -24,7 +24,7 @@ $directory=getDirectoryWithLink($proj);
 //print_r($details['Pros']);
 //print_r($details['Cons']);
 $product=array('name'=>$details['name'],'manufacturer'=>$details['manufacturer'],'id'=>$id);
-$smarty->assign('title',$product['name']);
+$smarty->assign('title',$product['manufacturer'].$product['name']);
 $smarty->assign('product',$product);
 $smarty->assign('project',$proj);
 $smarty->assign('score',$details['evaluations'][0]['value']);

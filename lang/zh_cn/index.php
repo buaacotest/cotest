@@ -22,6 +22,8 @@ $_LANG['Food']='食品';
 $_LANG['Smartphones']='智能手机';
 $_LANG['Tablets']='平板电脑';
 $_LANG['Televisions']='电视';
+$_LANG['Headphones']='耳机';
+$_LANG['Fitness']='智能手环';
 
 
 $_LANG['SignIn']='登录';
