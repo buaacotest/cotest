@@ -50,6 +50,15 @@ if(empty($_GET['page'])){
 if(empty($sort)){
    $sort='time';
 }
+
+/*搜索相关*/
+$keyWords=trim($_GET["keyword"]);
+if(!empty($keyWords)){
+    $keyIds=searchProducts($keyWords);
+    $products=getProductByIds($ids,$sort);
+}
+
+
 /*筛选相关*/
 $data=getLabels();
 if(!empty($labels)){
@@ -64,6 +73,8 @@ if(!empty($labels)){
 }else{
     $products=getAllProducts($sort);
 }
+
+
 //print_r($products);
 
 $page_num=ceil(count($products)/35);

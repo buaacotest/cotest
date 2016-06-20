@@ -13,7 +13,7 @@ session_start();
 require( './sql/mysql_cls.php');
 $db=new mysql_cls();
 $db->connect();
-$serverAddress=$serverUsername=$serverPassword=$selectDBname=NULL;
+
 if(empty($_SESSION['lang']))
 $_SESSION['lang']='en_us';
 
