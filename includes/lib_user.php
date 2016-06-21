@@ -28,6 +28,18 @@ function sendEmail($addr,$title,$body){
     }
     return $rst;
 }
+
+/*利用postfix来发邮件*/
+function sendMail($addr,$title,$body){
+    $rs= mail($addr,$title,$body);
+    if($rs!=""){
+        $rst=true;
+    }else{
+        $rst=false;
+    }
+    return $rst;
+}
+
 function getRandStr($len)
 {
     $chars = array(

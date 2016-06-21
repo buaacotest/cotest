@@ -20,7 +20,7 @@ $token=urlencode($token);
 $emailbody = $_LANG['dear']." ".$username.":<br/>".$_LANG['clickLink'].
     "<a href='http://localhost/cotest/active.php?token=$token' target=
 '_blank'>http://localhost/cotest/active.php?token=$token</a><br/>".$LANG['ifCannotClick'];
-$rs=sendEmail($email,$_LANG['active'],$emailbody);
+$rs=sendMail($email,$_LANG['active'],$emailbody);
 if($rs){
     $msg =1;
 }else{
