@@ -13,8 +13,8 @@ $_LANG['COTEST']='群测社区';
 $_LANG['Press']='媒体';
 $_LANG['Language']='语言';
 
-$_LANG['JointTests']='全球购买样品';
-$_LANG['JointTests_C']='中国购买样品';
+$_LANG['JointTests']='样品购自全球';
+$_LANG['JointTests_C']='样品购自中国';
 $_LANG['Electronics']='数码电子';
 $_LANG['Food']='食品';
 $_LANG['Smartphones']='智能手机';
