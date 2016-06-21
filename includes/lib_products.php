@@ -477,14 +477,22 @@ function getDirectoryWithLink($project){
                                         'tablets'=>array('up'=>array('name'=>'Tablets','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'Televisions','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                 'whheadphones'=>array('up'=>array('name'=>'Headphones','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
-                                'fitnessbands'=>array('up'=>array('name'=>'Fitness Trackers','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
+                                'fitnessbands'=>array('up'=>array('name'=>'Fitness Trackers','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
+                                     'lenses'=>array('up'=>array('name'=>'Lenses','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                              'basiccameras'=>array('up'=>array('name'=>'Basic Cameras','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                            'highendcameras'=>array('up'=>array('name'=>'High-END Cameras','link'=>'products.php?proj=highendcameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                         'actioncamcorders'=>array('up'=>array('name'=>'Action Camcorders','link'=>'products.php?proj=actioncamcorders'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }else{
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                         'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品','link'=>'index.php')),
                                     'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'电视','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
-                                 'whheadphones'=>array('up'=>array('name'=>'耳机','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
-                                 'fitnessbands'=>array('up'=>array('name'=>'智能手环','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
+                                'whheadphones'=>array('up'=>array('name'=>'耳机','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                                 'fitnessbands'=>array('up'=>array('name'=>'智能手环','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
+                                     'lenses'=>array('up'=>array('name'=>'镜头','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'相机','link'=>'index.php')),
+                             'basiccameras'=>array('up'=>array('name'=>'普通相机','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                            'highendcameras'=>array('up'=>array('name'=>'高端相机','link'=>'products.php?proj=highendcameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                         'actioncamcorders'=>array('up'=>array('name'=>'运动摄录机','link'=>'products.php?proj=actioncamcorders'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }
     return $directoryArray[$project];
 }
