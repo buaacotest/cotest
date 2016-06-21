@@ -21,7 +21,9 @@ if($nowtime>$token_exptime){
     $msg = $_LANG['overTime'];
 }else{
     $sql="select id from admin.users where name='".$username."'";
+    echo $sql;
     $rst = $GLOBALS['db']->getOne($sql);
+    print_r($rst);
     if(!empty($rst)){
         $msg=$_LANG['alreadyActive'];
     }else{
