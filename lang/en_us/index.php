@@ -22,6 +22,7 @@ $_LANG['Tablets']='Tablets';
 $_LANG['Televisions']='Televisions';
 $_LANG['Headphones']='Headphones';
 $_LANG['Fitness']='Fitness Trackers';
+$_LANG['ActionCamcorders']='Action Camcorders';
 
 $_LANG['SignIn']='Loginin';
 $_LANG['SignUp']='Sign up';

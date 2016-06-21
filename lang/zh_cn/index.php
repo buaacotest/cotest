@@ -22,6 +22,7 @@ $_LANG['Tablets']='平板电脑';
 $_LANG['Televisions']='电视';
 $_LANG['Headphones']='耳机';
 $_LANG['Fitness']='智能手环';
+$_LANG['ActionCamcorders']='运动摄录机';
 
 
 $_LANG['SignIn']='登录';
