@@ -706,8 +706,8 @@ if __name__=="__main__":
                 print("result_id_product:"+result_id_product)
                 print("result_id_evaluation:"+result_id_evaluation)
                 result_value=""
-        sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value) values (%s, %s,%s,%s,%s)"
-        data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
+        sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value,chvalue) values (%s, %s,%s,%s,%s,%s)"
+        data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value,result_value)
         cursor=cnn.cursor()
         cursor.execute(sql_insert2,data)
     print("update results over")
