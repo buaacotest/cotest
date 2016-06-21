@@ -1593,3 +1593,65 @@ footer .icptext{
 .compare-toogle img{
 	width: 15px;
 }
+.about-nav-title{
+	font-size: 24px;
+	margin: 10px 0px;
+	margin-bottom: 30px;
+}
+.about-nav-list{
+	padding: 0px;
+	list-style: none;
+}
+.about-nav-list li{
+	margin: 5px 0px;
+}
+.about-nav{
+	padding-top: 10px;
+}
+.about-nav-list .active{
+	color: #f7b206;
+}
+.about-nav-list {
+
+}
+.about-article h4{
+	font-weight: bold;
+	margin: 20px 0px;
+}
+.about-img-container{
+	text-align: center;
+	width: 100%;
+}
+.about-article img{
+	text-align: center;
+}
+.about-cotest{
+	width: 300px;
+	margin: 40px 0px;
+}
+.about-test{
+	width: 120px;
+	margin-top: 0px;
+	margin: 0px 30px;
+	margin-bottom: 40px;
+}
+.about-icrt{
+	width: 200px;
+	margin: 40px 0px;
+}
+.about-map{
+	width: 100%;
+	margin: 40px 0px;
+}
+.about-eu{
+	width: 200px;
+	margin: 40px 0px;
+}
+.about-para{
+	padding-left: 0px;
+	margin: 0px;
+}
+.about-member{
+	width: 400px;
+	margin: 40px 0px;
+}
