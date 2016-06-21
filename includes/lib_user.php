@@ -31,6 +31,11 @@ function sendEmail($addr,$title,$body){
 
 /*利用postfix来发邮件*/
 function sendMail($addr,$title,$body){
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+
+// 更多报头
+    $headers .= 'From: <no-reply@cotest.org.cn>' . "\r\n";
     $rs= mail($addr,$title,$body);
     if($rs!=""){
         $rst=true;
