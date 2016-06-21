@@ -20,8 +20,8 @@ function getLabels()
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
           {"type":"date","name":"Publication date","label":"Tested date",
-           "value":[2016,2015],
-           "option":[2016,2015]},
+           "value":[2016,2015,2014],
+           "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
           "option":$brands}
@@ -38,8 +38,8 @@ EOF;
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
-           "value":[2016,2015],
-           "option":[2016,2015]},
+           "value":[2016,2015,2014],
+           "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
           "option":$brands}

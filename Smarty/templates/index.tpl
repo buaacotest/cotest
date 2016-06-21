@@ -130,17 +130,19 @@ require("navigation.php");
                 <div class="name">Smart Watches</div>
               </div>
             </div>
+            <a href="products.php?proj=actioncamcorders">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.actioncamcorders}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Laptops and Ultrabooks</div>
+                <div class="name"><{$lang.ActionCamcorders}></div>
               </div>
             </div>
+            </a>
             <a href="products.php?proj=whheadphones">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
