@@ -639,6 +639,7 @@ if __name__=="__main__":
                      "`downgrading_value` varchar(45) default NULL," \
                      "`is_downgrading` tinyint(1) default NULL," \
                      "`value` varchar(200) default NULL," \
+                     "`chvalue` varchar(200) default NULL," \
                      "PRIMARY KEY (`id_evaluation`,`id_product`),"\
                      "KEY `fk_results_evaluations1_idx` (`id_evaluation`)," \
                      "KEY `fk_results_products1_idx` (`id_product`)" \
@@ -668,8 +669,8 @@ if __name__=="__main__":
                 print("result_id_evaluation:"+result_id_evaluation)
                 result_value=""
             # result={} #save  one calculationtype information
-            sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value) values (%s, %s,%s,%s,%s)"
-            data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value)
+            sql_insert2="insert into results (id_evaluation,id_product,downgrading_value,is_downgrading,value,chvalue) values (%s, %s,%s,%s,%s,%s)"
+            data=(result_id_evaluation,result_id_product,result_is_downgrading,result_downgrading_value,result_value,result_value)
             cursor=cnn.cursor()
             cursor.execute(sql_insert2,data)
 
