@@ -34,7 +34,7 @@ function sendMail($addr,$title,$body){
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 
-    $headers .= 'From: <no-reply@cotest.org.cn>' . "\r\n";
+    $headers .= 'From: <COTEST@cotest.org.cn>' . "\r\n";
     $rs= mail($addr,$title,$body,$headers);
     if($rs!=""){
         $rst=true;
