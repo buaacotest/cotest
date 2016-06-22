@@ -495,6 +495,7 @@ function getDirectoryWithLink($project){
     if($lang=='en_us'){//up表示上一级目录，upper表示上上级目录
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'Smartphones','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                         'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food','link'=>'index.php')),
+                                  'milkpowder'=>array('up'=>array('name'=>'Formula Milk Powder','link'=>'products.php?proj=milkpowder'),'upper'=>array('name'=>'Food','link'=>'index.php')),
                                         'tablets'=>array('up'=>array('name'=>'Tablets','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'Televisions','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                 'whheadphones'=>array('up'=>array('name'=>'Headphones','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
@@ -506,6 +507,7 @@ function getDirectoryWithLink($project){
     }else{
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                         'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品','link'=>'index.php')),
+                                 'milkpowder'=>array('up'=>array('name'=>'婴幼儿奶粉','link'=>'products.php?proj=milkpowder'),'upper'=>array('name'=>'食品','link'=>'index.php')),
                                     'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'电视','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                 'whheadphones'=>array('up'=>array('name'=>'耳机','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),

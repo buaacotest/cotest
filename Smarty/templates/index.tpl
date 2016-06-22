@@ -188,21 +188,23 @@ require("navigation.php");
                 <div class="num"><{$number.milk}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">UHT Milk</div>
+                <div class="name"><{$lang.Milk}></div>
               </div>
             </div>
               </a>
+            <a href="products.php?proj=milkpowder">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/milkpowder.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">234</div>
+                <div class="num"><{$number.milkpowder}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Formular Milk Powder</div>
+                <div class="name"><{$lang.MilkPowder}></div>
               </div>
             </div>
+              </a>
           </div>
         </div>
       </div>

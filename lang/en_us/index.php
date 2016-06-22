@@ -23,6 +23,8 @@ $_LANG['Televisions']='Televisions';
 $_LANG['Headphones']='Headphones';
 $_LANG['Fitness']='Fitness Trackers';
 $_LANG['ActionCamcorders']='Action Camcorders';
+$_LANG['Milk']='UHT Milk';
+$_LANG['MilkPowder']='Formula Milk Powder';
 
 $_LANG['SignIn']='Loginin';
 $_LANG['SignUp']='Sign up';
