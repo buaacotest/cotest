@@ -11,6 +11,7 @@ define('KEY','i03jxhuu9.*#@');
 error_reporting(0);
 session_start();
 require( './sql/mysql_cls.php');
+require("lib_common.php");
 $db=new mysql_cls();
 $db->connect();
 

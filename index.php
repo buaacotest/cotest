@@ -20,7 +20,7 @@ $smarty->assign('number',$allNumber);
 $smarty->assign('lang',$_LANG);
 
 /*  显示模板  */
-if(is_mobile())
+if(isMobile())
     $smarty->display('index_m.tpl');
 else
     $smarty->display('index.tpl');
