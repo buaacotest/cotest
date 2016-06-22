@@ -17,7 +17,11 @@ $smarty->assign('project',$project);
 $smarty->assign('id_product',$option);
 $smarty->assign('comments',$comments);
 $smarty->assign('commentsNumber',$commentsPageNumber);
-$smarty->display("commentList.tpl");
+if(isMobile()){
+    $smarty->display("commentList_m.tpl");
+}
+else
+    $smarty->display("commentList.tpl");
 
 function showComments($option=''){
     $pageComments=$_POST['commentPage'];

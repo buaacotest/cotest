@@ -36,6 +36,9 @@ $smarty->assign("id",$id);
 $smarty->assign("user",$user);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('directory',$directory);
-$smarty->display('details.tpl');
+if(isMobile())
+    $smarty->display('details_m.tpl');
+else
+    $smarty->display('details.tpl');
 
 

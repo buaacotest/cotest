@@ -10,4 +10,7 @@ include_once 'includes/config.php';
 require('lang/'.$_SESSION['lang'].'/user.php');
 $smarty->assign('lang',$_LANG);
 $smarty->assign('user',$_SESSION['member']);
-$smarty->display('about.tpl');
+if(isMobile())
+    $smarty->display('about_m.tpl');
+else
+    $smarty->display('about.tpl');
