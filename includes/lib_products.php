@@ -72,6 +72,7 @@ function getAllProducts($order='time'){
     //echo $sql;
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
+        //$res[$k]['product_name']=shortName($v['product_name']);
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
         $res[$k]['score']=getTotalScore($v['product_id']);
     }
@@ -91,12 +92,24 @@ function getProductByIds($ids,$order='time'){
 	$sql.=")";
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
+        //$res[$k]['product_name']=shortName($v['product_name']);
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
         $res[$k]['score']=getTotalScore($v['product_id']);
     }
     $res=multiSort($res,$order);
     return $res;
 }
+
+/*省略太长的产品名*/
+function shortName($name,$targetLen=39){
+    if(strlen($name)>$targetLen){
+        return  substr($name,0,$targetLen)."...";
+    }
+
+
+    return $name;
+}
+
 /*排序*/
 function multiSort($arr,$order){
     foreach ($arr as $key=>$value){
