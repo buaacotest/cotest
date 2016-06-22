@@ -24,7 +24,7 @@ $_LANG['Summary']='Summary';
 $_LANG['Ratings']='Ratings';
 
 $_LANG['Features']='Features';
-$_LANG['Review']='Consumer review';
+$_LANG['Review']='Review';
 $_LANG['HowToBuy']='How To Buy';
 
 $_LANG['Front']='Front';
