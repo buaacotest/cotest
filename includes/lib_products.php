@@ -261,7 +261,16 @@ function getProperty($id,&$res,$lang){
                 break;
             default:$v['value']=$value;break;
         }
+        if($value==''||$value=='ny'||$value=='ns'||$value=='nt'||$value=='nf'){
+
+            $v['value']='-';
+            $v['unit']='';
+
+
+        }
+
         $props[$k]=$v;
+
     }
     foreach($groups as $k=>$g){
         if($g['name']=="Pros"||$g['name']=="优点"){

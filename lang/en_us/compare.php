@@ -11,7 +11,7 @@ $_LANG['Press']='Press';
 $_LANG['Language']='Language';
 $_LANG['About']='About us';
 
-$_LANG['Smartphones']='Smartphones';
-$_LANG['Electronics']='Electronics';
-$_LANG['InComparison']='Phones in comparison';
+$_LANG['InComparison']='in comparison';
 $_LANG['BackToTest']='Back to the test';
+$_LANG['Comparison']='Comparison';
+$_LANG['Add']='add more to compare';

@@ -25,6 +25,7 @@ $_LANG['Ratings']='Ratings';
 
 $_LANG['Features']='Features';
 $_LANG['Review']='Review';
+$_LANG['UserReview']='Consumer reviews';
 $_LANG['HowToBuy']='How To Buy';
 
 $_LANG['Front']='Front';
@@ -47,3 +48,6 @@ $_LANG['Symbol']='Symbol';
 
 
 $_LANG['CotestVerdict']='COTEST verdict';
+$_LANG['AddToCompare']='Add to compare';
+$_LANG['GoToComparison']='Go to comparison';
+$_LANG['BackToTheList']='Back to the list';

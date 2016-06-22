@@ -46,10 +46,10 @@
       <a href="index.php"><div class="crumbs-item"><{$lang.Tests}></a> <sapn>></sapn></div>
       <a href="<{$directory.upper.link}>"><div class="crumbs-item"><{$directory.upper.name}></a> <sapn>></sapn></div>
       <a href="<{$directory.up.link}>"><div class="crumbs-item"><{$directory.up.name}></a> <sapn>></sapn></div>
-      <div class="crumbs-item">Comparison</div>
+      <div class="crumbs-item"><{$lang.Comparison}></div>
 
     </div>
-    <div class="compare-title"><{$count}> <{$directory.up.name}> in comparison</div>
+
     <table class="compare-table">
         <thead class="product-head">
           
@@ -57,7 +57,7 @@
           <tr class="product-images">
             <th class="edit-comparison" scope="row" rowspan="2">
        
-                <button class="add-compare-btn" title="return to smartphones">+ add more to compare</button>
+                <button class="add-compare-btn" title="return to smartphones">+<{$lang.Add}></button>
          
             </th>
              <{section name=n loop=$products}>
