@@ -302,6 +302,7 @@ if(!isset($_SESSION['usertype'])){
             var id=para.children('td').eq(0).text();
             for(var i=0;i<ids.length;i++){
                 if(ids[i].wordid==id&&flagself==ids[i].flag)
+                    //alert(ids[i].wordid);
                     return 1;
             }
 
