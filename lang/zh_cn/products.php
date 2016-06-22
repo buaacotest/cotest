@@ -7,7 +7,8 @@
  */
 $_LANG['COTEST']='群测社区';
 $_LANG['HowWeTest']='如何测试';
-$_LANG['UserReview']='消费者说';
+$_LANG['Review']='消费者说';
+
 
 $_LANG['Electronics']='数码电子';
 $_LANG['Smartphones']='智能手机';
@@ -50,6 +51,6 @@ $_LANG['Sufficient']='尚可';
 $_LANG['Poor']='差劣';
 
 $_LANG['Compare']='对比';
-$_LANG['AddToCompare']='添加对比';
+$_LANG['AddToCompare']='加入对比';
 $_LANG['RemoveFromCompare']='从对比中删除';
 $_LANG['Confirm']='确认';

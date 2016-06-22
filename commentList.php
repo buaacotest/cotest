@@ -8,6 +8,7 @@
 require('./includes/config.php');
 require('./includes/init.php');
 require('includes/lib_comment.php');
+require('./lang/'.$_SESSION['lang'].'/comment.php');
 $project=$_SESSION['project'];
 $option=$_POST['id_product'];
 $db->changeDB($project);
@@ -17,7 +18,12 @@ $smarty->assign('project',$project);
 $smarty->assign('id_product',$option);
 $smarty->assign('comments',$comments);
 $smarty->assign('commentsNumber',$commentsPageNumber);
-$smarty->display("commentList.tpl");
+$smarty->assign('lang',$_LANG);
+if(isMobile()){
+    $smarty->display("commentList_m.tpl");
+}
+else
+    $smarty->display("commentList.tpl");
 
 function showComments($option=''){
     $pageComments=$_POST['commentPage'];

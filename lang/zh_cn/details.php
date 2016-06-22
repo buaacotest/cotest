@@ -44,3 +44,7 @@ $_LANG['Score']='评测得分';
 $_LANG['Rating']='优良等级';
 $_LANG['Symbol']='评测标志';
 $_LANG['CotestVerdict']='众测意见';
+
+$_LANG['AddToCompare']='加入对比';
+$_LANG['GoToComparison']='跳转到对比';
+$_LANG['BackToTheList']='返回产品列表';

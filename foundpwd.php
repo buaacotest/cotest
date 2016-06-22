@@ -15,7 +15,7 @@ $password=md5($token);
 $sql="update admin.users set password='".$password."'where email='".$email."'";
 $GLOBALS['db']->query($sql);
 $emailBody=$_LANG['reset'].":$token<br/>".$_LANG['modify']."!";
-$rs=sendEmail($email,$_LANG['NewPass'],$emailBody);
+$rs=sendMail($email,$_LANG['NewPass'],$emailBody);
 if($rs){
     echo 1;
 }else{

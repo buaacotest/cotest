@@ -100,8 +100,16 @@ $smarty->assign('lang',$_LANG);
 $smarty->assign('user',$_SESSION['member']);
 
 if($flag){
-    $smarty->display("prolist.tpl");
+    if(isMobile())
+        $smarty->display("prolist_m.tpl");
+    else
+        $smarty->display("prolist.tpl");
 }
-else
-    $smarty->display('products.tpl');
+else{
+    if(isMobile())
+        $smarty->display('products_m.tpl');
+    else
+        $smarty->display('products.tpl');
+}
+
 

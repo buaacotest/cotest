@@ -7,7 +7,8 @@
  */
 $_LANG['COTEST']='COTEST';
 $_LANG['HowWeTest']='How we test';
-$_LANG['UserReview']='Consumer review';
+$_LANG['Review']='Review';
+
 
 $_LANG['Electronics']='Electronics';
 $_LANG['Smartphones']='Smartphones';
