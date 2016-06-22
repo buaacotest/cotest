@@ -18,6 +18,10 @@ $smarty->assign('title','Cotest');
 $allNumber=getAllNumber();
 $smarty->assign('number',$allNumber);
 $smarty->assign('lang',$_LANG);
+
 /*  显示模板  */
-$smarty->display('index.tpl');
+if(is_mobile())
+    $smarty->display('index_m.tpl');
+else
+    $smarty->display('index.tpl');
 
