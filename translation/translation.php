@@ -66,9 +66,9 @@ if(!isset($_SESSION['usertype'])){
                                 var options=new Array();
                                 options= result[i].CHN;
                                 if(options.length==0){
-                                    str+="<textarea  id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+"</textarea></td><td>";
+                                    str+="<textarea  id='"+idstr+"_3'  onfocus=\"showOption('"+idstr+"_3','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"_3List'"+",'hide');\""+">"+"</textarea></td><td>";
                                 }else
-                                    str+="<textarea  id='"+idstr+"'  onfocus=\"showOption('"+idstr+"','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"List'"+",'hide');\""+">"+result[i]["CHN"][0]+"</textarea></td><td> "
+                                    str+="<textarea  id='"+idstr+"_3'  onfocus=\"showOption('"+idstr+"_3','"+options+"','"+word+"');\""+" onblur=\"showAndHide('"+idstr+"_3List'"+",'hide');\""+">"+result[i]["CHN"][0]+"</textarea></td><td> "
 
                                 str+=result[i]["Eng"]+"</td><td>";
                                 str+=result[i]["De"]+"</td><td>";
@@ -212,7 +212,7 @@ if(!isset($_SESSION['usertype'])){
             var autoword=autoTrans(word);
             divstr+="<li onmousedown=\""+"getValue('"+obj+"','"+autoword+"');showAndHide('"+obj+"List'"+",'hide');\">"+autoword+"</li>";
 
-            // alert(divstr)
+             //alert(divstr)
             divstr+="</ul></div></div>";
             var element="#"+obj;
             $(element).after(divstr);
