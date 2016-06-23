@@ -274,7 +274,7 @@ function getProperty($id,&$res,$lang){
     foreach($groups as $k=>$g){
         if($g['name']=="Pros"||$g['name']=="优点"){
             $pros=array();
-            foreach($props as $p){/*将优点连成字符串*/
+            foreach($props as $p){
                 if($p['id_propertygroup']==$g['id_propertygroup']){
 
                     if($p['value']=="Yes"||$p['value']=="yes"){
@@ -283,13 +283,13 @@ function getProperty($id,&$res,$lang){
                 }
 
                 }
-               
+
                 $res['Pros']=$pros;
             continue;
         } else if($g['name']=="Cons"||$g['name']=="缺点") {
-            $string="";
+
             $cons=array();
-            foreach($props as $p){/*将缺点连成字符串*/
+            foreach($props as $p){
                 if($p['id_propertygroup']==$g['id_propertygroup']){
 
                     if($p['value']=="Yes"||$p['value']=="yes"){
@@ -298,10 +298,31 @@ function getProperty($id,&$res,$lang){
                 }
             }
            // $string=substr($string, 0, -1);
+
             $res['Cons']=$cons;
 
             continue;
         }
+        if(empty($pros)){/*************************处理groups中没有Pros的情况*/
+            $pros=array();
+            foreach($props as $p){
+                if($p['name']=="Pros"||$p['name']=="优点"){
+                    //
+                    $pros=explode(",",$p['value']);
+                }
+            }
+            $res['Pros']=$pros;
+        }
+        if(empty($cons)){/*************************处理groups中没有Cons的情况*/
+            $cons=array();
+            foreach($props as $p){
+                if($p['name']=="Cons"||$p['name']=="缺点"){
+                    $cons=explode(",",$p['value']);
+                }
+            }
+            $res['Cons']=$cons;
+        }
+
         $temp='';
         foreach($props as $p){
             if($p['id_propertygroup']==$g['id_propertygroup']){
@@ -501,7 +522,7 @@ function getDirectoryWithLink($project){
                                 'whheadphones'=>array('up'=>array('name'=>'Headphones','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                 'fitnessbands'=>array('up'=>array('name'=>'Fitness Trackers','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                      'lenses'=>array('up'=>array('name'=>'Lenses','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
-                              'basiccameras'=>array('up'=>array('name'=>'Basic Cameras','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                              'basiccameras'=>array('up'=>array('name'=>'Cameras','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                             'highendcameras'=>array('up'=>array('name'=>'High-END Cameras','link'=>'products.php?proj=highendcameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
                          'actioncamcorders'=>array('up'=>array('name'=>'Action Camcorders','link'=>'products.php?proj=actioncamcorders'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }else{
@@ -511,9 +532,9 @@ function getDirectoryWithLink($project){
                                     'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'电视','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                 'whheadphones'=>array('up'=>array('name'=>'耳机','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
-                                 'fitnessbands'=>array('up'=>array('name'=>'智能手环','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
-                                     'lenses'=>array('up'=>array('name'=>'镜头','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'相机','link'=>'index.php')),
-                             'basiccameras'=>array('up'=>array('name'=>'普通相机','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                                 'fitnessbands'=>array('up'=>array('name'=>'智能手环','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                                     'lenses'=>array('up'=>array('name'=>'镜头','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                             'basiccameras'=>array('up'=>array('name'=>'数码相机','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
                             'highendcameras'=>array('up'=>array('name'=>'高端相机','link'=>'products.php?proj=highendcameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
                          'actioncamcorders'=>array('up'=>array('name'=>'运动摄录机','link'=>'products.php?proj=actioncamcorders'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }

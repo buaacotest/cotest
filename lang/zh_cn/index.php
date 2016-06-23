@@ -25,6 +25,7 @@ $_LANG['Fitness']='智能手环';
 $_LANG['ActionCamcorders']='运动摄录机';
 $_LANG['Milk']='UHT牛奶';
 $_LANG['MilkPowder']='婴幼儿奶粉';
+$_LANG['Cameras']='数码相机';
 
 
 $_LANG['SignIn']='登录';

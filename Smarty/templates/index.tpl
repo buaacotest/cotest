@@ -108,17 +108,19 @@ require("navigation.php");
               </div>
             </div>
               </a>
+            <a href="products.php?proj=basiccameras">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/camera.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">134</div>
+                <div class="num"><{$number.basiccameras}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Digital Cameras</div>
+                <div class="name"><{$lang.Cameras}></div>
               </div>
             </div>
+              </a>
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/watch.jpg">
