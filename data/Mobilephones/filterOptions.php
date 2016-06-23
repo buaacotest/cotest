@@ -21,7 +21,7 @@ function getLabels()
 [
          {"type":"range","name":"total test result","label":"Total test result",
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
-          "option":["very good ","good ","average","sufficient","poor"]},
+          "option":["very good ","good ","average","adequate","poor"]},
           {"type":"date","name":"Publication date","label":"Tested date",
            "value":[2016,2015,2014],
            "option":[2016,2015,2014]},

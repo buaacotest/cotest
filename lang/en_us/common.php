@@ -25,7 +25,7 @@ $_LANG['Friends']='Links';
 $_LANG['VeryGood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
-$_LANG['Sufficient']='Sufficient';
+$_LANG['Sufficient']='Adequate';
 $_LANG['Poor']='Poor';
 
 $_LANG['FollowCotest']='Follow COTEST';

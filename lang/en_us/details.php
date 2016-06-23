@@ -38,7 +38,7 @@ $_LANG['Cons']='CONS';
 $_LANG['Verygood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
-$_LANG['Sufficient']='Sufficient';
+$_LANG['Sufficient']='Adequate';
 $_LANG['Poor']='Poor';
 
 $_LANG['Weighting']='Weighting';

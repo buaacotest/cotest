@@ -48,7 +48,7 @@ $_LANG['MicroSD']='Micro-SD card slot';
 $_LANG['Verygood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
-$_LANG['Sufficient']='Sufficient';
+$_LANG['Sufficient']='Adequate';
 $_LANG['Poor']='Poor';
 
 $_LANG['Compare']='Compare';

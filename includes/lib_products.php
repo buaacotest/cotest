@@ -182,18 +182,21 @@ function getGradeTree($id,$tar,$lang){
     if($lang=='en_us'){
         $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight, value
        from evaluations as A,results as B
-      where A.id_evaluation=B.id_evaluation and selected=1
+      where A.id_evaluation=B.id_evaluation and selected=1 and weighting_normalized!=0
        and B.id_product=$id";
     }
     else{
         $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,value
        from evaluations as A,results as B,sdictionary as C
-      where A.id_evaluation=B.id_evaluation and selected=1 and flag=1 and C.wordid=A.id_evaluation
+      where A.id_evaluation=B.id_evaluation and selected=1 and weighting_normalized!=0
+      and flag=1 and C.wordid=A.id_evaluation
        and B.id_product=$id";
     }
+    //echo $sql;
     $data=$GLOBALS['db']->getAll($sql);
     foreach($data as $k=>$v){
-        $data[$k]['value']=number_format(6-$v['value'],1, '.', '');
+        if(is_numeric($v['value']))
+            $data[$k]['value']=number_format(6-$v['value'],1, '.', '');
     }
     $gradeTree=getTree($data,0,0,$tar);
     return $gradeTree;
@@ -247,6 +250,11 @@ function getProperty($id,&$res,$lang){
         $value= htmlspecialchars($value,ENT_QUOTES);
         switch($v['type']){
             case 'String':$v['value']=$value;break;
+            case 'Score':if(is_numeric($value))
+                $v['value']=round($value,2);
+            else
+                $v['value']=$value;
+                break;
             case 'Numeric':if(is_numeric($value))
                 $v['value']=round($value,2);
             else
@@ -308,7 +316,10 @@ function getProperty($id,&$res,$lang){
             foreach($props as $p){
                 if($p['name']=="Pros"||$p['name']=="优点"){
                     //
-                    $pros=explode(",",$p['value']);
+                    $pros=preg_split("/[,;]+/", $p['value']);//explode(",",$p['value']);
+                   // print_r($pros);
+                    if($pros[count($pros)-1]=='')
+                        unset($pros[count($pros)-1]);
                 }
             }
             $res['Pros']=$pros;
@@ -317,7 +328,9 @@ function getProperty($id,&$res,$lang){
             $cons=array();
             foreach($props as $p){
                 if($p['name']=="Cons"||$p['name']=="缺点"){
-                    $cons=explode(",",$p['value']);
+                    $cons=preg_split("/[,;]+/", $p['value']);//explode(",",$p['value']);
+                    if($cons[count($cons)-1]=='')
+                        unset($cons[count($cons)-1]);
                 }
             }
             $res['Cons']=$cons;
