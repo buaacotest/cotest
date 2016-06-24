@@ -311,38 +311,6 @@ function getProperty($id,&$res,$lang){
 
             continue;
         }
-        if(empty($pros)){/*************************处理groups中没有Pros的情况*/
-            $pros=array();
-            foreach($props as $p){
-                if($p['name']=="Pros"||$p['name']=="优点"){
-                    //
-                    $pros=preg_split("/[,;]+/", $p['value']);//explode(",",$p['value']);
-                    //
-                    $index=count($pros)-1;
-
-                    if(preg_match("/[\s]+/i",$pros[$index])||empty($pros[$index])) {
-                        //echo "null";
-                        unset($pros[$index]);
-                    }
-                }
-            }
-            $res['Pros']=$pros;
-        }
-        if(empty($cons)){/*************************处理groups中没有Cons的情况*/
-            $cons=array();
-            foreach($props as $p){
-                if($p['name']=="Cons"||$p['name']=="缺点"){
-                    $cons=preg_split("/[,;]+/", $p['value']);//explode(",",$p['value']);
-                    $index=count($cons)-1;
-
-                    if(preg_match("/[\s]+/i",$cons[$index])||empty($pcons[$index])) {
-                        //echo "null";
-                        unset($cons[$index]);
-                    }
-                }
-            }
-            $res['Cons']=$cons;
-        }
 
         $temp='';
         foreach($props as $p){
@@ -355,6 +323,34 @@ function getProperty($id,&$res,$lang){
             $results[]=$groups[$k];
         }
     }
+    if(empty($pros)){/*************************处理groups中没有Pros的情况*/
+        $pros=array();
+        $sql="select value  from results where id_product=$id and id_evaluation=(select id_evaluation from evaluations where name='Pros')";
+        $stringPros=trim($GLOBALS['db']->getOne($sql));
+        if(!empty($stringPros)) {
+            $pros = preg_split("/[,;]/", $stringPros);//explode(",",$p['value']);
+            //
+            if(empty($pros[count($pros)-1]))
+                unset($pros[count($pros)-1]);
+        }
+        $res['Pros']=$pros;
+    }
+    if(empty($cons)){/*************************处理groups中没有Cons的情况*/
+
+        $cons=array();
+        $sql="select value  from results where id_product=$id and id_evaluation=(select id_evaluation from evaluations where name='Cons')";
+       // echo $sql;
+       $stringCons=trim($GLOBALS['db']->getOne($sql));
+        if(!empty($stringCons)){
+            $cons=preg_split("/[,;]/", $stringCons);//explode(",",$p['value']);
+            if(empty($cons[count($cons)-1]))
+                unset($cons[count($cons)-1]);
+        }
+
+        //print_r($cons);
+        $res['Cons']=$cons;
+    }
+
     if($_SESSION['project']=='mobilephones'){
         foreach($results[1]['id_propertygroup'] as $type){
             $results[0]['id_propertygroup'][]=$type;
