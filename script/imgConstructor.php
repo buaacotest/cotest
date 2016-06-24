@@ -10,7 +10,7 @@
  * @param sting $imgsrc 图片路径
  * @param string $imgdst 压缩后保存路径
  */
-function image_png_size_add($imgsrc,$imgdst){
+function image_png_size_add($imgsrc,$imgdst){////使用GD2
     list($width,$height,$type)=getimagesize($imgsrc);
     if($height>$width){
         $scale=$width/$height;////宽高比
@@ -31,7 +31,12 @@ function image_png_size_add($imgsrc,$imgdst){
                 $image = imagecreatefromgif($imgsrc);
                 imagecopyresampled($image_wp, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
                 imagejpeg($image_wp, $imgdst,75);
+                //unlink($imgsrc);
                 imagedestroy($image_wp);
+                imagedestroy($imgsrc);
+                imagedestroy($image);
+                unset ($image);
+                unset ($image_wp);
             }
             break;
         case 2:
@@ -40,7 +45,12 @@ function image_png_size_add($imgsrc,$imgdst){
             $image = imagecreatefromjpeg($imgsrc);
             imagecopyresampled($image_wp, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
             imagejpeg($image_wp, $imgdst,75);
+            //unlink($imgsrc);
             imagedestroy($image_wp);
+            imagedestroy($imgsrc);
+            imagedestroy($image);
+            unset ($image);
+            unset ($image_wp);
             break;
         case 3:
             header('Content-Type:image/png');
@@ -48,10 +58,34 @@ function image_png_size_add($imgsrc,$imgdst){
             $image = imagecreatefrompng($imgsrc);
             imagecopyresampled($image_wp, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
             imagejpeg($image_wp, $imgdst,75);
+            //unlink($imgsrc);
             imagedestroy($image_wp);
+            imagedestroy($imgsrc);
+            imagedestroy($image);
+            unset ($image);
+            unset ($image_wp);
             break;
     }
+
 }
+function writeNewpic($old, $new) {
+    $maxsize=600;
+    $image = new Imagick($old);
+    if($image->getImageHeight() <= $image->getImageWidth())
+    {
+        $image->resizeImage($maxsize,0,Imagick::FILTER_LANCZOS,1);
+    }
+    else
+    {
+        $image->resizeImage(0,$maxsize,Imagick::FILTER_LANCZOS,1);
+    }
+    $image->setImageCompression(Imagick::COMPRESSION_JPEG);
+    $image->setImageCompressionQuality(90);
+    $image->stripImage();
+    $image->writeImage($new);
+    $image->destroy();
+}
+
 /**
  * desription 判断是否gif动画
  * @param sting $image_file图片路径
@@ -70,21 +104,24 @@ function check_gifcartoon($image_file){
  */
 function compressPic($dir)
 {
-    if (is_dir($dir)) {
+    if (is_dir($dir)){
         $filesnames = scandir($dir);
         foreach ($filesnames as $name) {
             if ($name == '.' || $name == '..') continue;
             //echo $name."\n";
-            compressPic($dir."\\".$name);
+            $oldname=$dir."\\".$name." ";
+            //echo $oldname;
+            if (is_file($oldname)) {
+                $bname=basename($name,".jpg");
+                echo $bname;
+                $new_name=dirname(dirname($oldname))."\\picturesx\\".$bname."x.jpg";
+                echo $new_name."\n";
+                writeNewpic($oldname, $new_name);
+                //image_png_size_add($oldname,$new_name);
+                echo "conpress:".$bname.".jpg";
+            }
         }
-    } else if (is_file($dir)) {
-        $name=basename($dir,".jpg");
-        $new_name=dirname(dirname($dir))."\\picturesx\\".$name."x.jpg";
-        //echo $dir."   ".$new_name."\n";
-        image_png_size_add($dir,$new_name);
-        echo "conpress:".$name.".jpg";
     }
-
 }
 
 
