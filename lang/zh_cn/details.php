@@ -19,8 +19,8 @@ $_LANG['SignUp']='注册';
 $_LANG['Logout']='登出';
 $_LANG['ChangePwd']='修改密码';
 
-$_LANG['Summary']='测评总结';
-$_LANG['Ratings']='测评得分';
+$_LANG['Summary']='测评结论';
+$_LANG['Ratings']='测评等级';
 $_LANG['Features']='规格参数';
 
 $_LANG['Review']='消费者说';
@@ -39,11 +39,11 @@ $_LANG['Average']='中等';
 $_LANG['Sufficient']='尚可';
 $_LANG['Poor']='差劣';
 
-$_LANG['Weighting']='评测比重';
-$_LANG['Score']='评测得分';
+$_LANG['Weighting']='测评比重';
+$_LANG['Score']='测评等级';
 $_LANG['Rating']='优良等级';
-$_LANG['Symbol']='评测标志';
-$_LANG['CotestVerdict']='众测意见';
+$_LANG['Symbol']='测评标志';
+$_LANG['CotestVerdict']='群测结论';
 
 $_LANG['AddToCompare']='加入对比';
 $_LANG['GoToComparison']='跳转到对比';
