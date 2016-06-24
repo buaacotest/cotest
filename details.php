@@ -9,16 +9,21 @@ require('includes/init.php');
 require('includes/config.php');
 require('includes/lib_products.php');
 require('includes/lib_comment.php');
+
 $lang=$_SESSION['lang'];
 $user=$_SESSION['member'];
 require('./lang/'.$_SESSION['lang'].'/details.php');
 $proj=trim($_GET['proj']);
+require("data/$proj/pictureAddress.php");
 $_SESSION['project']=$proj;
 $GLOBALS['db']->changeDB($proj);
 $id=trim($_GET['id']);
 $details=getDetails($id,3,$lang);
 /*获取目录*/
 $directory=getDirectoryWithLink($proj);
+
+/*获取图片相对地址*/
+$addrs=$pictureAddresses[$id];
 
 //print_r($comments);
 //print_r($details['Pros']);
@@ -36,6 +41,7 @@ $smarty->assign("id",$id);
 $smarty->assign("user",$user);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('directory',$directory);
+$smarty->assign('addrs',$addrs);
 if(isMobile())
     $smarty->display('details_m.tpl');
 else
