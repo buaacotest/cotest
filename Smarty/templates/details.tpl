@@ -124,14 +124,14 @@
                                 <!--
                                 <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
                                 -->
-                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a ><{$lang.Back}></a>
+                                <li role="presentation" class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Back}></a>
                               </ul>
                         </div>
                         <div class="row">
-                            
-                            <div class="col-md-12 pro-img text-center"id="pro_img1">
+                            <{section name=n loop=$addrs}>
+                            <div class="col-md-12 pro-img text-center"id="pro_img<{$smarty.section.n.iteration}>">
 
-                                <img src="data/<{$project}>/picturesx/<{$product.id}>_01x.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
+                                <img src="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg" alt="<{$product.name}>" >
 
                             </div>
                             <!--
@@ -141,11 +141,8 @@
                                   
                             </div>
                             -->
-                            <div class="col-md-12 pro-img text-center"id="pro_img3">
 
-                                <img src="data/<{$project}>/picturesx/<{$product.id}>_02x.jpg" >
-                                  
-                            </div>
+                            <{/section}>
                         </div>
                         <div class="pro-info">
 

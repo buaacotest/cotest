@@ -84,8 +84,9 @@ EOF;
             foreach ($item['value'] as $value) {
                 if ($item['name'] == 'Brand') {
                     $sql = "select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='" . $value . "')";
-                }
-                //echo $sql;
+                }else
+                    $sql="select count(*) from results where id_evaluation=(select id_evaluation from evaluations where name='".$item['name']."') and value='$value'";
+               //echo $sql."\n";
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
                 if ($v == 0) {

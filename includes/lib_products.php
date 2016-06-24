@@ -317,9 +317,13 @@ function getProperty($id,&$res,$lang){
                 if($p['name']=="Pros"||$p['name']=="优点"){
                     //
                     $pros=preg_split("/[,;]+/", $p['value']);//explode(",",$p['value']);
-                   // print_r($pros);
-                    if($pros[count($pros)-1]=='')
-                        unset($pros[count($pros)-1]);
+                    //
+                    $index=count($pros)-1;
+
+                    if(preg_match("/[\s]+/i",$pros[$index])||empty($pros[$index])) {
+                        //echo "null";
+                        unset($pros[$index]);
+                    }
                 }
             }
             $res['Pros']=$pros;
@@ -329,8 +333,12 @@ function getProperty($id,&$res,$lang){
             foreach($props as $p){
                 if($p['name']=="Cons"||$p['name']=="缺点"){
                     $cons=preg_split("/[,;]+/", $p['value']);//explode(",",$p['value']);
-                    if($cons[count($cons)-1]=='')
-                        unset($cons[count($cons)-1]);
+                    $index=count($cons)-1;
+
+                    if(preg_match("/[\s]+/i",$cons[$index])||empty($pcons[$index])) {
+                        //echo "null";
+                        unset($cons[$index]);
+                    }
                 }
             }
             $res['Cons']=$cons;
