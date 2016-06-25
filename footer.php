@@ -5,7 +5,7 @@
  * Date: 2016/4/17
  * Time: 15:22
  */
-require('includes/init.php');
+
 require('./lang/'.$_SESSION['lang'].'/common.php');
 $s = new Smarty;
 /*  定义各个目录的路径    */
