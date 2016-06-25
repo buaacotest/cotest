@@ -8,8 +8,9 @@
 $_LANG['COTEST']='群测社区';
 $_LANG['HowWeTest']='如何测试';
 $_LANG['Review']='消费者说';
-
-
+$_LANG['SortTime']='时间';
+$_LANG['SortScore']='评分';
+$_LANG['Filter']='筛选';
 $_LANG['Electronics']='数码电子';
 $_LANG['Smartphones']='智能手机';
 $_LANG['Food']='食品';

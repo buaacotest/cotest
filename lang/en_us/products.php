@@ -8,8 +8,9 @@
 $_LANG['COTEST']='COTEST';
 $_LANG['HowWeTest']='How we test';
 $_LANG['Review']='Review';
-
-
+$_LANG['SortTime']='time';
+$_LANG['SortScore']='score';
+$_LANG['Filter']='filter';
 $_LANG['Electronics']='Electronics';
 $_LANG['Smartphones']='Smartphones';
 $_LANG['Food']='Food';

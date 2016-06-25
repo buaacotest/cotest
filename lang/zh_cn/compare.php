@@ -11,7 +11,8 @@ $_LANG['Press']='媒体';
 $_LANG['Language']='语言';
 $_LANG['About']='关于我们';
 
-
+$_LANG['Pre']='上一个';
+$_LANG['Next']='下一个';
 $_LANG['InComparison']='进行对比';
 $_LANG['BackToTest']='返回测试';
 $_LANG['Comparison']='对比';

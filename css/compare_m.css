@@ -1,0 +1,135 @@
+.compare-title{
+	font-size:20px; 
+	font-weight: bold;
+	padding:20px;
+	color: #555;
+}
+.compare-table{
+	border: 1px solid #eee;
+	background: #fff;
+	width: 100%;
+}
+.compare-th{
+	padding: 5px;
+	padding-left: 25px;
+	font-weight: normal;
+	width: 50%;
+}
+
+.compare-table .product-head{
+
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+}
+.compare-td{
+	display: none;
+}
+.compare-td-show{
+	display: block;
+}
+.compare-table .product-image{
+	position: relative;
+	padding: 20px;
+	text-align: center;
+}
+.compare-table .product-link{
+	cursor: pointer;
+}
+.compare-table .product-image img{
+	max-width: 150px;
+}
+.compare-table .close{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 25px;
+	height: 25px;
+
+	background: url("../img/cross.png");
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+.compare-table .edit-comparison{
+	border-right: 1px solid #eee;
+	width: 50%;
+	text-align: center;
+
+}
+.compare-table .add-compare-btn{
+	border:1px solid #555;
+	background: #fff;
+	padding: 5px;
+
+}
+.compare-table tr{
+	border-bottom: 1px solid #eee;
+}
+.compare-table .heading-hide,.compare-table .subheading-hide{
+	display: none;
+}
+.compare-table th{
+	padding: 12px;
+	width: 50%;
+	border-right: 1px solid #eee;
+}
+.compare-table td{
+	padding: 12px;
+	border-right: 1px solid #eee;
+	
+	width: 50%;
+}
+
+.compare-table h2{
+	font-size: 16px;
+	color: #f7b206;
+	font-weight: bold;
+	margin-left: 14px;
+}
+.compare-table .heading {
+	cursor: pointer;
+}
+.compare-table .heading img{
+	width: 15px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.compare-table .subheading{
+	cursor: pointer;
+}
+.compare-table .subheading img{
+	width: 15px;
+	margin-left: 10px;
+}
+.compare-table .heading-toggle{
+		-webkit-transform:rotate(270deg);
+		-moz-transform:rotate(270deg);
+		transform:rotate(270deg);
+}
+.compare-table h3{
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 14px;
+}
+.selector{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background: rgba(255,255,255,0.9);
+	width: 100%;
+	height: 50px;
+	border-top: 1px solid #eee;
+	z-index: 1000;
+
+}
+.selector .pre{
+	border-right: 1px solid #eee;
+}
+.selector .pre,.selector .next{
+	width: 50%;
+	line-height: 50px;
+	text-align: center;
+	float: left;
+}
+.selector-inactive{
+	color: #aaa;
+}

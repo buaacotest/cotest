@@ -1,0 +1,196 @@
+.review-panel{
+	width: 100%;
+	background: #fff;
+	margin: 0 auto;
+	padding: 30px;
+	padding-top: 100px;
+
+}
+
+#review_panel{
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	background: #fff;
+	border: 1px solid #e9e9e9;
+	border-top: none;
+	padding: 20px;
+	padding-top: 60px;
+}
+
+
+.comments{
+	margin-bottom: 30px;
+
+}
+.comment{
+	border-bottom: 1px solid #ddd;
+}
+.comment-item{
+	padding: 10px 0;
+	
+}
+.comment-user{
+	font-size: 14px;
+	margin: 8px 0;
+	font-weight: bold;
+}
+.comment-user em{
+	font-weight: normal;
+	font-style: normal;
+	margin-left: 5px;
+}
+.comment-time{
+	color: #888;
+}
+.comment-cotent{
+	margin: 8px 0;
+}
+.comment-tool{
+	width: 100%;
+	height: 20px;
+	margin: 10px 0;	
+}
+.comment-tool .like,.dislike,.reply{
+	float: left;
+	opacity: 0.6;
+	margin-right:18px;
+	cursor: pointer;
+}
+
+.comment-tool .like-icon,.dislike-icon,.reply-icon{
+	float: left;
+	width: 15px;
+	height: 15px;
+	margin-top: 4px;
+	margin-right:5px;
+}
+.comment-tool .reply:hover{
+	opacity: 1;
+
+}
+.comment-tool .reply-icon{
+	background: url("../img/comment.png") no-repeat;
+	background-size: contain;
+}
+.comment-tool .like-icon{
+	background: url("../img/like.png") no-repeat;
+	background-size: contain;
+}
+.comment-tool .like-icon-active{
+	background: url("../img/like-active.png") no-repeat;
+	background-size: contain;
+}
+.comment-tool .dislike-icon{
+	background: url("../img/dislike.png") no-repeat;
+	background-size: contain;
+}
+.comment-tool em{
+	font-style: normal;
+}
+.comment-tool .dislike-icon-active{
+	background: url("../img/dislike-active.png") no-repeat;
+	background-size: contain;
+}
+.reply-panel{
+	padding: 20px;
+	background: #f8f8f8;
+	display: none;
+}
+.reply-placeholder {
+	position: relative;
+}
+.reply-placeholder textarea{
+	width: 100%;
+	background: #fff;
+	border: 1px solid #ccc;
+	height: 35px;
+	padding: 5px;
+	resize:none;
+}
+.reply-placeholder button{
+	background: #555;
+	color: #fff;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	border: 2px solid #555;
+	padding: 0px 30px;
+	line-height: 30px;
+}
+.reply-placeholder  textarea:focus{
+	height: 80px;
+}
+.reply-placeholder .reply-btn-active{
+	
+	line-height: 75px;
+}
+.reply-placeholder button:hover{
+	background: #333;
+}
+.reply-reply-placeholder textarea{
+	width: 100%;
+	background: #fff;
+	border: 1px solid #ccc;
+	height: 80px;
+	resize:none;
+
+}
+.reply-placeholder textarea:focus,.reply-reply-placeholder textarea:focus{
+	border: 1px solid #888;
+	outline: none;
+}
+.reply-reply-placeholder button{
+	background: none;
+	color: #555;
+	margin-top: 10px;
+	border: 2px solid #555;
+	padding: 0 20px;
+	line-height: 30px;
+}
+.reply-reply-placeholder button:hover{
+	background: #555;
+	color: #fff;
+}
+.reply-reply {
+	cursor: pointer;
+	opacity: 0.5;
+}
+.reply-reply:hover{
+	opacity: 1;
+}
+.reply-reply .reply-icon{
+	background: url("../img/comment.png") no-repeat;
+	background-size: contain;
+}
+.reply-reply-placeholder{
+	margin-top: 10px;
+	display: none;
+
+}
+.reply-item{
+	padding: 15px 0;
+	border-bottom: 1px solid #ddd;
+}
+.reply-user{
+	font-weight: bold;
+}
+.reply-user em{
+	font-weight: normal;
+	color: #999;
+}
+.comment-area{
+	width: 100%;
+	margin-top: 10px;
+	height: 150px;
+	resize: none;
+}
+
+.comment-btn{
+	margin-top: 15px;
+	background: #fff;
+	border:2px solid #555;
+	padding: 15px;
+
+
+}
