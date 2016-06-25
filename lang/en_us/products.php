@@ -14,7 +14,7 @@ $_LANG['Smartphones']='Smartphones';
 $_LANG['Food']='Food';
 $_LANG['Milk']='Milk';
 $_LANG['TestedSmartphones']='Tested products';
-
+$_LANG['TestedSmartphones_m']='Tested';
 $_LANG['SignIn']='Login';
 $_LANG['SignUp']='Signup';
 $_LANG['Logout']='Logout';

@@ -14,7 +14,7 @@ $_LANG['Smartphones']='智能手机';
 $_LANG['Food']='食品';
 $_LANG['Milk']='牛奶';
 $_LANG['TestedSmartphones']='测试产品';
-
+$_LANG['TestedSmartphones_m']='测试产品';
 
 $_LANG['SignIn']='登录';
 $_LANG['SignUp']='注册';

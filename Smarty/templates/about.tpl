@@ -290,8 +290,12 @@ The test results always are enhanced with a detailed report that explains how th
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
+    function navselect(nav){
+        var targetPanel=$(nav).attr("target");
+        $(".about-nav-list").find("li").removeClass("active");
+        $(nav).addClass("active");
         
-    })
+        $(targetPanel).show();
+    }
 </script>
 </html>
