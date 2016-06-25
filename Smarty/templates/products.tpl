@@ -215,7 +215,6 @@
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 <script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript">
-    <!--
     var totalpage,pagesize,cpage,count,curcount,outstr;
     var compare_list=[];
     var compare_name_list=[];
