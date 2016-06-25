@@ -7,7 +7,8 @@
  */
 $_LANG['COTEST']='COTEST';
 $_LANG['HowWeTest']='How we test';
-$_LANG['UserReview']='Review';
+$_LANG['Review']='Review';
+
 
 $_LANG['Electronics']='Electronics';
 $_LANG['Smartphones']='Smartphones';
@@ -47,7 +48,7 @@ $_LANG['MicroSD']='Micro-SD card slot';
 $_LANG['Verygood']='Very good';
 $_LANG['Good']='Good';
 $_LANG['Average']='Average';
-$_LANG['Sufficient']='Sufficient';
+$_LANG['Sufficient']='Adequate';
 $_LANG['Poor']='Poor';
 
 $_LANG['Compare']='Compare';

@@ -22,6 +22,7 @@ if($dicflag==0){
 }
 else {
    $sql="select wordid,flag from sdictionary where flag=".$dicflag;
+    //echo $sql;
 }
 
 $res=$db->getAll($sql);

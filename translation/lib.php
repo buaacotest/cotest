@@ -196,12 +196,12 @@ function getCountInAdminDic($oriWord)
 }
 
 /*得到在自身数据库中的count*/
-function getCountInSelfDic($wordid)
+function getCountInSelfDic($wordid,$flag)
 {
     $nowdb = $GLOBALS['db']->getNowDB();
     //echo $nowdb;
     $count = 0;
-    $sql = "SELECT count(*) FROM " . $nowdb . ".sdictionary where wordid='" . $wordid . "'";
+    $sql = "SELECT count(*) FROM " . $nowdb . ".sdictionary where wordid='" . $wordid . "' and flag=".$flag;
     $results = $GLOBALS['db']->query($sql);
     if ($results) {
         $countarray = mysql_fetch_array($results);
@@ -225,7 +225,7 @@ function GenAdminDicID()
 
 function QueryInSelfDic($id, $flag)
 {
-    $count = getCountInSelfDic($id);
+    $count = getCountInSelfDic($id,$flag);
     //echo $oriword;
     if ($count == 0)
         return null;
@@ -272,8 +272,11 @@ function GetTransLation($oriword, $id, $flag = 0)
             return $Translation;
         } else
             return $Translation;
-    } else
+    } else{
+        //echo $Translation;
         return $Translation;
+    }
+
 }
 
 /*TODO:realize save translation functions*/
@@ -301,7 +304,7 @@ function SaveTranslationToAdminDic($oriword, $translationArray, $id = null)
         return $result;
     } else {/////按初始设计来，大词典中的单词只允许添加单词，不允许修改。所以else应该永远不会调用
         //id!=null means change the meaning of one word
-        echo "change the admin dic oriword= " . $oriword . "and id=" . $id;
+        //echo "change the admin dic oriword= " . $oriword . "and id=" . $id;
         $sql = "SELECT count(*) FROM admin.dictionary where wordid=" . $id;
         $results = $GLOBALS['db']->query($sql);
         $countarray = mysql_fetch_array($results);

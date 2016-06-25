@@ -182,18 +182,21 @@ function getGradeTree($id,$tar,$lang){
     if($lang=='en_us'){
         $sql="select A.id_evaluation,name,id_parent,weighting_normalized as weight, value
        from evaluations as A,results as B
-      where A.id_evaluation=B.id_evaluation and selected=1
+      where A.id_evaluation=B.id_evaluation and selected=1 and weighting_normalized!=0
        and B.id_product=$id";
     }
     else{
         $sql="select A.id_evaluation,C.CHN as name,id_parent,weighting_normalized as weight,value
        from evaluations as A,results as B,sdictionary as C
-      where A.id_evaluation=B.id_evaluation and selected=1 and flag=1 and C.wordid=A.id_evaluation
+      where A.id_evaluation=B.id_evaluation and selected=1 and weighting_normalized!=0
+      and flag=1 and C.wordid=A.id_evaluation
        and B.id_product=$id";
     }
+    //echo $sql;
     $data=$GLOBALS['db']->getAll($sql);
     foreach($data as $k=>$v){
-        $data[$k]['value']=number_format(6-$v['value'],1, '.', '');
+        if(is_numeric($v['value']))
+            $data[$k]['value']=number_format(6-$v['value'],1, '.', '');
     }
     $gradeTree=getTree($data,0,0,$tar);
     return $gradeTree;
@@ -247,6 +250,11 @@ function getProperty($id,&$res,$lang){
         $value= htmlspecialchars($value,ENT_QUOTES);
         switch($v['type']){
             case 'String':$v['value']=$value;break;
+            case 'Score':if(is_numeric($value))
+                $v['value']=round($value,2);
+            else
+                $v['value']=$value;
+                break;
             case 'Numeric':if(is_numeric($value))
                 $v['value']=round($value,2);
             else
@@ -261,12 +269,20 @@ function getProperty($id,&$res,$lang){
                 break;
             default:$v['value']=$value;break;
         }
+        if($value==''){   /*||$value=='ny'||$value=='ns'||$value=='nt'||$value=='nf'*/
+
+            $v['value']='-';
+            $v['unit']='';
+
+
+        }
         $props[$k]=$v;
+
     }
     foreach($groups as $k=>$g){
         if($g['name']=="Pros"||$g['name']=="优点"){
             $pros=array();
-            foreach($props as $p){/*将优点连成字符串*/
+            foreach($props as $p){
                 if($p['id_propertygroup']==$g['id_propertygroup']){
 
                     if($p['value']=="Yes"||$p['value']=="yes"){
@@ -275,13 +291,13 @@ function getProperty($id,&$res,$lang){
                 }
 
                 }
-               
+
                 $res['Pros']=$pros;
             continue;
         } else if($g['name']=="Cons"||$g['name']=="缺点") {
-            $string="";
+
             $cons=array();
-            foreach($props as $p){/*将缺点连成字符串*/
+            foreach($props as $p){
                 if($p['id_propertygroup']==$g['id_propertygroup']){
 
                     if($p['value']=="Yes"||$p['value']=="yes"){
@@ -290,10 +306,12 @@ function getProperty($id,&$res,$lang){
                 }
             }
            // $string=substr($string, 0, -1);
+
             $res['Cons']=$cons;
 
             continue;
         }
+
         $temp='';
         foreach($props as $p){
             if($p['id_propertygroup']==$g['id_propertygroup']){
@@ -305,6 +323,34 @@ function getProperty($id,&$res,$lang){
             $results[]=$groups[$k];
         }
     }
+    if(empty($pros)){/*************************处理groups中没有Pros的情况*/
+        $pros=array();
+        $sql="select value  from results where id_product=$id and id_evaluation=(select id_evaluation from evaluations where name='Pros')";
+        $stringPros=trim($GLOBALS['db']->getOne($sql));
+        if(!empty($stringPros)) {
+            $pros = preg_split("/[,;]/", $stringPros);//explode(",",$p['value']);
+            //
+            if(empty($pros[count($pros)-1]))
+                unset($pros[count($pros)-1]);
+        }
+        $res['Pros']=$pros;
+    }
+    if(empty($cons)){/*************************处理groups中没有Cons的情况*/
+
+        $cons=array();
+        $sql="select value  from results where id_product=$id and id_evaluation=(select id_evaluation from evaluations where name='Cons')";
+       // echo $sql;
+       $stringCons=trim($GLOBALS['db']->getOne($sql));
+        if(!empty($stringCons)){
+            $cons=preg_split("/[,;]/", $stringCons);//explode(",",$p['value']);
+            if(empty($cons[count($cons)-1]))
+                unset($cons[count($cons)-1]);
+        }
+
+        //print_r($cons);
+        $res['Cons']=$cons;
+    }
+
     if($_SESSION['project']=='mobilephones'){
         foreach($results[1]['id_propertygroup'] as $type){
             $results[0]['id_propertygroup'][]=$type;
@@ -487,23 +533,25 @@ function getDirectoryWithLink($project){
     if($lang=='en_us'){//up表示上一级目录，upper表示上上级目录
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'Smartphones','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                         'milk'=>array('up'=>array('name'=>'Milk','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'Food','link'=>'index.php')),
+                                  'milkpowder'=>array('up'=>array('name'=>'Formula Milk Powder','link'=>'products.php?proj=milkpowder'),'upper'=>array('name'=>'Food','link'=>'index.php')),
                                         'tablets'=>array('up'=>array('name'=>'Tablets','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'Televisions','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                 'whheadphones'=>array('up'=>array('name'=>'Headphones','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                 'fitnessbands'=>array('up'=>array('name'=>'Fitness Trackers','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                                      'lenses'=>array('up'=>array('name'=>'Lenses','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
-                              'basiccameras'=>array('up'=>array('name'=>'Basic Cameras','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                              'basiccameras'=>array('up'=>array('name'=>'Cameras','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
                             'highendcameras'=>array('up'=>array('name'=>'High-END Cameras','link'=>'products.php?proj=highendcameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
                          'actioncamcorders'=>array('up'=>array('name'=>'Action Camcorders','link'=>'products.php?proj=actioncamcorders'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }else{
         $directoryArray=array('mobilephones'=>array('up'=>array('name'=>'智能手机','link'=>'products.php?proj=mobilephones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                         'milk'=>array('up'=>array('name'=>'牛奶','link'=>'products.php?proj=milk'),'upper'=>array('name'=>'食品','link'=>'index.php')),
+                                 'milkpowder'=>array('up'=>array('name'=>'婴幼儿奶粉','link'=>'products.php?proj=milkpowder'),'upper'=>array('name'=>'食品','link'=>'index.php')),
                                     'tablets'=>array('up'=>array('name'=>'平板电脑','link'=>'products.php?proj=tablets'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                          'tvs'=>array('up'=>array('name'=>'电视','link'=>'products.php?proj=tvs'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
                                 'whheadphones'=>array('up'=>array('name'=>'耳机','link'=>'products.php?proj=whheadphones'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
-                                 'fitnessbands'=>array('up'=>array('name'=>'智能手环','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'Electronics','link'=>'index.php')),
-                                     'lenses'=>array('up'=>array('name'=>'镜头','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'相机','link'=>'index.php')),
-                             'basiccameras'=>array('up'=>array('name'=>'普通相机','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
+                                 'fitnessbands'=>array('up'=>array('name'=>'智能手环','link'=>'products.php?proj=fitnessbands'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                                     'lenses'=>array('up'=>array('name'=>'镜头','link'=>'products.php?proj=lenses'),'upper'=>array('name'=>'电子产品','link'=>'index.php')),
+                             'basiccameras'=>array('up'=>array('name'=>'数码相机','link'=>'products.php?proj=basiccameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
                             'highendcameras'=>array('up'=>array('name'=>'高端相机','link'=>'products.php?proj=highendcameras'),'upper'=>array('name'=>'Cameras','link'=>'index.php')),
                          'actioncamcorders'=>array('up'=>array('name'=>'运动摄录机','link'=>'products.php?proj=actioncamcorders'),'upper'=>array('name'=>'Electronics','link'=>'index.php')));
     }

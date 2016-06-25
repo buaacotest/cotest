@@ -11,7 +11,8 @@ $_LANG['Press']='媒体';
 $_LANG['Language']='语言';
 $_LANG['About']='关于我们';
 
-$_LANG['Smartphones']='智能手机';
-$_LANG['Electronics']='电子设备';
-$_LANG['InComparison']='个智能手机进行对比';
+
+$_LANG['InComparison']='进行对比';
 $_LANG['BackToTest']='返回测试';
+$_LANG['Comparison']='对比';
+$_LANG['Add']='添加更多';
