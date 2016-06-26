@@ -398,6 +398,7 @@ if __name__=="__main__":
     for node in propertygroup_nodes:
         propertygroup_id = get_attrvalue(node,'id_propertygroup')
         propertygroup_name= get_attrvalue(node,'name')
+        propertygroup_name=propertygroup_name.split('|')[-1]
         propertygroup_comment=get_attrvalue(node,'comment')
         propertygroup_timestamp_created=get_attrvalue(node,'timestamp_created')
         propertygroup_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
@@ -677,5 +678,14 @@ if __name__=="__main__":
     print("deal with results over\n")
     #results------------------------------------------------END
     print("createDB over")
+    #create trigger
 
-    #ALL END
+
+    sql_create_trigger="CREATE TRIGGER t_afterdelete_on_products AFTER DELETE ON products FOR EACH ROW BEGIN " \
+                       "delete from results where id_product=old.id_product; END;"
+    try:
+        cursor = cnn.cursor()
+        cursor.execute(sql_create_trigger)
+    except mysql.connector.Error as e:
+        print('create t_afterdelete_on_products fails!{}'.format(e))
+         #ALL END
