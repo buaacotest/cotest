@@ -30,7 +30,7 @@ $smarty->assign('lang',$_LANG);
 $smarty->assign('count',$count);
 $smarty->assign('directory',$directory);
 $smarty->assign('products',$comProducts);
-$smarty->assign('project',$project_name);
+$smarty->assign('project',$project);
 if(isMobile())
     $smarty->display('compare_m.tpl');
 else
