@@ -67,7 +67,7 @@
               <th data-product-id="10344" scope="col" class="compare-td compare-td-<{$smarty.section.n.iteration}>" >
                 <div class="product-image">
                 <a class="product-link product-thumb" target="<{$products[n].id}>">
-                  <img class="comparison-product-thumbnail" alt="<{$products[n].name}>" src="data/<{$project}>/pictures/<{$products[n].id}>_01.jpg">
+                  <img class="comparison-product-thumbnail" alt="<{$products[n].name}>"  src="data/<{$project}>/picturesx/<{$products[n].id}>_01x.jpg">
                 </a>
                 <div class="close" target="<{$products[n].id}>"></div>
               </div>

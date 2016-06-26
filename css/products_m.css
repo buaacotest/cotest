@@ -134,7 +134,7 @@ body{
 	width: 240px;
 	top: -70px;
 	box-shadow: 1px 10px 5px #888888;
-	z-index: 1000;
+	z-index: 1800;
 	background: #fff;
 	color: #888;
 	right: 0px;
@@ -142,7 +142,6 @@ body{
 	overflow-x: hidden;
 	padding: 30px 20px;
 	margin-top: 60px;
-
 }
 .filter-head{
 	width: 200px;
@@ -363,7 +362,11 @@ body{
 	border-radius:0;
 	width: 250px;
 } 
-
+#how-we-test-panel{
+	background: #fff;
+	padding: 30px;
+	padding-top: 40px;
+}
 .compare-item{
 	width: 80px;
 	height: 80px;

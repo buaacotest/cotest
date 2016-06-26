@@ -34,8 +34,8 @@
      </div>
         <ul class="nav nav-tabs pro-nav">
                 <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1"><a><{$lang.TestedSmartphones}></a></li>
-                <li role="presentation" class="proper-tab" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
-                <li role="presentation" class="proper-tab" target="#review_panel" id="tab3"><a><{$lang.Review}></a></li>
+                <li role="presentation" class="proper-tab" target="#how-we-test-panel" id="tab2"><a><{$lang.HowWeTest}></a></li>
+               <!-- <li role="presentation" class="proper-tab" target="#review_panel" id="tab3"><a><{$lang.Review}></a></li>-->
 
             </ul>
 
@@ -187,9 +187,18 @@
         </div>
 
     </div>
+    <!--
     <div id="review_panel" style="display:none">
       <div class="comments "></div>
       
+    </div>
+    -->
+    <div id="how-we-test-panel" style="display: none;">
+ 
+
+
+
+
     </div>
     <div class="compare-panel" >
         <div class="compare-toogle">
@@ -214,6 +223,11 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 <script type="text/javascript" src="js/comment.js"></script>
+<script type="text/javascript">
+  $.get("data/howtotest/<{$project}>.html",function(data){
+    $("#how-we-test-panel").html(data)
+  })
+</script>
 <script type="text/javascript">
     var totalpage,pagesize,cpage,count,curcount,outstr;
     var compare_list=[];
