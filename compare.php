@@ -31,6 +31,7 @@ $smarty->assign('count',$count);
 $smarty->assign('directory',$directory);
 $smarty->assign('products',$comProducts);
 $smarty->assign('project',$project);
+$smarty->assign('title',"Comparison");
 if(isMobile())
     $smarty->display('compare_m.tpl');
 else
