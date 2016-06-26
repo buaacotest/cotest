@@ -184,7 +184,7 @@
         
 
     </div>
-    <div id="how-we-test-panel">
+    <div id="how-we-test-panel" style="display: none">
       
     </div>
     <div id="review_panel" style="display:none">
