@@ -414,6 +414,18 @@ color: #f7b206;
 	padding-top: 100px;
 
 }
+#how-we-test-panel{
+	background: #fff;
+	width: 800px;
+	margin: 0 auto;
+	padding: 40px;
+	padding-top: 100px;
+}
+#how-we-test-panel h3{
+	font-size: 22px;
+	margin: 28px 0px;
+	color: #f7b206;
+}
 .products-container{
 	float: left;
 	margin-top: 60px;
@@ -573,7 +585,7 @@ filter: alpha(opacity=0);
 .pro-nav{
 	font-size: 16px;
 	margin-top: 20px;
-	padding-left: 80px;
+	padding-left: 200px;
 
 }
 .pro-nav>li{
@@ -1604,6 +1616,7 @@ footer .icptext{
 }
 .about-nav-list li{
 	margin: 5px 0px;
+	cursor: pointer;
 }
 .about-nav{
 	padding-top: 10px;

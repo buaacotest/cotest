@@ -120,11 +120,11 @@
                     <div class="col-md-12">
                         <div class="img-tabs">
                             <ul class="nav nav-tabs pro-nav">
-                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a ><{$lang.Front}></a></li>
+                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"></li>
                                 <!--
-                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
+                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"></li>
                                 -->
-                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a ><{$lang.Back}></a>
+                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"></li>
                               </ul>
                         </div>
                         <div class="row">

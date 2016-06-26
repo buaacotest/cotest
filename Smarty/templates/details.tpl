@@ -111,7 +111,8 @@
                 <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a ><{$lang.Summary}></a></li>
                 <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a ><{$lang.Ratings}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a ><{$lang.Features}></a></li>
-                <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><{$lang.Review}></a></li>
+              <!--  <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><{$lang.Review}></a></li>
+              -->
               </ul>
             
             <div class="pro-review-panel">
@@ -479,6 +480,7 @@
                     <{/section}>
 
                 </div>
+                <!--
                 <div id="panel4" class="proper-panel">
                     <div class="comments">
 
@@ -489,7 +491,7 @@
              
 
                 </div>
-                
+                -->
             </div>
         </div>
     </div >

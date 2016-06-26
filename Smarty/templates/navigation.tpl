@@ -23,11 +23,13 @@
                 <!--<li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
                 <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
                     <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
+                   
                     <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
 
-                </ul>--->
+                </ul>-->
+                <!-- 
                 <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
-                <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
+               <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>-->
                 <{if $user}>
                 <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><a href="#"><{$user}></a>
 
