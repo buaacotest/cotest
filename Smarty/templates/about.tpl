@@ -38,15 +38,15 @@
     <div class="about-nav-title"> About us</div>
     <ul class="about-nav-list">
 
-        <li class="active" target="#about-cotest">COTEST</li>
-        <li target="#about-icrt">ICRT</li>
-        <li target="#about-sw">Stiftung Warentest</li>
-        <li target="#how-to-test">How to test</li>
+        <li class="active" onclick="javascript:navselect(this)" target="#about-cotest">COTEST</li>
+        <li onclick="javascript:navselect(this)" target="#about-icrt">ICRT</li>
+        <li onclick="javascript:navselect(this)" target="#about-sw">Stiftung Warentest</li>
+        <li onclick="javascript:navselect(this)" target="#how-to-test">How to test</li>
     </ul>
 </div>
 
-<div class="col-md-9 about-article">
-<div id="about-cotest">
+<div class="col-md-9 ">
+<div id="about-cotest"  class="about-article">
     <h2 style="text-center">About COTEST</h2>
     <br>
     <h4>Mission</h4>
@@ -82,7 +82,7 @@
         <img src="img/eu_c.gif" class="about-eu">
     </div>
     </div>
-    <div id="about-icrt">
+    <div id="about-icrt" class="about-article" style="display: none">
      <h2 style="text-center">About ICRT</h2>
     <br>
     <h4>Mission</h4>
@@ -90,7 +90,7 @@
     <p>
      International Consumer Research & Testing (ICRT, http://www.international-testing.org) is a global consortium of more than 35 consumer organisations dedicated to carrying out joint research and testing in the consumer interest. Its mission is to be the world-leading organisation that empowers its members to provide high quality and independent information to consumers worldwide. 
     </p>
-    <div class="about-img-container">
+    <div class="about-img-container" >
         <img src="img/icrt_c.png" class="about-icrt">
     </div>
     <p>ICRT's principal objectives are to facilitate co-operation between its members and to promote research and testing in the field of consumer goods and services. ICRT sets out clear guidelines for successful collaboration, increases the cost effectiveness of testing, develops common test programmes and evaluation methods and helps smaller consumer organisations to grow.</p>
@@ -105,8 +105,8 @@
         <img src="img/icrtpartner.jpg" class="about-member">
     </div>
     </div>
-    <div id="about-sw">
-      <h2 style="text-center">About ICRT</h2>
+    <div id="about-sw" class="about-article" style="display: none">
+      <h2 style="text-center">Stiftung Warentest</h2>
     <br>
     <p>Stiftung Warentest is a foundation. It was established in 1964 by the German federal parliament with the aim of helping consumers by providing impartial and objective information based on the results of comparative investigations of goods and services. </p>
     <div class="about-img-container">
@@ -169,7 +169,7 @@
         <img src="img/research.jpg" class="about-member">
     </div>
     </div>
-    <div id="how-to-test"> 
+    <div id="how-to-test" class="about-article" style="display: none;"> 
     <h2>How to test</h2>
     <h4>1. Planning the test</h4>
     <div class="about-img-container">
@@ -294,7 +294,7 @@ The test results always are enhanced with a detailed report that explains how th
         var targetPanel=$(nav).attr("target");
         $(".about-nav-list").find("li").removeClass("active");
         $(nav).addClass("active");
-        
+        $(".about-article").hide();
         $(targetPanel).show();
     }
 </script>

@@ -38,9 +38,9 @@
      </div>
      -->
         <ul class="nav nav-tabs pro-nav">
-                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1" style="width:30%"><a><{$lang.TestedSmartphones_m}></a></li>
-                <li role="presentation" class="proper-tab"style="width:40%" target="#panel2" id="tab2"><a><{$lang.HowWeTest}></a></li>
-                <li role="presentation"style="width:30%" class="proper-tab" target="#review_panel" id="tab3"><a><{$lang.Review}></a></li>
+                <li role="presentation" class="proper-tab active" target="#product_panel" id="tab1" style="width:50%"><a><{$lang.TestedSmartphones_m}></a></li>
+                <li role="presentation" class="proper-tab"style="width:50%" target="#how-we-test-panel" id="tab2"><a><{$lang.HowWeTest}></a></li>
+               <!-- <li role="presentation"style="width:30%" class="proper-tab" target="#review_panel" id="tab3"><a><{$lang.Review}></a></li>-->
 
             </ul>
 
@@ -183,6 +183,9 @@
         </div>
         
 
+    </div>
+    <div id="how-we-test-panel">
+      
     </div>
     <div id="review_panel" style="display:none">
       <div class="comments "></div>
@@ -762,6 +765,11 @@
       });
     }*/
     setpage();    //调用分页
+</script>
+<script type="text/javascript">
+ $.get("data/howtotest/<{$project}>.html",function(data){
+    $("#how-we-test-panel").html(data)
+  })
 </script>
 <script type="text/javascript">
     $(document).ready(function(){

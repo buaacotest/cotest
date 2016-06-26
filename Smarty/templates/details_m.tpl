@@ -114,7 +114,7 @@
                 <li role="presentation" class="proper-tab active" target="#panel1"id="tab1"><a ><{$lang.Summary}></a></li>
                 <li role="presentation"class="proper-tab" target="#panel2"id="tab2"><a ><{$lang.Ratings}></a></li>
                 <li role="presentation" class="proper-tab" target="#panel3"id="tab3"><a ><{$lang.Features}></a></li>
-                <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><{$lang.Review}></a></li>
+                
               </ul>
             
             <div class="pro-review-panel">
@@ -123,11 +123,11 @@
                     
                         <div class="img-tabs">
                             <ul class="nav nav-tabs pro-nav">
-                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a ><{$lang.Front}></a></li>
+                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"></li>
                                 <!--
-                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
+                                <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"></li>
                                 -->
-                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"><a ><{$lang.Back}></a>
+                                <li role="presentation" class="proper-tab" target="#pro_img3"id="tab3"></li>
                               </ul>
                         </div>
                         <div class="row">
@@ -424,6 +424,7 @@
                     <{/section}>
 
                 </div>
+                <!--
                 <div id="panel4" class="proper-panel">
                     <div class="comments">
                     <{section name=n loop=$comments}>
@@ -496,6 +497,7 @@
              
 
                 </div>
+                -->
                 
             </div>
         </div>
