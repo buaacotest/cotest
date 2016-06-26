@@ -70,6 +70,9 @@ EOF;
            {"type":"multi","name":"","label":"SIM卡格式",
            "value":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"],
            "option":["Micro SIM","Mini SIM","Nano SIM","Dual SIM"]},
+           {"type":"string","name":"Memory card slot","label":"Micro-SD card slot",
+           "value":[1,0],
+           "option":["有","无"]},
           {"type":"range","name":"Water resistance in 1m if this is claimed?","label":"防1米深水性能",
            "value":[{">=":0.5,"<=":5.5}],
            "option":["有"]}
@@ -85,7 +88,7 @@ EOF;
                 if ($item['name'] == 'Brand') {
                     $sql = "select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='" . $value . "')";
                 }else
-                    $sql="select count(*) from results where id_evaluation=(select id_evaluation from evaluations where name='".$item['name']."') and value='$value'";
+                    $sql="select count(*) from results where id_evaluation in(select id_evaluation from evaluations where name='".$item['name']."') and value='$value'";
                //echo $sql."\n";
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
