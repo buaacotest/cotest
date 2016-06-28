@@ -18,8 +18,8 @@ $token="u:".$username."!p:".$password."!e:".$email."!r:".$regtime."!";
 $token=autocode($token,'ENCODE',constant('KEY'));
 $token=urlencode($token);
 $emailbody = $_LANG['dear']." ".$username.":<br/>".$_LANG['clickLink'].
-    "<a href='http://114.55.61.207/cotest/active.php?token=$token' target=
-'_blank'>http://114.55.61.207/cotest/active.php?token=$token</a><br/>".$LANG['ifCannotClick'];
+    "<a href='http://cotest.org/active.php?token=$token' target=
+'_blank'>http://cotest.org/active.php?token=$token</a><br/>".$LANG['ifCannotClick'];
 $rs=sendMail($email,$_LANG['active'],$emailbody);
 if($rs){
     $msg =1;
