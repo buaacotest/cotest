@@ -117,6 +117,14 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
+
+function showLabels(){
+    $labels = <<<EOF
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","146","126","20","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["71","221"]},{"type":"string","name":"Brand","label":"Brands","value":["LG","Panasonic","Philips","Sony","Grundig","Philco","TCL","HiSense","AOC","Loewe","Semp Toshiba","THOMSON","Metz","Changhong","JVC","TD Systems","TechniSat","Orava","Telefunken","Hitachi","Blaupunkt","Sharp","GoGen","Sencor"],"option":["LG","Panasonic","Philips","Sony","Grundig","Philco","TCL","HiSense","AOC","Loewe","Semp Toshiba","THOMSON","Metz","Changhong","JVC","TD Systems","TechniSat","Orava","Telefunken","Hitachi","Blaupunkt","Sharp","GoGen","Sencor"],"number":["55","46","36","32","13","5","5","5","4","3","3","3","3","2","2","2","2","2","2","1","1","1","1","1"]}]
+EOF;
+return $labels;
+}
+
 //根据数量多少排序
 function sortByNumber(&$src)
 {
