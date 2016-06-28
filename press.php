@@ -9,6 +9,7 @@ require('includes/init.php');
 include_once 'includes/config.php';
 require('lang/'.$_SESSION['lang'].'/user.php');
 $smarty->assign('lang',$_LANG);
+$smarty->assign('title',"press");
 if(isMobile())
     $smarty->display('press_m.tpl');
 else

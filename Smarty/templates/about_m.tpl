@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
+    <link rel="icon" type="image/png" href="img/COTESTicon.png"/>
     <title><{$title}></title>
 
     <!-- Bootstrap core CSS -->

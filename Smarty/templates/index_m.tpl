@@ -6,7 +6,7 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
+  <link rel="icon" type="image/png" href="img/COTESTicon.png"/>
 
   <title><{$title}></title>
 
@@ -65,6 +65,41 @@ require("navigation.php");
       </div>
       -->
       <div class="row pro-list">
+      <div class="pro-list-r">
+          <div class="pro-list-title">
+              <{$lang.Food}> 
+                <p><{$lang.JointTests_C}></p>
+          </div>
+
+          <div class="pro-list-content">
+            <a href="products.php?proj=milk">
+            <div class="pro-list-item">
+              <div class="pro-list-item-img">
+                <img src="img/milk.jpg">
+              </div>
+              <div class="pro-list-item-info">
+                <div class="num"><{$number.milk}></div>
+              </div>
+              <div class="pro-list-item-info">
+                <div class="name"><{$lang.Milk}></div>
+              </div>
+            </div>
+              </a>
+            <a href="products.php?proj=milkpowder">
+            <div class="pro-list-item">
+              <div class="pro-list-item-img">
+                <img src="img/milkpowder.jpg">
+              </div>
+              <div class="pro-list-item-info">
+                <div class="num"><{$number.milkpowder}></div>
+              </div>
+              <div class="pro-list-item-info">
+                <div class="name"><{$lang.MilkPowder}></div>
+              </div>
+            </div>
+              </a>
+          </div>
+        </div>
         <div class="pro-list-l">
           <div class="pro-list-title">
               <{$lang.Electronics}> 
@@ -84,19 +119,6 @@ require("navigation.php");
               </div>
             </div>
             </a>
-            <a href="products.php?proj=tablets">
-            <div class="pro-list-item">
-              <div class="pro-list-item-img">
-                <img src="img/tablet.jpg">
-              </div>
-              <div class="pro-list-item-info">
-                <div class="num"><{$number.tablets}></div>
-              </div>
-              <div class="pro-list-item-info">
-                <div class="name"><{$lang.Tablets}></div>
-              </div>
-            </div>
-              </a>
             <a href="products.php?proj=tvs">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
@@ -110,12 +132,26 @@ require("navigation.php");
               </div>
             </div>
               </a>
+           
+            <div class="pro-list-item">
+              <div class="pro-list-item-img">
+                <img src="img/tablet.jpg">
+              </div>
+              <div class="pro-list-item-info">
+                <div class="num">0</div>
+              </div>
+              <div class="pro-list-item-info">
+                <div class="name"><{$lang.Tablets}></div>
+              </div>
+            </div>
+              
+            
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/camera.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">134</div>
+                <div class="num">0</div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name">Digital Cameras</div>
@@ -126,87 +162,49 @@ require("navigation.php");
                 <img src="img/watch.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">232</div>
+                <div class="num">0</div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name">Smart Watches</div>
               </div>
             </div>
-            <a href="products.php?proj=actioncamcorders">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num"><{$number.actioncamcorders}></div>
+                <div class="num">0</div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.ActionCamcorders}></div>
               </div>
             </div>
-            </a>
-            <a href="products.php?proj=whheadphones">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num"><{$number.whheadphones}></div>
+                <div class="num">0</div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Headphones}></div>
               </div>
             </div>
-            </a>
-            <a href="products.php?proj=fitnessbands">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/phone.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num"><{$number.fitnessbands}></div>
+                <div class="num">0</div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Fitness}></div>
               </div>
             </div>
-          </a>
           </div>
           
         </div>
-        <div class="pro-list-r">
-          <div class="pro-list-title">
-              <{$lang.Food}> 
-                <p><{$lang.JointTests_C}></p>
-          </div>
-
-          <div class="pro-list-content">
-            <a href="products.php?proj=milk">
-            <div class="pro-list-item">
-              <div class="pro-list-item-img">
-                <img src="img/milk.jpg">
-              </div>
-              <div class="pro-list-item-info">
-                <div class="num"><{$number.milk}></div>
-              </div>
-              <div class="pro-list-item-info">
-                <div class="name">UHT Milk</div>
-              </div>
-            </div>
-              </a>
-            <div class="pro-list-item">
-              <div class="pro-list-item-img">
-                <img src="img/milkpowder.jpg">
-              </div>
-              <div class="pro-list-item-info">
-                <div class="num">234</div>
-              </div>
-              <div class="pro-list-item-info">
-                <div class="name">Formular Milk Powder</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
       <div class="row">
         <!--

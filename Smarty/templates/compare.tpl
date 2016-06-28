@@ -7,8 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
+    <link rel="icon" type="image/png" href="img/COTESTicon.png"/>
     <title><{$title}></title>
 
     <!-- Bootstrap core CSS -->
@@ -75,7 +74,7 @@
 
           <tr class="product-names">
             <{section name=n loop=$products}>
-              <th class="product-name"><{$products[n].name}></th>
+              <th class="product-name"><{$products[n].manufacturer}> <{$products[n].name}></th>
             <{/section}>
 
           </tr>
