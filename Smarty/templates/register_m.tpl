@@ -137,7 +137,7 @@
         }
         var yzm_value=0;
         function check_usr(obj){
-             var objvalue = obj.value;
+             var objvalue = obj;
              var b=/^[a-zA-Z\d]\w{2,10}[a-zA-Z\d]$/;
              if (!b.test(objvalue)) {
           //    document.getElementByIdx_x('checkusr').innerHTML ="<font color='#ff0000'>用户名非法!</font>";
@@ -147,7 +147,7 @@
                 return true;
          }
          function check_psw(obj){
-             checkpsw=obj.value;
+             var checkpsw=obj;
              if(checkpsw.length > 5 && checkpsw.length<21){
             //  document.getElementByIdx_x("checkpsw").innerHTML = "<font color='#00c72e'>密码可以使用!</font>";
                 return true;
@@ -157,7 +157,7 @@
              }
          }
              function check_mail(obj){
-                 var strm=obj.value;
+                 var strm=obj;
                  var regm = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;//验证Mail的正则表达式,^[a-zA-Z0-9_-]:开头必须为字母,下划线,数字,
                  if (!strm.match(regm))
                  {
