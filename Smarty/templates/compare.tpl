@@ -263,7 +263,7 @@
 
           <tr class="heading" data-category="tests-heading">
             <th>
-              <h2>Features
+              <h2>Measurements
               <img src="img/down_b.png">
               </h2>
             </th>

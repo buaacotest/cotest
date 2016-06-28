@@ -41,7 +41,7 @@
         <li class="active" onclick="javascript:navselect(this)" target="#about-cotest">COTEST</li>
         <li onclick="javascript:navselect(this)" target="#about-icrt">ICRT</li>
         <li onclick="javascript:navselect(this)" target="#about-sw">Stiftung Warentest</li>
-        <li onclick="javascript:navselect(this)" target="#how-to-test">How to test</li>
+        <li onclick="javascript:navselect(this)" target="#how-to-test">How we test</li>
     </ul>
 </div>
 
@@ -236,7 +236,7 @@ For each feature or specification, a score from 0.5 to 5.5 is related to its mea
 Each of the assessments described above contributes to a total test result accordingly to its weight in the TTR. A smartphone needs a score from 0.5 to 1.5 in our tests to earn our best rating “very good”, a score from 1.6 to 2.5 the rating “good”, from 2.6 to 3.5 the rating “average” and from 3.6 to 4.5 the rating “adequate”. Smartphones that score 4.6 or more are labelled “poor” to make them easier to avoid.
 </p>
 <div class="about-img-container">
-        <img src="img/evaluation.png" class="about-member">
+        <img src="img/evaluation.jpg" class="about-member">
     </div>
 <p>
 But which criteria do we use to evaluate the individual features and specifications?
