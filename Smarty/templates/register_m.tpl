@@ -79,12 +79,12 @@
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
      
-       <h4 class="modal-title" id="myModalLabel">注册成功，请到邮箱激活验证</h4>
+       <h4 class="modal-title" id="myModalLabel">Register successfully! Please check your email.</h4>
       </div>
       <div class="modal-footer">
       
         <button type="button" class="btn btn-default" id="regconfirm"data-dismiss="modal">
-        <a href="login.php">确定  </a></button>
+        <a href="login.php">Confirm  </a></button>
       
       </div>
     </div>
