@@ -60,7 +60,7 @@ if(!empty($keyWords)){
 
 
 /*筛选相关*/
-$data=getLabels();
+$data=showLabels();
 if(!empty($labels)){
 
     $ids=filterProducts($labels);

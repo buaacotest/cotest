@@ -102,6 +102,14 @@ EOF;
     sortByNumber($arr[2]);
     return json_encode($arr);
 }
+//print_r(getLabels());
+function showLabels(){
+    $labels = <<<EOF
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["6","3","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["13"]},{"type":"string","name":"Brand","label":"Brands","value":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"option":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"number":["3","2","2","1","1","1","1","1","1"]}]
+EOF;
+    return $labels;
+}
+
 function sortByNumber(&$src)
 {
     foreach($src['value'] as $k=>$v){
