@@ -426,7 +426,7 @@ function filterProducts($lab){
                         $tempIndexRange++;
                     }
                     $sql.=")";
-                    echo $sql;
+                   // echo $sql;
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
             }else if($v['type']=='string'){
