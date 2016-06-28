@@ -354,6 +354,7 @@ if __name__=="__main__":
     for node in propertygroup_nodes:
         propertygroup_id = get_attrvalue(node,'id_propertygroup')
         propertygroup_name= get_attrvalue(node,'name')
+        propertygroup_name=propertygroup_name.split('|')[-1]
         propertygroup_comment=get_attrvalue(node,'comment')
         propertygroup_timestamp_created=get_attrvalue(node,'timestamp_created')
         propertygroup_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
