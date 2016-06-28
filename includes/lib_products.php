@@ -398,14 +398,14 @@ function filterProducts($lab){
                                if($v['name']=='total test result')
                                    $sql.="(format(6-value,1)".$opts[0].$value[$opts[0]].")";
                                else
-                                   $sql.="value".$opts[0].$value[$opts[0]].")";
+                                   $sql.="value".$opts[0].$value[$opts[0]];
                            }
 
                            else{
                                if($v['name']=='total test result')
-                                   $sql.="or(format(6-value,1)".$opts[0].$value[$opts[0]].")";
+                                   $sql.=" or(format(6-value,1)".$opts[0].$value[$opts[0]].")";
                                else
-                                   $sql.="or value".$opts[0].$value[$opts[0]].")";
+                                   $sql.=" or value".$opts[0].$value[$opts[0]];
                            }
                        }else if($len==2){
                            if($tempIndexRange==0){
@@ -417,16 +417,16 @@ function filterProducts($lab){
 
                            else{
                                if($v['name']=='total test result')
-                                   $sql.="or(format(6-value,1)".$opts[0].$value[$opts[0]]." and format(6-value,1)".$opts[1].$value[$opts[1]].")";
+                                   $sql.=" or(format(6-value,1)".$opts[0].$value[$opts[0]]." and format(6-value,1)".$opts[1].$value[$opts[1]].")";
                                else
-                                   $sql.="or(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
+                                   $sql.=" or(value".$opts[0].$value[$opts[0]]." and value".$opts[1].$value[$opts[1]].")";
                            }
 
                        }
                         $tempIndexRange++;
                     }
                     $sql.=")";
-                   // echo $sql;
+                    echo $sql;
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
             }else if($v['type']=='string'){
