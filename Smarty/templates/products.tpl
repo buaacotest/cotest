@@ -236,6 +236,7 @@
     //console.log(<{$labels}>)
     //console.log(<{$products}>)
      var page=getPar("page");
+     var sortType="";
     if(page)
         fetchComments('',$(".comments"),page);
     else{
@@ -403,6 +404,7 @@
     $(".dropdown-menu-item").on("click",function(){
         var sortname=$(this).attr("name");
         if(sortname){
+            sortType=sortname;
             sort(sortname);
             $("#cur-sort").html($(this).text()+'<span class="caret"></span>');
         }
@@ -461,8 +463,9 @@
         }
         //console.log(JSON.stringify(labels));
         labels_str=JSON.stringify(labels);
+        var sort_str=(sortType!="")?("&sort="+sortType):"";
         //console.log(labels_str);
-        $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str,function(result){
+        $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str,function(result){
            // console.log(result)
             $("#products-block").html(result);
             totalpage=$(".products").attr("pagenum");
@@ -589,10 +592,11 @@
    
     function reloadpage(target){
         var query_str="";
+        var sort_str=(sortType!=="")?("&sort="+sortType):"";
         if(labels_str==""){
-            query_str="products.php?page="+target+"&proj=<{$project}>"
+            query_str="products.php?page="+target+"&proj=<{$project}>"+sort_str
         }else{
-            query_str="products.php?page="+target+"&proj=<{$project}>&labels="+labels_str;
+            query_str="products.php?page="+target+"&proj=<{$project}>&labels="+labels_str+sort_str;
         }
 
         $.get(query_str,function(result){

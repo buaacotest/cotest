@@ -426,6 +426,9 @@ color: #f7b206;
 	margin: 28px 0px;
 	color: #f7b206;
 }
+#how-we-test-panel h4{
+	font-weight: bold;
+}
 .products-container{
 	float: left;
 	margin-top: 60px;
@@ -661,6 +664,13 @@ border-radius: 0px;
 }
 .proper-tab a{
 	cursor: pointer;
+}
+.supplement{
+	padding: 20px;
+	background: #f8f8f8;
+	margin-top: 60px;
+	color: #999;
+
 }
 .comments{
 	margin-bottom: 30px;
@@ -1237,13 +1247,21 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 .img-tabs .pro-nav{
 
-	padding-left: 300px;
+	padding-left: 370px;
 	border: none;
 
 }
 .img-tabs .pro-nav>li{
-	width: 100px;
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	border:1px solid #999;
+	cursor: pointer;
+	margin: 20px;
 
+}
+.img-tabs .pro-nav .active{
+	background: #999;
 }
 .img-tabs .pro-nav>li a{
 	width: 80px;

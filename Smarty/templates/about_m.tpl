@@ -227,7 +227,7 @@
     <p>
     Before making the test results public the manufacturers are informed about the test results of their own tested products. This is about to recheck test results that mismatch with what the manufacturers have measured themselves. In case of a mismatch possible mistakes can be avoided. Anyway, the final decision is with COTEST.
     </p>
-    <h4> 4.  Conduction tests in independent labs</h4>
+    <h4> 5.  Verdicts based solely on test results</h4>
     
     <p>
     The evaluation system basically works as follows:
@@ -235,7 +235,7 @@
 For each feature or specification, a score from 0.5 to 5.5 is related to its measured values or evaluation results. Similar to German academic grading scale, the score of 0.5 represents the best and 5.5 the worst test result, meaning that a product with a total score of 0.5 is the “dream product”. The scores of all individual features and specifications of a sub-criterion result in a weighted average score for the sub-criterion. The average scores of all individual sub-criteria of a criterion result in a weighted average score for the criterion. The total test result (TTR) score results from the average scores of all individual criteria with proportionate weightings.
 </p>
 <p>
-Each of the assessments described above contributes to a total test result accordingly to its weight in the TTR. A smartphone needs a score from 0.5 to 1.5 in our tests to earn our best rating “very good”, a score from 1.6 to 2.5 the rating “good”, from 2.6 to 3.5 the rating “average” and from 3.6 to 4.5 the rating “sufficient”. Smartphones that score 4.6 or more are labelled “poor” to make them easier to avoid.
+Each of the assessments described above contributes to a total test result accordingly to its weight in the TTR. A smartphone needs a score from 0.5 to 1.5 in our tests to earn our best rating “very good”, a score from 1.6 to 2.5 the rating “good”, from 2.6 to 3.5 the rating “average” and from 3.6 to 4.5 the rating “adequate”. Smartphones that score 4.6 or more are labelled “poor” to make them easier to avoid.
 </p>
 <div class="about-img-container">
         <img src="img/evaluation.png" class="about-member">

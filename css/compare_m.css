@@ -27,16 +27,19 @@
 .compare-td-show{
 	display: block;
 }
+.compare-table .product-names{
+
+}
 .compare-table .product-image{
 	position: relative;
-	padding: 20px;
+	padding: 5px;
 	text-align: center;
 }
 .compare-table .product-link{
 	cursor: pointer;
 }
 .compare-table .product-image img{
-	max-width: 150px;
+	max-width: 100%;
 }
 .compare-table .close{
 	position: absolute;
@@ -119,6 +122,7 @@
 	height: 50px;
 	border-top: 1px solid #eee;
 	z-index: 1000;
+	box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.2);
 
 }
 .selector .pre{

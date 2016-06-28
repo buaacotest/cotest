@@ -78,7 +78,7 @@
 
           <tr class="product-names">
             <{section name=n loop=$products}>
-              <th  class="product-name compare-td compare-td-<{$smarty.section.n.iteration}>" ><{$products[n].name}></th>
+              <th  class="product-name compare-td compare-td-<{$smarty.section.n.iteration}>" ><{$products[n].manufacturer}> <{$products[n].name}></th>
             <{/section}>
 
           </tr>
@@ -543,7 +543,7 @@ function showCompareItem(selector){
       var scroH = $(this).scrollTop();
       //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
       if(scroH>=topH-nav_height){
-        $(".product-head").css({"position":"fixed","top":nav_height});
+        $(".product-head").css({"position":"fixed","top":nav_height,"width":"100%"});
         $(".product-thumb").hide();
        // $(".product-head").css({"width":top_width});
       }else if(scroH<topH-nav_height){

@@ -121,11 +121,11 @@
                     <div class="col-md-12">
                         <div class="img-tabs">
                             <ul class="nav nav-tabs pro-nav">
-                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"><a ><{$lang.Front}></a></li>
+                                <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"></li>
                                 <!--
                                 <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
                                 -->
-                                <li role="presentation" class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Back}></a>
+                                <li role="presentation" class="proper-tab" target="#pro_img2"id="tab2"></a>
                               </ul>
                         </div>
                         <div class="row">
@@ -406,7 +406,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="score-list">
-                                        <{if $foo.value < 1.5}>
+                                        <{if $foo.value <= 1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -478,6 +478,17 @@
                         <{/section}>
                     </div>
                     <{/section}>
+                    <div class="supplement">
+                    <ul>
+                        <li>"nf" for "not featured", for missing features</li>
+                        <li>"np" for "not possible", for missing features</li>
+                        <li>"ny" for "not yet tested", because the model is still or not yet under test</li>
+                        <li>"nc" for "not checked", for properties which are not mandatory according to the test programme</li>
+                        <li>"nt" for "not tested" (or "new test"), because these results have not been gathered by lab for older models</li>
+                        <li>"ns" for "not stated", because there is no information of the manufacturer</li>
+                    </ul>
+                        
+                    </div>
 
                 </div>
                 <!--

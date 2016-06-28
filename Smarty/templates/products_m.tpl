@@ -163,7 +163,7 @@
                               / <{$products[n].score}></div>
                             </div>
                             
-                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_name}>" add=0>
+                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
                            
@@ -599,7 +599,7 @@
             $(this).attr("toogle",0);
             $(this).find("img").attr("src","img/down.png");
         }else{
-            $(".compare-panel").animate({bottom:"-200px"});
+            $(".compare-panel").animate({bottom:"-160px"});
             $(this).attr("toogle",1);
             $(this).find("img").attr("src","img/up.png");
         }

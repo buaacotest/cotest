@@ -349,7 +349,7 @@
                                     <div class="col-4">
                                    
                                         <div class="score-list">
-                                        <{if $foo.value < 1.5}>
+                                        <{if $foo.value <= 1.5}>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
@@ -422,7 +422,17 @@
                         <{/section}>
                     </div>
                     <{/section}>
-
+                    <div class="supplement">
+                    <ul>
+                        <li>"nf" for "not featured", for missing features</li>
+                        <li>"np" for "not possible", for missing features</li>
+                        <li>"ny" for "not yet tested", because the model is still or not yet under test</li>
+                        <li>"nc" for "not checked", for properties which are not mandatory according to the test programme</li>
+                        <li>"nt" for "not tested" (or "new test"), because these results have not been gathered by lab for older models</li>
+                        <li>"ns" for "not stated", because there is no information of the manufacturer</li>
+                    </ul>
+                        
+                    </div>
                 </div>
                 <!--
                 <div id="panel4" class="proper-panel">
