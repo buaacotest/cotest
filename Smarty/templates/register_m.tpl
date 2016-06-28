@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="img/COTESTicon.png"/>
+    <link rel="icon" href="../../favicon.ico">
 
     <title><{$lang.sign}></title>
 
@@ -136,7 +136,36 @@
          return false;}
         }
         var yzm_value=0;
-
+        function check_usr(obj){
+             var objvalue = obj.value;
+             var b=/^[a-zA-Z\d]\w{2,10}[a-zA-Z\d]$/;
+             if (!b.test(objvalue)) {
+          //    document.getElementByIdx_x('checkusr').innerHTML ="<font color='#ff0000'>用户名非法!</font>";
+              return false;
+            }
+            else 
+                return ture;
+         }
+         function check_psw(obj){
+             checkpsw=obj.value;
+             if(checkpsw.length > 5 && checkpsw.length<21){
+            //  document.getElementByIdx_x("checkpsw").innerHTML = "<font color='#00c72e'>密码可以使用!</font>";
+                return ture;
+               }else {
+             // document.getElementByIdx_x("checkpsw").innerHTML="<font color='#ff0000'>密码不符合长度要求!</font>";
+                return false;
+             }
+         }
+             function check_mail(obj){
+                 var strm=obj.value;
+                 var regm = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;//验证Mail的正则表达式,^[a-zA-Z0-9_-]:开头必须为字母,下划线,数字,
+                 if (!strm.match(regm))
+                 {
+                  return false
+                 } else{
+                  return true;
+                 }
+            }
         function yzm(){
             var num1=Math.round(Math.random()*10000000);
             var num=num1.toString().substr(0,4);
@@ -186,6 +215,15 @@
                 $("#alert-panel").html("Verification code input error ");
                 $("#alert-panel").css("display","block")
 
+            }else if(!check_usr(username)){
+                $("#alert-panel").html("Username does not conform to the requirements");
+                $("#alert-panel").css("display","block")
+            }else if(!check_psw(password)){
+                $("#alert-panel").html("Password length must be in 6 to 20");
+                $("#alert-panel").css("display","block")
+            }else if(!check_mail(email)){
+                $("#alert-panel").html("Email address does not conform to the requirements");
+                $("#alert-panel").css("display","block")
             }else{
                 $.post("chkname.php",{username:username},function(result){
                     console.log(result);
@@ -218,6 +256,7 @@
         })
     })
 </script>
+
 
 </body>
 </html>

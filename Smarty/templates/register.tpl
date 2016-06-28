@@ -154,6 +154,7 @@
              // document.getElementByIdx_x("checkpsw").innerHTML="<font color='#ff0000'>密码不符合长度要求!</font>";
                 return false;
              }
+         }
              function check_mail(obj){
                  var strm=obj.value;
                  var regm = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;//验证Mail的正则表达式,^[a-zA-Z0-9_-]:开头必须为字母,下划线,数字,
