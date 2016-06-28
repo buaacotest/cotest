@@ -143,13 +143,13 @@
               return false;
             }
             else 
-                return ture;
+                return true;
          }
          function check_psw(obj){
              checkpsw=obj.value;
              if(checkpsw.length > 5 && checkpsw.length<21){
             //  document.getElementByIdx_x("checkpsw").innerHTML = "<font color='#00c72e'>密码可以使用!</font>";
-                return ture;
+                return true;
                }else {
              // document.getElementByIdx_x("checkpsw").innerHTML="<font color='#ff0000'>密码不符合长度要求!</font>";
                 return false;
