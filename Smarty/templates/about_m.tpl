@@ -35,6 +35,7 @@
     <{/php}>
 <div class="container main-container about-container">
 <div class="row">
+<!--
 <div class="col-md-3 about-nav">
 
     <div class="about-nav-title"> About us</div>
@@ -46,7 +47,7 @@
         <li target="#how-to-test">How we test</li>
     </ul>
 </div>
-
+-->
 <div class="col-md-9 about-article">
 <div id="about-cotest">
     <h2 style="text-center">About COTEST</h2>
