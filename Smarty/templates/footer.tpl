@@ -68,15 +68,18 @@
         <div class="col-md-4">
         <div class="footer-block">
           <h4><b><{$lang.FollowCotest}></b></h4>
+          <!--
           <div class="icons">
             <img class="icon" src="img/weixin.png">
             <img class="icon" src="img/weibo.png">
           </div>
-          <ul class="join-list">
+          -->
+         <!-- <ul class="join-list">
             <li><a href="#"> <{$lang.JoinUs}></a></li>
             <li><a href="#"> <{$lang.ContactUs}></a></li>
-            <li><a href="#"> <{$lang.ServiceAgreement}></a></li>
-          </ul>
+            -->
+            <li><a href="terms.php"> <{$lang.ServiceAgreement}></a></li>
+         <!-- </ul>-->
           </div>
         </div>
         
