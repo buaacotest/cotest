@@ -91,7 +91,7 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label"><{$lang.RefPrice}></div>
+                            <div data-test="price-label"><{$lang.RefPrice}> <{$products[n].price}></div>
                                   
                           </div>
                 
