@@ -18,8 +18,6 @@ $smarty->assign('page_title',$title);*/
 
 
 $project_name=trim($_GET['proj']);
-if($project_name=="")
-    $project_name='Mobilephones';
 $_SESSION['project']=$project_name;
 $GLOBALS['db']->changeDB($project_name);
 
@@ -48,7 +46,10 @@ if(empty($_GET['page'])){
 }
 /*排序相关*/
 if(empty($sort)){
-   $sort='time';
+    if($project_name=='milk'||$project_name=='milkpowder')
+        $sort='score';
+    else
+        $sort='time';
 }
 
 /*搜索相关*/
