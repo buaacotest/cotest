@@ -77,6 +77,8 @@ function getAllProducts($order='time'){
         $res[$k]['score']=getTotalScore($v['product_id']);
     }
     $res=multiSort($res,$order);
+    //print_r($res);
+    roundScore($res);
     return $res;
 }
 /*挑选指定ID的产品*/
@@ -97,7 +99,19 @@ function getProductByIds($ids,$order='time'){
         $res[$k]['score']=getTotalScore($v['product_id']);
     }
     $res=multiSort($res,$order);
+    roundScore($res);
     return $res;
+}
+
+/*
+ *
+ * 对得分四舍五入,
+ * In:products Array*/
+function roundScore(&$arr){
+    foreach($arr as $k=>$v){
+
+        $arr[$k]['score']=number_format($v['score'], 1, '.', '');
+    }
 }
 
 /*省略太长的产品名*/
@@ -115,11 +129,19 @@ function multiSort($arr,$order){
     foreach ($arr as $key=>$value){
         $time[$key] = $value[2];
         $score[$key] = $value['score'];
+        $tempPrice=explode(" ",$value['price']);
+        if(is_numeric($tempPrice))
+             $price[$key]=$tempPrice[0];
     }
     if($order=='score')
         array_multisort($score,SORT_NUMERIC,SORT_ASC,$arr);
-    else
+    else if($order=='priceUp'&&!empty($price))
+        array_multisort($price,SORT_NUMERIC,SORT_ASC,$arr);
+    else if($order=='priceDown'&&!empty($price))
+        array_multisort($price,SORT_NUMERIC,SORT_DESC,$arr);
+    else{
         array_multisort($time,SORT_NUMERIC,SORT_DESC,$arr);
+    }
     return $arr;
 }
 
@@ -152,8 +174,8 @@ function convertTime($time){
 function getTotalScore($id){
     $sql="select value from results where id_product=$id and id_evaluation=
           (select id_evaluation from evaluations where name='total test result')";
-    $score=$GLOBALS['db']->getOne($sql);
-    $score=number_format(6-$score, 1, '.', '');
+    $score=6-$GLOBALS['db']->getOne($sql);
+
     return $score;
 }
 
