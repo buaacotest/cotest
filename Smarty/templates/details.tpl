@@ -120,13 +120,15 @@
                     
                     <div class="col-md-12">
                         <div class="img-tabs">
+                            <{if $addrs|@count >1}>
                             <ul class="nav nav-tabs pro-nav">
                                 <li role="presentation" class="proper-tab active" target="#pro_img1"id="tab1"></li>
                                 <!--
                                 <li role="presentation"class="proper-tab" target="#pro_img2"id="tab2"><a ><{$lang.Side}></a></li>
                                 -->
-                                <li role="presentation" class="proper-tab" target="#pro_img2"id="tab2"></a>
+                                <li role="presentation" class="proper-tab" target="#pro_img2"id="tab2"></li>
                               </ul>
+                            <{/if}>
                         </div>
                         <div class="row">
                             <{section name=n loop=$addrs}>
