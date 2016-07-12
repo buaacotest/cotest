@@ -10,11 +10,11 @@ require('lib.php');
 //error_reporting(0);
 $db=new mysql_cls();
 $db->connect();
-$db->changeDB('milk');
-$oriword="Yili";
+$db->changeDB('basiccameras');
+$oriword="Low Light Performance";
 
-$id="3";
-$dicflag=2;
+$id="5086";
+$dicflag=1;
 //$result=getManufacturers();
 print_r(QueryInSelfDic($id,$dicflag));
 //$result1=SaveTranslationToAdminDic($oriword,$transarr);///一旦修改了input，说明是新增的意思

@@ -113,12 +113,12 @@ function compressPic($dir)
             //echo $oldname;
             if (is_file($oldname)) {
                 $bname=basename($name,".jpg");
-                echo $bname;
+                //echo $bname;
                 $new_name=dirname(dirname($oldname))."\\picturesx\\".$bname."x.jpg";
-                echo $new_name."\n";
+               // echo $new_name."\n";
                 writeNewpic($oldname, $new_name);
                 //image_png_size_add($oldname,$new_name);
-                echo "conpress:".$bname.".jpg";
+                echo "conpress:".$bname.".jpg"."\n";
             }
         }
     }
