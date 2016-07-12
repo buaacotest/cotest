@@ -20,8 +20,8 @@ function getLabels()
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["very good ","good ","average","sufficient","poor"]},
           {"type":"date","name":"Publication date","label":"Tested date",
-           "value":[2016,2015],
-           "option":[2016,2015]},
+           "value":[2016,2015,2014],
+           "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
           "option":$brands}
@@ -38,8 +38,8 @@ EOF;
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
-           "value":[2016,2015],
-           "option":[2016,2015]},
+            "value":[2016,2015,2014],
+           "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
           "option":$brands}
@@ -117,10 +117,10 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
-print_r(getLabels());
+//print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["9","50","13","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["28","44"]},{"type":"string","name":"Brand","label":"Brands","value":["Canon","Nikon","Olympus","Sony","Panasonic","Fujifilm","Pentax","Samsung"],"option":["Canon","Nikon","Olympus","Sony","Panasonic","Fujifilm","Pentax","Samsung"],"number":["15","15","10","9","8","7","5","3"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["2","197","119","15","2"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["53","93","189"]},{"type":"string","name":"Brand","label":"Brands","value":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"option":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"number":["59","54","38","37","35","32","26","14","10","9","4","3","3","2","2","2","1","1","1","1","1"]}]
 EOF;
 
     return $labels;
