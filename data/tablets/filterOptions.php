@@ -117,6 +117,13 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
+function showLabels(){
+    $labels=<<<EOF
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["24","194","49","19","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["0","155","131"]},{"type":"string","name":"Brand","label":"Brands","value":["Apple","Samsung","Asus","Amazon","Sony","HP","Acer","Lenovo","LG","BQ","Microsoft","Storex","Archos","Google","Dell","iGet","Toshiba","Denver","Go Clever","Prestigio","Bush","Cube","Teclast","Gigaset","Wolder","Sencor","Woxter","Xiaomi \/ Mi","PEAQ","GoGEN","Alcatel","Mitsai","EE","Ramos","Point of View","PocketBook","Onda","Vtech","Pipo","UMAX","Kurio","Difrnce","Tesco","Binatone","Haier","Qilive","Kobo","Salora","Hyundai","Hannspree","SPCinternet","Xtreme","Lenco","e-star","Leap Frog"],"option":["Apple","Samsung","Asus","Amazon","Sony","HP","Acer","Lenovo","LG","BQ","Microsoft","Storex","Archos","Google","Dell","iGet","Toshiba","Denver","Go Clever","Prestigio","Bush","Cube","Teclast","Gigaset","Wolder","Sencor","Woxter","Xiaomi \/ Mi","PEAQ","GoGEN","Alcatel","Mitsai","EE","Ramos","Point of View","PocketBook","Onda","Vtech","Pipo","UMAX","Kurio","Difrnce","Tesco","Binatone","Haier","Qilive","Kobo","Salora","Hyundai","Hannspree","SPCinternet","Xtreme","Lenco","e-star","Leap Frog"],"number":["45","34","22","20","19","14","11","11","8","8","7","7","7","6","5","4","4","4","4","3","3","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]}]
+EOF;
+
+return $labels;
+}
 //根据数量多少排序
 function sortByNumber(&$src)
 {

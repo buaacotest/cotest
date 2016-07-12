@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div id="products-block">
-                <p>&nbsp;<b><{$productsNum}>  </b><{$up.name}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
+                <p>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    

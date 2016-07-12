@@ -117,6 +117,14 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
+
+function showLabels(){
+    $labels=<<<EOF
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","29","6","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["35","49"]},{"type":"string","name":"Brand","label":"Brands","value":["Nikon","Sony","Canon","Panasonic","Olympus","Fujifilm","Samsung","Pentax","Leica","Ricoh","Casio"],"option":["Nikon","Sony","Canon","Panasonic","Olympus","Fujifilm","Samsung","Pentax","Leica","Ricoh","Casio"],"number":["37","32","32","30","23","21","18","13","12","4","3"]}]
+EOF;
+
+    return $labels;
+}
 //根据数量多少排序
 function sortByNumber(&$src)
 {
