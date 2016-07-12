@@ -271,6 +271,7 @@ if __name__=="__main__":
                      "`shortname` varchar(45) default NULL," \
                      "`completename` varchar(45) default NULL," \
                      "`modelname` varchar(45) default NULL," \
+                     "`price` varchar(45) DEFAULT 'np'," \
                      "PRIMARY KEY  (`id_product`)," \
                      "KEY `fk_products_productgroups1_idx` (`id_productgroup`)," \
                      "KEY `fk_products_manufacturers1_idx` (`id_manufacturer`)" \
