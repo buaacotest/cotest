@@ -117,6 +117,14 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
+//print_r(getLabels());
+function showLabels(){
+    $labels=<<<EOF
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","24","5","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2015,2014],"option":[2015,2014],"number":["14","15"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Sony","Jawbone","Garmin","Withings","Misfit","Xiaomi","Razer","Microsoft","Asus","Polar","LG","iHealth","Nike","Epson","Samsung","Soleus"],"option":["Fitbit","Sony","Jawbone","Garmin","Withings","Misfit","Xiaomi","Razer","Microsoft","Asus","Polar","LG","iHealth","Nike","Epson","Samsung","Soleus"],"number":["5","3","3","3","2","2","1","1","1","1","1","1","1","1","1","1","1"]}]
+EOF;
+
+    return $labels;
+}
 //根据数量多少排序
 function sortByNumber(&$src)
 {
