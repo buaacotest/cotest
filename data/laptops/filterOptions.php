@@ -7,7 +7,7 @@
  */
 function getLabels()
 {
-    $sql="SELECT name FROM tablets.manufacturers";
+    $sql="SELECT name FROM manufacturers";
     $brands=$GLOBALS['db']->getAllValues($sql);
     $brands=json_encode($brands);
     //print_r($brands);
@@ -29,20 +29,20 @@ function getLabels()
 EOF;
 
     }else if($lang=="zh_cn"){
-        $sql="select CHN from sdictionary where oriword in( SELECT distinct value FROM mobilephones.results where id_evaluation=100001759)";
+       /* $sql="select CHN from sdictionary where oriword in( SELECT distinct value FROM results where id_evaluation=100001759)";
         $brandLabels=$GLOBALS['db']->getAllValues($sql);
-        $brandLabels=json_encode($brandLabels);
+        $brandLabels=json_encode($brandLabels);*/
         $labels = <<<EOF
             [
          {"type":"range","name":"total test result","label":"总评分",
           "value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],
           "option":["优秀","良好","中等","尚可","差劣"]},
           {"type":"date","name":"Publication date","label":"测试时间",
-           "value":[2016,2015,2014],
+            "value":[2016,2015,2014],
            "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
-          "option":$brandLabels}
+          "option":$brands}
        ]
 EOF;
     }
@@ -117,13 +117,13 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
-//print_r(getLabels());
+print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["6","101","42","15","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["0","77","87"]},{"type":"string","name":"Brand","label":"Brands","value":["Asus","Samsung","HP","Acer","Lenovo","Storex","Archos","BQ","Sony","Amazon","Toshiba","Denver","Microsoft","Bush","LG","Cube","Teclast","iGet","Go Clever","Gigaset","Woxter","Wolder","EE","Ramos","Xiaomi \/ Mi","Alcatel","Leap Frog","Vtech","Pipo","Kobo","UMAX","GoGEN","PocketBook","Google","Onda","Kurio","Hannspree","Binatone","Difrnce","Haier","Apple","Qilive","Tesco","Dell","Salora","Xtreme","Prestigio","Lenco","e-star","Hyundai","SPCinternet"],"option":["Asus","Samsung","HP","Acer","Lenovo","Storex","Archos","BQ","Sony","Amazon","Toshiba","Denver","Microsoft","Bush","LG","Cube","Teclast","iGet","Go Clever","Gigaset","Woxter","Wolder","EE","Ramos","Xiaomi \/ Mi","Alcatel","Leap Frog","Vtech","Pipo","Kobo","UMAX","GoGEN","PocketBook","Google","Onda","Kurio","Hannspree","Binatone","Difrnce","Haier","Apple","Qilive","Tesco","Dell","Salora","Xtreme","Prestigio","Lenco","e-star","Hyundai","SPCinternet"],"number":["22","16","12","11","11","7","7","6","6","6","4","4","3","3","3","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["2","197","119","15","2"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["53","93","189"]},{"type":"string","name":"Brand","label":"Brands","value":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"option":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"number":["59","54","38","37","35","32","26","14","10","9","4","3","3","2","2","2","1","1","1","1","1"]}]
 EOF;
 
-return $labels;
+    return $labels;
 }
 //根据数量多少排序
 function sortByNumber(&$src)
