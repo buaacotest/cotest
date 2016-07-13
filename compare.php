@@ -11,9 +11,13 @@ require('./includes/init.php');
 require('./lang/'.$_SESSION['lang'].'/compare.php');
 $project=trim($_GET['proj']);
 $db->changeDB($project);
-$ids=trim($_GET['ids']);
+$items=trim($_SESSION['idList']);
 $lang=$_SESSION['lang'];
-$ids=json_decode($ids,true);
+$items=json_decode($items,true);
+$ids=array();
+foreach($items as $k=>$v){
+    $ids[]=$v['id'];
+}
 $comProducts=array();
 $directory=getDirectoryWithLink($project);
 $count=0;
