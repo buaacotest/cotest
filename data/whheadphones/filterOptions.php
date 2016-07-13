@@ -117,6 +117,14 @@ EOF;
     //print_r($arr);
     return json_encode($arr);
 }
+//print_r(getLabels());
+function showLabels(){
+    $labels=<<<EOF
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["8","53","62","29","1"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["20","133"]},{"type":"string","name":"Brand","label":"Brands","value":["Sennheiser","Bose","Sony","AKG","Skullcandy","Beats by Dr. Dre","Monster","Philips","JVC","Harmon Kardon","Kitsound","John Lewis","RHA","BW (Bowers  Wilkins)","Gibson","Ted Baker","Jam","B&O (Bang and Olufsen)","SoundMagic","Bang and Olufsen","Jabra","Grado","Parrot","Yurbuds","Pioneer","B&O","Audio Technica","Urbanears","Adidas (Monster)","Rock Jaw","Plantronics","Bowers & Wilkins","Apple iPhone 5s","Apple","KEF","Starck","Onkyo","Sol Republic","Goji","Klipsch","HTC One (M8)","Samsung Galaxy S4 S5","Samsung","Bowers and Wilkins","Bang Olufsen","Nokia","Sony Xperia Z2","LG","Denon"],"option":["Sennheiser","Bose","Sony","AKG","Skullcandy","Beats by Dr. Dre","Monster","Philips","JVC","Harmon Kardon","Kitsound","John Lewis","RHA","BW (Bowers  Wilkins)","Gibson","Ted Baker","Jam","B&O (Bang and Olufsen)","SoundMagic","Bang and Olufsen","Jabra","Grado","Parrot","Yurbuds","Pioneer","B&O","Audio Technica","Urbanears","Adidas (Monster)","Rock Jaw","Plantronics","Bowers & Wilkins","Apple iPhone 5s","Apple","KEF","Starck","Onkyo","Sol Republic","Goji","Klipsch","HTC One (M8)","Samsung Galaxy S4 S5","Samsung","Bowers and Wilkins","Bang Olufsen","Nokia","Sony Xperia Z2","LG","Denon"],"number":["20","18","16","10","9","9","8","7","3","2","2","2","2","2","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]}]
+EOF;
+
+    return $labels;
+}
 //根据数量多少排序
 function sortByNumber(&$src)
 {
