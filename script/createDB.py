@@ -600,6 +600,10 @@ if __name__=="__main__":
 
         evaluation_weighting_normalized = get_attrvalue(node,'weighting_normalized')
         evaluation['weighting_normalized']=evaluation_weighting_normalized
+        if(evaluation_parent=='0'): #set total test result's normal weighting
+             evaluation['weighting_normalized']='100'
+             evaluation_weighting_normalized='100'
+
 
         evaluation_weighting_given = get_attrvalue(node,'weighting_given')
         evaluation['weighting_given']=evaluation_weighting_given
