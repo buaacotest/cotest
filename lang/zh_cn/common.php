@@ -19,6 +19,7 @@ $_LANG['ChangePwd']='修改密码';
 $_LANG['ScoreRating']='评估对照';
 $_LANG['JoinUs']='加入我们';
 $_LANG['ContactUs']='联系我们';
+$_LANG['Impressum']='Impressum';
 $_LANG['ServiceAgreement']='服务条款';
 $_LANG['Friends']='合作伙伴';
 

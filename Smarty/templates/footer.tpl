@@ -78,6 +78,7 @@
             <li><a href="#"> <{$lang.JoinUs}></a></li>
             <li><a href="#"> <{$lang.ContactUs}></a></li>
             -->
+            <li><a href="impressum.php"> <{$lang.Impressum}></a></li>
             <li><a href="terms.php"> <{$lang.ServiceAgreement}></a></li>
          <!-- </ul>-->
           </div>
