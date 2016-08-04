@@ -10,7 +10,7 @@
     <link rel="icon" href="../../favicon.ico">
     <link rel="icon" type="image/png" href="img/COTESTicon.png"/>
     <title><{$title}></title>
-
+    <link href="css/bigpic.css" rel="stylesheet"/>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/cotest.css">
@@ -22,6 +22,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
+
     <![endif]-->
 </head>
 
@@ -134,7 +135,7 @@
                             <{section name=n loop=$addrs}>
                             <div class="col-md-12 pro-img text-center"id="pro_img<{$smarty.section.n.iteration}>">
 
-                                <img src="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg" alt="<{$product.name}>" >
+                                <img src="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg" alt="<{$product.name}>" bigpic="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg"
 
                             </div>
                             <!--
@@ -524,6 +525,8 @@
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
+<script src="js/bigpic.js"/>
+   
 <script>
     var compare_ids=getPar("ids");
     var id=getPar("id")+"";

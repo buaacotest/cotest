@@ -98,7 +98,7 @@
                         <span class="inner-label">
 
                            <{$lang.agree}>
-                              <a href="#" class="text-contrast"><{$lang.agreements}></a>
+                              <a href="terms.php" class="text-contrast"><{$lang.agreements}></a>
 
                         </span>
                 </label>

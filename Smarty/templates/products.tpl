@@ -52,8 +52,8 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li ><a class="dropdown-menu-item" name="score"href="#"><{$lang.HighestScore}></a></li>
-                    <li ><a class="dropdown-menu-item" href="#"><{$lang.PriceLowToHigh}></a></li>
-                    <li><a  class="dropdown-menu-item" href="#"><{$lang.PriceHighToLow}></a></li>
+                    <li ><a class="dropdown-menu-item" name="priceUp" href="#"><{$lang.PriceLowToHigh}></a></li>
+                    <li><a  class="dropdown-menu-item" name="priceDown"href="#"><{$lang.PriceHighToLow}></a></li>
                     <li><a href="#"  class="dropdown-menu-item" name="time"><{$lang.MostRecentlyTested}></a></li>
                   </ul>
                 </div>
