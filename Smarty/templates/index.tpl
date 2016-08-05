@@ -94,69 +94,73 @@ require("navigation.php");
               </div>
             </div>
               </a>
-
+            <a href="products.php?proj=tablets">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">0</div>
+                <div class="num"><{$number.tablets}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Tablets}></div>
               </div>
             </div>
-
+            </a>
             
-
+            <a  href="products.php?proj=basiccameras">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">0</div>
+                <div class="num"><{$number.basiccameras}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Cameras}></div>
               </div>
             </div>
-
+            </a>
+            <a  href="products.php?proj=fitnessbands">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">0</div>
+                <div class="num"><{$number.fitness}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name">Smart Watches</div>
+                <div class="name"><{$lang.Fitness}></div>
               </div>
             </div>
-
+            </a>
+            <a href="products.php?proj=laptops">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">0</div>
+                <div class="num"><{$number.laptops}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name"><{$lang.ActionCamcorders}></div>
+                <div class="name"><{$lang.Laptops}></div>
               </div>
             </div>
+            </a>
 
-
+            <a  href="products.php?proj=whheadphones">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">0</div>
+                <div class="num"><{$number.Headphones}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Headphones}></div>
               </div>
             </div>
+            </a>
 
 
             <div class="pro-list-item">
