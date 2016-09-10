@@ -1029,6 +1029,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	left: 20px;
 	top: -5px;
 }
+.pro-list a{
+	color: #333;
+}
 .pro-list{
 	width: 1000px;
 	display: block;
@@ -1037,6 +1040,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .pro-list-l{
 	padding: 2.5%;
 	width: 75%;
+	margin-left: 10%;
 	float: left;
 
 }
@@ -1321,7 +1325,7 @@ footer{
 	width: 100%;
 	margin-top: 100px;
 	border-top: 1px solid #eee;
-	color: #bbb;
+	color: #777;
 	background: #fff;
 	font-size: 14px;
 }

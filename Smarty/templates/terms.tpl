@@ -58,20 +58,22 @@ We encourage you to link to any of our web pages, providing you do so responsibl
 </li><li>You must ensure any links are used in a fair and reasonable manner and that their use will not damage our reputation or take unfair advantage of it (commercially or otherwise).
 </li><li>Unless you obtain our express permission, you must not include more than 10 links to our websites on any one of your web pages.
 </li><li>The website you are linking from must not contain offensive, obscene or defamatory material, and must not infringe anyone’s copyright, trademarks or other similar rights.
-</li><li>If anyone clicks on the link you provide to our websites, it must open our website in a new page and not within a frame on your website.</li></ul>
+</li><li>If anyone clicks on the link you provide to our websites, it must open our website in a new page and not within a frame on your website.</li>
+</ul>
 
 <h3>4. Other important things you need to know</h3>
 <p>
 What happens if things go wrong? Given the nature of our websites and the wide range of information and services we provide, it’s possible that every now and again things may not go as planned. If we make a mistake, rest assured we will do our best to put things right as soon as possible.</p><p>
 Unfortunately, we will not be able to compensate you for any loss you may suffer as a result of:</p>
-<ul>
+
 <ul><li>any mistake we make with the content on our websites;
 </li><li>any parts of our websites being unavailable or inaccessible;
 </li><li>your use of any organisation’s website that you can access from our websites (including any purchase from that organisation and any use they make of the personal data you provide to them);
 </li><li>the downloading of any material from any of our websites;
 </li><li>the content added to our websites by people using our interactive services; and
 </li><li>inaccurate pricing information, including any price predictions.
-</li></ul>
+</li>
+</ul>
 <p>
 We do not, of course, exclude any liability we may have in the unlikely event we have been fraudulent or if we are negligent and as a result we cause your death or personal injury, whether in connection with these general terms or any of our other website terms and conditions.
 </p><p>
@@ -80,7 +82,20 @@ If anyone complains about your use of our websites or the content you add to our
 Cotest may vary any of its terms at any time, although we will only make changes if we think these are either necessary or reasonable. Please make sure you check our website terms and conditions homepage regularly for any announcements. The changed terms will normally take effect immediately upon publication, although where we think the changes are likely to be important to you, we shall always tell you in advance so you can decide whether to continue using our websites.</p><p>
 </p><p>
 German law shall apply to all our terms and conditions and any disputes must be heard in an German Court. Nothing in any of terms and conditions affect your legal rights.</p>
+<h2>Contact us</h2>
 
+<p>Association for Comparative & Objective
+</p><p>
+Testing in Europe for Safety & Trust e.V.
+</p><p>
+Josef-Stork-Strasse 4
+</p><p>
+33334 Guetersloh, Germany
+</p><p>
+Tel.: +49-5241-964 959 0
+</p><p>
+E-Mail: <a href="mailto:info@cotest.org">info@cotest.org</a>
+</p>
 </div>
 
 

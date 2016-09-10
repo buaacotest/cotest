@@ -15,20 +15,21 @@
                 <div class="score-point">0.5-1.5</div>
                 <div class="score-info"><{$lang.VeryGood}>  </div>
                 <div class="score-list">
-                  <div class="star_b"></div>
-                  <div class="star_b"></div>
-                  <div class="star_b"></div>
-                  <div class="star_b"></div>
-                  <div class="star_b"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
                 </div>
               </li>
              <li>
                 <div class="score-point">1.6-2.5</div>
                 <div class="score-info"><{$lang.Good}>  </div>
                 <div class="score-list">
-                  <div class="star_b"></div>
-                  <div class="star_b"></div>
-                  <div class="star_b"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
                   <div class="star_b"></div>
                 </div>
               </li>
@@ -36,7 +37,9 @@
                 <div class="score-point">2.6-3.5</div>
                 <div class="score-info"><{$lang.Average}>  </div>
                 <div class="score-list">
-                  <div class="star_b"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
                   <div class="star_b"></div>
                   <div class="star_b"></div>
                 </div>
@@ -45,6 +48,9 @@
                 <div class="score-point">3.6-4.5</div>
                 <div class="score-info"><{$lang.Sufficient}>  </div>
                 <div class="score-list">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star_b"></div>
                   <div class="star_b"></div>
                   <div class="star_b"></div>
                 </div>
@@ -53,6 +59,10 @@
                 <div class="score-point">4.6-5.5</div>
                 <div class="score-info"><{$lang.Poor}>  </div>
                 <div class="score-list">
+                  <div class="star"></div>
+                  <div class="star_b"></div>
+                  <div class="star_b"></div>
+                  <div class="star_b"></div>
                   <div class="star_b"></div>
                 </div>
               </li>

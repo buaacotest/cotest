@@ -135,7 +135,7 @@
                             <{section name=n loop=$addrs}>
                             <div class="col-md-12 pro-img text-center"id="pro_img<{$smarty.section.n.iteration}>">
 
-                                <img src="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg" alt="<{$product.name}>" bigpic="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg"
+                                <img src="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg" alt="<{$product.name}>" bigpic="data/<{$project}>/picturesx/<{$addrs[n]}>.jpg"/>
 
                             </div>
                             <!--

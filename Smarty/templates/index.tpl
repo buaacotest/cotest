@@ -62,6 +62,43 @@ require("navigation.php");
       </div>
       -->
       <div class="row pro-list">
+       
+        <div class="pro-list-r">
+          <div class="pro-list-title">
+              <{$lang.Food}> 
+                <p><{$lang.JointTests_C}></p>
+          </div>
+
+          <div class="pro-list-content">
+            
+            <a href="products.php?proj=milkpowder">
+            <div class="pro-list-item">
+              <div class="pro-list-item-img">
+                <img src="img/milkpowder.jpg">
+              </div>
+              <div class="pro-list-item-info">
+                <div class="num"><{$number.milkpowder}></div>
+              </div>
+              <div class="pro-list-item-info">
+                <div class="name"><{$lang.MilkPowder}></div>
+              </div>
+            </div>
+              </a>
+              <a href="products.php?proj=milk">
+            <div class="pro-list-item">
+              <div class="pro-list-item-img">
+                <img src="img/milk.jpg">
+              </div>
+              <div class="pro-list-item-info">
+                <div class="num"><{$number.milk}></div>
+              </div>
+              <div class="pro-list-item-info">
+                <div class="name"><{$lang.Milk}></div>
+              </div>
+            </div>
+              </a>
+          </div>
+        </div>
         <div class="pro-list-l">
           <div class="pro-list-title">
               <{$lang.Electronics}> 
@@ -177,41 +214,6 @@ require("navigation.php");
 
           </div>
           
-        </div>
-        <div class="pro-list-r">
-          <div class="pro-list-title">
-              <{$lang.Food}> 
-                <p><{$lang.JointTests_C}></p>
-          </div>
-
-          <div class="pro-list-content">
-            <a href="products.php?proj=milk">
-            <div class="pro-list-item">
-              <div class="pro-list-item-img">
-                <img src="img/milk.jpg">
-              </div>
-              <div class="pro-list-item-info">
-                <div class="num"><{$number.milk}></div>
-              </div>
-              <div class="pro-list-item-info">
-                <div class="name"><{$lang.Milk}></div>
-              </div>
-            </div>
-              </a>
-            <a href="products.php?proj=milkpowder">
-            <div class="pro-list-item">
-              <div class="pro-list-item-img">
-                <img src="img/milkpowder.jpg">
-              </div>
-              <div class="pro-list-item-info">
-                <div class="num"><{$number.milkpowder}></div>
-              </div>
-              <div class="pro-list-item-info">
-                <div class="name"><{$lang.MilkPowder}></div>
-              </div>
-            </div>
-              </a>
-          </div>
         </div>
       </div>
       <div class="row">
