@@ -90,6 +90,24 @@
             -->
             <li><a href="impressum.php"> <{$lang.Impressum}></a></li>
             <li><a href="terms.php"> <{$lang.ServiceAgreement}></a></li>
+
+            <h4><b><{$lang.ContactUs}></b></h4>
+            <p><strong><small>Association for Comparative & Objective</small></strong></p>
+            <p>
+                <strong><small>Testing in Europe for Safety & Trust e.V.</small></strong>
+            </p>
+            <p>
+                Josef-Stork-Strasse 4
+            </p>
+            <p>
+                33334 Guetersloh, Germany
+            </p>
+            <p>
+                Tel.: +49-5241-964 959 0
+            </p>
+            <p>
+                E-Mail: <a href="mailto:info@cotest.org">info@cotest.org</a>
+            </p>
          <!-- </ul>-->
           </div>
         </div>
@@ -113,7 +131,7 @@
             </div>
             <div class="col-md-3 text-center">
               <img src="img/test.png">
-              <div><a target="_blank" href="http://www.test.de">TEST</a></div>
+              <div><a target="_blank" href="https://www.test.de/unternehmen/about-us-5017053-0/">TEST</a></div>
             </div>
           </div>
           </div>

@@ -19,7 +19,7 @@ $_LANG['ChangePwd']='Change password';
 $_LANG['ScoreRating']='Score-Rating';
 $_LANG['JoinUs']='Join us';
 $_LANG['ContactUs']='Contact us';
-$_LANG['Impressum']='Impressum';
+$_LANG['Impressum']='Imprint';
 $_LANG['ServiceAgreement']='Terms & conditions';
 $_LANG['Friends']='Links';
 

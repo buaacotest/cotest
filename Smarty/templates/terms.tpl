@@ -82,7 +82,7 @@ If anyone complains about your use of our websites or the content you add to our
 Cotest may vary any of its terms at any time, although we will only make changes if we think these are either necessary or reasonable. Please make sure you check our website terms and conditions homepage regularly for any announcements. The changed terms will normally take effect immediately upon publication, although where we think the changes are likely to be important to you, we shall always tell you in advance so you can decide whether to continue using our websites.</p><p>
 </p><p>
 German law shall apply to all our terms and conditions and any disputes must be heard in an German Court. Nothing in any of terms and conditions affect your legal rights.</p>
-<h2>Contact us</h2>
+<!--<h2>Contact us</h2>
 
 <p>Association for Comparative & Objective
 </p><p>
@@ -95,7 +95,7 @@ Josef-Stork-Strasse 4
 Tel.: +49-5241-964 959 0
 </p><p>
 E-Mail: <a href="mailto:info@cotest.org">info@cotest.org</a>
-</p>
+</p>-->
 </div>
 
 
