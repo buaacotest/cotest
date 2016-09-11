@@ -9,8 +9,9 @@ require('./includes/init.php');
 $GLOBALS['db']->changeDB($_SESSION['project']);
 $option=$_POST['option'];
 $list=$_POST['items'];
+$_SESSION['idList']=array();
 if($option=='add')
-    $_SESSION['idList']=$list;
+    array_merge($_SESSION['idList'],$list);
 else if($option=='remove')
     $_SESSION['idList']=array_diff($_SESSION['idList'],$list);
 else if($option=='show')
