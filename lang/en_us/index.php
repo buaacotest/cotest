@@ -26,6 +26,8 @@ $_LANG['ActionCamcorders']='Action Camcorders';
 $_LANG['Milk']='UHT Milk';
 $_LANG['MilkPowder']='Formula Milk Powder';
 $_LANG['Cameras']='Digital Cameras';
+$_LANG['Laptops']='Laptops';
+
 
 $_LANG['SignIn']='Loginin';
 $_LANG['SignUp']='Sign up';

@@ -164,7 +164,7 @@ require("navigation.php");
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num"><{$number.fitness}></div>
+                <div class="num"><{$number.fitnessbands}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Fitness}></div>
@@ -191,7 +191,7 @@ require("navigation.php");
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num"><{$number.Headphones}></div>
+                <div class="num"><{$number.whheadphones}></div>
               </div>
               <div class="pro-list-item-info">
                 <div class="name"><{$lang.Headphones}></div>
