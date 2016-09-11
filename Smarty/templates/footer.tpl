@@ -129,7 +129,7 @@
             <div><a class="icrt" href="http://www.international-testing.org"><img src="img/icrt.png">
               <div class="text">icrt</div>
             </a></div>
-            <a  class="test" href="http://www.test.de"><img src="img/test.png">
+            <a  class="test" href="https://www.test.de/unternehmen/about-us-5017053-0/"><img src="img/test.png">
             <div class="text">test.de</div>
             </a>
             </div>

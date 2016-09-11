@@ -31,34 +31,33 @@
     require("navigation.php");
     <{/php}>
 <div class="container main-container review-container">
-    <h1>Impressum</h1>
-    <p>Angaben gemaess § 5 TMG:</p>
+    <h1>Imprint</h1>
+    <p>Information pursuant to § 5 TMG:</p>
     <p><strong>Association for Comparative & Objective Testing in Europe for Safety & Trust e.V.</strong></p>
-    <p>Sitz Guetersloh</p>
+    
     <p>Josef-Stork-Strasse 4</p>
     <p>33334 Guetersloh</p>
+    <p>Tel.: +49-5241-964 959 0</p>
     <p>E-Mail: info@cotest.org</p>
+    <p>Skype: cotest.org</p>
     <p><br></p>
     <p>Internet: www.cotest.org</p>
-    <p>Amtsgericht Guetersloh Vereinsregister 1623</p>
-    <p>Umsatzsteuer-Identifikationsnummer: DE 303 844 366</p>
+    <br>
+    <p>Seat: Guetersloh – Local Court Guetersloh – </p>
+    <p>Register of Associations No.: 1623</p>
+    <p>VAT-Identification No.: DE 303 844 366</p>
     <br>
     <br>
-    <p><strong>Vorstand:</strong></p>
-    <p>Dr. Martin Dannhoff</p>
+    <p><strong>Executive Board</strong></p>
+    <p>Dr. Martin Dannhoff (Chairman)</p>
     <p>Harke Smits</p>
-    <ul>
-        <li>
-            <h4>Haftungshinweis</h4>
-            <p>Alle Angaben dieses Internetangebotes wurden sorgfaeltig geprueft. Wir bemuehen uns, dieses Informationsangebot stetig zu erweitern und zu aktualisieren. Eine Garantie fuer die Vollstaendigkeit, Richtigkeit und letzte Aktualitaet kann jedoch nicht uebernommen werden. Die Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. („COTEST“) stellt diese Informationen ohne jegliche Zusicherung oder Gewaehrleistung jedweder Art, sei sie ausdruecklich oder stillschweigend, zur Verfuegung. COTEST schliesst jegliche Haftung fuer Schaeden, die direkt oder indirekt aus der Benutzung dieser Website entstehen, aus, soweit diese nicht auf Vorsatz oder grober Fahrlaessigkeit von COTEST beruhen. Unsere Internetseiten enthalten Links auf externe Webseiten. Diese Links haben einen reinen Informationszweck. Auf die Entwicklung der Inhalte dieser verlinkten Webseiten haben wir keinen Einfluss. Fuer den Inhalt der verlinkten Seiten sind daher ausschliesslich deren Betreiber verantwortlich.</p>
-        </li>
-        <li>
-            <h4>Urheberrecht</h4>
-            <p>Copyright 2016 COTEST. Alle Rechte vorbehalten. Alle Inhalte (Texte, Bilder, Grafiken usw. sowie deren Anordnung) auf der COTEST-Website unterliegen dem Schutz des Urheberrechts und anderer Schutzgesetze. Der Rechtsschutz gilt auch gegenueber Datenbanken und aehnlichen Einrichtungen. Die Inhalte sind nur fuer den bestimmungsgemaessen Abruf im Internet frei nutzbar. Die Inhalte dieser Website duerfen ausserhalb der Grenzen des Urheberrechts ohne schriftliche Genehmigung durch COTEST nicht in irgendeiner Form vervielfaeltigt, verbreitet, veraendert oder Dritten zugaenglich gemacht werden. Einige Bereiche der Website von COTEST koennen Bilder enthalten, die dem Urheberrecht Dritter unterliegen. Soweit nicht anders angegeben, sind alle Marken auf dieser Website gesetzlich geschuetzt.</p>
-        </li>
-
-
-    </ul>
+    <p>Hans Wachtel</p>
+    <p><strong>Disclaimer</strong></p>
+<p>All information on this website has been carefully reviewed. We make every effort to continually expand and update the information it contains but cannot guarantee its completeness, accu-racy and complete up-to-dateness. The Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. („COTEST“) provides this information without any assurances or warranties of any kind, either express or implied. COTEST excludes all liability for damages arising directly or indirectly from the use of this website, provided they are not based on intent or gross negligence on the part of COTEST. Our websites contain links to other websites. These links serve informational purposes only. We have no control over the future development of the content on these websites to which we provide links. Therefore, the operators of the linked websites are solely responsible for their content.
+</p>
+<p><strong>Copyright</strong></p>
+<p>Copyright © 2016 COTEST. All rights reserved. All content (text, images, graphics etc. as well as their grouping) on the COTEST website is protected by copyright and other intellectual property laws. This legal protection also extends to databases and similar facilities. The contents are freely usable only for their intended purpose of being viewed on the Internet. Beyond the limits of copyright law, the content of this website may not be reproduced, dis-seminated, altered or made accessible to third parties in any form without the written permis-sion of COTEST. Some sections of the COTEST website also contain pictures that are subject to third-party copyrights. Unless otherwise specified, all brand names and logos on the COTEST website are trademarked.
+</p>
 </div>
 
 

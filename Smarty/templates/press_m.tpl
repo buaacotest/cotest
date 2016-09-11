@@ -43,7 +43,7 @@
  New ICRT member COTEST (Association for Comparative & Objective Testing in Europe for Safety & Trust e.V) is registered as a non-profit association under German law. A group of multinational experts with extensive testing experience operates COTEST with the following mission: To test products and services independently for a safe and trustful marketplace for consumers in developing countries and around the world.
 </p>
 <h4>Powered by European experience</h4>
-<p>COTEST will buy samples in the respective developing countries but test them in European research labs, which – among other clients - have been testing for German testing foundation Stiftung Warentest,  applying scientific methods, which Stiftung Warentest has been developing and applying for over 50 years. </p>
+<p>COTEST will buy samples in the respective developing countries but test them in European research labs, which – among other clients – have been testing for German testing foundation Stiftung Warentest,  applying scientific methods, which Stiftung Warentest has been developing and applying for over 50 years. </p>
 <p>Thereby, products produced outside Europe are tested in Europe according to European quality and testing standards. The access to the test results is promoted in all countries, where these products are sold to consumers.</p>
 
 <h4>Focus on Chinese Products</h4>

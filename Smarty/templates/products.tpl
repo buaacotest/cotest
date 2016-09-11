@@ -42,7 +42,7 @@
     </div>
     <div class="row" id="product_panel">
         <div class="product-container-panel">
-        <div class="products-container">
+         <div class="products-header">
             <div class="products-sort">
             
               <div class="name"><{$lang.SortBy}></div>
@@ -58,6 +58,14 @@
                   </ul>
                 </div>
             </div>
+            <div class="products-search">
+                <input class="products-search-text"type="text"></input>
+                <div class="products-search-btn">serach</div>
+                <ul class="keyword-panel"></ul>
+            </div>
+            </div>
+        <div class="products-container">
+
             <div id="products-block">
                 <p>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
@@ -106,7 +114,7 @@
                                                         <div class="star"></div>
                                                         <div class="star"></div>
                                                         <div class="star"></div>
-                                                        <div class="star_b"></div>
+                                                        <div class="star-b"></div>
 
                                         <{/if}>
                                         <{if $products[n].score >2.5 && $products[n].score <= 3.5}>
@@ -288,7 +296,31 @@
         return eval("("+get_par+")");
     }
 
-
+    function clickKeyword(item){
+        $(".products-search-text").val($(item).text());
+        $(".keyword-panel").hide();
+    }
+    $(".products-search-btn").on("click",function(){
+        var keyword=$(".products-search-text").val();
+          location.href = "products.php?proj=<{$project}>&keyword="+keyword
+    })
+    $(".products-search-text").on("input",function(){
+      var keyword=$(this).val();
+      $.post("search.php",{keyword:keyword},function(result){
+        result=eval("("+result+")")
+          var content="";
+          var n=result.length>10?10:result.length
+          for(var i=0;i<n;i++){
+            content+="<li class='keyword-item' onclick='javascript:clickKeyword(this)'>"+result[i]+"</li>";
+          }
+          $(".keyword-panel").html(content);
+      })
+    }).on("focus",function(){
+      $(".keyword-panel").show();
+    }).on("blur",function(){
+     if( ! $(".keyword-panel").is(":hover"))  
+      $(".keyword-panel").hide();
+    })
     function loadoption(labels){
         var option_text="";
         if(labels){

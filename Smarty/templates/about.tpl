@@ -46,7 +46,7 @@
 
 <div class="col-md-9 ">
 <div id="about-cotest"  class="about-article">
-    <h2 style="text-center">About COTEST</h2>
+    <h2 style="text-center">COTEST</h2>
     <br>
     <h4>Mission</h4>
 
@@ -59,7 +59,7 @@
     
     <h4>Powered by European experience</h4>
     <div class="col-md-9 about-para">
-    <p>COTEST will buy samples in the respective developing countries but test them in European research labs, which – among other clients - have been testing for German testing foundation Stiftung Warentest and other members of International Consumer Research & Testing (ICRT), applying scientific methods, which Stiftung Warentest and ICRT have been developing and applying for over 50 years.
+    <p>COTEST will buy samples in the respective developing countries but test them in European research labs, which – among other clients – have been testing for German testing foundation Stiftung Warentest and other members of International Consumer Research & Testing (ICRT), applying scientific methods, which Stiftung Warentest and ICRT have been developing and applying for over 50 years.
     Thereby, products produced outside Europe are tested in Europe according to European quality and testing standards. The access to the test results is promoted in all countries, where these products are sold to consumers. </p>
     </div>
 
@@ -74,20 +74,23 @@
     <div class="about-img-container">
         <img src="img/map.png" class="about-map">
     </div>
+    <!--
     <h4>Focus on Chinese Products</h4>
     <p>According to the EU RASFF (Rapid Alert System for Food and Feed) records, China is still the largest place of origin for notified unsafe food and feed products in Europe, and almost 60% of notifications in the EU’s Rapid Alert System for non-food dangerous products (RAPEX) concern goods of Chinese origin. In Europe, dangerous Chinese products are still countable, but in China, they have been innumerable for a long time. In China and around the world this really affects the basic human right to live safely. COTEST will therefore, at first, focus on the research and testing of products from China in order to empower consumers in China and around the world to consume safely and healthily.
     </p>
+
     <div class="about-img-container">
         <img src="img/eu_c.gif" class="about-eu">
     </div>
+    -->
     </div>
     <div id="about-icrt" class="about-article" style="display: none">
-     <h2 style="text-center">About ICRT</h2>
+     <h2 style="text-center">ICRT</h2>
     <br>
     <h4>Mission</h4>
 
     <p>
-     International Consumer Research & Testing (ICRT, http://www.international-testing.org) is a global consortium of more than 35 consumer organisations dedicated to carrying out joint research and testing in the consumer interest. Its mission is to be the world-leading organisation that empowers its members to provide high quality and independent information to consumers worldwide. 
+     <a href="http://www.international-testing.org">International Consumer Research & Testing</a> (ICRT) is a global consortium of more than 35 consumer organisations dedicated to carrying out joint research and testing in the consumer interest. Its mission is to be the world-leading organisation that empowers its members to provide high quality and independent information to consumers worldwide. 
     </p>
     <div class="about-img-container" >
         <img src="img/icrt_c.png" class="about-icrt">
@@ -107,10 +110,11 @@
     <div id="about-sw" class="about-article" style="display: none">
       <h2 style="text-center">Stiftung Warentest</h2>
     <br>
-    <p>Stiftung Warentest is a foundation. It was established in 1964 by the German federal parliament with the aim of helping consumers by providing impartial and objective information based on the results of comparative investigations of goods and services. </p>
+    <p><a href="https://www.test.de/unternehmen/about-us-5017053-0/">Stiftung Warentest</a> is a foundation. It was established in 1964 by the German federal parliament with the aim of helping consumers by providing impartial and objective information based on the results of comparative investigations of goods and services. For more information please go to the website of <a  href="https://www.test.de/unternehmen/about-us-5017053-0/">Stiftung Warentest.</a> </p>
     <div class="about-img-container">
         <img src="img/sw.jpg" class="about-member">
     </div>
+    <!--
     <h4>Facts + figures</h4>
     <p>Since it was founded Stiftung Warentest has carried out more than 5,500 tests and tested a good 94,000 products. In addition, it has carried out investigations of over 2,500 services. The results are published each year in more than 8 million copies of our magazines.</p>
     
@@ -164,6 +168,7 @@
         Independent, external labs are then commissioned to carry out the tests on behalf of the foundation. Investigated services are used covertly by trained mystery shoppers. Finally, Stiftung Warentest publishes and disseminates the results of its investigations.
     </p>
     <p>Each year, Stiftung Warentest investigates about 2000 products in more than 100 tests. In addition, it carries out fast-track tests, investigations of services, and provides market overviews and research-based reports.</p>
+    -->
     <div class="about-img-container">
         <img src="img/research.jpg" class="about-member">
     </div>
