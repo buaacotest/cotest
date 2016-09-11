@@ -15,6 +15,6 @@ if($option=='add')
 else if($option=='remove')
     $_SESSION['idList']=array_diff($_SESSION['idList'],$list);
 else if($option=='show')
-    echo $list;
+    echo  $_SESSION['idList'];
 
 
