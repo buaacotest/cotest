@@ -120,7 +120,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["7","62","81","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["51","88","11"]},{"type":"string","name":"Brand","label":"Brands","value":["Lenovo","HP","Acer","Toshiba","Asus","Dell","Apple","Medion","Packard Bell","Microsoft","Compaq"],"option":["Lenovo","HP","Acer","Toshiba","Asus","Dell","Apple","Medion","Packard Bell","Microsoft","Compaq"],"number":["34","29","25","22","17","12","5","3","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","2","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["6"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"option":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"number":["2","1","1","1","1"]}]
 EOF;
 
     return $labels;
