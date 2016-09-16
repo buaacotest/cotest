@@ -11,7 +11,7 @@ require('./includes/init.php');
 require('./lang/'.$_SESSION['lang'].'/compare.php');
 $project=trim($_GET['proj']);
 $db->changeDB($project);
-$items=trim($_SESSION['idList']);
+$items=trim($_SESSION[$project]['idList']);
 $lang=$_SESSION['lang'];
 $items=json_decode($items,true);
 $ids=array_keys($items);
