@@ -279,12 +279,23 @@
     var labels_str="";
     loadoption(<{$labels}>)
     $(".compare-panel").hide();
-    function getCompareProList(){
+    function init(){
       $.post("compareCart.php",{option:"show"},function(result){
-          result= eval("("+result+")");
-          return result;
+          var compareList= eval("("+result+")");
+            console.log(compareList)
+            if(compareList){
+              for(var key in compareList){
+                addCompare(key,compareList[key]);
+              }
+              
+                  $(".compare-panel").show();
+              
+             
+            }
+            setpage();    //调用分页
       })
     }
+    init();
      function getPar(par){
         //获取当前URL
         var local_url = document.location.href; 
@@ -540,11 +551,17 @@
        
         
     }
+    function closeCompareClick(pro_id){
+         $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+            $("#cp"+pro_id).attr('add',0);
+            removeCompare(pro_id);
+    }
     function addCompare(pro_id,pro_name){
        // alert("addcompare")
-        var content='<div class="compare-item" proId="'+pro_id+'">'
+        var content='<div class="compare-item" proName="'+pro_name+'" proId="'+pro_id+'">'
             +'<div class="compare-context">'+pro_name+'</div>'
-            +'<div class="compare-close">'
+            +'<div class="compare-close" onclick="javascript:closeCompareClick('+pro_id+')">'
              +'<img src="img/cross_w.png">'
             +'</div>'
         +'</div>';
@@ -553,17 +570,11 @@
             compare_name_list.push(pro_name);
             console.log(pro_id);
             $(".compare-panel").append(content);
-            $(".compare-close").on("click",function(){
-                console.log(pro_name)
 
-                $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
-                $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
-                $("#cp"+pro_id).attr('add',0);
-                removeCompare(pro_id);
-            })
         }
         
         //$(".compare-panel").append(content);
+        /*
         $(".compare-close").on("click",function(){
             //console.log(pro_name)
             
@@ -571,28 +582,41 @@
             $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
             $("#cp"+pro_id).attr('add',0);
             removeCompare(pro_id);
-        })
+        })*/
         
     }
 
     function removeCompare(pro_id){
 
-        var compareitems=$(".compare-panel").find('.compare-item');
-        //console.log(pro_id);
-        for(var i=0;i<compareitems.length;i++){
-            if($(compareitems[i]).attr("proId")==pro_id){
-                $(compareitems[i]).remove();
-            }
-        }
-        var compareitems=$(".compare-panel").find('.compare-item');
-        if(compareitems.length==0){
-            $(".compare-panel").hide();
-        }
-        var id=compare_list.indexOf(pro_id);
+        console.log(pro_id);
         console.log(compare_list);
-       // compare_list.remove(id);
-        compare_list.splice(id,1) 
-        compare_name_list.splice(id,1)
+        var id=compare_list.indexOf(pro_id.toString());
+        var removeItem={}
+
+        removeItem[compare_list[id]]=compare_name_list[id]
+        $.post("compareCart.php",{option:"remove",items:{removeItem}},function(result){
+          console.log(removeItem)
+            console.log(result)
+            var compareitems=$(".compare-panel").find('.compare-item');
+            //console.log(pro_id);
+            for(var i=0;i<compareitems.length;i++){
+                if($(compareitems[i]).attr("proId")==pro_id){
+                    $(compareitems[i]).remove();
+                }
+            }
+            var compareitems=$(".compare-panel").find('.compare-item');
+            if(compareitems.length==0){
+                $(".compare-panel").hide();
+            }
+            
+            $.post("compareCart.php",{option:"show"},function(res){
+              console.log(res);
+            })
+            compare_list.splice(id,1) 
+            compare_name_list.splice(id,1);
+            console.log(compare_list);
+        });
+
     }
     function updateCompareBtn(){
         var btns=$(".product-compare-button");
@@ -632,7 +656,7 @@
         var ids={};
         for(var i=0;i<items.length;i++){
           var id=$(items[i]).attr("proId").toString();
-            ids[id]='32423';
+            ids[id]=$(items[i]).attr("proName");
         }
         $.post("compareCart.php",{option:"add",items:ids},function(result){
                 console.log(result);
@@ -769,20 +793,7 @@
 
     //var compare_ids=getPar("ids");
     //var compare_names=getPar("names");
-    var compareList=getCompareProList();
-    //console.log(compare_ids);
-    //console.log(compare_names);
-    if(compareList){
-      if(compareList.length>0){
-         for(var i=0;i<compareList.length;i++){
-            addCompare(compareList.id,compareList.name)
-        
-         }
-          $(".compare-panel").show();
-      }
-     
-    }
-    setpage();    //调用分页
+   
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
