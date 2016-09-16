@@ -91,21 +91,22 @@
             <li><a href="impressum.php"> <{$lang.Impressum}></a></li>
             <li><a href="terms.php"> <{$lang.ServiceAgreement}></a></li>
 
-            <h4><b><{$lang.ContactUs}></b></h4>
-            <p><strong><small>Association for Comparative & Objective</small></strong></p>
-            <p>
+            <!--<h4><b><{$lang.ContactUs}></b></h4>-->
+            <br>
+            <p style="margin-bottom: 0.5em;"><strong><small>Association for Comparative & Objective</small></strong></p>
+            <p style="margin-bottom: 0.5em;">
                 <strong><small>Testing in Europe for Safety & Trust e.V.</small></strong>
             </p>
-            <p>
+            <p style="margin-bottom: 0.5em;">
                 Josef-Stork-Strasse 4
             </p>
-            <p>
+            <p style="margin-bottom: 0.5em;">
                 33334 Guetersloh, Germany
             </p>
-            <p>
+            <p style="margin-bottom: 0.5em;">
                 Tel.: +49-5241-964 959 0
             </p>
-            <p>
+            <p style="margin-bottom: 0.5em;">
                 E-Mail: <a href="mailto:info@cotest.org">info@cotest.org</a>
             </p>
          <!-- </ul>-->
