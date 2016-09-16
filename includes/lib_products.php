@@ -86,12 +86,13 @@ function getProductByIds($ids,$order='time'){
     $sql = "select modelname as product_name,`name`as product_manufacturer,timestamp_created as product_tested_date, id_product as product_id
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
-  
+
 	foreach($ids as $id){
 		$sql.=$id. ",";
 	}
 	$sql=substr($sql,0,-1);
 	$sql.=")";
+
     $res=$GLOBALS['db']->getAll($sql);
     foreach($res as $k=>$v){
         //$res[$k]['product_name']=shortName($v['product_name']);
@@ -387,10 +388,9 @@ function getProperty($id,&$res,$lang){
 
 /*搜索商品*/
 function searchProducts($str){
-    echo $str;
     $sql="select id_product from products where completename like '%$str%'";
-    echo $sql;
-    $results=$GLOBALS['db']->getAllValues($sql);
+    //echo $sql;
+   $results=$GLOBALS['db']->getAllValues($sql);
     return $results;
 }
 

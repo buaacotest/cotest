@@ -56,7 +56,7 @@ if(empty($sort)){
 $keyWords=trim($_GET["keyword"]);
 if(!empty($keyWords)){
     $keyIds=searchProducts($keyWords);
-    $products=getProductByIds($ids,$sort);
+    $products=getProductByIds($keyIds);
 }
 
 
@@ -72,6 +72,7 @@ if(!empty($labels)){
 
     $products=getProductByIds($ids,$sort);
 }else{
+    if(empty($keyWords))
     $products=getAllProducts($sort);
 }
 
