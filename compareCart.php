@@ -7,21 +7,24 @@
  */
 session_start();
 $option=$_POST['option'];
-$item = json_decode($_POST['items'],true);
+$items = json_decode($_POST['items'],true);
 if($option=='add')
-    addToCart($item);
+    addToCart($items);
 else if($option=='remove')
-    removeFromCart($item);
+    removeFromCart($items);
 else if($option=='show')
-    echo  json_encode($_SESSION['idList']);
+    echo  json_encode($_SESSION['project']['idList']);
 
-function addToCart($item){
-    $id = $item['id'];
-    $_SESSION['idList'][$id] = $item['name'];
+function addToCart($items){
+    foreach($items as $k=>$v){
+        $_SESSION['project']['idList'][$k] = $v;
+    }
 }
 
-function removeFromCart($item){
-    $id = $item['id'];
-    unset($_SESSION['idList'][$id]);
+function removeFromCart($items){
+    foreach($items as $k=>$v){
+        unset($_SESSION['project']['idList'][$k]);
+    }
+
 }
 
