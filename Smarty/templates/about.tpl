@@ -90,7 +90,8 @@
     <h4>Mission</h4>
 
     <p>
-     <a href="http://www.international-testing.org">International Consumer Research & Testing</a> (ICRT) is a global consortium of more than 35 consumer organisations dedicated to carrying out joint research and testing in the consumer interest. Its mission is to be the world-leading organisation that empowers its members to provide high quality and independent information to consumers worldwide. 
+     <a href="http://www.international-testing.org">International Consumer Research & Testing</a> (ICRT) is a global consortium of more than 35 consumer organisations dedicated to carrying out joint research and testing in the consumer interest. Its mission is to be the world-leading organisation that empowers its members to provide high quality and independent information to consumers worldwide.
+        As the only independent international organisation for consumer research and testing, ICRT runs thousands of tests annually, on a whole range of consumer products from apple juice to digital cameras, laptops, mobile phones, drinking water, wrinkle creams and yogurt, and plays a key role in promoting higher safety standards for consumer goods such as food, health, the environment and services.
     </p>
     <div class="about-img-container" >
         <img src="img/icrt_c.png" class="about-icrt">

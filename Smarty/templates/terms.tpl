@@ -47,8 +47,8 @@ Accessibility: We will try to ensure our websites are accessible to everyone vis
 <h3>3. What you should do for us</h3>
 <p>Please comply with our user generated content terms if you are using any of our interactive services that allow you to add material to our websites (for example, text or images) or to contact other users of our websites.</p><p>
 Please take the time to check the advice on our websites is right for your individual circumstances and if you are making any important decisions, such as on financial, legal or medical matters, you should consult a qualified professional adviser who can provide specific advice based on your individual position.</p><p>
-Please make sure you’re happy that any sites you link to from our websites are appropriate for you as we do not endorse that organisation and we have no control over the content of that website or how that site or organisation operates.</p><p>
-Please ensure any content you print, copy or download from our websites is for your personal and private use only.  You must not use or encourage others to use our websites (or their contents) for their or your commercial gain or in a way that could damage the reputation of Which?.  Additionally, you cannot use our websites to create, update or amend your own or someone else's databases.  You must not use any automated means to monitor or copy our websites or their content, or permit to be made any bulk downloading or storage of data from our websites. Our content (including but not limited to “Best Buy”, “Don’t Buy”, numeric scores and symbol ratings) cannot be reproduced on any public forum, including all product review, retailer and blogging websites.</p><p>
+Please make sure you're happy that any sites you link to from our websites are appropriate for you as we do not endorse that organisation and we have no control over the content of that website or how that site or organisation operates.</p><p>
+Please ensure any content you print, copy or download from our websites is for your personal and private use only.  You must not use or encourage others to use our websites (or their contents) for their or your commercial gain or in a way that could damage the reputation of Which?.  Additionally, you cannot use our websites to create, update or amend your own or someone else's databases.  You must not use any automated means to monitor or copy our websites or their content, or permit to be made any bulk downloading or storage of data from our websites. Our content (including but not limited to “Best Buy”, “Don't Buy”, numeric scores and symbol ratings) cannot be reproduced on any public forum, including all product review, retailer and blogging websites.</p><p>
 Please download content carefully because you will be responsible for any damage to your computer system that may result.</p><p>
 You must not do anything to damage or disrupt our websites and you must not use our websites in a way that may cause a nuisance to others.</p><p>
 We encourage you to link to any of our web pages, providing you do so responsibly. This means that:</p><p>
@@ -57,18 +57,18 @@ We encourage you to link to any of our web pages, providing you do so responsibl
 </li><li>You do not create the impression that there is any association, approval or endorsement with or by us.
 </li><li>You must ensure any links are used in a fair and reasonable manner and that their use will not damage our reputation or take unfair advantage of it (commercially or otherwise).
 </li><li>Unless you obtain our express permission, you must not include more than 10 links to our websites on any one of your web pages.
-</li><li>The website you are linking from must not contain offensive, obscene or defamatory material, and must not infringe anyone’s copyright, trademarks or other similar rights.
+</li><li>The website you are linking from must not contain offensive, obscene or defamatory material, and must not infringe anyone's copyright, trademarks or other similar rights.
 </li><li>If anyone clicks on the link you provide to our websites, it must open our website in a new page and not within a frame on your website.</li>
 </ul>
 
 <h3>4. Other important things you need to know</h3>
 <p>
-What happens if things go wrong? Given the nature of our websites and the wide range of information and services we provide, it’s possible that every now and again things may not go as planned. If we make a mistake, rest assured we will do our best to put things right as soon as possible.</p><p>
+What happens if things go wrong? Given the nature of our websites and the wide range of information and services we provide, it's possible that every now and again things may not go as planned. If we make a mistake, rest assured we will do our best to put things right as soon as possible.</p><p>
 Unfortunately, we will not be able to compensate you for any loss you may suffer as a result of:</p>
 
 <ul><li>any mistake we make with the content on our websites;
 </li><li>any parts of our websites being unavailable or inaccessible;
-</li><li>your use of any organisation’s website that you can access from our websites (including any purchase from that organisation and any use they make of the personal data you provide to them);
+</li><li>your use of any organisation's website that you can access from our websites (including any purchase from that organisation and any use they make of the personal data you provide to them);
 </li><li>the downloading of any material from any of our websites;
 </li><li>the content added to our websites by people using our interactive services; and
 </li><li>inaccurate pricing information, including any price predictions.
@@ -77,7 +77,7 @@ Unfortunately, we will not be able to compensate you for any loss you may suffer
 <p>
 We do not, of course, exclude any liability we may have in the unlikely event we have been fraudulent or if we are negligent and as a result we cause your death or personal injury, whether in connection with these general terms or any of our other website terms and conditions.
 </p><p>
-What happens if you don’t comply with our website terms? You agree to compensate us for any loss that we suffer as a result of your failure to comply with either our general terms or any of our other website terms and conditions.</p><p>
+What happens if you don't comply with our website terms? You agree to compensate us for any loss that we suffer as a result of your failure to comply with either our general terms or any of our other website terms and conditions.</p><p>
 If anyone complains about your use of our websites or the content you add to our websites, you agree that we can control the handling of any such dispute and that you will fully support and co-operate with this.</p><p>
 Cotest may vary any of its terms at any time, although we will only make changes if we think these are either necessary or reasonable. Please make sure you check our website terms and conditions homepage regularly for any announcements. The changed terms will normally take effect immediately upon publication, although where we think the changes are likely to be important to you, we shall always tell you in advance so you can decide whether to continue using our websites.</p><p>
 </p><p>

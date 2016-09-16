@@ -9,7 +9,7 @@ require('includes/init.php');
 include_once 'includes/config.php';
 require('lang/'.$_SESSION['lang'].'/user.php');
 $smarty->assign('lang',$_LANG);
-$smarty->assign('title',"Impressum");
+$smarty->assign('title',"Imprint");
 if(isMobile())
     $smarty->display('impressum_m.tpl');
 else
