@@ -594,7 +594,7 @@
         var removeItem={}
 
         removeItem[compare_list[id]]=compare_name_list[id]
-        $.post("compareCart.php",{option:"remove",items:{removeItem}},function(result){
+        $.post("compareCart.php",{option:"remove",items:removeItem},function(result){
           console.log(removeItem)
             console.log(result)
             var compareitems=$(".compare-panel").find('.compare-item');

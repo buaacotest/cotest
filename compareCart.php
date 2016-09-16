@@ -16,6 +16,7 @@ if($option=='add'){
 }
 else if($option=='remove'){
     removeFromCart($items,$project);
+    //print_r($_SESSION[$project]['idList']);
     echo "success";
 }
 else if($option=='show')
