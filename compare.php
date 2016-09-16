@@ -13,7 +13,6 @@ $project=trim($_GET['proj']);
 $db->changeDB($project);
 $items=trim($_SESSION[$project]['idList']);
 $lang=$_SESSION['lang'];
-$items=json_decode($items,true);
 $ids=array_keys($items);
 $comProducts=array();
 $directory=getDirectoryWithLink($project);
