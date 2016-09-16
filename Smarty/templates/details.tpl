@@ -268,33 +268,43 @@
                                 <div class="col-md-2">
                                        <div class="score-list">
                                         <{if $evals.value <= 1.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
 
                                         <{/if}>
                                         <{if $evals.value > 1.5 && $evals.value <= 2.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $evals.value > 2.5 && $evals.value <= 3.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $evals.value > 3.5 && $evals.value <= 4.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $evals.value > 4.5 && $evals.value <= 5.5}>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
 
                                         <{/if}>
@@ -340,33 +350,43 @@
                                      
                                         <div class="score-list">
                                         <{if $evals.id_parent[n].value <= 1.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
 
                                         <{/if}>
                                         <{if $evals.id_parent[n].value > 1.5 && $evals.id_parent[n].value <= 2.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $evals.id_parent[n].value > 2.5 && $evals.id_parent[n].value <= 3.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $evals.id_parent[n].value > 3.5 && $evals.id_parent[n].value <= 4.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $evals.id_parent[n].value > 4.5 && $evals.id_parent[n].value <= 5.5}>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
 
                                         <{/if}>
@@ -410,33 +430,43 @@
                                     <div class="col-md-2">
                                         <div class="score-list">
                                         <{if $foo.value <= 1.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
 
                                         <{/if}>
                                         <{if $foo.value > 1.5 && $foo.value <= 2.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $foo.value > 2.5 && $foo.value <=  3.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $foo.value > 3.5 && $foo.value <= 4.5}>
-                                                        <div class="star"></div>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
                                         <{/if}>
                                         <{if $foo.value > 4.5 && $foo.value <= 5.5}>
-                                                        <div class="star"></div>
+                                                        <div class="star2"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
+                                                        <div class="star2-b"></div>
 
 
                                         <{/if}>

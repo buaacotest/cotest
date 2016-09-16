@@ -368,9 +368,15 @@
 <script type="text/javascript" src="js/review.js"></script>
 <script type="text/javascript">
 //解析get参数
+function getCompareList(){
+  $.post("compareCart.php",{option:"show"},function(result){
 
+      console.log(result)
+    
+  })
+}
 var local_url = document.location.href; 
-var compare_list=getPar("ids");
+var compare_list=getCompareList();
 //关闭响应事件
 $(".compare-title").text(compare_list.length+" <{$directory.up.name}> in comparison".toLowerCase())
 //toggle

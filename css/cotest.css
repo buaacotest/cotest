@@ -317,6 +317,11 @@ color: #f7b206;
 	height: 20px;
 
 }
+.pro-score-banner .star{
+	width: 25px;
+	height: 25px;
+	background: url(../img/star_m.png);
+}
 .products .product-thumb{
 	height: 130px;
 	overflow: hidden;
@@ -350,8 +355,22 @@ color: #f7b206;
 	height: 15px;
 	background: url(../img/star.png)
 }
+.star2{
+	list-style: none;
+	float: left;
+	width: 15px;
+	height: 15px;
+	background: url(../img/star2.png)
+}
+.star2-b{
+	list-style: none;
+	float: left;
+	width: 15px;
+	height: 15px;
+	background: url(../img/star2b.png)
+}
 .products .score{
-    color: #f4b501;
+    color: #e68905;
     margin-top: 3px;
     float:none;
 
@@ -445,13 +464,22 @@ color: #f7b206;
 	cursor: pointer;
 }
 .products-header{
-	width: 100%;
 	height: 60px;
-	margin-top: 100px;
+	margin-top: 60px;
+	padding-left: 280px;
+	padding-right: 60px;
+}
+.products-title{
+	padding: 20px 0px;
+
+}
+.products-title h3{
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
 }
 .products-sort{
 	margin-bottom: 20px;
-	margin-left: 280px;
 	float: left;
 }
 .products-sort .name{
@@ -478,7 +506,7 @@ color: #f7b206;
 } 
 .products-search{
 	float: right;
-	width: 250px;
+	width: 215px;
 	position: relative;
 
 }

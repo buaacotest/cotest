@@ -43,8 +43,19 @@
     <div class="row" id="product_panel">
         <div class="product-container-panel">
          <div class="products-header">
+         <div class="products-title">
+           
+           <h3>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;
+           <!--<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}>
+           --></h3>
+           <p>
+             Highlights of the test results: Der Produktfinder Handys macht Ihnen den Smartphone-Kauf leicht! Neu in der Test-Daten¬bank sind drei aktuelle Smartphones: das neue Flaggschiff von LG, das LG G5, das Huawei P9 und das nach Angaben des Anbieters „ethisch, offen und lang¬lebig“ produzierteFairphone 2. 
+           </p>
+           
+         </div>
+         
             <div class="products-sort">
-            
+              
               <div class="name"><{$lang.SortBy}></div>
                 <div class="btn-group">
                   <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,7 +78,7 @@
         <div class="products-container">
 
             <div id="products-block">
-                <p>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}></p>
+                
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
@@ -268,6 +279,12 @@
     var labels_str="";
     loadoption(<{$labels}>)
     $(".compare-panel").hide();
+    function getCompareProList(){
+      $.post("compareCart.php",{option:"show"},function(result){
+          result= eval("("+result+")");
+          return result;
+      })
+    }
      function getPar(par){
         //获取当前URL
         var local_url = document.location.href; 
@@ -295,6 +312,7 @@
         get_par=get_par.replace(/%20/g," ");
         return eval("("+get_par+")");
     }
+    
 
     function clickKeyword(item){
         $(".products-search-text").val($(item).text());
@@ -611,12 +629,17 @@
    
     $(".compare-btn").on("click",function(){
         var items=$(".compare-panel").find(".compare-item");
-        var ids=[];
+        var ids={};
         for(var i=0;i<items.length;i++){
-            ids.push(parseInt($(items[i]).attr("proId")));
+          var id=$(items[i]).attr("proId")
+            ids[id]='32423';
         }
+        $.post("compareCart.php",{option:"add",items:ids},function(result){
+
+        });
+        console.log(ids);
        // $.get();
-            window.location.href="compare.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_list)
+            window.location.href="compare.php?proj="+'<{$project}>'
         
     })
     $(".compare-toogle").on("click",function(){
@@ -742,14 +765,16 @@
 
  
   //  var local_url = document.location.href; 
-    var compare_ids=getPar("ids");
-    var compare_names=getPar("names");
-    console.log(compare_ids);
-    console.log(compare_names);
-    if(compare_ids&&compare_names){
-      if(compare_ids.length>0 && compare_names.length>0){
-         for(var i=0;i<compare_ids.length;i++){
-            addCompare(compare_ids[i],compare_names[i])
+
+    //var compare_ids=getPar("ids");
+    //var compare_names=getPar("names");
+    var compareList=getCompareProList();
+    //console.log(compare_ids);
+    //console.log(compare_names);
+    if(compareList){
+      if(compareList.length>0){
+         for(var i=0;i<compareList.length;i++){
+            addCompare(compareList.id,compareList.name)
         
          }
           $(".compare-panel").show();
