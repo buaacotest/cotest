@@ -27,6 +27,7 @@ $_LANG['Milk']='UHT牛奶';
 $_LANG['MilkPowder']='婴幼儿奶粉';
 $_LANG['Cameras']='数码相机';
 $_LANG['Laptops']='笔记本电脑';
+$_LANG['Smartwatches']='智能手表';
 
 $_LANG['SignIn']='登录';
 $_LANG['SignUp']='注册';

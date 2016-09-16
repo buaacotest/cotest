@@ -27,7 +27,7 @@ $_LANG['Milk']='UHT Milk';
 $_LANG['MilkPowder']='Formula Milk Powder';
 $_LANG['Cameras']='Digital Cameras';
 $_LANG['Laptops']='Laptops';
-
+$_LANG['Smartwatches']='Smartwatches';
 
 $_LANG['SignIn']='Loginin';
 $_LANG['SignUp']='Sign up';

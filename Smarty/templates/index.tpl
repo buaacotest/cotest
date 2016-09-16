@@ -199,18 +199,19 @@ require("navigation.php");
             </div>
             </a>
 
-
+            <a href="products.php?proj=smartwatches">
             <div class="pro-list-item">
               <div class="pro-list-item-img">
                 <img src="img/commingsoon.jpg">
               </div>
               <div class="pro-list-item-info">
-                <div class="num">0</div>
+                <div class="num"><{$number.smartwatches}></div>
               </div>
               <div class="pro-list-item-info">
-                <div class="name"><{$lang.Fitness}></div>
+                <div class="name"><{$lang.Smartwatches}></div>
               </div>
             </div>
+            </a>
 
           </div>
           
