@@ -9,14 +9,20 @@ session_start();
 $project = $_SESSION['project'];
 $option=$_POST['option'];
 $items = json_decode($_POST['items'],true);
-if($option=='add')
+if($option=='add'){
     addToCart($items,$project);
-else if($option=='remove')
+    echo "success";
+}
+else if($option=='remove'){
     removeFromCart($items,$project);
+    echo "success";
+}
 else if($option=='show')
     echo  json_encode($_SESSION[$project]['idList']);
-else if($option = 'removeAll')
+else if($option = 'removeAll'){
     removeAll($project);
+    echo "success";
+}
 
 function addToCart($items,$project){
     foreach($items as $k=>$v){
