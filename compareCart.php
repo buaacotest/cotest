@@ -5,16 +5,23 @@
  * Date: 2016/7/13
  * Time: 20:47
  */
-require('./includes/init.php');
-$GLOBALS['db']->changeDB($_SESSION['project']);
+session_start();
 $option=$_POST['option'];
-$list=$_POST['items'];
-$_SESSION['idList']=array();
+$item = json_decode($_POST['items'],true);
 if($option=='add')
-    array_merge($_SESSION['idList'],$list);
+    addToCart($item);
 else if($option=='remove')
-    $_SESSION['idList']=array_diff($_SESSION['idList'],$list);
+    removeFromCart($item);
 else if($option=='show')
-    echo  $_SESSION['idList'];
+    echo  json_encode($_SESSION['idList']);
 
+function addToCart($item){
+    $id = $item['id'];
+    $_SESSION['idList'][$id] = $item['name'];
+}
+
+function removeFromCart($item){
+    $id = $item['id'];
+    unset($_SESSION['idList'][$id]);
+}
 
