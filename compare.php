@@ -14,10 +14,7 @@ $db->changeDB($project);
 $items=trim($_SESSION['idList']);
 $lang=$_SESSION['lang'];
 $items=json_decode($items,true);
-$ids=array();
-foreach($items as $k=>$v){
-    $ids[]=$v['id'];
-}
+$ids=array_keys($items);
 $comProducts=array();
 $directory=getDirectoryWithLink($project);
 $count=0;
