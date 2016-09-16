@@ -8,7 +8,8 @@
 session_start();
 $project = $_SESSION['project'];
 $option=$_POST['option'];
-$items = json_decode($_POST['items'],true);
+$items = $_POST['items'];
+//$items = json_decode($items,true);
 if($option=='add'){
     addToCart($items,$project);
     echo "success";
