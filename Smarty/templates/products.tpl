@@ -631,12 +631,12 @@
         var items=$(".compare-panel").find(".compare-item");
         var ids={};
         for(var i=0;i<items.length;i++){
-          var id='"'+$(items[i]).attr("proId").toString()+'"';
+          var id=$(items[i]).attr("proId").toString();
             ids[id]='32423';
         }
         $.post("compareCart.php",{option:"add",items:ids},function(result){
                 console.log(result);
-             //   window.location.href="compare.php?proj="+'<{$project}>'
+                window.location.href="compare.php?proj="+'<{$project}>'
         
         });
         console.log(ids);

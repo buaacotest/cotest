@@ -372,7 +372,13 @@ function getCompareList(){
   $.post("compareCart.php",{option:"show"},function(result){
 
       console.log(result)
-    
+      result=eval("("+result+")")
+      var ids=[]
+      for(var key in result){
+        ids.push(key);
+      }
+      console.log(ids)
+      return ids
   })
 }
 var local_url = document.location.href; 
