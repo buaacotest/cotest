@@ -14,6 +14,8 @@ else if($option=='remove')
     removeFromCart($items);
 else if($option=='show')
     echo  json_encode($_SESSION['project']['idList']);
+else if($option = 'removeAll')
+    removeAll();
 
 function addToCart($items){
     foreach($items as $k=>$v){
@@ -26,5 +28,9 @@ function removeFromCart($items){
         unset($_SESSION['project']['idList'][$k]);
     }
 
+}
+
+function removeAll(){
+    $_SESSION['project']['idList']=array();
 }
 
