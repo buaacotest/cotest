@@ -104,9 +104,6 @@
                 33334 Guetersloh, Germany
             </p>
             <p style="margin-bottom: 0.5em;">
-                Tel.: +49-5241-964 959 0
-            </p>
-            <p style="margin-bottom: 0.5em;">
                 E-Mail: <a href="mailto:info@cotest.org">info@cotest.org</a>
             </p>
          <!-- </ul>-->

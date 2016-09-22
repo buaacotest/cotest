@@ -37,7 +37,6 @@
     
     <p>Josef-Stork-Strasse 4</p>
     <p>33334 Guetersloh, Germany</p>
-    <p>Tel.: +49-5241-964 959 0</p>
     <p>E-Mail: info@cotest.org</p>
     <p>Skype: cotest.org</p>
     <p><br></p>
@@ -68,7 +67,6 @@
 
     <p>Josef-Stork-Strasse 4</p>
     <p>33334 Guetersloh, Deutschland</p>
-    <p>Tel.: +49-5241-964 959 0</p>
     <p>E-Mail: info@cotest.org</p>
     <p>Skype: cotest.org</p>
     <p><br></p>
