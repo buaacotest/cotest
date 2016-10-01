@@ -286,12 +286,12 @@
       $.post("compareCart.php",{option:"show"},function(result){
           var compareList= eval("("+result+")");
             console.log(compareList)
-            if(compareList.length!=0){
+            if(compareList)
+                if(compareList.length!=0){
 
                   for(var key in compareList){
                   addCompare(key,compareList[key]);
               }
-
 
                 $(".compare-panel").show();
              
