@@ -245,22 +245,9 @@ function getTree($data, $pId,$level,$end)
     return $tree;
 }
 
-/*获取指定id产品的属性以及分组*/
-function getProperty($id,&$res,$lang){
-  $results=array();
-    if($lang=='en_us'){
-        $sql="select id_propertygroup,name from propertygroups";
-        $groups=$GLOBALS['db']->getAll($sql);
-        $sql="select id_propertygroup,name,type,unit,binding from propertys where selected=1";
-        $props=$GLOBALS['db']->getAll($sql);
-    }else{
-         $sql="select id_propertygroup,CHN as name from (select * from propertygroups p) p left join sdictionary t on p.id_propertygroup=t.wordid and flag=3 ;";
 
-        $groups=$GLOBALS['db']->getAll($sql);
-        $sql="select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
-        $props=$GLOBALS['db']->getAll($sql);
-    }
-
+/*获取指定id产品的属性的值*/
+function getPropsValues($props,$id){
     foreach($props as $k=>$v){
         //echo $v['name'];
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
@@ -268,7 +255,7 @@ function getProperty($id,&$res,$lang){
               select id_evaluation FROM evaluations WHERE binding='".$v['binding']."' and id_evaluation>99999999)";
 
 
-       //echo $sql."\n";
+        //echo $sql."\n";
         $value=$GLOBALS['db']->getOne($sql);
         $value= htmlspecialchars($value,ENT_QUOTES);
         switch($v['type']){
@@ -302,50 +289,106 @@ function getProperty($id,&$res,$lang){
         $props[$k]=$v;
 
     }
-    foreach($groups as $k=>$g){
-        if($g['name']=="Pros"||$g['name']=="优点"){
-            $pros=array();
-            foreach($props as $p){
-                if($p['id_propertygroup']==$g['id_propertygroup']){
+    return $props;
+}
 
-                    if($p['value']=="Yes"||$p['value']=="yes"){
-                        $pros[]=$p['name'];
+/*产品属性挑选指定规则*/
+function getRules(){
+    return $rules = array("mobilephones"=>null,
+                            "tvs"=>array("groups"=>array(array("name"=>"Screen","props"=>array(2004, 1702, 1704, 1705, 1706, 1717, 1718,
+                                                                             2029, 1722, 1723, 1789)),
+                                  array("name"=>"Size","props"=>array(1707, 1746, 1747, 1748, 1751)),
+                                  array("name"=>" Connection","props"=>array(1752, 1754, 1755,1758, 1760, 1761, 1762,1763,1766,1768,1771,1772,                                                                                  1777,1784,1785,1786,1725)),
+                                  array("name"=>"Smart","props"=>array(1778,1779,1780,1781,1860,1861,1868,1898,1936)),
+                                  array("name"=>"Tuners","props"=>array(1797,1800,1804)),
+                                  array("name"=>"Picture settings","props"=>array(1939,1940,1941,1942,1943,1945,1807)),
+                                  array("name"=>"Recorder","props"=>array(1842,1848,1849,1855)),
+                                  array("name"=>"Power consumption","props"=>array(1835,1838,2040,1991,1992)),
+            )));
+}
+
+/*获取指定id产品的属性以及分组*/
+function getProperty($id,&$res,$lang){
+  $results=array();
+    $rules = getRules();
+    $project = $_SESSION['project'];
+    if(!$rules[$project]) {
+        if ($lang == 'en_us') {
+            $sql = "select id_propertygroup,name from propertygroups";
+            $groups = $GLOBALS['db']->getAll($sql);
+            $sql = "select id_propertygroup,name,type,unit,binding from propertys where selected=1";
+            $props = $GLOBALS['db']->getAll($sql);
+        } else {
+            $sql = "select id_propertygroup,CHN as name from (select * from propertygroups p) p left join sdictionary t on p.id_propertygroup=t.wordid and flag=3 ;";
+
+            $groups = $GLOBALS['db']->getAll($sql);
+            $sql = "select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
+            $props = $GLOBALS['db']->getAll($sql);
+        }
+        $props = getPropsValues($props,$id);
+        foreach($groups as $k=>$g){
+            if($g['name']=="Pros"||$g['name']=="优点"){
+                $pros=array();
+                foreach($props as $p){
+                    if($p['id_propertygroup']==$g['id_propertygroup']){
+
+                        if($p['value']=="Yes"||$p['value']=="yes"){
+                            $pros[]=$p['name'];
+                        }
                     }
-                }
 
                 }
 
                 $res['Pros']=$pros;
-            continue;
-        } else if($g['name']=="Cons"||$g['name']=="缺点") {
+                continue;
+            } else if($g['name']=="Cons"||$g['name']=="缺点") {
 
-            $cons=array();
-            foreach($props as $p){
-                if($p['id_propertygroup']==$g['id_propertygroup']){
+                $cons=array();
+                foreach($props as $p){
+                    if($p['id_propertygroup']==$g['id_propertygroup']){
 
-                    if($p['value']=="Yes"||$p['value']=="yes"){
-                        $cons[]=$p['name'];
+                        if($p['value']=="Yes"||$p['value']=="yes"){
+                            $cons[]=$p['name'];
+                        }
                     }
                 }
+                // $string=substr($string, 0, -1);
+
+                $res['Cons']=$cons;
+
+                continue;
             }
-           // $string=substr($string, 0, -1);
 
-            $res['Cons']=$cons;
-
-            continue;
-        }
-
-        $temp='';
-        foreach($props as $p){
-            if($p['id_propertygroup']==$g['id_propertygroup']){
-                $temp[]=$p;
+            $temp='';
+            foreach($props as $p){
+                if($p['id_propertygroup']==$g['id_propertygroup']){
+                    $temp[]=$p;
+                }
+            }
+            $groups[$k]['id_propertygroup']=$temp;
+            if(!empty($temp)){
+                $results[]=$groups[$k];
             }
         }
-        $groups[$k]['id_propertygroup']=$temp;
-        if(!empty($temp)){
-            $results[]=$groups[$k];
+    }else{
+        $groups = $rules[$project]['groups'];
+        foreach($groups as $k=>$g){
+            $sql = "select name,type,unit,binding from propertys where id_property in(";
+            foreach($g['props'] as $v){
+                $sql .= $v.",";
+            }
+            $sql = substr($sql,0,-1);
+            $sql .= ")";
+           // echo $sql;
+            $props = $GLOBALS['db']->getAll($sql);
+            $props = getPropsValues($props,$id);
+            $g['id_propertygroup'] = $props;
+            unset($g['props']);
+            $groups[$k] = $g;
         }
+        $results = $groups;
     }
+
     if(empty($pros)){/*************************处理groups中没有Pros的情况*/
         $pros=array();
         $sql="select value  from results where id_product=$id and id_evaluation=(select id_evaluation from evaluations where name='Pros')";
@@ -383,6 +426,7 @@ function getProperty($id,&$res,$lang){
         }
         array_splice($results,1,2);
     }
+   // print_r($groups);
     return $results;
 }
 
@@ -393,10 +437,6 @@ function searchProducts($str){
    $results=$GLOBALS['db']->getAllValues($sql);
     return $results;
 }
-
-
-
-
 
 /*根据标签筛选商品*/
 //labels:[{'type':string,'name':'Brand (from brandlist)',value:['xx','yy']},....]
@@ -583,4 +623,5 @@ function getDirectoryWithLink($project){
     }
     return $directoryArray[$project];
 }
+
 
