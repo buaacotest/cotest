@@ -234,6 +234,7 @@
             <img src="img/down.png" />
         </div>
         <div class="compare-btn"><{$lang.Compare}></div>
+        <div class="compare-clear-btn"><{$lang.Clear}></div>
     </div>
 </div>
 <{php}>

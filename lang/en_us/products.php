@@ -53,6 +53,8 @@ $_LANG['Sufficient']='Adequate';
 $_LANG['Poor']='Poor';
 
 $_LANG['Compare']='Compare';
+
+$_LANG['Clear']='Clear All';
 $_LANG['AddToCompare']='Add to compare';
 $_LANG['RemoveFromCompare']='Remove from compare';
 $_LANG['Confirm']='Confirm';

@@ -70,16 +70,16 @@ font-weight: bold;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    color: #f7b206;
+    color: #39f;
     background: #333;
-   border-bottom: 2px solid #f7b206;
+   border-bottom: 2px solid #39f;
 	height: 50px;
 }
 .navbar-default .navbar-nav>li>a {
 color: #555;
 }
 .navbar-default .navbar-nav>li>a:hover {
-color: #f7b206;
+color: #39f;
 }
 .index-header{
 	width: 100%;
@@ -370,9 +370,10 @@ color: #f7b206;
 	background: url(../img/star2b.png)
 }
 .products .score{
-    color: #e68905;
+    color: #39f;
     margin-top: 3px;
     float:none;
+    font-weight: bold;
 
 }
 .star-b{
@@ -443,7 +444,7 @@ color: #f7b206;
 #how-we-test-panel h3{
 	font-size: 22px;
 	margin: 28px 0px;
-	color: #f7b206;
+	color: #39f;
 }
 #how-we-test-panel h4{
 	font-weight: bold;
@@ -608,7 +609,7 @@ filter: alpha(opacity=0);
 	height: 16px;
 	margin-top: 3px;
 	margin-right: 10px;
-	border: 3px solid #f7b206;
+	border: 3px solid #39f;
 	float: left;
 }
 .sidebar h3{
@@ -665,7 +666,7 @@ filter: alpha(opacity=0);
 }
 .pro-nav>li.active a{
 	border:none;
-	border-bottom: 2px solid #f7b206;
+	border-bottom: 2px solid #39f;
 } 
 .pro-nav{
 	font-size: 16px;
@@ -679,7 +680,7 @@ filter: alpha(opacity=0);
 }
 .pro-nav>li.active a:hover{
 	border:none;
-	border-bottom: 2px solid #f7b206;
+	border-bottom: 2px solid #39f;
 } 
 .nav-tabs>li>a:hover {
 border-color: #eee #eee #ddd;
@@ -1046,14 +1047,14 @@ border-radius: 0px;
 	height: 60px;
 }
 .product-listing__name--narrow:hover{
-	color: #f7b206;
+	color: #39f;
 }
 .product-listing__name--narrow span{
 	height: 40px;
 	width: 800px;
 }
 a{
-	color: #f7b206;
+	color: #39f;
 }
 .form-wrapper{
 	background: #fff;
@@ -1140,12 +1141,12 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	float: left;
 	margin-left: 20px;
 	font-size: 24px;
-	color: #f7b206;
+	color: #39f;
 }
 .pro-info-pros{
 	font-weight: bold;
 	color: #fff;
-	background: #f7b206;
+	background: #39f;
 	padding: 8px;
 	font-size: 14px;
 	width:58px;
@@ -1199,7 +1200,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	top: 50px;
 	left: 0px;
 	width: 300px;
-	border-left: 6px solid #f7b206;
+	border-left: 6px solid #39f;
 	height: 80px;
 	padding: 10px 30px;
 	color: #555;
@@ -1218,7 +1219,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .pro-score-banner-star{
 	font-size: 18px;
 	font-weight: bold;
-	color: #f7b206;
+	color: #39f;
 }
 .pro-option-banner{
 	position: absolute;
@@ -1238,7 +1239,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	font-size: 14px;
 	width: 100%;
 	text-align: left;
-	color: #f7b206;
+	color: #39f;
 }
 
 .pro-list-item{
@@ -1358,12 +1359,12 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     color: #999;
 }
 .img-tabs .pro-nav .active a{
-	border-bottom: 4px solid #f7b206;
+	border-bottom: 4px solid #39f;
 	color: #555;
 
 }
 .img-tabs .pro-nav .active a:hover{
-	border-bottom: 4px solid #f7b206;
+	border-bottom: 4px solid #39f;
 	color: #555;
 
 }
@@ -1378,8 +1379,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	margin-top: 20px;
 	height: 50px;
 	background: none;
-	border: 3px solid #f7b206;
-	color: #f7b206;
+	border: 3px solid #39f;
+	color: #39f;
 	font-size: 16px;
 	border-radius: 0px;
 	font-weight: bold;
@@ -1387,7 +1388,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 }
 .sign-btn:hover,.sign-btn:focus{
-	background: #f7b206;
+	background: #39f;
 	opacity: 0.8;
 	color: #fff;
 	border: none;
@@ -1604,7 +1605,7 @@ footer .icptext{
 
 .compare-table h2{
 	font-size: 16px;
-	color: #f7b206;
+	color: #39f;
 	font-weight: bold;
 	margin-left: 14px;
 }
@@ -1685,6 +1686,26 @@ footer .icptext{
 	cursor: pointer;
 
 }
+.compare-clear-btn{
+	position: absolute;
+	right: 0px;
+	top: 100px;
+	width: 150px;
+	margin: 20px;
+	height: 50px;
+	text-align: center;
+	color: #fff;
+	line-height: 50px;
+	font-weight: bold;
+	font-size: 18px;
+	background: #999;
+	opacity: 0.8;
+	cursor: pointer;
+
+}
+.compare-clear-btn:hover{
+	opacity: 1;
+}
 .compare-btn:hover{
 	opacity: 1;
 }
@@ -1726,7 +1747,7 @@ footer .icptext{
 	padding-top: 10px;
 }
 .about-nav-list .active{
-	color: #f7b206;
+	color: #39f;
 }
 .about-nav-list {
 
