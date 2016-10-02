@@ -34,7 +34,7 @@ function getLabels()
           {"type":"multi","name":"","label":"Screen features",
            "value":["Curved screen","Can TV cope with 3D","HDR"],
            "option":["Curved","3D","HDR"]},
-            {"type":"string","name":"Resolution level (HD-Ready, Full-HD or Ultra-HD)","label":"Resolution level",
+          {"type":"string","name":"Resolution level (HD-Ready, Full-HD or Ultra-HD)","label":"Resolution level",
           "value":["Full-HD","HD-Ready","Ultra-HD"],
           "option":["Full HD","HD ready","4K ultra HD"]},
            {"type":"string","name":"Native (physical) resolution","label":"Resolution",
@@ -61,10 +61,10 @@ EOF;
           {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
           "option":$brands},
-           {"type":"range","name":"Screen Size","label":"Screen size",
+           {"type":"range","name":"Screen Size","label":"屏幕大小",
           "value":[{">=":17,"<=":22},{">=":24,"<=":32},{">=":39,"<=":46},{">=":47,"<=":50},{">=":51,"<=":55},{">=":60,"<=":65}],
           "option":["17-22\"","24-32\"","39-46\"","47-50\"","51-55\"","60-65\""]},
-          {"type":"string","name":"Product category (LCD, Plasma, OLED, etc.)","label":"Screen type",
+          {"type":"string","name":"Product category (LCD, Plasma, OLED, etc.)","label":"屏幕类型",
           "value":["OLED","Plasma","LCD"],
           "option":["OLED","Plasma","LCD"]}
        ]
@@ -128,11 +128,22 @@ EOF;
                 $arr[$key]['number'][] = $v;
             }
         }else if($item['type'] == 'multi'){
+            $index=0;
             foreach ($item['value'] as $k=>$value) {
                 $sql = "select count(*) from results where value=1" . " and id_evaluation=(select id_evaluation from evaluations where id_evaluation>99999999 and name='" .$value . "')";
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
-                $arr[$key]['number'][] = $v;
+                //echo $value." ".$v." ".$index."+++\n";
+                if($v==0){
+                    array_splice($arr[$key]['option'],$index,1);
+                    array_splice($arr[$key]['value'],$index,1);
+                    $index--;
+                    // print_r($arr[$key]['option']);
+
+                }else{
+                    $arr[$key]['number'][] = $v;
+                }
+                $index++;
             }
         }
     }
@@ -143,7 +154,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels = <<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","146","126","20","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["71","221"]},{"type":"string","name":"Brand","label":"Brands","value":["Samsung","LG","Panasonic","Philips","Sony","Grundig","Philco","TCL","HiSense","AOC","Loewe","Semp Toshiba","THOMSON","Metz","Changhong","JVC","TD Systems","TechniSat","Orava","Telefunken","Hitachi","Blaupunkt","Sharp","GoGen","Sencor"],"option":["Samsung","LG","Panasonic","Philips","Sony","Grundig","Philco","TCL","HiSense","AOC","Loewe","Semp Toshiba","THOMSON","Metz","Changhong","JVC","TD Systems","TechniSat","Orava","Telefunken","Hitachi","Blaupunkt","Sharp","GoGen","Sencor"],"number":["62","55","46","36","32","13","5","5","5","4","3","3","3","3","2","2","2","2","2","2","1","1","1","1","1"]},{"type":"range","name":"Screen Size","label":"Screen size","value":[{">=":17,"<=":22},{">=":24,"<=":32},{">=":39,"<=":46},{">=":47,"<=":50},{">=":51,"<=":55},{">=":60,"<=":65}],"option":["17-22\"","24-32\"","39-46\"","47-50\"","51-55\"","60-65\""],"number":["0","56","76","79","66","14"]},{"type":"string","name":"Product category (LCD, Plasma, OLED, etc.)","label":"Screen type","value":["OLED","LCD"],"option":["OLED","LCD"],"number":["3","289"]},{"type":"multi","name":"","label":"Screen features","value":["Curved screen","Can TV cope with 3D","HDR"],"option":["Curved","3D","HDR"],"number":["28","78","0"]},{"type":"string","name":"Resolution level (HD-Ready, Full-HD or Ultra-HD)","label":"Resolution level","value":["Full-HD","HD-Ready","Ultra-HD"],"option":["Full HD","HD ready","4K ultra HD"],"number":["125","31","136"]},{"type":"string","name":"Native (physical) resolution","label":"Resolution","value":["1366 x 768","1920 x 1080","3840 x 2160"],"option":["1366 x 768","1920 x 1080","3840 x 2160"],"number":["31","125","136"]},{"type":"multi","name":"","label":"Smart TV","value":["Wi-Fi Direct","Ethernet Connector","Recording one channel while watching other? (different MX)","Internet browsing and watching TV simultaneously","Smart menu: personalization (placing favorite apps)"],"option":["Wi-Fi","Ethernet","Twin-tuner","Browsing\/watching","Personalization"],"number":["0","237","0","79","0"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","146","126","20","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["71","221"]},{"type":"string","name":"Brand","label":"Brands","value":["Samsung","LG","Panasonic","Philips","Sony","Grundig","Philco","TCL","HiSense","AOC","Loewe","Semp Toshiba","THOMSON","Metz","Changhong","JVC","TD Systems","TechniSat","Orava","Telefunken","Hitachi","Blaupunkt","Sharp","GoGen","Sencor"],"option":["Samsung","LG","Panasonic","Philips","Sony","Grundig","Philco","TCL","HiSense","AOC","Loewe","Semp Toshiba","THOMSON","Metz","Changhong","JVC","TD Systems","TechniSat","Orava","Telefunken","Hitachi","Blaupunkt","Sharp","GoGen","Sencor"],"number":["62","55","46","36","32","13","5","5","5","4","3","3","3","3","2","2","2","2","2","2","1","1","1","1","1"]},{"type":"range","name":"Screen Size","label":"Screen size","value":[{">=":17,"<=":22},{">=":24,"<=":32},{">=":39,"<=":46},{">=":47,"<=":50},{">=":51,"<=":55},{">=":60,"<=":65}],"option":["17-22\"","24-32\"","39-46\"","47-50\"","51-55\"","60-65\""],"number":["0","56","76","79","66","14"]},{"type":"string","name":"Product category (LCD, Plasma, OLED, etc.)","label":"Screen type","value":["OLED","LCD"],"option":["OLED","LCD"],"number":["3","289"]},{"type":"multi","name":"","label":"Screen features","value":["Curved screen","Can TV cope with 3D"],"option":["Curved","3D"],"number":["28","78"]},{"type":"string","name":"Resolution level (HD-Ready, Full-HD or Ultra-HD)","label":"Resolution level","value":["Full-HD","HD-Ready","Ultra-HD"],"option":["Full HD","HD ready","4K ultra HD"],"number":["125","31","136"]},{"type":"string","name":"Native (physical) resolution","label":"Resolution","value":["1366 x 768","1920 x 1080","3840 x 2160"],"option":["1366 x 768","1920 x 1080","3840 x 2160"],"number":["31","125","136"]},{"type":"multi","name":"","label":"Smart TV","value":["Ethernet Connector","Internet browsing and watching TV simultaneously"],"option":["Ethernet","Browsing\/watching"],"number":["237","79"]}]
 EOF;
 return $labels;
 }
