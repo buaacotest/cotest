@@ -43,14 +43,14 @@
     <div class="row" id="product_panel">
         <div class="product-container-panel">
          <div class="products-header">
-         <div class="products-title">
+         <div class="products-title" style="overflow:hidden">
            
            <h3>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;
            <!--<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}>
            --></h3>
-           <p>
-             Highlights of the test results: Der Produktfinder Handys macht Ihnen den Smartphone-Kauf leicht! Neu in der Test-Daten¬bank sind drei aktuelle Smartphones: das neue Flaggschiff von LG, das LG G5, das Huawei P9 und das nach Angaben des Anbieters „ethisch, offen und lang¬lebig“ produzierteFairphone 2. 
-           </p>
+           <div id="highlights-panel">
+
+           </div>
            
          </div>
          
@@ -254,8 +254,11 @@
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 <script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript">
-  $.get("data/howtotest/<{$project}>.html",function(data){
+  $.get("data/<{$project}>/howtotest/<{$project}>.html",function(data){
     $("#how-we-test-panel").html(data)
+  })
+  $.get("data/<{$project}>/highlights/<{$project}>.html",function(data){
+      $("#highlights-panel").html(data)
   })
 </script>
 <script type="text/javascript">
@@ -284,13 +287,14 @@
       $.post("compareCart.php",{option:"show"},function(result){
           var compareList= eval("("+result+")");
             console.log(compareList)
-            if(compareList){
-              for(var key in compareList){
-                addCompare(key,compareList[key]);
+            if(compareList)
+                if(compareList.length!=0){
+
+                  for(var key in compareList){
+                  addCompare(key,compareList[key]);
               }
-              
-                  $(".compare-panel").show();
-              
+
+                $(".compare-panel").show();
              
             }
             setpage();    //调用分页
@@ -331,6 +335,8 @@
         $(".keyword-panel").hide();
     }
     $(".products-search-btn").on("click",function(){
+            if($("#highlights-panel").html()!="")
+                $("#highlights-panel").html("");
         var keyword=$(".products-search-text").val();
           location.href = "products.php?proj=<{$project}>&keyword="+keyword
     })
@@ -493,6 +499,8 @@
         $(this).attr("class","proper-tab active");
     })
     function sort(sortType){
+            if($("#highlights-panel").html()!="")
+                $("#highlights-panel").html("");
         $.get("products.php?page=1&proj=<{$project}>&sort="+sortType+"&labels="+labels_str,function(result){
            // console.log(result)
             $("#products-block").html(result);
@@ -537,6 +545,8 @@
         labels_str=JSON.stringify(labels);
         var sort_str=(sortType!="")?("&sort="+sortType):"";
         //console.log(labels_str);
+            if($("#highlights-panel").html()!="")
+                $("#highlights-panel").html("");
         $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str,function(result){
            // console.log(result)
             $("#products-block").html(result);
@@ -684,6 +694,9 @@
     function reloadpage(target){
         var query_str="";
         var sort_str=(sortType!=="")?("&sort="+sortType):"";
+        if(target!=1)
+            if($("#highlights-panel").html()!="")
+                $("#highlights-panel").html("");
         if(labels_str==""){
             query_str="products.php?page="+target+"&proj=<{$project}>"+sort_str
         }else{
@@ -803,6 +816,9 @@
            // console.log(value)
             $(".pagebtn").attr("class","pagebtn");
             $(this).attr("class","pagebtn active");
+            if(value!=1)
+                if($("#highlights-panel").html()!="")
+                    $("#highlights-panel").html("");
             $.get("products.php?page="+value+"&proj=<{$project}>",function(result){
                 $("#products-block").html(result);
             })
