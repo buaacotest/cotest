@@ -51,12 +51,12 @@ if(empty($sort)){
     else
         $sort='time';
 }
-
+$productsA = $productsB =array();
 /*搜索相关*/
 $keyWords=trim($_GET["keyword"]);
 if(!empty($keyWords)){
     $keyIds=searchProducts($keyWords);
-    $products=getProductByIds($keyIds);
+    $productsA=getProductByIds($keyIds);
 }
 
 
@@ -70,13 +70,16 @@ if(!empty($labels)){
 
     //print_r($ids);
 
-    $products=getProductByIds($ids,$sort);
-}else{
-    if(empty($keyWords))
-    $products=getAllProducts($sort);
+    $productsB=getProductByIds($ids,$sort);
 }
 
-
+if(!empty($keyWords)&&!empty($labels)){
+    $products = array_intersect($productsA,$productsB);
+}else if(empty($keyWords)&&empty($labels)){
+    $products = getAllProducts($sort);
+}else{
+    $products = $productsA + $productsB;
+}
 //print_r($products);
 
 $page_num=ceil(count($products)/35);

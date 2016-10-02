@@ -83,7 +83,7 @@ function getAllProducts($order='time'){
 }
 /*挑选指定ID的产品*/
 function getProductByIds($ids,$order='time'){
-    $sql = "select modelname as product_name,`name`as product_manufacturer,timestamp_created as product_tested_date, id_product as product_id
+    $sql = "select modelname as product_name,`name`as product_manufacturer,timestamp_created as product_tested_date, id_product as product_id,price
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
 
@@ -130,9 +130,12 @@ function multiSort($arr,$order){
     foreach ($arr as $key=>$value){
         $time[$key] = $value[2];
         $score[$key] = $value['score'];
+        $price[$key]=$value['price'];
+        /*
         $tempPrice=explode(" ",$value['price']);
         if(is_numeric($tempPrice))
              $price[$key]=$tempPrice[0];
+        */
     }
     if($order=='score')
         array_multisort($score,SORT_NUMERIC,SORT_ASC,$arr);
