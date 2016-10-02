@@ -24,7 +24,40 @@ function getLabels()
            "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
+          "option":$brands},
+          {"type":"range","name":"Zoom range, stated","label":"Zoom range, stated",
+          "value":[{">=":1,"<=":2},{">=":3,"<=":4},{">=":5,"<=":6},{">=":7,"<=":8},{">=":9,"<=":10},{">=":11,"<=":15},{">":15}],
+          "option":["1 - 2 ","3 - 4","5 - 6","7 - 8","9 - 10","11 - 15","> 15"]},
+          {"type":"range","name":"Effective sensor diagonal","label":"Image sensor diagonal",
+          "value":[{"<":7},{">=":7,"<=":12},{">":12,"<=":14},{">":14,"<=":17},{">=":18,"<=":22},{">=":25,"<=":30},{">=":40,"<=":45}],
+          "option":["< 7 mm","7-12 mm","12-14 mm","14-17 mm","18-22 mm","25-30 mm","40-45 mm"]},
+          {"type":"range","name":"Weight, complete system camera","label":"Weight, complete",
+          "value":[{"<":150},{">=":150,"<=":190},{">":190,"<=":250},{">":250,"<=":550},{">":550,"<=":1000},{">":1000}],
+          "option":["< 150 g","150 - 190 g","190 - 250 g","250 - 550 g","550 - 1000 g","> 1000 g"]},
+           {"type":"range","name":"normalised focal length wide","label":"Normalised focal length wide(the smaller the better)",
+          "value":[{"<":0.58},{">=":0.58,"<":0.61},{">=":0.61,"<=":0.65},{">":0.65,"<=":0.75},{">":0.75,"<=":1.00},{">":1.00}],
+          "option":["< 0.58","0.58 - 0.61","0.61 - 0.65","0.65 - 0.75","0.75 - 1.00","> 1.00"]},
+          {"type":"range","name":"normalised focal length tele","label":"Normalised focal length tele(the bigger the better)",
+          "value":[{">":5.5},{">":2.6,"<=":5.5},{">":2.2,"<=":2.6},{">":1.9,"<=":2.2},{">":0.5,"<=":1.9}],
+          "option":["> 5.5","2.6 - 5.5","2.2 - 2.6","1.9 - 2.2","0.5 - 1.9"]},
+          {"type":"range","name":"shutter delay 8,5m","label":"Shutter delay 8,5m",
+          "value":[{"<":0.25},{">=":0.25,"<=":0.36},{">":0.36,"<=":0.49},{">":0.49,"<=":0.70},{">":0.70}],
+          "option":["< 0.25 s","0.25 - 0.36 s","0.36 -0.49 s","0.49 - 0.70 s","> 0.70 s"]},
+          {"type":"range","name":"continuous shooting mode","label":"Continuous pictures/s",
+          "value":[{">":8.7},{">":6.8,"<=":8.7},{">":4.9,"<=":6.8},{">":2.1,"<=":4.9},{">":0.3,"<=":2.1}],
+          "option":["> 8.7","6.8 - 8.7","4.9 - 6.8","2.1 - 4.9","0.3 -2.1"]},
+          {"type":"range","name":"Wide setting, minimum F-number, stated","label":"Minimum F-number wide",
+          "value":[{"<":2.8},{">=":2.8,"<=":3.2},{">":3.2,"<=":3.5},{">":3.5,"<=":5.6}],
+          "option":["< 2.8","2.8 - 3.2","3.2 - 3.5","3.5 - 5.6"]},
+          {"type":"range","name":"Tele setting, minimum F-number, stated","label":"Minimum F-number tele",
+          "value":[{"<":4.7},{">=":4.7,"<=":5.2},{">":5.2,"<=":5.6},{">":5.6,"<=":5.9},{">":5.9,"<=":8.5}],
+          "option":["< 4.7","4.7 - 5.2","5.2 -5.6","5.6 - 5.9","5.9 - 8.5"]},
+          {"type":"multi","name":"","label":"Key features",
+           "value":["Viewfinder existing (either built in, delivered or optional)","Touchscreen","Manual focus (continuosly, more than 5 settings)","Wi-Fi (WLAN) connection","GPS tagging in camera","HDR function (high dynamic range with several shots)","Panorama record function (panning)"],
+           "option":["Viewfinder","Touchscreen","Manual focus","WLAN","GPS","HDR","Panorama record"]},
+           {"type":"multi","name":"","label":"Robustness",
+           "value":["Water / dust resistance (rain, humidity, dust, snow)","Water proof (for diving)","Shock proof"],
+           "option":["Water / dust resistance","Waterproof for diving","Shock proof"]}
        ]
 EOF;
 
@@ -42,7 +75,28 @@ EOF;
            "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"品牌",
           "value":$brands,
-          "option":$brands}
+          "option":$brands},
+          {"type":"range","name":"Zoom range, stated","label":"Zoom range, stated",
+          "value":[{">=":1,"<=":2},{">=":3,"<=":4},{">=":5,"<=":6},{">=":7,"<=":8},{">=":9,"<=":10},{">=":11,"<=":15},{">":15}],
+          "option":["1 - 2 ","3 - 4","5 - 6","7 - 8","9 - 10","11 - 15","> 15"]},
+          {"type":"range","name":"Effective sensor diagonal","label":"Image sensor diagonal",
+          "value":[{"<":7},{">=":7,"<=":12},{">":12,"<=":14},{">":14,"<=":17},{">=":18,"<=":22},{">=":25,"<=":30},{">=":40,"<=":45}],
+          "option":["< 7 mm","7-12 mm","12-14 mm","14-17 mm","18-22 mm","25-30 mm","40-45 mm"]},
+          {"type":"range","name":"Weight, complete system camera","label":"Weight, complete",
+          "value":[{"<":150},{">=":150,"<=":190},{">":190,"<=":250},{">":250,"<=":550},{">":550,"<=":1000},{">":1000}],
+          "option":["< 150 g","150 - 190 g","190 - 250 g","250 - 550 g","550 - 1000 g","> 1000 g"]},
+           {"type":"range","name":"normalised focal length wide","label":"Normalised focal length wide(the smaller the better)",
+          "value":[{"<":0.58},{">=":0.58,"<":0.61},{">=":0.61,"<=":0.65},{">":0.65,"<=":0.75},{">":0.75,"<=":1.00},{">":1.00}],
+          "option":["< 0.58","0.58 - 0.61","0.61 - 0.65","0.65 - 0.75","0.75 - 1.00","> 1.00"]},
+          {"type":"range","name":"normalised focal length tele","label":"Normalised focal length tele\n(the bigger the better)",
+          "value":[{">":5.5},{">":2.6,"<=":5.5},{">":2.2,"<=":2.6},{">":1.9,"<=":2.2},{">":0.5,"<=":1.9}],
+          "option":["> 5.5","2.6 - 5.5","2.2 - 2.6","1.9 - 2.2","0.5 - 1.9"]},
+          {"type":"range","name":"shutter delay 8,5m","label":"Shutter delay 8,5m",
+          "value":[{"<":0.25},{">=":0.25,"<=":0.36},{">":0.36,"<=":0.49},{">":0.49,"<=":0.70},{">":0.70}],
+          "option":["< 0.25 s","0.25 - 0.36 s","0.36 -0.49 s","0.49 - 0.70 s","> 0.70 s"]},
+          {"type":"range","name":"continuous shooting mode - pictures in row","label":"Continuous pictures/s",
+          "value":[{">":8.7},{">":6.8,"<=":8.7},{">":4.9,"<=":6.8},{">":2.1,"<=":4.9},{">":0.3,"<=":2.1}],
+          "option":["> 8.7","6.8 - 8.7","4.9 - 6.8","2.1 - 4.9","0.3 -2.1"]}
        ]
 EOF;
     }
@@ -120,7 +174,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["2","197","119","15","2"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["53","93","189"]},{"type":"string","name":"Brand","label":"Brands","value":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"option":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"number":["59","54","38","37","35","32","26","14","10","9","4","3","3","2","2","2","1","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["2","197","119","15","2"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["53","93","189"]},{"type":"string","name":"Brand","label":"Brands","value":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"option":["Nikon","Canon","Sony","Panasonic","Olympus","Samsung","Fujifilm","Pentax","Ricoh","Leica","Apple","Rollei","LG","Kodak","Motorola","HTC","Huawei","Microsoft","Casio","DXO","Nokia"],"number":["59","54","38","37","35","32","26","14","10","9","4","3","3","2","2","2","1","1","1","1","1"]},{"type":"range","name":"Zoom range, stated","label":"Zoom range, stated","value":[{">=":1,"<=":2},{">=":3,"<=":4},{">=":5,"<=":6},{">=":7,"<=":8},{">=":9,"<=":10},{">=":11,"<=":15},{">":15}],"option":["1 - 2 ","3 - 4","5 - 6","7 - 8","9 - 10","11 - 15","> 15"],"number":["46","90","45","19","9","19","82"]},{"type":"range","name":"Effective sensor diagonal","label":"Image sensor diagonal","value":[{"<":7},{">=":7,"<=":12},{">":12,"<=":14},{">":14,"<=":17},{">=":18,"<=":22},{">=":25,"<=":30},{">=":40,"<=":45}],"option":["< 7 mm","7-12 mm","12-14 mm","14-17 mm","18-22 mm","25-30 mm","40-45 mm"],"number":["32","157","0","21","29","83","8"]},{"type":"range","name":"Weight, complete system camera","label":"Weight, complete","value":[{"<":150},{">=":150,"<=":190},{">":190,"<=":250},{">":250,"<=":550},{">":550,"<=":1000},{">":1000}],"option":["< 150 g","150 - 190 g","190 - 250 g","250 - 550 g","550 - 1000 g","> 1000 g"],"number":["217","0","0","29","60","29"]},{"type":"range","name":"normalised focal length wide","label":"Normalised focal length wide(the smaller the better)","value":[{"<":0.58},{">=":0.58,"<":0.61},{">=":0.61,"<=":0.65},{">":0.65,"<=":0.75},{">":0.75,"<=":1},{">":1}],"option":["< 0.58","0.58 - 0.61","0.61 - 0.65","0.65 - 0.75","0.75 - 1.00","> 1.00"],"number":["56","126","124","21","2","6"]},{"type":"range","name":"normalised focal length tele","label":"Normalised focal length tele(the bigger the better)","value":[{">":5.5},{">":2.6,"<=":5.5},{">":2.2,"<=":2.6},{">":1.9,"<=":2.2},{">":0.5,"<=":1.9}],"option":["> 5.5","2.6 - 5.5","2.2 - 2.6","1.9 - 2.2","0.5 - 1.9"],"number":["97","54","31","19","124"]},{"type":"range","name":"shutter delay 8,5m","label":"Shutter delay 8,5m","value":[{"<":0.25},{">=":0.25,"<=":0.36},{">":0.36,"<=":0.49},{">":0.49,"<=":0.7},{">":0.7}],"option":["< 0.25 s","0.25 - 0.36 s","0.36 -0.49 s","0.49 - 0.70 s","> 0.70 s"],"number":["59","101","92","51","32"]},{"type":"range","name":"continuous shooting mode","label":"Continuous pictures\/s","value":[{">":8.7},{">":6.8,"<=":8.7},{">":4.9,"<=":6.8},{">":2.1,"<=":4.9},{">":0.3,"<=":2.1}],"option":["> 8.7","6.8 - 8.7","4.9 - 6.8","2.1 - 4.9","0.3 -2.1"],"number":["72","72","64","60","61"]},{"type":"range","name":"Wide setting, minimum F-number, stated","label":"Minimum F-number wide","value":[{"<":2.8},{">=":2.8,"<=":3.2},{">":3.2,"<=":3.5},{">":3.5,"<=":5.6}],"option":["< 2.8","2.8 - 3.2","3.2 - 3.5","3.5 - 5.6"],"number":["70","95","138","32"]},{"type":"range","name":"Tele setting, minimum F-number, stated","label":"Minimum F-number tele","value":[{"<":4.7},{">=":4.7,"<=":5.2},{">":5.2,"<=":5.6},{">":5.6,"<=":5.9},{">":5.9,"<=":8.5}],"option":["< 4.7","4.7 - 5.2","5.2 -5.6","5.6 - 5.9","5.9 - 8.5"],"number":["84","18","86","35","112"]},{"type":"multi","name":"","label":"Key features","value":["Viewfinder existing (either built in, delivered or optional)","Touchscreen","Manual focus (continuosly, more than 5 settings)","Wi-Fi (WLAN) connection","GPS tagging in camera","HDR function (high dynamic range with several shots)","Panorama record function (panning)"],"option":["Viewfinder","Touchscreen","Manual focus","WLAN","GPS","HDR","Panorama record"],"number":["123","113","207","226","73","227","175"]},{"type":"multi","name":"","label":"Robustness","value":["Water \/ dust resistance (rain, humidity, dust, snow)","Water proof (for diving)","Shock proof"],"option":["Water \/ dust resistance","Waterproof for diving","Shock proof"],"number":["65","34","29"]}]
 EOF;
 
     return $labels;

@@ -303,8 +303,21 @@ function getRules(){
                                   array("name"=>"Tuners","props"=>array(1797,1800,1804)),
                                   array("name"=>"Picture settings","props"=>array(1939,1940,1941,1942,1943,1945,1807)),
                                   array("name"=>"Recorder","props"=>array(1842,1848,1849,1855)),
-                                  array("name"=>"Power consumption","props"=>array(1835,1838,2040,1991,1992)),
-            )));
+                                  array("name"=>"Power consumption","props"=>array(1835,1838,2040,1991,1992)),)),
+                            "laptops"=>array("groups"=>array(array("name"=>"Basic","props"=>array(144,145,146,147,14)),
+                                  array("name"=>"Processor","props"=>array(6,7,8)),
+                                  array("name"=>"Memory","props"=>array(11,13)),
+                                  array("name"=>"DVD","props"=>array(27,28)),
+                                  array("name"=>"HardDisk","props"=>array(20,21,23)),
+                                  array("name"=>"Graphics Adaptor","props"=>array(36,37,40,41)),
+                                  array("name"=>"Connectors","props"=>array(47,48,54,56,57,58,71,72)),
+                                  array("name"=>"Sound","props"=>array(77,79,81)),
+                                  array("name"=>"Screen","props"=>array(88,89,90,91)),
+                                  array("name"=>"Webcam","props"=>array(113,114)),
+                                  array("name"=>"Security","props"=>array(136,137)),
+
+                            ))
+);
 }
 
 /*获取指定id产品的属性以及分组*/
@@ -508,14 +521,14 @@ function filterProducts($lab){
                            if($v['name']=='Brand')
                                $sql.="`name`='".$value."' ";
                            else
-                               $sql.="value='".$value."' ";
+                               $sql.="value like'%".$value."%' ";
                        }
 
                         else{
                             if($v['name']=='Brand')
                                 $sql.="or `name`='".$value."' ";
                             else
-                                $sql.="or value='".$value."' ";
+                                $sql.="or value like'%".$value."%' ";
                         }
 
                         $tempStringIndex++;
