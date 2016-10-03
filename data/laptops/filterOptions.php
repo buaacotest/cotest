@@ -25,24 +25,27 @@ function getLabels()
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
           "option":$brands},
-          {"type":"string","name":"Size of main memory (Ram)","label":"Size of main memory (Ram)",
-          "value":["2","4","6","8","12","16"],
-          "option":["2GB","4GB","6GB","8GB","12GB","16GB"]},
-          {"type":"string","name":"OS version on hard disk","label":"OS version on hard disk",
+          {"type":"string","name":"OS version on hard disk","label":"Operating System",
           "value":["windows","OS X","Android"],
           "option":["Windows","Mac OS","Android"]},
-          {"type":"range","name":"Screen image diagonal","label":"Screen image diagonal",
-          "value":[{"<":12},{">=":12,"<=":16},{">":16}],
-          "option":["< 12\"","12 - 16\"","> 16\""]},
-          {"type":"string","name":"Type SSD HD?","label":"Type SSD HD",
-          "value":["1","0"],
-          "option":["Yes","No"]},
-          {"type":"range","name":"Claimed Capacity [GB]","label":"Claimed Capacity",
-          "value":[{"<":64},{">=":64,"<=":256},{">":256}],
-          "option":["< 64GB","64 - 256GB","> 256GB"]},
-          {"type":"range","name":"Weight (with mid capacity battery)","label":"Weight (with mid capacity battery)",
+          {"type":"string","name":"Size of main memory (Ram)","label":"Memory (RAM)",
+          "value":["2","4","6","8","12","16"],
+          "option":["2GB","4GB","6GB","8GB","12GB","16GB"]},
+          {"type":"range","name":"Claimed Capacity [GB]","label":"Storage capacity",
+          "value":[{">=":8,"<=":64},{"=":128},{"=":256},{"=":500},{">=":1024}],
+          "option":["8 - 64 GB","128 GB","256 GB","500 GB","1+ TB"]},
+          {"type":"string","name":"Screen image diagonal","label":"Screen diagonal",
+          "value":[10,11,12,13,14,15,16,17],
+          "option":["10\"","11\"","12\"","13\"","14\"","15\"","16\"","17\""]},
+          {"type":"range","name":"Weight (with mid capacity battery)","label":"Weight incl. battery",
           "value":[{"<":1.2},{">=":1.2,"<=":1.7},{">":1.7,"<=":2.5},{">":2.5}],
           "option":["< 1.2kg","1.2 - 1.7kg","1.7 - 2.5kg","> 2.5kg"]},
+          {"type":"string","name":"Type of drive","label":"Type of drive",
+          "value":["DVD","BD"],
+          "option":["DVD drive","Blu-ray drive"]},
+          {"type":"string","name":"Type SSD HD?","label":"SSD",
+          "value":["1","0"],
+          "option":["Yes","No"]},
           {"type":"string","name":"Touch screen [y/n]","label":"Touch screen",
           "value":["1","0"],
           "option":["Yes","No"]}
@@ -142,7 +145,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["7","62","81","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["51","88","11"]},{"type":"string","name":"Brand","label":"Brands","value":["Lenovo","HP","Acer","Toshiba","Asus","Dell","Apple","Medion","Packard Bell","Microsoft","Compaq"],"option":["Lenovo","HP","Acer","Toshiba","Asus","Dell","Apple","Medion","Packard Bell","Microsoft","Compaq"],"number":["34","29","25","22","17","12","5","3","1","1","1"]},{"type":"string","name":"Size of main memory (Ram)","label":"Size of main memory (Ram)","value":["2","4","6","8","12","16"],"option":["2GB","4GB","6GB","8GB","12GB","16GB"],"number":["80","56","12","58","6","9"]},{"type":"string","name":"OS version on hard disk","label":"OS version on hard disk","value":["windows","OS X","Android"],"option":["Windows","Mac OS","Android"],"number":["144","5","1"]},{"type":"range","name":"Screen image diagonal","label":"Screen image diagonal","value":[{"<":12},{">=":12,"<=":16},{">":16}],"option":["< 12\"","12 - 16\"","> 16\""],"number":["25","111","14"]},{"type":"string","name":"Type SSD HD?","label":"Type SSD HD","value":["1","0"],"option":["Yes","No"],"number":["68","82"]},{"type":"range","name":"Claimed Capacity [GB]","label":"Claimed Capacity","value":[{"<":64},{">=":64,"<=":256},{">":256}],"option":["< 64GB","64 - 256GB","> 256GB"],"number":["22","38","90"]},{"type":"range","name":"Weight (with mid capacity battery)","label":"Weight (with mid capacity battery)","value":[{"<":1.2},{">=":1.2,"<=":1.7},{">":1.7,"<=":2.5},{">":2.5}],"option":["< 1.2kg","1.2 - 1.7kg","1.7 - 2.5kg","> 2.5kg"],"number":["24","42","66","18"]},{"type":"string","name":"Touch screen [y\/n]","label":"Touch screen","value":["1","0"],"option":["Yes","No"],"number":["50","100"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["7","62","81","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["51","88","11"]},{"type":"string","name":"Brand","label":"Brands","value":["Lenovo","HP","Acer","Toshiba","Asus","Dell","Apple","Medion","Packard Bell","Microsoft","Compaq"],"option":["Lenovo","HP","Acer","Toshiba","Asus","Dell","Apple","Medion","Packard Bell","Microsoft","Compaq"],"number":["34","29","25","22","17","12","5","3","1","1","1"]},{"type":"string","name":"OS version on hard disk","label":"Operating System","value":["windows","OS X","Android"],"option":["Windows","Mac OS","Android"],"number":["144","5","1"]},{"type":"string","name":"Size of main memory (Ram)","label":"Memory (RAM)","value":["2","4","6","8","12","16"],"option":["2GB","4GB","6GB","8GB","12GB","16GB"],"number":["80","56","12","58","6","9"]},{"type":"range","name":"Claimed Capacity [GB]","label":"Storage capacity","value":[{">=":8,"<=":64},{"=":128},{"=":256},{"=":500},{">=":1024}],"option":["8 - 64 GB","128 GB","256 GB","500 GB","1+ TB"],"number":["23","20","16","29","12"]},{"type":"string","name":"Screen image diagonal","label":"Screen diagonal","value":[10,11,12,13,14,15,16,17],"option":["10\"","11\"","12\"","13\"","14\"","15\"","16\"","17\""],"number":["6","26","10","54","7","71","16","39"]},{"type":"range","name":"Weight (with mid capacity battery)","label":"Weight incl. battery","value":[{"<":1.2},{">=":1.2,"<=":1.7},{">":1.7,"<=":2.5},{">":2.5}],"option":["< 1.2kg","1.2 - 1.7kg","1.7 - 2.5kg","> 2.5kg"],"number":["24","42","66","18"]},{"type":"string","name":"Type of drive","label":"Type of drive","value":["DVD","BD"],"option":["DVD drive","Blu-ray drive"],"number":["57","2"]},{"type":"string","name":"Type SSD HD?","label":"SSD","value":["1","0"],"option":["Yes","No"],"number":["68","82"]},{"type":"string","name":"Touch screen [y\/n]","label":"Touch screen","value":["1","0"],"option":["Yes","No"],"number":["50","100"]}]
 EOF;
 
     return $labels;

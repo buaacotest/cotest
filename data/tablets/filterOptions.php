@@ -24,7 +24,40 @@ function getLabels()
            "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
+          "option":$brands},
+          {"type":"range","name":"Screen image diagonal","label":"Screen image diagonal",
+          "value":[{">":8},{">=":8,"<=":10},{">":10}],
+          "option":["> 8\"","8 - 10\"","> 10\""]},
+          {"type":"range","name":"Native resolution (height)","label":"Native resolution (height)",
+          "value":[{"<":800},{">=":800,"<=":1200},{">":1200,"<=":1500},{">":1500,"<=":2048}],
+          "option":["< 800 Pixel","800 - 1200 Pixel","1200 - 1500 Pixel","1500 -2048 Pixel"]},
+          {"type":"range","name":"Native resolution (width)","label":"Native resolution (width)",
+          "value":[{"<":1300},{">=":1300,"<=":1900},{">":1900,"<=":2000},{">":2000,"<=":2736}],
+          "option":["< 1300 Pixel","1300 - 1900 Pixel","1900 - 2000 Pixel","2000 - 2736 Pixel"]},
+          {"type":"string","name":"OS installed","label":"OS installed",
+          "value":["Android","iOS","Windows"],
+          "option":["Android","iOS","Windows"]},
+          {"type":"string","name":"Claimed size of internal storage [Gb]","label":"Claimed size of internal storage",
+          "value":[4,8,16,32,64,128,256],
+          "option":["4GB","8GB","16GB","32GB","64GB","128GB","256GB"]},
+          {"type":"multi","name":"","label":"Connection",
+           "value":["3G","LTE","Bluetooth","GPS","NFC","Phone functionality"],
+           "option":["3G","LTE","Bluetooth","GPS","NFC","Phone functionality"]},
+          {"type":"multi","name":"","label":"WLAN",
+           "value":["Wi-Fi G","Wi-Fi N","Wi-Fi 5GHzN","Wi-Fi AC"],
+           "option":["Wi-Fi G","Wi-Fi N","Wi-Fi 5GHzN","Wi-Fi AC"]},
+           {"type":"multi","name":"","label":"USB",
+           "value":["USB 4.0 [y/n]","USB 3.0 [y/n]","USB 2.0 [y/n]","Mini-USB [y/n]" ,"Micro-USB [y/n]", "HDMI"],
+           "option":["USB 4.0","USB 3.0","USB 2.0","Mini-USB" ,"Micro-USB", "HDMI"]},
+           {"type":"multi","name":"","label":"SD",
+           "value":["full SD size","mini-SD","micro-SD"],
+           "option":["full SD size","mini-SD","micro-SD"]},
+           {"type":"multi","name":"","label":"Accessories",
+           "value":["Physical keyboard provided","Stylus supplied"],
+           "option":["Physical keyboard provided","Stylus supplied"]},
+           {"type":"multi","name":"","label":"Robustness",
+           "value":["Manufacturer claims waterproof?","Manufacturer claims water resistant?"],
+           "option":["Waterproof, stated","Water resistant, stated"]}
        ]
 EOF;
 
@@ -54,7 +87,8 @@ EOF;
             foreach ($item['value'] as $value) {
                 if($item['name']=='Brand'){
                     $sql="select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='".$value."')";
-                }
+                }else
+                    $sql="select count(*) from results where id_evaluation in(select id_evaluation from evaluations where name='".$item['name']."') and value like'%$value%'";
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
@@ -120,7 +154,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["6","101","42","15","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["0","77","87"]},{"type":"string","name":"Brand","label":"Brands","value":["Asus","Samsung","HP","Acer","Lenovo","Storex","Archos","BQ","Sony","Amazon","Toshiba","Denver","Microsoft","Bush","LG","Cube","Teclast","iGet","Go Clever","Gigaset","Woxter","Wolder","EE","Ramos","Xiaomi \/ Mi","Alcatel","Leap Frog","Vtech","Pipo","Kobo","UMAX","GoGEN","PocketBook","Google","Onda","Kurio","Hannspree","Binatone","Difrnce","Haier","Apple","Qilive","Tesco","Dell","Salora","Xtreme","Prestigio","Lenco","e-star","Hyundai","SPCinternet"],"option":["Asus","Samsung","HP","Acer","Lenovo","Storex","Archos","BQ","Sony","Amazon","Toshiba","Denver","Microsoft","Bush","LG","Cube","Teclast","iGet","Go Clever","Gigaset","Woxter","Wolder","EE","Ramos","Xiaomi \/ Mi","Alcatel","Leap Frog","Vtech","Pipo","Kobo","UMAX","GoGEN","PocketBook","Google","Onda","Kurio","Hannspree","Binatone","Difrnce","Haier","Apple","Qilive","Tesco","Dell","Salora","Xtreme","Prestigio","Lenco","e-star","Hyundai","SPCinternet"],"number":["22","16","12","11","11","7","7","6","6","6","4","4","3","3","3","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["6","101","42","15","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["0","77","87"]},{"type":"string","name":"Brand","label":"Brands","value":["Asus","Samsung","HP","Acer","Lenovo","Storex","Archos","BQ","Sony","Amazon","Toshiba","Denver","Microsoft","Bush","LG","Cube","Teclast","iGet","Go Clever","Gigaset","Woxter","Wolder","EE","Ramos","Xiaomi \/ Mi","Alcatel","Leap Frog","Vtech","Pipo","Kobo","UMAX","GoGEN","PocketBook","Google","Onda","Kurio","Hannspree","Binatone","Difrnce","Haier","Apple","Qilive","Tesco","Dell","Salora","Xtreme","Prestigio","Lenco","e-star","Hyundai","SPCinternet"],"option":["Asus","Samsung","HP","Acer","Lenovo","Storex","Archos","BQ","Sony","Amazon","Toshiba","Denver","Microsoft","Bush","LG","Cube","Teclast","iGet","Go Clever","Gigaset","Woxter","Wolder","EE","Ramos","Xiaomi \/ Mi","Alcatel","Leap Frog","Vtech","Pipo","Kobo","UMAX","GoGEN","PocketBook","Google","Onda","Kurio","Hannspree","Binatone","Difrnce","Haier","Apple","Qilive","Tesco","Dell","Salora","Xtreme","Prestigio","Lenco","e-star","Hyundai","SPCinternet"],"number":["22","16","12","11","11","7","7","6","6","6","4","4","3","3","3","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]},{"type":"range","name":"Screen image diagonal","label":"Screen image diagonal","value":[{">":8},{">=":8,"<=":10},{">":10}],"option":["> 8\"","8 - 10\"","> 10\""],"number":["92","50","54"]},{"type":"range","name":"Native resolution (height)","label":"Native resolution (height)","value":[{"<":800},{">=":800,"<=":1200},{">":1200,"<=":1500},{">":1500,"<=":2048}],"option":["< 800 Pixel","800 - 1200 Pixel","1200 - 1500 Pixel","1500 -2048 Pixel"],"number":["27","68","33","34"]},{"type":"range","name":"Native resolution (width)","label":"Native resolution (width)","value":[{"<":1300},{">=":1300,"<=":1900},{">":1900,"<=":2000},{">":2000,"<=":2736}],"option":["< 1300 Pixel","1300 - 1900 Pixel","1900 - 2000 Pixel","2000 - 2736 Pixel"],"number":["119","18","17","10"]},{"type":"string","name":"OS installed","label":"OS installed","value":["Android","iOS","Windows"],"option":["Android","iOS","Windows"],"number":["138","1","17"]},{"type":"string","name":"Claimed size of internal storage [Gb]","label":"Claimed size of internal storage","value":[4,8,16,32,64,128,256],"option":["4GB","8GB","16GB","32GB","64GB","128GB","256GB"],"number":["11","49","70","32","4","2","1"]},{"type":"multi","name":"","label":"Connection","value":["3G","LTE","Bluetooth","GPS","NFC","Phone functionality"],"option":["3G","LTE","Bluetooth","GPS","NFC","Phone functionality"],"number":["30","15","141","103","11","25"]},{"type":"multi","name":"","label":"WLAN","value":["Wi-Fi G","Wi-Fi N","Wi-Fi 5GHzN","Wi-Fi AC"],"option":["Wi-Fi G","Wi-Fi N","Wi-Fi 5GHzN","Wi-Fi AC"],"number":["163","159","42","27"]},{"type":"multi","name":"","label":"USB","value":["USB 4.0 [y\/n]","USB 3.0 [y\/n]","USB 2.0 [y\/n]","Mini-USB [y\/n]","Micro-USB [y\/n]","HDMI"],"option":["USB 4.0","USB 3.0","USB 2.0","Mini-USB","Micro-USB","HDMI"],"number":["0","9","155","2","158","39"]},{"type":"multi","name":"","label":"SD","value":["full SD size","mini-SD","micro-SD"],"option":["full SD size","mini-SD","micro-SD"],"number":["0","8","154"]},{"type":"multi","name":"","label":"Accessories","value":["Physical keyboard provided","Stylus supplied"],"option":["Physical keyboard provided","Stylus supplied"],"number":["7","10"]},{"type":"multi","name":"","label":"Robustness","value":["Manufacturer claims waterproof?","Manufacturer claims water resistant?"],"option":["Waterproof, stated","Water resistant, stated"],"number":["2","3"]}]
 EOF;
 
 return $labels;
