@@ -299,6 +299,7 @@ function getPropsValues($props,$id){
 function getRules(){
     return $rules = array("mobilephones"=>null,
                             "basiccameras"=>null,
+                            "whheadphones"=>null,
                             "tvs"=>array("groups"=>array(array("name"=>"Screen","props"=>array(2004, 1702, 1704, 1705, 1706, 1717, 1718,
                                                                              2029, 1722, 1723, 1789)),
                                   array("name"=>"Size","props"=>array(1707, 1746, 1747, 1748, 1751)),
@@ -319,7 +320,7 @@ function getRules(){
                                   array("name"=>"Screen","props"=>array(88,89,90,91)),
                                   array("name"=>"Webcam","props"=>array(113,114)),
                                   array("name"=>"Security","props"=>array(136,137)),)),
-                             "tablets"=>array("groups"=>array(array("name"=>"Dimensions","props"=>array(389,390,391,392,653,698,446,683)),
+                            "tablets"=>array("groups"=>array(array("name"=>"Dimensions","props"=>array(389,390,391,392,653,698,446,683)),
                                   array("name"=>"Operating system & processor","props"=>array(393,381,427,428,429,430,431,726)),
                                   array("name"=>"Operating system & processor","props"=>array(438,439,440,441,442,443,448)),
                                   array("name"=>"Camera","props"=>array(449,450,451,452,453,455,694)),
@@ -327,6 +328,7 @@ function getRules(){
                                   array("name"=>"Connections","props"=>array(399,400,401,402,404,406,407,408,411,412,413,414,416,420,422,424,425,665,680,705,473)),
                                   array("name"=>"Performances battery","props"=>array(572,573,575,577)),
                                   array("name"=>"Robustness","props"=>array(723,724)) )),
+
 
 );
 }
