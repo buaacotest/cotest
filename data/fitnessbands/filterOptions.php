@@ -24,7 +24,26 @@ function getLabels()
            "option":[2015,2014]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
+          "option":$brands},
+          {"type":"string","name":"Primary location to wear band (wrist, belt etc.)","label":"Type of tracker",
+          "value":["Wrist","Waist","Wrist or waist","Wrist, waist, foot or around neck","Wrist, waist, foot or around neck _can also be clipped anywhere on the body","Belt. Instructions suggest the device can also be clipped on upper body clothing or bra."],
+          "option":["Wrist","Waist","Wrist or waist","Wrist, waist, foot or around neck","Wrist, waist, foot, neck or anywhere","Belt (also on upper body clothing or bra)"]},
+          {"type":"multi","name":"","label":"Fitness",
+           "value":["Integrated heart monitor present? (y,n)","Sleep tracking? (y,n)","Integrated altimeter? (y,n)"],
+           "option":["Heart rate monitor","Sleep tracking","Altimeter"]},
+           {"type":"multi","name":"","label":"Phone compatability",
+           "value":["iOS supported? (y,n)","Android supported? (y,n)","Windows phone supported? (y,n)"],
+           "option":["iOS compatible","Android compatible","Windows phone compatible"]},
+           {"type":"multi","name":"","label":"Smart",
+           "value":["Can the display be customised (y,n)","Any smart watch functionality present? (y,n)","  * Text message notification? (y,n)","  * Make/receive phone calls? (y,n)"],
+           "option":["Personalisation","Smart watch","Messaging","Calling"]},
+           {"type":"multi","name":"","label":"Connection",
+           "value":["GPS enabled? (y,n)","Wi-Fi enabled? (y,n)","Bluetooth enabled? (y,n)","USB connection available? (y,n)"],
+           "option":["GPS","Wi-Fi","Bluetooth","USB"]},
+           {"type":"string","name":"Water resistant? (y,n)","label":"Water resistant",
+          "value":["1","0"],
+          "option":["Yes","No"]}
+
        ]
 EOF;
 
@@ -54,7 +73,8 @@ EOF;
             foreach ($item['value'] as $value) {
                 if($item['name']=='Brand'){
                     $sql="select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='".$value."')";
-                }
+                }else
+                    $sql="select count(*) from results where id_evaluation in(select id_evaluation from evaluations where id_evaluation>99999999 and name='".$item['name']."') and value ='$value'";
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
@@ -120,7 +140,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","24","5","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2015,2014],"option":[2015,2014],"number":["14","15"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Sony","Jawbone","Garmin","Withings","Misfit","Xiaomi","Razer","Microsoft","Asus","Polar","LG","iHealth","Nike","Epson","Samsung","Soleus"],"option":["Fitbit","Sony","Jawbone","Garmin","Withings","Misfit","Xiaomi","Razer","Microsoft","Asus","Polar","LG","iHealth","Nike","Epson","Samsung","Soleus"],"number":["5","3","3","3","2","2","1","1","1","1","1","1","1","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","24","5","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2015,2014],"option":[2015,2014],"number":["14","15"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Sony","Jawbone","Garmin","Withings","Misfit","Xiaomi","Razer","Microsoft","Asus","Polar","LG","iHealth","Nike","Epson","Samsung","Soleus"],"option":["Fitbit","Sony","Jawbone","Garmin","Withings","Misfit","Xiaomi","Razer","Microsoft","Asus","Polar","LG","iHealth","Nike","Epson","Samsung","Soleus"],"number":["5","3","3","3","2","2","1","1","1","1","1","1","1","1","1","1","1"]},{"type":"string","name":"Primary location to wear band (wrist, belt etc.)","label":"Type of tracker","value":["Wrist","Waist","Wrist or waist","Wrist, waist, foot or around neck","Wrist, waist, foot or around neck _can also be clipped anywhere on the body","Belt. Instructions suggest the device can also be clipped on upper body clothing or bra."],"option":["Wrist","Waist","Wrist or waist","Wrist, waist, foot or around neck","Wrist, waist, foot, neck or anywhere","Belt (also on upper body clothing or bra)"],"number":["23","1","2","1","1","1"]},{"type":"multi","name":"","label":"Fitness","value":["Integrated heart monitor present? (y,n)","Sleep tracking? (y,n)","Integrated altimeter? (y,n)"],"option":["Heart rate monitor","Sleep tracking","Altimeter"],"number":["9","25","5"]},{"type":"multi","name":"","label":"Phone compatability","value":["iOS supported? (y,n)","Android supported? (y,n)","Windows phone supported? (y,n)"],"option":["iOS compatible","Android compatible","Windows phone compatible"],"number":["26","29","7"]},{"type":"multi","name":"","label":"Smart","value":["Can the display be customised (y,n)","Any smart watch functionality present? (y,n)","  * Text message notification? (y,n)","  * Make\/receive phone calls? (y,n)"],"option":["Personalisation","Smart watch","Messaging","Calling"],"number":[false,"14","10","1"]},{"type":"multi","name":"","label":"Connection","value":["GPS enabled? (y,n)","Wi-Fi enabled? (y,n)","Bluetooth enabled? (y,n)","USB connection available? (y,n)"],"option":["GPS","Wi-Fi","Bluetooth","USB"],"number":["3","0","29","25"]},{"type":"string","name":"Water resistant? (y,n)","label":"Water resistant","value":["1"],"option":["Yes"],"number":["29"]}]
 EOF;
 
     return $labels;
