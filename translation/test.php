@@ -10,17 +10,12 @@ require('lib.php');
 //error_reporting(0);
 $db=new mysql_cls();
 $db->connect();
-$db->changeDB('basiccameras');
-$oriword="Low Light Performance";
+$db->changeDB('whheadphones');
+$oriword="Inventory";
 
 $id="5086";
 $dicflag=1;
 //$result=getManufacturers();
-print_r(QueryInSelfDic($id,$dicflag));
-//$result1=SaveTranslationToAdminDic($oriword,$transarr);///一旦修改了input，说明是新增的意思
-//$result2=SaveTranslationToSelfDic($oriword,$transarr,$id,$dicflag);
-//if($result1)
-//    $outstr1="存入了总词典!";
-////if($result2)
-//    //$outstr2="存入了项目词典!";
-echo $outstr;
+//print_r(QueryInSelfDic($id,$dicflag));
+$gtranslation = GetTransLation($oriword,29,3);
+print_r( $gtranslation);

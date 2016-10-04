@@ -83,7 +83,7 @@ function getAllProducts($order='time'){
 }
 /*挑选指定ID的产品*/
 function getProductByIds($ids,$order='time'){
-    $sql = "select modelname as product_name,`name`as product_manufacturer,timestamp_created as product_tested_date, id_product as product_id
+    $sql = "select modelname as product_name,`name`as product_manufacturer,timestamp_created as product_tested_date, id_product as product_id,price
                 from products as A,manufacturers as B
                 where A.id_manufacturer=B.id_manufacturer and id_product in(" ;
 
@@ -130,9 +130,12 @@ function multiSort($arr,$order){
     foreach ($arr as $key=>$value){
         $time[$key] = $value[2];
         $score[$key] = $value['score'];
+        $price[$key]=$value['price'];
+        /*
         $tempPrice=explode(" ",$value['price']);
         if(is_numeric($tempPrice))
              $price[$key]=$tempPrice[0];
+        */
     }
     if($order=='score')
         array_multisort($score,SORT_NUMERIC,SORT_ASC,$arr);
@@ -295,6 +298,8 @@ function getPropsValues($props,$id){
 /*产品属性挑选指定规则*/
 function getRules(){
     return $rules = array("mobilephones"=>null,
+                            "basiccameras"=>null,
+                            "whheadphones"=>null,
                             "tvs"=>array("groups"=>array(array("name"=>"Screen","props"=>array(2004, 1702, 1704, 1705, 1706, 1717, 1718,
                                                                              2029, 1722, 1723, 1789)),
                                   array("name"=>"Size","props"=>array(1707, 1746, 1747, 1748, 1751)),
@@ -309,14 +314,22 @@ function getRules(){
                                   array("name"=>"Memory","props"=>array(11,13)),
                                   array("name"=>"DVD","props"=>array(27,28)),
                                   array("name"=>"HardDisk","props"=>array(20,21,23)),
-                                  array("name"=>"Graphics Adaptor","props"=>array(36,37,40,41)),
+                                  array("name"=>"Graphics Adaptor","props"=>array(36,37,40,41,42)),
                                   array("name"=>"Connectors","props"=>array(47,48,54,56,57,58,71,72)),
                                   array("name"=>"Sound","props"=>array(77,79,81)),
                                   array("name"=>"Screen","props"=>array(88,89,90,91)),
                                   array("name"=>"Webcam","props"=>array(113,114)),
-                                  array("name"=>"Security","props"=>array(136,137)),
+                                  array("name"=>"Security","props"=>array(136,137)),)),
+                            "tablets"=>array("groups"=>array(array("name"=>"Dimensions","props"=>array(389,390,391,392,653,698,446,683)),
+                                  array("name"=>"Operating system & processor","props"=>array(393,381,427,428,429,430,431,726)),
+                                  array("name"=>"Operating system & processor","props"=>array(438,439,440,441,442,443,448)),
+                                  array("name"=>"Camera","props"=>array(449,450,451,452,453,455,694)),
+                                  array("name"=>"Security","props"=>array(459,460,461,462)),
+                                  array("name"=>"Connections","props"=>array(399,400,401,402,404,406,407,408,411,412,413,414,416,420,422,424,425,665,680,705,473)),
+                                  array("name"=>"Performances battery","props"=>array(572,573,575,577)),
+                                  array("name"=>"Robustness","props"=>array(723,724)) )),
 
-                            ))
+
 );
 }
 

@@ -24,7 +24,26 @@ function getLabels()
            "option":[2016,2015]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
+          "option":$brands},
+          {"type":"string","name":"Headphone type e.g. in ear etc","label":"Headphone type",
+          "value":["In","Around","Over","On"],
+          "option":["In ear","Around ear","Over ear","On ear"]},
+          {"type":"string","name":"Wireless headphones","label":"Wireless connectivity",
+          "value":["1","0"],
+          "option":["Yes","No"]},
+          {"type":"string","name":"Phone call controls and mic built into cable (answer button etc)","label":"Mic for phonecall",
+          "value":["1","0"],
+          "option":["Yes","No"]},
+          {"type":"string","name":"Do headphones fold","label":"Folding headphones",
+          "value":["1","0"],
+          "option":["Yes","No"]},
+          {"type":"string","name":"Travel case","label":"Travel case",
+          "value":["1","0"],
+          "option":["Yes","No"]},
+          {"type":"string","name":"External noise cancelling present","label":"Noise canceling",
+          "value":["1","0"],
+          "option":["Yes","No"]}
+
        ]
 EOF;
 
@@ -54,7 +73,8 @@ EOF;
             foreach ($item['value'] as $value) {
                 if($item['name']=='Brand'){
                     $sql="select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='".$value."')";
-                }
+                }else
+                    $sql="select count(*) from results where id_evaluation in(select id_evaluation from evaluations where id_evaluation>99999999 and name='".$item['name']."') and value like'%$value%'";
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
@@ -120,7 +140,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["8","53","62","29","1"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["20","133"]},{"type":"string","name":"Brand","label":"Brands","value":["Sennheiser","Bose","Sony","AKG","Skullcandy","Beats by Dr. Dre","Monster","Philips","JVC","Harmon Kardon","Kitsound","John Lewis","RHA","BW (Bowers  Wilkins)","Gibson","Ted Baker","Jam","B&O (Bang and Olufsen)","SoundMagic","Bang and Olufsen","Jabra","Grado","Parrot","Yurbuds","Pioneer","B&O","Audio Technica","Urbanears","Adidas (Monster)","Rock Jaw","Plantronics","Bowers & Wilkins","Apple iPhone 5s","Apple","KEF","Starck","Onkyo","Sol Republic","Goji","Klipsch","HTC One (M8)","Samsung Galaxy S4 S5","Samsung","Bowers and Wilkins","Bang Olufsen","Nokia","Sony Xperia Z2","LG","Denon"],"option":["Sennheiser","Bose","Sony","AKG","Skullcandy","Beats by Dr. Dre","Monster","Philips","JVC","Harmon Kardon","Kitsound","John Lewis","RHA","BW (Bowers  Wilkins)","Gibson","Ted Baker","Jam","B&O (Bang and Olufsen)","SoundMagic","Bang and Olufsen","Jabra","Grado","Parrot","Yurbuds","Pioneer","B&O","Audio Technica","Urbanears","Adidas (Monster)","Rock Jaw","Plantronics","Bowers & Wilkins","Apple iPhone 5s","Apple","KEF","Starck","Onkyo","Sol Republic","Goji","Klipsch","HTC One (M8)","Samsung Galaxy S4 S5","Samsung","Bowers and Wilkins","Bang Olufsen","Nokia","Sony Xperia Z2","LG","Denon"],"number":["20","18","16","10","9","9","8","7","3","2","2","2","2","2","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["8","53","62","29","1"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["20","133"]},{"type":"string","name":"Brand","label":"Brands","value":["Sennheiser","Bose","Sony","AKG","Skullcandy","Beats by Dr. Dre","Monster","Philips","JVC","Harmon Kardon","Kitsound","John Lewis","RHA","BW (Bowers  Wilkins)","Gibson","Ted Baker","Jam","B&O (Bang and Olufsen)","SoundMagic","Bang and Olufsen","Jabra","Grado","Parrot","Yurbuds","Pioneer","B&O","Audio Technica","Urbanears","Adidas (Monster)","Rock Jaw","Plantronics","Bowers & Wilkins","Apple iPhone 5s","Apple","KEF","Starck","Onkyo","Sol Republic","Goji","Klipsch","HTC One (M8)","Samsung Galaxy S4 S5","Samsung","Bowers and Wilkins","Bang Olufsen","Nokia","Sony Xperia Z2","LG","Denon"],"option":["Sennheiser","Bose","Sony","AKG","Skullcandy","Beats by Dr. Dre","Monster","Philips","JVC","Harmon Kardon","Kitsound","John Lewis","RHA","BW (Bowers  Wilkins)","Gibson","Ted Baker","Jam","B&O (Bang and Olufsen)","SoundMagic","Bang and Olufsen","Jabra","Grado","Parrot","Yurbuds","Pioneer","B&O","Audio Technica","Urbanears","Adidas (Monster)","Rock Jaw","Plantronics","Bowers & Wilkins","Apple iPhone 5s","Apple","KEF","Starck","Onkyo","Sol Republic","Goji","Klipsch","HTC One (M8)","Samsung Galaxy S4 S5","Samsung","Bowers and Wilkins","Bang Olufsen","Nokia","Sony Xperia Z2","LG","Denon"],"number":["20","18","16","10","9","9","8","7","3","2","2","2","2","2","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]},{"type":"string","name":"Headphone type e.g. in ear etc","label":"Headphone type","value":["In","Around","Over","On"],"option":["In ear","Around ear","Over ear","On ear"],"number":["69","9","17","58"]},{"type":"string","name":"Wireless headphones","label":"Wireless connectivity","value":["1","0"],"option":["Yes","No"],"number":["39","114"]},{"type":"string","name":"Phone call controls and mic built into cable (answer button etc)","label":"Mic for phonecall","value":["1","0"],"option":["Yes","No"],"number":["124","27"]},{"type":"string","name":"Do headphones fold","label":"Folding headphones","value":["1","0"],"option":["Yes","No"],"number":["66","68"]},{"type":"string","name":"Travel case","label":"Travel case","value":["1","0"],"option":["Yes","No"],"number":["106","47"]},{"type":"string","name":"External noise cancelling present","label":"Noise canceling","value":["1","0"],"option":["Yes","No"],"number":["15","138"]}]
 EOF;
 
     return $labels;

@@ -24,7 +24,13 @@ function getLabels()
            "option":[2016,2015,2014]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
+          "option":$brands},
+          {"type":"multi","name":"","label":"Key features",
+           "value":["Backlit screen (y,n)","Touch sensitive screen (y,n)","NFC (y,n)","  * Make/receive phone calls? (y,n)","Integrated heart monitor present? (y,n)","Water resistant (y,n)"],
+           "option":["Backlit screen","Touch screen","NFC","Make/receive calls","Heart rate monitor","Water resistant"]},
+          {"type":"multi","name":"","label":"Phone compatibility",
+           "value":["Connects to Android phone (y,n)","Connects to iOS phone (y,n)"],
+           "option":["Android","Apple iPhone"]}
        ]
 EOF;
 
@@ -54,7 +60,8 @@ EOF;
             foreach ($item['value'] as $value) {
                 if($item['name']=='Brand'){
                     $sql="select count(*)from products where id_manufacturer=(select id_manufacturer from manufacturers where `name`='".$value."')";
-                }
+                }else
+                    $sql="select count(*) from results where id_evaluation in(select id_evaluation from evaluations where id_evaluation>99999999 and name='".$item['name']."') and value like'%$value%'";
                 //echo $sql;
                 $v = $GLOBALS['db']->getOne($sql);
                 //echo $value." ".$v." ".$index."+++\n";
@@ -120,7 +127,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","2","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["6"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"option":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"number":["2","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","2","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["6","0","0"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"option":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"number":["2","1","1","1","1"]},{"type":"multi","name":"","label":"Key features","value":["Backlit screen (y,n)","Touch sensitive screen (y,n)","NFC (y,n)","  * Make\/receive phone calls? (y,n)","Integrated heart monitor present? (y,n)","Water resistant (y,n)"],"option":["Backlit screen","Touch screen","NFC","Make\/receive calls","Heart rate monitor","Water resistant"],"number":["3","5","0","0","3","3"]},{"type":"multi","name":"","label":"Phone compatibility","value":["Connects to Android phone (y,n)","Connects to iOS phone (y,n)"],"option":["Android","Apple iPhone"],"number":["6","6"]}]
 EOF;
 
     return $labels;
