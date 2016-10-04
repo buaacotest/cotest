@@ -26,14 +26,11 @@ function getLabels()
           "value":$brands,
           "option":$brands},
           {"type":"multi","name":"","label":"Key features",
-           "value":["Backlit screen (y,n)","Touch sensitive screen (y,n)","NFC (y,n)","  * Make/receive phone calls? (y,n)","Integrated heart monitor present? (y,n)"],
-           "option":["Backlit screen","Touch screen","NFC","Make/receive phone calls","Heart rate monitor built-in"]},
-          {"type":"multi","name":"","label":"Key features",
+           "value":["Backlit screen (y,n)","Touch sensitive screen (y,n)","NFC (y,n)","  * Make/receive phone calls? (y,n)","Integrated heart monitor present? (y,n)","Water resistant (y,n)"],
+           "option":["Backlit screen","Touch screen","NFC","Make/receive calls","Heart rate monitor","Water resistant"]},
+          {"type":"multi","name":"","label":"Phone compatibility",
            "value":["Connects to Android phone (y,n)","Connects to iOS phone (y,n)"],
-           "option":["Android","Apple iPhone"]},
-          {"type":"string","name":"Water resistant (y,n)","label":"Water resistant",
-          "value":["1","0"],
-          "option":["Yes","No"]}
+           "option":["Android","Apple iPhone"]}
        ]
 EOF;
 
@@ -130,7 +127,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","2","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["6","0","0"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"option":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"number":["2","1","1","1","1"]},{"type":"multi","name":"","label":"Key features","value":["Backlit screen (y,n)","Touch sensitive screen (y,n)","NFC (y,n)","  * Make\/receive phone calls? (y,n)","Integrated heart monitor present? (y,n)"],"option":["Backlit screen","Touch screen","NFC","Make\/receive phone calls","Heart rate monitor built-in"],"number":["3","5","0","0","3"]},{"type":"multi","name":"","label":"Key features","value":["Connects to Android phone (y,n)","Connects to iOS phone (y,n)"],"option":["Android","Apple iPhone"],"number":["6","6"]},{"type":"string","name":"Water resistant (y,n)","label":"Water resistant","value":["1","0"],"option":["Yes","No"],"number":["3","3"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["0","2","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015,2014],"option":[2016,2015,2014],"number":["6","0","0"]},{"type":"string","name":"Brand","label":"Brands","value":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"option":["Fitbit","Polar","Misfit","Microsoft","Garmin"],"number":["2","1","1","1","1"]},{"type":"multi","name":"","label":"Key features","value":["Backlit screen (y,n)","Touch sensitive screen (y,n)","NFC (y,n)","  * Make\/receive phone calls? (y,n)","Integrated heart monitor present? (y,n)","Water resistant (y,n)"],"option":["Backlit screen","Touch screen","NFC","Make\/receive calls","Heart rate monitor","Water resistant"],"number":["3","5","0","0","3","3"]},{"type":"multi","name":"","label":"Phone compatibility","value":["Connects to Android phone (y,n)","Connects to iOS phone (y,n)"],"option":["Android","Apple iPhone"],"number":["6","6"]}]
 EOF;
 
     return $labels;
