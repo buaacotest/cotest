@@ -369,17 +369,19 @@
 <script type="text/javascript">
 //解析get参数
 function getCompareList(){
+  var ids=[]
   $.post("compareCart.php",{option:"show"},function(result){
 
       console.log(result)
       result=eval("("+result+")")
-      var ids=[]
+      
       for(var key in result){
         ids.push(key);
       }
       console.log(ids)
-      return ids
+      
   })
+  return ids
 }
 var local_url = document.location.href; 
 var compare_list=getCompareList();
@@ -446,13 +448,7 @@ $(".product-image").find(".close").on("click",function(){
 })
 
 $(".add-compare-btn").on("click",function(){
-  var name_list=[];
-  var names=$(".product-name");
-  for (var i=0;i<names.length;i++){
-    name_list.push($(names[i]).text());
-    console.log($(names[i]).text())
-  }
-  var url="products.php?proj=<{$project}>&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(name_list);
+  var url="products.php?proj=<{$project}>"
 
   window.location.href=url;  
 })

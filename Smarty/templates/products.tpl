@@ -48,12 +48,12 @@
            <h3>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;
            <!--<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}>
            --></h3>
-           <div id="highlights-panel">
+           <div id="highlights-panel" class="row">
 
            </div>
            
          </div>
-         
+         <div >
             <div class="products-sort">
               
               <div class="name"><{$lang.SortBy}></div>
@@ -73,6 +73,7 @@
                 <input class="products-search-text"type="text"></input>
                 <div class="products-search-btn">serach</div>
                 <ul class="keyword-panel"></ul>
+            </div>
             </div>
             </div>
         <div class="products-container">
@@ -234,7 +235,7 @@
             <img src="img/down.png" />
         </div>
         <div class="compare-btn"><{$lang.Compare}></div>
-        <div class="compare-clear-btn"><{$lang.Clear}></div>
+        <div class="compare-clear-btn" onclick="javascript:clearCompare()"><{$lang.Clear}></div>
     </div>
 </div>
 <{php}>
@@ -270,6 +271,9 @@
     //console.log(<{$products}>)
      var page=getPar("page");
      var sortType="";
+     var keyword=getPar("keyword");
+     $(".products-search-text").val(keyword);
+     console.log(keyword)
     if(page)
         fetchComments('',$(".comments"),page);
     else{
@@ -283,6 +287,7 @@
     var labels_str="";
     loadoption(<{$labels}>)
     $(".compare-panel").hide();
+
     function init(){
       $.post("compareCart.php",{option:"show"},function(result){
           var compareList= eval("("+result+")");
@@ -326,7 +331,8 @@
        
         get_par=get_par.replace(/%22/g,"'");
         get_par=get_par.replace(/%20/g," ");
-        return eval("("+get_par+")");
+        console.log(get_par)
+        return get_par;
     }
     
 
@@ -337,11 +343,13 @@
     $(".products-search-btn").on("click",function(){
             if($("#highlights-panel").html()!="")
                 $("#highlights-panel").html("");
-        var keyword=$(".products-search-text").val();
-          location.href = "products.php?proj=<{$project}>&keyword="+keyword
+          keyword=$(".products-search-text").val();
+
+          location.href = "products.php?proj=<{$project}>&keyword="+keyword;
+
     })
     $(".products-search-text").on("input",function(){
-      var keyword=$(this).val();
+      keyword=$(this).val();
       $.post("search.php",{keyword:keyword},function(result){
         result=eval("("+result+")")
           var content="";
@@ -547,7 +555,8 @@
         //console.log(labels_str);
             if($("#highlights-panel").html()!="")
                 $("#highlights-panel").html("");
-        $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str,function(result){
+        $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str+"&keyword='"+keyword+"'",function(result){
+          console.log("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str+'&keyword='+keyword)
            // console.log(result)
             $("#products-block").html(result);
             totalpage=$(".products").attr("pagenum");
@@ -563,12 +572,24 @@
         
     }
     function closeCompareClick(pro_id){
-         $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
-            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
-            $("#cp"+pro_id).attr('add',0);
+         
             removeCompare(pro_id);
     }
+    function clearCompare(){
+        $.post("compareCart.php",{option:"removeAll"},function(result){
+              
+              for(var i=0;i<compare_list.length;i++){
+                     removeCompare(compare_list[i]);
+                  
+              }
+
+        
+        });
+    }
     function addCompare(pro_id,pro_name){
+      if(compare_list.length>=5){
+                 alert("too much compared items.");
+      }else{
        // alert("addcompare")
         var content='<div class="compare-item" proName="'+pro_name+'" proId="'+pro_id+'">'
             +'<div class="compare-context">'+pro_name+'</div>'
@@ -576,6 +597,10 @@
              +'<img src="img/cross_w.png">'
             +'</div>'
         +'</div>';
+        $("#cp"+pro_id).find(".action-add").addClass("action-toggle");
+        $("#cp"+pro_id).find(".action-remove").removeClass("action-toggle");
+        $("#cp"+pro_id).attr('add',1);
+        $(".compare-panel").show();
         if(compare_list.indexOf(pro_id)==-1 ){
             compare_list.push(pro_id);
             compare_name_list.push(pro_name);
@@ -583,22 +608,15 @@
             $(".compare-panel").append(content);
 
         }
+      }
         
-        //$(".compare-panel").append(content);
-        /*
-        $(".compare-close").on("click",function(){
-            //console.log(pro_name)
-            
-            $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
-            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
-            $("#cp"+pro_id).attr('add',0);
-            removeCompare(pro_id);
-        })*/
         
     }
 
     function removeCompare(pro_id){
-
+        $("#cp"+pro_id).find(".action-remove").addClass("action-toggle");
+            $("#cp"+pro_id).find(".action-add").removeClass("action-toggle");
+            $("#cp"+pro_id).attr('add',0);
         console.log(pro_id);
         console.log(compare_list);
         var id=compare_list.indexOf(pro_id.toString());
@@ -642,22 +660,10 @@
     function productCompareOnClick(compare_btn){
         //alert("xxxxxx");
          if(compare_btn.attr("add")==0){
-             if(compare_list.length>=5){
-                 alert("too much compared items.");
-             }
-             else{
-                 addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
-                 compare_btn.find(".action-add").addClass("action-toggle");
-                 compare_btn.find(".action-remove").removeClass("action-toggle");
-                 compare_btn.attr('add',1);
-                 $(".compare-panel").show();
-               //  console.log($(".compare-panel").css("display"))
-             }
+            addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
+
         }else{
             removeCompare(compare_btn.attr("proId"));
-            compare_btn.find(".action-remove").addClass("action-toggle");
-            compare_btn.find(".action-add").removeClass("action-toggle");
-            compare_btn.attr('add',0);
           //  console.log($(".compare-panel").css("display"))
         }
     }
@@ -712,7 +718,7 @@
             })
             $(".product-link").on("click",function(){
               var id=$(this).attr("target");
-            window.location.href="details.php?proj=<{$project}>&id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
+            window.location.href="details.php?proj=<{$project}>&id="+id;
             })
              $(".cur-page").text(cpage)
         })
@@ -795,7 +801,7 @@
         //$("html,body").animate({scrollTop:0,500});
         $(".product-link").on("click",function(){
             var id=$(this).attr("target");
-            window.location.href="details.php?proj=<{$project}>&id="+id+"&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(compare_name_list);
+            window.location.href="details.php?proj=<{$project}>&id="+id;
         })
 
     }

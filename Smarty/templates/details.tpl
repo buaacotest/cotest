@@ -29,7 +29,7 @@
 <!-- Static navbar -->
 
 <body>
-<{php}>
+        <{php}>
     require("navigation.php");
     <{/php}>
 <div class="container  main-container review-container">
@@ -555,37 +555,36 @@
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
-<script src="js/bigpic.js"/>
+<script type="text/javascript" src="js/bigpic.js"></script>
    
-<script>
-    var compare_ids=getPar("ids");
+<script >
     var id=getPar("id")+"";
-    var compare_names=getPar("names");
     var project="<{$project}>";
     var product_id ="<{$id}>";
-    if(!compare_ids){
-        compare_ids=[]
-    }
-    if(!compare_names){
-        compare_names=[]
-    }
+   
     $(".add-to-compare").on("click",function(){
-        if(compare_ids.indexOf(id)==-1){
-            compare_ids.push(id)
-            compare_names.push('<{$product.name}>');
-        } 
+        var item={}
+        item[id]='<{$product.name}>'
+         $.post("compareCart.php",{option:"add",items:item},function(result){
+                 console.log('result');
+          
+                window.location.href="products.php?proj="+'<{$project}>';
         
-        window.location.href="products.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+        });
+
+  //      window.location.href="products.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
     })
     $(".go-to-compariosn").on("click",function(){
-        if(compare_ids.indexOf(id)==-1){
-            compare_ids.push(id)
-            compare_names.push('<{$product.name}>');
-        } 
-        window.location.href="compare.php?proj="+'<{$project}>'+JSON.stringify(compare_ids);
+        var item={}
+        item[id]='<{$product.name}>'
+         $.post("compareCart.php",{option:"add",items:item},function(result){
+          
+                window.location.href="compare.php?proj="+'<{$project}>';
+        
+        });
     })
     $(".back-to-list").on("click",function(){
-        window.location.href="products.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
+        window.location.href="products.php?proj="+'<{$project}>';
     })
     var page=getPar("page");
     if(page)
