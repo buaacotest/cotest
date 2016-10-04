@@ -314,7 +314,7 @@ function getRules(){
                                   array("name"=>"Memory","props"=>array(11,13)),
                                   array("name"=>"DVD","props"=>array(27,28)),
                                   array("name"=>"HardDisk","props"=>array(20,21,23)),
-                                  array("name"=>"Graphics Adaptor","props"=>array(36,37,40,41)),
+                                  array("name"=>"Graphics Adaptor","props"=>array(36,37,40,41,42)),
                                   array("name"=>"Connectors","props"=>array(47,48,54,56,57,58,71,72)),
                                   array("name"=>"Sound","props"=>array(77,79,81)),
                                   array("name"=>"Screen","props"=>array(88,89,90,91)),
