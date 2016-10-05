@@ -271,8 +271,8 @@
     //console.log(<{$products}>)
      var page=getPar("page");
      var sortType="";
-     var keyword=getPar("keyword");
-     $(".products-search-text").val(keyword);
+     var keyword=getPar("keyword")?getPar("keyword"):"";
+        $(".products-search-text").val(keyword);
      console.log(keyword)
     if(page)
         fetchComments('',$(".comments"),page);
@@ -555,8 +555,11 @@
         //console.log(labels_str);
             if($("#highlights-panel").html()!="")
                 $("#highlights-panel").html("");
-        $.get("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str+"&keyword='"+keyword+"'",function(result){
-          console.log("products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str+'&keyword='+keyword)
+          var query_str="products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str;
+          if(keyword!="")
+              query_str+="&keyword="+keyword
+        $.get(query_str,function(result){
+          console.log(query_str)
            // console.log(result)
             $("#products-block").html(result);
             totalpage=$(".products").attr("pagenum");
