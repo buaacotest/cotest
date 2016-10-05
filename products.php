@@ -74,7 +74,13 @@ if(!empty($labels)){
 }
 
 if(!empty($keyWords)&&!empty($labels)){
-    $products = array_intersect($productsA,$productsB);
+    foreach ($productsA as $value){
+        foreach ($productsB as $val){
+            if($value==$val){
+                $products[]=$value;
+            }
+        }
+    }
 }else if(empty($keyWords)&&empty($labels)){
     $products = getAllProducts($sort);
 }else{
