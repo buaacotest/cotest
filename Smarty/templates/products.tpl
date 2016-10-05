@@ -557,7 +557,7 @@
                 $("#highlights-panel").html("");
           var query_str="products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str;
           if(keyword!="")
-              query_str+="&keyword="+keyword
+              query_str+="&keyword='"+keyword+"'"
         $.get(query_str,function(result){
           console.log(query_str)
            // console.log(result)
