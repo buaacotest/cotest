@@ -81,7 +81,7 @@ font-family:"Arial",sans-serif;color:#333333'>. Privacy policy</span></b></span>
 
         <p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt;background:white'><b><span lang=EN-GB style='font-size:10.0pt;
-font-family:"Arial",sans-serif;color:#002D64'>Personal data</span></b></p>
+font-family:"Arial",sans-serif;color:#000000'>Personal data</span></b></p>
 
         <p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt;background:white'><span lang=EN-GB style='font-size:10.0pt;
@@ -119,7 +119,7 @@ code, email or postal address), you can update your personal data.</span></p>
 
         <p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt;background:white'><b><span lang=EN-GB style='font-size:10.0pt;
-font-family:"Arial",sans-serif;color:#002D64'>Cookies</span></b></p>
+font-family:"Arial",sans-serif;color:#000000'>Cookies</span></b></p>
 
         <p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt;background:white'><span lang=EN-GB style='font-size:10.0pt;
@@ -146,7 +146,7 @@ cookies by making the appropriate adjustments to your browser settings.</span></
 
         <p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt;background:white'><b><span lang=EN-GB style='font-size:10.0pt;
-font-family:"Arial",sans-serif;color:#002D64'>Security</span></b></p>
+font-family:"Arial",sans-serif;color:#000000'>Security</span></b></p>
 
         <p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt;background:white'><span lang=EN-GB style='font-size:10.0pt;
@@ -188,7 +188,7 @@ in Europe for Safety &amp; Trust e.V.<br>
 33334 Guetersloh<br>
 </span><span lang=EN-GB style='font-size:10.0pt;font-family:"Arial",sans-serif'>E-Mail:
 </span><span lang=EN-US><a href="mailto:info@cotest.org"><span lang=EN-GB
-                                                               style='font-size:10.0pt;font-family:"Arial",sans-serif;letter-spacing:-.05pt'>info@cotest.org</span></a></span></p>
+                                                               style='font-size:10.0pt;font-family:"Arial",sans-serif;letter-spacing:-.05pt'>info@cotest.org</span></a></span></p><br>
 
         <p class=Standard align=left style='margin-bottom:7.5pt;text-align:left;
 line-height:15.0pt'><span class=Absatz-Standardschriftart><b><span lang=EN-GB

@@ -49,7 +49,7 @@
     <p><strong>Executive Board</strong></p>
     <p>Dr. Martin Dannhoff (Chairman)</p>
     <p>Harke Smits</p>
-    <p>Hans Wachtel</p>
+
     <br>
     <p><strong>Disclaimer</strong></p>
     <p>All information on this website has been carefully reviewed. We make every effort to continually expand and update the information it contains but cannot guarantee its completeness, accu-racy and complete up-to-dateness. The Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. („COTEST“) provides this information without any assurances or warranties of any kind, either express or implied. COTEST excludes all liability for damages arising directly or indirectly from the use of this website, provided they are not based on intent or gross negligence on the part of COTEST. Our websites contain links to other websites. These links serve informational purposes only. We have no control over the future development of the content on these websites to which we provide links. Therefore, the operators of the linked websites are solely responsible for their content.
@@ -79,7 +79,7 @@
     <p><strong>Vorstand</strong></p>
     <p>Dr. Martin Dannhoff (Vorsitzender)</p>
     <p>Harke Smits</p>
-    <p>Hans Wachtel</p>
+    
     <br>
     <p><strong>Haftungshinweis</strong></p>
     <p>Alle Angaben dieses Internetangebotes wurden sorgfaeltig geprueft. Wir bemuehen uns, dieses Informationsangebot stetig zu erweitern und zu aktualisieren. Eine Garantie fuer die Vollstaendigkeit, Richtigkeit und letzte Aktualitaet kann jedoch nicht uebernommen werden. Die Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. („COTEST“) stellt diese Informationen ohne jegliche Zusicherung oder Gewaehrleistung jedweder Art, sei sie ausdruecklich oder stillschweigend, zur Verfuegung. COTEST schliesst jegliche Haftung fuer Schaeden, die direkt oder indirekt aus der Benutzung dieser Website entstehen, aus, soweit diese nicht auf Vorsatz oder grober Fahrlaessigkeit von COTEST beruhen. Unsere Internetseiten enthalten Links auf externe Webseiten. Diese Links haben einen reinen Informationszweck. Auf die Entwicklung der Inhalte dieser verlinkten Webseiten haben wir keinen Einfluss. Fuer den Inhalt der verlinkten Seiten sind daher ausschliesslich deren Betreiber verantwortlich.
