@@ -79,7 +79,7 @@
     <p><strong>Vorstand</strong></p>
     <p>Dr. Martin Dannhoff (Vorsitzender)</p>
     <p>Harke Smits</p>
-    
+
     <br>
     <p><strong>Haftungshinweis</strong></p>
     <p>Alle Angaben dieses Internetangebotes wurden sorgfaeltig geprueft. Wir bemuehen uns, dieses Informationsangebot stetig zu erweitern und zu aktualisieren. Eine Garantie fuer die Vollstaendigkeit, Richtigkeit und letzte Aktualitaet kann jedoch nicht uebernommen werden. Die Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. („COTEST“) stellt diese Informationen ohne jegliche Zusicherung oder Gewaehrleistung jedweder Art, sei sie ausdruecklich oder stillschweigend, zur Verfuegung. COTEST schliesst jegliche Haftung fuer Schaeden, die direkt oder indirekt aus der Benutzung dieser Website entstehen, aus, soweit diese nicht auf Vorsatz oder grober Fahrlaessigkeit von COTEST beruhen. Unsere Internetseiten enthalten Links auf externe Webseiten. Diese Links haben einen reinen Informationszweck. Auf die Entwicklung der Inhalte dieser verlinkten Webseiten haben wir keinen Einfluss. Fuer den Inhalt der verlinkten Seiten sind daher ausschliesslich deren Betreiber verantwortlich.
