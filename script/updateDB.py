@@ -266,6 +266,8 @@ if __name__=="__main__":
 
         product_timestamp_created=get_attrvalue(node,'timestamp_created')
         product['TC']=int(product_timestamp_created)
+        if(product['TC']<1388505600):
+            continue
 
         product_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
         product['TL']=int(product_timestamp_lastchange)
@@ -561,6 +563,7 @@ if __name__=="__main__":
         evaluation_parent=get_attrvalue(node,'id_parent')
         evaluation['id_parent']=evaluation_parent
 
+
         evaluation_id_childs = get_attrvalue(node,'id_childs')
         evaluation['id_childs']=evaluation_id_childs
 
@@ -587,6 +590,9 @@ if __name__=="__main__":
 
         evaluation_weighting_normalized = get_attrvalue(node,'weighting_normalized')
         evaluation['weighting_normalized']=evaluation_weighting_normalized
+        if(evaluation_parent=='0'): #set total test result's normal weighting
+             evaluation['weighting_normalized']='100'
+             evaluation_weighting_normalized='100'
 
         evaluation_weighting_given = get_attrvalue(node,'weighting_given')
         evaluation['weighting_given']=evaluation_weighting_given
@@ -629,7 +635,7 @@ if __name__=="__main__":
             #print(sql_query)
             ori_timechanged = int(row[4])
 
-            if ori_timechanged<int(evaluation_timestamp_lastchange):
+            if (ori_timechanged<int(evaluation_timestamp_lastchange)):
                 #更新
                 update_sql="UPDATE `evaluations`" \
                            "SET" \
