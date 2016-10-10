@@ -322,6 +322,11 @@ color: #bd0000;
 	height: 25px;
 	background: url(../img/star_m.png);
 }
+.pro-score-banner .star-b{
+	width: 25px;
+	height: 25px;
+	background: url(../img/star_mb.png);
+}
 .products .product-thumb{
 	height: 130px;
 	overflow: hidden;

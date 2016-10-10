@@ -65,7 +65,7 @@
                 <a class="product-link product-thumb" target="<{$products[n].id}>">
                   <img class="comparison-product-thumbnail" alt="<{$products[n].name}>" src="data/<{$project}>/picturesx/<{$products[n].id}>_01x.jpg">
                 </a>
-                <div class="close" target="<{$products[n].id}>"></div>
+                <div class="close" target-name="<{$products[n].name}>" target-id="<{$products[n].id}>"></div>
               </div>
 
               </th>
@@ -444,6 +444,9 @@ $(".product-image").find(".close").on("click",function(){
     }
     compare_list.splice(index-1,1);
     $(".compare-title").text(compare_list.length+"  <{$directory.up.name}> in comparison".toLowerCase())
+    var removeItem={};
+    removeItem[$(this).attr("target-id")]=$(this).attr("target-name");
+    $.post("compareCart.php",{option:"remove",items:removeItem},function(result){});
 
 })
 

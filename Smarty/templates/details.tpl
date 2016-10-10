@@ -77,21 +77,31 @@
                                 <div class="star"></div>
                                 <div class="star"></div>
                                 <div class="star"></div>
+                                <div class="star-b"></div>
 
                 <{/if}>
                 <{if $score > 2.5 && $score <= 3.5}>
                                 <div class="star"></div>
                                 <div class="star"></div>
                                 <div class="star"></div>
+                                <div class="star-b"></div>
+                                <div class="star-b"></div>
 
                 <{/if}>
                 <{if $score >3.5 && $score <= 4.5}>
                                 <div class="star"></div>
                                 <div class="star"></div>
+                                <div class="star-b"></div>
+                                <div class="star-b"></div>
+                                <div class="star-b"></div>
 
                 <{/if}>
                 <{if $score >4.5 && $score <= 5.5}>
                                 <div class="star"></div>
+                                <div class="star-b"></div>
+                                <div class="star-b"></div>
+                                <div class="star-b"></div>
+                                <div class="star-b"></div>
 
 
                 <{/if}>
