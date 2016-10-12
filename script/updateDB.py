@@ -33,7 +33,8 @@ if __name__=="__main__":
         'password':'buaascse',
         'port':3306 ,#默认即为3306
         #'database':'mobilephone', 无默认数据库
-        'charset':'utf8'#默认即为utf8
+        'charset':'utf8',#默认即为utf8
+        'buffered': True,
         }
     try:
         cnn = mysql.connector.connect(**config)
@@ -266,8 +267,8 @@ if __name__=="__main__":
 
         product_timestamp_created=get_attrvalue(node,'timestamp_created')
         product['TC']=int(product_timestamp_created)
-        if(product['TC']<1388505600):
-            continue
+        #if(product['TC']<1388505600):
+            #continue
 
         product_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
         product['TL']=int(product_timestamp_lastchange)

@@ -65,7 +65,7 @@ if __name__=="__main__":
         cursor.execute(checksql)
     except mysql.connector.Error as e:
         print('check for admin database fails!{}'.format(e))
-    values=cursor.fetchall();
+    values=cursor.fetchone();
     if not values: #if there is not an admin database
         createadminsql="CREATE DATABASE  IF NOT EXISTS `admin`"
         useadminsql="USE `admin`"
@@ -354,8 +354,8 @@ if __name__=="__main__":
 
         product_timestamp_created=get_attrvalue(node,'timestamp_created')
         product['TC']=int(product_timestamp_created)
-        if(product['TC']<1388505600):
-            continue
+        #if(product['TC']<1388505600):
+            #continue
         product_timestamp_lastchange=get_attrvalue(node,'timestamp_lastchange')
         product['TL']=int(product_timestamp_lastchange)
         sql_insert2="insert into products" \
@@ -694,4 +694,7 @@ if __name__=="__main__":
         cursor.execute(sql_create_trigger)
     except mysql.connector.Error as e:
         print('create t_afterdelete_on_products fails!{}'.format(e))
+
+    cursor.close();
+    cnn.close();
          #ALL END
