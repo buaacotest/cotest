@@ -47,8 +47,7 @@
     <p>VAT-Identification No.: DE 303 844 366</p>
     <br>
     <p><strong>Executive Board</strong></p>
-    <p>Dr. Martin Dannhoff (Chairman)</p>
-    <p>Harke Smits</p>
+    <p>Dr. Martin Dannhoff</p>
 
     <br>
     <p><strong>Disclaimer</strong></p>
@@ -77,8 +76,7 @@
     <p>Umsatzsteuer-Identifikationsnummer: DE 303 844 366</p>
     <br>
     <p><strong>Vorstand</strong></p>
-    <p>Dr. Martin Dannhoff (Vorsitzender)</p>
-    <p>Harke Smits</p>
+    <p>Dr. Martin Dannhoff</p>
 
     <br>
     <p><strong>Haftungshinweis</strong></p>
