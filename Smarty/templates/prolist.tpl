@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="products-search">
-                <input val="<{$keyword}>"class="products-search-text"type="text" oninput="javascript:searchTextInput(this)" onfocus="javascript:searchTextFocus()" onblur="javascript:searchTextBlur()"></input>
+                <input value="<{$keyword}>"class="products-search-text"type="text" oninput="javascript:searchTextInput(this)" onfocus="javascript:searchTextFocus()" onblur="javascript:searchTextBlur()"></input>
                 <div class="products-search-btn" onclick="javascript:search()">serach</div>
                 <ul class="keyword-panel"></ul>
             </div>
@@ -46,7 +46,7 @@
                     <li >
                         <div class="product-listing">
                         <div class="product-thumb">
-                              <a class="product-link" target="<{$products[n].product_id}>" >
+                              <a class="product-link" onclick="javascript:productLinkClick(this)" target="<{$products[n].product_id}>" >
                 <img class="product-listing__thumb-image" alt="<{$products[n].product_name}>" src="data/<{$project}>/picturesx/<{$products[n].product_id}>_01x.jpg">                              </a>
                           </div>
                           <a class="product-link"  target="<{$products[n].product_id}>" >
@@ -139,7 +139,7 @@
                               / <{$products[n].score}></div>
                             </div>
                             
-                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
+                            <div onclick="javascript:productCompareOnClick(this)" class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
                            

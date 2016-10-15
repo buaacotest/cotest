@@ -88,7 +88,7 @@
                     <li >
                         <div class="product-listing">
                         <div class="product-thumb">
-                              <a class="product-link" target="<{$products[n].product_id}>" >
+                              <a class="product-link" onclick="javascript:productLinkClick(this)"target="<{$products[n].product_id}>" >
  								<img class="product-listing__thumb-image" alt="<{$products[n].product_name}>" src="data/<{$project}>/picturesx/<{$products[n].product_id}>_01x.jpg">                              </a>
                           </div>
                           <a class="product-link"  target="<{$products[n].product_id}>" >
@@ -181,7 +181,7 @@
                               / <{$products[n].score}></div>
                             </div>
                             
-                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
+                            <div class="product-compare-button" onclick="javascript:productCompareOnClick(this)"id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
                            
@@ -268,7 +268,7 @@
     //console.log(<{$products}>)
      var cpage=1;
      var page=getPar("page");
-     var sortType="";
+     var sortType="time";
      var keyword="";
      var labels=[];
    //  var keyword=getPar("keyword")?getPar("keyword"):"";
@@ -492,8 +492,8 @@
         var sortname=$(sortmenu).attr("name");
         if(sortname){
             sortType=sortname;
-            filter()
-            $("#cur-sort").html($(sortmenu).text()+'<span class="caret"></span>');
+            filter();
+            
         }
 
     }
@@ -547,6 +547,23 @@
           var query_str="products.php?&proj=<{$project}>&page="+cpage+"&labels="+labels_str+sort_str;
           if(keyword!="")
               query_str+="&keyword="+keyword
+
+          var sortText= ""
+          switch (sortType)
+          {
+          case "score":
+            sortText= "<{$lang.HighestScore}>";
+            break;
+          case "priceUp":
+            sortText= "<{$lang.PriceLowToHigh}>";
+            break;
+          case "priceDown":
+            sortText= "<{$lang.PriceHighToLow}>"
+            break;
+          case "time":
+            sortText= "<{$lang.MostRecentlyTested}>";
+            break;
+          }
         $.get(query_str,function(result){
           console.log(query_str)
            // console.log(result)
@@ -555,6 +572,9 @@
           
             setpage();
             $(window).scrollTop(0);
+            
+              $("#cur-sort").html(sortText+'<span class="caret"></span>');
+            
          
         })
        
@@ -646,17 +666,6 @@
             }
         }
     }
-    function productCompareOnClick(compare_btn){
-        //alert("xxxxxx");
-         if(compare_btn.attr("add")==0){
-            addCompare(compare_btn.attr("proId"),compare_btn.attr("proName"));
-
-        }else{
-            removeCompare(compare_btn.attr("proId"));
-          //  console.log($(".compare-panel").css("display"))
-        }
-    }
-   
     $(".compare-btn").on("click",function(){
         var items=$(".compare-panel").find(".compare-item");
         var ids={};
@@ -686,35 +695,6 @@
 
     })
    
-    function reloadpage(target){
-        var query_str="";
-        var sort_str=(sortType!=="")?("&sort="+sortType):"";
-        if(target!=1)
-            if($("#highlights-panel").html()!="")
-                $("#highlights-panel").html("");
-        if(labels_str==""){
-            query_str="products.php?page="+target+"&proj=<{$project}>"+sort_str
-        }else{
-            query_str="products.php?page="+target+"&proj=<{$project}>&labels="+labels_str+sort_str;
-        }
-
-        $.get(query_str,function(result){
-            $("#product-container-panel").html(result);
-            updateCompareBtn();
-            $(".product-compare-button").on("click",function(){
-                productCompareOnClick($(this));
-           
-            })
-            $(".product-link").on("click",function(){
-              var id=$(this).attr("target");
-            window.location.href="details.php?proj=<{$project}>&id="+id;
-            })
-             $(".cur-page").text(cpage)
-        })
-
-
-    }
-
     function gotopage(target)
     {
         cpage = target;        //把页面计数定位到第几页
@@ -784,14 +764,21 @@
 
          updateCompareBtn();
     }
-     $(".product-compare-button").on("click",function(){
-                productCompareOnClick($(this));
-           
-            })
-    $(".product-link").on("click",function(){
-            var id=$(this).attr("target");
+    function productLinkClick(productLink){
+            var id=$(productLink).attr("target");
             window.location.href="details.php?proj=<{$project}>&id="+id;
-        })
+    }
+    function productCompareOnClick(compare_btn){
+        //alert("xxxxxx");
+         if($(compare_btn).attr("add")==0){
+            addCompare($(compare_btn).attr("proId"),$(compare_btn).attr("proName"));
+
+        }else{
+            removeCompare($(compare_btn).attr("proId"));
+          //  console.log($(".compare-panel").css("display"))
+        }
+    }
+
 
  
   //  var local_url = document.location.href; 
