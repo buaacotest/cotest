@@ -81,6 +81,7 @@ if(!empty($keyWords)&&!empty($labels)){
             }
         }
     }
+    $products = multiSort($products,$sort);
 }else if(empty($keyWords)&&empty($labels)){
     $products = getAllProducts($sort);
 }else{
@@ -109,6 +110,7 @@ $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('user',$_SESSION['member']);
+$smarty->assign('keyword',$keyWords);
 
 if($flag){
     if(isMobile())
