@@ -86,6 +86,7 @@ if(!empty($keyWords)&&!empty($labels)){
     $products = getAllProducts($sort);
 }else{
     $products = $productsA + $productsB;
+    $products = multiSort($products,$sort);
 }
 //print_r($products);
 
