@@ -205,11 +205,10 @@
           </button>-->
           <h2 class="filter-title"><{$lang.Filters}></h2>
           
-          <button class="clear-btn">
+          <button class="clear-btn" onclick="javascript:clearFilter()">
               <{$lang.ClearAll}>
           </button>
           <div id="filter-all-options">
-              
           </div>
 
         </div>
@@ -269,9 +268,11 @@
     //console.log(<{$products}>)
      var page=getPar("page");
      var sortType="";
-     var keyword=getPar("keyword")?getPar("keyword"):"";
-        $(".products-search-text").val(keyword);
-     console.log(keyword)
+     var keyword="";
+     var labels=[];
+   //  var keyword=getPar("keyword")?getPar("keyword"):"";
+    //    $(".products-search-text").val(keyword);
+    // console.log(keyword)
     if(page)
         fetchComments('',$(".comments"),page);
     else{
@@ -342,8 +343,14 @@
             if($("#highlights-panel").html()!="")
                 $("#highlights-panel").html("");
           keyword=$(".products-search-text").val();
-
-          location.href = "products.php?proj=<{$project}>&keyword="+keyword;
+          $.get("products.php?page=1&proj=<{$project}>&keyword="+keyword,function(result){
+             $("#products-block").html(result);
+             totalpage=$(".products").attr("pagenum");
+            cpage=1;
+            setpage();
+            clearCompare();
+          })
+         // location.href = "products.php?proj=<{$project}>&keyword="+keyword;
 
     })
     $(".products-search-text").on("input",function(){
@@ -436,15 +443,16 @@
             filter();
             })
     }
-    $(".clear-btn").on("click",function(){
-       var checkboxs=$("#filter-all-options").find(".checkbox");
+   
+    function clearFilter(){
+        var checkboxs=$("#filter-all-options").find(".checkbox");
        $(".range-from").val("");
        $(".range-to").val("");
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");
           filter();
-    })
+    }
     //filter toggle
     function filterToggle(){
         var filteroptions=$(".filter-options");
@@ -489,7 +497,7 @@
         var sortname=$(this).attr("name");
         if(sortname){
             sortType=sortname;
-            sort(sortname);
+            filter()
             $("#cur-sort").html($(this).text()+'<span class="caret"></span>');
         }
     })
@@ -505,22 +513,11 @@
         $(this).attr("class","proper-tab active");
     })
     function sort(sortType){
-            if($("#highlights-panel").html()!="")
-                $("#highlights-panel").html("");
-        $.get("products.php?page=1&proj=<{$project}>&sort="+sortType+"&labels="+labels_str,function(result){
-           // console.log(result)
-            $("#products-block").html(result);
-            totalpage=$(".products").attr("pagenum");
-            cpage=1;
-            setpage();
-            //console.log($(".products").attr("pagenum"));
-            //console.log("page="+totalpage);
-
-         
-        })
+        filter();
     }
+
     function filter(){
-        var labels=[]
+        labels=[]
         var all_options=$("#filter-all-options").find(".facet-checkbox");
         for(var i=0;i<all_options.length;i++){
             var name=$(all_options[i]).attr("name");
@@ -555,7 +552,7 @@
                 $("#highlights-panel").html("");
           var query_str="products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str;
           if(keyword!="")
-              query_str+="&keyword='"+keyword+"'"
+              query_str+="&keyword="+keyword
         $.get(query_str,function(result){
           console.log(query_str)
            // console.log(result)
