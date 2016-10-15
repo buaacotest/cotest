@@ -40,8 +40,8 @@
             </ul>
 
     </div>
-    <div class="row" id="product_panel">
-        <div class="product-container-panel">
+    <div class="row" id="products-panel">
+        <div class="product-container-panel" id="product-container-panel">
          <div class="products-header">
          <div class="products-title" style="overflow:hidden">
            
@@ -61,17 +61,17 @@
                   <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <{$lang.MostRecentlyTested}> <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu">
-                    <li ><a class="dropdown-menu-item" name="score"href="#"><{$lang.HighestScore}></a></li>
-                    <li ><a class="dropdown-menu-item" name="priceUp" href="#"><{$lang.PriceLowToHigh}></a></li>
-                    <li><a  class="dropdown-menu-item" name="priceDown"href="#"><{$lang.PriceHighToLow}></a></li>
-                    <li><a href="#"  class="dropdown-menu-item" name="time"><{$lang.MostRecentlyTested}></a></li>
+                  <ul class="dropdown-menu" >
+                    <li ><a class="dropdown-menu-item" name="score"href="#" onclick="javascript:sort(this)"><{$lang.HighestScore}></a></li>
+                    <li ><a class="dropdown-menu-item" name="priceUp" onclick="javascript:sort(this)" href="#"><{$lang.PriceLowToHigh}></a></li>
+                    <li><a onclick="javascript:sort(this)" class="dropdown-menu-item" name="priceDown"href="#"><{$lang.PriceHighToLow}></a></li>
+                    <li><a onclick="javascript:sort(this)" href="#"  class="dropdown-menu-item" name="time"><{$lang.MostRecentlyTested}></a></li>
                   </ul>
                 </div>
             </div>
             <div class="products-search">
-                <input class="products-search-text"type="text"></input>
-                <div class="products-search-btn">serach</div>
+                <input class="products-search-text"type="text" oninput="javascript:searchTextInput(this)" onfocus="javascript:searchTextFocus()" onblur="javascript:searchTextBlur()"></input>
+                <div class="products-search-btn" onclick="javascript:search()">serach</div>
                 <ul class="keyword-panel"></ul>
             </div>
             </div>
@@ -205,11 +205,10 @@
           </button>-->
           <h2 class="filter-title"><{$lang.Filters}></h2>
           
-          <button class="clear-btn">
+          <button class="clear-btn" onclick="javascript:clearFilter()">
               <{$lang.ClearAll}>
           </button>
           <div id="filter-all-options">
-              
           </div>
 
         </div>
@@ -267,11 +266,14 @@
     //初始化
     //console.log(<{$labels}>)
     //console.log(<{$products}>)
+     var cpage=1;
      var page=getPar("page");
      var sortType="";
-     var keyword=getPar("keyword")?getPar("keyword"):"";
-        $(".products-search-text").val(keyword);
-     console.log(keyword)
+     var keyword="";
+     var labels=[];
+   //  var keyword=getPar("keyword")?getPar("keyword"):"";
+    //    $(".products-search-text").val(keyword);
+    // console.log(keyword)
     if(page)
         fetchComments('',$(".comments"),page);
     else{
@@ -338,16 +340,16 @@
         $(".products-search-text").val($(item).text());
         $(".keyword-panel").hide();
     }
-    $(".products-search-btn").on("click",function(){
-            if($("#highlights-panel").html()!="")
+    function search(){
+         if($("#highlights-panel").html()!="")
                 $("#highlights-panel").html("");
           keyword=$(".products-search-text").val();
-
-          location.href = "products.php?proj=<{$project}>&keyword="+keyword;
-
-    })
-    $(".products-search-text").on("input",function(){
-      keyword=$(this).val();
+          clearFilter();
+          cpage=1;
+          filter();
+    }
+    function searchTextInput(searchText){
+      keyword=$(searchText).val();
       $.post("search.php",{keyword:keyword},function(result){
         result=eval("("+result+")")
           var content="";
@@ -357,12 +359,14 @@
           }
           $(".keyword-panel").html(content);
       })
-    }).on("focus",function(){
-      $(".keyword-panel").show();
-    }).on("blur",function(){
-     if( ! $(".keyword-panel").is(":hover"))  
-      $(".keyword-panel").hide();
-    })
+    }
+    function searchTextFocus(){
+        $(".keyword-panel").show();
+    }
+    function searchTextBlur(){
+      if( ! $(".keyword-panel").is(":hover"))  
+        $(".keyword-panel").hide();
+    }
     function loadoption(labels){
         var option_text="";
         if(labels){
@@ -436,15 +440,15 @@
             filter();
             })
     }
-    $(".clear-btn").on("click",function(){
-       var checkboxs=$("#filter-all-options").find(".checkbox");
+   
+    function clearFilter(){
+        var checkboxs=$("#filter-all-options").find(".checkbox");
        $(".range-from").val("");
        $(".range-to").val("");
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");
-          filter();
-    })
+    }
     //filter toggle
     function filterToggle(){
         var filteroptions=$(".filter-options");
@@ -484,15 +488,16 @@
     $(".filter-btn").on("click",function(e){
         filter();
     })
-
-    $(".dropdown-menu-item").on("click",function(){
-        var sortname=$(this).attr("name");
+    function sort(sortmenu){
+        var sortname=$(sortmenu).attr("name");
         if(sortname){
             sortType=sortname;
-            sort(sortname);
-            $("#cur-sort").html($(this).text()+'<span class="caret"></span>');
+            filter()
+            $("#cur-sort").html($(sortmenu).text()+'<span class="caret"></span>');
         }
-    })
+
+    }
+
       $(".proper-tab").on("click",function(){
         var target_panel=$(this).attr("target");
         var tabs=$(this).parent().find(".proper-tab");
@@ -504,23 +509,9 @@
         $(target_panel).css("display","block");
         $(this).attr("class","proper-tab active");
     })
-    function sort(sortType){
-            if($("#highlights-panel").html()!="")
-                $("#highlights-panel").html("");
-        $.get("products.php?page=1&proj=<{$project}>&sort="+sortType+"&labels="+labels_str,function(result){
-           // console.log(result)
-            $("#products-block").html(result);
-            totalpage=$(".products").attr("pagenum");
-            cpage=1;
-            setpage();
-            //console.log($(".products").attr("pagenum"));
-            //console.log("page="+totalpage);
-
-         
-        })
-    }
+   
     function filter(){
-        var labels=[]
+        labels=[]
         var all_options=$("#filter-all-options").find(".facet-checkbox");
         for(var i=0;i<all_options.length;i++){
             var name=$(all_options[i]).attr("name");
@@ -553,20 +544,17 @@
         //console.log(labels_str);
             if($("#highlights-panel").html()!="")
                 $("#highlights-panel").html("");
-          var query_str="products.php?page=1&proj=<{$project}>&labels="+labels_str+sort_str;
+          var query_str="products.php?&proj=<{$project}>&page="+cpage+"&labels="+labels_str+sort_str;
           if(keyword!="")
-              query_str+="&keyword='"+keyword+"'"
+              query_str+="&keyword="+keyword
         $.get(query_str,function(result){
           console.log(query_str)
            // console.log(result)
-            $("#products-block").html(result);
+            $("#product-container-panel").html(result);
             totalpage=$(".products").attr("pagenum");
-            cpage=1;
+          
             setpage();
-           
-           // console.log($(".products").attr("pagenum"));
-            //console.log("page="+totalpage);
-
+            $(window).scrollTop(0);
          
         })
        
@@ -711,7 +699,7 @@
         }
 
         $.get(query_str,function(result){
-            $("#products-block").html(result);
+            $("#product-container-panel").html(result);
             updateCompareBtn();
             $(".product-compare-button").on("click",function(){
                 productCompareOnClick($(this));
@@ -731,7 +719,7 @@
     {
         cpage = target;        //把页面计数定位到第几页
         setpage();
-        reloadpage(target);    //调用显示页面函数显示第几页,这个功能是用在页面内容用ajax载入的情况
+        filter(); //调用显示页面函数显示第几页,这个功能是用在页面内容用ajax载入的情况
     }
     function setpage()
     {
@@ -795,19 +783,15 @@
         outstr = "";
 
          updateCompareBtn();
-            $(".product-compare-button").on("click",function(){
+    }
+     $(".product-compare-button").on("click",function(){
                 productCompareOnClick($(this));
            
             })
-        //$("html,body").animate({scrollTop:0,500});
-        $(".product-link").on("click",function(){
+    $(".product-link").on("click",function(){
             var id=$(this).attr("target");
             window.location.href="details.php?proj=<{$project}>&id="+id;
         })
-
-    }
-    
-
 
  
   //  var local_url = document.location.href; 
@@ -818,18 +802,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".pagebtn").on("click",function(){
-            var value=$(this).attr("value");
-           // console.log(value)
-            $(".pagebtn").attr("class","pagebtn");
-            $(this).attr("class","pagebtn active");
-            if(value!=1)
-                if($("#highlights-panel").html()!="")
-                    $("#highlights-panel").html("");
-            $.get("products.php?page="+value+"&proj=<{$project}>",function(result){
-                $("#products-block").html(result);
-            })
-        })
+       
         $(".logout-btn").on("click",function  () {
         // body...
         $.get("logout.php",function(){

@@ -1,7 +1,44 @@
-<{if $pageNum ==0}>
-<{else}>
-               
-             <ul class="products" pagenum="<{$pageNum}>" itemscope="" itemtype="http://schema.org/ItemList">
+
+        <div class="product-container-panel">
+         <div class="products-header">
+         <div class="products-title" style="overflow:hidden">
+           
+           <h3>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;
+           <!--<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}>
+           --></h3>
+           <div id="highlights-panel" class="row">
+
+           </div>
+           
+         </div>
+         <div >
+            <div class="products-sort">
+              
+              <div class="name"><{$lang.SortBy}></div>
+                <div class="btn-group">
+                  <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <{$lang.MostRecentlyTested}> <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" >
+                    <li ><a class="dropdown-menu-item" name="score"href="#" onclick="javascript:sort(this)"><{$lang.HighestScore}></a></li>
+                    <li ><a class="dropdown-menu-item" name="priceUp" onclick="javascript:sort(this)" href="#"><{$lang.PriceLowToHigh}></a></li>
+                    <li><a onclick="javascript:sort(this)" class="dropdown-menu-item" name="priceDown"href="#"><{$lang.PriceHighToLow}></a></li>
+                    <li><a onclick="javascript:sort(this)" href="#"  class="dropdown-menu-item" name="time"><{$lang.MostRecentlyTested}></a></li>
+                  </ul>
+                </div>
+            </div>
+            <div class="products-search">
+                <input val="<{$keyword}>"class="products-search-text"type="text" oninput="javascript:searchTextInput(this)" onfocus="javascript:searchTextFocus()" onblur="javascript:searchTextBlur()"></input>
+                <div class="products-search-btn" onclick="javascript:search()">serach</div>
+                <ul class="keyword-panel"></ul>
+            </div>
+            </div>
+            </div>
+        <div class="products-container">
+
+            <div id="products-block">
+                
+                <ul pagenum="<{$pageNum}>" class="products" itemscope="" itemtype="http://schema.org/ItemList">
                    
                    
                     <meta itemprop="mainContentOfPage" content="true">
@@ -10,8 +47,7 @@
                         <div class="product-listing">
                         <div class="product-thumb">
                               <a class="product-link" target="<{$products[n].product_id}>" >
-                                <img class="product-listing__thumb-image" alt="Hisense LTDN50K321UWTSEU" src="data/<{$project}>/picturesx/<{$products[n].product_id}>_01x.jpg">
-                              </a>
+                <img class="product-listing__thumb-image" alt="<{$products[n].product_name}>" src="data/<{$project}>/picturesx/<{$products[n].product_id}>_01x.jpg">                              </a>
                           </div>
                           <a class="product-link"  target="<{$products[n].product_id}>" >
                             <span class="product-brand">
@@ -24,7 +60,7 @@
                             
                           </a>
                           <div class="product-price">
-                            <div data-test="price-label"><{$lang.RefPrice}></div>
+                            <div data-test="price-label"><{$lang.RefPrice}> <{$products[n].price}></div>
                                   
                           </div>
                 
@@ -69,12 +105,10 @@
                                         <{/if}>
                                         <{if $products[n].score >4.5 && $products[n].score <= 5.5}>
                                                         <div class="star"></div>
-                                                        <div class="star-b"></div>
-                                                        <div class="star-b"></div>
-                                                        <div class="star-b"></div>
-                                                        <div class="star-b"></div>
-
-
+                                                        <div class="star_b"></div>
+                                                        <div class="star_b"></div>
+                                                        <div class="star_b"></div>
+                                                        <div class="star_b"></div>
                                         <{/if}>
                                                      
                                        </div>
@@ -105,7 +139,7 @@
                               / <{$products[n].score}></div>
                             </div>
                             
-                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_name}>" add=0>
+                            <div class="product-compare-button" id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
                            
@@ -116,4 +150,12 @@
                     
 
                 </ul>
-<{/if}>
+            </div>
+       
+            <!-- lishijie -->
+            <div id="setpage"></div>
+        </div>
+        </div>
+    
+
+    
