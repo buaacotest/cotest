@@ -147,10 +147,10 @@
                                         <{/if}>
                                         <{if $products[n].score >4.5 && $products[n].score <= 5.5}>
                                                         <div class="star"></div>
-                                                        <div class="star_b"></div>
-                                                        <div class="star_b"></div>
-                                                        <div class="star_b"></div>
-                                                        <div class="star_b"></div>
+                                                        <div class="star-b"></div>
+                                                        <div class="star-b"></div>
+                                                        <div class="star-b"></div>
+                                                        <div class="star-b"></div>
                                         <{/if}>
                                                      
                                        </div>
