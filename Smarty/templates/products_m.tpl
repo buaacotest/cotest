@@ -767,7 +767,7 @@
     setpage();    //调用分页
 </script>
 <script type="text/javascript">
- $.get("data/howtotest/<{$project}>.html",function(data){
+ $.get("data/<{$project}>/howtotest/<{$project}>.html",function(data){
     $("#how-we-test-panel").html(data)
   })
 </script>
