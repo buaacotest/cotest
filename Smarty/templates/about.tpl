@@ -76,7 +76,7 @@
     </div>
     <!--
     <h4>Focus on Chinese Products</h4>
-    <p>According to the EU RASFF (Rapid Alert System for Food and Feed) records, China is still the largest place of origin for notified unsafe food and feed products in Europe, and almost 60% of notifications in the EU’s Rapid Alert System for non-food dangerous products (RAPEX) concern goods of Chinese origin. In Europe, dangerous Chinese products are still countable, but in China, they have been innumerable for a long time. In China and around the world this really affects the basic human right to live safely. COTEST will therefore, at first, focus on the research and testing of products from China in order to empower consumers in China and around the world to consume safely and healthily.
+    <p>According to the EU RASFF (Rapid Alert System for Food and Feed) records, China is still the largest place of origin for notified unsafe food and feed products in Europe, and almost 60% of notifications in the EU's Rapid Alert System for non-food dangerous products (RAPEX) concern goods of Chinese origin. In Europe, dangerous Chinese products are still countable, but in China, they have been innumerable for a long time. In China and around the world this really affects the basic human right to live safely. COTEST will therefore, at first, focus on the research and testing of products from China in order to empower consumers in China and around the world to consume safely and healthily.
     </p>
 
     <div class="about-img-container">
@@ -122,7 +122,7 @@
     <h4>Publications</h4>
     <div class="row about-para">
     <div class="about-para col-md-9">
-         <b>test: </b>the magazine is Stiftung Warentest’s oldest and best-known publication. Since 1966 it has provided impartial and objective advice about the products and services of everyday life. In addition to the tests and investigations, there are also articles, as well as information about trends and useful tips for consumers. Paid circulation: 440,000 copies.
+         <b>test: </b>the magazine is Stiftung Warentest's oldest and best-known publication. Since 1966 it has provided impartial and objective advice about the products and services of everyday life. In addition to the tests and investigations, there are also articles, as well as information about trends and useful tips for consumers. Paid circulation: 440,000 copies.
     </div>
     
     <div class="col-md-3">
@@ -163,7 +163,7 @@
     
     <h4>Investigation work</h4>
     <p>
-        Following a comprehensive planning phase, Stiftung Warentest’s staff compile an investigation programme and purchase the test samples anonymously in shops, just like regular customers. 
+        Following a comprehensive planning phase, Stiftung Warentest's staff compile an investigation programme and purchase the test samples anonymously in shops, just like regular customers. 
     </p>
     <p>
         Independent, external labs are then commissioned to carry out the tests on behalf of the foundation. Investigated services are used covertly by trained mystery shoppers. Finally, Stiftung Warentest publishes and disseminates the results of its investigations.
@@ -185,16 +185,16 @@
         The answer usually is strongly influenced by the number of products sold in the market. The assumption normally is that the higher the number of sold copies of a single product is the higher will be the consumer interest in the quality of that product. Technically innovative products, that often attract consumer´s attention or Bio products sometimes are selected more often than their importance in the market mirrors. Furthermore, changes or short term expected changes in the market regulations have an impact on the product selection.
     </p>
     <p>
-        It is Important to remark, that manufacturers or dealers have absolutely neither influence on product segment and product selection, nor on the planning of our tests.
+        It is important to remark, that manufacturers or dealers have absolutely neither influence on product segment and product selection, nor on the planning of our tests.
     </p>
     <h4>2. Test design</h4>
      <div class="about-img-container">
         <img src="img/testdesign.jpg" class="about-member">
     </div>
-    <p>Once a final decision on product segments and product choice has been made the technical test criteria and how they are tested have to be defined.
+    <p>Once a final decision on product segments and product choice has been made the technical test disciplines and how they are tested have to be defined.
     </p>
     <p>
-        The test team creates a test design which encompasses every single test criterion and its sub-criteria. Usually this list is based on and in accordance with the legal regulations and prescriptions. This, however, is not sufficient where regulations do not exist (e.g. practical tests like usability) or have proven not to be up to date (e.g. endurance strength of bikes). In such cases our engineers, together with experts, define new test methods in order to improve the consumer experience.
+        The test team creates a test design which encompasses every single test discipline and its subdiscipline. Usually this list is based on and in accordance with the legal regulations and prescriptions. This, however, is not sufficient where regulations do not exist (e.g. practical tests like usability) or have proven not to be up to date (e.g. endurance strength of bikes). In such cases our engineers, together with experts, define new test methods in order to improve the consumer experience.
     </p>
     <h4>3.  Product purchase</h4>
     <div class="about-img-container">
@@ -215,7 +215,7 @@
         <img src="img/conclusion.jpg" class="about-member">
     </div>
    <p>
-    After the test specifications have been designed the test team has to decide, which test service organization should test and at what cost.
+    After the test specifications have been designed the test team has to decide, which test service organization should test and at what cost.<br>
     Usually non-profit test organizations like COTEST cannot afford their own labs. For economic reasons you cannot keep a lab organization operational for the whole year with all necessary state of the art testing equipment e.g. for washing machine testing, a product category in which you usually conduct one or two tests a year.
     </p>
     <p>
@@ -235,36 +235,36 @@
     <p>
     The evaluation system basically works as follows:
     </p>
-For each feature or specification, a score from 0.5 to 5.5 is related to its measured values or evaluation results. Similar to German academic grading scale, the score of 0.5 represents the best and 5.5 the worst test result, meaning that a product with a total score of 0.5 is the “dream product”. The scores of all individual features and specifications of a sub-criterion result in a weighted average score for the sub-criterion. The average scores of all individual sub-criteria of a criterion result in a weighted average score for the criterion. The total test result (TTR) score results from the average scores of all individual criteria with proportionate weightings.
+For each feature or specification, a score from 0.5 to 5.5 is related to its measured values or evaluation results. Similar to German academic grading scale, the score of 0.5 represents the best and 5.5 the worst test result, meaning that a product with a total score of 0.5 is the "dream product". The scores of all individual features and specifications of a sub-discipline result in a weighted average score for the sub-discipline. The average scores of all individual sub-disciplines of a discipline result in a weighted average score for the discipline. The total test result (TTR) score results from the average scores of all individual disciplines with proportionate weightings.
 </p>
 <p>
-Each of the assessments described above contributes to a total test result accordingly to its weight in the TTR. A smartphone needs a score from 0.5 to 1.5 in our tests to earn our best rating “very good”, a score from 1.6 to 2.5 the rating “good”, from 2.6 to 3.5 the rating “average” and from 3.6 to 4.5 the rating “adequate”. Smartphones that score 4.6 or more are labelled “poor” to make them easier to avoid.
+Each of the assessments described above contributes to a total test result accordingly to its weight in the TTR. A smartphone needs a score from 0.5 to 1.5 in our tests to earn our best rating "very good", a score from 1.6 to 2.5 the rating "good", from 2.6 to 3.5 the rating "average" and from 3.6 to 4.5 the rating "adequate". Smartphones that score 4.6 or more are labelled "poor" to make them easier to avoid.
 </p>
 <div class="about-img-container">
         <img src="img/evaluation.jpg" class="about-member">
     </div>
 <p>
-But which criteria do we use to evaluate the individual features and specifications?
+But which disciplines do we use to evaluate the individual features and specifications?
 </p>
 <p>
 There is no simple answer, unfortunately. Basically the test organization develops an evaluation function taking two major aspects into consideration:
 </p>
 <ul>
-<li>“Absolute” aspects being set like legally prescribed thresholds, requirements deduced from industry standards, scientific or analytical limits or expert developed quality standards.
+<li>"Absolute" aspects being set like legally prescribed thresholds, requirements deduced from industry standards, scientific or analytical limits or expert developed quality standards.
 </li>
 <br>
 <li>
-“Relative” aspects like the differences between the tested products
+"Relative" aspects like the differences between the tested products
 </li>
 </ul>
 <p>
 A more touchable explanation goes as follows:
 </p>
 <p>
-So, not meeting legal requirements or industry standards usually ends up in very bad test results. Or to give an example for scientific aspects: A central-heating boiler that completely transforms the energy into heat would gain a 0.5 as to the criterion “energy efficiency”. Usually no product can meet such a theoretical target, but some come very close. These are only two examples on how the supporting points of an evaluation function can be found and defined.
+So, not meeting legal requirements or industry standards usually ends up in very bad test results. Or to give an example for scientific aspects: A central-heating boiler that completely transforms the energy into heat would gain a 0.5 as to the discipline "energy efficiency". Usually no product can meet such a theoretical target, but some come very close. These are only two examples on how the supporting points of an evaluation function can be found and defined.
 </p>
 <p>
-Another aspect is the bandwidth of test results, meaning the difference between tested products as to all or select criteria. Evaluating the best test result with a 0.5 and the worst one with 5.5 would mean to overweight small quality differences. So, always the finding of the supporting points for the evaluation function is dominated by the relevance for the consumer. Products showing similar quality in a certain criterion get a similar evaluation.
+Another aspect is the bandwidth of test results, meaning the difference between tested products as to all or select disciplines. Evaluating the best test result with a 0.5 and the worst one with 5.5 would mean to overweight small quality differences. So, always the finding of the supporting points for the evaluation function is dominated by the relevance for the consumer. Products showing similar quality in a certain discipline get a similar evaluation.
 </p>
 <p>
 The next step is the one we introduced in the beginning of this chapter, meaning developing a TTR.
@@ -273,8 +273,8 @@ The next step is the one we introduced in the beginning of this chapter, meaning
 Having the TTR does not mean that the evaluation result is ready to be delivered. Under certain circumstances so called degradations are possible resp. necessary. What does that mean? Evaluating the overall quality of a product the assumption normally is that weaknesses and strengths of a product can compensate each other only up to a certain degree. A washing machine that works very energy efficient (scored 0.5), but does not deliver spotlessly clean laundry (scored 5.5) would end up in midterm evaluation which does not mirror the weakness in the core aspect in an appropriate manner.
 </p>
 <p>
-Sometimes a bad evaluation is in the wake of knockout criteria, e.g. a device that is electrically unsafe.
-The test results always are enhanced with a detailed report that explains how the test was conducted, which criteria have been checked and how they have been weighted.
+Sometimes a bad evaluation is in the wake of knockout disciplines, e.g. a device that is electrically unsafe.
+The test results always are enhanced with a detailed report that explains how the test was conducted, which disciplines have been checked and how they have been weighted.
 </p>
 
 </div>
