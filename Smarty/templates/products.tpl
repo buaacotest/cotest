@@ -71,7 +71,7 @@
             </div>
             <div class="products-search">
                 <input class="products-search-text"type="text" oninput="javascript:searchTextInput(this)" onfocus="javascript:searchTextFocus()" onblur="javascript:searchTextBlur()"></input>
-                <div class="products-search-btn" onclick="javascript:search()">serach</div>
+                <div class="products-search-btn" onclick="javascript:search()">search</div>
                 <ul class="keyword-panel"></ul>
             </div>
             </div>
