@@ -474,6 +474,9 @@ height: 350px;
 	padding: 40px;
 	padding-top: 100px;
 }
+#how-we-test-panel h2{
+	margin-bottom: 30px;
+}
 #how-we-test-panel h3{
 	font-size: 22px;
 	margin: 28px 0px;
