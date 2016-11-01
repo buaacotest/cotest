@@ -8,11 +8,13 @@
   <meta name="author" content="">
   <link rel="icon" type="image/png" href="img/COTESTicon.png"/>
   <title><{$title}></title>
-
+  
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/cotest.css">
   <script type="text/javascript" src="js/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/jquery.bxslider.css">
+  <script src="js/jquery.bxslider.min.js"></script>
   <script type="text/javascript" src="js/cotest.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/changelanguage.js"></script>
@@ -21,14 +23,55 @@
 <{php}>
 require("navigation.php");
 <{/php}>
-<div class="index-header container">
-        <div class="row">
+<div class="container">
+        <div class="row index-slider">
+          <!--
             <div class="col-md-12 text-center">
                 <img class="logo" src="img/logo.png">
             </div>
             <div class=" brand-info ">
                 <{$lang.Welcome}>
-        </div>
+                -->
+        <ul class="bxslider ">
+              <li>
+                  <div class="row index-header ">
+                      <div class="col-md-12">
+                      <img class="index-logo" src="img/logo.png">
+                  </div>
+                  <div class=" brand-info ">
+                      <{$lang.Welcome}>
+                  </div>
+                  </div>
+                </li>
+  <li >
+    <div class="index-slider-container">
+    
+      <img src="img/dioxin.png" class="index-slider-img">
+      <div class="index-slider-title">
+        Maximum permissible content of dioxins in formula milk powder up to 32 times too high
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="index-slider-container">
+    
+      <img src="img/dioxin.png" class="index-slider-img">
+      <div class="index-slider-title">
+        hundreds of different smartphones incl. iPhone 7 and iPhone 7 Plus in test
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="index-slider-container">
+    
+      <img src="img/dioxin.png" class="index-slider-img">
+      <div class="index-slider-title">
+        The Chinese UHT milk market co-leader MENGNIU contains dioxins 66% higher than the limit of 2.5 pg/g fat and 6 times more than another co-leader Yili and 6 imported milk products from Germany
+      </div>
+    </div>
+  </li>
+</ul>
+        
         <!--
         <div class="col-md-12  text-center">
             <a href="login.php" class="brand-sign-in-btn  brand-btn"><button>Sign in</button></a>
@@ -421,6 +464,14 @@ require("navigation.php");
 <{php}>
   require("footer.php");
   <{/php}>
-
+<script>
+    $(document).ready(function(){
+  $( '.bxslider').bxSlider({
+        captions: true,
+        auto: true
+      }
+    );
+});
+</script>
    </body>
 </html>
