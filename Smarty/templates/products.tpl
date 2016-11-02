@@ -448,6 +448,7 @@
        $(checkboxs).attr("class","checkbox");
        $(checkboxs).attr("checked",null);
          $(checkboxs).css("background","none");
+         filter();
     }
     //filter toggle
     function filterToggle(){
