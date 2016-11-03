@@ -26,7 +26,7 @@ function getLabels()
           "value":$brands,
           "option":$brands},
           {"type":"range","name":"Screen image diagonal","label":"Screen image diagonal",
-          "value":[{">":8},{">=":8,"<=":10},{">":10}],
+          "value":[{"<":8},{">=":8,"<=":10},{">":10}],
           "option":["> 8\"","8 - 10\"","> 10\""]},
           {"type":"range","name":"Native resolution (height)","label":"Native resolution (height)",
           "value":[{"<":800},{">=":800,"<=":1200},{">":1200,"<=":1500},{">":1500,"<=":2048}],
