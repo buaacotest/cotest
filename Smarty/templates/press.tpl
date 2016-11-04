@@ -31,6 +31,12 @@
     require("navigation.php");
     <{/php}>
 <div class="container main-container review-container">
+<h1>Press releases</h1>
+<h2>
+Reports about COTEST
+</h2>
+<br>
+<br>
 <h2 style="text-center">New Member – COTEST</h2>
 <br>
 <p>News | Kim Healy | ICRT | 2016-01-21 </p>
