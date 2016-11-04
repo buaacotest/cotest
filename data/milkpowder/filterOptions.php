@@ -28,7 +28,19 @@ function getLabels()
           "option":["above 12"]},
           {"type":"string","name":"Country of production (stated)","label":"Country of production",
           "value":["China","Germany","Netherlands","Ireland","Switzerland"],
-          "option":["China","Germany","Netherlands","Ireland","Switzerland"]}
+          "option":["China","Germany","Netherlands","Ireland","Switzerland"]},
+		  {"type":"string","name":"Geographical origin of milk (stated)","label":"Geographical origin of milk (stated)",
+           "value":["China","Germany","Irland","Netherlands","Switzerland","Imported"],
+           "option":["China","Germany","Irland","Netherlands","Switzerland","Imported"]},
+		   {"type":"range","name":"DHA measurement","label":"Docosahexaenoic acid (DHA)",
+          "value":[{"=":"< LOQ"},{">":1,"<":2.4},{">=":2.4,"<=":4.8}],
+          "option":["< LOQ","< 2.4 mg/100kJ","2.4 ~ 4.8 mg/100kJ"]},
+		  {"type":"range","name":"Aerobic bacterial count measurement","label":"Aerobic bacterial count",
+          "value":[{"=":"<10"},{">=":"10","<=":50},{">=":51,"<=":100},{">=":101,"<=":200},{">=":201,"<=":300},{">=":301,"<=":500}],
+          "option":["< 10","10 ~ 50","51 ~ 100","101 ~ 200","201 ~ 300","301 ~ 500"]},
+		  {"type":"range","name":"Sum of Dioxins and dioxin-like PCB","label":"Dioxins and dioxin-like PCB in pg WHO-TEQ/g prepared milk",
+          "value":[{"<":0.007},{">=":0.007,"<=":0.010},{">=":0.011,"<=":0.020},{">=":0.021,"<=":0.030}],
+          "option":["< 0.007","0.007 ~ 0.010","0.011 ~ 0.020","0.021 ~ 0.030"]}
        ]
 EOF;
 
@@ -72,7 +84,10 @@ EOF;
                     }
                 }else{//property数值正常读取
                     if ($len == 1 && $opts[0] != -1) {
-                        $sql = "select count(*) from results where value" . $opts[0] . $value[$opts[0]];
+						if(is_numeric($value[$opts[0]]))
+							$sql = "select count(*) from results where value" . $opts[0] . $value[$opts[0]];
+						else
+							$sql = "select count(*) from results where value" . $opts[0] . "'".$value[$opts[0]]."'";
                     } else if ($len == 2 && $opts[0] != -1) {
                         $sql = "select count(*) from results where value" . $opts[0] . $value[$opts[0]] . " and value" . $opts[1] . $value[$opts[1]];
                     }
@@ -106,10 +121,10 @@ EOF;
     sortByNumber($arr[2]);
     return json_encode($arr);
 }
-print_r(getLabels());
+//print_r(getLabels());
 function showLabels(){
     $labels = <<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","5","6","2","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["13"]},{"type":"string","name":"Brand","label":"Brands","value":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"option":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"number":["3","2","2","1","1","1","1","1","1"]},{"type":"string","name":"Months of infant age","label":"Months of infant age","value":["> 12"],"option":["above 12"],"number":["13"]},{"type":"string","name":"Country of production (stated)","label":"Country of production","value":["China","Germany","Netherlands","Ireland","Switzerland"],"option":["China","Germany","Netherlands","Ireland","Switzerland"],"number":["8","1","2","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","5","6","2","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["13"]},{"type":"string","name":"Brand","label":"Brands","value":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"option":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"number":["3","2","2","1","1","1","1","1","1"]},{"type":"string","name":"Months of infant age","label":"Months of infant age","value":["> 12"],"option":["above 12"],"number":["13"]},{"type":"string","name":"Country of production (stated)","label":"Country of production","value":["China","Germany","Netherlands","Ireland","Switzerland"],"option":["China","Germany","Netherlands","Ireland","Switzerland"],"number":["8","1","2","1","1"]},{"type":"string","name":"Geographical origin of milk (stated)","label":"Geographical origin of milk (stated)","value":["China","Germany","Irland","Netherlands","Switzerland","Imported"],"option":["China","Germany","Irland","Netherlands","Switzerland","Imported"],"number":["2","1","1","2","1","6"]},{"type":"range","name":"DHA measurement","label":"Docosahexaenoic acid (DHA)","value":[{"=":"< LOQ"},{">":1,"<":2.4},{">=":2.4,"<=":4.8}],"option":["< LOQ","< 2.4 mg\/100kJ","2.4 ~ 4.8 mg\/100kJ"],"number":["7","4","2"]},{"type":"range","name":"Aerobic bacterial count measurement","label":"Aerobic bacterial count","value":[{"=":"<10"},{">=":"10","<=":50},{">=":51,"<=":100},{">=":101,"<=":200},{">=":201,"<=":300},{">=":301,"<=":500}],"option":["< 10","10 ~ 50","51 ~ 100","101 ~ 200","201 ~ 300","301 ~ 500"],"number":["3","6","1","1","1","1"]},{"type":"range","name":"Sum of Dioxins and dioxin-like PCB","label":"Dioxins and dioxin-like PCB in pg WHO-TEQ\/g prepared milk","value":[{"<":0.007},{">=":0.007,"<=":0.01},{">=":0.011,"<=":0.02},{">=":0.021,"<=":0.03}],"option":["< 0.007","0.007 ~ 0.010","0.011 ~ 0.020","0.021 ~ 0.030"],"number":["6","5","1","1"]}]
 EOF;
     return $labels;
 }
