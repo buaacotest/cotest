@@ -12,7 +12,6 @@ function getLabels()
     $brands=json_encode($brands);
     $lang=$_SESSION['lang'];
     if($lang=="en_us"){
-
         $labels = <<<EOF
 [
          {"type":"range","name":"total test result","label":"Total test result",
@@ -23,8 +22,13 @@ function getLabels()
            "option":[2016]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
-
+          "option":$brands},
+          {"type":"string","name":"Months of infant age","label":"Months of infant age",
+          "value":["> 12"],
+          "option":["above 12"]},
+          {"type":"string","name":"Country of production (stated)","label":"Country of production",
+          "value":["China","Germany","Netherlands","Ireland","Switzerland"],
+          "option":["China","Germany","Netherlands","Ireland","Switzerland"]}
        ]
 EOF;
 
@@ -102,10 +106,10 @@ EOF;
     sortByNumber($arr[2]);
     return json_encode($arr);
 }
-//print_r(getLabels());
+print_r(getLabels());
 function showLabels(){
     $labels = <<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["6","3","4","0","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["13"]},{"type":"string","name":"Brand","label":"Brands","value":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"option":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"number":["3","2","2","1","1","1","1","1","1"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","5","6","2","0"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["13"]},{"type":"string","name":"Brand","label":"Brands","value":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"option":["Beingmate","Nestle","Wyeth","Friso","Nutrilon","MeadJohnson","Abbott","PRO-KIDO","JUNLEBAO"],"number":["3","2","2","1","1","1","1","1","1"]},{"type":"string","name":"Months of infant age","label":"Months of infant age","value":["> 12"],"option":["above 12"],"number":["13"]},{"type":"string","name":"Country of production (stated)","label":"Country of production","value":["China","Germany","Netherlands","Ireland","Switzerland"],"option":["China","Germany","Netherlands","Ireland","Switzerland"],"number":["8","1","2","1","1"]}]
 EOF;
     return $labels;
 }
