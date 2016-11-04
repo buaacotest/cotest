@@ -27,7 +27,11 @@ function getLabels()
           "option":$brands},
           {"type":"range","name":"Screen image diagonal","label":"Screen image diagonal",
           "value":[{"<":8},{">=":8,"<=":10},{">":10}],
+<<<<<<< HEAD
           "option":["< 8\"","8 - 10\"","> 10\""]},
+=======
+          "option":["> 8\"","8 - 10\"","> 10\""]},
+>>>>>>> 7f3fb6250d696d7e9e5bba2a85f6050a0c02fc75
           {"type":"range","name":"Native resolution (height)","label":"Native resolution (height)",
           "value":[{"<":800},{">=":800,"<=":1200},{">":1200,"<=":1500},{">":1500,"<=":2736}],
           "option":["< 800 Pixel","800 - 1200 Pixel","1200 - 1500 Pixel","1500 -2736 Pixel"]},

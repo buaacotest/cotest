@@ -23,8 +23,28 @@ function getLabels()
            "option":[2016]},
           {"type":"string","name":"Brand","label":"Brands",
           "value":$brands,
-          "option":$brands}
-
+          "option":$brands},
+          {"type":"string","name":"Country of production (stated)","label":"Country of production",
+          "value":["China","Germany"],
+          "option":["China","Germany"]},
+          {"type":"string","name":"Manufacturing process (stated)","label":"Manufacturing process",
+          "value":["UHT"],
+          "option":["UHT"]},
+          {"type":"string","name":"Fat content","label":"Fat content",
+          "value":["Whole milk"],
+          "option":["Whole milk"]},
+          {"type":"range","name":"Shelf life (stated)","label":"Shelf life(Days)",
+          "value":[{">=":180,"<=":215},{">":215,"<=":360},{">":360,"<=":366}],
+          "option":["from 180d to 215d","from 215d to 360d","from 360d to 365d"]},
+          {"type":"range","name":"Bacterial count","label":"Bacterial count",
+          "value":[{"<=":0},{">":0,"<=":3},{">":3,"<=":10},{">":10,"<=":20}],
+          "option":["below 0","from 1 to 3","from 4 to 10","from 11 to 20"]},
+          {"type":"range","name":"Dioxins incl. LOQ","label":"Dioxins in pg WHO-TEQ/g fat",
+          "value":[{"<":0.56},{">=":0.56,"<=":1.0},{">":1.0,"<=":2.0},{">":2.0,"<=":2.5},{">":2.5}],
+          "option":["below 0.56","from 0.56 to 1","from 1.01 to 2.0","from 2.01 to 2.5","above 2.5"]},
+          {"type":"range","name":"Dioxins and dioxin-like PCB incl. LOQ","label":"Dioxins and dioxin-like PCB in pg WHO-TEQ/g fat",
+          "value":[{"<":1.2},{">=":1.2,"<=":2.0},{">":2.0,"<=":4.0},{">":4.0,"<=":5.5},{">":5.5}],
+          "option":["below 1.2","from 1.2 to 2.0","from 2.01 to 4.0","from 4.01 to 5.5","above 5.5"]}
        ]
 EOF;
 
@@ -106,7 +126,8 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels = <<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","7","1","2","1"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["11"]},{"type":"string","name":"Brand","label":"Brands","value":["Weidendorf","hochwald","SUKI","brightdairy","MUH","SUNSIDES","MENGNIU","Yili","Nestle","Oldenburger","SANYUAN"],"option":["Weidendorf","hochwald","SUKI","brightdairy","MUH","SUNSIDES","MENGNIU","Yili","Nestle","Oldenburger","SANYUAN"],"number":["1","1","1","1","1","1","1","1","1","1","1"]}]
+
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","adequate","poor"],"number":["0","7","1","2","1"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016],"option":[2016],"number":["11"]},{"type":"string","name":"Brand","label":"Brands","value":["Weidendorf","hochwald","SUKI","brightdairy","MUH","SUNSIDES","MENGNIU","Yili","Nestle","Oldenburger","SANYUAN"],"option":["Weidendorf","hochwald","SUKI","brightdairy","MUH","SUNSIDES","MENGNIU","Yili","Nestle","Oldenburger","SANYUAN"],"number":["1","1","1","1","1","1","1","1","1","1","1"]},{"type":"string","name":"Country of production (stated)","label":"Country of production","value":["China","Germany"],"option":["China","Germany"],"number":["5","6"]},{"type":"string","name":"Manufacturing process (stated)","label":"Manufacturing process","value":["UHT"],"option":["UHT"],"number":["11"]},{"type":"string","name":"Fat content","label":"Fat content","value":["Whole milk"],"option":["Whole milk"],"number":["11"]},{"type":"range","name":"Shelf life (stated)","label":"Shelf life(Days)","value":[{">=":180,"<=":215},{">":215,"<=":360},{">":360,"<=":366}],"option":["from 180d to 215d","from 215d to 360d","from 360d to 355d"],"number":["5","0","6"]},{"type":"range","name":"Bacterial count","label":"Bacterial count","value":[{"<=":0},{">":0,"<=":3},{">":3,"<=":10},{">":10,"<=":20}],"option":["below 0","from 1 to 3","from 4 to 10","from 11 to 20"],"number":["7","3","0","1"]},{"type":"range","name":"Dioxins incl. LOQ","label":"Dioxins in pg WHO-TEQ\/g fat","value":[{"<":0.56},{">=":0.56,"<=":1},{">":1,"<=":2},{">":2,"<=":2.5},{">":2.5}],"option":["below 0.56","from 0.56 to 1","from 1.01 to 2.0","from 2.01 to 2.5","above 2.5"],"number":["3","5","2","0","1"]},{"type":"range","name":"Dioxins and dioxin-like PCB incl. LOQ","label":"Dioxins and dioxin-like PCB in pg WHO-TEQ\/g fat","value":[{"<":1.2},{">=":1.2,"<=":2},{">":2,"<=":4},{">":4,"<=":5.5},{">":5.5}],"option":["below 1.2","from 1.2 to 2.0","from 2.01 to 4.0","from 4.01 to 5.5","above 5.5"],"number":["5","3","2","0","1"]}]
 EOF;
     return $labels;
 }
