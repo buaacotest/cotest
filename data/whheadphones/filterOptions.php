@@ -28,22 +28,9 @@ function getLabels()
           {"type":"string","name":"Headphone type e.g. in ear etc","label":"Headphone type",
           "value":["In","Around","Over","On"],
           "option":["In ear","Around ear","Over ear","On ear"]},
-          {"type":"string","name":"Wireless headphones","label":"Wireless connectivity",
-          "value":["1","0"],
-          "option":["Yes","No"]},
-          {"type":"string","name":"Phone call controls and mic built into cable (answer button etc)","label":"Mic for phonecall",
-          "value":["1","0"],
-          "option":["Yes","No"]},
-          {"type":"string","name":"Do headphones fold","label":"Folding headphones",
-          "value":["1","0"],
-          "option":["Yes","No"]},
-          {"type":"string","name":"Travel case","label":"Travel case",
-          "value":["1","0"],
-          "option":["Yes","No"]},
-          {"type":"string","name":"External noise cancelling present","label":"Noise canceling",
-          "value":["1","0"],
-          "option":["Yes","No"]}
-
+		  {"type":"multi","name":"","label":"Key features",
+           "value":["Wireless headphones","Phone call controls and mic built into cable (answer button etc)","Do headphones fold","Travel case","External noise cancelling present"],
+           "option":["Wireless connectivity","Mic for phonecall","Folding headphones","Travel case","Noise canceling"]}
        ]
 EOF;
 
@@ -140,7 +127,7 @@ EOF;
 //print_r(getLabels());
 function showLabels(){
     $labels=<<<EOF
-[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["8","64","74","34","2"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["39","143"]},{"type":"string","name":"Brand","label":"Brands","value":["Sennheiser","Sony","Bose","Skullcandy","AKG","Beats by Dr. Dre","Monster","Philips","JVC","SoundMagic","Yurbuds","Grado","B&O (Bang and Olufsen)","Jabra","Gibson","John Lewis","BW (Bowers  Wilkins)","RHA","Harmon Kardon","Bang and Olufsen","Ted Baker","Jam","Onkyo","Kitsound","Plantronics","Pioneer","Bowers & Wilkins","Urbanears","Beats by Dr.Dre","Marshall","Audio-Technica","B&O","Adidas (Monster)","Audio Technica","Rock Jaw","Sony Xperia Z2","KEF","Starck","HTC One (M8)","Apple","Sol Republic","Goji","Klipsch","Samsung Galaxy S4 S5","Apple iPhone 5s","Bowers and Wilkins","Denon","Samsung","Bang Olufsen","LG","Nokia","Parrot"],"option":["Sennheiser","Sony","Bose","Skullcandy","AKG","Beats by Dr. Dre","Monster","Philips","JVC","SoundMagic","Yurbuds","Grado","B&O (Bang and Olufsen)","Jabra","Gibson","John Lewis","BW (Bowers  Wilkins)","RHA","Harmon Kardon","Bang and Olufsen","Ted Baker","Jam","Onkyo","Kitsound","Plantronics","Pioneer","Bowers & Wilkins","Urbanears","Beats by Dr.Dre","Marshall","Audio-Technica","B&O","Adidas (Monster)","Audio Technica","Rock Jaw","Sony Xperia Z2","KEF","Starck","HTC One (M8)","Apple","Sol Republic","Goji","Klipsch","Samsung Galaxy S4 S5","Apple iPhone 5s","Bowers and Wilkins","Denon","Samsung","Bang Olufsen","LG","Nokia","Parrot"],"number":["27","25","20","11","11","9","8","7","3","3","3","3","2","2","2","2","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]},{"type":"string","name":"Headphone type e.g. in ear etc","label":"Headphone type","value":["In","Around","Over","On"],"option":["In ear","Around ear","Over ear","On ear"],"number":["76","11","24","71"]},{"type":"string","name":"Wireless headphones","label":"Wireless connectivity","value":["1","0"],"option":["Yes","No"],"number":["55","127"]},{"type":"string","name":"Phone call controls and mic built into cable (answer button etc)","label":"Mic for phonecall","value":["1","0"],"option":["Yes","No"],"number":["137","41"]},{"type":"string","name":"Do headphones fold","label":"Folding headphones","value":["1","0"],"option":["Yes","No"],"number":["74","85"]},{"type":"string","name":"Travel case","label":"Travel case","value":["1","0"],"option":["Yes","No"],"number":["121","61"]},{"type":"string","name":"External noise cancelling present","label":"Noise canceling","value":["1","0"],"option":["Yes","No"],"number":["21","161"]}]
+[{"type":"range","name":"total test result","label":"Total test result","value":[{">=":0,"<=":1.5},{">":1.5,"<=":2.5},{">":2.5,"<=":3.5},{">":3.5,"<=":4.5},{">":4.5,"<=":5.5}],"option":["very good ","good ","average","sufficient","poor"],"number":["8","64","74","34","2"]},{"type":"date","name":"Publication date","label":"Tested date","value":[2016,2015],"option":[2016,2015],"number":["39","143"]},{"type":"string","name":"Brand","label":"Brands","value":["Sennheiser","Sony","Bose","Skullcandy","AKG","Beats by Dr. Dre","Monster","Philips","JVC","SoundMagic","Yurbuds","Grado","B&O (Bang and Olufsen)","Jabra","Gibson","John Lewis","BW (Bowers  Wilkins)","RHA","Harmon Kardon","Bang and Olufsen","Ted Baker","Jam","Onkyo","Kitsound","Plantronics","Pioneer","Bowers & Wilkins","Urbanears","Beats by Dr.Dre","Marshall","Audio-Technica","B&O","Adidas (Monster)","Audio Technica","Rock Jaw","Sony Xperia Z2","KEF","Starck","HTC One (M8)","Apple","Sol Republic","Goji","Klipsch","Samsung Galaxy S4 S5","Apple iPhone 5s","Bowers and Wilkins","Denon","Samsung","Bang Olufsen","LG","Nokia","Parrot"],"option":["Sennheiser","Sony","Bose","Skullcandy","AKG","Beats by Dr. Dre","Monster","Philips","JVC","SoundMagic","Yurbuds","Grado","B&O (Bang and Olufsen)","Jabra","Gibson","John Lewis","BW (Bowers  Wilkins)","RHA","Harmon Kardon","Bang and Olufsen","Ted Baker","Jam","Onkyo","Kitsound","Plantronics","Pioneer","Bowers & Wilkins","Urbanears","Beats by Dr.Dre","Marshall","Audio-Technica","B&O","Adidas (Monster)","Audio Technica","Rock Jaw","Sony Xperia Z2","KEF","Starck","HTC One (M8)","Apple","Sol Republic","Goji","Klipsch","Samsung Galaxy S4 S5","Apple iPhone 5s","Bowers and Wilkins","Denon","Samsung","Bang Olufsen","LG","Nokia","Parrot"],"number":["27","25","20","11","11","9","8","7","3","3","3","3","2","2","2","2","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]},{"type":"string","name":"Headphone type e.g. in ear etc","label":"Headphone type","value":["In","Around","Over","On"],"option":["In ear","Around ear","Over ear","On ear"],"number":["76","11","24","71"]},{"type":"multi","name":"","label":"Key features","value":["Wireless headphones","Phone call controls and mic built into cable (answer button etc)","Do headphones fold","Travel case","External noise cancelling present"],"option":["Wireless connectivity","Mic for phonecall","Folding headphones","Travel case","Noise canceling"],"number":["55","137","74","121","21"]}]
 EOF;
 
     return $labels;

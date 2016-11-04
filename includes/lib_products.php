@@ -262,14 +262,18 @@ function getPropsValues($props,$id){
         $value=$GLOBALS['db']->getOne($sql);
         $value= htmlspecialchars($value,ENT_QUOTES);
         switch($v['type']){
-            case 'String':$v['value']=$value;break;
+            case 'String':if(is_numeric($value))
+                $v['value']=round($value,4);
+			else
+				$v['value']=$value;
+			break;
             case 'Score':if(is_numeric($value))
                 $v['value']=round($value,2);
             else
                 $v['value']=$value;
                 break;
             case 'Numeric':if(is_numeric($value))
-                $v['value']=round($value,2);
+                $v['value']=round($value,4);
             else
                 $v['value']=$value;
                 break;
@@ -328,6 +332,24 @@ function getRules(){
                                   array("name"=>"Connections","props"=>array(399,400,401,402,404,406,407,408,411,412,413,414,416,420,422,424,425,665,680,705,473)),
                                   array("name"=>"Performances battery","props"=>array(572,573,575,577)),
                                   array("name"=>"Robustness","props"=>array(723,724)) )),
+						    "milkpowder"=>array("groups"=>array(array("name"=>"Test Samples","props"=>array(3,4,5,6,7,8,9,10,11,14,16,17,18,20,21)),
+                                  array("name"=>"Protein","props"=>array(22,23,24)),
+                                  array("name"=>"Fat","props"=>array(25,26,27,28,31,33,34,35,36,37,46,393)),
+                                  array("name"=>"Sugar","props"=>array(79,82,84,86)),
+                                  array("name"=>"Minerals","props"=>array(91,95,97)),
+                                  array("name"=>"Non-protein Nitrogen","props"=>array(98,99)),
+                                  array("name"=>"Microbiology","props"=>array(101,369)),
+                                  array("name"=>"Dioxins","props"=>array(102,121)),
+								  array("name"=>"Dioxin-like PCB","props"=>array(139)),
+								  array("name"=>"Non-dioxin-like PCB","props"=>array(149)),
+								  array("name"=>"Heavy Metal","props"=>array(150,151,152,153,154,155)),
+								  array("name"=>"Aflatoxin","props"=>array(156)),
+								  array("name"=>"Pesticides","props"=>array(158)),
+								  array("name"=>"Nitrite and Nitrate","props"=>array(162)),
+								  array("name"=>"Polycyclic Aromatic Hydrocarbons","props"=>array(169)),
+								  array("name"=>"Deviation from Declaration","props"=>array(241,242,243,244,245,246,247,248,249)),
+								  array("name"=>"Check Statements","props"=>array(297,298,305,313,314,315,378,379,383))
+								  ))
 
 
 );
