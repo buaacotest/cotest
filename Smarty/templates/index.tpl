@@ -55,16 +55,26 @@ require("navigation.php");
   <li>
     <div class="index-slider-container">
     
-      <img src="img/dioxin.png" class="index-slider-img">
+      <img src="img/ad3.jpg" class="index-slider-img">
       <div class="index-slider-title">
-        hundreds of different smartphones incl. iPhone 7 and iPhone 7 Plus in test
+     Quality of Chinese formula milk powder better than its reputation
       </div>
     </div>
   </li>
   <li>
     <div class="index-slider-container">
     
-      <img src="img/dioxin.png" class="index-slider-img">
+      <img src="img/ad2.jpg" class="index-slider-img">
+      <div class="index-slider-title">
+     hundreds of different smartphones incl. iPhone 7 and iPhone 7 Plus in test
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div class="index-slider-container">
+    
+      <img src="img/ad4.jpg" class="index-slider-img">
       <div class="index-slider-title">
         The Chinese UHT milk market co-leader MENGNIU contains dioxins 66% higher than the limit of 2.5 pg/g fat and 6 times more than another co-leader Yili and 6 imported milk products from Germany
       </div>
