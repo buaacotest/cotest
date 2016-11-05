@@ -507,8 +507,13 @@ function filterProducts($lab){
                            if($tempIndexRange==0){
                                if($v['name']=='total test result')
                                    $sql.="(format(6-value,1)".$opts[0].$value[$opts[0]].")";
-                               else
-                                   $sql.="value".$opts[0].$value[$opts[0]];
+                               else{
+								   if(is_numeric($value[$opts[0]]))
+									   $sql.="value".$opts[0].$value[$opts[0]];
+								   else
+									   $sql.="value".$opts[0]."'".$value[$opts[0]]."'";
+							   }
+                                   
                            }
 
                            else{
