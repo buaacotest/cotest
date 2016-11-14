@@ -55,7 +55,7 @@
     <h4>Mission</h4>
 
     <p>
-     Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. (COTEST) is registered as a non-profit association under German law. A group of multinational experts with extensive testing experience operates COTEST with the following mission: To test products and services independently for a safe and trustful marketplace for consumers in developing countries and around the world.   
+     Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. (COTEST) is registered as a non-profit association under German law with the following mission: To test products and services independently for a safe and trustful marketplace for consumers in developing countries and around the world.   
     </p>
     <div class="about-img-container">
         <img src="img/cotest.png" class="about-cotest">
