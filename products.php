@@ -9,14 +9,17 @@ require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
 require('./includes/lib_comment.php');
+require('./includes/lib_user.php');
 require('./lang/'.$_SESSION['lang'].'/products.php');
 /*$product_group=$_GET['id'];
 $title=getProductsCat($product_group);
 $products=selectProducts($product_group);
 $smarty->assign('products',$products);
 $smarty->assign('page_title',$title);*/
+/*权限检查*/
+$permission = permissionCheck();
 
-
+/*接收前端参数*/
 $project_name=trim($_GET['proj']);
 $_SESSION['project']=$project_name;
 $GLOBALS['db']->changeDB($project_name);
@@ -111,6 +114,7 @@ $smarty->assign('products',$products);
 $smarty->assign('productsNum',$productsNum);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('user',$_SESSION['member']);
+$smarty->assign('permission',$permission);
 $smarty->assign('keyword',$keyWords);
 
 if($flag){

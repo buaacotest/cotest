@@ -9,6 +9,10 @@ require('includes/init.php');
 require('includes/config.php');
 require('includes/lib_products.php');
 require('includes/lib_comment.php');
+require('./includes/lib_user.php');
+
+/*权限检查*/
+$permission = permissionCheck();
 
 $lang=$_SESSION['lang'];
 $user=$_SESSION['member'];
@@ -42,6 +46,7 @@ $smarty->assign("user",$user);
 $smarty->assign('lang',$_LANG);
 $smarty->assign('directory',$directory);
 $smarty->assign('addrs',$addrs);
+$smarty->assign('permission',$permission);
 if(isMobile())
     $smarty->display('details_m.tpl');
 else

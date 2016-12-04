@@ -9,6 +9,11 @@ require('./includes/lib_products.php');
 require('./includes/config.php');
 require('./includes/init.php');
 require('./lang/'.$_SESSION['lang'].'/compare.php');
+require('./includes/lib_user.php');
+
+/*权限检查*/
+$permission = permissionCheck();
+
 $project=trim($_GET['proj']);
 $db->changeDB($project);
 $items=$_SESSION[$project]['idList'];
