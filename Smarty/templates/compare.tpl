@@ -26,7 +26,12 @@
 </head>
 
 <!-- Static navbar -->
-
+<script>
+  var permission = '<{$permission}>';
+  if(permission != -1){
+    window.location="login.php";
+  }
+</script>
 <body>
 
 <{php}>
@@ -36,7 +41,7 @@
 <!--
     <div class="crumbs">
       <a><div class="crumbs-item"><{$lang.Tests}></div></a> >
-      <a><div class="crumbs-item"><{$lang.Electronics}></div></a> > 
+      <a><div class="crumbs-item"><{$lang.Electronics}></div></a> >
       <div class="crumbs-item"><{$lang.Smartphones}></div>
 
     </div>
@@ -51,13 +56,13 @@
 
     <table class="compare-table">
         <thead class="product-head">
-          
+
 
           <tr class="product-images">
             <th class="edit-comparison" scope="row" rowspan="2">
-       
+
                 <button class="add-compare-btn" title="return to smartphones">+<{$lang.Add}></button>
-         
+
             </th>
              <{section name=n loop=$products}>
               <th data-product-id="10344" scope="col">
@@ -132,11 +137,11 @@
 
 
                     <{/if}>
-                                 
+
                    </div>
-                
+
                 <div class="score-text"><{$products[n].evaluations[0].value}></div>
-             
+
               </td>
               <{/section}>
 
@@ -162,7 +167,7 @@
                 <{section name=m loop=$products}>
                 <td class="table-cell-wrapper" data-product-id="10344">
                   <div class="table-cell-wrapper-inner">
-                    
+
                   </div>
                 </td>
                 <{/section}>
@@ -173,7 +178,7 @@
                 <div class="compare-th">
                 <{$products[0].evaluations[0].id_parent[n].name}>
                 </div>
-                
+
               </th>
               <{section name=m loop=$products}>
                 <td data-product-id="10344" class="behind-paywall">
@@ -220,7 +225,7 @@
 
 
                                         <{/if}>
-                                                     
+
                    </div>
                   <{$products[m].evaluations[0].id_parent[n].value}>
                 </td>
@@ -232,7 +237,7 @@
                     <div class="compare-th">
                     <{$products[0].evaluations[0].id_parent[n].id_parent[p].name}>
                     </div>
-                    
+
                   </th>
                   <{section name=m loop=$products}>
                     <td data-product-id="10344" class="behind-paywall">
@@ -279,7 +284,7 @@
 
 
                                             <{/if}>
-                                                         
+
                        </div>
                       <{$products[m].evaluations[0].id_parent[n].id_parent[p].value}>
                     </td>
@@ -287,7 +292,7 @@
                 </tr>
              <{/section}>
           <{/section}>
-            
+
 
 
           <tr class="heading" data-category="tests-heading">
@@ -299,7 +304,7 @@
                 <{section name=m loop=$products}>
                 <td class="table-cell-wrapper" data-product-id="10344">
                   <div class="table-cell-wrapper-inner">
-                    
+
                   </div>
                 </td>
                 <{/section}>
@@ -314,7 +319,7 @@
                 <{section name=m loop=$products}>
                 <td class="table-cell-wrapper" data-product-id="10344">
                   <div class="table-cell-wrapper-inner">
-                    
+
                   </div>
                 </td>
                 <{/section}>
@@ -325,17 +330,17 @@
                 <div class="compare-th">
                 <{$products[0].property[k].id_propertygroup[n].name}>
                 </div>
-               
+
               </th>
               <{section name=m loop=$products}>
                 <td data-product-id="10344" class="behind-paywall">
-              
+
                           <{if $products[m].property[k].id_propertygroup[n].value == "Yes"}>
                             <img class="proper-signal"src="img/check2.png">
                             <{elseif $products[m].property[k].id_propertygroup[n].value == "No"}>
                             <img class="proper-signal"src="img/cross.png">
                             <{else}>
-                            <{$products[m].property[k].id_propertygroup[n].value}> 
+                            <{$products[m].property[k].id_propertygroup[n].value}>
                             <{$products[m].property[k].id_propertygroup[n].unit}>
                           <{/if}>
                 </td>
@@ -354,11 +359,11 @@
 
                 <{section name=m loop=$products}>
                 <td class="table-cell-wrapper" data-product-id="10344">
-                 
+
                     <{section name=n loop=$products[m].Pros}>
                     <p><{$products[m].Pros[n]}></p>
                     <{/section}>
-                  
+
                 </td>
                 <{/section}>
           </tr>
@@ -369,15 +374,15 @@
             </th>
                 <{section name=m loop=$products}>
                 <td class="table-cell-wrapper" data-product-id="10344">
-                 
+
                     <{section name=n loop=$products[m].Cons}>
                     <p><{$products[m].Cons[n]}></p>
                     <{/section}>
-                  
+
                 </td>
                 <{/section}>
           </tr>
-           
+
         </tbody>
       </table>
 </div>
@@ -404,16 +409,16 @@ function getCompareList(){
 
       console.log(result)
       result=eval("("+result+")")
-      
+
       for(var key in result){
         ids.push(key);
       }
       console.log(ids)
-      
+
   })
   return ids
 }
-var local_url = document.location.href; 
+var local_url = document.location.href;
 var compare_list=getCompareList();
 //关闭响应事件
 $(".compare-title").text(compare_list.length+" <{$directory.up.name}> in comparison".toLowerCase())
@@ -421,7 +426,7 @@ $(".compare-title").text(compare_list.length+" <{$directory.up.name}> in compari
 $(".subheading").on("click",function(){
      if($(this).attr('toggle')=='1'){
          for(var i=$(this).index()+1;i<$(this).parent().find("tr").length;i++){
-          if($(this).parent().find("tr").eq(i).hasClass('heading') || $(this).parent().find("tr").eq(i).hasClass('subheading')) 
+          if($(this).parent().find("tr").eq(i).hasClass('heading') || $(this).parent().find("tr").eq(i).hasClass('subheading'))
               break;
           $(this).parent().find("tr").eq(i).removeClass("subheading-hide");
         }
@@ -483,7 +488,7 @@ $(".product-image").find(".close").on("click",function(){
 $(".add-compare-btn").on("click",function(){
   var url="products.php?proj=<{$project}>"
 
-  window.location.href=url;  
+  window.location.href=url;
 })
 $(".product-link").on("click",function(){
   var id=$(this).attr("target")
@@ -493,7 +498,7 @@ $(".product-link").on("click",function(){
     console.log($(names[i]).text())
   }
   var url="details.php?proj=<{$project}>&ids="+JSON.stringify(compare_list)+"&names="+JSON.stringify(name_list)+"&id="+id;
- window.location.href=url; 
+ window.location.href=url;
 })
   $(function(){
   //获取要定位元素距离浏览器顶部的距离
