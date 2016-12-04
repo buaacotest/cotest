@@ -28,11 +28,11 @@ body{
 
 }
 .navbar-default {
-   
+
    height: 70px;
 }
 .navbar-nav .active{
-	
+
 	background-color: none;;
 
 }
@@ -90,6 +90,37 @@ height: 350px;
 	height: 350px;
 	margin-top: 60px;
 }
+.index-slider-panel{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.slider-select{
+	text-decoration: none;
+	list-style: none;
+	padding: 0;
+	height: 100%;
+
+		background: #fff;
+		box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
+		position: relative;
+}
+
+.slider-select-item:hover{
+	background: #eee;
+}
+.slider-select-item{
+	height: 33%;
+	padding: 20px;
+	cursor: pointer;
+	border-bottom: 1px solid #eee;
+}
+.slider-select-item-active{
+	background:#bd0000;
+	color: #fff;
+}
+.slider-select-item-active:hover{
+		background:#bd0000;
+}
 #menu2{
 	position: absolute;
 	left: 0px;
@@ -98,7 +129,7 @@ height: 350px;
 	width: 250px;
 	margin-top: 80px;
 	margin-bottom: 40px;
-	margin-left: 325px;
+	margin-left: 220px;
 
 }
 .index-slider-container{
@@ -132,7 +163,7 @@ height: 350px;
 	margin-bottom: 10px;
 }
 .brand-info{
-	width: 800px;
+	width: 60%;
 	display: block;
 	margin: 0 auto;
 	text-align: center;
@@ -208,14 +239,14 @@ height: 350px;
 .triangle-bottomright {
     width: 0;
     height: 0;
-   
+
     border-bottom: 100px solid #555;
     border-right: 2000px solid transparent;
 }
 .triangle-topleft {
     width: 0;
     height: 0;
-   
+
     border-top: 80px solid #ddd;
     border-left: 2000px solid transparent;
 }
@@ -265,7 +296,7 @@ height: 350px;
 }
 .pan{
 	padding: 20px;
-	
+
 
 }
 .pan .title{
@@ -325,7 +356,7 @@ height: 350px;
 	margin: 5px;
 	width: 200px;
 	height: 360px;
-	
+
 }
 .products li:hover{
 	-webkit-box-shadow: 0 0px 8px rgba(0,0,0,.1);
@@ -544,7 +575,7 @@ height: 350px;
 .products-sort .dropdown-menu{
 	border-radius:0;
 	width: 250px;
-} 
+}
 .products-search{
 	float: right;
 	width: 215px;
@@ -567,7 +598,7 @@ height: 350px;
 	list-style: none;
 }
 .keyword-item:hover{
-	
+
 	background: #eee;
 }
 .products-search-text{
@@ -707,7 +738,7 @@ filter: alpha(opacity=0);
 .pro-nav>li.active a{
 	border:none;
 	border-bottom: 2px solid #bd0000;
-} 
+}
 .pro-nav{
 	font-size: 16px;
 	margin-top: 20px;
@@ -721,7 +752,7 @@ filter: alpha(opacity=0);
 .pro-nav>li.active a:hover{
 	border:none;
 	border-bottom: 2px solid #bd0000;
-} 
+}
 .nav-tabs>li>a:hover {
 border-color: #eee #eee #ddd;
 border-radius: 0px;
@@ -804,7 +835,7 @@ border-radius: 0px;
 }
 .comment-item{
 	padding: 10px 0;
-	
+
 }
 .comment-user{
 	font-size: 14px;
@@ -825,7 +856,7 @@ border-radius: 0px;
 .comment-tool{
 	width: 100%;
 	height: 20px;
-	margin: 10px 0;	
+	margin: 10px 0;
 }
 .comment-tool .like,.dislike,.reply{
 	float: left;
@@ -898,7 +929,7 @@ border-radius: 0px;
 	height: 80px;
 }
 .reply-placeholder .reply-btn-active{
-	
+
 	line-height: 75px;
 }
 .reply-placeholder button:hover{
@@ -978,7 +1009,7 @@ border-radius: 0px;
 	text-align: center;
 	line-height: 35px;
 	color: #999;
-	display:inline-block; 
+	display:inline-block;
 }
 .pagination a:hover{
 	color:  #fab90c;
@@ -1106,7 +1137,7 @@ a{
 }
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: none;
- 
+
     color: rgb(0, 0, 0);
 }
 .form-wrapper h1{
@@ -1287,7 +1318,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	float: left;
 	height: 240px;
 	background: #fff;
-	
+
 	float: left;
 	margin: 5px;
 }
@@ -1574,7 +1605,7 @@ footer .icptext{
 	float: left;
 }
 .compare-title{
-	font-size:20px; 
+	font-size:20px;
 	font-weight: bold;
 	padding:20px;
 	color: #555;
@@ -1677,7 +1708,7 @@ footer .icptext{
 .compare-panel{
 	position: fixed;
 	bottom: 0px;
-	padding-top:30px; 
+	padding-top:30px;
 	left: 0px;
 	width: 100%;
 	height: 230px;
