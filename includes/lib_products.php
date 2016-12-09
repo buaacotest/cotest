@@ -464,7 +464,7 @@ function getProperty($id,&$res,$lang){
         //print_r($cons);
         $res['Cons']=$cons;
     }
-
+/*
     if($_SESSION['project']=='mobilephones'){
         foreach($results[1]['id_propertygroup'] as $type){
             $results[0]['id_propertygroup'][]=$type;
@@ -474,6 +474,7 @@ function getProperty($id,&$res,$lang){
         }
         array_splice($results,1,2);
     }
+*/
    // print_r($groups);
     return $results;
 }
@@ -513,7 +514,7 @@ function filterProducts($lab){
 								   else
 									   $sql.="value".$opts[0]."'".$value[$opts[0]]."'";
 							   }
-                                   
+
                            }
 
                            else{
@@ -676,5 +677,3 @@ function getDirectoryWithLink($project){
     }
     return $directoryArray[$project];
 }
-
-

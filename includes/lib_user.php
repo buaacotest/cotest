@@ -5,6 +5,14 @@
  * Date: 2016/3/2
  * Time: 20:57
  */
+function permissionCheck(){
+    if(!$_SESSION['member'])
+        return -1;
+    else{
+        $sql = "select groupid from admin.users where name = '".$_SESSION['member']."'";
+        return  $rst = $GLOBALS['db']->getOne($sql);
+    }
+}
 function sendEmail($addr,$title,$body){
     $smtpserver = "smtp.163.com"; //SMTP服务器
     $smtpserverport =25; //SMTP服务器端口，一般为25

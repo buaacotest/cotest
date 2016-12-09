@@ -25,7 +25,12 @@
 
     <![endif]-->
 </head>
-
+<script>
+  var permission = '<{$permission}>';
+  if(permission == '-1'){
+    window.location="login.php";
+  }
+</script>
 <!-- Static navbar -->
 
 <body>
@@ -105,17 +110,17 @@
 
 
                 <{/if}>
-                             
+
                </div>
             </div>
-            
+
        </div>
        <div class="pro-option-banner">
            <button class="add-to-compare"><{$lang.AddToCompare}></button>
            <button class="go-to-compariosn"><{$lang.GoToComparison}></button>
            <button class="back-to-list"><{$lang.BackToTheList}></button>
        </div>
-        
+
 
         <div class="col-md-12">
             <ul class="nav nav-tabs pro-nav">
@@ -125,10 +130,10 @@
               <!--  <li role="presentation" class="proper-tab " target="#panel4"id="tab4"><a ><{$lang.Review}></a></li>
               -->
               </ul>
-            
+
             <div class="pro-review-panel">
                 <div  id="panel1" class="proper-panel">
-                    
+
                     <div class="col-md-12">
                         <div class="img-tabs">
                             <{if $addrs|@count >1}>
@@ -150,9 +155,9 @@
                             </div>
                             <!--
                             <div class="col-md-12 pro-img text-center"id="pro_img2">
-                                  
+
                                      <img src="img/ipad2.jpg" alt="Apple_iPad_Air_(16Gb+Wifi) 0290 00_00" >
-                                  
+
                             </div>
                             -->
 
@@ -160,7 +165,7 @@
                         </div>
                         <div class="pro-info">
 
-                            
+
                             <div class="pro-info-item row">
                                 <div class="col-md-12">
                                     <h4><{$lang.CotestVerdict}></h4>
@@ -190,14 +195,14 @@
                                     <div class="pro-info-pros"><{$lang.Pros}></div>
 
                                 </div>
-                                
+
                                 <{section name=n loop=$Pros}>
                                     <div class="col-md-12">
                                         <div class="pro-info-sign">+</div>
                                         <div class="pro-info-pros-text"><{$Pros[n]}></div>
                                     </div>
                                 <{/section}>
-                                
+
                                 <div class="col-md-12">
                                     <div class="pro-info-cons"><{$lang.Cons}></div>
 
@@ -209,13 +214,13 @@
                                     </div>
                                 <{/section}>
                             </div>
-                          
-                       
+
+
                             </div>
                     </div>
                 </div>
-                
-                
+
+
                 <div id="panel2" class="proper-panel">
                     <div class="proper-block">
                             <div class="row">
@@ -248,7 +253,7 @@
                                     <div class="proper-weight">
                                         100 %
                                     </div>
-                                   
+
                                 </div>
                                 <div class="col-md-2">
 
@@ -318,7 +323,7 @@
 
 
                                         <{/if}>
-                                                     
+
                                        </div>
                                 </div>
                             </div>
@@ -357,7 +362,7 @@
                                         <{/if}>
                                     </div>
                                     <div class="col-md-2">
-                                     
+
                                         <div class="score-list">
                                         <{if $evals.id_parent[n].value <= 1.5}>
                                                         <div class="star2"></div>
@@ -400,9 +405,9 @@
 
 
                                         <{/if}>
-                                                     
+
                                        </div>
-           
+
                                     </div>
                                 </div>
                             </div>
@@ -480,7 +485,7 @@
 
 
                                         <{/if}>
-                                                     
+
                                        </div>
                                     </div>
                                 </div>
@@ -488,8 +493,8 @@
                             <{/foreach}>
                         </div>
                         <{/section}>
-                        
-                    
+
+
 
                 </div>
 
@@ -530,7 +535,7 @@
                         <li>"nt" for "not tested" (or "new test"), because these results have not been gathered by lab for older models</li>
                         <li>"ns" for "not stated", because there is no information of the manufacturer</li>
                     </ul>
-                        
+
                     </div>
 
                 </div>
@@ -539,10 +544,10 @@
                     <div class="comments">
 
                     </div>
-                    
-                   
 
-             
+
+
+
 
                 </div>
                 -->
@@ -566,20 +571,20 @@
 <script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
 <script type="text/javascript" src="js/bigpic.js"></script>
-   
+
 <script >
     var id=getPar("id")+"";
     var project="<{$project}>";
     var product_id ="<{$id}>";
-   
+
     $(".add-to-compare").on("click",function(){
         var item={}
         item[id]='<{$product.name}>'
          $.post("compareCart.php",{option:"add",items:item},function(result){
                  console.log('result');
-          
+
                 window.location.href="products.php?proj="+'<{$project}>';
-        
+
         });
 
   //      window.location.href="products.php?proj="+'<{$project}>'+"&ids="+JSON.stringify(compare_ids)+"&names="+JSON.stringify(compare_names);
@@ -588,9 +593,9 @@
         var item={}
         item[id]='<{$product.name}>'
          $.post("compareCart.php",{option:"add",items:item},function(result){
-          
+
                 window.location.href="compare.php?proj="+'<{$project}>';
-        
+
         });
     })
     $(".back-to-list").on("click",function(){

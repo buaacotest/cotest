@@ -44,25 +44,27 @@
         <div class="product-container-panel" id="product-container-panel">
          <div class="products-header">
          <div class="products-title" style="overflow:hidden">
-           
+
            <h3>&nbsp;<b><{$productsNum}>  </b><{$up.name|lower}> &nbsp;&nbsp;
            <!--<span class="cur-page">1</span> / <{$pageNum}>  <{$lang.pages}>
            --></h3>
            <div id="highlights-panel" class="row">
 
            </div>
-           
+
          </div>
          <div >
             <div class="products-sort">
-              
+
               <div class="name"><{$lang.SortBy}></div>
                 <div class="btn-group">
                   <button type="button" id="cur-sort"class="btn btn-default dropdown-toggle sort-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <{$lang.MostRecentlyTested}> <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" >
+                    <{if $permission != -1}>
                     <li ><a class="dropdown-menu-item" name="score"href="#" onclick="javascript:sort(this)"><{$lang.HighestScore}></a></li>
+                    <{/if}>
                     <li ><a class="dropdown-menu-item" name="priceUp" onclick="javascript:sort(this)" href="#"><{$lang.PriceLowToHigh}></a></li>
                     <li><a onclick="javascript:sort(this)" class="dropdown-menu-item" name="priceDown"href="#"><{$lang.PriceHighToLow}></a></li>
                     <li><a onclick="javascript:sort(this)" href="#"  class="dropdown-menu-item" name="time"><{$lang.MostRecentlyTested}></a></li>
@@ -79,19 +81,19 @@
         <div class="products-container">
 
             <div id="products-block">
-                
+
                 <ul class="products" itemscope="" itemtype="http://schema.org/ItemList">
-                   
-                   
+
+
                     <meta itemprop="mainContentOfPage" content="true">
                      <{section name=n loop=$products}>
                     <li >
                         <div class="product-listing">
                         <div class="product-thumb">
                               <a class="product-link" onclick="javascript:productLinkClick(this)"target="<{$products[n].product_id}>" >
- 								<img class="product-listing__thumb-image" alt="<{$products[n].product_name}>" src="data/<{$project}>/picturesx/<{$products[n].product_id}>_01x.jpg">                              </a>
+ 								<img class="product-listing__thumb-image" alt="<{$products[n].product_name}>" src="data/<{$project}>/picturesx/<{$products[n].product_id}>_01x.jpg">
+
                           </div>
-                          <a class="product-link"  target="<{$products[n].product_id}>" >
                             <span class="product-brand">
                               <{$products[n].product_manufacturer}>
                             </span>
@@ -99,19 +101,20 @@
                             <div class="product-name">
                               <{$products[n].product_name}>
                             </div>
-                            
+
                           </a>
                           <div class="product-price">
                             <div data-test="price-label"><{$lang.RefPrice}> <{$products[n].price}></div>
-                                  
+
                           </div>
-                
+
 
                             <div class="product-listing__tested-date">
                                 <{$lang.TestedDate}>: <{$products[n].product_tested_date}>
                             </div>
+                            <{if $permission != -1}>
                             <div class="product-score">
-                              
+
                                  <div class="score-list">
                                         <{if $products[n].score <=1.5}>
                                                         <div class="star"></div>
@@ -152,10 +155,10 @@
                                                         <div class="star-b"></div>
                                                         <div class="star-b"></div>
                                         <{/if}>
-                                                     
+
                                        </div>
 
-                              
+
                               <div class="score">
                                         <{if $products[n].score <=1.5}>
                                               <{ $lang.Verygood}>
@@ -180,20 +183,20 @@
 
                               / <{$products[n].score}></div>
                             </div>
-                            
+                            <{/if}>
                             <div class="product-compare-button" onclick="javascript:productCompareOnClick(this)"id="cp<{$products[n].product_id}>" proId="<{$products[n].product_id}>" proName="<{$products[n].product_manufacturer}> <{$products[n].product_name}>" add=0>
                               <button name="button" type="submit" class="action-remove action-toggle"><{$lang.RemoveFromCompare}></button><button name="button" type="submit" class="action-add"><{$lang.AddToCompare}></button>
                             </div>
-                           
+
                         </div>
 
                       </li>
                     <{/section}>
-                    
+
 
                 </ul>
             </div>
-       
+
             <!-- lishijie -->
             <div id="setpage"></div>
         </div>
@@ -204,7 +207,7 @@
             Filter
           </button>-->
           <h2 class="filter-title"><{$lang.Filters}></h2>
-          
+
           <button class="clear-btn" onclick="javascript:clearFilter()">
               <{$lang.ClearAll}>
           </button>
@@ -217,11 +220,11 @@
     <!--
     <div id="review_panel" style="display:none">
       <div class="comments "></div>
-      
+
     </div>
     -->
     <div id="how-we-test-panel" style="display: none;">
- 
+
 
 
 
@@ -264,13 +267,14 @@
     var compare_list=[];
     var compare_name_list=[];
     //初始化
-    //console.log(<{$labels}>)
+    console.log(<{$labels}>)
     //console.log(<{$products}>)
      var cpage=1;
      var page=getPar("page");
      var sortType="time";
      var keyword="";
      var labels=[];
+     var permission = '<{$permission}>'
    //  var keyword=getPar("keyword")?getPar("keyword"):"";
     //    $(".products-search-text").val(keyword);
     // console.log(keyword)
@@ -285,7 +289,7 @@
     pagesize = 10;
     outstr = "";
     var labels_str="";
-    loadoption(<{$labels}>)
+    loadoption(<{$labels}>,permission)
     $(".compare-panel").hide();
 
     function init(){
@@ -300,7 +304,7 @@
               }
 
                 $(".compare-panel").show();
-             
+
             }
             setpage();    //调用分页
       })
@@ -308,15 +312,15 @@
     init();
      function getPar(par){
         //获取当前URL
-        var local_url = document.location.href; 
+        var local_url = document.location.href;
         console.log(local_url)
         //获取要取得的get参数位置
         var get = local_url.indexOf(par +"=");
         if(get == -1){
-            return false;   
-        }   
+            return false;
+        }
         //截取字符串
-        var get_par = local_url.slice(par.length + get + 1);    
+        var get_par = local_url.slice(par.length + get + 1);
         //判断截取后的字符串是否还有其他get参数
         var nextPar = get_par.indexOf("&");
 
@@ -328,13 +332,13 @@
         if(nextPar != -1){
             get_par = get_par.slice(0, nextPar);
         }
-       
+
         get_par=get_par.replace(/%22/g,"'");
         get_par=get_par.replace(/%20/g," ");
         console.log(get_par)
         return get_par;
     }
-    
+
 
     function clickKeyword(item){
         $(".products-search-text").val($(item).text());
@@ -364,10 +368,10 @@
         $(".keyword-panel").show();
     }
     function searchTextBlur(){
-      if( ! $(".keyword-panel").is(":hover"))  
+      if( ! $(".keyword-panel").is(":hover"))
         $(".keyword-panel").hide();
     }
-    function loadoption(labels){
+    function loadoption(labels,permission){
         var option_text="";
         if(labels){
            for(var i=0;i<labels.length;i++){
@@ -379,6 +383,11 @@
             var option_numbers=option_info.number;
             var option_type=option_info.type;
             var option_unit=option_info.unit;
+            console.log(permission)
+            if(option_name=="total test result" && permission==-1){
+
+              continue;
+            }
             option_text+=" <div class='facet facet-checkbox' name='"+option_name+"' type='"+option_type+"'>";
             option_text+=
                 "<div class='heading-filter-options'>"+
@@ -415,11 +424,11 @@
                     option_text+='<div class="range-select">from<input class="range-from" type="text"/>to<input class="range-to" type="text"/>'+option_unit+'</div><button class="range-confirm"><{$lang.Confirm}></button>'
                 }
              option_text+="</div></div></div>"
-          
+
 
         }
         }
-       
+
         //console.log(option_text)
           $("#filter-all-options").html(option_text);
           filterToggle();
@@ -436,11 +445,11 @@
             filter();
             })
           $(".range-confirm").on("click",function(){
-          
+
             filter();
             })
     }
-   
+
     function clearFilter(){
         var checkboxs=$("#filter-all-options").find(".checkbox");
        $(".range-from").val("");
@@ -475,7 +484,7 @@
                  $(this).attr('toggle','1');
                  $(this).attr('class',"more-option-btn")
             }
-        }) 
+        })
     }
 
     function getScoreInfo(star){
@@ -485,7 +494,7 @@
         if(star==4) return "Good";
         if(star==5) return "Very good";
     }
-  
+
     $(".filter-btn").on("click",function(e){
         filter();
     })
@@ -494,7 +503,7 @@
         if(sortname){
             sortType=sortname;
             filter();
-            
+
         }
 
     }
@@ -510,7 +519,7 @@
         $(target_panel).css("display","block");
         $(this).attr("class","proper-tab active");
     })
-   
+
     function filter(){
         labels=[]
         var all_options=$("#filter-all-options").find(".facet-checkbox");
@@ -518,13 +527,13 @@
             var name=$(all_options[i]).attr("name");
             var type=$(all_options[i]).attr("type");
             var active_options=$(all_options[i]).find(".active");
-            
+
             var values=[]
             for(var j=0;j<active_options.length;j++){
                 if(type=="string"||type=="date"||type=="multi")
                     values.push($(active_options[j]).attr("name"));
                 else{
-                   
+
                     values.push(eval("("+$(active_options[j]).attr("name")+")"))
                 }
             }
@@ -570,30 +579,30 @@
            // console.log(result)
             $("#product-container-panel").html(result);
             totalpage=$(".products").attr("pagenum");
-          
+
             setpage();
             $(window).scrollTop(0);
-            
+
               $("#cur-sort").html(sortText+'<span class="caret"></span>');
-            
-         
+
+
         })
-       
-        
+
+
     }
     function closeCompareClick(pro_id){
-         
+
             removeCompare(pro_id);
     }
     function clearCompare(){
         $.post("compareCart.php",{option:"removeAll"},function(result){
-              
+
               for(var i=0;i<compare_list.length;i++){
                      removeCompare(compare_list[i]);
-                  
+
               }
 
-        
+
         });
     }
     function addCompare(pro_id,pro_name){
@@ -619,8 +628,8 @@
 
         }
       }
-        
-        
+
+
     }
 
     function removeCompare(pro_id){
@@ -647,11 +656,11 @@
             if(compareitems.length==0){
                 $(".compare-panel").hide();
             }
-            
+
             $.post("compareCart.php",{option:"show"},function(res){
               console.log(res);
             })
-            compare_list.splice(id,1) 
+            compare_list.splice(id,1)
             compare_name_list.splice(id,1);
             console.log(compare_list);
         });
@@ -677,11 +686,11 @@
         $.post("compareCart.php",{option:"add",items:ids},function(result){
                 console.log(result);
                 window.location.href="compare.php?proj="+'<{$project}>'
-        
+
         });
         console.log(ids);
        // $.get();
-        
+
     })
     $(".compare-toogle").on("click",function(){
         if($(this).attr("toogle")==1){
@@ -695,7 +704,7 @@
         }
 
     })
-   
+
     function gotopage(target)
     {
         cpage = target;        //把页面计数定位到第几页
@@ -781,16 +790,16 @@
     }
 
 
- 
-  //  var local_url = document.location.href; 
+
+  //  var local_url = document.location.href;
 
     //var compare_ids=getPar("ids");
     //var compare_names=getPar("names");
-   
+
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-       
+
         $(".logout-btn").on("click",function  () {
         // body...
         $.get("logout.php",function(){
