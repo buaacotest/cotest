@@ -200,7 +200,7 @@ function getDetails($id,$level,$lang){
     $res['id']=$id;
     $res['evaluations']=getGradeTree($id,$level,$lang);
     $res['property']=getProperty($id,$res,$lang);
-   // print_r($res);
+   //print_r($res);
     return $res;
 }
 /*求某个产品的评分树*/
@@ -253,12 +253,12 @@ function getTree($data, $pId,$level,$end)
 function getPropsValues($props,$id){
     foreach($props as $k=>$v){
         //echo $v['name'];
+        $id_evaluation = $v['id_property']+100000000;
         $sql="select value from results where id_product=$id  and id_evaluation>99999999
-              and id_evaluation=(
-              select id_evaluation FROM evaluations WHERE binding='".$v['binding']."' and id_evaluation>99999999)";
+              and id_evaluation=$id_evaluation";
 
 
-        //echo $sql."\n";
+       // echo $sql."\n";
         $value=$GLOBALS['db']->getOne($sql);
         $value= htmlspecialchars($value,ENT_QUOTES);
         switch($v['type']){
@@ -364,48 +364,22 @@ function getProperty($id,&$res,$lang){
         if ($lang == 'en_us') {
             $sql = "select id_propertygroup,name from propertygroups";
             $groups = $GLOBALS['db']->getAll($sql);
-            $sql = "select id_propertygroup,name,type,unit,binding from propertys where selected=1";
+            $sql = "select id_propertygroup,name,type,unit,id_property from propertys where selected=1";
             $props = $GLOBALS['db']->getAll($sql);
         } else {
             $sql = "select id_propertygroup,CHN as name from (select * from propertygroups p) p left join sdictionary t on p.id_propertygroup=t.wordid and flag=3 ;";
 
             $groups = $GLOBALS['db']->getAll($sql);
-            $sql = "select id_propertygroup,sdictionary.CHN as name,type,unit,binding from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
+            $sql = "select id_propertygroup,sdictionary.CHN as name,type,unit,id_property from propertys,sdictionary where flag=0 and id_property=wordid  and selected=1";
             $props = $GLOBALS['db']->getAll($sql);
         }
         $props = getPropsValues($props,$id);
         foreach($groups as $k=>$g){
-            if($g['name']=="Pros"||$g['name']=="优点"){
-                $pros=array();
-                foreach($props as $p){
-                    if($p['id_propertygroup']==$g['id_propertygroup']){
-
-                        if($p['value']=="Yes"||$p['value']=="yes"){
-                            $pros[]=$p['name'];
-                        }
-                    }
-
-                }
-
-                $res['Pros']=$pros;
+            //先跳过优缺点的查找
+            if($g['name']=="Pros"||$g['name']=="优点"||$g['name']=="Cons"||$g['name']=="缺点")
                 continue;
-            } else if($g['name']=="Cons"||$g['name']=="缺点") {
 
-                $cons=array();
-                foreach($props as $p){
-                    if($p['id_propertygroup']==$g['id_propertygroup']){
 
-                        if($p['value']=="Yes"||$p['value']=="yes"){
-                            $cons[]=$p['name'];
-                        }
-                    }
-                }
-                // $string=substr($string, 0, -1);
-
-                $res['Cons']=$cons;
-
-                continue;
-            }
 
             $temp='';
             foreach($props as $p){
@@ -421,7 +395,7 @@ function getProperty($id,&$res,$lang){
     }else{
         $groups = $rules[$project]['groups'];
         foreach($groups as $k=>$g){
-            $sql = "select name,type,unit,binding from propertys where id_property in(";
+            $sql = "select name,type,unit,id_property from propertys where id_property in(";
             foreach($g['props'] as $v){
                 $sql .= $v.",";
             }
@@ -436,6 +410,7 @@ function getProperty($id,&$res,$lang){
         }
         $results = $groups;
     }
+
     //Pros 和Cons优先从proerpty筛选
     $sql = "select id_propertygroup from propertygroups where `name` = 'Pros'";
     //echo $sql;
@@ -445,7 +420,7 @@ function getProperty($id,&$res,$lang){
     //print_r($prosGroupId);
     $pros=array();
     if(!empty($prosGroupId)){
-        $sql = "select id_propertygroup,name,type,unit,binding from propertys where selected=1 and id_propertygroup =".$prosGroupId;
+        $sql = "select id_propertygroup,name,type,unit,id_property from propertys where selected=1 and id_propertygroup =".$prosGroupId;
         //print_r($sql);
         $props = $GLOBALS['db']->getAll($sql);////取出所有的Pros
         $props = getPropsValues($props,$id);
@@ -457,7 +432,7 @@ function getProperty($id,&$res,$lang){
     }
     $cons=array();
     if(!empty($consGroupId)){
-        $sql = "select id_propertygroup,name,type,unit,binding from propertys where selected=1 and id_propertygroup =".$consGroupId;
+        $sql = "select id_propertygroup,name,type,unit,id_property from propertys where selected=1 and id_propertygroup =".$consGroupId;
         // print_r($sql);
         $props = $GLOBALS['db']->getAll($sql);////取出所有的Cons
         $props = getPropsValues($props,$id);
@@ -512,6 +487,7 @@ function getProperty($id,&$res,$lang){
         array_splice($results,1,2);
     }
 */
+
    // print_r($groups);
     return $results;
 }
@@ -578,7 +554,7 @@ function filterProducts($lab){
                        }
                         $tempIndexRange++;
                     }
-                    $sql.=")";
+                    $sql.=")and value REGEXP '^[0-9]+[.0-9]*$'";
                    // echo $sql;
                     $tempResult=$GLOBALS['db']->getAllValues($sql);
                 }
