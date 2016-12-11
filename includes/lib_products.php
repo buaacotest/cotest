@@ -436,6 +436,39 @@ function getProperty($id,&$res,$lang){
         }
         $results = $groups;
     }
+    //Pros 和Cons优先从proerpty筛选
+    $sql = "select id_propertygroup from propertygroups where `name` = 'Pros'";
+    //echo $sql;
+    $prosGroupId = $GLOBALS['db']->getOne($sql);
+    $sql = "select id_propertygroup from propertygroups where `name` = 'Cons'";
+    $consGroupId = $GLOBALS['db']->getOne($sql);
+    //print_r($prosGroupId);
+    $pros=array();
+    if(!empty($prosGroupId)){
+        $sql = "select id_propertygroup,name,type,unit,binding from propertys where selected=1 and id_propertygroup =".$prosGroupId;
+        //print_r($sql);
+        $props = $GLOBALS['db']->getAll($sql);////取出所有的Pros
+        $props = getPropsValues($props,$id);
+        foreach($props as $p){
+            if($p['value']=="Yes"||$p['value']=="yes"){
+                $pros[]=$p['name'];
+            }
+        }
+    }
+    $cons=array();
+    if(!empty($consGroupId)){
+        $sql = "select id_propertygroup,name,type,unit,binding from propertys where selected=1 and id_propertygroup =".$consGroupId;
+        // print_r($sql);
+        $props = $GLOBALS['db']->getAll($sql);////取出所有的Cons
+        $props = getPropsValues($props,$id);
+        foreach($props as $p){
+            if($p['value']=="Yes"||$p['value']=="yes"){
+                $cons[]=$p['name'];
+            }
+        }
+    }
+   // print_r($pros);
+   // print_r($cons);
 
     if(empty($pros)){/*************************处理groups中没有Pros的情况*/
         $pros=array();
@@ -447,6 +480,8 @@ function getProperty($id,&$res,$lang){
             if(empty($pros[count($pros)-1]))
                 unset($pros[count($pros)-1]);
         }
+        $res['Pros']=$pros;
+    }else{
         $res['Pros']=$pros;
     }
     if(empty($cons)){/*************************处理groups中没有Cons的情况*/
@@ -462,6 +497,8 @@ function getProperty($id,&$res,$lang){
         }
 
         //print_r($cons);
+        $res['Cons']=$cons;
+    }else{
         $res['Cons']=$cons;
     }
 /*
