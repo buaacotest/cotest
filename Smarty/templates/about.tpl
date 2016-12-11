@@ -51,12 +51,12 @@
     <h4>Mission</h4>
 
     <p>
-     Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. (COTEST) is registered as a non-profit association under German law with the following mission: To test products and services independently for a safe and trustful marketplace for consumers in developing countries and around the world.   
+     Association for Comparative & Objective Testing in Europe for Safety & Trust e.V. (COTEST) is registered as a non-profit association under German law with the following mission: To test products and services independently for a safe and trustful marketplace for consumers in developing countries and around the world.
     </p>
     <div class="about-img-container">
         <img src="img/cotest.png" class="about-cotest">
     </div>
-    
+
     <h4>Powered by European experience</h4>
     <div class="col-md-9 about-para">
     <p>COTEST will buy samples in the respective developing countries but test them in European research labs, which – among other clients – have been testing for German testing foundation Stiftung Warentest, applying scientific methods, which Stiftung Warentest has been developing and applying for over 50 years.
@@ -118,13 +118,13 @@
     <!--
     <h4>Facts + figures</h4>
     <p>Since it was founded Stiftung Warentest has carried out more than 5,500 tests and tested a good 94,000 products. In addition, it has carried out investigations of over 2,500 services. The results are published each year in more than 8 million copies of our magazines.</p>
-    
+
     <h4>Publications</h4>
     <div class="row about-para">
     <div class="about-para col-md-9">
          <b>test: </b>the magazine is Stiftung Warentest's oldest and best-known publication. Since 1966 it has provided impartial and objective advice about the products and services of everyday life. In addition to the tests and investigations, there are also articles, as well as information about trends and useful tips for consumers. Paid circulation: 440,000 copies.
     </div>
-    
+
     <div class="col-md-3">
         <img src="img/test.jpg">
     </div>
@@ -134,7 +134,7 @@
     <div class="col-md-3 about-para">
         <img src="img/ftest.jpg">
     </div>
-    
+
     <div class="col-md-9 about-para">
         From A for assets to Z for zero-bonds – "Finanztest" has been on the market since 1991 and has specialised in topics such as insurance, investment, tax and legal issues. A continually updated database provides a comprehensive comparison of equity funds, loans and savings interest rates each month. The paid circulation totals 219,000 copies.
     </div>
@@ -147,7 +147,7 @@
         <div class="col-md-3 about-para">
             <img src="img/testde.jpg">
         </div>
-        
+
     </div>
     <br>
     <div class="row about-para">
@@ -160,10 +160,10 @@
              </p>
         </div>
     </div>
-    
+
     <h4>Investigation work</h4>
     <p>
-        Following a comprehensive planning phase, Stiftung Warentest's staff compile an investigation programme and purchase the test samples anonymously in shops, just like regular customers. 
+        Following a comprehensive planning phase, Stiftung Warentest's staff compile an investigation programme and purchase the test samples anonymously in shops, just like regular customers.
     </p>
     <p>
         Independent, external labs are then commissioned to carry out the tests on behalf of the foundation. Investigated services are used covertly by trained mystery shoppers. Finally, Stiftung Warentest publishes and disseminates the results of its investigations.
@@ -174,11 +174,13 @@
         <img src="img/research.jpg" class="about-member">
     </div>
     </div>
-    <div id="how-to-test" class="about-article" style="display: none;"> 
+    <div id="how-to-test" class="about-article" style="display: none;">
     <h2>How to test</h2>
     <h4>1. Planning the test</h4>
     <div class="about-img-container">
-        <img src="img/plan.jpg" class="about-member">
+        <div class="about-member sf-img">
+          <img src="img/plan.jpg" />
+        </div>
     </div>
     <p>First question to be answered in setting up a test is finding out which goods and services are to be tested in order to support the consumer in his day to day live. A selection has to be made from sometimes hundreds of different products in the same product segment or even sub-segment, because it is almost impossible to test all available products. Basically one has to answer the question, which product segments will be tested and which products in each segment will be selected for testing.</p>
     <p>
@@ -189,8 +191,12 @@
     </p>
     <h4>2. Test design</h4>
      <div class="about-img-container">
-        <img src="img/testdesign.jpg" class="about-member">
-    </div>
+       <div class="about-img-container">
+           <div class="about-member sf-img">
+             <img src="img/testdesign.jpg" />
+           </div>
+       </div>
+
     <p>Once a final decision on product segments and product choice has been made the technical test disciplines and how they are tested have to be defined.
     </p>
     <p>
@@ -198,12 +204,16 @@
     </p>
     <h4>3.  Product purchase</h4>
     <div class="about-img-container">
-        <img src="img/purchase.jpg" class="about-member">
+      <div class="about-img-container">
+          <div class="about-member sf-img">
+            <img src="img/purchase.jpg" />
+          </div>
+      </div>
     </div>
     <p>
     Selected products have to be purchased in a next step. But how to buy a so called test sample?
     </p>
-    
+
     <p>
     The test team usually buys the test samples the same way every consumer does. Anonymous test sample buyers visit department stores, supermarkets or shops and prefer to pay cash to avoid being traceable. No rules without exception: Seasonal goods like parasols are randomly picked in the storage areas of the dealers or manufacturers, because you cannot buy them in the stores before the season starts.
     </p>
@@ -212,7 +222,11 @@
     </p>
    <h4> 4.  Conduction tests in independent labs</h4>
    <div class="about-img-container">
-        <img src="img/conclusion.jpg" class="about-member">
+     <div class="about-img-container">
+         <div class="about-member sf-img">
+           <img src="img/conclusion.jpg" />
+         </div>
+     </div>
     </div>
    <p>
     After the test specifications have been designed the test team has to decide, which test service organization should test and at what cost.<br>
@@ -231,7 +245,7 @@
     Before making the test results public the manufacturers are informed about the test results of their own tested products. This is about to recheck test results that mismatch with what the manufacturers have measured themselves. In case of a mismatch possible mistakes can be avoided. Anyway, the final decision is with COTEST.
     </p>
     <h4> 5.  Verdicts based solely on test results</h4>
-    
+
     <p>
     The evaluation system basically works as follows:
     </p>

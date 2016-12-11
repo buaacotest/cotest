@@ -34,6 +34,7 @@ require("navigation.php");
                 <{$lang.Welcome}>
                 -->
         <ul class="bxslider ">
+          <!--
               <li>
                   <div class="row index-header ">
                       <div class="col-md-12">
@@ -45,29 +46,30 @@ require("navigation.php");
                   </div>
                 </li>
             <li >
+            -->
               <div class="index-slider-container">
 
-                <img src="img/dioxin.png" class="index-slider-img">
+                <img src="img/ibanner_3.jpg" class="index-slider-img">
                 <div class="index-slider-title">
-                  Maximum permissible content of dioxins in formula milk powder up to 32 times too high
+                    The EU limit for dioxins in formula milk up to 32 times too high!
+                  </div>
+              </div>
+            </li>
+            <li>
+              <div class="index-slider-container">
+
+                <img src="img/ibanner_2.jpg" class="index-slider-img">
+                <div class="index-slider-title">
+               One of the Chinese manufactures produced with Chinese milk just as good formula as international ones
                 </div>
               </div>
             </li>
             <li>
               <div class="index-slider-container">
 
-                <img src="img/ad3.jpg" class="index-slider-img">
+                <img src="img/ibanner_1.jpg" class="index-slider-img">
                 <div class="index-slider-title">
-               Quality of Chinese formula milk powder better than its reputation
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="index-slider-container">
-
-                <img src="img/ad2.jpg" class="index-slider-img">
-                <div class="index-slider-title">
-               hundreds of different smartphones incl. iPhone 7 and iPhone 7 Plus in test
+              Hundreds of different brand and model smartphones tested in hundreds of properties
                 </div>
               </div>
             </li>
@@ -93,17 +95,36 @@ require("navigation.php");
     </div>
     <ul class="slider-select col-md-3">
 
-          <li target="1" id="slider-select-item1" class="slider-select-item ">
-            Maximum permissible content of dioxins in formula milk powder up to 32 times too high
+          <li target="0" id="slider-select-item0" class="slider-select-item slider-select-item-active">
+            <div class="row">
+              <div class="slider-select-thumb col-md-5">
+                  <img src="img/ibanner3_s.jpg"/>
+              </div>
+              <div class="col-md-7">
+                 EU limit for dioxins in formula
+              </div>
+            </div>
 
+          </li>
+          <li target="1" id="slider-select-item1"class="slider-select-item">
+            <div class="row">
+              <div class="slider-select-thumb col-md-5">
+                  <img src="img/ibanner2_s.jpg"/>
+              </div>
+              <div class="col-md-7">
+              Chinese formula milk
+              </div>
+            </div>
           </li>
           <li target="2" id="slider-select-item2"class="slider-select-item">
-            Quality of Chinese formula milk powder better than its reputation
-
-          </li>
-          <li target="3" id="slider-select-item3"class="slider-select-item">
-            hundreds of different smartphones incl. iPhone 7 and iPhone 7 Plus in test
-
+            <div class="row">
+              <div class="slider-select-thumb col-md-5">
+                  <img src="img/ibanner1_s.jpg"/>
+              </div>
+              <div class="col-md-7">
+                Smartphones in test
+              </div>
+            </div>
           </li>
 
 

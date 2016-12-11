@@ -115,11 +115,11 @@ height: 350px;
 	border-bottom: 1px solid #eee;
 }
 .slider-select-item-active{
-	background:#bd0000;
-	color: #fff;
+	border-left: 5px solid #bd0000;
 }
 .slider-select-item-active:hover{
-		background:#bd0000;
+	border-left: 5px solid #bd0000;
+
 }
 #menu2{
 	position: absolute;
@@ -147,10 +147,10 @@ height: 350px;
 .index-slider-title{
 	position: absolute;
 	bottom: 0px;
-
+	right: 0px;
 	left: 0px;
 	padding: 20px;
-	background: rgba(0,0,0,0.8);
+	background: rgba(0,0,0,0.5);
 	color: white;
 	font-size: 16px;
 }
@@ -1862,5 +1862,20 @@ footer .icptext{
 }
 .about-member{
 	width: 400px;
-	margin: 40px 0px;
+	margin: 40px auto;
+}
+.sf-img{
+	position: relative;
+
+}
+.sf-img img{
+	width: 100%;
+}
+.sf-img::after{
+	content:"© Stiftung Warentest";
+	position: absolute;
+	bottom: -15px;
+	right: 0px;
+	color:#999;
+	font-size: 10px;
 }

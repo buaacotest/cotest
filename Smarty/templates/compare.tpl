@@ -28,6 +28,7 @@
 <!-- Static navbar -->
 <script>
   var permission = '<{$permission}>';
+  console.log(permission)
   if(permission == '-1'){
     window.location="login.php";
   }
