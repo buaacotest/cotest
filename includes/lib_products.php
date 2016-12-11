@@ -635,7 +635,7 @@ function filterProducts($lab){
                 foreach($v['value'] as $key=>$value){
                     $evalId=getEvaluationId($value);
                     if(is_array($v['value'])){
-                        $sql="select id_product from results where id_evaluation=".$evalId." and value=1";
+                        $sql="select id_product from results where id_evaluation=".$evalId." and value>=1";
 
                         $res=$GLOBALS['db']->getAllValues($sql);
                         $tempResult=array_merge($tempResult,$res);
