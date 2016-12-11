@@ -60,7 +60,7 @@ require("navigation.php");
 
                 <img src="img/ibanner_2.jpg" class="index-slider-img">
                 <div class="index-slider-title">
-               One of the Chinese manufactures produced with Chinese milk just as good formula as international ones
+                 Chinese formula with China's milk just as good as the global test winners
                 </div>
               </div>
             </li>
@@ -69,8 +69,8 @@ require("navigation.php");
 
                 <img src="img/ibanner_1.jpg" class="index-slider-img">
                 <div class="index-slider-title">
-              Hundreds of different brand and model smartphones tested in hundreds of properties
-                </div>
+                  Smartphones of hundreds brands and models tested in hundreds of properties
+              </div>
               </div>
             </li>
             <!--
