@@ -190,7 +190,6 @@
         It is important to remark, that manufacturers or dealers have absolutely neither influence on product segment and product selection, nor on the planning of our tests.
     </p>
     <h4>2. Test design</h4>
-     <div class="about-img-container">
        <div class="about-img-container">
            <div class="about-member sf-img">
              <img src="img/testdesign.jpg" />
