@@ -60,7 +60,7 @@ require("navigation.php");
 
                 <img src="img/ibanner_2.jpg" class="index-slider-img">
                 <div class="index-slider-title">
-                 Chinese formula with China's milk just as good as the global test winners
+                 1 Chinese formula with China's milk just as good as the 3 global test winners
                 </div>
               </div>
             </li>
