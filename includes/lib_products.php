@@ -94,6 +94,9 @@ function getProductByIds($ids,$order='time'){
 	$sql.=")";
 
     $res=$GLOBALS['db']->getAll($sql);
+    if(empty($res)){
+        return [];
+    }
     foreach($res as $k=>$v){
         //$res[$k]['product_name']=shortName($v['product_name']);
         $res[$k]['product_tested_date']=convertTime($v['product_tested_date']);
@@ -109,6 +112,9 @@ function getProductByIds($ids,$order='time'){
  * 对得分四舍五入,
  * In:products Array*/
 function roundScore(&$arr){
+    if (empty($arr)){
+        return ;
+    }
     foreach($arr as $k=>$v){
 
         $arr[$k]['score']=number_format($v['score'], 1, '.', '');
@@ -127,6 +133,9 @@ function shortName($name,$targetLen=39){
 
 /*排序*/
 function multiSort($arr,$order){
+    if (empty($arr)){
+        return [];
+    }
     foreach ($arr as $key=>$value){
         $time[$key] = $value[2];
         $score[$key] = $value['score'];
