@@ -95,7 +95,7 @@ function getProductByIds($ids,$order='time'){
 
     $res=$GLOBALS['db']->getAll($sql);
     if(empty($res)){
-        return [];
+        return array();
     }
     foreach($res as $k=>$v){
         //$res[$k]['product_name']=shortName($v['product_name']);
@@ -134,7 +134,7 @@ function shortName($name,$targetLen=39){
 /*排序*/
 function multiSort($arr,$order){
     if (empty($arr)){
-        return [];
+        return array();
     }
     foreach ($arr as $key=>$value){
         $time[$key] = $value[2];
