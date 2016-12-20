@@ -230,6 +230,15 @@
 
 
     </div>
+    <{if $permission == -1}>
+    <div class="alert-log-panel">
+        <b><a href="login.php">Log in</a></b> or <b><a href="register.php">Sign up</a> </b>
+        to read about <b>2000</b> products tested in Europe charitably and independently
+        <div class="alert-log-close" onclick="javascript:closeAlert()">
+            <img src="img/cross_w.png"/>
+        </div>
+    </div>
+    <{/if}>
     <div class="compare-panel" >
         <div class="compare-toogle">
             <img src="img/down.png" />
@@ -342,7 +351,8 @@
 
     function clickKeyword(item){
         $(".products-search-text").val($(item).text());
-        $(".keyword-panel").hide();
+        console.log($(item).text())
+      $(".keyword-panel").hide();
     }
     function search(){
          if($("#highlights-panel").html()!="")
@@ -368,8 +378,11 @@
         $(".keyword-panel").show();
     }
     function searchTextBlur(){
-      if( ! $(".keyword-panel").is(":hover"))
-        $(".keyword-panel").hide();
+      setTimeout(function(){
+        if( ! $(".keyword-panel").is(":hover"))
+          $(".keyword-panel").hide();
+      },100)
+
     }
     function loadoption(labels,permission){
         var option_text="";
@@ -519,8 +532,17 @@
         $(target_panel).css("display","block");
         $(this).attr("class","proper-tab active");
     })
-
+    function closeAlert(){
+      $(".alert-log-panel").hide()
+    }
+    function showAlert(){
+      $(".alert-log-panel").show()
+    }
     function filter(){
+        if(permission == -1){
+          showAlert()
+          return;
+        }
         labels=[]
         var all_options=$("#filter-all-options").find(".facet-checkbox");
         for(var i=0;i<all_options.length;i++){

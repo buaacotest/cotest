@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="index.php">
-              <img  src="img/logo2.png">
+              <img  src="img/COTESTlogo2.png">
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -23,11 +23,11 @@
                 <!--<li class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown " aria-haspopup="true" aria-expanded="true"><a href="#">Language</a></li>
                 <ul class="dropdown-menu" id="menu2" aria-labelledby="dropdownMenu2">
                     <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
-                   
+
                     <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>
 
                 </ul>-->
-                <!-- 
+                <!--
                 <li><a href="#" onclick="changelanguage('en_us')">English</a></li>
                <li><a href="#" onclick="changelanguage('zh_cn')">简体中文</a></li>-->
                 <{if $user}>
