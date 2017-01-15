@@ -233,7 +233,7 @@
     <{if $permission == -1}>
     <div class="alert-log-panel">
         <b><a href="login.php">Log in</a></b> or <b><a href="register.php">Sign up</a> </b>
-        to read about <b>2000</b> products tested in Europe charitably and independently
+        to see <b>2000</b> products tested in Europe
         <div class="alert-log-close" onclick="javascript:closeAlert()">
             <img src="img/cross_w.png"/>
         </div>
