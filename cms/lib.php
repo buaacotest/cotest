@@ -149,27 +149,146 @@ function updateCotestreports($id,$title,$content,$date)
 /*根据id查询一篇testprogramme新闻*/
 function getOneTestprogrammeByID($id)
 {
-
+    $sql="SELECT * FROM cotestcms.testprogramme where id=".$id;
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
 }
 /*根据title查询一篇testprogramme新闻*/
 function getOneTestprogrammeByTitle($title)
 {
 
+    $sql="SELECT * FROM cotestcms.testprogramme where `title`=\"".$title."\"";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
 }
-/*查询所有时间在$date之前的testprogramme新闻*/
-function getTestprogrammesBeforeData($date)
+/*查询所有时间在$date之内的testprogramme新闻*/
+function getTestprogrammesBeforeDate($date)
 {
-
+    $sql="SELECT * FROM cotestcms.testprogramme where `date`<=''".$date."''";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
 }
 /*查询所有时间在$date之后的testprogramme新闻*/
 function getTestprogrammesAfterDate($date)
 {
-
+    $sql="SELECT * FROM cotestcms.testprogramme where `date`>''".$date."''";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
 }
-/*查询所有category为$category的testprogramme新闻*/
-/*查询所有testprogramme新闻,按date从最近的开始排序*/
-/*查询所有testprogramme新闻，按date从最远的开始排序*/
+/*查询所有category为$category的testprogramme新闻,默认按最新排序*/
+function getTestprogrammesByCategory($category,$datedesc=true)
+{
+    if($datedesc){
+        $sql="SELECT * FROM cotestcms.testprogramme where `category`=\"".$category."\" order by date desc";
+    }
+    else{
+        $sql="SELECT * FROM cotestcms.testprogramme where `category`=\"".$category."\" order by date";
+    }
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有testprogramme新闻,默认按date从最近的开始排序*/
+function getTestprogrammesAll($datedesc=true){
+    if($datedesc){
+        $sql="SELECT * FROM cotestcms.testprogramme order by date desc";
+    }else{
+        $sql="SELECT * FROM cotestcms.testprogramme order by date";
+    }
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
 
+/*根据id查询一篇testreports新闻*/
+function getOneTestreportByID($id)
+{
+    $sql="SELECT * FROM cotestcms.testreports where id=".$id;
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*根据title查询一篇testreports新闻*/
+function getOneTestreportByTitle($title)
+{
+    $sql="SELECT * FROM cotestcms.testreports where `title`=\"".$title."\"";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有时间在$date之内的testreports新闻*/
+function getTestreportsBeforeDate($date)
+{
+    $sql="SELECT * FROM cotestcms.testreports where `date`<=''".$date."''";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有时间在$date之后的testreports新闻*/
+function getTestreportsAfterDate($date)
+{
+    $sql="SELECT * FROM cotestcms.testreports where `date`>''".$date."''";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有category为$category的testreports新闻,默认按最新排序*/
+function getTestreportsByCategory($category,$datedesc=true)
+{
+    if($datedesc){
+        $sql="SELECT * FROM cotestcms.testreports where `category`=\"".$category."\" order by date desc";
+    }
+    else{
+        $sql="SELECT * FROM cotestcms.testreports where `category`=\"".$category."\" order by date";
+    }
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有testreport新闻,默认按date从最近的开始排序*/
+function getTestreportsAll($datedesc=true){
+    if($datedesc){
+        $sql="SELECT * FROM cotestcms.testreports order by date desc";
+    }else{
+        $sql="SELECT * FROM cotestcms.testreports order by date";
+    }
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+
+
+/*根据id查询一篇cotestreports新闻*/
+function getOneCotestreportByID($id)
+{
+    $sql="SELECT * FROM cotestcms.cotestreports where id=".$id;
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*根据title查询一篇cotestreports新闻*/
+function getOneCotestreportByTitle($title)
+{
+    $sql="SELECT * FROM cotestcms.cotestreports where `title`=\"".$title."\"";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有时间在$date之内的cotestreports新闻*/
+function getCotestreportsBeforeDate($date)
+{
+    $sql="SELECT * FROM cotestcms.cotestreports where `date`<=''".$date."''";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+/*查询所有时间在$date之后的testreports新闻*/
+function getCotestreportsAfterDate($date)
+{
+    $sql="SELECT * FROM cotestcms.cotestreports where `date`>''".$date."''";
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
+
+/*查询所有cotestreports新闻,默认按date从最近的开始排序*/
+function getCotestreportsAll($datedesc=true){
+    if($datedesc){
+        $sql="SELECT * FROM cotestcms.cotestreports order by date desc";
+    }else{
+        $sql="SELECT * FROM cotestcms.cotestreports order by date";
+    }
+    $result=$GLOBALS['db']->query($sql);
+    return $result;
+}
 
 
 /************************************************************其他功能函数***********************************************************/
