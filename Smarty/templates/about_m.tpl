@@ -63,7 +63,7 @@
     
     <h4>Powered by European experience</h4>
     <div class="col-md-9 about-para">
-    <p>COTEST will buy samples in the respective developing countries but test them in European research labs, which – among other clients – have been testing for German testing foundation Stiftung Warentest, applying scientific methods, which Stiftung Warentest has been developing and applying for over 50 years.
+    <p>Commissioned by consumer organisations or individual consumers, COTEST will test samples bought by the principal in the respective developing countries in European research labs, which – among other clients – have been testing for German testing foundation Stiftung Warentest, applying scientific methods, which Stiftung Warentest has been developing and applying for over 50 years.
     Thereby, products produced outside Europe are tested in Europe according to European quality and testing standards. The access to the test results is promoted in all countries, where these products are sold to consumers. </p>
     </div>
 
