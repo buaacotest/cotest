@@ -8,17 +8,17 @@
 
 /************************************************************增加新闻***********************************************************/
 /*添加一条Testprogramme*/
-function addTestprogramme($title,$content,$date,$category)
+function addTestprogramme($title,$content,$date,$product)
 {
-    $sql="INSERT INTO `cotestcms`.`testprogramme` (`title`, `content`, `date`, `category`) VALUES ( \"".$title."\", \"".$content."\", \"".$date."\" ,\"".$category."\")";
+    $sql="INSERT INTO `cotestcms`.`testprogramme` (`title`, `content`, `date`, `product`) VALUES ( \"".$title."\", \"".$content."\", \"".$date."\" ,\"".$product."\")";
     $result = $GLOBALS['db']->query($sql);
     return $result;
 }
 
 /*添加一条Testreports*/
-function addTestreport($title,$content,$date,$category)
+function addTestreport($title,$content,$date,$product)
 {
-    $sql="INSERT INTO `cotestcms`.`testreports` (`title`, `content`, `date`, `category`) VALUES ( \"".$title."\", \"".$content."\", \"".$date."\" ,\"".$category."\")";
+    $sql="INSERT INTO `cotestcms`.`testreports` (`title`, `content`, `date`, `product`) VALUES ( \"".$title."\", \"".$content."\", \"".$date."\" ,\"".$product."\")";
     $result = $GLOBALS['db']->query($sql);
     return $result;
 }
@@ -124,16 +124,16 @@ function deleteCotestreportByIDs($ids)
 }
 
 /************************************************************修改新闻***********************************************************/
-function updateTestprogramme($id,$title,$content,$date,$category)
+function updateTestprogramme($id,$title,$content,$date,$product)
 {
-    $sql="UPDATE `cotestcms`.`testprogramme` SET `title` = \"".$title."\", `content` = \"".$content."\",`date` = \"".$date."\",`category` = \"".$category."\" WHERE `id` = ".$id;
+    $sql="UPDATE `cotestcms`.`testprogramme` SET `title` = \"".$title."\", `content` = \"".$content."\",`date` = \"".$date."\",`product` = \"".$product."\" WHERE `id` = ".$id;
     $result=$GLOBALS['db']->query($sql);
     return $result;
 }
 
-function updateTestreports($id,$title,$content,$date,$category)
+function updateTestreports($id,$title,$content,$date,$product)
 {
-    $sql="UPDATE `cotestcms`.`testreports` SET `title` = \"".$title."\", `content` = \"".$content."\",`date` = \"".$date."\",`category` = \"".$category."\" WHERE `id` = ".$id;
+    $sql="UPDATE `cotestcms`.`testreports` SET `title` = \"".$title."\", `content` = \"".$content."\",`date` = \"".$date."\",`product` = \"".$product."\" WHERE `id` = ".$id;
     $result=$GLOBALS['db']->query($sql);
     return $result;
 }
@@ -175,14 +175,14 @@ function getTestprogrammesAfterDate($date)
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
 }
-/*查询所有category为$category的testprogramme新闻,默认按最新排序*/
-function getTestprogrammesByCategory($category,$datedesc=true)
+/*查询所有product为$product的testprogramme新闻,默认按最新排序*/
+function getTestprogrammesByCategory($product,$datedesc=true)
 {
     if($datedesc){
-        $sql="SELECT * FROM cotestcms.testprogramme where `category`=\"".$category."\" order by date desc";
+        $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date desc";
     }
     else{
-        $sql="SELECT * FROM cotestcms.testprogramme where `category`=\"".$category."\" order by date";
+        $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date";
     }
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
@@ -226,14 +226,14 @@ function getTestreportsAfterDate($date)
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
 }
-/*查询所有category为$category的testreports新闻,默认按最新排序*/
-function getTestreportsByCategory($category,$datedesc=true)
+/*查询所有product为$product的testreports新闻,默认按最新排序*/
+function getTestreportsByCategory($product,$datedesc=true)
 {
     if($datedesc){
-        $sql="SELECT * FROM cotestcms.testreports where `category`=\"".$category."\" order by date desc";
+        $sql="SELECT * FROM cotestcms.testreports where `product`=\"".$product."\" order by date desc";
     }
     else{
-        $sql="SELECT * FROM cotestcms.testreports where `category`=\"".$category."\" order by date";
+        $sql="SELECT * FROM cotestcms.testreports where `product`=\"".$product."\" order by date";
     }
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
