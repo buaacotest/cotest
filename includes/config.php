@@ -1,6 +1,6 @@
 <?php
 /*  定义服务器的绝对路径  */
-define('BASE_PATH','.');
+define('BASE_PATH', $_SERVER['DOCUMENT_ROOT']."/cotest");
 /*  定义Smarty目录的绝地你路径  */
 define('SMARTY_PATH','/Smarty/');/*test 是项目名字*/
 
