@@ -6,7 +6,7 @@
  * Time: 19:54
  */
 
-require('../includes/init.php');
+require('../sql/mysql_cls.php');
 include_once '../includes/config.php';
 require('libnewseditor.php');
 
