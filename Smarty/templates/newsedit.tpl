@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <title>编辑文章</title>
-    <link rel="stylesheet" href="./editor/themes/default/default.css" />
-    <link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
-    <script charset="utf-8" src="./editor/kindeditor-all.js"></script>
-    <script charset="utf-8" src="./editor/lang/zh-CN.js"></script>
-    <script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
+    <link rel="stylesheet" href="../../cms/editor/themes/default/default.css" />
+    <link rel="stylesheet" href="../../cms/editor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="../../cms/editor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="../../cms/editor/lang/zh-CN.js"></script>
+    <script charset="utf-8" src="../../cms/editor/plugins/code/prettify.js"></script>
     <script>
         KindEditor.ready(function(K) {
             var editor1 = K.create('textarea[name="content1"]', {
@@ -34,8 +34,8 @@
 </head>
 <body>
 
-<form name="example" method="post" action="newsedit.php" >
-    <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;">文章标题</p>
+<form name="example" method="post" action="../../cms/newsedit.php" >
+    <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;"><{$title}></p>
     <select name="category" style="float:left; padding:2px; height:24px; margin-right:2px;">
         <{foreach from=$category item=opt}>
         <option value="<{$opt}>"><{$opt}></option>
@@ -48,7 +48,7 @@
     </select>
     <input type="text" id="txtTitle" style="width:560px; height:18px; float:left;" maxlength="100" />
     <br />
-    <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;">文章内容</p>
+    <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;"><{$content}></p>
     <textarea name="content1" style="width:700px;height:200px;visibility:hidden;"></textarea>
     <br />
     <input type="submit" name="button" value="提交内容" /> (提交快捷键: Ctrl + Enter)

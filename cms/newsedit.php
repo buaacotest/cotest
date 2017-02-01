@@ -12,25 +12,28 @@ require('libnewseditor.php');
 
 $newsid=trim($_GET['newsid']);
 $category=trim($_GET['category']);
-
-echo $category;
-echo $newsid;
+//
+//echo $category;
+//echo $newsid;
 $result=[];
 if($newsid==null){
   ////新建一篇文章
 }else {
     if($category=='testprogramme'){
-        $sql="SELECT * FROM cotestcms.testprogramme where id=".$id;
+        $sql="SELECT * FROM cotestcms.testprogramme where id=".$newsid;
         $result=$GLOBALS['db']->getOneRow($sql);
     }else if($category=='testreport'){
-        $sql="SELECT * FROM cotestcms.testreports where id=".$id;
+        $sql="SELECT * FROM cotestcms.testreports where id=".$newsid;
         $result=$GLOBALS['db']->getOneRow($sql);
     }else if($category=='cotestreport'){
-        $sql="SELECT * FROM cotestcms.cotestreports where id=".$id;
+        $sql="SELECT * FROM cotestcms.cotestreports where id=".$newsid;
         $result=$GLOBALS['db']->getOneRow($sql);
     }
 }
-print_r($result);
-echo $result['title'];
-echo $result['content'];
-echo $result['product'];
+$title= $result['title'];
+$content = $result['content'];
+$product = $result['product'];
+
+$smarty->assign('title',$title);
+$smarty->assign('content',$content);
+$smarty->display('newsedit.tpl');
