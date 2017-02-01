@@ -33,6 +33,7 @@ if($newsid==null){
 $title= $result['title'];
 $content = $result['content'];
 $product = $result['product'];
+$category = $result['category'];
 
 $smarty->assign('title',$title);
 $smarty->assign('content',$content);
