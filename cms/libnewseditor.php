@@ -292,6 +292,16 @@ function getCotestreportsAll($datedesc=true){
 
 
 /************************************************************其他功能函数***********************************************************/
+/*
+ * 得到所有的productsx小类
+ * */
+function getProductsNames()
+{
+    $result=$GLOBALS['db']->getAllDBnames();
+    return $result;
+}
+
+
 /*重新将testprogramme的ID从1排序，因为在多次添加删除了中间的某篇文章后，可能id会乱*/
 function updateTestprogrammeIDs()
 {

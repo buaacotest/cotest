@@ -36,12 +36,12 @@
 
 <form name="example" method="post" action="./newsedit.php" >
     <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;">文章标题</p>
-    <select name="category" style="float:left; padding:2px; height:24px; margin-right:2px;">
+    <select id="catesel" name="category" style="float:left; padding:2px; height:24px; margin-right:2px;">
         <{foreach from=$category item=opt}>
         <option value="<{$opt}>"><{$opt}></option>
         <{/foreach}>
     </select>
-    <select name="product" style="float:left; padding:2px; height:24px; margin-right:2px;">
+    <select id="productsel"  name="product" style="float:left; padding:2px; height:24px; margin-right:2px;">
         <{foreach from=$product item=opt}>
         <option value="<{$opt}>"><{$opt}></option>
         <{/foreach}>
@@ -53,5 +53,8 @@
     <br />
     <input type="submit" name="button" value="提交内容" /> (提交快捷键: Ctrl + Enter)
 </form>
+<script>
+    document.getElementById("productsel")[<{$productselectedNum}>].selected=true;
+</script>
 </body>
 </html>
