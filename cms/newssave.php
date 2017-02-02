@@ -30,8 +30,10 @@ print_r($title);
 echo "</br>";
 print_r($content);
 if($category=='testprogramme'){
-    if(!empty($txtid)){
+    if(!empty($txtid)){////如果 有id，则是更新
         $result=updateTestprogramme($txtid,$title,$content,$date,$product);
+    }else{////否则是新建
+        
     }
 
 }elseif($category=='testreport'){
