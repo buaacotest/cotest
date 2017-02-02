@@ -48,6 +48,8 @@ for($i = 0; $i < $num; $i++){///////取得当前选择项
         break;
     }
 }
+
+$smarty->assign('textid',$newsid);
 $smarty->assign('title',$title);
 $smarty->assign('content',$content);
 $smarty->assign('category',$categories);
