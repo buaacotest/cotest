@@ -30,13 +30,22 @@
             });
             prettyPrint();
         });
+        function checkValue(){
+            var  myselect=document.getElementById("catesel")
+            var index=myselect.selectedIndex ;
+            if (myselect.options[index].text=="cotestreport"){
+                document.getElementById("productsel").disabled=true
+            }else{
+                document.getElementById("productsel").disabled=false
+            }
+        }
     </script>
 </head>
 <body>
 
 <form name="example" method="post" action="./newsedit.php" >
     <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;">文章标题</p>
-    <select id="catesel" name="category" style="float:left; padding:2px; height:24px; margin-right:2px;">
+    <select id="catesel" name="category" style="float:left; padding:2px; height:24px; margin-right:2px;" onchange="checkValue()">
         <{foreach from=$category item=opt}>
         <option value="<{$opt}>"><{$opt}></option>
         <{/foreach}>
@@ -46,7 +55,7 @@
         <option value="<{$opt}>"><{$opt}></option>
         <{/foreach}>
     </select>
-    <input type="text" id="txtTitle" style="width:560px; height:20px; float:left;" maxlength="100" value="<{$title}>"/>
+    <input type="text" id="txtTitle" style="width:560px; height:25px; float:left;" maxlength="100" value="<{$title}>"/>
     <br />
     <p style="padding:12px 4px 2px 4px; color:#999; font-weight:bold; border-bottom:solid 1px #f5f5f5; clear:both;">文章内容</p>
     <textarea name="content1" style="width:700px;height:200px;visibility:hidden;"><{$content}></textarea>
@@ -55,6 +64,7 @@
 </form>
 <script>
     document.getElementById("productsel")[<{$productselectedNum}>].selected=true;
+
 </script>
 </body>
 </html>
