@@ -35,7 +35,7 @@ if($newsid==null){
     }
 }
 $title= $result['title'];
-$content = htmlspecialchars($result['content']);
+$content = $result['content'];
 $product = $result['product'];
 
 

@@ -34,6 +34,7 @@ if($category=='testprogramme'){
     if(!empty($txtid)){////如果 有id，则是更新
         $result=updateTestprogramme($txtid,$title,$content,$date,$product);
     }else{////否则是新建
+		$content=htmlspecialchars($content,ENT_QUOTES);
         $result=addTestprogramme($title,$content,$date,$product);
     }
 
