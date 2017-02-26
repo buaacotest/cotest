@@ -1,0 +1,44 @@
+.press-content{
+  float: left;
+}
+.press-side{
+  padding: 0px;
+  margin-top: 0px;
+  padding-right: 20px;
+  border:none;
+}
+.selection-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  line-height: 30px;
+}
+.selection-block{
+  margin-bottom: 20px;
+}
+.press-block{
+  padding: 20px;
+  border: 1px solid #eee;
+  margin: 10px;
+  width:650px;
+}
+.press-report-item{
+  margin: 20px 0px;
+}
+.press-block-title{
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 40px;
+}
+.press-item-nav-info{
+  font-size: 12px;
+}
+.press-item-title{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+}
+.press-item-date{
+  font-size: 12px;
+  color: #999;
+}

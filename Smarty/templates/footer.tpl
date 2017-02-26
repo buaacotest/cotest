@@ -1,5 +1,5 @@
 <footer>
-   
+
       <div class="row footer-container">
         <div class="col-md-4 ">
           <div class="footer-block">
@@ -11,7 +11,7 @@
                 <div class="score-head">Symbol</div>
               </li>
               <li>
-                
+
                 <div class="score-point">0.5-1.5</div>
                 <div class="score-info"><{$lang.VeryGood}>  </div>
                 <div class="score-list">
@@ -68,11 +68,11 @@
               </li>
             </ul>
             <div class="cross-info">
-              
+
                <img src="img/check2.png" class="cross-img" /> for "Yes" &nbsp;&nbsp;
               <img src="img/cross.png" class="cross-img" /> for "No"
             </div>
-           
+
           </div>
         </div>
         <div class="col-md-4">
@@ -109,16 +109,18 @@
          <!-- </ul>-->
           </div>
         </div>
-        
+
         <div class="col-md-4">
           <div class="footer-block friends-block">
           <h4><b><{$lang.Friends}></b></h4>
           <div class="col-md-12 eu">
             <div class="col-md-9 ">
-              <img src="img/eu.gif" >
+              <a href='http://ec.europa.eu/consumers/index_en.htm'>
+                <img src="img/eu.gif" >
+              </a>
             </div>
             <div class="col-md-3 eu-text">
-                <div class=""><a target="_blank" href="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex">RAPEX</a></div>
+                <div class=""><a target="_blank" href="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex/alerts/repository/content/pages/rapex/index_en.htm">RAPEX</a></div>
               <div><a target="_blank" href="http://ec.europa.eu/food/safety/rasff/index_en.htm">RASFF</a></div>
             </div>
             </div>
@@ -150,8 +152,8 @@
             </a>
             </div>
             <div>
-            
-            
+
+
             </div>
           </div>
           -->

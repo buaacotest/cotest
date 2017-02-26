@@ -69,22 +69,22 @@
                 <input  class="span12 log-input yzm-input " placeholder="<{$lang.code}>"  id="yzm-input" type="text">
                 <img id="yzm-img">
             </div>
-        
+
 
 <div id="success-modal"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-   
+
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-     
+
        <h4 class="modal-title" id="myModalLabel">Register successfully!Please check your email.</h4>
       </div>
       <div class="modal-footer">
-      
+
         <button type="button" class="btn btn-default" id="regconfirm"data-dismiss="modal">
         <a href="login.php">Confirm </a></button>
-      
+
       </div>
     </div>
   </div>
@@ -103,6 +103,17 @@
                         </span>
                 </label>
             </div>
+            <div class="row-fluid">
+                <label class="active">
+                        <span class="checkbox active">
+                        <input type="checkbox" >
+                        </span>
+                        <span class="inner-label">
+
+                        We would like to send you our Newsletter to inform you about the latest tests. If you would prefer not to receive it, please untick the box.
+                        </span>
+                </label>
+            </div>
 
             <button class="btn btn-block sign-btn" name="button" type="submit" data-form-sbm="1456842528245.992" id="sign-up-btn" ><{$lang.sign}></button>
             <br>
@@ -112,9 +123,9 @@
             </div>
 
         <div class="text-center">
-            <hr class="hr-normal">
+            <hr class="hr-normal">Already an account? 
             <a href="login.php"><i class="icon-chevron-left"></i>
-                <{$lang.goback}>
+                Login
             </a>
         </div>
     </div>
@@ -142,7 +153,7 @@
           //    document.getElementByIdx_x('checkusr').innerHTML ="<font color='#ff0000'>用户名非法!</font>";
               return false;
             }
-            else 
+            else
                 return true;
          }
          function check_psw(obj){

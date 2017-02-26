@@ -11,9 +11,10 @@
     <title><{$title}></title>
 
     <!-- Bootstrap core CSS -->
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/cotest.css">
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/press.css">
     <script src="js/changelanguage.js"></script>
 
 
@@ -31,6 +32,97 @@
     require("navigation.php");
     <{/php}>
 <div class="container main-container review-container">
+  <div class="sidebar press-side">
+    <div class="facet facet-checkbox" name="total test result" type="range">
+      <div class="heading-filter-options">
+        <h3><span class="facet-category-heading icon icon-0394"></span>Section</h3>
+      </div>
+      <div class="cont-filter-options toggle-panel">
+        <div class="filter-options">
+          <label>
+            <span class="checkbox" name="">
+              <input class="filter-option" type="checkbox">
+            </span>
+            <span class="inner-label">Electrics <span class="count"> (11) </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="cont-filter-options toggle-panel">
+        <div class="filter-options">
+          <label>
+            <span class="checkbox" name="" >
+              <input class="filter-option" type="checkbox">
+            </span>
+            <span class="inner-label">Babies & Kids <span class="count"> (11) </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="press-content">
+    <div class="press-block">
+      <div class='press-block-title'>Test Report</div>
+      <div class="press-report-item">
+        <div class="press-item-nav-info">
+          <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
+        </div>
+        <div class="press-item-title">
+          1 Chinese formula just as good as the 3 global test winners
+        </div>
+        <div class="press-item-date">
+          Release date: 28/02/2017
+        </div>
+      </div>
+      <div class="press-report-item">
+        <div class="press-item-nav-info">
+          <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
+        </div>
+        <div class="press-item-title">
+          1 Chinese formula just as good as the 3 global test winners
+        </div>
+        <div class="press-item-date">
+          Release date: 28/02/2017
+        </div>
+      </div>
+    </div>
+    <div class="press-block">
+      <div class='press-block-title'>Test Programmes</div>
+      <div class="press-report-item">
+        <a>Electronics</a> > <a>Smartphones</a>
+      </div>
+      <div class="press-report-item">
+        <a>Electronics</a> > <a>Smartphones</a>
+      </div>
+    </div>
+    <div class="press-block">
+      <div class='press-block-title'>Reports About Cotest</div>
+      <div class="press-report-item">
+        <div class="press-report-item">
+
+          <div class="press-item-title">
+            1 Chinese formula just as good as the 3 global test winners
+          </div>
+          <div class="press-item-date">
+            Release date: 28/02/2017
+          </div>
+        </div>
+      </div>
+      <div class="press-report-item">
+        <div class="press-report-item">
+          <div class="press-item-title">
+            1 Chinese formula just as good as the 3 global test winners
+          </div>
+          <div class="press-item-date">
+            Release date: 28/02/2017
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--
 <h1>Press releases</h1>
 <h2>
 Reports about COTEST
@@ -52,7 +144,7 @@ Reports about COTEST
 
 <h4>Focus on Chinese Products</h4>
 <p>According to the EU RASFF (Rapid Alert System for Food and Feed) records, China is still the largest place of origin for notified unsafe food and feed products in Europe, and almost 60% of notifications in the EU's Rapid Alert System for non-food dangerous products (RAPEX) concern goods of Chinese origin. In Europe, dangerous Chinese products are still countable, but in China, they have been innumerable for a long time. In China and around the world this really affects the basic human right to live safely.  COTEST will therefore, at first, focus on the research and testing of products from China in order to empower consumers in China and around the world to consume safely and healthily.</p>
-
+-->
 </div>
 
 
@@ -66,6 +158,68 @@ Reports about COTEST
   require("footer.php");
   <{/php}>
 </body>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var section = {name:'Section',level:2,children:[{name:'Electronics'},{name:'Babies'},{name:'Food'}]};
+  var releaseDate = {name:'Release date',level:2,children:[{name:'2017'},{name:'2016'},{name:'2015'}]}
+  var reportsReleased = {name:'Reports released',level:1,children:[section,releaseDate]}
+  var tests = {name:'Test Programmes',level:1,children:[{name:'Electronics'},{name:'Babies'},{name:'Food'}]}
+  var reportsAboutCotest = {name:'Reports about Cotest',level:1}
+  var selectionData={level:0,children:[reportsReleased,tests,reportsAboutCotest]}
+  var s=''
+  getSelection(selectionData)
+  $(".press-side").html(s);
+  console.log(s)
+  function getSelection(selectionData){
+    switch (selectionData.level) {
+      case 0:
+        break;
+      case 1:
+        s+='<div class="selection-block"><div class="selection-title">'+selectionData.name+'</div>'
+        break;
+      case 2:
+        s+='<div class="facet facet-checkbox" name="total test result" type="range">'
+        s+= '<div class="heading-filter-options">'+
+              '<h3><span class="facet-category-heading icon icon-0394"></span>'+selectionData.name+'</h3>'+
+            '</div>'
+        break;
+      default:
+        s+=
+            '<div class="cont-filter-options toggle-panel">'+
+              '<div class="filter-options">'+
+                '<label>'+
+                  '<span class="checkbox" name="">'+
+                    '<input class="filter-option" type="checkbox">'+
+                  '</span>'+
+                  '<span class="inner-label">'+selectionData.name+' <span class="count"> (11) </span>'+
+                  '</span>'+
+                '</label>'+
+              '</div>'+
+            '</div>'
+
+    }
+    if(selectionData.children){
+      for(var i=0;i<selectionData.children.length;i++){
+        getSelection(selectionData.children[i])
+      }
+    }
+    switch (selectionData.level) {
+      case 0:
+        break;
+      case 1:
+        s+='</div>'
+        break;
+      case 2:
+        s+='</div>'
+        break;
+      default:
+        s+=''
+    }
+  }
+})
+</script>
 <script type="text/javascript" src="js/cotest.js"></script>
 <script type="text/javascript" src="js/review.js"></script>
 </html>
