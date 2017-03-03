@@ -70,7 +70,8 @@
           <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
         </div>-->
         <div class="press-item-title">
-          <{ $testreports[n].id}>
+          <div style="display:none"><{ $testreports[n].id}></div>
+          <{$smarty.section.n.index_next}>
           <{ $testreports[n].title}>
         </div>
         <div class="press-item-date">
@@ -98,7 +99,8 @@
           <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
         </div>-->
         <div class="press-item-title">
-          <{ $testprogramme[n].id}>
+          <div style="display:none"><{ $testprogramme[n].id}></div>
+          <{$smarty.section.n.index_next}>
           <{ $testprogramme[n].title}>
         </div>
         <div class="press-item-date">
@@ -115,7 +117,8 @@
           <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
         </div>-->
         <div class="press-item-title">
-          <{ $cotestreports[n].id}>
+          <div style="display:none"><{ $cotestreports[n].id}></div>
+          <{$smarty.section.n.index_next}>
           <{ $cotestreports[n].title}>
         </div>
         <div class="press-item-date">
