@@ -64,7 +64,21 @@
   <div class="press-content">
     <div class="press-block">
       <div class='press-block-title'>Test Report</div>
+      <{section name=n loop=$testreports}>
       <div class="press-report-item">
+        <!--<div class="press-item-nav-info">
+          <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
+        </div>-->
+        <div class="press-item-title">
+          <{ $testreports[n].id}>
+          <{ $testreports[n].title}>
+        </div>
+        <div class="press-item-date">
+          <{ $testreports[n].date}>
+        </div>
+      </div>
+      <{/section}>
+      <!--<div class="press-report-item">
         <div class="press-item-nav-info">
           <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
         </div>
@@ -74,51 +88,41 @@
         <div class="press-item-date">
           Release date: 28/02/2017
         </div>
-      </div>
-      <div class="press-report-item">
-        <div class="press-item-nav-info">
-          <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
-        </div>
-        <div class="press-item-title">
-          1 Chinese formula just as good as the 3 global test winners
-        </div>
-        <div class="press-item-date">
-          Release date: 28/02/2017
-        </div>
-      </div>
+      </div>-->
     </div>
     <div class="press-block">
       <div class='press-block-title'>Test Programmes</div>
+      <{section name=n loop=$testprogramme}>
       <div class="press-report-item">
-        <a>Electronics</a> > <a>Smartphones</a>
+        <!--<div class="press-item-nav-info">
+          <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
+        </div>-->
+        <div class="press-item-title">
+          <{ $testprogramme[n].id}>
+          <{ $testprogramme[n].title}>
+        </div>
+        <div class="press-item-date">
+          <{ $testprogramme[n].date}>
+        </div>
       </div>
-      <div class="press-report-item">
-        <a>Electronics</a> > <a>Smartphones</a>
-      </div>
+      <{/section}>
     </div>
     <div class="press-block">
       <div class='press-block-title'>Reports About Cotest</div>
+      <{section name=n loop=$cotestreports}>
       <div class="press-report-item">
-        <div class="press-report-item">
-
-          <div class="press-item-title">
-            1 Chinese formula just as good as the 3 global test winners
-          </div>
-          <div class="press-item-date">
-            Release date: 28/02/2017
-          </div>
+        <!--<div class="press-item-nav-info">
+          <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
+        </div>-->
+        <div class="press-item-title">
+          <{ $cotestreports[n].id}>
+          <{ $cotestreports[n].title}>
+        </div>
+        <div class="press-item-date">
+          <{ $cotestreports[n].date}>
         </div>
       </div>
-      <div class="press-report-item">
-        <div class="press-report-item">
-          <div class="press-item-title">
-            1 Chinese formula just as good as the 3 global test winners
-          </div>
-          <div class="press-item-date">
-            Release date: 28/02/2017
-          </div>
-        </div>
-      </div>
+      <{/section}>
     </div>
   </div>
 </div>

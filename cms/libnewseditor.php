@@ -197,6 +197,35 @@ function getTestprogrammesAll($datedesc=true){
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
 }
+/*
+ * 分页查找products的testprogramme新闻
+ * 如果products为空,表示查询所有
+ * 默认按date从最近的开始排序
+ * pageNumber：页号
+ * nPagePer:每页最多的条数
+ * */
+function getTestprogrammeOnePage($pageNumber,$nPagePer,$product="",$datedesc=true){
+    $start=($pageNumber-1)*$nPagePer;
+    $limitN=$nPagePer;
+    if(empty($product)||is_null($product)){
+        if($datedesc){
+            $sql="SELECT * FROM cotestcms.testprogramme order by date desc limit ".$start." ,".$limitN;
+        }else{
+            $sql="SELECT * FROM cotestcms.testprogramme order by date limit ".$start." ,".$limitN;
+        }
+    }else{
+        if($datedesc){
+            $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date desc limit ".$start." ,".$limitN;
+        }else{
+            $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date limit ".$start." ,".$limitN;
+        }
+    }
+    echo $sql;
+    $result=$GLOBALS['db']->getAll($sql);
+    return $result;
+}
+
+
 
 /*根据id查询一篇testreports新闻*/
 function getOneTestreportByID($id)
@@ -250,6 +279,36 @@ function getTestreportsAll($datedesc=true){
 }
 
 
+/*
+ * 分页查找products的testreport新闻
+ * 如果products为空,表示查询所有
+ * 默认按date从最近的开始排序
+ * pageNumber：页号
+ * nPagePer:每页最多的条数
+ * */
+function getTestreportsOnePage($pageNumber,$nPagePer,$product="",$datedesc=true){
+    $start=($pageNumber-1)*$nPagePer;
+    $limitN=$nPagePer;
+    if(empty($product)||is_null($product)){
+        if($datedesc){
+            $sql="SELECT * FROM cotestcms.testreports order by date desc limit ".$start." ,".$limitN;
+        }else{
+            $sql="SELECT * FROM cotestcms.testreports order by date limit ".$start." ,".$limitN;
+        }
+    }else{
+        if($datedesc){
+            $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date desc limit ".$start." ,".$limitN;
+        }else{
+            $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date limit ".$start." ,".$limitN;
+        }
+    }
+    $result=$GLOBALS['db']->getAll($sql);
+    return $result;
+}
+
+
+
+
 /*根据id查询一篇cotestreports新闻*/
 function getOneCotestreportByID($id)
 {
@@ -286,6 +345,18 @@ function getCotestreportsAll($datedesc=true){
     }else{
         $sql="SELECT * FROM cotestcms.cotestreports order by date";
     }
+    $result=$GLOBALS['db']->getAll($sql);
+    return $result;
+}
+
+function getCotestreportsOnePage($pageNumber,$nPagePer,$datedesc=true){
+    $start=($pageNumber-1)*$nPagePer;
+    $limitN=$nPagePer;
+    if($datedesc){
+            $sql="SELECT * FROM cotestcms.cotestreports order by date desc limit ".$start." ,".$limitN;
+    }else{
+            $sql="SELECT * FROM cotestcms.cotestreports order by date limit ".$start." ,".$limitN;
+        }
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
 }
