@@ -16,7 +16,7 @@ $category=trim($_GET['category']);
 $result=[];
 
 if($category=='testprogramme'){
-        $result=getOneTestprogrammeByID($newsid);
+    $result=getOneTestprogrammeByID($newsid);
 }else if($category=='testreport'){
         $result=getOneTestreportByID($newsid);
 }else if($category=='cotestreport'){
@@ -26,9 +26,10 @@ if($category=='testprogramme'){
 $title= $result['title'];
 $content = $result['content'];
 $date=$result['date'];
-
+$content=htmlspecialchars_decode($content,ENT_QUOTES);
 //print_r($result);
 $smarty->assign('title',$title);
 $smarty->assign('date',$date);
 $smarty->assign('content',$content);
+$smarty->display('test.tpl');
 
