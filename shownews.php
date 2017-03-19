@@ -31,4 +31,4 @@ $date=$result['date'];
 $smarty->assign('title',$title);
 $smarty->assign('date',$date);
 $smarty->assign('content',$content);
-
+$smarty->display('pressdetail.tpl');

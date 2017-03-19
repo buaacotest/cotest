@@ -77,6 +77,9 @@
         <div class="press-item-date">
           <{ $testreports[n].date}>
         </div>
+        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$testreports[n].id}>&category=testreport">
+          edit
+        </a>
       </a>
       <{/section}>
       <!--<div class="press-report-item">
@@ -106,6 +109,9 @@
         <div class="press-item-date">
           <{ $testprogramme[n].date}>
         </div>
+        <a class="press-item-edit" href="cms/newsedit/php?newsid=<{$testprogramme[n].id}>&category=testprogramme">
+          edit
+        </a>
       </a>
       <{/section}>
     </div>
@@ -124,6 +130,9 @@
         <div class="press-item-date">
           <{ $cotestreports[n].date}>
         </div>
+        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$cotestreports[n].id}>&catogory=cotestreport">
+          edit
+        </a>
       </a>
       <{/section}>
     </div>
