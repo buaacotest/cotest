@@ -30,6 +30,7 @@ if($newsid==null){
         $categories=['testreport','testprogramme','cotestreport'];
     }else if($category=='cotestreport'){
         $sql="SELECT * FROM cotestcms.cotestreports where id=".$newsid;
+        //echo $sql;
         $result=$GLOBALS['db']->getOneRow($sql);
         $categories=['cotestreport','testreport','testprogramme'];
     }
@@ -37,7 +38,9 @@ if($newsid==null){
 $title= $result['title'];
 $content = $result['content'];
 $product = $result['product'];
-
+//echo $title;
+//echo $content;
+//echo $product;
 
 $allproducts=getProductsNames();
 $productselectedNum=0;

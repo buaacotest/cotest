@@ -140,10 +140,10 @@
         <div class="press-item-date">
           <{ $cotestreports[n].date}>
         </div>
-        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$cotestreports[n].id}>&catogory=cotestreport">
+        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$cotestreports[n].id}>&category=cotestreport">
           edit
         </a>
-        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<{$cotestreports[n].id}>&catogory=cotestreport">
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<{$cotestreports[n].id}>&category=cotestreport">
           delete
         </a>
       </a>
