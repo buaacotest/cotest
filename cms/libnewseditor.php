@@ -34,22 +34,25 @@ function addCotestreport($title,$content,$date)
 /************************************************************删除新闻***********************************************************/
 function deleteTestprogrammeByID($id)
 {
-
     $sql="DELETE FROM `cotestcms`.`testprogramme` WHERE `id` = ".$id;
+    //echo $sql;
     $result=$GLOBALS['db']->query($sql);
-
+    return $result;
 }
 
 /*通过id删除1条testprogramme*/
 function deleteTestreportByID($id)
 {
    $sql="DELETE FROM `cotestcms`.`testreports` WHERE `id` = ".$id;
+   //echo $sql;
    $result=$GLOBALS['db']->query($sql);
+   return $result;
 }
 /*通过id删除1条testprogramme*/
 function deleteCotestreportByID($id)
 {
    $sql="DELETE FROM `cotestcms`.`cotestreports` WHERE `id` = ".$id;
+    //echo $sql;
    $result=$GLOBALS['db']->query($sql);
     return $result;
 }
@@ -220,7 +223,7 @@ function getTestprogrammeOnePage($pageNumber,$nPagePer,$product="",$datedesc=tru
             $sql="SELECT * FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date limit ".$start." ,".$limitN;
         }
     }
-    echo $sql;
+    //echo $sql;
     $result=$GLOBALS['db']->getAll($sql);
     return $result;
 }

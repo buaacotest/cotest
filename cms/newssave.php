@@ -16,8 +16,8 @@ $product=trim($_POST['product']);
 
 $title=trim($_POST['txtTitle']);
 $content=trim($_POST['content1']);
-
-$date='2017-01-25';
+$date = date("Y-m-d",time());
+//$date='2017-01-25';
 print_r('txtid:'.$txtid);
 echo "</br>";
 
