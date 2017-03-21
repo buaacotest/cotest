@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2017-03-21 10:52:25
+<?php /* Smarty version 2.6.19, created on 2017-03-21 11:25:25
          compiled from pressedit.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -232,11 +232,11 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
         </div>
         <a class="press-item-edit" href="cms/newsedit.php?newsid=<?php echo $this->_tpl_vars['cotestreports'][$this->_sections['n']['index']]['id']; ?>
-&catogory=cotestreport">
+&category=cotestreport">
           edit
         </a>
         <a class="press-item-edit" href="cms/newsdelete.php?newsid=<?php echo $this->_tpl_vars['cotestreports'][$this->_sections['n']['index']]['id']; ?>
-&catogory=cotestreport">
+&category=cotestreport">
           delete
         </a>
       </a>

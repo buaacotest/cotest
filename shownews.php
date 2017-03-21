@@ -26,7 +26,8 @@ if($category=='testprogramme'){
 $title= $result['title'];
 $content = $result['content'];
 $date=$result['date'];
-
+$content=htmlspecialchars_decode($content,ENT_QUOTES);
+//echo $content;
 //print_r($result);
 $smarty->assign('title',$title);
 $smarty->assign('date',$date);
