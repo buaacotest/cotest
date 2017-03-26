@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `cotestcms` /*!40100 DEFAULT CHARACTER SET utf8 *
 USE `cotestcms`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: cotestcms
+-- Host: localhost    Database: cotestcms
 -- ------------------------------------------------------
 -- Server version	5.7.10-log
 
@@ -30,7 +30,7 @@ CREATE TABLE `cotestreports` (
   `content` mediumtext,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `cotestreports` (
 
 LOCK TABLES `cotestreports` WRITE;
 /*!40000 ALTER TABLE `cotestreports` DISABLE KEYS */;
-INSERT INTO `cotestreports` VALUES (1,'testcotestreport','bbbccccc','2017-01-25'),(2,'testcotestreport3','bbbccccc','2017-01-25'),(3,'testcotestreport2','bb','2017-01-25');
+INSERT INTO `cotestreports` VALUES (1,'cotestreport1','cotestreport1111&lt;span style=&quot;background-color:#FFE500;&quot;&gt;111111111111111111111111111111111111&lt;/span&gt;','2017-03-21'),(2,'cotestreport2','&lt;h2&gt;\r\n	cotes&lt;span style=&quot;color:#E53333;&quot;&gt;treport2222222222&lt;/span&gt;222222222\r\n&lt;/h2&gt;','2017-03-21');
 /*!40000 ALTER TABLE `cotestreports` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `testprogramme` (
   `date` date DEFAULT NULL,
   `product` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `testprogramme` (
 
 LOCK TABLES `testprogramme` WRITE;
 /*!40000 ALTER TABLE `testprogramme` DISABLE KEYS */;
-INSERT INTO `testprogramme` VALUES (1,'testtestprogramme1','&lt;strong&gt;&lt;span style=&quot;background-color:#E53333;&quot;&gt;sssssbbbbbb谁谁&lt;s&gt;谁谁谁&lt;/s&gt;&lt;span style=&quot;background-color:#B8D100;&quot;&gt;&lt;s&gt;&lt;/s&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;s&gt;水水水水&lt;span style=&quot;color:#B8D100;&quot;&gt;事实上&lt;/span&gt;&lt;/s&gt;事实上','2017-01-25','tablets'),(2,'testtestprogramme2','sssss','2017-01-25','mobilephones'),(3,'testtestprogramme2','sssss','2017-01-25','mobilephones'),(4,'test1','ssssss','2017-01-25','basiccameras'),(5,'谁谁谁谁谁','按时','2017-02-03','basiccameras');
+INSERT INTO `testprogramme` VALUES (1,'testprogramme1','&lt;span style=&quot;font-size:24px;&quot;&gt;testprogramme1&lt;em&gt;testprogramme1testprogramme1testprogramme1testprogramme1testprogramme1&lt;/em&gt;&lt;/span&gt;','2017-03-21','actioncamcorders');
 /*!40000 ALTER TABLE `testprogramme` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `testreports` (
   `date` date DEFAULT NULL,
   `product` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `testreports` (
 
 LOCK TABLES `testreports` WRITE;
 /*!40000 ALTER TABLE `testreports` DISABLE KEYS */;
-INSERT INTO `testreports` VALUES (1,'testtestreport','bbbbbb','2017-01-25','tvs'),(2,'testtestreport2','bbbbbb','2017-01-25','tvs'),(3,'testtestreport2','bbbbbb','2017-01-25','tvs');
+INSERT INTO `testreports` VALUES (1,'testreport1','test：this is a testreport1','2017-03-21','basiccameras'),(2,'testreport2','testreport22222222222222222222222222222222222222222222222222','2017-03-21','actioncamcorders');
 /*!40000 ALTER TABLE `testreports` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-03 20:19:03
+-- Dump completed on 2017-03-22 18:53:48

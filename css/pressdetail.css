@@ -3,5 +3,7 @@
   background: #fff;
   margin: 0 auto;
   padding: 40px;
-
+  word-wrap:break-word;
+  word-break:break-all;
+  overflow: hidden;
 }

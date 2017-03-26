@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2017-03-19 09:38:27
+<?php /* Smarty version 2.6.19, created on 2017-03-21 11:25:25
          compiled from pressedit.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +65,10 @@
     </div>
   </div>
   <div class="press-content">
+    <div class='press-block'><a class="press-item-edit" href="cms/newsedit.php">
+        Add news
+      </a>
+    </div>
     <div class="press-block">
       <div class='press-block-title'>Test Report</div>
       <?php unset($this->_sections['n']);
@@ -111,6 +115,10 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
         <a class="press-item-edit" href="cms/newsedit.php?newsid=<?php echo $this->_tpl_vars['testreports'][$this->_sections['n']['index']]['id']; ?>
 &category=testreport">
           edit
+        </a>
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<?php echo $this->_tpl_vars['testreports'][$this->_sections['n']['index']]['id']; ?>
+&category=testreport">
+          delete
         </a>
       </a>
       <?php endfor; endif; ?>
@@ -169,9 +177,13 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
           <?php echo $this->_tpl_vars['testprogramme'][$this->_sections['n']['index']]['date']; ?>
 
         </div>
-        <a class="press-item-edit" href="cms/newsedit/php?newsid=<?php echo $this->_tpl_vars['testprogramme'][$this->_sections['n']['index']]['id']; ?>
+        <a class="press-item-edit" href="cms/newsedit.php?newsid=<?php echo $this->_tpl_vars['testprogramme'][$this->_sections['n']['index']]['id']; ?>
 &category=testprogramme">
           edit
+        </a>
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<?php echo $this->_tpl_vars['testprogramme'][$this->_sections['n']['index']]['id']; ?>
+&category=testprogramme">
+          delete
         </a>
       </a>
       <?php endfor; endif; ?>
@@ -220,8 +232,12 @@ $this->_sections['n']['last']       = ($this->_sections['n']['iteration'] == $th
 
         </div>
         <a class="press-item-edit" href="cms/newsedit.php?newsid=<?php echo $this->_tpl_vars['cotestreports'][$this->_sections['n']['index']]['id']; ?>
-&catogory=cotestreport">
+&category=cotestreport">
           edit
+        </a>
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<?php echo $this->_tpl_vars['cotestreports'][$this->_sections['n']['index']]['id']; ?>
+&category=cotestreport">
+          delete
         </a>
       </a>
       <?php endfor; endif; ?>

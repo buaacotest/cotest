@@ -62,6 +62,10 @@
     </div>
   </div>
   <div class="press-content">
+    <div class='press-block'><a class="press-item-edit" href="cms/newsedit.php">
+        Add news
+      </a>
+    </div>
     <div class="press-block">
       <div class='press-block-title'>Test Report</div>
       <{section name=n loop=$testreports}>
@@ -79,6 +83,9 @@
         </div>
         <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$testreports[n].id}>&category=testreport">
           edit
+        </a>
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<{$testreports[n].id}>&category=testreport">
+          delete
         </a>
       </a>
       <{/section}>
@@ -109,8 +116,11 @@
         <div class="press-item-date">
           <{ $testprogramme[n].date}>
         </div>
-        <a class="press-item-edit" href="cms/newsedit/php?newsid=<{$testprogramme[n].id}>&category=testprogramme">
+        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$testprogramme[n].id}>&category=testprogramme">
           edit
+        </a>
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<{$testprogramme[n].id}>&category=testprogramme">
+          delete
         </a>
       </a>
       <{/section}>
@@ -130,8 +140,11 @@
         <div class="press-item-date">
           <{ $cotestreports[n].date}>
         </div>
-        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$cotestreports[n].id}>&catogory=cotestreport">
+        <a class="press-item-edit" href="cms/newsedit.php?newsid=<{$cotestreports[n].id}>&category=cotestreport">
           edit
+        </a>
+        <a class="press-item-edit" href="cms/newsdelete.php?newsid=<{$cotestreports[n].id}>&category=cotestreport">
+          delete
         </a>
       </a>
       <{/section}>

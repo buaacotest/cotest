@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2017-03-19 09:41:13
+<?php /* Smarty version 2.6.19, created on 2017-03-21 11:45:14
          compiled from pressdetail.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,8 @@
 </h2>
   <p><?php echo $this->_tpl_vars['date']; ?>
 </p>
-  <div class="article-content"></div>
+  <div class="article-content"><?php echo $this->_tpl_vars['content']; ?>
+</div>
 </div>
 </div>
 </body>
@@ -56,15 +57,6 @@
   require("footer.php");
    ?>
 </body>
-<script>
-  var content = '<?php echo $this->_tpl_vars['content']; ?>
-'
-  console.log(content)
-  content = content.replace(/&lt;/g,'<')
-  content =content.replace(/&gt;/g,'>')
-  content = content.replace(/&quot;/g,'"')
-  console.log(content)
-  $('.article-content').html(content)
-</script>
+
 <script type="text/javascript" src="js/cotest.js"></script>
 </html>

@@ -36,7 +36,7 @@
 <div class="press-content">
   <h2><{$title}></h2>
   <p><{$date}></p>
-  <div class="article-content"></div>
+  <div class="article-content"><{$content}></div>
 </div>
 </div>
 </body>
@@ -51,14 +51,6 @@
   require("footer.php");
   <{/php}>
 </body>
-<script>
-  var content = '<{$content}>'
-  console.log(content)
-  content = content.replace(/&lt;/g,'<')
-  content =content.replace(/&gt;/g,'>')
-  content = content.replace(/&quot;/g,'"')
-  console.log(content)
-  $('.article-content').html(content)
-</script>
+
 <script type="text/javascript" src="js/cotest.js"></script>
 </html>
