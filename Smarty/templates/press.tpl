@@ -79,6 +79,7 @@
         </div>
       </a>
       <{/section}>
+      <div class="testreport_page press-page"></div>
       <!--<div class="press-report-item">
         <div class="press-item-nav-info">
           <a>Babies & Kids </a> > Formula Milk Powder (14 Samples)
@@ -108,6 +109,7 @@
         </div>
       </a>
       <{/section}>
+      <div class="testprogramme_page press-page"></div>
     </div>
     <div class="press-block">
       <div class='press-block-title'>Reports About Cotest</div>
@@ -126,6 +128,7 @@
         </div>
       </a>
       <{/section}>
+      <div class="cotestreport_page press-page"></div>
     </div>
   </div>
 </div>
@@ -169,6 +172,13 @@ Reports about COTEST
 
 <script type="text/javascript">
 $(document).ready(function(){
+  var testprogramme_page_num=getPar("testprogramme_page_num");
+  var cotestreport_page_num = getPar('cotestreport_page_num');
+  var testreport_page_num = getPar('testreport_page_num');
+  if(!testreport_page_num) testreport_page_num = 1
+  if(!cotestreport_page_num) cotestreport_page_num = 1
+  if(!testprogramme_page_num) testprogramme_page_num = 1
+
   var section = {name:'Section',level:2,children:[{name:'Electronics'},{name:'Babies'},{name:'Food'}]};
   var releaseDate = {name:'Release date',level:2,children:[{name:'2017'},{name:'2016'},{name:'2015'}]}
   var reportsReleased = {name:'Reports released',level:1,children:[section,releaseDate]}
@@ -176,9 +186,116 @@ $(document).ready(function(){
   var reportsAboutCotest = {name:'Reports about Cotest',level:1}
   var selectionData={level:0,children:[reportsReleased,tests,reportsAboutCotest]}
   var s=''
+  setPage();
   getSelection(selectionData)
   $(".press-side").html(s);
   console.log(s)
+  function getHref(type,page){
+    var href = ''
+    switch (type) {
+      case 'testreport':
+        href = 'press.php?testreport_page_num='+page+"&cotestreport_page_num="+cotestreport_page_num+"&testprogramme_page_num="+testprogramme_page_num
+        break;
+      case 'testprogramme':
+          href = 'press.php?testreport_page_num='+testreport_page_num+"&cotestreport_page_num="+cotestreport_page_num+"&testprogramme_page_num="+page
+          break;
+     case 'cotestreport':
+            href = 'press.php?testreport_page_num='+testreport_page_num+"&cotestreport_page_num="+page+"&testprogramme_page_num="+testprogramme_page_num
+            break;
+      default:
+        href = 'press.php?testreport_page_num='+testreport_page_num+"&cotestreport_page_num="+page+"&testprogramme_page_num="+testprogramme_page_num
+      }
+      return href
+
+  }
+  function setPage(){
+    $('.testprogramme_page').html(getPageDom(testprogramme_page_num,5,10,'testprogramme'))
+    $('.cotestreport_page').html(getPageDom(cotestreport_page_num,5,10,'cotestreport'))
+    $('.testreport_page').html(getPageDom(testreport_page_num,5,10,'testreport'))
+    console.log(getPageDom(testprogramme_page_num,5,10,'testprogramme'))
+  }
+  function getPageDom(cpage,totalpage,pagesize,type){
+    var href = ''
+    var outstr = ''
+    for(var i=1;i<=totalpage;i++){
+      href = getHref(type,i)
+      if(i!=cpage)
+        outstr += "<a href='"+href+"'>"+i+"</a>";
+      else {
+        outstr += "<span>"+i+"</span>";
+      }
+    }
+    return outstr
+  }
+  /*function getPageDom(cpage,totalpage,pagesize,type){
+        var href =''
+        var outstr = ''
+        if(totalpage<=pagesize){        //总页数小于十页
+            for (count=1;count<=totalpage;count++)
+            {  if(count!=cpage){
+                href = getHref(type,count)
+                outstr += "<a href='"+href+"'>"+count+"</a>";
+              }
+              else{
+                  outstr += outstr + "<span class='current' >"+count+"</span>";
+              }
+            }
+        }
+        if(totalpage>pagesize){        //总页数大于十页
+            if(parseInt((cpage-1)/pagesize) == 0)///前10页
+            {
+                for (count=1;count<=pagesize;count++)
+                {
+                    if(count!=cpage)
+                    {
+                        href = getHref(type,count)
+                        outstr += "<a href='"+href+"'>"+count+"</a>";
+                    }
+                    else{
+                        outstr += outstr + "<span class='current'>"+count+"</span>";
+                    }
+                }
+                href = getHref(type,count)
+                outstr += outstr +"<a href='"+href+"'/>";
+            }
+            else if(parseInt((cpage-1)/pagesize) == parseInt(totalpage/pagesize))///最后10页
+            {
+                href = getHref(type,parseInt((cpage-1)/pagesize))
+                outstr += outstr + "<a href='"+href+"'>"+count+"</a>";
+                for (count=parseInt(totalpage/pagesize)*pagesize+1;count<=totalpage;count++)
+                {    if(count!=cpage)
+                  {
+                      href = getHref(type,count)
+                      outstr += outstr +  "<a href='"+href+"'>"+count+"</a>";
+                  }else{
+                      outstr += outstr + "<span class='current'>"+count+"</span>";
+                  }
+                }
+            }
+            else///中间页数
+            {
+                href = getHref(type,parseInt((cpage-1)/pagesize)*pagesize)
+                outstr =   "<a href='"+href+"'>"+count+"</a>";
+                for (count=parseInt((cpage-1)/pagesize)*pagesize+1;count<=parseInt((cpage-1)/pagesize)*pagesize+pagesize;count++)
+                {
+                    if(count!=cpage)
+                    {
+                      href = getHref(type,count)
+                      outstr += outstr +  "<a href='"+href+"'>"+count+"</a>";
+
+                    }else{
+                        outstr += outstr + "<span class='current'>"+count+"</span>";
+                    }
+                }
+                href = getHref(type,count)
+                outstr += outstr +  "<a href='"+href+"'>"+count+"</a>";
+
+            }
+        }
+        return outstr
+
+  }
+  */
   function getSelection(selectionData){
     switch (selectionData.level) {
       case 0:
