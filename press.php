@@ -26,6 +26,11 @@ if(!$cotestreport_page_num){
   $cotestreport_page_num = 1;
 }
 
+$TestprogrammeTotalPage=getTestprogrammeTotalPage($numberPerpage);
+$TestreportsTotalPage=getTestreportsTotalPage($numberPerpage);
+$CotestreportsTotalPage=getCotestreportsTotalPage($numberPerpage);
+
+
 $Testprogramme=getTestprogrammeOnePage($testprogramme_page_num,$numberPerpage);
 $Testreports=getTestreportsOnePage($testreport_page_num,$numberPerpage);
 $Cotestreports=getCotestreportsOnePage($cotestreport_page_num,$numberPerpage);

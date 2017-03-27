@@ -7,7 +7,12 @@
  */
 
 /************************************************************增加新闻***********************************************************/
-/*添加一条Testprogramme*/
+/*添加一条Testprogramme
+ * @title:标题
+ * @content:内容
+ * @date:时间，格式"YY-MM-DD"
+ * @product:文章描述产品分类
+ * */
 function addTestprogramme($title,$content,$date,$product)
 {
     $sql="INSERT INTO `cotestcms`.`testprogramme` (`title`, `content`, `date`, `product`) VALUES ( \"".$title."\", \"".$content."\", \"".$date."\" ,\"".$product."\")";
@@ -207,7 +212,7 @@ function getTestprogrammesAll($datedesc=true){
  * pageNumber：页号
  * nPagePer:每页最多的条数
  * */
-function getTestprogrammeOnePage($pageNumber,$nPagePer,$product="",$datedesc=true){
+function getTestprogrammeOnePage($pageNumber,$nPagePer,$datedesc=true,$product=""){
     $start=($pageNumber-1)*$nPagePer;
     $limitN=$nPagePer;
     if(empty($product)||is_null($product)){
@@ -284,12 +289,12 @@ function getTestreportsAll($datedesc=true){
 
 /*
  * 分页查找products的testreport新闻
- * 如果products为空,表示查询所有
- * 默认按date从最近的开始排序
- * pageNumber：页号
- * nPagePer:每页最多的条数
+ * @products:为空,表示查询所有
+ * @datedesc:默认按date从最近的开始排序
+ * @pageNumber:页号
+ * @nPagePer:每页最多的条数
  * */
-function getTestreportsOnePage($pageNumber,$nPagePer,$product="",$datedesc=true){
+function getTestreportsOnePage($pageNumber,$nPagePer,$datedesc=true,$product=""){
     $start=($pageNumber-1)*$nPagePer;
     $limitN=$nPagePer;
     if(empty($product)||is_null($product)){
@@ -374,7 +379,115 @@ function getProductsNames()
     $result=$GLOBALS['db']->getAllDBnames();
     return $result;
 }
+/*
+ *获得testprogramme总页数，perPage表示每页的页数，products表示筛选的分类预留项，默认为null（因为现在暂时都不分类显示）
+ * */
+function getTestprogrammeTotalPage($perPage,$datedesc=true,$products=null)
+{
+    $totalpage=0;
+    if(empty($product)||is_null($product)){////默认不分类显示
+        if($datedesc){
+            $sql="SELECT count(*) FROM cotestcms.testprogramme order by date desc";
+        }else{
+            $sql="SELECT count(*) FROM cotestcms.testprogramme order by date";
+        }
 
+        $result=$GLOBALS['db']->getOne($sql);
+        if(!empty($result)){
+            $moditem=$result%$perPage;
+            $totalpage=floor($result/$perPage);
+            if ($moditem!=0){
+                $totalpage+=1;
+            }
+        }else{
+            $totalpage=0;
+        }
+    }else{
+        /////添加查找在products分类里的语句,以下代码可能需要重构
+        $itemcount=0;
+        foreach($products as $product){
+            $sql="SELECT count(*) FROM cotestcms.testprogramme where `product`=\"".$product."\" order by date";
+            $temp=$GLOBALS['db']->getOne($sql);
+            if(!empty($temp)){
+                $itemcount+=$temp;
+            }
+        }
+        $moditem=$itemcount%$perPage;
+        $totalpage=floor($itemcount/$perPage);
+        if($moditem!=0){
+            $totalpage+=1;
+        }
+    }
+    return $totalpage;
+}
+/*
+ *获得testreports总页数
+ * @perPage:表示每页的页数
+ * @products:表示分类，默认为null（因为现在暂时都不分类显示）
+ * @datedesc:是否
+ * */
+function getTestreportsTotalPage($perPage,$datedesc=true,$products=null)
+{
+    $totalpage=0;
+    if(empty($product)||is_null($product)){////默认不分类显示
+        if($datedesc){
+            $sql="SELECT count(*) FROM cotestcms.testreports order by date desc";
+        }else{
+            $sql="SELECT count(*) FROM cotestcms.testreports order by date";
+        }
+
+        $result=$GLOBALS['db']->getOne($sql);
+        if(!empty($result)){
+            $moditem=$result%$perPage;
+            $totalpage=floor($result/$perPage);
+            if ($moditem!=0){
+                $totalpage+=1;
+            }
+        }else{
+            $totalpage=0;
+        }
+    }else{
+        /////添加查找在products分类里的语句,以下代码可能需要重构
+        $itemcount=0;
+        foreach($products as $product){
+            $sql="SELECT count(*) FROM cotestcms.testreports where `product`=\"".$product."\" order by date";
+            $temp=$GLOBALS['db']->getOne($sql);
+            if(!empty($temp)){
+                $itemcount+=$temp;
+            }
+        }
+        $moditem=$itemcount%$perPage;
+        $totalpage=floor($itemcount/$perPage);
+        if($moditem!=0){
+            $totalpage+=1;
+        }
+    }
+    return $totalpage;
+}
+/*
+ *获得cotestreports总页数，perPage表示每页的页数，datedesc默认按时间从近到远
+ * */
+function getCotestreportsTotalPage($perPage,$datedesc=true)
+{
+    $totalpage=0;
+        if($datedesc){
+            $sql="SELECT count(*) FROM cotestcms.cotestreports order by date desc";
+        }else{
+            $sql="SELECT count(*) FROM cotestcms.cotestreports order by date";
+        }
+
+        $result=$GLOBALS['db']->getOne($sql);
+        if(!empty($result)){
+            $moditem=$result%$perPage;
+            $totalpage=floor($result/$perPage);
+            if ($moditem!=0){
+                $totalpage+=1;
+            }
+        }else{
+            $totalpage=0;
+        }
+    return $totalpage;
+}
 
 /*重新将testprogramme的ID从1排序，因为在多次添加删除了中间的某篇文章后，可能id会乱*/
 function updateTestprogrammeIDs()
